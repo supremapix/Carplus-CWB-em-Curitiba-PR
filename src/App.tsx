@@ -22,6 +22,7 @@ import TireCatalogView from './components/TireCatalogView';
 import CatalogTireDetail from './components/CatalogTireDetail';
 import AutoCenterSection from './components/AutoCenterSection';
 import { CATALOGO_PNEUS, findCatalogTireBySlug } from './data/catalogo-pneus';
+import { PROMO_TIRES } from './data/promoTires';
 import { HeroPromoTires } from './components/HeroPromoTires';
 
 const BRAND_LOGOS: Record<string, string> = {
@@ -1223,35 +1224,63 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Senior-Readable Quick Shortcuts Panel (Professional Trust Card) */}
+              {/* Promo Panel with the 20 Promotional Tires */}
               <div className="lg:col-span-5 bg-white p-6 sm:p-7 rounded-3xl border border-gray-250 shadow-xl space-y-4 relative" id="hero-quick-shortcuts">
                 <div className="absolute -top-3 right-6 bg-[#f49e1a] text-black font-mono font-black text-[10px] uppercase px-3 py-1 rounded-full shadow">
-                  Busca Rápida • Curitiba
+                  Promoção de Pneus • Curitiba
                 </div>
 
-                <h4 className="text-base uppercase font-black text-gray-950 tracking-wide flex items-center gap-2 justify-center lg:justify-start pt-1">
+                <h3 className="text-base uppercase font-black text-gray-950 tracking-wide flex items-center gap-2 justify-center lg:justify-start pt-1">
                   <Sparkles className="w-5 h-5 text-yellow-600" />
-                  Medidas Mais Buscadas na Capital
-                </h4>
+                  Pneus em Promoção no Portão
+                </h3>
                 <p className="text-xs text-gray-600 font-medium text-center lg:text-left leading-relaxed">
-                  Selecione rapidamente a medida original do seu veículo para filtrar nosso estoque verificado no Portão:
+                  Confira as 20 ofertas com montagem grátis e bicos novos inclusos:
                 </p>
                 
-                <div className="grid grid-cols-2 gap-2.5" id="quick-searches-grid">
-                  {MOST_SEARCHED_MEASURES.map((item, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleSearchMeasure(item.query)}
-                      className="p-3.5 bg-gray-50 hover:bg-yellow-50 text-gray-900 hover:text-black border border-gray-200 hover:border-yellow-500 rounded-xl transition text-left flex flex-col justify-between cursor-pointer group shadow-2xs"
+                <div className="max-h-[380px] overflow-y-auto pr-1 space-y-2.5 custom-scrollbar" id="promo-tires-hero-list">
+                  {PROMO_TIRES.map((tire) => (
+                    <div
+                      key={tire.id}
+                      onClick={() => handleSelectPromoTireBySlug(tire.slug)}
+                      className="p-3 bg-gray-50 hover:bg-amber-50/60 text-gray-900 border border-gray-200 hover:border-[#f49e1a] rounded-xl transition cursor-pointer flex items-center gap-3 group shadow-2xs"
                     >
-                      <span className="font-black text-sm sm:text-base font-mono tracking-tight text-gray-950 group-hover:text-yellow-600">{item.text}</span>
-                      <span className="text-[10px] text-gray-500 font-bold mt-0.5">{item.searches}</span>
-                    </button>
+                      <img
+                        src={tire.imagem300}
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = tire.fallback300; }}
+                        alt={`Pneu ${tire.marca} ${tire.medida}`}
+                        className="w-12 h-12 object-contain shrink-0"
+                      />
+                      <div className="flex-grow min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-mono font-black uppercase text-[#f49e1a]">
+                            {tire.marca}
+                          </span>
+                          <span className="text-[10px] text-gray-500 font-mono">
+                            Aro {tire.aro}
+                          </span>
+                        </div>
+                        <span className="font-black text-xs sm:text-sm text-gray-950 group-hover:text-amber-700 truncate block">
+                          {tire.marca} {tire.medida}
+                        </span>
+                        <span className="text-[11px] text-gray-500 truncate block">
+                          {tire.modelo}
+                        </span>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <span className="text-[10px] text-gray-400 line-through block">
+                          R$ {tire.precoOriginal}
+                        </span>
+                        <span className="text-xs font-black text-[#f49e1a]">
+                          R$ {tire.precoPromocional}
+                        </span>
+                      </div>
+                    </div>
                   ))}
                 </div>
 
                 <div className="border-t border-gray-150 pt-3.5 flex items-center justify-between text-xs text-gray-600 font-bold">
-                  <span>Estoque: <strong className="text-gray-950 font-black">{CATALOGO_PNEUS.length} modelos</strong></span>
+                  <span>Estoque: <strong className="text-gray-950 font-black">{PROMO_TIRES.length} promoções</strong></span>
                   <span className="text-[#15803d] font-black inline-flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-green-600 animate-ping"></span>
                     Loja Portão Aberta
@@ -1260,17 +1289,6 @@ export default function App() {
               </div>
             </div>
           </div>
-
-        {/* Hero Promo Tires Section (8 on Home, all 20 expandable) */}
-        <div className="max-w-7xl mx-auto px-4 mt-6">
-          <HeroPromoTires
-            onSelectTire={(slug) => handleSelectPromoTireBySlug(slug)}
-            onAddToCart={(tire) => {
-              const catalogTire = findCatalogTireBySlug(tire.slug);
-              if (catalogTire) handleSelectCatalogTire(catalogTire);
-            }}
-          />
-        </div>
 
         {/* Wizard application guide (Qual pneu vai no meu carro?) */}
         <section ref={finderRef} className="max-w-7xl mx-auto px-4 mt-8" id="finder">

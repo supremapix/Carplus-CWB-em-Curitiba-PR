@@ -63,57 +63,74 @@ const WHEEL_SERVICES = [
 const CARPLUS_EQUIPE_GALLERY = [
   {
     id: 1,
-    title: "Vistoria e Alinhamento Jeep Compass",
-    badge: "Diagnóstico de SUVs",
-    image: "/images/galeria/jeep-compass.webp",
-    summary: "Atendimento premium com verificação técnica detalhada na suspensão e no diâmetro do pneu do seu SUV.",
-    details: "Pátio Carplus preparado para veículos nacionais e importados utilitários de grande porte como o Jeep Compass. Realizamos uma vistoria tática completa de pivôs, buchas de balança, amortecedores e batentes antes de realizar a montagem de novos pneus, garantindo aos clientes que os pneus novos rodem sem desgaste precoce ou desvio lateral do veículo nas retas.",
-    team: "Equipe técnica de suspensões e diagnóstico preventivo da Carplus Pneus."
+    title: "Pneus & Auto Center Especializado",
+    badge: "Estrutura Completa",
+    image: "/images/quemsomos/pneus-auto-center.jpg",
+    remoteImage: "https://img.carplusautos.com.br/cwb/pneus-auto-center.jpg",
+    summary: "Showroom e estoque completo de pneus novos para passeios, SUVs e vans no Portão, Curitiba.",
+    details: "Espaço amplo preparado para atendimento rápido com estoque pronta-entrega das principais marcas mundiais e nacionais (Pirelli, Goodyear, Michelin, Continental, Bridgestone, XBRI, Delinte e mais).",
+    team: "Consultoria comercial e técnica especializada no Portão."
   },
   {
     id: 2,
-    title: "Alinhamento Computadorizado Tridimensional",
-    badge: "Geometria 3D de Última Geração",
-    image: "/images/galeria/alinhamento-jeep.webp",
-    summary: "Garras reflexivas realizam a leitura direta do caster, câmber e convergência.",
-    details: "Nossos painéis projetores 3D cruzam o posicionamento em tempo real do seu automóvel com as tabelas de tolerâncias e dados técnicos fornecidos pelas montadoras originais europeias, asiáticas e americanas. Com isso, os ângulos de rodagem são fixados com precisão centesimal, reduzindo a folga, o esforço mecânico e mantendo a máxima economia de combustível no trânsito de Curitiba.",
-    team: "Alinhadores gabaritados e homologados pela engenharia de suspensão da Carplus."
+    title: "Montagem Técnica Especializada",
+    badge: "Equipamentos de Precisão",
+    image: "https://img.carplusautos.com.br/cwb/montagem-tecnica.png",
+    remoteImage: "https://img.carplusautos.com.br/cwb/montagem-tecnica.png",
+    fallbackImage: "/images/galeria/montagem-tecnica.jpg",
+    summary: "Montagem de pneus com máquinas pneumáticas que protegem as rodas de liga leve contra riscos.",
+    details: "Técnicos treinados realizam a desmontagem e montagem sem riscar ou danificar a borda de alumínio. Inclui troca da válvula de ar (bico novo de borracha) sem custo adicional.",
+    team: "Técnicos de borracharia avançada da Carplus."
   },
   {
     id: 3,
-    title: "Montagem Técnica & Borracharia Avançada",
-    badge: "Troca Técnica e Bicos de Ar",
-    image: "/images/galeria/troca-pneu.webp",
-    summary: "Instalação de pneus, troca preventiva de válvula de ar (bico de borracha) inclusa.",
-    details: "Higienizamos os flanges das rodas de liga leve para garantir a selagem hermética no talão do pneu novo. Também substituímos gratuitamente as válvulas por bicos novos macios comuns de borracha premium e aplicamos o torqueamento controlado nos parafusos de roda, preservando as roscas e a segurança dos freios.",
-    team: "Borracharia técnica de pista empenhada em alta performance e montagem segura."
+    title: "Vistoria e Alinhamento Detalhado",
+    badge: "Diagnóstico Preventivo",
+    image: "/images/quemsomos/vistoria-alinhamento.jpg",
+    remoteImage: "https://img.carplusautos.com.br/cwb/vistoria-alinhamento.jpg",
+    summary: "Inspeção visual e tática dos componentes da suspensão antes de alinhar.",
+    details: "Verificamos pivôs, buchas, amortecedores, coxins e folgas na caixa de direção. Nenhum serviço desnecessário é empurrado; fornecemos laudo honesto e transparente.",
+    team: "Equipe técnica de suspensões e geometria da Carplus."
   },
   {
     id: 4,
-    title: "Check-up Técnico de Motores & Fluidos",
-    badge: "Verificação Sob o Capô",
-    image: "/images/galeria/mecanico-motor.webp",
-    summary: "Inspeção de nível de fluidos de freio, filtros de ar do motor e check-up com laudo fotográfico honesto.",
-    details: "Na Carplus, cada motorista é tratado com transparência e respeito absoluto. Nossos mecânicos inspecionam o compartimento do motor para identificar vazamentos, pastilhas gastas, fluidos vencidos ou mangueiras ressecadas de forma limpa, baseando-se em fatos visíveis e enviando avisos prévios explicativos, sem surpresas desagradáveis ou empurra-empurra de peças.",
-    team: "Mecânicos especializados em motores e injeção do autocenter."
+    title: "Amplo Elevador Automotivo de Alta Capacidade",
+    badge: "Segurança de Pista",
+    image: "/images/quemsomos/amplo-elevador.png",
+    remoteImage: "https://img.carplusautos.com.br/cwb/amplo-elevador.png",
+    summary: "Elevadores pantográficos e de braços reforçados para veículos de passeio, SUVs e utilitários pesados.",
+    details: "Erguimento seguro respeitando os pontos de apoio especificados pela fábrica do veículo, garantindo proteção total à caixa de bateria de carros elétricos e híbridos e ao assoalho.",
+    team: "Equipe de pista da oficina Carplus."
   },
   {
     id: 5,
-    title: "Ampla Estrutura e Elevadores de Pista",
-    badge: "Oficina Própria Completa",
-    image: "/images/galeria/oficina-carros.webp",
-    summary: "Infraestrutura moderna no bairro Portão com múltiplos boxes de atendimento simultâneo.",
-    details: "Nossas amplas instalações no Portão, Curitiba contam com elevadores pantográficos calibrados para erguimento firme e equilibrado, respeitando os pontos de apoio sob a longarina do seu carro para evitar mossas mecânicas. Oferecemos conforto na sala de espera de alto padrão enquanto sua revisão é executada.",
-    team: "Atendimento comercial e mecânico unificado para Curitiba e Região Metropolitana (RMC)."
+    title: "Acabamento Seguro e Cuidado com as Rodas",
+    badge: "Proteção das Ligas Leves",
+    image: "/images/quemsomos/acabamento-seguro.png",
+    remoteImage: "https://img.carplusautos.com.br/cwb/acabamento-seguro.png",
+    summary: "Aperto de parafusos com torquímetro calibrado para máxima segurança do cubo de roda.",
+    details: "Zero risco de espanação de roscas ou sobretorque nos parafusos de roda. Tratamento cuidadoso e profissional para veículos esportivos, SUVs e carros de passeio.",
+    team: "Especialistas em montagem e acabamento da Carplus."
   },
   {
     id: 6,
-    title: "Acabamento Seguro & Balanceamento Dinâmico",
-    badge: "Calibração e Conforto",
-    image: "/images/galeria/montagem-pneu.webp",
-    summary: "Montagem macia em maquinário moderno com ferramentas que não estragam o acabamento das rodas.",
-    details: "Nosso balanceamento computadorizado mapeia o desbalanceamento dinâmico e estático do conjunto roda/pneu, fixando pesos adesivos discretos com precisão de gramas de forma estratégica. Isso elimina as trepidações irritantes sentidas no painel ou volante em velocidade superior a 80 km/h, trazendo conforto único.",
-    team: "Operadores e técnicos de acabamento da Carplus Pneus."
+    title: "Check-up de Motores & Fluidos Auto Center",
+    badge: "Manutenção Preventiva",
+    image: "/images/quemsomos/check-up-motores-fluidos-auto-center.png",
+    remoteImage: "https://img.carplusautos.com.br/cwb/check-up-motores-fluidos-auto-center.png",
+    summary: "Aferição de nível e qualidade do óleo do motor, fluido de freio, arrefecimento e filtros.",
+    details: "Diagnóstico preventivo para evitar superaquecimento ou falhas graves de lubrificação, mantendo a vida útil do motor estendida.",
+    team: "Mecânicos especialistas em lubrificantes e mecânica geral da Carplus."
+  },
+  {
+    id: 7,
+    title: "Alinhamento Computadorizado Tridimensional",
+    badge: "Geometria 3D Laser",
+    image: "/images/quemsomos/alinhamento-computadorizado-tridmencional.png",
+    remoteImage: "https://img.carplusautos.com.br/cwb/alinhamento-computadorizado-tridmencional.png",
+    summary: "Leitura 3D de alta precisão para regulagem exata dos ângulos de câmber, cáster e convergência.",
+    details: "Painel com tecnologia tridimensional de garras de alta fidelidade que lê o desgaste e angulação das quatro rodas simultaneamente, garantindo estabilidade e economia de combustível.",
+    team: "Especialistas em geometria 3D da Carplus."
   }
 ];
 
@@ -721,6 +738,15 @@ export default function CompanyPages({
                   <div className="md:col-span-2 relative group overflow-hidden rounded-xl border border-gray-150 h-56 sm:h-64 flex items-center justify-center bg-gray-50 shadow-inner">
                     <img 
                       src={CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].image} 
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        const item = CARPLUS_EQUIPE_GALLERY[gallerySlideIdx];
+                        if (target.src !== item.remoteImage && item.remoteImage) {
+                          target.src = item.remoteImage;
+                        } else if (item.fallbackImage) {
+                          target.src = item.fallbackImage;
+                        }
+                      }}
                       alt={CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].title} 
                       className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                       referrerPolicy="no-referrer"
@@ -798,6 +824,58 @@ export default function CompanyPages({
                       aria-label={`Ir para foto ${idx + 1}`}
                     />
                   ))}
+                </div>
+
+                {/* Grid of all 7 Transparency photos */}
+                <div className="mt-8 pt-6 border-t border-gray-100">
+                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-gray-500 mb-4 text-center sm:text-left">
+                    Galeria Completa de Transparência no Atendimento (7 Registros)
+                  </h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                    {CARPLUS_EQUIPE_GALLERY.map((item, idx) => (
+                      <div
+                        key={`equipe-grid-item-${item.id}`}
+                        onClick={() => {
+                          setGallerySlideIdx(idx);
+                          const element = document.getElementById('slider-equipe-carplus');
+                          if (element) element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }}
+                        className={`group relative rounded-xl border transition duration-300 cursor-pointer overflow-hidden bg-gray-50 p-2 flex flex-col justify-between ${
+                          gallerySlideIdx === idx 
+                            ? 'border-yellow-500 ring-2 ring-yellow-500/30 bg-yellow-500/5' 
+                            : 'border-gray-200 hover:border-yellow-400 hover:shadow-md'
+                        }`}
+                      >
+                        <div className="aspect-[4/3] overflow-hidden rounded-lg relative bg-gray-200">
+                          <img
+                            src={item.image}
+                            onError={(e) => {
+                              const target = e.currentTarget as HTMLImageElement;
+                              if (target.src !== item.remoteImage && item.remoteImage) {
+                                target.src = item.remoteImage;
+                              } else if (item.fallbackImage) {
+                                target.src = item.fallbackImage;
+                              }
+                            }}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                            referrerPolicy="no-referrer"
+                          />
+                          <span className="absolute top-1.5 left-1.5 bg-black/80 backdrop-blur-xs text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded">
+                            #{item.id}
+                          </span>
+                        </div>
+                        <div className="mt-2 text-left space-y-0.5">
+                          <span className="text-[9px] font-mono font-bold text-yellow-600 block uppercase tracking-tight line-clamp-1">
+                            {item.badge}
+                          </span>
+                          <h5 className="text-xs font-extrabold text-gray-900 leading-tight line-clamp-2">
+                            {item.title}
+                          </h5>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
