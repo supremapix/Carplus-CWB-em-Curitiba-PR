@@ -221,9 +221,11 @@ export const BlogView: React.FC<BlogViewProps> = ({
           <div className="mb-8 rounded-2xl overflow-hidden shadow-md bg-slate-200 border border-slate-200">
             <img
               src={currentPost.featuredImage}
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = '/images/galeria/fachada-carplus.webp';
+              }}
               alt={currentPost.imageAlt}
               loading="eager"
-              referrerPolicy="no-referrer"
               className="w-full h-64 sm:h-80 md:h-96 object-cover object-center"
             />
             <div className="bg-white px-4 py-2 text-xs text-slate-500 italic border-t border-slate-100">
@@ -491,6 +493,9 @@ export const BlogView: React.FC<BlogViewProps> = ({
                       <div className="relative h-40 overflow-hidden bg-slate-100">
                         <img
                           src={post.featuredImage}
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = '/images/galeria/fachada-carplus.webp';
+                          }}
                           alt={post.imageAlt}
                           loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -652,6 +657,9 @@ export const BlogView: React.FC<BlogViewProps> = ({
                   <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
                     <img
                       src={post.featuredImage}
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = '/images/galeria/fachada-carplus.webp';
+                      }}
                       alt={post.imageAlt}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
