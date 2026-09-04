@@ -1,7 +1,11 @@
 import { CatalogTire } from '../types';
 import catalogData from '../../catalogo-pneus.json';
+import { PROMO_CATALOG_TIRES } from './promoTires';
 
-export const CATALOGO_PNEUS: CatalogTire[] = catalogData as CatalogTire[];
+export const CATALOGO_PNEUS: CatalogTire[] = [
+  ...PROMO_CATALOG_TIRES,
+  ...(catalogData as CatalogTire[])
+];
 
 export const CATALOG_BRANDS = Array.from(new Set(CATALOGO_PNEUS.map(t => t.marca))).sort();
 export const CATALOG_CATEGORIES = Array.from(new Set(CATALOGO_PNEUS.map(t => t.categoria))).sort();

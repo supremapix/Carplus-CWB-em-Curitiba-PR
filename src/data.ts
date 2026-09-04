@@ -1,7 +1,9 @@
 import { Tire, CarModel, ServiceRecord } from './types';
+import { PROMO_TIRES_TIRE_MODEL } from './data/promoTires';
 
-// Large dataset of real tires from the provided Google Sheet (176 promotion tires):
+// Large dataset of real tires from the provided Google Sheet (176 promotion tires + 20 Hero/Catalog Promo Tires):
 export const RAW_TIRES_DATA: Tire[] = [
+  ...PROMO_TIRES_TIRE_MODEL,
   {
     "id": "1001317",
     "brand": "BRIDGESTONE",

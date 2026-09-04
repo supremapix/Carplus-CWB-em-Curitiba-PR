@@ -22,6 +22,7 @@ import TireCatalogView from './components/TireCatalogView';
 import CatalogTireDetail from './components/CatalogTireDetail';
 import AutoCenterSection from './components/AutoCenterSection';
 import { CATALOGO_PNEUS, findCatalogTireBySlug } from './data/catalogo-pneus';
+import { HeroPromoTires } from './components/HeroPromoTires';
 
 const BRAND_LOGOS: Record<string, string> = {
   BRIDGESTONE: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/bridgestone.svg",
@@ -361,6 +362,16 @@ export default function App() {
     setCurrentView('catalogo-detalhe');
     window.history.pushState(null, '', `/pneu/${tire.slug}`);
     window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const handleSelectPromoTireBySlug = (slug: string) => {
+    const tire = findCatalogTireBySlug(slug);
+    if (tire) {
+      setSelectedCatalogTire(tire);
+      setCurrentView('catalogo-detalhe');
+      window.history.pushState(null, '', `/pneu/${tire.slug}`);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
   };
 
   // Reset all catalog filters
@@ -817,6 +828,18 @@ export default function App() {
       setCurrentView('seo-landing');
       setSeoTarget({ type: 'carro', name: fallbackName });
       setSelectedTire(null);
+    } else if (firstRoute.startsWith('pneu-')) {
+      const matchedCatalog = findCatalogTireBySlug(firstRoute);
+      if (matchedCatalog) {
+        setCurrentView('catalogo-detalhe');
+        setSelectedCatalogTire(matchedCatalog);
+        setSelectedTire(null);
+        setSeoTarget(null);
+      } else {
+        setCurrentView('home');
+        setSeoTarget(null);
+        setSelectedTire(null);
+      }
     } else {
       setCurrentView('home');
       setSeoTarget(null);
@@ -1237,6 +1260,17 @@ export default function App() {
               </div>
             </div>
           </div>
+
+        {/* Hero Promo Tires Section (8 on Home, all 20 expandable) */}
+        <div className="max-w-7xl mx-auto px-4 mt-6">
+          <HeroPromoTires
+            onSelectTire={(slug) => handleSelectPromoTireBySlug(slug)}
+            onAddToCart={(tire) => {
+              const catalogTire = findCatalogTireBySlug(tire.slug);
+              if (catalogTire) handleSelectCatalogTire(catalogTire);
+            }}
+          />
+        </div>
 
         {/* Wizard application guide (Qual pneu vai no meu carro?) */}
         <section ref={finderRef} className="max-w-7xl mx-auto px-4 mt-8" id="finder">
