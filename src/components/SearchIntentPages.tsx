@@ -23,7 +23,10 @@ interface SearchIntentPagesProps {
     | 'bana-pneus'
     | 'loja-de-pneus-em-curitiba'
     | 'pneus-pirelli-em-curitiba-melhor-preco'
-    | 'barao-pneus-e-oficina-portao';
+    | 'barao-pneus-e-oficina-portao'
+    | 'auto-center-curitiba'
+    | 'troca-de-pneus-curitiba'
+    | 'centro-automotivo-portao';
   onNavigateHome: () => void;
   onNavigateToPage?: (page: string) => void;
 }
@@ -786,6 +789,155 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
         { q: "Onde fica a loja de pneus da Carplus no Portão?", a: "Nossa loja física situa-se na Av. Presidente Arthur da Silva Bernardes, 1323, bairro Portão, Curitiba - PR, CEP 80320-300." },
         { q: "Quais serviços de pneu são feitos no Portão?", a: "Fazemos montagem técnica, troca de bicos/válvulas, balanceamento computadorizado e alinhamento 3D tridimensional." },
         { q: "Possuem pneus a pronta entrega no Portão para carros e SUVs?", a: "Sim, mantemos estoque próprio a pronta entrega de pneus passeio, SUV e caminhonete do aro 13 ao 20." }
+      ]
+    },
+    'auto-center-curitiba': {
+      title: "Auto Center e Centro Automotivo em Curitiba",
+      subtitle: "A Carplus integra loja de pneus novos, montagem técnica com bicos novos, alinhamento 3D computadorizado, balanceamento dinâmico e serviços de oficina mecânica no Portão.",
+      tag: "Auto Center Curitiba",
+      bgGradient: "from-zinc-900 to-gray-950",
+      content: (
+        <div className="space-y-6 text-left">
+          <p className="text-sm text-gray-700 leading-relaxed font-semibold">
+            Buscando um <strong className="text-gray-950 bg-[#f49e1a]/20 px-1 py-0.5 border border-[#f49e1a]/40">auto center completo em Curitiba</strong>? A Carplus Pneus e Oficina Mecânica reúne em sua sede no bairro Portão (Av. Presidente Arthur da Silva Bernardes, 1323) toda a estrutura para atender seu veículo: catálogo completo de pneus novos homologados, montagem técnica com máquinas anti-risco de rodas, geometria 3D de alta precisão e serviços de manutenção preventiva.
+          </p>
+
+          <div className="bg-neutral-50 border-2 border-black p-5 space-y-4">
+            <h3 className="text-sm font-black text-black uppercase font-mono flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f49e1a] border border-black" />
+              Estrutura e Serviços do Auto Center Carplus em Curitiba:
+            </h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs text-gray-800 font-medium">
+              <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
+                <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
+                <span><strong>Pneus Novos Multimarcas:</strong> Mais de 1.900 opções disponíveis dos aros 13 ao 23 (Bridgestone, Pirelli, Michelin, Goodyear, Continental, Firestone, Delinte, Xbri, Linglong).</span>
+              </li>
+              <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
+                <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
+                <span><strong>Montagem & Válvulas Cortesia:</strong> Desmontadora pneumática protetora e troca de bicos sem custo adicional na compra dos pneus.</span>
+              </li>
+              <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
+                <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
+                <span><strong>Alinhamento 3D Tridimensional:</strong> Sensores computadorizados de alta precisão para conferência de cambagem, convergência e cáster.</span>
+              </li>
+              <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
+                <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
+                <span><strong>Oficina Mecânica Preventiva:</strong> Revisão e substituição de pastilhas e discos de freio, amortecedores, molas, buchas, pivôs e troca de óleo.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="border-t border-gray-200 pt-4 flex flex-wrap gap-2">
+            <span className="text-xs font-black uppercase text-black font-mono">Bairros Atendidos com Acesso Rápido:</span>
+            <div className="flex flex-wrap gap-1.5 text-[11px] font-mono font-bold text-gray-700">
+              <span className="bg-gray-100 px-2 py-0.5 border border-gray-300">Portão</span>
+              <span className="bg-gray-100 px-2 py-0.5 border border-gray-300">Água Verde</span>
+              <span className="bg-gray-100 px-2 py-0.5 border border-gray-300">Vila Izabel</span>
+              <span className="bg-gray-100 px-2 py-0.5 border border-gray-300">Batel</span>
+              <span className="bg-gray-100 px-2 py-0.5 border border-gray-300">Santa Quitéria</span>
+              <span className="bg-gray-100 px-2 py-0.5 border border-gray-300">Fazendinha</span>
+              <span className="bg-gray-100 px-2 py-0.5 border border-gray-300">Capão Raso</span>
+              <span className="bg-gray-100 px-2 py-0.5 border border-gray-300">Novo Mundo</span>
+            </div>
+          </div>
+        </div>
+      ),
+      whatsappText: "Olá Carplus! Gostaria de cotar pneus e serviços no auto center de vocês no Portão, Curitiba.",
+      faqs: [
+        { q: "Onde encontrar auto center com pneus em Curitiba?", a: "A Carplus Pneus e Oficina Mecânica reúne loja de pneus novos e centro automotivo completo no mesmo endereço: Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão, Curitiba." },
+        { q: "Quais serviços de auto center a Carplus realiza?", a: "Venda e instalação de pneus novos, montagem técnica, troca de válvulas, balanceamento dinâmico, alinhamento 3D computadorizado, freios, suspensão e troca de óleo." },
+        { q: "É possível comprar os pneus e instalar tudo no mesmo local?", a: "Sim, absolutamente. Você seleciona a medida homologada do seu carro e nossa equipe realiza a montagem, bicos novos, balanceamento e alinhamento no mesmo local com total comodidade." }
+      ]
+    },
+    'troca-de-pneus-curitiba': {
+      title: "Troca de Pneus em Curitiba com Montagem Inclusa",
+      subtitle: "Troca profissional com maquinário anti-risco para rodas de liga leve, válvulas de borracha novas, balanceamento computadorizado e alinhamento 3D.",
+      tag: "Troca de Pneus Curitiba",
+      bgGradient: "from-zinc-900 to-gray-950",
+      content: (
+        <div className="space-y-6 text-left">
+          <p className="text-sm text-gray-700 leading-relaxed font-semibold">
+            Precisa fazer a <strong className="text-gray-950 bg-[#f49e1a]/20 px-1 py-0.5 border border-[#f49e1a]/40">troca de pneus em Curitiba</strong>? Na Carplus Pneus, você adquire seus pneus novos e realiza a substituição no mesmo local. Toda compra de pneus na Carplus conta com montagem técnica especializada e troca de bicos/válvulas inclusas sem custos adicionais de mão de obra.
+          </p>
+
+          <div className="bg-neutral-50 border-2 border-black p-5 space-y-4">
+            <h3 className="text-sm font-black text-black uppercase font-mono flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f49e1a] border border-black" />
+              Etapas da Troca Técnica de Pneus na Carplus:
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-gray-800">
+              <div className="border border-gray-300 bg-white p-3.5">
+                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">01. DESMONTAGEM SEGURA</span>
+                <p className="text-gray-600">Equipamento pneumático moderno com garras emborrachadas que não arranham rodas de liga leve ou pintadas.</p>
+              </div>
+              <div className="border border-gray-300 bg-white p-3.5">
+                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">02. VÁLVULAS NOVAS</span>
+                <p className="text-gray-600">Substituição das válvulas de borracha antigas para prevenir vazamentos microscópicos de pressão e perda de calibração.</p>
+              </div>
+              <div className="border border-gray-300 bg-white p-3.5">
+                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">03. BALANCEAMENTO 3D</span>
+                <p className="text-gray-600">Balanceamento dinâmico em rodas de ferro e liga com chumbos adesivos, eliminando vibrações ao rodar.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white border border-gray-200 p-4">
+            <h4 className="font-black text-xs uppercase text-black mb-2">Quando é a hora de trocar seus pneus?</h4>
+            <p className="text-xs text-gray-700 leading-relaxed">
+              O limite legal de segurança é o indicador TWI (1,6 mm de profundidade de sulco). Rodar abaixo dessa marca aumenta o risco de aquaplanagem e multas. Se notar desgaste desigual nos ombros do pneu ou vibrações na direção, venha até nossa oficina no Portão para uma inspeção preventiva visual de cortesia.
+            </p>
+          </div>
+        </div>
+      ),
+      whatsappText: "Olá Carplus! Gostaria de agendar a troca de pneus para o meu carro na loja de vocês no Portão.",
+      faqs: [
+        { q: "Onde trocar pneus em Curitiba?", a: "No auto center da Carplus Pneus, na Av. Presidente Arthur da Silva Bernardes, 1323, Portão. Oferecemos montagem técnica e troca de bicos inclusas na compra de pneus novos." },
+        { q: "Quanto tempo dura a troca dos 4 pneus?", a: "Em média, a desmontagem, substituição de válvulas, montagem dos 4 pneus novos e balanceamento leva entre 40 a 60 minutos." },
+        { q: "A montagem é cobrada à parte na troca de pneus?", a: "Não. Na compra de pneus novos na Carplus, a montagem técnica e a substituição das válvulas de borracha são cortesia, sem custos escondidos." }
+      ]
+    },
+    'centro-automotivo-portao': {
+      title: "Centro Automotivo no Portão Curitiba - Oficina e Pneus",
+      subtitle: "Estrutura moderna na Av. Presidente Arthur da Silva Bernardes, 1323: pneus multimarcas, montagem, geometria 3D, freios e suspensão.",
+      tag: "Centro Automotivo Portão",
+      bgGradient: "from-zinc-900 to-gray-950",
+      content: (
+        <div className="space-y-6 text-left">
+          <p className="text-sm text-gray-700 leading-relaxed font-semibold">
+            Procurando por um <strong className="text-gray-950 bg-[#f49e1a]/20 px-1 py-0.5 border border-[#f49e1a]/40">centro automotivo no Portão em Curitiba</strong>? A Carplus Pneus e Oficina Mecânica atua no coração do bairro Portão, com acesso facilitado e amplo pátio de atendimento na Av. Presidente Arthur da Silva Bernardes, 1323. Unimos catálogo completo de pneus multimarcas a uma oficina especializada em manutenção preventiva.
+          </p>
+
+          <div className="bg-neutral-50 border-2 border-black p-5 space-y-4">
+            <h3 className="text-sm font-black text-black uppercase font-mono flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f49e1a] border border-black" />
+              Por que escolher o Centro Automotivo Carplus no Portão?
+            </h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-800 font-medium">
+              <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
+                <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
+                <span><strong>Localização Privilegiada no Portão:</strong> Na Av. Arthur Bernardes, próximo às principais vias de ligação rápida com Água Verde, Vila Izabel, Batel e Santa Quitéria.</span>
+              </li>
+              <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
+                <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
+                <span><strong>Estoque Físico Imediato:</strong> Pneus aro 13 ao 20 a pronta entrega para você não perder tempo esperando transportadora.</span>
+              </li>
+              <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
+                <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
+                <span><strong>Rampa de Alinhamento 3D no Portão:</strong> Equipamento tridimensional com banco de dados de todas as montadoras nacionais e importadas.</span>
+              </li>
+              <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
+                <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
+                <span><strong>Condições de Pagamento:</strong> Parcelamento em até 10x sem juros no cartão de crédito ou condições especiais via PIX.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      ),
+      whatsappText: "Olá Carplus! Estou no Portão e gostaria de fazer uma cotação de pneus e revisão preventiva no centro automotivo.",
+      faqs: [
+        { q: "Qual o endereço do centro automotivo no Portão?", a: "Av. Presidente Arthur da Silva Bernardes, 1323, Portão, Curitiba - PR, CEP 80320-300. Telefone e WhatsApp: (41) 3082-7282." },
+        { q: "Quais serviços de oficina são oferecidos no Portão?", a: "Além de pneus e montagem, fazemos alinhamento 3D, balanceamento de rodas, troca de pastilhas/discos de freio, amortecedores, molas, buchas de suspensão e troca de óleo." },
+        { q: "Vocês atendem clientes do Água Verde e Vila Izabel?", a: "Sim, nossa sede na Arthur Bernardes fica na divisa entre Portão, Água Verde e Vila Izabel, permitindo acesso em poucos minutos." }
       ]
     }
   };

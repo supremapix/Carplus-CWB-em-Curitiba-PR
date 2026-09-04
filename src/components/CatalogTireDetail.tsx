@@ -29,7 +29,7 @@ export default function CatalogTireDetail({
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [tire.id, tire.slug]);
 
-  const displayImage = tire.imagemGrande || tire.imagem || 'https://www.carpluspneuseoficina.com.br/images/pneus/pneu-pirelli-p400-evo-600x600.webp';
+  const displayImage = tire.imagemGrande || tire.imagem || 'https://www.carpluscwb.com.br/images/pneus/pneu-pirelli-p400-evo-600x600.webp';
   const shareUrl = typeof window !== 'undefined' ? window.location.href : `https://www.carpluscwb.com.br/pneu/${tire.slug}`;
 
   const handleCopyLink = () => {
@@ -72,18 +72,6 @@ export default function CatalogTireDetail({
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Link Copiado!' : 'Compartilhar'}</span>
             </button>
-            {tire.urlOriginal && (
-              <a
-                href={tire.urlOriginal}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-gray-900 bg-white hover:bg-gray-100 px-3 py-2 rounded-xl border border-gray-250 transition shadow-2xs"
-                title="Ver página original"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Fonte Original</span>
-              </a>
-            )}
           </div>
         </div>
 

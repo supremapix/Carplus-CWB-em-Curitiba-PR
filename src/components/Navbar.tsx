@@ -103,7 +103,7 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
               className="hidden sm:block cursor-pointer"
             >
               <img
-                src="https://www.carpluspneuseoficina.com.br/images/logos/logo-horizontal.svg"
+                src="https://www.carpluscwb.com.br/images/logos/logo-horizontal.svg"
                 alt="Carplus Pneus Oficina Mecânica"
                 className="h-12 w-auto object-contain"
                 referrerPolicy="no-referrer"
@@ -119,7 +119,7 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
               className="block sm:hidden cursor-pointer"
             >
               <img
-                src="https://www.carpluspneuseoficina.com.br/carplus-pneus-oficina-mecanica-full-service-horizontal.svg"
+                src="https://www.carpluscwb.com.br/carplus-pneus-oficina-mecanica-full-service-horizontal.svg"
                 alt="Carplus Pneus Mobile"
                 className="h-10 w-auto object-contain"
                 referrerPolicy="no-referrer"
@@ -174,7 +174,7 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
             {/* Header with carplus logo & close hint */}
             <div className="bg-black p-4 rounded-2xl border border-[#f49e1a] mb-4 flex flex-col items-center text-center">
               <img
-                src="https://www.carpluspneuseoficina.com.br/images/logos/logo-horizontal.svg"
+                src="https://www.carpluscwb.com.br/images/logos/logo-horizontal.svg"
                 alt="Carplus Pneus e Oficina"
                 className="h-10 w-auto object-contain mb-2"
                 referrerPolicy="no-referrer"

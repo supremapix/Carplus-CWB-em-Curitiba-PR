@@ -12,7 +12,7 @@ export default function CatalogTireCard({ tire, onSelect }: CatalogTireCardProps
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const [imageError, setImageError] = React.useState(false);
 
-  const displayImage = tire.imagemGrande || tire.imagem || 'https://www.carpluspneuseoficina.com.br/images/pneus/pneu-pirelli-p400-evo-600x600.webp';
+  const displayImage = tire.imagemGrande || tire.imagem || 'https://www.carpluscwb.com.br/images/pneus/pneu-pirelli-p400-evo-600x600.webp';
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -53,7 +53,7 @@ export default function CatalogTireCard({ tire, onSelect }: CatalogTireCardProps
             </div>
           )}
           <img
-            src={imageError ? 'https://www.carpluspneuseoficina.com.br/images/pneus/pneu-pirelli-p-zero.webp' : displayImage}
+            src={imageError ? 'https://www.carpluscwb.com.br/images/pneus/pneu-pirelli-p-zero.webp' : displayImage}
             alt={`Pneu ${tire.nome} ${tire.medida} Aro ${tire.aro} em Curitiba`}
             loading="lazy"
             decoding="async"

@@ -1,444 +1,364 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/abranches</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.carpluscwb.com.br/bairro/agua-verde</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/ahu</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-agua-verde</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/alto-boqueirao</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-alto-boqueirao</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/alto-da-gloria</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/alto-da-rua-xv</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/atuba</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/augusta</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-alto-da-gloria</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/bacacheri</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/bairro-alto</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/barreirinha</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-bacacheri</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/batel</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-batel</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/bigorrilho</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/boa-vista</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/bom-retiro</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-bigorrilho</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/boqueirao</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/butiatuvinha</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-boqueirao</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/cabral</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/cachoeira</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/cajuru</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-cabral</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/campina-do-siqueira</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/campo-comprido</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/campo-de-santana</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-campina-do-siqueira</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/capao-raso</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/capao-da-imbuia</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/cascatinha</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/caximba</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-capao-raso</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/centro</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-centro</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/centro-civico</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-centro-civico</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/cidade-industrial-cic</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-cidade-industrial-cic</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/bairro/cic</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-cic</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/cristo-rei</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-cristo-rei</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/fanny</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-fanny</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/fazendinha</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/ganchinho</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/guabirotuba</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-fazendinha</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/guaira</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-guaira</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/hauer</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/hugo-lange</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-hauer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/jardim-botanico</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-jardim-botanico</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/jardim-social</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-jardim-social</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/jardim-das-americas</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-jardim-das-americas</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/juveve</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/lamenha-pequena</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-juveve</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/lindoia</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-lindoia</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/merces</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-merces</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/mossungue</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-mossungue</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/novo-mundo</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/orleans</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-novo-mundo</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/parolin</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/pilarzinho</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-parolin</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/pinheirinho</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-pinheirinho</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/portao</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/prado-velho</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-portao</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/reboucas</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/riviera</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/santa-candida</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-reboucas</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/santa-felicidade</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-santa-felicidade</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/santa-quiteria</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/santo-inacio</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-santa-quiteria</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/seminario</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/sitio-cercado</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/sao-braz</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/sao-francisco</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/sao-joao</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/sao-lourenco</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/sao-miguel</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/taboao</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/taruma</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/tatuquara</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/tingui</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/uberaba</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/umbara</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-seminario</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/vila-izabel</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vista-alegre</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-vila-izabel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/xaxim</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.carpluscwb.com.br/pneus-no-xaxim</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-sandra</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-verde</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-nossa-senhora-da-luz</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vitoria-regia</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/caiua</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/sabara</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/gabineto</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/itatiaia</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/santa-helena</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/conquista</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/barigui</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/osvaldo-cruz</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/atenas</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/neoville</loc>
@@ -446,14 +366,9 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-pantanal</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-neoville</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-torres</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/vila-hauer</loc>
@@ -461,9 +376,9 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-oficinas</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-vila-hauer</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/vila-guaira</loc>
@@ -471,19 +386,9 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-osternack</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-vila-guaira</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-sao-pedro</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-audi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/bairro/vila-parolin</loc>
@@ -491,33 +396,8 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/bairro/vila-das-torres</loc>
+    <loc>https://www.carpluscwb.com.br/pneus-no-vila-parolin</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/jardim-gabineto</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/jardim-itatiaia</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/jardim-da-ordem</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/jardim-kosmos</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/bairro/jardim-alvorada</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>

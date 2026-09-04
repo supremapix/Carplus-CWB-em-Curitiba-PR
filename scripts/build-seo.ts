@@ -161,6 +161,9 @@ function generateSitemaps() {
     { loc: `${DOMAIN}/loja-de-pneus-em-curitiba`, priority: "0.9" },
     { loc: `${DOMAIN}/pneus-pirelli-em-curitiba-melhor-preco`, priority: "0.9" },
     { loc: `${DOMAIN}/barao-pneus-e-oficina-portao`, priority: "0.9" },
+    { loc: `${DOMAIN}/auto-center-curitiba`, priority: "0.95" },
+    { loc: `${DOMAIN}/troca-de-pneus-curitiba`, priority: "0.95" },
+    { loc: `${DOMAIN}/centro-automotivo-portao`, priority: "0.95" },
   ];
   TIRES_DATA.forEach(t => {
     instUrls.push({ loc: `${DOMAIN}/pneu/${getTireSlug(t)}`, priority: "0.8" });
@@ -281,9 +284,9 @@ function runPrerendering() {
 
   // Helper to compose LocalBusiness Schema
   const makeLocalBusiness = (areaServedName?: string) => ({
-    "@type": "AutoPartsStore",
-    "name": "Carplus Pneus e Auto Center",
-    "image": "https://www.carpluspneuseoficina.com.br/images/galeria/fachada-logo.webp",
+    "@type": ["AutoPartsStore", "AutoRepair", "TireShop"],
+    "name": "Carplus Pneus e Oficina Mecânica",
+    "image": `${DOMAIN}/images/galeria/fachada-logo.webp`,
     "@id": `${DOMAIN}/#loja`,
     "url": DOMAIN,
     "telephone": "+55-41-3082-7282",
@@ -727,6 +730,63 @@ function runPrerendering() {
           "@type": "WebPage",
           "name": "Alternativa a Barão Pneus e Oficina Portão",
           "url": `${DOMAIN}/barao-pneus-e-oficina-portao`
+        }
+      ]
+    },
+    isIndexable: true
+  });
+
+  routes.push({
+    path: 'auto-center-curitiba',
+    title: 'Auto Center e Centro Automotivo em Curitiba | Carplus Pneus',
+    desc: 'Auto Center completo em Curitiba com pneus novos multimarcas, montagem técnica com bicos inclusos, alinhamento 3D computadorizado e oficina mecânica no Portão.',
+    keywords: 'auto center curitiba, autocenter curitiba, auto center pneus curitiba, centro automotivo curitiba, centro automotivo pneus curitiba, oficina mecanica curitiba',
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        makeLocalBusiness(),
+        {
+          "@type": "WebPage",
+          "name": "Auto Center e Centro Automotivo em Curitiba",
+          "url": `${DOMAIN}/auto-center-curitiba`
+        }
+      ]
+    },
+    isIndexable: true
+  });
+
+  routes.push({
+    path: 'troca-de-pneus-curitiba',
+    title: 'Troca de Pneus em Curitiba com Montagem e Válvulas Inclusas | Carplus',
+    desc: 'Troca de pneus em Curitiba com desmontadora anti-risco, válvulas de ar novas, balanceamento computadorizado e alinhamento 3D na Av. Arthur Bernardes, Portão.',
+    keywords: 'troca de pneus curitiba, onde trocar pneus curitiba, instalacao de pneus curitiba, pneus com montagem curitiba, balanceamento de rodas curitiba',
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        makeLocalBusiness(),
+        {
+          "@type": "WebPage",
+          "name": "Troca de Pneus em Curitiba com Montagem Inclusa",
+          "url": `${DOMAIN}/troca-de-pneus-curitiba`
+        }
+      ]
+    },
+    isIndexable: true
+  });
+
+  routes.push({
+    path: 'centro-automotivo-portao',
+    title: 'Centro Automotivo no Portão Curitiba - Oficina e Pneus | Carplus',
+    desc: 'Centro automotivo e auto center no Portão em Curitiba. Loja de pneus novos, montagem inclusa, geometria 3D, freios e suspensão na Av. Presidente Arthur Bernardes, 1323.',
+    keywords: 'centro automotivo portao, auto center portao, oficina mecanica portao, pneus portao, loja de pneus portao, pneus perto de mim',
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        makeLocalBusiness("Portão"),
+        {
+          "@type": "WebPage",
+          "name": "Centro Automotivo no Portão Curitiba - Oficina e Pneus",
+          "url": `${DOMAIN}/centro-automotivo-portao`
         }
       ]
     },

@@ -1,6 +1,6 @@
 {
   "name": "Carplus Pneus",
-  "description": "Loja virtual de pneus com catálogo por medida, busca por montadora, carrinho, agendamento via WhatsApp e compra e venda de veículos com procedência.",
+  "description": "Loja de pneus, auto center e oficina mecânica no Portão, Curitiba. Catálogo de pneus novos multimarcas, montagem, alinhamento 3D e serviços automotivos.",
   "requestFramePermissions": ["geolocation"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

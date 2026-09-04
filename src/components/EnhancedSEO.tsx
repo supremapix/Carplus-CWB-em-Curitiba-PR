@@ -48,9 +48,9 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
   }
 
   // 2. Determine Title, Description, and Keywords
-  let title = "Pneus em Curitiba - Melhores Marcas com Pronta Entrega | Carplus Pneus";
-  let desc = "Procurando pneus em Curitiba? A Carplus Pneus oferece o maior estoque de pneus novos das marcas Pirelli, Bridgestone, Michelin, Goodyear com montagem grátis no Portão.";
-  let keywords = "pneus em curitiba, pneus no portão, pneus, comprar pneus curitiba, pneus novos curitiba, auto center curitiba, borracharia curitiba, alinhamento 3D";
+  let title = "Pneus, Auto Center e Oficina Mecânica em Curitiba | Carplus Portão";
+  let desc = "Carplus Pneus é loja de pneus, auto center e oficina mecânica no Portão, Curitiba. Pneus novos multimarcas, montagem, alinhamento 3D, balanceamento e serviços automotivos.";
+  let keywords = "auto center pneus curitiba, autocenter curitiba, centro automotivo curitiba, auto center portao, centro automotivo portao, loja de pneus curitiba, pneus curitiba, pneus no portao, oficina mecanica curitiba, troca de pneus curitiba, alinhamento e balanceamento curitiba, pneus com montagem curitiba";
   let ogImage = `${domain}/og-carplus.webp`;
 
   if (selectedCatalogTire) {
@@ -228,6 +228,18 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     title = "Pneus no Portão Curitiba - Loja de Pneus no Portão | Carplus Pneus";
     desc = "Loja de pneus no Portão em Curitiba. Troca de pneus, alinhamento 3D e balanceamento na Av. Presidente Arthur Bernardes na Carplus.";
     keywords = "pneus no portao curitiba, loja de pneus no portao, troca de pneus no portao, instalacao de pneus no portao, alinhamento e balanceamento no portao, pneu portao curitiba";
+  } else if (currentView === 'auto-center-curitiba') {
+    title = "Auto Center e Centro Automotivo em Curitiba | Pneus e Oficina Carplus";
+    desc = "Auto center completo em Curitiba no Portão. Venda e troca de pneus novos, montagem especializada, alinhamento 3D, balanceamento e serviços mecânicos preventivos.";
+    keywords = "auto center curitiba, autocenter curitiba, centro automotivo curitiba, auto center pneus curitiba, centro automotivo pneus curitiba, auto center portao, alinhamento 3d curitiba, oficina e pneus curitiba";
+  } else if (currentView === 'troca-de-pneus-curitiba') {
+    title = "Troca de Pneus em Curitiba com Montagem Inclusa | Carplus Portão";
+    desc = "Onde trocar pneus em Curitiba? Na Carplus Pneus você compra e instala no mesmo local, com montagem técnica inclusa, troca de válvulas, balanceamento e alinhamento 3D.";
+    keywords = "troca de pneus curitiba, onde trocar pneus curitiba, onde comprar pneus curitiba, pneus com montagem curitiba, instalacao de pneus curitiba, trocar pneus portao curitiba";
+  } else if (currentView === 'centro-automotivo-portao') {
+    title = "Centro Automotivo e Auto Center no Portão, Curitiba | Carplus Pneus";
+    desc = "Centro automotivo e oficina no bairro Portão em Curitiba (Av. Arthur Bernardes, 1323). Pneus novos, montagem, geometria 3D, freios, suspensão e revisão preventiva.";
+    keywords = "centro automotivo portao, auto center portao, centro automotivo pneus portao, oficina mecanica portao curitiba, pneus no portao curitiba, auto center arthur bernardes";
   } else if (currentView === 'pneus-byd-curitiba') {
     title = "Pneus para BYD em Curitiba | Dolphin, Dolphin Mini, King | Carplus";
     desc = "Pneus para BYD em Curitiba. Medidas originais para Dolphin, Dolphin Mini, Dolphin GS e King com menor preço, montagem grátis e alinhamento 3D no Portão.";
@@ -659,24 +671,83 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
         "mainEntity": questionsList
       });
     }
-  } else if (currentView === 'home' || currentView === 'oficina-do-pneu-curitiba' || currentView === 'garagem-de-pneus-curitiba' || currentView === 'pneus-pirelli-curitiba' || currentView === 'alinhamento-3d-curitiba') {
+  } else if (
+    currentView === 'home' || 
+    currentView === 'auto-center-curitiba' ||
+    currentView === 'troca-de-pneus-curitiba' ||
+    currentView === 'centro-automotivo-portao' ||
+    currentView === 'oficina-do-pneu-curitiba' || 
+    currentView === 'garagem-de-pneus-curitiba' || 
+    currentView === 'pneus-pirelli-curitiba' || 
+    currentView === 'alinhamento-3d-curitiba' ||
+    currentView === 'loja-de-pneus-em-curitiba' ||
+    currentView === 'barao-pneus-e-oficina-portao'
+  ) {
     const defaultFaq = {
       "@type": "FAQPage",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "A Carplus trabalha apenas com pneus novos de marcas oficiais com garantia?",
+          "name": "Onde comprar pneus em Curitiba?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim, trabalhamos estritamente com pneus novos de primeira linha homologados mundialmente (Bridgestone, Pirelli, Michelin, Goodyear, Firestone, Dunlop, Delinte, Xbri, Comforser), todos com selo oficial do INMETRO e garantia oficial de 5 anos de fábrica contra deformidades ou falhas estruturais."
+            "text": "Na Carplus Pneus, localizada na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba. Amplo catálogo de pneus novos multimarcas para veículos de passeio, SUVs, utilitários e caminhonetes com pronta entrega e agendamento prático."
           }
         },
         {
           "@type": "Question",
-          "name": "Quais as formas de pagamento disponíveis em sua autocenter?",
+          "name": "Onde trocar pneus em Curitiba?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Aceitamos pagamentos no cartão de crédito em até 10 vezes sem juros, PIX com descontos especiais adicionais, além de débito e dinheiro. Facilitamos as condições para curitibanos montarem seus pneus de forma segura."
+            "text": "No auto center e loja da Carplus Pneus no Portão, Curitiba. A troca de pneus é realizada com maquinário pneumático anti-risco, incluindo montagem técnica especializada e substituição das válvulas de ar (bicos) na compra dos pneus novos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde encontrar auto center com pneus em Curitiba?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Carplus Pneus e Oficina Mecânica reúne loja de pneus novos e auto center completo no mesmo endereço no bairro Portão, integrando catálogo multimarcas com montagem, alinhamento 3D tridimensional, balanceamento e serviços mecânicos preventivos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual centro automotivo no Portão?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Carplus Pneus e Oficina Mecânica atua no Portão (Av. Presidente Arthur da Silva Bernardes, 1323), com fácil acesso para motoristas do Portão, Água Verde, Vila Izabel, Batel, Santa Quitéria, Fazendinha, Capão Raso e Novo Mundo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde fazer alinhamento e balanceamento em Curitiba?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Na rampa de Alinhamento 3D Computadorizado e balanceadoras dinâmicas da Carplus no Portão. A geometria 3D avalia convergência, cambagem e cáster com precisão milimétrica, assegurando desgaste uniforme dos pneus e estabilidade ao volante."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde comprar e instalar pneus no mesmo local em Curitiba?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Na Carplus Pneus no Portão. Você escolhe os pneus novos das principais fabricantes e realiza a instalação, montagem, bicos novos, balanceamento e alinhamento no mesmo local sem precisar se deslocar para outra borracharia ou oficina."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A Carplus trabalha apenas com pneus novos de marcas oficiais com garantia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, trabalhamos estritamente com pneus novos de primeira linha homologados pelo INMETRO (Bridgestone, Pirelli, Michelin, Goodyear, Firestone, Dunlop, Delinte, Xbri, Comforser, Linglong, Speedmax), todos com garantia de fábrica de 5 anos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais as formas de pagamento disponíveis na Carplus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aceitamos parcelamento em até 10 vezes sem juros no cartão de crédito físico, pagamento via PIX presencial com condições especiais, cartão de débito e dinheiro na sede física após a conclusão dos serviços."
           }
         }
       ]
@@ -709,7 +780,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
             "name": "Carplus Pneus e Oficina Mecânica",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://www.carpluspneuseoficina.com.br/images/logos/logo-horizontal.svg"
+              "url": "https://www.carpluscwb.com.br/images/logos/logo-horizontal.svg"
             }
           },
           "articleSection": activePost.category
@@ -751,9 +822,11 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Dynamic Favicon */}
-      <link rel="icon" type="image/png" sizes="512x512" href="https://img.supremasite.com.br/favicon-512x512.png" />
-      <link rel="shortcut icon" type="image/png" href="https://img.supremasite.com.br/favicon-512x512.png" />
-      <link rel="apple-touch-icon" href="https://img.supremasite.com.br/favicon-512x512.png" />
+      <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+      <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+      <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+      <link rel="shortcut icon" type="image/png" href="/favicon-48x48.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
 
       {/* 5. Open Graph Meta Tags (Facebook & general social preview) */}
       <meta property="og:locale" content="pt_BR" />

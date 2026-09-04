@@ -65,7 +65,7 @@ const CARPLUS_EQUIPE_GALLERY = [
     id: 1,
     title: "Vistoria e Alinhamento Jeep Compass",
     badge: "Diagnóstico de SUVs",
-    image: "https://www.carpluspneuseoficina.com.br/images/galeria/jeep-compass.webp",
+    image: "https://www.carpluscwb.com.br/images/galeria/jeep-compass.webp",
     summary: "Atendimento premium com verificação técnica detalhada na suspensão e no diâmetro do pneu do seu SUV.",
     details: "Pátio Carplus preparado para veículos nacionais e importados utilitários de grande porte como o Jeep Compass. Realizamos uma vistoria tática completa de pivôs, buchas de balança, amortecedores e batentes antes de realizar a montagem de novos pneus, garantindo aos clientes que os pneus novos rodem sem desgaste precoce ou desvio lateral do veículo nas retas.",
     team: "Equipe técnica de suspensões e diagnóstico preventivo da Carplus Pneus."
@@ -74,7 +74,7 @@ const CARPLUS_EQUIPE_GALLERY = [
     id: 2,
     title: "Alinhamento Computadorizado Tridimensional",
     badge: "Geometria 3D de Última Geração",
-    image: "https://www.carpluspneuseoficina.com.br/images/galeria/alinhamento-jeep.webp",
+    image: "https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp",
     summary: "Garras reflexivas realizam a leitura direta do caster, câmber e convergência.",
     details: "Nossos painéis projetores 3D cruzam o posicionamento em tempo real do seu automóvel com as tabelas de tolerâncias e dados técnicos fornecidos pelas montadoras originais europeias, asiáticas e americanas. Com isso, os ângulos de rodagem são fixados com precisão centesimal, reduzindo a folga, o esforço mecânico e mantendo a máxima economia de combustível no trânsito de Curitiba.",
     team: "Alinhadores gabaritados e homologados pela engenharia de suspensão da Carplus."
@@ -83,7 +83,7 @@ const CARPLUS_EQUIPE_GALLERY = [
     id: 3,
     title: "Montagem Técnica & Borracharia Avançada",
     badge: "Troca Técnica e Bicos de Ar",
-    image: "https://www.carpluspneuseoficina.com.br/images/galeria/troca-pneu.webp",
+    image: "https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp",
     summary: "Instalação de pneus, troca preventiva de válvula de ar (bico de borracha) inclusa.",
     details: "Higienizamos os flanges das rodas de liga leve para garantir a selagem hermética no talão do pneu novo. Também substituímos gratuitamente as válvulas por bicos novos macios comuns de borracha premium e aplicamos o torqueamento controlado nos parafusos de roda, preservando as roscas e a segurança dos freios.",
     team: "Borracharia técnica de pista empenhada em alta performance e montagem segura."
@@ -92,7 +92,7 @@ const CARPLUS_EQUIPE_GALLERY = [
     id: 4,
     title: "Check-up Técnico de Motores & Fluidos",
     badge: "Verificação Sob o Capô",
-    image: "https://www.carpluspneuseoficina.com.br/images/galeria/mecanico-motor.webp",
+    image: "https://www.carpluscwb.com.br/images/galeria/mecanico-motor.webp",
     summary: "Inspeção de nível de fluidos de freio, filtros de ar do motor e check-up com laudo fotográfico honesto.",
     details: "Na Carplus, cada motorista é tratado com transparência e respeito absoluto. Nossos mecânicos inspecionam o compartimento do motor para identificar vazamentos, pastilhas gastas, fluidos vencidos ou mangueiras ressecadas de forma limpa, baseando-se em fatos visíveis e enviando avisos prévios explicativos, sem surpresas desagradáveis ou empurra-empurra de peças.",
     team: "Mecânicos especializados em motores e injeção do autocenter."
@@ -101,7 +101,7 @@ const CARPLUS_EQUIPE_GALLERY = [
     id: 5,
     title: "Ampla Estrutura e Elevadores de Pista",
     badge: "Oficina Própria Completa",
-    image: "https://www.carpluspneuseoficina.com.br/images/galeria/oficina-carros.webp",
+    image: "https://www.carpluscwb.com.br/images/galeria/oficina-carros.webp",
     summary: "Infraestrutura moderna no bairro Portão com múltiplos boxes de atendimento simultâneo.",
     details: "Nossas amplas instalações no Portão, Curitiba contam com elevadores pantográficos calibrados para erguimento firme e equilibrado, respeitando os pontos de apoio sob a longarina do seu carro para evitar mossas mecânicas. Oferecemos conforto na sala de espera de alto padrão enquanto sua revisão é executada.",
     team: "Atendimento comercial e mecânico unificado para Curitiba e Região Metropolitana (RMC)."
@@ -110,7 +110,7 @@ const CARPLUS_EQUIPE_GALLERY = [
     id: 6,
     title: "Acabamento Seguro & Balanceamento Dinâmico",
     badge: "Calibração e Conforto",
-    image: "https://www.carpluspneuseoficina.com.br/images/galeria/montagem-pneu.webp",
+    image: "https://www.carpluscwb.com.br/images/galeria/montagem-pneu.webp",
     summary: "Montagem macia em maquinário moderno com ferramentas que não estragam o acabamento das rodas.",
     details: "Nosso balanceamento computadorizado mapeia o desbalanceamento dinâmico e estático do conjunto roda/pneu, fixando pesos adesivos discretos com precisão de gramas de forma estratégica. Isso elimina as trepidações irritantes sentidas no painel ou volante em velocidade superior a 80 km/h, trazendo conforto único.",
     team: "Operadores e técnicos de acabamento da Carplus Pneus."
@@ -118,10 +118,10 @@ const CARPLUS_EQUIPE_GALLERY = [
 ];
 
 interface CompanyPagesProps {
-  view: 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site' | 'seo-landing' | 'contato' | 'curitiba' | 'regiao-metropolitana' | 'admin-indexacao' | 'carrinho' | 'oficina-do-pneu-curitiba' | 'garagem-de-pneus-curitiba' | 'pneus-pirelli-curitiba' | 'alinhamento-3d-curitiba' | 'blog' | 'xbri-pneus-curitiba' | 'pneus-baratos-em-curitiba' | 'melhor-site-para-comprar-pneus' | 'distribuidora-de-pneus-importados-atacado-curitiba' | 'pneu-hankook-curitiba' | 'pneus-bridgestone-curitiba-precos' | 'barao-pneus-e-oficina-bacacheri-curitiba' | 'barao-pneus-sao-jose-pinhais' | 'pneus-em-curitiba-melhor-preco' | 'distribuidora-de-pneus-em-curitiba' | 'bana-pneus' | 'loja-de-pneus-em-curitiba' | 'pneus-pirelli-em-curitiba-melhor-preco' | 'barao-pneus-e-oficina-portao' | BydClusterView;
+  view: 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site' | 'seo-landing' | 'contato' | 'curitiba' | 'regiao-metropolitana' | 'admin-indexacao' | 'carrinho' | 'oficina-do-pneu-curitiba' | 'garagem-de-pneus-curitiba' | 'pneus-pirelli-curitiba' | 'alinhamento-3d-curitiba' | 'blog' | 'xbri-pneus-curitiba' | 'pneus-baratos-em-curitiba' | 'melhor-site-para-comprar-pneus' | 'distribuidora-de-pneus-importados-atacado-curitiba' | 'pneu-hankook-curitiba' | 'pneus-bridgestone-curitiba-precos' | 'barao-pneus-e-oficina-bacacheri-curitiba' | 'barao-pneus-sao-jose-pinhais' | 'pneus-em-curitiba-melhor-preco' | 'distribuidora-de-pneus-em-curitiba' | 'bana-pneus' | 'loja-de-pneus-em-curitiba' | 'pneus-pirelli-em-curitiba-melhor-preco' | 'barao-pneus-e-oficina-portao' | 'auto-center-curitiba' | 'troca-de-pneus-curitiba' | 'centro-automotivo-portao' | BydClusterView;
   seoTarget: { type: 'bairro' | 'cidade' | 'aro' | 'carro'; name: string; region?: string; detail?: string; } | null;
   onNavigateHome: () => void;
-  onNavigateToPage: (page: 'home' | 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site' | 'contato' | 'curitiba' | 'regiao-metropolitana' | 'admin-indexacao' | 'carrinho' | 'oficina-do-pneu-curitiba' | 'garagem-de-pneus-curitiba' | 'pneus-pirelli-curitiba' | 'alinhamento-3d-curitiba' | 'blog' | 'xbri-pneus-curitiba' | 'pneus-baratos-em-curitiba' | 'melhor-site-para-comprar-pneus' | 'distribuidora-de-pneus-importados-atacado-curitiba' | 'pneu-hankook-curitiba' | 'pneus-bridgestone-curitiba-precos' | 'barao-pneus-e-oficina-bacacheri-curitiba' | 'barao-pneus-sao-jose-pinhais' | 'pneus-em-curitiba-melhor-preco' | 'distribuidora-de-pneus-em-curitiba' | 'bana-pneus' | 'loja-de-pneus-em-curitiba' | 'pneus-pirelli-em-curitiba-melhor-preco' | 'barao-pneus-e-oficina-portao' | BydClusterView) => void;
+  onNavigateToPage: (page: any) => void;
   onSelectSeoTarget: (target: { type: 'bairro' | 'cidade' | 'aro' | 'carro'; name: string; region?: string; detail?: string; }) => void;
   onSelectRimFromSeo?: (rim: number | 'Todos') => void;
   onSelectBrandFromSeo?: (brand: string) => void;
@@ -2518,12 +2518,12 @@ export default function CompanyPages({
           ];
 
           const CARPLUS_GALLERY = [
-            { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/fachada-logo.webp', label: 'Fachada Principal Carplus Arthur Bernardes' },
-            { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png', label: 'Expositores Oficiais e Showroom Pirelli' },
-            { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/alinhamento-jeep.webp', label: 'Rampa de Alinhamento e Geometria 3D' },
-            { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/mecanicos-trabalho.webp', label: 'Técnicos Mecânicos Treinados em Ação' },
-            { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/troca-pneu.webp', label: 'Troca de Pneus e Balanceamento Preciso' },
-            { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/escritorio.webp', label: 'Sala de Espera e Escritório do Cliente' }
+            { url: 'https://www.carpluscwb.com.br/images/galeria/fachada-logo.webp', label: 'Fachada Principal Carplus Arthur Bernardes' },
+            { url: 'https://www.carpluscwb.com.br/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png', label: 'Expositores Oficiais e Showroom Pirelli' },
+            { url: 'https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp', label: 'Rampa de Alinhamento e Geometria 3D' },
+            { url: 'https://www.carpluscwb.com.br/images/galeria/mecanicos-trabalho.webp', label: 'Técnicos Mecânicos Treinados em Ação' },
+            { url: 'https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp', label: 'Troca de Pneus e Balanceamento Preciso' },
+            { url: 'https://www.carpluscwb.com.br/images/galeria/escritorio.webp', label: 'Sala de Espera e Escritório do Cliente' }
           ];
 
           return (
@@ -3158,7 +3158,7 @@ export default function CompanyPages({
                   </p>
                 </div>
                 <img 
-                  src="https://www.carpluspneuseoficina.com.br/images/galeria/oficina-carros.webp" 
+                  src="https://www.carpluscwb.com.br/images/galeria/oficina-carros.webp" 
                   alt="Oficina Carplus Portão"
                   className="w-full md:w-56 h-36 object-cover rounded-2xl border border-white/10"
                   referrerPolicy="no-referrer"
@@ -3423,7 +3423,7 @@ export default function CompanyPages({
                     {filteredTires.map((tire, index) => (
                       <div key={tire.id || index} className="bg-white border border-gray-200 p-4 rounded-2xl flex gap-4 items-center shadow-sm relative hover:border-[#f49e1a]/50 transition duration-300">
                         <img 
-                          src={tire.image || "https://www.carpluspneuseoficina.com.br/images/galeria/troca-pneu.webp"} 
+                          src={tire.image || "https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp"} 
                           alt={tire.name} 
                           className="w-20 h-20 object-contain p-1 shrink-0 bg-gray-50 rounded-xl"
                           referrerPolicy="no-referrer"
@@ -3576,7 +3576,7 @@ export default function CompanyPages({
                   {pirelliTires.map((tire, idx) => (
                     <div key={tire.id || idx} className="bg-white border border-gray-200 p-4 rounded-2xl flex gap-4 items-center shadow-sm hover:border-red-500/40 transition duration-300">
                       <img 
-                        src={tire.image || "https://www.carpluspneuseoficina.com.br/images/galeria/troca-pneu.webp"} 
+                        src={tire.image || "https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp"} 
                         alt={tire.name} 
                         className="w-20 h-20 object-contain p-1 shrink-0 bg-gray-50 rounded-xl"
                         referrerPolicy="no-referrer"
@@ -3657,7 +3657,7 @@ export default function CompanyPages({
                   </p>
                 </div>
                 <img 
-                  src="https://www.carpluspneuseoficina.com.br/images/galeria/alinhamento-jeep.webp" 
+                  src="https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp" 
                   alt="Alinhamento Jeep Compass em Curitiba"
                   className="w-full h-56 object-cover rounded-2xl border border-gray-200"
                   referrerPolicy="no-referrer"
@@ -3776,7 +3776,10 @@ export default function CompanyPages({
           'bana-pneus',
           'loja-de-pneus-em-curitiba',
           'pneus-pirelli-em-curitiba-melhor-preco',
-          'barao-pneus-e-oficina-portao'
+          'barao-pneus-e-oficina-portao',
+          'auto-center-curitiba',
+          'troca-de-pneus-curitiba',
+          'centro-automotivo-portao'
         ].includes(view) && (
           <SearchIntentPages 
             view={view as any} 

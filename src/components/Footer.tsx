@@ -13,7 +13,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Coluna 1: Logo e Descrição */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
           <img 
-            src="https://www.carpluspneuseoficina.com.br/images/logos/logo-vertical.svg" 
+            src="https://www.carpluscwb.com.br/images/logos/logo-vertical.svg" 
             alt="Carplus Pneus Vertical Logo" 
             className="w-36 h-auto object-contain bg-black p-4 rounded-2xl mb-2 border border-black"
             referrerPolicy="no-referrer"
@@ -106,10 +106,34 @@ export default function Footer({ onNavigate }: FooterProps) {
             Início
           </button>
           <button 
+            onClick={() => { onNavigate('auto-center-curitiba' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+            className="hover:underline text-black cursor-pointer p-1.5 font-black text-[#f49e1a] bg-black px-2.5 py-1 rounded-lg"
+          >
+            Auto Center Curitiba
+          </button>
+          <button 
+            onClick={() => { onNavigate('troca-de-pneus-curitiba' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+            className="hover:underline text-black cursor-pointer p-1.5 font-black"
+          >
+            Troca de Pneus
+          </button>
+          <button 
+            onClick={() => { onNavigate('centro-automotivo-portao' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+            className="hover:underline text-black cursor-pointer p-1.5 font-black"
+          >
+            Centro Automotivo Portão
+          </button>
+          <button 
             onClick={() => { onNavigate('catalogo-pneus' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
             className="hover:underline text-black cursor-pointer p-1.5 font-black"
           >
             Catálogo de Pneus (1.962)
+          </button>
+          <button 
+            onClick={() => { onNavigate('alinhamento-3d-curitiba' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+            className="hover:underline text-black cursor-pointer p-1.5 font-black"
+          >
+            Alinhamento 3D
           </button>
           <button 
             onClick={() => { onNavigate('quem-somos'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 

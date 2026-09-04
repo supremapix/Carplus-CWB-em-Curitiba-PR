@@ -20,6 +20,7 @@ import { Tire, CartItem, CatalogTire } from './types';
 import FloatingShare from './components/FloatingShare';
 import TireCatalogView from './components/TireCatalogView';
 import CatalogTireDetail from './components/CatalogTireDetail';
+import AutoCenterSection from './components/AutoCenterSection';
 import { CATALOGO_PNEUS, findCatalogTireBySlug } from './data/catalogo-pneus';
 
 const BRAND_LOGOS: Record<string, string> = {
@@ -51,7 +52,7 @@ export default function App() {
   // Global States
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site' | 'seo-landing' | 'pneu-detalhes' | 'contato' | 'curitiba' | 'regiao-metropolitana' | 'admin-indexacao' | 'carrinho' | 'oficina-do-pneu-curitiba' | 'garagem-de-pneus-curitiba' | 'pneus-pirelli-curitiba' | 'alinhamento-3d-curitiba' | 'blog' | 'xbri-pneus-curitiba' | 'pneus-baratos-em-curitiba' | 'melhor-site-para-comprar-pneus' | 'distribuidora-de-pneus-importados-atacado-curitiba' | 'pneu-hankook-curitiba' | 'pneus-bridgestone-curitiba-precos' | 'barao-pneus-e-oficina-bacacheri-curitiba' | 'barao-pneus-sao-jose-pinhais' | 'pneus-em-curitiba-melhor-preco' | 'distribuidora-de-pneus-em-curitiba' | 'bana-pneus' | 'loja-de-pneus-em-curitiba' | 'pneus-pirelli-em-curitiba-melhor-preco' | 'barao-pneus-e-oficina-portao' | 'pneus-byd-curitiba' | 'pneu-byd-dolphin-curitiba' | 'pneu-byd-dolphin-mini-curitiba' | 'pneu-byd-dolphin-gs-curitiba' | 'pneu-byd-king-curitiba' | 'pneu-175-55-r16-curitiba' | 'pneu-195-60-r16-curitiba' | 'pneu-205-50-r17-curitiba' | 'pneu-215-55-r17-curitiba' | 'pneu-225-60-r16-curitiba' | 'catalogo-pneus' | 'catalogo-detalhe'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site' | 'seo-landing' | 'pneu-detalhes' | 'contato' | 'curitiba' | 'regiao-metropolitana' | 'admin-indexacao' | 'carrinho' | 'oficina-do-pneu-curitiba' | 'garagem-de-pneus-curitiba' | 'pneus-pirelli-curitiba' | 'alinhamento-3d-curitiba' | 'blog' | 'xbri-pneus-curitiba' | 'pneus-baratos-em-curitiba' | 'melhor-site-para-comprar-pneus' | 'distribuidora-de-pneus-importados-atacado-curitiba' | 'pneu-hankook-curitiba' | 'pneus-bridgestone-curitiba-precos' | 'barao-pneus-e-oficina-bacacheri-curitiba' | 'barao-pneus-sao-jose-pinhais' | 'pneus-em-curitiba-melhor-preco' | 'distribuidora-de-pneus-em-curitiba' | 'bana-pneus' | 'loja-de-pneus-em-curitiba' | 'pneus-pirelli-em-curitiba-melhor-preco' | 'barao-pneus-e-oficina-portao' | 'auto-center-curitiba' | 'troca-de-pneus-curitiba' | 'centro-automotivo-portao' | 'pneus-byd-curitiba' | 'pneu-byd-dolphin-curitiba' | 'pneu-byd-dolphin-mini-curitiba' | 'pneu-byd-dolphin-gs-curitiba' | 'pneu-byd-king-curitiba' | 'pneu-175-55-r16-curitiba' | 'pneu-195-60-r16-curitiba' | 'pneu-205-50-r17-curitiba' | 'pneu-215-55-r17-curitiba' | 'pneu-225-60-r16-curitiba' | 'catalogo-pneus' | 'catalogo-detalhe'>('home');
   const [seoTarget, setSeoTarget] = useState<{ type: 'bairro' | 'cidade' | 'aro' | 'carro'; name: string; region?: string; detail?: string; } | null>(null);
   const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null);
   const [activeHomeFaqIdx, setActiveHomeFaqIdx] = useState<number | null>(null);
@@ -245,6 +246,9 @@ export default function App() {
     'loja-de-pneus-em-curitiba',
     'pneus-pirelli-em-curitiba-melhor-preco',
     'barao-pneus-e-oficina-portao',
+    'auto-center-curitiba',
+    'troca-de-pneus-curitiba',
+    'centro-automotivo-portao',
     'admin-indexacao'
   ];
 
@@ -571,6 +575,18 @@ export default function App() {
       setSelectedTire(null);
     } else if (firstRoute === 'barao-pneus-e-oficina-portao' || firstRoute === 'pneus-portao-curitiba' || firstRoute === 'pneus-no-portao-curitiba') {
       setCurrentView('barao-pneus-e-oficina-portao');
+      setSeoTarget(null);
+      setSelectedTire(null);
+    } else if (firstRoute === 'auto-center-curitiba' || firstRoute === 'autocenter-curitiba' || firstRoute === 'auto-center' || firstRoute === 'centro-automotivo-curitiba' || firstRoute === 'autocenter') {
+      setCurrentView('auto-center-curitiba');
+      setSeoTarget(null);
+      setSelectedTire(null);
+    } else if (firstRoute === 'troca-de-pneus-curitiba' || firstRoute === 'troca-de-pneus' || firstRoute === 'onde-trocar-pneus-curitiba' || firstRoute === 'trocar-pneus-curitiba') {
+      setCurrentView('troca-de-pneus-curitiba');
+      setSeoTarget(null);
+      setSelectedTire(null);
+    } else if (firstRoute === 'centro-automotivo-portao' || firstRoute === 'auto-center-portao' || firstRoute === 'autocenter-portao') {
+      setCurrentView('centro-automotivo-portao');
       setSeoTarget(null);
       setSelectedTire(null);
     } else if (firstRoute === 'pneus-byd-curitiba' || firstRoute === 'pneu-byd-curitiba' || firstRoute === 'pneus-byd' || (firstRoute === 'carro' && parts[1]?.toLowerCase() === 'byd')) {
@@ -1387,15 +1403,18 @@ export default function App() {
                     </span>
                     <span className="text-xs text-black font-bold font-mono bg-[#f49e1a] px-2.5 py-1 border-2 border-black inline-block w-fit">1.962 Pneus Homologados</span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div 
+                    className="grid w-full gap-3"
+                    style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px' }}
+                  >
                     {[13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].map((rimNum) => (
                       <button
                         key={`rim-seo-btn-${rimNum}`}
                         onClick={() => handleNavigateInternal(`/pneus-aro-${rimNum}-curitiba`)}
-                        className="w-full bg-white hover:bg-[#f49e1a] text-black hover:text-black border-2 border-black text-xs font-black py-3 px-4 transition flex items-center justify-between cursor-pointer group"
+                        className="w-full h-full min-h-[46px] bg-white hover:bg-[#f49e1a] text-black hover:text-black border-2 border-black text-xs font-black py-3 px-4 transition flex items-center justify-between cursor-pointer group box-border text-left"
                       >
                         <span className="uppercase tracking-wider">Pneus Aro {rimNum}</span>
-                        <ArrowRight className="w-4 h-4 text-black group-hover:text-black shrink-0" />
+                        <ArrowRight className="w-4 h-4 text-black group-hover:text-black shrink-0 ml-2" />
                       </button>
                     ))}
                   </div>
@@ -1695,11 +1714,14 @@ export default function App() {
                 <span className="w-1.5 h-1.5 bg-[#f49e1a]" />
                 Filtrar com 1 Toque por Fabricante Oficial:
               </p>
-              <div className="grid grid-cols-2 gap-3 items-stretch justify-start">
+              <div 
+                className="grid w-full gap-3"
+                style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', justifyItems: 'stretch' }}
+              >
                 <button
                   onClick={() => setSelectedBrand('Todas')}
                   style={selectedBrand === 'Todas' ? { textShadow: '1px 1px 2px rgba(0,0,0,0.9)' } : undefined}
-                  className={`h-14 px-3 py-2 border-2 text-xs font-black uppercase transition-all duration-300 cursor-pointer flex items-center justify-center text-center ${
+                  className={`w-full h-14 min-h-[56px] px-3 py-2 border-2 text-xs font-black uppercase transition-all duration-300 cursor-pointer flex items-center justify-center text-center box-border ${
                     selectedBrand === 'Todas'
                       ? 'bg-black text-white border-black'
                       : 'bg-white border-black text-black hover:border-[#f49e1a]'
@@ -1713,7 +1735,7 @@ export default function App() {
                     <button
                       key={`btn-logo-filter-${bName}`}
                       onClick={() => setSelectedBrand(bName)}
-                      className={`h-14 px-3 py-2 border-2 bg-white flex items-center justify-center transition-all duration-300 cursor-pointer ${
+                      className={`w-full h-14 min-h-[56px] px-3 py-2 border-2 bg-white flex items-center justify-center transition-all duration-300 cursor-pointer box-border ${
                         isSelected
                           ? 'border-[#f49e1a] bg-yellow-50/10'
                           : 'border-black hover:border-[#f49e1a]'
@@ -1723,7 +1745,7 @@ export default function App() {
                       <img
                         src={bUrl}
                         alt={bName}
-                        className="h-full max-h-[32px] w-auto max-w-[120px] object-contain"
+                        className="max-h-[32px] w-auto max-w-[120px] object-contain mx-auto"
                         referrerPolicy="no-referrer"
                       />
                     </button>
@@ -2070,18 +2092,18 @@ export default function App() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/fachada-logo.webp', label: 'Fachada e Logo Carplus Portão' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png', label: 'Showroom de Medidas Pirelli' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/alinhamento-jeep.webp', label: 'Alinhamento 3D Computadorizado' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/mecanicos-trabalho.webp', label: 'Nossa Equipe de Técnicos Habilitados' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/troca-pneu.webp', label: 'Troca de Pneus de Alta Performance' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/oficina-carros.webp', label: 'Rampa de Geometria e Freio' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/montagem-pneu.webp', label: 'Montagem Técnica Inclusa de Cortesia' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/rodas-pretas.webp', label: 'Troca de Rodas de Liga Leve' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/display-pneus.webp', label: 'Mostruário Especial de Pneus Novos' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/escritorio.webp', label: 'Recepção e Espera Climatizada' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/caminhonete.webp', label: 'Serviço em Camionetes e SUVs' },
-              { url: 'https://www.carpluspneuseoficina.com.br/images/galeria/proprietario-pneu.webp', label: 'Consultoria e Avaliação Estrutural' }
+              { url: 'https://www.carpluscwb.com.br/images/galeria/fachada-logo.webp', label: 'Fachada e Logo Carplus Portão' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png', label: 'Showroom de Medidas Pirelli' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp', label: 'Alinhamento 3D Computadorizado' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/mecanicos-trabalho.webp', label: 'Nossa Equipe de Técnicos Habilitados' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp', label: 'Troca de Pneus de Alta Performance' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/oficina-carros.webp', label: 'Rampa de Geometria e Freio' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/montagem-pneu.webp', label: 'Montagem Técnica Inclusa de Cortesia' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/rodas-pretas.webp', label: 'Troca de Rodas de Liga Leve' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/display-pneus.webp', label: 'Mostruário Especial de Pneus Novos' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/escritorio.webp', label: 'Recepção e Espera Climatizada' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/caminhonete.webp', label: 'Serviço em Camionetes e SUVs' },
+              { url: 'https://www.carpluscwb.com.br/images/galeria/proprietario-pneu.webp', label: 'Consultoria e Avaliação Estrutural' }
             ].map((img, idx) => (
               <div key={idx} className="group relative overflow-hidden rounded-2xl bg-gray-55 border border-gray-200 transition shadow">
                 <img 
@@ -2101,6 +2123,9 @@ export default function App() {
           </div>
         </section>
 
+        {/* Dedicated Auto Center & Centro Automotivo section */}
+        <AutoCenterSection onNavigateToPage={handleNavigateInternal} />
+
         {/* Global Homepage Interactive FAQ Accordions */}
         <section className="max-w-7xl mx-auto px-4 mt-12 bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-sm" id="carplus-home-faq">
           <div className="text-center sm:text-left space-y-2 mb-6">
@@ -2117,6 +2142,30 @@ export default function App() {
 
           <div className="space-y-2.5">
             {[
+              {
+                q: "Onde comprar pneus em Curitiba?",
+                a: "Na Carplus Pneus, na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão. Contamos com mais de 1.900 opções de pneus novos multimarcas a pronta entrega e encomenda ágil para aros 13 a 23."
+              },
+              {
+                q: "Onde trocar pneus em Curitiba?",
+                a: "No auto center da Carplus no Portão. Realizamos a substituição completa com desmontadoras pneumáticas anti-risco de rodas, troca de bicos novos e montagem técnica de cortesia na compra dos pneus novos."
+              },
+              {
+                q: "Onde encontrar auto center com pneus em Curitiba?",
+                a: "A Carplus integra no mesmo endereço loja completa de pneus novos e centro automotivo com alinhamento 3D computadorizado, balanceamento dinâmico e revisão mecânica preventiva no Portão."
+              },
+              {
+                q: "Qual centro automotivo no Portão?",
+                a: "A Carplus Pneus e Oficina Mecânica atende no bairro Portão (Av. Arthur Bernardes, 1323), com acesso direto para motoristas do Água Verde, Vila Izabel, Batel, Santa Quitéria, Fazendinha, Capão Raso e Novo Mundo."
+              },
+              {
+                q: "Onde fazer alinhamento e balanceamento?",
+                a: "Na rampa de Alinhamento 3D Computadorizado da Carplus no Portão, onde câmeras e sensores tridimensionais calibram convergência, cambagem e cáster com precisão milimétrica para rodagem segura e uniforme."
+              },
+              {
+                q: "Onde comprar e instalar pneus no mesmo local?",
+                a: "Na Carplus Pneus no Portão. Você escolhe os modelos desejados e realiza toda a instalação, válvulas novas, balanceamento e alinhamento no mesmo estabelecimento sem deslocamentos adicionais."
+              },
               {
                 q: "Como faço para reservar um pneu em oferta e garantir a montagem inclusa?",
                 a: "É super simples! Navegue em nosso catálogo, verifique as medidas desejadas e adicione ao carrinho de reserva online. Ao concluir o agendamento, você é direcionado ao atendimento integrado no WhatsApp para confirmar o melhor horário de atendimento. Não há cobrança prévia: você só realiza o pagamento na nossa sede física do Portão, após os pneus novos estarem instalados e balanceados no carro!"

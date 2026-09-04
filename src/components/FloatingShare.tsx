@@ -5,23 +5,23 @@ import { toSlug } from '../utils/slugify';
 const SITE_GALLERY = [
   {
     title: "Vistoria Jeep Compass",
-    url: "https://www.carpluspneuseoficina.com.br/images/galeria/jeep-compass.webp"
+    url: "https://www.carpluscwb.com.br/images/galeria/jeep-compass.webp"
   },
   {
     title: "Alinhamento Computadorizado 3D",
-    url: "https://www.carpluspneuseoficina.com.br/images/galeria/alinhamento-jeep.webp"
+    url: "https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp"
   },
   {
     title: "Montagem Técnica de Pneus",
-    url: "https://www.carpluspneuseoficina.com.br/images/galeria/troca-pneu.webp"
+    url: "https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp"
   },
   {
     title: "Check-up Técnico de Motores",
-    url: "https://www.carpluspneuseoficina.com.br/images/galeria/mecanico-motor.webp"
+    url: "https://www.carpluscwb.com.br/images/galeria/mecanico-motor.webp"
   },
   {
     title: "Oficina Própria Completa",
-    url: "https://www.carpluspneuseoficina.com.br/images/galeria/oficina-carros.webp"
+    url: "https://www.carpluscwb.com.br/images/galeria/oficina-carros.webp"
   }
 ];
 
@@ -38,7 +38,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
 
   // Determine share URL and text dynamically
   const getShareInfo = () => {
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://www.carpluspneuseoficina.com.br';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://www.carpluscwb.com.br';
     let path = '';
     let title = 'Carplus Pneus e Oficina - Portão Curitiba';
     let desc = 'Encontre pneus novos com o melhor preço de Curitiba, rampa 3D e montagem técnica inclusa com bico grátis!';
