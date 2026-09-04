@@ -16,9 +16,9 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
 
   const navLinks = [
     { label: 'Início', id: 'home' },
-    { label: 'Catálogo de Pneus (1.962)', id: 'catalogo-pneus' },
-    { label: 'Ofertas da Semana', id: 'catalog' },
-    { label: 'Serviços & Oficina', id: 'alinhamento-3d-curitiba' },
+    { label: 'Catálogo', id: 'catalogo-pneus' },
+    { label: 'Ofertas', id: 'catalog' },
+    { label: 'Serviços', id: 'alinhamento-3d-curitiba' },
     { label: 'Quem Somos', id: 'quem-somos' },
     { label: 'Blog', id: 'blog' },
     { label: 'Contato', id: 'contato' }
@@ -89,10 +89,10 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
       </div>
 
       {/* Main navigation header */}
-      <nav className="bg-black border-b border-[#f49e1a] text-white py-3 px-4 shadow-xl">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <nav className="bg-black border-b-2 border-[#f49e1a] text-white py-2.5 px-3 sm:px-6 shadow-xl relative z-40">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6">
           {/* Brand Logo responsive picker */}
-          <div className="flex items-center">
+          <div className="flex items-center shrink-0">
             {/* Desktop Logo */}
             <a 
               href="/" 
@@ -100,15 +100,15 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
                 e.preventDefault();
                 onScrollToSection('home');
               }} 
-              className="hidden sm:block cursor-pointer"
+              className="hidden sm:block cursor-pointer shrink-0"
             >
               <img
                 src="/images/logos/logo-horizontal.svg"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = '/favicon-512x512.png';
+                  (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
                 }}
                 alt="Carplus Pneus Oficina Mecânica"
-                className="h-12 w-auto object-contain"
+                className="h-10 xl:h-12 w-auto object-contain"
               />
             </a>
             {/* Mobile Header Logo */}
@@ -118,26 +118,26 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
                 e.preventDefault();
                 onScrollToSection('home');
               }} 
-              className="block sm:hidden cursor-pointer"
+              className="block sm:hidden cursor-pointer shrink-0"
             >
               <img
                 src="/carplus-pneus-oficina-mecanica-full-service-horizontal.svg"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = '/favicon-512x512.png';
+                  (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
                 }}
                 alt="Carplus Pneus Mobile"
-                className="h-10 w-auto object-contain"
+                className="h-9 w-auto object-contain"
               />
             </a>
           </div>
 
           {/* Core Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
+          <div className="hidden lg:flex items-center gap-1.5 xl:gap-4 shrink-0">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => onScrollToSection(link.id)}
-                className="text-xs uppercase font-extrabold tracking-wider text-white hover:text-[#f49e1a] transition duration-150 cursor-pointer"
+                className="text-xs uppercase font-extrabold tracking-wider text-white hover:text-[#f49e1a] px-2.5 py-1.5 rounded-lg hover:bg-white/10 transition duration-150 cursor-pointer whitespace-nowrap"
               >
                 {link.label}
               </button>
@@ -145,17 +145,17 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
           </div>
 
           {/* CTA Buttons row */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Shopping Cart Button */}
             <button
               onClick={onOpenCart}
-              className="bg-[#f49e1a] hover:bg-white hover:text-black text-black font-black p-2.5 sm:px-4 sm:py-2.5 rounded-xl flex items-center gap-2 shadow-md transition-all duration-300 relative border border-[#f49e1a]"
+              className="bg-[#f49e1a] hover:bg-white hover:text-black text-black font-black p-2.5 sm:px-4 sm:py-2.5 rounded-xl flex items-center gap-2 shadow-md transition-all duration-300 relative border border-[#f49e1a] cursor-pointer shrink-0 whitespace-nowrap"
               id="header-cart-btn"
             >
               <ShoppingCart className="w-4 h-4 shrink-0" />
-              <span className="hidden md:inline text-xs uppercase tracking-wider">Carrinho</span>
+              <span className="hidden sm:inline text-xs uppercase tracking-wider font-extrabold">Carrinho</span>
               {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-black text-[#f49e1a] text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#f49e1a]">
+                <span className="bg-black text-[#f49e1a] text-[10px] font-black px-1.5 py-0.5 rounded-full border border-[#f49e1a]">
                   {cartCount}
                 </span>
               )}
@@ -164,23 +164,24 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-white hover:text-[#f49e1a]"
+              className="lg:hidden p-2 text-white hover:text-[#f49e1a] cursor-pointer rounded-xl bg-white/10 hover:bg-white/20 transition shrink-0"
               id="mobile-menu-toggle"
+              aria-label="Abrir Menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6 text-[#f49e1a]" /> : <Menu className="w-6 h-6 text-white" />}
             </button>
           </div>
         </div>
 
         {/* Mobile menu panel */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-3 pt-4 border-t-2 border-[#f49e1a] pb-4 bg-black" id="mobile-navigation-links">
+          <div className="lg:hidden mt-3 pt-4 border-t-2 border-[#f49e1a] pb-4 bg-black" id="mobile-navigation-links">
             {/* Header with carplus logo & close hint */}
             <div className="bg-black p-4 rounded-2xl border border-[#f49e1a] mb-4 flex flex-col items-center text-center">
               <img
                 src="/images/logos/logo-horizontal.svg"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = '/favicon-512x512.png';
+                  (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
                 }}
                 alt="Carplus Pneus e Oficina"
                 className="h-10 w-auto object-contain mb-2"

@@ -2518,12 +2518,22 @@ export default function CompanyPages({
           ];
 
           const CARPLUS_GALLERY = [
-            { url: '/images/galeria/fachada-logo.webp', label: 'Fachada Principal Carplus Arthur Bernardes' },
-            { url: '/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png', label: 'Expositores Oficiais e Showroom Pirelli' },
-            { url: '/images/galeria/alinhamento-jeep.webp', label: 'Rampa de Alinhamento e Geometria 3D' },
-            { url: '/images/galeria/mecanicos-trabalho.webp', label: 'Técnicos Mecânicos Treinados em Ação' },
-            { url: '/images/galeria/troca-pneu.webp', label: 'Troca de Pneus e Balanceamento Preciso' },
-            { url: '/images/galeria/escritorio.webp', label: 'Sala de Espera e Escritório do Cliente' }
+            { url: '/images/galeria/fachada-carplus.webp', fallback: 'https://img.carplusautos.com.br/cwb/fachada-carplus.webp', label: 'Fachada e Logo Carplus Portão' },
+            { url: '/images/galeria/loja-de-pneus-em-curitiba.webp', fallback: 'https://img.carplusautos.com.br/cwb/loja-de-pneus-em-curitiba.webp', label: 'Showroom de Medidas Pirelli' },
+            { url: '/images/galeria/auto-center-pneus-portao.jpg', fallback: 'https://img.carplusautos.com.br/cwb/auto-center-pneus-portao.jpg', label: 'Auto Center Pneus no Portão' },
+            { url: '/images/galeria/alinhamento.jpg', fallback: 'https://img.carplusautos.com.br/cwb/alinhamento.jpg', label: 'Alinhamento 3D Computadorizado' },
+            { url: '/images/galeria/tecnicos.jpg', fallback: 'https://img.carplusautos.com.br/cwb/tecnicos.jpg', label: 'Nossa Equipe de Técnicos Habilitados' },
+            { url: '/images/galeria/troca-de-pneus.jpg', fallback: 'https://img.carplusautos.com.br/cwb/troca-de-pneus.jpg', label: 'Troca de Pneus de Alta Performance' },
+            { url: '/images/galeria/rampa-de-geometria.jpg', fallback: 'https://img.carplusautos.com.br/cwb/rampa-de-geometria.jpg', label: 'Rampa de Geometria e Freio' },
+            { url: '/images/galeria/montagem-tecnica.jpg', fallback: 'https://img.carplusautos.com.br/cwb/montagem-tecnica.jpg', label: 'Montagem Técnica Inclusa' },
+            { url: '/images/galeria/rodas-de-liga-leve.webp', fallback: 'https://img.carplusautos.com.br/cwb/rodas-de-liga-leve.webp', label: 'Troca de Rodas de Liga Leve' },
+            { url: '/images/galeria/mostruario-pneus-novos.webp', fallback: 'https://img.carplusautos.com.br/cwb/mostruario-pneus-novos.webp', label: 'Mostruário Especial de Pneus Novos' },
+            { url: '/images/galeria/show-row-pneus.webp', fallback: 'https://img.carplusautos.com.br/cwb/show-row-pneus.webp', label: 'Exposição de Pneus de Qualidade' },
+            { url: '/images/galeria/recepcao.jpg', fallback: 'https://img.carplusautos.com.br/cwb/recepcao.jpg', label: 'Recepção e Espera Climatizada' },
+            { url: '/images/galeria/caminhonete-suv.jpg', fallback: 'https://img.carplusautos.com.br/cwb/caminhonete-suv.jpg', label: 'Serviço em Camionetes e SUVs' },
+            { url: '/images/galeria/consultoria-avaliacao-estrutural.jpg', fallback: 'https://img.carplusautos.com.br/cwb/consultoria-avaliacao-estrutural.jpg', label: 'Consultoria e Avaliação Estrutural' },
+            { url: '/images/galeria/auto-center-de-pneus-em-curitiba.jpg', fallback: 'https://img.carplusautos.com.br/cwb/auto-center-de-pneus-em-curitiba.jpg', label: 'Auto Center de Pneus em Curitiba' },
+            { url: '/images/galeria/pneus-auto-center.jpg', fallback: 'https://img.carplusautos.com.br/cwb/pneus-auto-center.jpg', label: 'Pneus e Serviços Auto Center' }
           ];
 
           return (
@@ -2829,9 +2839,11 @@ export default function CompanyPages({
                       <div key={idx} className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm transition">
                         <img 
                           src={img.url} 
+                          onError={(e) => {
+                            if (img.fallback) (e.currentTarget as HTMLImageElement).src = img.fallback;
+                          }}
                           alt={img.label}
                           className="h-40 w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-102 transition-all duration-300"
-                          referrerPolicy="no-referrer"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent flex items-end p-2 sm:p-3">
                           <p className="text-[10px] font-bold text-white uppercase tracking-wide truncate w-full">

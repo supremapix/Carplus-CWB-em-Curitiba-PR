@@ -13,12 +13,12 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Coluna 1: Logo e Descrição */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
           <img 
-            src="/images/logos/logo-vertical.svg" 
+            src="/images/logos/logo-footer.svg" 
             onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = '/favicon-512x512.png';
+              (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-footer.svg';
             }}
-            alt="Carplus Pneus Vertical Logo" 
-            className="w-36 h-auto object-contain bg-black p-4 rounded-2xl mb-2 border border-black"
+            alt="Carplus Pneus Footer Logo" 
+            className="w-40 h-auto object-contain bg-black p-4 rounded-2xl mb-2 border border-black"
           />
           <h4 className="font-black text-lg uppercase tracking-wide text-black">Carplus Pneus & Oficina</h4>
           <p className="text-sm text-black font-bold leading-relaxed">
@@ -109,7 +109,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </button>
           <button 
             onClick={() => { onNavigate('auto-center-curitiba' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black text-[#f49e1a] bg-black px-2.5 py-1 rounded-lg"
+            className="bg-black text-white hover:bg-white hover:text-black cursor-pointer px-3 py-1.5 rounded-xl font-black transition-all duration-200 border border-black shadow-sm"
           >
             Auto Center Curitiba
           </button>
