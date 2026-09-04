@@ -29,7 +29,7 @@ const BRAND_LOGOS: Record<string, string> = {
   MICHELIN: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/michelin.svg",
   CONTINENTAL: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/continental.svg",
   GOODYEAR: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-goodyear.svg",
-  YOKOHAMA: "https://icon2.cleanpng.com/20180516/evq/avr9ddjh0.webp",
+  YOKOHAMA: "/yokohama.svg",
   FIRESTONE: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-firestone.svg",
   DELINTE: "https://s19532.pcdn.co/wp-content/uploads/2019/12/Delinte-Logo-1.jpg",
   COMFORSER: "https://www.gtiresinternational.us/wp-content/uploads/2022/10/Comforser-Tires.png",
@@ -1521,7 +1521,7 @@ export default function App() {
                     { name: 'MICHELIN', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/michelin.svg", slogan: 'Máxima Performance', style: 'Padrão mundial em segurança e durabilidade lendária. Menor desgaste e resistência a rolamentos.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
                     { name: 'CONTINENTAL', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/continental.svg", slogan: 'Engenharia Alemã', style: 'Pneus alemães de alta proteção contra furos e aquaplanagens. Excelente tração em curvas sinuosas.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
                     { name: 'GOODYEAR', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-goodyear.svg", slogan: 'Segurança Longa Pista', style: 'Excelente estabilidade estrutural e aderência ideal em asfalto ondulado ou de terra.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'YOKOHAMA', logo: "https://icon2.cleanpng.com/20180516/evq/avr9ddjh0.webp", slogan: 'Linha Premium Racing', style: 'Excelente esportividade e performance em alta velocidade para veículos esportivos e de luxo.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
+                    { name: 'YOKOHAMA', logo: "/yokohama.svg", slogan: 'Linha Premium Racing', style: 'Excelente esportividade e performance em alta velocidade para veículos esportivos e de luxo.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
                     { name: 'FIRESTONE', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-firestone.svg", slogan: 'Robustez Reconhecida', style: 'Subdivisão Bridgestone reconhecida pela alta durabilidade em veículos civis e comerciais leves.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
                     { name: 'DELINTE', logo: "https://s19532.pcdn.co/wp-content/uploads/2019/12/Delinte-Logo-1.jpg", slogan: 'Tecnologia Inovadora', style: 'Banda de rodagem inovadora, rodar extremamente seguro e ótimos custos de aquisição direta.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
                     { name: 'COMFORSER', logo: "https://www.gtiresinternational.us/wp-content/uploads/2022/10/Comforser-Tires.png", slogan: 'Durabilidade Diária', style: 'Excelente maciez e resistência na pavimentação urbana nacional. Custo-benefício de destaque.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
@@ -2092,18 +2092,18 @@ export default function App() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { url: 'https://www.carpluscwb.com.br/images/galeria/fachada-logo.webp', label: 'Fachada e Logo Carplus Portão' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png', label: 'Showroom de Medidas Pirelli' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp', label: 'Alinhamento 3D Computadorizado' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/mecanicos-trabalho.webp', label: 'Nossa Equipe de Técnicos Habilitados' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp', label: 'Troca de Pneus de Alta Performance' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/oficina-carros.webp', label: 'Rampa de Geometria e Freio' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/montagem-pneu.webp', label: 'Montagem Técnica Inclusa de Cortesia' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/rodas-pretas.webp', label: 'Troca de Rodas de Liga Leve' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/display-pneus.webp', label: 'Mostruário Especial de Pneus Novos' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/escritorio.webp', label: 'Recepção e Espera Climatizada' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/caminhonete.webp', label: 'Serviço em Camionetes e SUVs' },
-              { url: 'https://www.carpluscwb.com.br/images/galeria/proprietario-pneu.webp', label: 'Consultoria e Avaliação Estrutural' }
+              { url: '/images/galeria/fachada-logo.webp', label: 'Fachada e Logo Carplus Portão' },
+              { url: '/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png', label: 'Showroom de Medidas Pirelli' },
+              { url: '/images/galeria/alinhamento-jeep.webp', label: 'Alinhamento 3D Computadorizado' },
+              { url: '/images/galeria/mecanicos-trabalho.webp', label: 'Nossa Equipe de Técnicos Habilitados' },
+              { url: '/images/galeria/troca-pneu.webp', label: 'Troca de Pneus de Alta Performance' },
+              { url: '/images/galeria/oficina-carros.webp', label: 'Rampa de Geometria e Freio' },
+              { url: '/images/galeria/montagem-pneu.webp', label: 'Montagem Técnica Inclusa de Cortesia' },
+              { url: '/images/galeria/rodas-pretas.webp', label: 'Troca de Rodas de Liga Leve' },
+              { url: '/images/galeria/display-pneus.webp', label: 'Mostruário Especial de Pneus Novos' },
+              { url: '/images/galeria/escritorio.webp', label: 'Recepção e Espera Climatizada' },
+              { url: '/images/galeria/caminhonete.webp', label: 'Serviço em Camionetes e SUVs' },
+              { url: '/images/galeria/proprietario-pneu.webp', label: 'Consultoria e Avaliação Estrutural' }
             ].map((img, idx) => (
               <div key={idx} className="group relative overflow-hidden rounded-2xl bg-gray-55 border border-gray-200 transition shadow">
                 <img 

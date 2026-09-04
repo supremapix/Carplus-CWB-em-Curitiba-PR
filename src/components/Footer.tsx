@@ -13,10 +13,12 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Coluna 1: Logo e Descrição */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
           <img 
-            src="https://www.carpluscwb.com.br/images/logos/logo-vertical.svg" 
+            src="/images/logos/logo-vertical.svg" 
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = '/favicon-512x512.png';
+            }}
             alt="Carplus Pneus Vertical Logo" 
             className="w-36 h-auto object-contain bg-black p-4 rounded-2xl mb-2 border border-black"
-            referrerPolicy="no-referrer"
           />
           <h4 className="font-black text-lg uppercase tracking-wide text-black">Carplus Pneus & Oficina</h4>
           <p className="text-sm text-black font-bold leading-relaxed">

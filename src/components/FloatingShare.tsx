@@ -5,23 +5,23 @@ import { toSlug } from '../utils/slugify';
 const SITE_GALLERY = [
   {
     title: "Vistoria Jeep Compass",
-    url: "https://www.carpluscwb.com.br/images/galeria/jeep-compass.webp"
+    url: "/images/galeria/jeep-compass.webp"
   },
   {
     title: "Alinhamento Computadorizado 3D",
-    url: "https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp"
+    url: "/images/galeria/alinhamento-jeep.webp"
   },
   {
     title: "Montagem Técnica de Pneus",
-    url: "https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp"
+    url: "/images/galeria/troca-pneu.webp"
   },
   {
     title: "Check-up Técnico de Motores",
-    url: "https://www.carpluscwb.com.br/images/galeria/mecanico-motor.webp"
+    url: "/images/galeria/mecanico-motor.webp"
   },
   {
     title: "Oficina Própria Completa",
-    url: "https://www.carpluscwb.com.br/images/galeria/oficina-carros.webp"
+    url: "/images/galeria/oficina-carros.webp"
   }
 ];
 

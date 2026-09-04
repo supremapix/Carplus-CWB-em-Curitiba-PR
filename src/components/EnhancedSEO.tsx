@@ -822,10 +822,11 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Dynamic Favicon */}
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
       <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
       <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-      <link rel="shortcut icon" type="image/png" href="/favicon-48x48.png" />
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
 
       {/* 5. Open Graph Meta Tags (Facebook & general social preview) */}

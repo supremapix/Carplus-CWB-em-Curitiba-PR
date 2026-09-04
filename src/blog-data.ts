@@ -80,7 +80,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedDate: '16 de Agosto de 2026',
     publishedIso: '2026-08-16',
     readingTime: '7 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png',
+    featuredImage: '/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png',
     imageAlt: 'Oficina Carplus Curitiba: instalação de pneus Pirelli Elect em carro elétrico com menor preço da região',
     intro: 'Se você dirige um veículo elétrico ou híbrido plug-in pelas ruas de Curitiba e Região Metropolitana, já deve ter notado que a dinâmica de condução é completamente diferente de um carro a combustão tradicional. A aceleração instantânea e o silêncio da cabine são fascinantes, mas impõem um desafio brutal sobre a borracha: os pneus de carros elétricos sofrem um desgaste até 30% mais rápido se não forem o modelo homologado correto. É por isso que a Carplus Pneus & Oficina se consolidou como a principal oficina especializada em carros elétricos em Curitiba, combinando consultoria técnica de alto nível, estrutura para elevação segura de baterias e a garantia incondicional do menor preço da cidade.',
     sections: [
@@ -189,7 +189,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp',
+    featuredImage: '/images/galeria/alinhamento-jeep.webp',
     imageAlt: 'Alinhamento 3D computadorizado em veículo na oficina Carplus Pneus no Portão em Curitiba',
     intro: 'Você está dirigindo em uma via plana e reta, solta as mãos suavemente do volante por um segundo e percebe que o veículo imediatamente começa a derivar para a direita ou para a esquerda? Esse é um dos sintomas mais comuns relatados pelos motoristas nas oficinas de Curitiba. Embora pareça um incômodo menor no início, o carro puxando para o lado compromete a dirigibilidade, acelera o desgaste irregular dos pneus e sobrecarrega os componentes da direção.',
     sections: [
@@ -307,7 +307,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '5 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/mecanicos-trabalho.webp',
+    featuredImage: '/images/galeria/mecanicos-trabalho.webp',
     imageAlt: 'Mecânicos profissionais avaliando sistema de suspensão em elevador automotivo na Carplus',
     intro: 'Passar por quebra-molas, valetas e desníveis no asfalto faz parte da rotina de qualquer motorista em Curitiba. No entanto, quando essa transposição vem acompanhada de barulhos como estalos metálicos, "toc-toc" seco ou rangidos de borracha, é sinal claro de que algum componente do conjunto de suspensão sofreu desgaste ou atingiu o fim de sua vida útil.',
     sections: [
@@ -397,7 +397,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '5 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/montagem-pneu.webp',
+    featuredImage: '/images/galeria/montagem-pneu.webp',
     imageAlt: 'Equipamento de balanceamento dinâmico de rodas e pneus na oficina Carplus Curitiba',
     intro: 'Alinhamento e balanceamento são dois dos serviços mais procurados em centros automotivos, mas ainda geram dúvidas entre muitos motoristas. Embora frequentemente sejam realizados juntos, tratam-se de procedimentos técnicos completamente distintos, que corrigem problemas diferentes e atuam em conjuntos específicos do veículo.',
     sections: [
@@ -500,7 +500,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/troca-pneu.webp',
+    featuredImage: '/images/galeria/troca-pneu.webp',
     imageAlt: 'Técnico examinando indicador de desgaste e banda de rodagem de pneu na Carplus',
     intro: 'Os pneus são o único ponto de contato entre o automóvel e o asfalto. Em condições ideais de alinhamento, calibragem e suspensão, a banda de rodagem deve se desgastar de maneira perfeitamente homogênea e uniforme em toda a sua largura. Quando você observa que um dos ombros do pneu está "comendo" mais rápido do que o centro ou a borda oposta, há uma anomalia mecânica que precisa de atenção imediata.',
     sections: [
@@ -602,7 +602,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '7 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/oficina-carros.webp',
+    featuredImage: '/images/galeria/oficina-carros.webp',
     imageAlt: 'Revisão preventiva completa de automóvel em oficina mecânica Carplus em Curitiba',
     intro: 'Planejar uma viagem com a família ou amigos é sempre empolgante, seja descendo a serra rumo ao litoral do Paraná e Santa Catarina, seja pegando rodovias interestaduais como BR-277, BR-376 e BR-116. No entanto, rodar em alta velocidade contínua e com o carro carregado de passageiros e bagagens exige muito mais de todos os sistemas mecânicos do que o uso urbano diário. Um checklist preventivo bem executado evita contratempos perigosos e gastos imprevistos.',
     sections: [
@@ -718,7 +718,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/mecanico-motor.webp',
+    featuredImage: '/images/galeria/mecanico-motor.webp',
     imageAlt: 'Profissional da Carplus realizando teste e avaliação detalhada da suspensão automotiva',
     intro: 'O sistema de suspensão é um dos conjuntos mais importantes do automóvel. Sua função primordial não é apenas proporcionar conforto aos ocupantes, mas principalmente manter as quatro rodas em contato firme e constante com o solo em qualquer situação — acelerando, manobrando em curvas ou freando bruscamente. Conheça os 7 sinais mais claros de que sua suspensão precisa de uma inspeção técnica.',
     sections: [
@@ -822,7 +822,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '5 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/alinhamento-jeep.webp',
+    featuredImage: '/images/galeria/alinhamento-jeep.webp',
     imageAlt: 'Diagnóstico de vibração de direção e balanceamento na Carplus Pneus Curitiba',
     intro: 'Poucas coisas são tão irritantes e preocupantes ao dirigir quanto sentir o volante trepidar nas mãos. A vibração no volante nunca é normal: ela indica que alguma força centrífuga, oscilação geométrica ou desbalanceamento de massa está sendo transmitido através da coluna de direção até as suas mãos.',
     sections: [
@@ -913,7 +913,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '5 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/mecanicos-trabalho.webp',
+    featuredImage: '/images/galeria/mecanicos-trabalho.webp',
     imageAlt: 'Inspeção e manutenção de pastilhas e discos de freio automotivo na Carplus Portão',
     intro: 'O sistema de freios é, sem sombra de dúvidas, o item de segurança ativa mais crucial do seu veículo. Por ser acionado centenas de vezes todos os dias nas vias urbanas movimentadas de Curitiba, ele sofre atrito e desgaste contínuos por projeto. Portanto, quando o freio começa a emitir ruídos, ele está literalmente enviando um sinal sonoro de que algo precisa ser verificado.',
     sections: [
@@ -1011,7 +1011,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/mecanico-motor.webp',
+    featuredImage: '/images/galeria/mecanico-motor.webp',
     imageAlt: 'Verificação técnica de óleo do motor e filtros em auto center Carplus Curitiba',
     intro: 'O óleo lubrificante é popularmente conhecido como o "sangue do motor", e essa analogia é perfeita. Ele tem a missão vital de lubrificar as peças móveis (pistões, bielas, virabrequim e comando de válvulas), reduzir o atrito e o calor, limpar resíduos de combustão e proteger contra corrosão. Trocar o óleo no prazo correto é a manutenção mais barata e eficaz para evitar a retífica prematura do motor.',
     sections: [
@@ -1114,7 +1114,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedDate: '14 de Agosto de 2026',
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
-    featuredImage: 'https://www.carpluscwb.com.br/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png',
+    featuredImage: '/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png',
     imageAlt: 'Mostruário de rodas de liga leve e pneus de alta performance na Carplus Pneus Portão',
     intro: 'Personalizar o carro com um novo conjunto de rodas de liga leve é o sonho de muitos motoristas. As rodas certas transformam o visual do automóvel, valorizam o veículo e podem até melhorar a estabilidade. No entanto, escolher rodas baseando-se apenas na estética é uma das principais causas de problemas de raspagem na lataria, danos à suspensão e até riscos de acidentes. Entenda as especificações técnicas obrigatórias.',
     sections: [

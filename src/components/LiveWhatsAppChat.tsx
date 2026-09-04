@@ -52,7 +52,10 @@ export default function LiveWhatsAppChat() {
             <div className="flex items-center gap-3">
               <div className="relative">
                 <img 
-                  src="https://www.carpluscwb.com.br/images/logos/logo-vertical.svg" 
+                  src="/images/logos/logo-vertical.svg" 
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = '/favicon-512x512.png';
+                  }}
                   alt="Carplus Logo" 
                   className="w-10 h-10 object-contain rounded-lg bg-yellow-500 p-1"
                 />
