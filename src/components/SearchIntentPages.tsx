@@ -589,7 +589,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       content: (
         <div className="space-y-6 text-left">
           <p className="text-sm text-gray-650 leading-relaxed font-semibold">
-            Procurando uma <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">loja de pneus em Curitiba</strong> com procedência garantida, infraestrutura completa e atendimento ágil? A <strong>Carplus Pneus & Auto Center</strong> está localizada estrategicamente na Av. Presidente Arthur Bernardes, 1323, no bairro Portão, atendendo com facilidade clientes de bairros como Água Verde, Batel, Seminário, Vila Izabel, Capão Raso, Santa Quitéria e Cidade Industrial.
+            Procurando uma <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">loja de pneus em Curitiba</strong> com procedência garantida, infraestrutura completa e atendimento ágil? A <strong>Carplus Pneus & Auto Center</strong> é a sua referência como <strong>loja de pneus Portão Curitiba</strong>, localizada estrategicamente na Av. Presidente Arthur Bernardes, 1323. Atendemos com máxima agilidade motoristas que procuram <strong>pneus Curitiba</strong>, <strong>pneus Portão</strong> ou pesquisam <strong>pneus perto de mim</strong> nos bairros Água Verde, Batel, Seminário, Vila Izabel, Capão Raso, Santa Quitéria, Fazendinha e Cidade Industrial.
           </p>
 
           {/* Onde comprar pneus em Curitiba */}
@@ -675,9 +675,10 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       ),
       whatsappText: "Olá Carplus! Gostaria de agendar uma visita na loja de pneus no Portão para consultar opções e realizar a montagem.",
       faqs: [
-        { q: "Onde fica a loja de pneus da Carplus em Curitiba?", a: "Nossa loja física situa-se na Av. Presidente Arthur da Silva Bernardes, 1323, bairro Portão, Curitiba - PR (CEP 80320-300)." },
-        { q: "É necessário agendar para trocar os pneus na loja?", a: "Você pode comparecer diretamente ou agendar seu horário pelo WhatsApp para ter atendimento prioritário no elevador." },
-        { q: "Quais marcas de pneus a loja comercializa?", a: "Trabalhamos com Pirelli, Bridgestone, Goodyear, Continental, Michelin, Firestone, Dunlop, Delinte, Xbri e Hankook." },
+        { q: "Onde fica a loja de pneus da Carplus em Curitiba?", a: "Nossa loja física situa-se na Av. Presidente Arthur da Silva Bernardes, 1323, bairro Portão, Curitiba - PR (CEP 80320-300), facilitando o acesso para quem busca pneus no Portão e região central." },
+        { q: "A Carplus trabalha com pneus Dunlop em Curitiba?", a: "Sim, comercializamos pneus Dunlop em Curitiba, além de marcas consagradas como Pirelli, Bridgestone, Goodyear, Continental, Michelin, Firestone, Delinte e Xbri, sempre com garantia de fábrica de 5 anos e montagem no box." },
+        { q: "Como encontrar pneus perto de mim no Portão?", a: "Se você procura por pneus perto de mim ou loja de pneus Portão Curitiba, a Carplus está no coração da Av. Arthur Bernardes, 1323, com pátio para estacionamento e acesso rápido pela República Argentina." },
+        { q: "É necessário agendar para trocar os pneus na loja?", a: "Você pode comparecer diretamente ou agendar seu horário pelo WhatsApp (41) 3082-7282 para ter atendimento prioritário no elevador." },
         { q: "A loja faz alinhamento e balanceamento?", a: "Sim, dispomos de rampa computadorizada de Alinhamento 3D Tridimensional e balanceadoras de alta precisão." }
       ]
     },

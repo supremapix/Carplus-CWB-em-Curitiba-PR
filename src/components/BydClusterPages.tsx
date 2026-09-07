@@ -700,8 +700,28 @@ export default function BydClusterPages({
             <div className="space-y-3">
               {[
                 {
-                  q: "Qual pneu usa o BYD Dolphin?",
-                  a: "A especificação mais comum no Brasil é a medida 205/50 R17 (aro 17). Existem também configurações da linha com documentação para 195/60 R16. Recomendamos sempre verificar a etiqueta na coluna da porta do motorista antes da compra."
+                  q: "Qual pneu serve no BYD Dolphin?",
+                  a: "A especificação mais comum no Brasil é a medida 205/50 R17 (aro 17). Existem também configurações da linha com documentação para 195/60 R16. Por existirem diferentes versões e anos, a confirmação definitiva da medida correta deve ser feita pelo tamanho gravado no pneu atual ou na etiqueta da porta do motorista."
+                },
+                {
+                  q: "Quanto custa um pneu para BYD Dolphin?",
+                  a: "O preço varia conforme a medida (aro 16 ou 17), marca e tecnologia do pneu (modelos com composto para EV, índices de carga e velocidade). Consulte a Carplus pelo WhatsApp (41) 3082-7282 para verificar o valor atualizado, com montagem profissional gratuita e bicos novos inclusos."
+                },
+                {
+                  q: "Onde comprar pneu para BYD Dolphin em Curitiba?",
+                  a: "Você pode comprar na Carplus Pneus, na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba. Dispomos de atendimento consultivo via WhatsApp para reserva e instalação no box com maquinário anti-risco."
+                },
+                {
+                  q: "A Carplus troca pneus de veículos elétricos?",
+                  a: "Sim. A Carplus possui elevadores com blocos emborrachados posicionados exclusivamente nos pontos de apoio estrutural do chassi, sem qualquer contato com o pacote de baterias. Realizamos montagem técnica, balanceamento dinâmico e alinhamento 3D a laser."
+                },
+                {
+                  q: "Como saber a medida correta do pneu do BYD Dolphin?",
+                  a: "A medida correta está gravada em alto-relevo na lateral do pneu instalado (ex: 205/50 R17 93V ou 195/60 R16 89H), na etiqueta informativa na coluna B da porta do motorista ou tampa de recarga, e no manual do proprietário."
+                },
+                {
+                  q: "Existe diferença de pneus entre Dolphin, Dolphin GS e Dolphin Mini?",
+                  a: "Sim. O Dolphin Mini utiliza pneus na medida exclusiva 175/55 R16 80H. Já o Dolphin e o Dolphin GS utilizam pneus 195/60 R16 ou 205/50 R17 dependendo do lote e da roda, enquanto o Dolphin Plus utiliza 205/50 R17 com índice de carga reforçado (XL). Sempre confira a gravação no pneu instalado no veículo antes de comprar."
                 },
                 {
                   q: "Qual pneu usa o BYD Dolphin Mini?",
@@ -712,24 +732,12 @@ export default function BydClusterPages({
                   a: "A configuração comercializada no Brasil utiliza pneus na medida 215/55 R17 (aro 17). O manual do fabricante também contempla a configuração 225/60 R16."
                 },
                 {
-                  q: "Onde comprar pneu para BYD em Curitiba?",
-                  a: "Você pode comprar na Carplus Pneus, na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba. Dispomos de atendimento consultivo via WhatsApp para reserva e instalação no box."
-                },
-                {
                   q: "Onde trocar pneus do BYD em Curitiba?",
                   a: "A troca pode ser realizada em nosso autocenter no Portão, equipado com elevadores adequados para veículos elétricos e híbridos, balanceamento dinâmico e rampa de alinhamento 3D."
                 },
                 {
-                  q: "Quanto custa um pneu para BYD?",
-                  a: "O preço varia conforme a medida, marca e tecnologia do pneu (modelos com composto para EV, índices de carga e velocidade). Consulte a Carplus pelo WhatsApp (41) 3082-7282 para verificar o valor atualizado e disponibilidade de estoque."
-                },
-                {
                   q: "Posso colocar outra medida de pneu no BYD Dolphin?",
                   a: "Recomenda-se manter rigorosamente a medida original recomendada pelo fabricante para evitar alterações no velocímetro, no consumo de bateria, na calibração do controle de tração (ESP) e interferências na caixa de roda."
-                },
-                {
-                  q: "Como saber a medida correta do pneu do meu BYD?",
-                  a: "A medida correta está gravada na lateral do pneu instalado (ex: 205/50 R17 93W), na etiqueta informativa na coluna B da porta do motorista ou na tampa de recarga, e no manual do proprietário."
                 },
                 {
                   q: "É necessário fazer balanceamento depois da troca?",
@@ -845,6 +853,7 @@ export default function BydClusterPages({
     description: string;
     technicalDetails: string;
     recommendedMeasureSlug: string;
+    faqs: { q: string; a: string }[];
   }> = {
     'pneu-byd-dolphin-curitiba': {
       title: "Pneu para BYD Dolphin em Curitiba | Medida 205/50 R17 e 195/60 R16",
@@ -854,7 +863,33 @@ export default function BydClusterPages({
       rims: [17, 16],
       description: "Encontre pneus compatíveis com o BYD Dolphin em Curitiba. A configuração mais comum comercializada no Brasil utiliza a medida 205/50 R17 (aro 17), com documentação contemplando também 195/60 R16.",
       technicalDetails: "O BYD Dolphin entrega torque instantâneo e exige pneus com excelente aderência em pistas secas e molhadas. Na Carplus no Portão você encontra opções compatíveis com montagem técnica, bicos novos de borracha e alinhamento 3D.",
-      recommendedMeasureSlug: "pneu-205-50-r17-curitiba"
+      recommendedMeasureSlug: "pneu-205-50-r17-curitiba",
+      faqs: [
+        {
+          q: "Qual pneu serve no BYD Dolphin?",
+          a: "O BYD Dolphin no Brasil utiliza principalmente a medida 205/50 R17 (comum nas versões aro 17 e Dolphin Plus) e 195/60 R16 (versões aro 16). Por existirem variações por ano e lote, a confirmação definitiva deve ser feita na lateral do pneu instalado ou na etiqueta da porta do motorista."
+        },
+        {
+          q: "Quanto custa um pneu para BYD Dolphin?",
+          a: "O preço varia conforme a medida (aro 16 ou 17), a marca e a tecnologia do composto (como modelos otimizados para EV). Consulte a Carplus pelo WhatsApp (41) 3082-7282 para verificar a cotação atualizada com montagem gratuita e bicos novos."
+        },
+        {
+          q: "Onde comprar pneu para BYD Dolphin em Curitiba?",
+          a: "Na Carplus Pneus e Oficina Mecânica, na Av. Presidente Arthur da Silva Bernardes, 1323 – Portão, Curitiba – PR. Telefone/WhatsApp: (41) 3082-7282."
+        },
+        {
+          q: "A Carplus troca pneus de veículos elétricos?",
+          a: "Sim. A oficina conta com elevadores pantográficos com blocos emborrachados nos pontos de apoio estrutural do chassi, sem contato com o pacote de baterias, além de montagem pneumática anti-risco e alinhamento 3D."
+        },
+        {
+          q: "Como saber a medida correta do pneu do BYD Dolphin?",
+          a: "A medida correta está gravada na lateral do pneu instalado (ex: 205/50 R17 93V ou 195/60 R16 89H), na etiqueta fixada na coluna da porta do motorista e no manual do proprietário."
+        },
+        {
+          q: "Existe diferença de pneus entre Dolphin, Dolphin GS e Dolphin Mini?",
+          a: "Sim. O Dolphin Mini utiliza pneus na medida exclusiva 175/55 R16 80H. O Dolphin e o Dolphin GS utilizam 195/60 R16 ou 205/50 R17 dependendo do lote, e o Dolphin Plus adota 205/50 R17 XL reforçado. Sempre confirme a inscrição nos pneus antes de comprar."
+        }
+      ]
     },
     'pneu-byd-dolphin-mini-curitiba': {
       title: "Pneu para BYD Dolphin Mini em Curitiba | Medida 175/55 R16",
@@ -864,7 +899,33 @@ export default function BydClusterPages({
       rims: [16],
       description: "Consulte disponibilidade de pneus para o BYD Dolphin Mini em Curitiba na medida oficial 175/55 R16 80H (aro 16). Pneus novos com garantia e instalação profissional na Carplus Portão.",
       technicalDetails: "A medida 175/55 R16 80H do Dolphin Mini foi projetada para combinar autonomia da bateria, estabilidade direcional e baixo nível de ruído em perímetro urbano e rodoviário.",
-      recommendedMeasureSlug: "pneu-175-55-r16-curitiba"
+      recommendedMeasureSlug: "pneu-175-55-r16-curitiba",
+      faqs: [
+        {
+          q: "Qual pneu serve no BYD Dolphin Mini?",
+          a: "A especificação oficial de fábrica documentada para o BYD Dolphin Mini é a medida 175/55 R16 80H (aro 16), projetada para baixo consumo de energia e condução urbana ágil."
+        },
+        {
+          q: "Quanto custa um pneu para BYD Dolphin Mini?",
+          a: "O valor varia conforme a marca e lote disponível. Consulte a Carplus pelo WhatsApp (41) 3082-7282 para obter a cotação imediata com montagem técnica gratuita e troca de bicos."
+        },
+        {
+          q: "Onde comprar pneu para BYD Dolphin Mini em Curitiba?",
+          a: "Na Carplus Pneus, na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba. Instalação profissional imediata."
+        },
+        {
+          q: "A Carplus troca pneus de veículos elétricos?",
+          a: "Sim. Nossos elevadores utilizam suportes emborrachados nos pontos de elevação do chassi recomendados pelo fabricante, protegendo integralmente a bateria do veículo elétrico."
+        },
+        {
+          q: "Como saber a medida correta do pneu do BYD Dolphin Mini?",
+          a: "Verifique a inscrição '175/55 R16 80H' no flanco do pneu do seu carro ou confira a etiqueta na coluna B da porta do motorista."
+        },
+        {
+          q: "Existe diferença de pneus entre Dolphin, Dolphin GS e Dolphin Mini?",
+          a: "Sim. O Dolphin Mini usa medida única 175/55 R16 80H, enquanto Dolphin e Dolphin GS usam medidas mais largas (195/60 R16 ou 205/50 R17)."
+        }
+      ]
     },
     'pneu-byd-dolphin-gs-curitiba': {
       title: "Pneu para BYD Dolphin GS em Curitiba | Medidas e Especificações",
@@ -874,7 +935,33 @@ export default function BydClusterPages({
       rims: [17, 16],
       description: "Informações técnicas e opções de pneus para a versão GS da família BYD Dolphin em Curitiba. Medidas 205/50 R17 e 195/60 R16 conforme versão e lote de fabricação.",
       technicalDetails: "Confira sempre a medida gravada no pneu instalado no seu Dolphin GS antes da compra. Na Carplus realizamos a verificação presencial e montagem com elevadores pantográficos calibrados.",
-      recommendedMeasureSlug: "pneu-205-50-r17-curitiba"
+      recommendedMeasureSlug: "pneu-205-50-r17-curitiba",
+      faqs: [
+        {
+          q: "Qual pneu serve no BYD Dolphin GS?",
+          a: "O BYD Dolphin GS pode utilizar as medidas 195/60 R16 89H ou 205/50 R17 dependendo da configuração de rodas do lote. A confirmação deve ser realizada diretamente na lateral do pneu instalado."
+        },
+        {
+          q: "Quanto custa um pneu para BYD Dolphin GS?",
+          a: "Os valores dependem da medida e da marca selecionada. Consulte a Carplus no WhatsApp (41) 3082-7282 para receber cotação com montagem grátis e facilidades de pagamento."
+        },
+        {
+          q: "Onde comprar pneu para BYD Dolphin GS em Curitiba?",
+          a: "Na Carplus Pneus (Av. Presidente Arthur da Silva Bernardes, 1323, Portão), com estrutura especializada para carros elétricos."
+        },
+        {
+          q: "A Carplus troca pneus de veículos elétricos?",
+          a: "Sim. Realizamos a troca com maquinário anti-risco, aperto com torquímetro calibrado e proteção de borracha nos apoios do chassi."
+        },
+        {
+          q: "Como saber a medida correta do pneu do BYD Dolphin GS?",
+          a: "Olhe a inscrição gravada na lateral dos pneus que estão no carro ou a etiqueta de calibragem na coluna da porta."
+        },
+        {
+          q: "Existe diferença de pneus entre Dolphin, Dolphin GS e Dolphin Mini?",
+          a: "Sim. O Dolphin Mini usa 175/55 R16 80H, enquanto Dolphin e Dolphin GS adotam 195/60 R16 ou 205/50 R17 conforme a versão de fábrica."
+        }
+      ]
     },
     'pneu-byd-king-curitiba': {
       title: "Pneu para BYD King em Curitiba: Medida Original 215/55 R17 com Menor Preço Garantido",
@@ -884,7 +971,33 @@ export default function BydClusterPages({
       rims: [17, 16],
       description: "Pneu para BYD King em Curitiba na medida original 215/55 R17. Cobrimos qualquer oferta de grandes redes como Carrefour e Mercado Livre, com montagem computadorizada gratuita e alinhamento 3D especializado no Portão.",
       technicalDetails: "O BYD King combina motor híbrido com entrega de torque instantâneo e exige pneus com carcaça reforçada e composto de baixa resistência ao rolamento para maximizar a autonomia elétrica. Na Carplus você encontra a medida original 215/55 R17 a pronta entrega com montagem anti-risco sem encostar no verniz das rodas.",
-      recommendedMeasureSlug: "pneu-215-55-r17-curitiba"
+      recommendedMeasureSlug: "pneu-215-55-r17-curitiba",
+      faqs: [
+        {
+          q: "Qual pneu serve no BYD King?",
+          a: "O BYD King no Brasil vem equipado principalmente com pneus 215/55 R17 (aro 17), existindo também especificações documentadas para 225/60 R16."
+        },
+        {
+          q: "Quanto custa um pneu para BYD King?",
+          a: "Temos o menor preço garantido em Curitiba com montagem computadorizada gratuita e bicos novos inclusos. Consulte no WhatsApp (41) 3082-7282."
+        },
+        {
+          q: "Onde comprar pneu para BYD King em Curitiba?",
+          a: "Na Carplus Pneus (Av. Presidente Arthur da Silva Bernardes, 1323, Portão), com rampa de alinhamento 3D de alta precisão."
+        },
+        {
+          q: "A Carplus troca pneus de veículos elétricos e híbridos?",
+          a: "Sim, somos preparados para sedãs híbridos plug-in e elétricos, com elevadores seguros e técnicos treinados."
+        },
+        {
+          q: "Como saber a medida correta do pneu do BYD King?",
+          a: "Verifique a gravação na lateral do pneu ou a etiqueta informativa na coluna da porta do motorista."
+        },
+        {
+          q: "Existe diferença de pneus entre Dolphin, Dolphin GS e Dolphin Mini?",
+          a: "Sim, o King adota medida de sedã médio (215/55 R17), enquanto a linha Dolphin utiliza medidas específicas para hatches e compactos (175/55 R16 a 205/50 R17)."
+        }
+      ]
     }
   };
 
@@ -1009,21 +1122,15 @@ export default function BydClusterPages({
           {/* Quick FAQ */}
           <div className="bg-white border border-gray-200 rounded-2xl p-6 space-y-4 shadow-sm">
             <h3 className="text-base font-black font-mono text-gray-950 uppercase">
-              Perguntas sobre Pneu do {config.modelName}
+              Perguntas Frequentes sobre Pneu do {config.modelName}
             </h3>
             <div className="space-y-3 text-xs text-gray-700">
-              <div className="bg-gray-50 p-3.5 rounded-xl border border-gray-150 space-y-1">
-                <strong className="text-gray-950 block">Qual medida de pneu vem no {config.modelName}?</strong>
-                <p className="leading-relaxed">
-                  As configurações mais frequentes utilizam {config.measures.join(" ou ")}. Confirme sempre a etiqueta informativa na porta do motorista.
-                </p>
-              </div>
-              <div className="bg-gray-50 p-3.5 rounded-xl border border-gray-150 space-y-1">
-                <strong className="text-gray-950 block">Onde comprar e trocar em Curitiba?</strong>
-                <p className="leading-relaxed">
-                  Na Carplus Pneus (Av. Presidente Arthur da Silva Bernardes, 1323, Portão). Montagem computadorizada, bicos novos e alinhamento 3D inclusos.
-                </p>
-              </div>
+              {config.faqs.map((faq, fIdx) => (
+                <div key={fIdx} className="bg-gray-50 p-4 rounded-xl border border-gray-150 space-y-1.5">
+                  <strong className="text-gray-950 block text-sm font-bold">{faq.q}</strong>
+                  <p className="leading-relaxed text-gray-700">{faq.a}</p>
+                </div>
+              ))}
             </div>
           </div>
 
