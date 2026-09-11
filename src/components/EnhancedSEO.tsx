@@ -39,10 +39,18 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     canonicalUrl = `${domain}/${currentView}`;
   }
 
-  // 1b. Determine Robots Control (Indexable vs Technical/Admin/Cart)
+  // 1b. Determine Robots Control (Indexable vs Technical/Admin/Cart/Filter parameters)
   let robotsContent = "index, follow";
-  if (currentView === 'carrinho') {
-    robotsContent = "noindex, follow"; // Transacional / Carrinho: preserva link equity sem gastar crawl budget
+  const hasFilterOrSearchParam = typeof window !== 'undefined' && window.location.search && (
+    window.location.search.includes('busca=') ||
+    window.location.search.includes('marca=') ||
+    window.location.search.includes('aro=') ||
+    window.location.search.includes('largura=') ||
+    window.location.search.includes('perfil=')
+  );
+
+  if (currentView === 'carrinho' || hasFilterOrSearchParam) {
+    robotsContent = "noindex, follow"; // Preserva link equity e permite rastreamento sem indexar combinatórias do filtro
   } else if (currentView === 'admin-indexacao') {
     robotsContent = "noindex, nofollow"; // Painel técnico administrativo
   }

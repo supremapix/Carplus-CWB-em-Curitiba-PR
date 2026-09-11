@@ -142,7 +142,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
         callout: {
           type: 'tip',
-          title: 'Mais de 200 Avaliações 5.0 Estrelas no Google',
+          title: 'Avaliações Positivas de Clientes no Google',
           text: 'A confiança de quem já fez serviços na Carplus é comprovada no Google Maps. Transparência no orçamento, sem empurrar serviços desnecessários e com preços justos de verdade.'
         }
       }

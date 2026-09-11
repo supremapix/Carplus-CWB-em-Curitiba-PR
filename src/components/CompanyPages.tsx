@@ -2653,10 +2653,10 @@ export default function CompanyPages({
 
                       <div className="space-y-4 text-xs sm:text-sm text-gray-650 text-justify leading-relaxed font-semibold">
                         <p>
-                          A <strong className="text-gray-900">Carplus Pneus</strong> é uma referência histórica em mecânica expressa e reposição de borrachas homologadas que atende com maestria moradores do bairro ou região de <strong className="text-yellow-650">{seoTarget.name}</strong> há mais de <strong className="text-gray-905 font-mono">35 anos de atuação comercial sólida em Curitiba</strong>.
+                          A <strong className="text-gray-900">Carplus Pneus & Oficina</strong> está localizada na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba - PR, e atende com excelência clientes de <strong className="text-yellow-650">{seoTarget.name}</strong> e toda a Região Metropolitana.
                         </p>
                         <p>
-                          Oferecemos um portfólio completo com as melhores marcas mundiais em estoque (Bridgestone, Michelin, Pirelli, Dunlop e muito mais). Todos os pneus comprados em nosso portal já incluem montagem técnica gratuita e troca de bicos mágicos em nossa sede na Arthur Bernardes. Contamos com técnicos qualificados para cuidar do seu automóvel.
+                          Oferecemos um portfólio completo com as marcas líderes do mercado em estoque (Bridgestone, Michelin, Pirelli, Dunlop, Goodyear, Continental e muito mais). Todos os pneus contam com montagem técnica gratuita e troca de válvulas novas em nossa loja sede do Portão.
                         </p>
                       </div>
                     </div>
