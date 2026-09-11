@@ -627,14 +627,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
               "itemOffered": {
                 "@type": "Product",
                 "name": `Pneus Aro ${cleanAroNum || seoTarget.name} Novos Homologados`,
-                "description": `Linha completa de pneus aro ${cleanAroNum || seoTarget.name} das marcas ${brandsText} com garantia de 5 anos e montagem grátis em Curitiba.`,
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "5.0",
-                  "reviewCount": "214",
-                  "bestRating": "5",
-                  "worstRating": "1"
-                }
+                "description": `Linha completa de pneus aro ${cleanAroNum || seoTarget.name} das marcas ${brandsText} com garantia de 5 anos e montagem grátis em Curitiba.`
               },
               "priceCurrency": "BRL",
               "price": startingPrice,

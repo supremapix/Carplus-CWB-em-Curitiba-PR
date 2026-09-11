@@ -71,8 +71,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: 'pneus-para-carro-eletrico-em-curitiba',
     slug: 'pneus-para-carro-eletrico-em-curitiba',
-    title: 'Pneus para Carro Elétrico em Curitiba: Por que a Carplus é a Escolha Nº 1 (e tem o menor preço)?',
-    h1: 'Pneus para Carro Elétrico em Curitiba: Por que a Carplus é a Escolha Nº 1 (e tem o menor preço)?',
+    title: 'Pneus para Carro Elétrico em Curitiba: Guia Técnico de Pneus e Troca Especializada',
+    h1: 'Pneus para Carro Elétrico em Curitiba: Guia Técnico de Pneus e Troca Especializada',
     category: 'Pneus',
     summary: 'Guia completo para proprietários de BYD, GWM, Volvo e Tesla em Curitiba e RMC. Descubra a tecnologia dos pneus HL para elétricos, Pirelli Elect com menor preço garantido e alinhamento 3D especializado no Portão.',
     metaTitle: 'Pneus para Carro Elétrico em Curitiba | Menor Preço | Carplus',

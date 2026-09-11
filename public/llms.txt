@@ -1,6 +1,13 @@
-# Carplus Pneus
+# Carplus Pneus & Oficina
 
-> Loja especializada em pneus localizada no bairro Portão, em Curitiba, Paraná.
+> Loja e centro automotivo especializado em pneus e manutenção no bairro Portão, em Curitiba, Paraná.
+
+## Entidade Principal
+
+- **Nome:** Carplus Pneus & Oficina
+- **Endereço:** Av. Presidente Arthur da Silva Bernardes, 1323 — Bairro Portão, Curitiba - PR, CEP 80320-300
+- **Telefone / WhatsApp:** (41) 3082-7282
+- **Horário de Funcionamento:** Segunda a Sexta: 08h00 às 18h00 | Sábado: 08h00 às 12h00
 
 ## Especialidade principal
 

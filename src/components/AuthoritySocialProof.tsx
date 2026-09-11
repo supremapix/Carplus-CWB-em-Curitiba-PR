@@ -171,15 +171,15 @@ export default function AuthoritySocialProof() {
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 bg-[#f49e1a]/15 text-gray-950 border border-[#f49e1a]/30 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4 shadow-xs">
             <Award className="w-4 h-4 text-[#f49e1a]" />
-            <span>Mais de 200 Avaliações 5 Estrelas no Google</span>
+            <span>Avaliações Positivas no Google</span>
           </div>
 
           <h2 className="text-2xl sm:text-4xl font-black text-gray-950 uppercase tracking-tight font-display mb-4">
-            Por Que Somos a Oficina Nº 1 <span className="text-[#f49e1a] underline decoration-[#f49e1a]/40">e Mais Barata</span> de Curitiba?
+            Sua Opção de Confiança em <span className="text-[#f49e1a] underline decoration-[#f49e1a]/40">Pneus e Oficina</span> em Curitiba
           </h2>
 
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-            Não acredite apenas em palavras: confira a experiência real de motoristas de Curitiba e Região Metropolitana que economizaram, receberam atendimento honesto do <strong>Matheus, Vinicius e Jocimar</strong> e garantiram pneus homologados com montagem grátis.
+            Confira a experiência de clientes de Curitiba e Região Metropolitana que receberam atendimento técnico do <strong>Matheus, Vinicius e Jocimar</strong> com pneus homologados e montagem profissional.
           </p>
         </div>
 
@@ -191,8 +191,8 @@ export default function AuthoritySocialProof() {
                 <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <span className="text-xl sm:text-2xl font-black text-gray-950 font-display">Nota 5.0 Máxima</span>
-            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">214+ Avaliações Reais Google</span>
+            <span className="text-xl sm:text-2xl font-black text-gray-950 font-display">Excelente Nota</span>
+            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Avaliações no Google</span>
           </div>
 
           <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 shadow-sm text-center flex flex-col items-center justify-center">
