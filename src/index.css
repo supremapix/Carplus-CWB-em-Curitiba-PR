@@ -27,6 +27,17 @@
   animation-play-state: paused;
 }
 
+.animate-marquee-tires {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 1100s linear infinite;
+}
+
+.animate-marquee-tires:hover {
+  animation-play-state: paused;
+}
+
 .animate-marquee-slow {
   display: flex;
   width: max-content;

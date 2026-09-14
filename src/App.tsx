@@ -17,7 +17,6 @@ import CarplusVideosSection from './components/CarplusVideosSection';
 import AuthoritySocialProof from './components/AuthoritySocialProof';
 import InstagramFeed from './components/InstagramFeed';
 import { Tire, CartItem, CatalogTire } from './types';
-import FloatingShare from './components/FloatingShare';
 import TireCatalogView from './components/TireCatalogView';
 import CatalogTireDetail from './components/CatalogTireDetail';
 import AutoCenterSection from './components/AutoCenterSection';
@@ -1048,8 +1047,8 @@ export default function App() {
                 onClick={() => setIsConveyorPaused(!isConveyorPaused)}
               >
                 {/* Repeating list for seamless slider loops */}
-                <div className={`flex gap-6 animate-marquee ${isConveyorPaused ? 'animate-marquee-paused' : ''}`}>
-                  {[...spotlightOffers, ...spotlightOffers, ...spotlightOffers, ...spotlightOffers, ...spotlightOffers].map((t, index) => (
+                <div className={`flex gap-6 animate-marquee-tires ${isConveyorPaused ? 'animate-marquee-paused' : ''}`}>
+                  {[...spotlightOffers, ...spotlightOffers].map((t, index) => (
                     <div 
                       key={`conveyor-tile-${t.id}-${index}`}
                       onClick={(e) => {
@@ -2357,10 +2356,9 @@ export default function App() {
       {/* Instagram Feed Section */}
       <InstagramFeed />
 
-      {/* Floating Live Chat & Booking trigger */}
+      {/* Floating WhatsApp trigger */}
       <LiveWhatsAppChat />
       <ScrollToTop />
-      <FloatingShare currentView={currentView} seoTarget={seoTarget} selectedTire={selectedTire} />
 
       {/* Structured Footer */}
       <Footer onNavigate={(page) => {
