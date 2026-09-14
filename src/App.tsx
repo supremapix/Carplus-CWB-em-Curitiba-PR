@@ -980,10 +980,14 @@ export default function App() {
               setSeoTarget(null);
               setSelectedBlogSlug(null);
             }}
-            onNavigateToPage={(page) => {
+            onNavigateToPage={(page, slug) => {
               setCurrentView(page);
               setSeoTarget(null);
-              setSelectedBlogSlug(null);
+              if (page === 'blog' && slug) {
+                setSelectedBlogSlug(slug);
+              } else if (page !== 'blog') {
+                setSelectedBlogSlug(null);
+              }
             }}
             onSelectSeoTarget={(target) => {
               setCurrentView('seo-landing');
