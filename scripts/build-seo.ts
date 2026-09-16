@@ -135,187 +135,7 @@ const RIM_CARS: Record<number, string[]> = {
   20: ["Toyota SW4", "Range Rover Evoque", "Porsche Macan", "BMW X5", "Audi Q7"]
 };
 
-// Sitemaps Generator
-function generateSitemaps() {
-  console.log("Generating segmented sitemaps (Phase 2, rate=80)...");
-  
-  const publicDir = path.join(process.cwd(), 'public');
-  const distDir = path.join(process.cwd(), 'dist');
-
-  if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir, { recursive: true });
-  }
-
-  const makeSitemapxml = (urls: { loc: string; priority: string }[]) => {
-    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-    urls.forEach(u => {
-      xml += `  <url>\n`;
-      xml += `    <loc>${u.loc}</loc>\n`;
-      xml += `    <changefreq>weekly</changefreq>\n`;
-      xml += `    <priority>${u.priority}</priority>\n`;
-      xml += `  </url>\n`;
-    });
-    xml += `</urlset>\n`;
-    return xml;
-  };
-
-  const writeSitemapFile = (filename: string, content: string) => {
-    fs.writeFileSync(path.join(publicDir, filename), content);
-    if (fs.existsSync(distDir)) {
-      fs.writeFileSync(path.join(distDir, filename), content);
-    }
-    console.log(`Sitemap written: ${filename}`);
-  };
-
-  // 1. sitemap-institucional.xml (Strictly deduplicated with Set)
-  const instUrls: { loc: string; priority: string }[] = [];
-  const seenInstUrls = new Set<string>();
-
-  const addInstUrl = (loc: string, priority: string) => {
-    if (!seenInstUrls.has(loc)) {
-      seenInstUrls.add(loc);
-      instUrls.push({ loc, priority });
-    }
-  };
-
-  const staticPages = [
-    { loc: DOMAIN, priority: "1.0" },
-    { loc: `${DOMAIN}/quem-somos`, priority: "0.8" },
-    { loc: `${DOMAIN}/contato`, priority: "0.8" },
-    { loc: `${DOMAIN}/mapa-do-site`, priority: "0.8" },
-    { loc: `${DOMAIN}/curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/regiao-metropolitana`, priority: "0.9" },
-    { loc: `${DOMAIN}/politica-privacidades`, priority: "0.3" },
-    { loc: `${DOMAIN}/politica-devolucao`, priority: "0.3" },
-    { loc: `${DOMAIN}/oficina-do-pneu-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/garagem-de-pneus-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/pneus-pirelli-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/alinhamento-3d-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/blog`, priority: "0.8" },
-    { loc: `${DOMAIN}/xbri-pneus-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/pneus-baratos-em-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/melhor-site-para-comprar-pneus`, priority: "0.9" },
-    { loc: `${DOMAIN}/distribuidora-de-pneus-importados-atacado-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/pneu-hankook-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/pneus-bridgestone-curitiba-precos`, priority: "0.9" },
-    { loc: `${DOMAIN}/barao-pneus-e-oficina-bacacheri-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/barao-pneus-sao-jose-pinhais`, priority: "0.9" },
-    { loc: `${DOMAIN}/pneus-em-curitiba-melhor-preco`, priority: "0.9" },
-    { loc: `${DOMAIN}/distribuidora-de-pneus-em-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/bana-pneus`, priority: "0.9" },
-    { loc: `${DOMAIN}/loja-de-pneus-em-curitiba`, priority: "0.9" },
-    { loc: `${DOMAIN}/pneus-pirelli-em-curitiba-melhor-preco`, priority: "0.9" },
-    { loc: `${DOMAIN}/barao-pneus-e-oficina-portao`, priority: "0.9" },
-    { loc: `${DOMAIN}/auto-center-curitiba`, priority: "0.95" },
-    { loc: `${DOMAIN}/troca-de-pneus-curitiba`, priority: "0.95" },
-    { loc: `${DOMAIN}/centro-automotivo-portao`, priority: "0.95" },
-  ];
-  staticPages.forEach(u => addInstUrl(u.loc, u.priority));
-
-  // Add unique product slugs (deduplicating identical slugs in TIRES_DATA)
-  TIRES_DATA.forEach(t => {
-    addInstUrl(`${DOMAIN}/pneu/${getTireSlug(t)}`, "0.8");
-  });
-  writeSitemapFile('sitemap-institucional.xml', makeSitemapxml(instUrls));
-
-  // 2. sitemap-bairros.xml
-  const bairroUrls: { loc: string; priority: string }[] = [];
-  OFFICIAL_NEIGHBORHOODS.forEach(n => {
-    if (isPageReleased(n, 'bairro', 80)) {
-      bairroUrls.push({ loc: `${DOMAIN}/bairro/${toSlug(n)}`, priority: "0.7" });
-      bairroUrls.push({ loc: `${DOMAIN}/pneus-no-${toSlug(n)}`, priority: "0.8" });
-      if (n === "Cidade Industrial (CIC)") {
-        bairroUrls.push({ loc: `${DOMAIN}/bairro/cic`, priority: "0.7" });
-        bairroUrls.push({ loc: `${DOMAIN}/pneus-no-cic`, priority: "0.8" });
-      }
-    }
-  });
-  NON_OFFICIAL_NEIGHBORHOODS.forEach(n => {
-    if (isPageReleased(n.name, 'bairro', 80)) {
-      bairroUrls.push({ loc: `${DOMAIN}/bairro/${toSlug(n.name)}`, priority: "0.7" });
-      bairroUrls.push({ loc: `${DOMAIN}/pneus-no-${toSlug(n.name)}`, priority: "0.8" });
-    }
-  });
-  writeSitemapFile('sitemap-bairros.xml', makeSitemapxml(bairroUrls));
-
-  // 3. sitemap-cidades.xml
-  const cidadeUrls: { loc: string; priority: string }[] = [];
-  METROPOLITAN_CITIES.forEach(c => {
-    if (isPageReleased(c, 'cidade', 80)) {
-      cidadeUrls.push({ loc: `${DOMAIN}/cidade/${toSlug(c)}`, priority: "0.7" });
-      cidadeUrls.push({ loc: `${DOMAIN}/pneus-em-${toSlug(c)}`, priority: "0.8" });
-    }
-  });
-  writeSitemapFile('sitemap-cidades.xml', makeSitemapxml(cidadeUrls));
-
-  // 4. sitemap-carros.xml
-  const popularCarNames = [
-    "Fiat Palio", "Fiat Uno", "Fiat Argo", "Fiat Cronos", "Fiat Mobi", "Fiat Strada",
-    "VW Gol", "VW Voyage", "VW Polo", "VW Fox", "VW Virtus", "VW Saveiro", "VW T-Cross", "VW Nivus",
-    "Chevrolet Onix", "Chevrolet Prisma", "Chevrolet Spin", "Chevrolet Tracker", "Chevrolet Cobalt",
-    "Honda Civic", "Honda Fit", "Honda HR-V", "Honda City",
-    "Toyota Corolla", "Toyota Etios", "Toyota Yaris", "Toyota Hilux",
-    "Hyundai HB20", "Hyundai HB20S", "Hyundai Creta",
-    "Ford Ka", "Ford EcoSport", "Renault Sandero", "Renault Kwid", "Renault Duster",
-    "Jeep Compass", "Jeep Renegade", "Nissan Kicks", "Nissan Versa"
-  ];
-  const carroUrls: { loc: string; priority: string }[] = [];
-  popularCarNames.forEach(car => {
-    carroUrls.push({ loc: `${DOMAIN}/carro/${toSlug(car)}`, priority: "0.7" });
-  });
-  writeSitemapFile('sitemap-carros.xml', makeSitemapxml(carroUrls));
-
-  // 5. sitemap-aros.xml
-  const aroUrls: { loc: string; priority: string }[] = [];
-  AROS.forEach(a => {
-    aroUrls.push({ loc: `${DOMAIN}/aro/${a}`, priority: "0.8" });
-  });
-  writeSitemapFile('sitemap-aros.xml', makeSitemapxml(aroUrls));
-
-  // 6. sitemap-blog.xml
-  const blogUrls: { loc: string; priority: string }[] = [
-    { loc: `${DOMAIN}/blog`, priority: "0.8" }
-  ];
-  const seenBlogUrls = new Set<string>();
-  seenBlogUrls.add(`${DOMAIN}/blog`);
-
-  BLOG_POSTS.forEach(p => {
-    const loc = `${DOMAIN}/blog/${p.slug}`;
-    if (!seenBlogUrls.has(loc)) {
-      seenBlogUrls.add(loc);
-      blogUrls.push({ loc, priority: "0.7" });
-    }
-  });
-  writeSitemapFile('sitemap-blog.xml', makeSitemapxml(blogUrls));
-
-  // 7. sitemap-index.xml
-  let indexXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-  indexXml += `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-  
-  const sitemaps = [
-    'sitemap-institucional.xml',
-    'sitemap-bairros.xml',
-    'sitemap-cidades.xml',
-    'sitemap-carros.xml',
-    'sitemap-aros.xml',
-    'sitemap-blog.xml'
-  ];
-  sitemaps.forEach(s => {
-    indexXml += `  <sitemap>\n`;
-    indexXml += `    <loc>${DOMAIN}/${s}</loc>\n`;
-    indexXml += `  </sitemap>\n`;
-  });
-  indexXml += `</sitemapindex>\n`;
-
-  fs.writeFileSync(path.join(publicDir, 'sitemap-index.xml'), indexXml);
-  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), indexXml);
-  
-  if (fs.existsSync(distDir)) {
-    fs.writeFileSync(path.join(distDir, 'sitemap-index.xml'), indexXml);
-    fs.writeFileSync(path.join(distDir, 'sitemap.xml'), indexXml);
-  }
-}
+// Sitemaps & Robots generation logic is linked directly with the prerendered routes below
 
 // Robots Generator
 function generateRobots() {
@@ -992,33 +812,22 @@ function renderIdRedirectHtml(canonicalSlugUrl: string): string {
 }
 
 // ==========================================
-// Main Static HTML Prerendering Routine
+// Main Static HTML Prerendering Routine & Sitemaps
 // ==========================================
-function runPrerendering() {
-  console.log("Starting Real Semantic Static HTML Prerendering...");
-  
-  const distPath = path.join(process.cwd(), 'dist');
-  const templatePath = path.join(distPath, 'index.html');
 
-  if (!fs.existsSync(templatePath)) {
-    console.warn("dist/index.html not found. Please run 'npm run build' first.");
-    return;
-  }
+interface PrerenderRoute {
+  path: string;
+  title: string;
+  desc: string;
+  keywords: string;
+  schema: any;
+  isIndexable: boolean;
+  customBodyHtml?: string;
+  isRedirect?: boolean;
+  redirectTargetUrl?: string;
+}
 
-  const templateHtml = fs.readFileSync(templatePath, 'utf8');
-
-  interface PrerenderRoute {
-    path: string;
-    title: string;
-    desc: string;
-    keywords: string;
-    schema: any;
-    isIndexable: boolean;
-    customBodyHtml?: string;
-    isRedirect?: boolean;
-    redirectTargetUrl?: string;
-  }
-
+function getAllPrerenderRoutes(): PrerenderRoute[] {
   const routes: PrerenderRoute[] = [];
 
   const makeLocalBusiness = (areaServedName?: string) => ({
@@ -1336,6 +1145,163 @@ function runPrerendering() {
     });
   });
 
+  return routes;
+}
+
+function generateSitemaps(routes: PrerenderRoute[]) {
+  console.log("Generating segmented sitemaps strictly synchronized with indexable routes...");
+  
+  const publicDir = path.join(process.cwd(), 'public');
+  const distDir = path.join(process.cwd(), 'dist');
+
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true });
+  }
+
+  const makeSitemapxml = (urls: { loc: string; priority: string }[]) => {
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+    urls.forEach(u => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${u.loc}</loc>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>${u.priority}</priority>\n`;
+      xml += `  </url>\n`;
+    });
+    xml += `</urlset>\n`;
+    return xml;
+  };
+
+  const writeSitemapFile = (filename: string, content: string) => {
+    fs.writeFileSync(path.join(publicDir, filename), content);
+    if (fs.existsSync(distDir)) {
+      fs.writeFileSync(path.join(distDir, filename), content);
+    }
+    console.log(`Sitemap written: ${filename}`);
+  };
+
+  // Only take routes that are indexable and not redirects
+  const indexableRoutes = routes.filter(r => r.isIndexable && !r.isRedirect);
+
+  // 1. sitemap-institucional.xml (Home, static pages, high-intent pages, products)
+  const instUrls: { loc: string; priority: string }[] = [];
+  const seenInstUrls = new Set<string>();
+
+  const addInstUrl = (loc: string, priority: string) => {
+    if (!seenInstUrls.has(loc)) {
+      seenInstUrls.add(loc);
+      instUrls.push({ loc, priority });
+    }
+  };
+
+  // Home (matches canonical https://www.carpluscwb.com.br/)
+  addInstUrl(`${DOMAIN}/`, "1.0");
+
+  indexableRoutes.forEach(r => {
+    if (r.path.startsWith('pneu/')) {
+      addInstUrl(`${DOMAIN}/${r.path}`, "0.8");
+    } else if (
+      !r.path.startsWith('bairro/') &&
+      !r.path.startsWith('cidade/') &&
+      !r.path.startsWith('carro/') &&
+      !r.path.startsWith('aro/') &&
+      r.path !== 'blog' &&
+      !r.path.startsWith('blog/')
+    ) {
+      addInstUrl(`${DOMAIN}/${r.path}`, r.path.startsWith('politica-') ? "0.3" : "0.9");
+    }
+  });
+  writeSitemapFile('sitemap-institucional.xml', makeSitemapxml(instUrls));
+
+  // 2. sitemap-bairros.xml
+  const bairroUrls: { loc: string; priority: string }[] = [];
+  indexableRoutes.forEach(r => {
+    if (r.path.startsWith('bairro/')) {
+      bairroUrls.push({ loc: `${DOMAIN}/${r.path}`, priority: "0.7" });
+    }
+  });
+  writeSitemapFile('sitemap-bairros.xml', makeSitemapxml(bairroUrls));
+
+  // 3. sitemap-cidades.xml
+  const cidadeUrls: { loc: string; priority: string }[] = [];
+  indexableRoutes.forEach(r => {
+    if (r.path.startsWith('cidade/')) {
+      cidadeUrls.push({ loc: `${DOMAIN}/${r.path}`, priority: "0.7" });
+    }
+  });
+  writeSitemapFile('sitemap-cidades.xml', makeSitemapxml(cidadeUrls));
+
+  // 4. sitemap-carros.xml
+  const carroUrls: { loc: string; priority: string }[] = [];
+  indexableRoutes.forEach(r => {
+    if (r.path.startsWith('carro/')) {
+      carroUrls.push({ loc: `${DOMAIN}/${r.path}`, priority: "0.7" });
+    }
+  });
+  writeSitemapFile('sitemap-carros.xml', makeSitemapxml(carroUrls));
+
+  // 5. sitemap-aros.xml
+  const aroUrls: { loc: string; priority: string }[] = [];
+  indexableRoutes.forEach(r => {
+    if (r.path.startsWith('aro/')) {
+      aroUrls.push({ loc: `${DOMAIN}/${r.path}`, priority: "0.8" });
+    }
+  });
+  writeSitemapFile('sitemap-aros.xml', makeSitemapxml(aroUrls));
+
+  // 6. sitemap-blog.xml
+  const blogUrls: { loc: string; priority: string }[] = [];
+  indexableRoutes.forEach(r => {
+    if (r.path === 'blog' || r.path.startsWith('blog/')) {
+      blogUrls.push({ loc: `${DOMAIN}/${r.path}`, priority: r.path === 'blog' ? "0.8" : "0.7" });
+    }
+  });
+  writeSitemapFile('sitemap-blog.xml', makeSitemapxml(blogUrls));
+
+  // 7. sitemap-index.xml (include all segmented sitemaps with >0 URLs)
+  const allSegmented = [
+    { name: 'sitemap-institucional.xml', list: instUrls },
+    { name: 'sitemap-bairros.xml', list: bairroUrls },
+    { name: 'sitemap-cidades.xml', list: cidadeUrls },
+    { name: 'sitemap-carros.xml', list: carroUrls },
+    { name: 'sitemap-aros.xml', list: aroUrls },
+    { name: 'sitemap-blog.xml', list: blogUrls }
+  ];
+
+  let indexXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  indexXml += `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  
+  allSegmented.forEach(s => {
+    if (s.list.length > 0) {
+      indexXml += `  <sitemap>\n`;
+      indexXml += `    <loc>${DOMAIN}/${s.name}</loc>\n`;
+      indexXml += `  </sitemap>\n`;
+    }
+  });
+  indexXml += `</sitemapindex>\n`;
+
+  fs.writeFileSync(path.join(publicDir, 'sitemap-index.xml'), indexXml);
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), indexXml);
+  
+  if (fs.existsSync(distDir)) {
+    fs.writeFileSync(path.join(distDir, 'sitemap-index.xml'), indexXml);
+    fs.writeFileSync(path.join(distDir, 'sitemap.xml'), indexXml);
+  }
+}
+
+function runPrerendering(routes: PrerenderRoute[]) {
+  console.log("Starting Real Semantic Static HTML Prerendering...");
+  
+  const distPath = path.join(process.cwd(), 'dist');
+  const templatePath = path.join(distPath, 'index.html');
+
+  if (!fs.existsSync(templatePath)) {
+    console.warn("dist/index.html not found. Please run 'npm run build' first.");
+    return;
+  }
+
+  const templateHtml = fs.readFileSync(templatePath, 'utf8');
+
   console.log(`Writing pre-rendered static HTML for ${routes.length} paths...`);
 
   // Update homepage (dist/index.html) with semantic pre-rendered shell
@@ -1411,9 +1377,10 @@ function runPrerendering() {
 
 // Main execution block
 try {
-  generateSitemaps();
+  const routes = getAllPrerenderRoutes();
+  runPrerendering(routes);
+  generateSitemaps(routes);
   generateRobots();
-  runPrerendering();
 } catch (e) {
   console.error("Error building SEO scripts: ", e);
 }
