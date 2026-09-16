@@ -7,6 +7,7 @@ import CartDrawer from './components/CartDrawer';
 import ServiceHistory from './components/ServiceHistory';
 import TireFinderWizard from './components/TireFinderWizard';
 import LiveWhatsAppChat from './components/LiveWhatsAppChat';
+import FloatingShare from './components/FloatingShare';
 import ScrollToTop from './components/ScrollToTop';
 import CompanyPages from './components/CompanyPages';
 import TireDetail from './components/TireDetail';
@@ -2360,7 +2361,12 @@ export default function App() {
       {/* Instagram Feed Section */}
       <InstagramFeed />
 
-      {/* Floating WhatsApp trigger */}
+      {/* Floating Share trigger and Live WhatsApp trigger */}
+      <FloatingShare 
+        currentView={currentView} 
+        seoTarget={seoTarget} 
+        selectedTire={selectedTire} 
+      />
       <LiveWhatsAppChat />
       <ScrollToTop />
 

@@ -1,27 +1,134 @@
-import React, { useState } from 'react';
-import { Share2, X, Link2, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { Share2, X, Link2, Check, ChevronLeft, ChevronRight, Camera, ExternalLink } from 'lucide-react';
 import { toSlug } from '../utils/slugify';
 
-const SITE_GALLERY = [
+// 100% Fotos reais da loja física, recepção, showroom e oficina técnica Carplus no Portão Curitiba
+export const REAL_SITE_GALLERY = [
   {
-    title: "Vistoria Jeep Compass",
-    url: "/images/galeria/jeep-compass.webp"
+    title: "Fachada & Recepção Carplus Portão",
+    url: "/images/galeria/fachada-carplus.webp",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/fachada-carplus.webp",
+    category: "Fachada Oficial"
   },
   {
-    title: "Alinhamento Computadorizado 3D",
-    url: "/images/galeria/alinhamento-jeep.webp"
+    title: "Showroom de Pneus Novos & Pirelli",
+    url: "/images/galeria/loja-de-pneus-em-curitiba.webp",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/loja-de-pneus-em-curitiba.webp",
+    category: "Showroom"
   },
   {
-    title: "Montagem Técnica de Pneus",
-    url: "/images/galeria/troca-pneu.webp"
+    title: "Auto Center Pneus no Portão",
+    url: "/images/galeria/auto-center-pneus-portao.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/auto-center-pneus-portao.jpg",
+    category: "Oficina Própria"
   },
   {
-    title: "Check-up Técnico de Motores",
-    url: "/images/galeria/mecanico-motor.webp"
+    title: "Alinhamento 3D Computadorizado Laser",
+    url: "/images/galeria/alinhamento.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/alinhamento.jpg",
+    category: "Geometria 3D"
   },
   {
-    title: "Oficina Própria Completa",
-    url: "/images/galeria/oficina-carros.webp"
+    title: "Nossa Equipe de Técnicos Habilitados",
+    url: "/images/galeria/tecnicos.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/tecnicos.jpg",
+    category: "Equipe Técnica"
+  },
+  {
+    title: "Troca de Pneus de Alta Performance",
+    url: "/images/galeria/troca-de-pneus.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/troca-de-pneus.jpg",
+    category: "Borracharia Avançada"
+  },
+  {
+    title: "Rampa de Geometria e Freios",
+    url: "/images/galeria/rampa-de-geometria.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/rampa-de-geometria.jpg",
+    category: "Rampa 3D"
+  },
+  {
+    title: "Montagem Técnica com Válvula/Bico Grátis",
+    url: "/images/galeria/montagem-tecnica.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/montagem-tecnica.jpg",
+    category: "Montagem Técnica"
+  },
+  {
+    title: "Cuidado na Troca de Rodas de Liga Leve",
+    url: "/images/galeria/rodas-de-liga-leve.webp",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/rodas-de-liga-leve.webp",
+    category: "Rodas de Liga Leve"
+  },
+  {
+    title: "Mostruário Especial de Pneus Novos",
+    url: "/images/galeria/mostruario-pneus-novos.webp",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/mostruario-pneus-novos.webp",
+    category: "Estoque Físico"
+  },
+  {
+    title: "Exposição e Estoque Próprio de Pneus",
+    url: "/images/galeria/show-row-pneus.webp",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/show-row-pneus.webp",
+    category: "Estoque Próprio"
+  },
+  {
+    title: "Recepção e Espera Climatizada",
+    url: "/images/galeria/recepcao.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/recepcao.jpg",
+    category: "Atendimento"
+  },
+  {
+    title: "Serviço Especial para Camionetes e SUVs",
+    url: "/images/galeria/caminhonete-suv.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/caminhonete-suv.jpg",
+    category: "SUVs & Pickups"
+  },
+  {
+    title: "Consultoria e Avaliação Estrutural",
+    url: "/images/galeria/consultoria-avaliacao-estrutural.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/consultoria-avaliacao-estrutural.jpg",
+    category: "Diagnóstico Preventivo"
+  },
+  {
+    title: "Auto Center de Pneus em Curitiba",
+    url: "/images/galeria/auto-center-de-pneus-em-curitiba.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/auto-center-de-pneus-em-curitiba.jpg",
+    category: "Centro Automotivo"
+  },
+  {
+    title: "Pneus e Serviços Auto Center",
+    url: "/images/galeria/pneus-auto-center.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/pneus-auto-center.jpg",
+    category: "Pneus & Serviços"
+  },
+  {
+    title: "Vistoria e Alinhamento Técnico de Suspensão",
+    url: "/images/quemsomos/vistoria-alinhamento.jpg",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/vistoria-alinhamento.jpg",
+    category: "Inspeção Suspensão"
+  },
+  {
+    title: "Amplo Elevador Automotivo de Alta Capacidade",
+    url: "/images/quemsomos/amplo-elevador.png",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/amplo-elevador.png",
+    category: "Elevador Automotivo"
+  },
+  {
+    title: "Acabamento Seguro e Cuidado com as Rodas",
+    url: "/images/quemsomos/acabamento-seguro.png",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/acabamento-seguro.png",
+    category: "Torquímetro & Cuidado"
+  },
+  {
+    title: "Check-up de Motores & Fluidos Auto Center",
+    url: "/images/quemsomos/check-up-motores-fluidos-auto-center.png",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/check-up-motores-fluidos-auto-center.png",
+    category: "Check-up Preventivo"
+  },
+  {
+    title: "Alinhamento Computadorizado Tridimensional Laser",
+    url: "/images/quemsomos/alinhamento-computadorizado-tridmencional.png",
+    remoteUrl: "https://img.carplusautos.com.br/cwb/alinhamento-computadorizado-tridmencional.png",
+    category: "Tecnologia 3D"
   }
 ];
 
@@ -35,6 +142,24 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
+
+  // Lista dinâmica: somente imagens reais do site/loja física Carplus e, se houver pneu selecionado, a foto real do pneu
+  const galleryList = useMemo(() => {
+    if (selectedTire && (selectedTire.image || selectedTire.imagem)) {
+      const tireImg = selectedTire.image || selectedTire.imagem;
+      const tireItem = {
+        title: `Pneu ${selectedTire.brand} ${selectedTire.model} (${selectedTire.medida || `${selectedTire.width}/${selectedTire.aspectRatio} R${selectedTire.rim}`})`,
+        url: tireImg,
+        remoteUrl: tireImg,
+        category: 'Pneu Real do Catálogo'
+      };
+      return [tireItem, ...REAL_SITE_GALLERY];
+    }
+    return REAL_SITE_GALLERY;
+  }, [selectedTire]);
+
+  const safeImageIndex = imageIndex >= galleryList.length ? 0 : imageIndex;
+  const currentPhoto = galleryList[safeImageIndex];
 
   // Determine share URL and text dynamically
   const getShareInfo = () => {
@@ -104,7 +229,10 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
   };
 
   const { url: shareUrl, title: shareTitle, text: shareText } = getShareInfo();
-  const shareImage = SITE_GALLERY[imageIndex].url;
+  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://www.carpluscwb.com.br';
+  const shareImageAbsolute = currentPhoto.url.startsWith('http') 
+    ? currentPhoto.url 
+    : `${origin}${currentPhoto.url}`;
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareUrl).then(() => {
@@ -117,7 +245,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     let href = '';
     const encodedUrl = encodeURIComponent(shareUrl);
     const encodedText = encodeURIComponent(shareText);
-    const encodedImage = encodeURIComponent(shareImage);
+    const encodedImage = encodeURIComponent(shareImageAbsolute);
     const encodedTitle = encodeURIComponent(shareTitle);
 
     switch (platform) {
@@ -144,23 +272,24 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
   };
 
   const nextImage = () => {
-    setImageIndex((prev) => (prev === SITE_GALLERY.length - 1 ? 0 : prev + 1));
+    setImageIndex((prev) => (prev === galleryList.length - 1 ? 0 : prev + 1));
   };
 
   const prevImage = () => {
-    setImageIndex((prev) => (prev === 0 ? SITE_GALLERY.length - 1 : prev - 1));
+    setImageIndex((prev) => (prev === 0 ? galleryList.length - 1 : prev - 1));
   };
 
   return (
-    <div className="fixed bottom-24 left-6 z-50 font-sans" id="floating-share-widget">
+    <div className="fixed bottom-6 left-6 z-50 font-sans" id="floating-share-widget">
       {/* Container holding button and the popover */}
       <div className="relative">
         
         {/* Floating Share Button with alert/pulse effect */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative flex items-center justify-center bg-[#f49e1a] text-gray-950 p-4 rounded-full shadow-2xl hover:bg-yellow-400 border-2 border-black transition duration-300 transform hover:scale-105"
+          className="relative flex items-center justify-center bg-[#f49e1a] text-gray-950 p-3.5 sm:p-4 rounded-full shadow-2xl hover:bg-yellow-400 border-2 border-black transition duration-300 transform hover:scale-105 cursor-pointer"
           aria-label="Compartilhar página"
+          title="Compartilhar esta página"
           id="share-floating-trigger-btn"
         >
           {/* Animated pulsing outer waves */}
@@ -172,74 +301,130 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
             <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-950"></span>
           </span>
 
-          <Share2 className="w-6 h-6 shrink-0" />
+          <Share2 className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
         </button>
 
-        {/* Share menu panel with 65% transparency (backdrop-blur ensures readability) */}
+        {/* Share menu panel with 75% dark transparency (backdrop-blur ensures readability) */}
         {isOpen && (
           <div 
-            className="absolute bottom-16 left-0 bg-gray-950/65 text-white backdrop-blur-md border border-white/20 p-5 rounded-2xl w-80 sm:w-96 shadow-2xl transition duration-300 z-50"
+            className="absolute bottom-16 left-0 bg-gray-950/85 text-white backdrop-blur-md border border-white/20 p-4 sm:p-5 rounded-2xl w-80 sm:w-96 shadow-2xl transition duration-300 z-50 max-h-[85vh] overflow-y-auto"
             id="share-transparent-popup-menu"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3.5">
               <div className="flex items-center gap-2">
                 <Share2 className="w-5 h-5 text-[#f49e1a]" />
                 <h4 className="font-extrabold text-sm uppercase tracking-wider text-[#f49e1a]">Compartilhar Página</h4>
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-white hover:bg-white/10 p-1 rounded-full transition"
+                className="text-gray-300 hover:text-white hover:bg-white/10 p-1 rounded-full transition cursor-pointer"
                 id="close-share-popup-btn"
+                aria-label="Fechar janela de compartilhamento"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Gallery Image Attachment Selector */}
-            <div className="mb-4 bg-black/40 border border-white/10 rounded-xl p-2.5">
-              <span className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                Anexar Imagem da Galeria:
-              </span>
-              <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-900 group">
+            {/* Gallery Image Attachment Selector - APENAS FOTOS REAIS DO SITE/LOJA */}
+            <div className="mb-3.5 bg-black/45 border border-white/10 rounded-xl p-2.5">
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="flex items-center gap-1.5 text-[10px] font-bold text-gray-300 uppercase tracking-wider">
+                  <Camera className="w-3.5 h-3.5 text-[#f49e1a]" />
+                  Fotos Reais da Loja & Oficina:
+                </span>
+                <span className="text-[10px] font-mono font-bold text-yellow-400 bg-yellow-500/20 px-2 py-0.5 rounded-full border border-yellow-500/30">
+                  {safeImageIndex + 1} de {galleryList.length}
+                </span>
+              </div>
+
+              {/* Main Photo Frame */}
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-900 group border border-white/10">
                 <img 
-                  src={shareImage} 
-                  alt={SITE_GALLERY[imageIndex].title}
-                  className="w-full h-full object-cover"
+                  src={currentPhoto.url} 
+                  alt={currentPhoto.title}
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (currentPhoto.remoteUrl && target.src !== currentPhoto.remoteUrl) {
+                      target.src = currentPhoto.remoteUrl;
+                    }
+                  }}
+                  className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
-                  <p className="text-xs font-semibold text-white truncate w-full">
-                    {SITE_GALLERY[imageIndex].title}
-                  </p>
+                
+                {/* Overlay Badge & Title */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-2.5">
+                  <div className="flex justify-start">
+                    <span className="bg-black/70 backdrop-blur-sm text-yellow-400 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded border border-yellow-400/40">
+                      {currentPhoto.category}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-white truncate w-full shadow-sm">
+                      {currentPhoto.title}
+                    </p>
+                    <p className="text-[9px] text-gray-300 font-medium truncate">
+                      Foto real registrada na Av. Arthur Bernardes, Portão
+                    </p>
+                  </div>
                 </div>
                 
                 {/* Arrow Navigation */}
                 <button 
                   onClick={prevImage}
-                  className="absolute left-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-1 rounded-full transition"
-                  aria-label="Imagem anterior"
+                  className="absolute left-1.5 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-1.5 rounded-full transition cursor-pointer border border-white/20"
+                  aria-label="Foto anterior"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button 
                   onClick={nextImage}
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-1 rounded-full transition"
-                  aria-label="Próxima imagem"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-1.5 rounded-full transition cursor-pointer border border-white/20"
+                  aria-label="Próxima foto"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
+
+              {/* Thumbnails strip for fast selection of real photos */}
+              <div className="flex gap-1.5 overflow-x-auto mt-2 pt-1 pb-1 scrollbar-thin">
+                {galleryList.map((item, idx) => (
+                  <button
+                    key={`share-thumb-${idx}`}
+                    onClick={() => setImageIndex(idx)}
+                    className={`relative w-11 h-8 rounded shrink-0 overflow-hidden border transition cursor-pointer ${
+                      idx === safeImageIndex 
+                        ? 'border-[#f49e1a] ring-1 ring-[#f49e1a] opacity-100 scale-105' 
+                        : 'border-white/20 opacity-50 hover:opacity-80'
+                    }`}
+                    title={item.title}
+                    aria-label={`Selecionar foto ${item.title}`}
+                  >
+                    <img 
+                      src={item.url} 
+                      alt="" 
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (item.remoteUrl && target.src !== item.remoteUrl) {
+                          target.src = item.remoteUrl;
+                        }
+                      }}
+                      className="w-full h-full object-cover" 
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Content Preview */}
-            <div className="mb-4 bg-black/40 border border-white/10 rounded-xl p-3 text-xs">
+            <div className="mb-3.5 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs">
               <span className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">
                 Texto do Compartilhamento:
               </span>
               <p className="text-gray-200 line-clamp-2 font-medium leading-relaxed">
                 {shareTitle}
               </p>
-              <p className="text-gray-400 line-clamp-2 mt-1 leading-relaxed">
+              <p className="text-gray-400 line-clamp-2 mt-1 leading-relaxed text-[11px]">
                 {shareText}
               </p>
             </div>
@@ -250,7 +435,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
               {/* WhatsApp */}
               <button
                 onClick={() => handleShare('whatsapp')}
-                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-green-600/20 hover:bg-green-600/35 border border-green-500/30 hover:border-green-500/50 transition group"
+                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-green-600/20 hover:bg-green-600/35 border border-green-500/30 hover:border-green-500/50 transition group cursor-pointer"
                 id="share-whatsapp-btn"
               >
                 <svg className="w-5 h-5 text-green-400 group-hover:scale-110 transition duration-250" viewBox="0 0 24 24" fill="currentColor">
@@ -262,7 +447,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
               {/* Twitter / X */}
               <button
                 onClick={() => handleShare('twitter')}
-                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition group"
+                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition group cursor-pointer"
                 id="share-twitter-btn"
               >
                 <svg className="w-5 h-5 text-gray-200 group-hover:scale-110 transition duration-250" viewBox="0 0 24 24" fill="currentColor">
@@ -274,7 +459,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
               {/* Facebook */}
               <button
                 onClick={() => handleShare('facebook')}
-                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/35 border border-blue-500/30 hover:border-blue-500/50 transition group"
+                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/35 border border-blue-500/30 hover:border-blue-500/50 transition group cursor-pointer"
                 id="share-facebook-btn"
               >
                 <svg className="w-5 h-5 text-blue-400 group-hover:scale-110 transition duration-250" viewBox="0 0 24 24" fill="currentColor">
@@ -286,7 +471,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
               {/* Pinterest */}
               <button
                 onClick={() => handleShare('pinterest')}
-                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-red-600/20 hover:bg-red-600/35 border border-red-500/30 hover:border-red-500/50 transition group"
+                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-red-600/20 hover:bg-red-600/35 border border-red-500/30 hover:border-red-500/50 transition group cursor-pointer"
                 id="share-pinterest-btn"
               >
                 <svg className="w-5 h-5 text-red-400 group-hover:scale-110 transition duration-250" viewBox="0 0 24 24" fill="currentColor">
@@ -298,7 +483,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
               {/* LinkedIn */}
               <button
                 onClick={() => handleShare('linkedin')}
-                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-blue-700/20 hover:bg-blue-700/35 border border-blue-500/30 hover:border-blue-500/50 transition group"
+                className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl bg-blue-700/20 hover:bg-blue-700/35 border border-blue-500/30 hover:border-blue-500/50 transition group cursor-pointer"
                 id="share-linkedin-btn"
               >
                 <svg className="w-5 h-5 text-blue-300 group-hover:scale-110 transition duration-250" viewBox="0 0 24 24" fill="currentColor">
@@ -310,7 +495,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
               {/* Copy URL */}
               <button
                 onClick={handleCopyLink}
-                className={`flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl transition border group ${
+                className={`flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl transition border group cursor-pointer ${
                   copied 
                     ? 'bg-yellow-500/30 border-yellow-500/50' 
                     : 'bg-white/5 hover:bg-white/10 border-white/10 hover:border-white/20'
@@ -331,7 +516,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
 
             {/* Note footer with 65% opacity theme styling */}
             <p className="text-[9px] text-gray-400 text-center mt-3 leading-relaxed">
-              * Escolha uma foto técnica da nossa oficina para anexar à sua postagem.
+              * Fotos 100% reais das instalações da Carplus Portão (Av. Arthur Bernardes, Curitiba).
             </p>
           </div>
         )}
