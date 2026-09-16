@@ -1,29 +1,41 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import TireCard from './components/TireCard';
 import CatalogTireCard from './components/CatalogTireCard';
-import CartDrawer from './components/CartDrawer';
 import ServiceHistory from './components/ServiceHistory';
-import TireFinderWizard from './components/TireFinderWizard';
-import LiveWhatsAppChat from './components/LiveWhatsAppChat';
-import FloatingShare from './components/FloatingShare';
 import ScrollToTop from './components/ScrollToTop';
-import CompanyPages from './components/CompanyPages';
-import TireDetail from './components/TireDetail';
 import { TIRES_DATA, MOST_SEARCHED_MEASURES, getBrandFallbackImage } from './data';
 import { toSlug, getTireSlug } from './utils/slugify';
 import EnhancedSEO from './components/EnhancedSEO';
-import CarplusVideosSection from './components/CarplusVideosSection';
-import AuthoritySocialProof from './components/AuthoritySocialProof';
-import InstagramFeed from './components/InstagramFeed';
 import { Tire, CartItem, CatalogTire } from './types';
-import TireCatalogView from './components/TireCatalogView';
-import CatalogTireDetail from './components/CatalogTireDetail';
 import AutoCenterSection from './components/AutoCenterSection';
-import { CATALOGO_PNEUS, findCatalogTireBySlug } from './data/catalogo-pneus';
+import { 
+  getCatalogSync, 
+  getFullCatalog, 
+  findCatalogTireBySlug,
+  DEFAULT_BRANDS,
+  DEFAULT_RIMS,
+  DEFAULT_WIDTHS,
+  DEFAULT_PROFILES,
+  PRESET_RIM_COUNTS,
+  PRESET_BRAND_COUNTS
+} from './data/catalogo-pneus';
 import { PROMO_TIRES } from './data/promoTires';
 import { HeroPromoTires } from './components/HeroPromoTires';
+
+// Lazy-loaded heavy components to optimize initial bundle and TBT
+const CartDrawer = React.lazy(() => import('./components/CartDrawer'));
+const TireFinderWizard = React.lazy(() => import('./components/TireFinderWizard'));
+const LiveWhatsAppChat = React.lazy(() => import('./components/LiveWhatsAppChat'));
+const FloatingShare = React.lazy(() => import('./components/FloatingShare'));
+const CompanyPages = React.lazy(() => import('./components/CompanyPages'));
+const TireDetail = React.lazy(() => import('./components/TireDetail'));
+const TireCatalogView = React.lazy(() => import('./components/TireCatalogView'));
+const CatalogTireDetail = React.lazy(() => import('./components/CatalogTireDetail'));
+const CarplusVideosSection = React.lazy(() => import('./components/CarplusVideosSection'));
+const AuthoritySocialProof = React.lazy(() => import('./components/AuthoritySocialProof'));
+const InstagramFeed = React.lazy(() => import('./components/InstagramFeed'));
 
 const BRAND_LOGOS: Record<string, string> = {
   BRIDGESTONE: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/bridgestone.svg",
@@ -158,11 +170,20 @@ export default function App() {
   // Unique manufacturers in our listing
   const carManufacturers = ['Todos', 'Fiat', 'Volkswagen', 'Chevrolet', 'Hyundai', 'Renault', 'Ford', 'Toyota', 'Honda', 'BYD', 'GWM'];
 
-  // Dynamic filter lists derived from complete official catalog (1,962 models)
-  const uniqueBrands = ['Todas', ...Array.from(new Set(CATALOGO_PNEUS.map(t => t.marca))).sort()];
-  const uniqueRims = ['Todos', ...Array.from(new Set(CATALOGO_PNEUS.map(t => t.aro))).sort((a, b) => a - b)];
-  const uniqueWidths = ['Todos', ...Array.from(new Set(CATALOGO_PNEUS.map(t => t.largura))).sort((a, b) => a - b)];
-  const uniqueProfiles = ['Todos', ...Array.from(new Set(CATALOGO_PNEUS.map(t => t.perfil))).sort((a, b) => a - b)];
+  // Catalog State (loads lightweight fallback synchronously, full 1,962 models asynchronously in background)
+  const [catalogList, setCatalogList] = useState<CatalogTire[]>(() => getCatalogSync());
+
+  useEffect(() => {
+    getFullCatalog().then(full => {
+      setCatalogList(full);
+    });
+  }, []);
+
+  // Dynamic filter lists derived from catalog
+  const uniqueBrands = ['Todas', ...DEFAULT_BRANDS];
+  const uniqueRims = ['Todos', ...DEFAULT_RIMS];
+  const uniqueWidths = ['Todos', ...DEFAULT_WIDTHS];
+  const uniqueProfiles = ['Todos', ...DEFAULT_PROFILES];
 
   // Refs for scrolling smoothly
   const homeRef = useRef<HTMLDivElement>(null);
@@ -385,9 +406,9 @@ export default function App() {
     setOnlyOffers(false);
   };
 
-  // Filter core logic across all 1,962 models in CATALOGO_PNEUS
+  // Filter core logic across models in catalogList
   const filteredCatalogTires = useMemo(() => {
-    let result = CATALOGO_PNEUS;
+    let result = catalogList;
 
     if (keyword.trim()) {
       const q = keyword.toLowerCase().trim();
@@ -424,7 +445,7 @@ export default function App() {
     }
 
     return result;
-  }, [keyword, selectedBrand, selectedRim, filterWidth, filterProfile, onlyOffers]);
+  }, [catalogList, keyword, selectedBrand, selectedRim, filterWidth, filterProfile, onlyOffers]);
 
   // Pagination logic
   const [currentPage, setCurrentPage] = useState(1);
@@ -928,93 +949,101 @@ export default function App() {
       {/* Main Content Layout */}
       {currentView === 'catalogo-detalhe' && selectedCatalogTire ? (
         <main className="flex-1 w-full bg-white">
-          <CatalogTireDetail 
-            tire={selectedCatalogTire}
-            onBack={() => {
-              setCurrentView('catalogo-pneus');
-              setSelectedCatalogTire(null);
-            }}
-            onSelectTire={(tire) => {
-              setSelectedCatalogTire(tire);
-              window.scrollTo({ top: 0, behavior: 'instant' });
-            }}
-          />
+          <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center p-12 text-sm text-gray-500 font-mono">Carregando detalhes do pneu...</div>}>
+            <CatalogTireDetail 
+              tire={selectedCatalogTire}
+              onBack={() => {
+                setCurrentView('catalogo-pneus');
+                setSelectedCatalogTire(null);
+              }}
+              onSelectTire={(tire) => {
+                setSelectedCatalogTire(tire);
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+            />
+          </Suspense>
         </main>
       ) : currentView === 'catalogo-pneus' ? (
         <main className="flex-1 w-full bg-white">
-          <TireCatalogView 
-            initialBrand={catalogFilterBrand}
-            initialRim={catalogFilterRim === 'Todos' ? undefined : catalogFilterRim}
-            initialCategory={catalogFilterCategory}
-            initialSearch={catalogFilterSearch}
-            onSelectTire={(tire) => {
-              setSelectedCatalogTire(tire);
-              setCurrentView('catalogo-detalhe');
-            }}
-            onNavigateHome={() => {
-              setCurrentView('home');
-            }}
-          />
+          <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center p-12 text-sm text-gray-500 font-mono">Carregando catálogo de pneus...</div>}>
+            <TireCatalogView 
+              initialBrand={catalogFilterBrand}
+              initialRim={catalogFilterRim === 'Todos' ? undefined : catalogFilterRim}
+              initialCategory={catalogFilterCategory}
+              initialSearch={catalogFilterSearch}
+              onSelectTire={(tire) => {
+                setSelectedCatalogTire(tire);
+                setCurrentView('catalogo-detalhe');
+              }}
+              onNavigateHome={() => {
+                setCurrentView('home');
+              }}
+            />
+          </Suspense>
         </main>
       ) : currentView === 'pneu-detalhes' && selectedTire ? (
         <main className="flex-1 w-full bg-white">
-          <TireDetail 
-            tire={selectedTire}
-            onBack={() => {
-              setCurrentView('home');
-              setSelectedTire(null);
-            }}
-            onAddToCart={handleAddToCart}
-          />
+          <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center p-12 text-sm text-gray-500 font-mono">Carregando detalhes do produto...</div>}>
+            <TireDetail 
+              tire={selectedTire}
+              onBack={() => {
+                setCurrentView('home');
+                setSelectedTire(null);
+              }}
+              onAddToCart={handleAddToCart}
+            />
+          </Suspense>
         </main>
       ) : currentView !== 'home' ? (
         <main className="flex-1 w-full bg-white">
-          <CompanyPages 
-            view={currentView}
-            seoTarget={seoTarget}
-            selectedBlogSlug={selectedBlogSlug}
-            onSelectBlogSlug={(slug) => {
-              setSelectedBlogSlug(slug);
-            }}
-            onNavigateHome={() => {
-              setCurrentView('home');
-              setSeoTarget(null);
-              setSelectedBlogSlug(null);
-            }}
-            onNavigateToPage={(page, slug) => {
-              setCurrentView(page);
-              setSeoTarget(null);
-              if (page === 'blog' && slug) {
+          <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center p-12 text-sm text-gray-500 font-mono">Carregando página...</div>}>
+            <CompanyPages 
+              view={currentView}
+              seoTarget={seoTarget}
+              selectedBlogSlug={selectedBlogSlug}
+              onSelectBlogSlug={(slug) => {
                 setSelectedBlogSlug(slug);
-              } else if (page !== 'blog') {
+              }}
+              onNavigateHome={() => {
+                setCurrentView('home');
+                setSeoTarget(null);
                 setSelectedBlogSlug(null);
-              }
-            }}
-            onSelectSeoTarget={(target) => {
-              setCurrentView('seo-landing');
-              setSeoTarget(target);
-            }}
-            onAddToCart={handleAddToCart}
-            onSelectTire={handleShowTireDetail}
-            onSelectRimFromSeo={(rim) => {
-              setSelectedRim(rim);
-              setCurrentView('home');
-              setTimeout(() => {
-                handleScrollToSection('catalog');
-              }, 50);
-            }}
-            onSelectBrandFromSeo={(brand) => {
-              setSelectedBrand(brand);
-              setCurrentView('home');
-              setTimeout(() => {
-                handleScrollToSection('catalog');
-              }, 50);
-            }}
-            cartItems={cartItems}
-            onUpdateQuantity={handleUpdateQuantity}
-            onRemoveFromCart={handleRemoveFromCart}
-            onClearCart={handleClearCart}
-          />
+              }}
+              onNavigateToPage={(page, slug) => {
+                setCurrentView(page);
+                setSeoTarget(null);
+                if (page === 'blog' && slug) {
+                  setSelectedBlogSlug(slug);
+                } else if (page !== 'blog') {
+                  setSelectedBlogSlug(null);
+                }
+              }}
+              onSelectSeoTarget={(target) => {
+                setCurrentView('seo-landing');
+                setSeoTarget(target);
+              }}
+              onAddToCart={handleAddToCart}
+              onSelectTire={handleShowTireDetail}
+              onSelectRimFromSeo={(rim) => {
+                setSelectedRim(rim);
+                setCurrentView('home');
+                setTimeout(() => {
+                  handleScrollToSection('catalog');
+                }, 50);
+              }}
+              onSelectBrandFromSeo={(brand) => {
+                setSelectedBrand(brand);
+                setCurrentView('home');
+                setTimeout(() => {
+                  handleScrollToSection('catalog');
+                }, 50);
+              }}
+              cartItems={cartItems}
+              onUpdateQuantity={handleUpdateQuantity}
+              onRemoveFromCart={handleRemoveFromCart}
+              onClearCart={handleClearCart}
+            />
+          </Suspense>
         </main>
       ) : (
         <main className="flex-1 w-full pb-16 bg-white">
@@ -1296,10 +1325,12 @@ export default function App() {
 
         {/* Wizard application guide (Qual pneu vai no meu carro?) */}
         <section ref={finderRef} className="max-w-7xl mx-auto px-4 mt-8" id="finder">
-          <TireFinderWizard 
-            onSearchMeasure={handleSearchMeasure}
-            onAddToCart={handleAddToCart}
-          />
+          <Suspense fallback={<div className="p-6 text-center text-gray-400 font-mono text-sm">Carregando assistente...</div>}>
+            <TireFinderWizard 
+              onSearchMeasure={handleSearchMeasure}
+              onAddToCart={handleAddToCart}
+            />
+          </Suspense>
         </section>
 
         {/* Full-Fidelity Interactive Solutions Hub (Aros, Marcas, Carros Lookups) */}
@@ -1419,7 +1450,9 @@ export default function App() {
                   {[13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 'Todos'].map((rimVal) => {
                     const isSelected = selectedRim === rimVal || (rimVal === 'Todos' && selectedRim === 'Todos');
                     const isAll = rimVal === 'Todos';
-                    const rimCount = isAll ? CATALOGO_PNEUS.length : CATALOGO_PNEUS.filter(t => t.aro === rimVal).length;
+                    const rimCount = isAll 
+                      ? (catalogList.length > 50 ? catalogList.length : 1962)
+                      : (catalogList.length > 50 ? catalogList.filter(t => t.aro === rimVal).length : (PRESET_RIM_COUNTS[rimVal as number] || 0));
                     return (
                       <button
                         key={`rim-portal-${rimVal}`}
@@ -1442,7 +1475,7 @@ export default function App() {
                         <div className="mt-1">
                           <div className="text-xs font-bold leading-none">{isAll ? 'Todos' : `Aro ${rimVal}`}</div>
                           <div className={`text-[9px] mt-1 ${isSelected ? 'text-black font-black' : 'text-black font-mono'}`}>
-                            {isAll ? `${CATALOGO_PNEUS.length}` : `${rimCount}`} mod.
+                            {`${rimCount}`} mod.
                           </div>
                         </div>
                       </button>
@@ -1617,7 +1650,9 @@ export default function App() {
                         <div className="mt-3 pt-2 border-t border-gray-200 flex justify-between items-center text-[10px]">
                           <span className="text-gray-500 font-bold font-mono">
                             {(() => {
-                              const count = CATALOGO_PNEUS.filter(t => t.marca.toUpperCase() === brandMeta.name.toUpperCase()).length;
+                              const count = catalogList.length > 50 
+                                ? catalogList.filter(t => t.marca.toUpperCase() === brandMeta.name.toUpperCase()).length
+                                : (PRESET_BRAND_COUNTS[brandMeta.name.toUpperCase()] || 0);
                               return count > 0 ? `${count} modelos cadastrados` : 'Modelos sob encomenda';
                             })()}
                           </span>
@@ -2126,11 +2161,15 @@ export default function App() {
 
         {/* Verification Videos Section for Elderly and High Trust */}
         <section className="max-w-7xl mx-auto px-4">
-          <CarplusVideosSection />
+          <Suspense fallback={null}>
+            <CarplusVideosSection />
+          </Suspense>
         </section>
 
         {/* High-Authority CRO Social Proof Section (Real Google Reviews & FAQ) */}
-        <AuthoritySocialProof />
+        <Suspense fallback={null}>
+          <AuthoritySocialProof />
+        </Suspense>
 
         {/* Real Structure Image Gallery Section (Carplus Authentic Showroom) */}
         <section className="max-w-7xl mx-auto px-4 mt-12 bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-sm" id="carplus-real-gallery">
@@ -2359,15 +2398,19 @@ export default function App() {
       </main>)}
 
       {/* Instagram Feed Section */}
-      <InstagramFeed />
+      <Suspense fallback={null}>
+        <InstagramFeed />
+      </Suspense>
 
       {/* Floating Share trigger and Live WhatsApp trigger */}
-      <FloatingShare 
-        currentView={currentView} 
-        seoTarget={seoTarget} 
-        selectedTire={selectedTire} 
-      />
-      <LiveWhatsAppChat />
+      <Suspense fallback={null}>
+        <FloatingShare 
+          currentView={currentView} 
+          seoTarget={seoTarget} 
+          selectedTire={selectedTire} 
+        />
+        <LiveWhatsAppChat />
+      </Suspense>
       <ScrollToTop />
 
       {/* Structured Footer */}
@@ -2377,21 +2420,23 @@ export default function App() {
       }} />
 
       {/* Cart side panel Drawer */}
-      <CartDrawer 
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
-        onRemoveItem={handleRemoveFromCart}
-        onUpdateQuantity={handleUpdateQuantity}
-        onClearCart={handleClearCart}
-        onNavigateToCart={() => {
-          setIsCartOpen(false);
-          setCurrentView('carrinho');
-          setSeoTarget(null);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          window.history.pushState(null, '', '/carrinho');
-        }}
-      />
+      <Suspense fallback={null}>
+        <CartDrawer 
+          isOpen={isCartOpen}
+          onClose={() => setIsCartOpen(false)}
+          cartItems={cartItems}
+          onRemoveItem={handleRemoveFromCart}
+          onUpdateQuantity={handleUpdateQuantity}
+          onClearCart={handleClearCart}
+          onNavigateToCart={() => {
+            setIsCartOpen(false);
+            setCurrentView('carrinho');
+            setSeoTarget(null);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.history.pushState(null, '', '/carrinho');
+          }}
+        />
+      </Suspense>
 
     </div>
   );

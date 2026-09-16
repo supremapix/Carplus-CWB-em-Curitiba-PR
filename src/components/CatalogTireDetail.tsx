@@ -5,7 +5,7 @@ import {
   Wrench, CheckCircle, Car, Sparkles, Share2, Copy, Check, 
   ExternalLink, Info, AlertTriangle, SlidersHorizontal, Award
 } from 'lucide-react';
-import { CATALOGO_PNEUS } from '../data/catalogo-pneus';
+import { getCatalogSync, getFullCatalog } from '../data/catalogo-pneus';
 import CatalogTireCard from './CatalogTireCard';
 
 interface CatalogTireDetailProps {
@@ -24,9 +24,16 @@ export default function CatalogTireDetail({
   const [quantity, setQuantity] = useState(4);
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<'especificacoes' | 'compatibilidade' | 'servicos'>('especificacoes');
+  const [relatedList, setRelatedList] = useState<CatalogTire[]>(() => {
+    const list = getCatalogSync();
+    return list.filter(t => t.id !== tire.id && (t.aro === tire.aro || t.marca === tire.marca)).slice(0, 4);
+  });
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    getFullCatalog().then(fullList => {
+      setRelatedList(fullList.filter(t => t.id !== tire.id && (t.aro === tire.aro || t.marca === tire.marca)).slice(0, 4));
+    }).catch(() => {});
   }, [tire.id, tire.slug]);
 
   const displayImage = tire.imagemGrande || tire.imagem || '/images/pneus/pneu-pirelli-p400-evo-600x600.webp';
@@ -47,7 +54,7 @@ export default function CatalogTireDetail({
   };
 
   // Related tires (same rim or same brand)
-  const relatedTires = CATALOGO_PNEUS.filter(t => t.id !== tire.id && (t.aro === tire.aro || t.marca === tire.marca)).slice(0, 4);
+  const relatedTires = relatedList;
 
   return (
     <div className="bg-gray-50 min-h-screen py-8 px-4 sm:px-6 font-sans" id="catalog-tire-detail-view">

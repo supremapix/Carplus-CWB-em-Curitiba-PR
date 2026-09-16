@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CAR_MODELS_DATA, TIRES_DATA, getBrandFallbackImage } from '../data';
-import { CATALOGO_PNEUS } from '../data/catalogo-pneus';
+import { getCatalogSync } from '../data/catalogo-pneus';
 import { CarModel, Tire, CatalogTire } from '../types';
 import { Car, Search, CheckCircle, ArrowRight, HelpCircle } from 'lucide-react';
 import { formatWhatsApp } from '../utils/whatsapp';
@@ -34,7 +34,8 @@ export default function TireFinderWizard({ onSearchMeasure, onAddToCart }: TireF
     const parts = ratio.split('/');
     if (parts.length < 3) return [];
     const [w, a, r] = parts.map(Number);
-    return CATALOGO_PNEUS.filter(t => t.largura === w && t.perfil === a && t.aro === r);
+    const catalog = getCatalogSync();
+    return catalog.filter(t => t.largura === w && t.perfil === a && t.aro === r);
   };
 
   const matchingTires = selectedCar ? getMatchingTires(selectedCar.recommendedTireRatio) : [];

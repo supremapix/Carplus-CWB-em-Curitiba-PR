@@ -6,7 +6,7 @@ import {
   Car, Wrench, AlertTriangle, Disc, Gauge, Clock, ChevronDown, ChevronUp,
   Tag, Calendar, ExternalLink, Search
 } from 'lucide-react';
-import { CATALOGO_PNEUS } from '../data/catalogo-pneus';
+import { getCatalogSync } from '../data/catalogo-pneus';
 import CatalogTireCard from './CatalogTireCard';
 import { CatalogTire, Tire } from '../types';
 
@@ -68,7 +68,7 @@ export default function BydClusterPages({
 
   // Helper to filter matching tires in official catalog
   const getMatchingCatalogTires = (width: number, aspect: number, rim: number): CatalogTire[] => {
-    return CATALOGO_PNEUS.filter(t => t.largura === width && t.perfil === aspect && t.aro === rim);
+    return getCatalogSync().filter(t => t.largura === width && t.perfil === aspect && t.aro === rim);
   };
 
   // Common warning text

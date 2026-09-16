@@ -4,7 +4,7 @@ import {
   ShoppingBag, Flame, ThumbsUp, MessageSquare, CornerDownRight,
   ArrowRight, Sparkles, Scale, Info, HelpCircle, ChevronRight, CheckCircle
 } from 'lucide-react';
-import { CATALOGO_PNEUS } from '../data/catalogo-pneus';
+import { getCatalogSync } from '../data/catalogo-pneus';
 import CatalogTireCard from './CatalogTireCard';
 import { CatalogTire } from '../types';
 
@@ -36,26 +36,27 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
 
   // Filter relevant tires from official catalog
   const relevantCatalogTires = React.useMemo(() => {
+    const catalog = getCatalogSync();
     if (view === 'xbri-pneus-curitiba') {
-      const match = CATALOGO_PNEUS.filter(t => t.marca.toLowerCase().includes('xbri'));
-      return match.length > 0 ? match.slice(0, 4) : CATALOGO_PNEUS.slice(0, 4);
+      const match = catalog.filter(t => t.marca.toLowerCase().includes('xbri'));
+      return match.length > 0 ? match.slice(0, 4) : catalog.slice(0, 4);
     }
     if (view === 'pneus-bridgestone-curitiba-precos') {
-      const match = CATALOGO_PNEUS.filter(t => t.marca.toLowerCase().includes('bridge'));
-      return match.length > 0 ? match.slice(0, 4) : CATALOGO_PNEUS.slice(0, 4);
+      const match = catalog.filter(t => t.marca.toLowerCase().includes('bridge'));
+      return match.length > 0 ? match.slice(0, 4) : catalog.slice(0, 4);
     }
     if (view === 'pneus-pirelli-em-curitiba-melhor-preco') {
-      const match = CATALOGO_PNEUS.filter(t => t.marca.toLowerCase().includes('pirelli'));
-      return match.length > 0 ? match.slice(0, 4) : CATALOGO_PNEUS.slice(0, 4);
+      const match = catalog.filter(t => t.marca.toLowerCase().includes('pirelli'));
+      return match.length > 0 ? match.slice(0, 4) : catalog.slice(0, 4);
     }
     if (view === 'pneu-hankook-curitiba') {
-      const match = CATALOGO_PNEUS.filter(t => t.marca.toLowerCase().includes('hankook'));
-      return match.length > 0 ? match.slice(0, 4) : CATALOGO_PNEUS.slice(0, 4);
+      const match = catalog.filter(t => t.marca.toLowerCase().includes('hankook'));
+      return match.length > 0 ? match.slice(0, 4) : catalog.slice(0, 4);
     }
     if (view === 'pneus-baratos-em-curitiba') {
-      return CATALOGO_PNEUS.filter(t => t.aro <= 15).slice(0, 4);
+      return catalog.filter(t => t.aro <= 15).slice(0, 4);
     }
-    return CATALOGO_PNEUS.filter(t => t.destaque).slice(0, 4);
+    return catalog.filter(t => t.destaque).slice(0, 4);
   }, [view]);
 
   const handleSelectTire = (tire: CatalogTire) => {

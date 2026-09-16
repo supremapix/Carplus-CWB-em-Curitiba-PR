@@ -1,6 +1,6 @@
 import React from 'react';
 import { RIM_SEO_DATA, RimSeoConfig } from '../data/rim-seo-data';
-import { CATALOGO_PNEUS } from '../data/catalogo-pneus';
+import { getCatalogSync } from '../data/catalogo-pneus';
 import CatalogTireCard from './CatalogTireCard';
 import { CatalogTire } from '../types';
 import { ShieldCheck, Zap, Award, CheckCircle2, MessageCircle, ArrowRight, Wrench, Sparkles, Navigation, Layers, ChevronRight } from 'lucide-react';
@@ -18,7 +18,8 @@ export default function RimAuthoritySection({ aroName, onSelectAro }: RimAuthori
 
   const formatWhatsApp = (msg: string) => `https://wa.me/554130827282?text=${encodeURIComponent(msg)}`;
 
-  const matchingCatalogTires = CATALOGO_PNEUS.filter(t => t.aro === rimConfig.number);
+  const catalog = getCatalogSync();
+  const matchingCatalogTires = catalog.filter(t => t.aro === rimConfig.number);
   const showcaseTires = matchingCatalogTires.slice(0, 8);
 
   const handleSelectCatalogTire = (tire: CatalogTire) => {

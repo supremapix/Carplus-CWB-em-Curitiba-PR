@@ -22,7 +22,7 @@ import {
   ChevronUp
 } from 'lucide-react';
 import { BLOG_POSTS, BLOG_CATEGORIES, BlogPost, getBlogPostBySlug, getRelatedBlogPosts } from '../blog-data';
-import { CATALOGO_PNEUS } from '../data/catalogo-pneus';
+import { getCatalogSync } from '../data/catalogo-pneus';
 import CatalogTireCard from './CatalogTireCard';
 import { CatalogTire } from '../types';
 import { Sparkles } from 'lucide-react';
@@ -63,8 +63,9 @@ export const BlogView: React.FC<BlogViewProps> = ({
   // Find tires referenced or relevant to this article from official catalog
   const matchingCatalogTires = useMemo(() => {
     if (!currentPost) return [];
+    const catalog = getCatalogSync();
     if (currentPost.slug === 'pneus-para-carro-eletrico-em-curitiba') {
-      return CATALOGO_PNEUS.filter(t => 
+      return catalog.filter(t => 
         t.nome.toLowerCase().includes('ev') || 
         t.categoria.toLowerCase().includes('elétr') ||
         t.medida === '175/55R16' ||
@@ -75,7 +76,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
       ).slice(0, 4);
     }
     if (currentPost.slug === 'como-escolher-rodas-carro') {
-      return CATALOGO_PNEUS.filter(t => t.aro >= 17 && (t.destaque || t.novoModelo)).slice(0, 4);
+      return catalog.filter(t => t.aro >= 17 && (t.destaque || t.novoModelo)).slice(0, 4);
     }
     if (
       currentPost.slug === 'pneu-desgastando-de-um-lado' || 
@@ -83,7 +84,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
       currentPost.slug === 'quando-fazer-alinhamento-balanceamento' ||
       currentPost.slug === 'volante-vibrando-causas'
     ) {
-      return CATALOGO_PNEUS.filter(t => 
+      return catalog.filter(t => 
         t.medida === '175/65R14' || 
         t.medida === '185/60R15' || 
         t.medida === '205/55R16' || 
@@ -91,14 +92,14 @@ export const BlogView: React.FC<BlogViewProps> = ({
       ).slice(0, 4);
     }
     if (currentPost.slug === 'revisao-carro-antes-de-viajar') {
-      return CATALOGO_PNEUS.filter(t => 
+      return catalog.filter(t => 
         t.categoria.toLowerCase().includes('suv') || 
         t.medida === '205/55R16' || 
         t.medida === '215/65R16' || 
         t.medida === '225/65R17'
       ).slice(0, 4);
     }
-    return CATALOGO_PNEUS.filter(t => t.destaque).slice(0, 4);
+    return catalog.filter(t => t.destaque).slice(0, 4);
   }, [currentPost]);
 
   // Filter posts for the list view

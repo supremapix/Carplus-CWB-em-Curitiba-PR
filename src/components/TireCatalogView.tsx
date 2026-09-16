@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { CatalogTire } from '../types';
 import { 
-  CATALOGO_PNEUS, CATALOG_BRANDS, CATALOG_CATEGORIES, 
+  getCatalogSync, getFullCatalog,
+  CATALOG_BRANDS, CATALOG_CATEGORIES, 
   CATALOG_RIMS, CATALOG_WIDTHS, CATALOG_PROFILES, 
   CATALOG_VEHICLE_TYPES 
 } from '../data/catalogo-pneus';
@@ -9,7 +10,7 @@ import CatalogTireCard from './CatalogTireCard';
 import { 
   Search, SlidersHorizontal, X, ArrowUpDown, ChevronLeft, 
   ChevronRight, Filter, Sparkles, Check, RotateCcw, 
-  Car, ShieldCheck, Tag, ShoppingBag
+  Car, ShieldCheck, Tag, ShoppingBag, Loader2
 } from 'lucide-react';
 
 interface TireCatalogViewProps {
@@ -33,6 +34,23 @@ export default function TireCatalogView({
   onSelectTire,
   onNavigateHome
 }: TireCatalogViewProps) {
+  const [catalogList, setCatalogList] = useState<CatalogTire[]>(getCatalogSync);
+  const [isLoadingCatalog, setIsLoadingCatalog] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    setIsLoadingCatalog(true);
+    getFullCatalog().then(fullList => {
+      if (isMounted) {
+        setCatalogList(fullList);
+        setIsLoadingCatalog(false);
+      }
+    }).catch(() => {
+      if (isMounted) setIsLoadingCatalog(false);
+    });
+    return () => { isMounted = false; };
+  }, []);
+
   // Filter states
   const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [selectedBrand, setSelectedBrand] = useState<string>(initialBrand || 'Todas');
@@ -79,7 +97,7 @@ export default function TireCatalogView({
 
   // Filtered and Sorted Tires calculation
   const filteredTires = useMemo(() => {
-    let result = [...CATALOGO_PNEUS];
+    let result = [...catalogList];
 
     // Search query filter (matches name, measure, brand, model, or compatible car)
     if (searchTerm.trim()) {
@@ -190,7 +208,7 @@ export default function TireCatalogView({
                   Catálogo Oficial Carplus
                 </span>
                 <span className="text-[11px] font-bold bg-yellow-500/10 text-yellow-800 px-2.5 py-0.5 rounded-full border border-yellow-500/20">
-                  {CATALOGO_PNEUS.length} Pneus em Estoque
+                  {catalogList.length > 50 ? catalogList.length : 1962} Pneus em Estoque
                 </span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-black text-gray-950">

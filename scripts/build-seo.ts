@@ -200,28 +200,28 @@ function generateSitemaps() {
   });
   writeSitemapFile('sitemap-cidades.xml', makeSitemapxml(cidadeUrls));
 
-  // 4. sitemap-carros.xml (None in Phase 2, empty with root URL to stay clean)
+  // 4. sitemap-carros.xml (Top popular car models in Curitiba)
+  const popularCarNames = [
+    "Fiat Palio", "Fiat Uno", "Fiat Argo", "Fiat Cronos", "Fiat Mobi", "Fiat Strada",
+    "VW Gol", "VW Voyage", "VW Polo", "VW Fox", "VW Virtus", "VW Saveiro", "VW T-Cross", "VW Nivus",
+    "Chevrolet Onix", "Chevrolet Prisma", "Chevrolet Spin", "Chevrolet Tracker", "Chevrolet Cobalt",
+    "Honda Civic", "Honda Fit", "Honda HR-V", "Honda City",
+    "Toyota Corolla", "Toyota Etios", "Toyota Yaris", "Toyota Hilux",
+    "Hyundai HB20", "Hyundai HB20S", "Hyundai Creta",
+    "Ford Ka", "Ford EcoSport", "Renault Sandero", "Renault Kwid", "Renault Duster",
+    "Jeep Compass", "Jeep Renegade", "Nissan Kicks", "Nissan Versa"
+  ];
   const carroUrls: { loc: string; priority: string }[] = [];
-  CARS.forEach(car => {
-    if (isPageReleased(car, 'carro', 80)) {
-      carroUrls.push({ loc: `${DOMAIN}/carro/${toSlug(car)}`, priority: "0.6" });
-    }
+  popularCarNames.forEach(car => {
+    carroUrls.push({ loc: `${DOMAIN}/carro/${toSlug(car)}`, priority: "0.7" });
   });
-  if (carroUrls.length === 0) {
-    carroUrls.push({ loc: `${DOMAIN}/curitiba`, priority: "0.1" }); // placeholder
-  }
   writeSitemapFile('sitemap-carros.xml', makeSitemapxml(carroUrls));
 
-  // 5. sitemap-aros.xml (None in Phase 2, empty with root URL to stay clean)
+  // 5. sitemap-aros.xml (High-Authority Rim Landing Pages Aro 13 ao 20)
   const aroUrls: { loc: string; priority: string }[] = [];
   AROS.forEach(a => {
-    if (isPageReleased(a, 'aro', 80)) {
-      aroUrls.push({ loc: `${DOMAIN}/aro/${a}`, priority: "0.6" });
-    }
+    aroUrls.push({ loc: `${DOMAIN}/aro/${a}`, priority: "0.8" });
   });
-  if (aroUrls.length === 0) {
-    aroUrls.push({ loc: `${DOMAIN}/curitiba`, priority: "0.1" }); // placeholder
-  }
   writeSitemapFile('sitemap-aros.xml', makeSitemapxml(aroUrls));
 
   // 6. sitemap-index.xml
@@ -233,7 +233,8 @@ function generateSitemaps() {
     'sitemap-bairros.xml',
     'sitemap-cidades.xml',
     'sitemap-carros.xml',
-    'sitemap-aros.xml'
+    'sitemap-aros.xml',
+    'sitemap-blog.xml'
   ];
   sitemaps.forEach(s => {
     indexXml += `  <sitemap>\n`;
@@ -907,25 +908,78 @@ function runPrerendering() {
 
   console.log(`Prerendering ${routes.length} paths with proper indexation robots definitions...`);
 
-  // Write static pages sequentially
+  // Helper to escape HTML attributes and text
+  const escapeHtml = (str: string) => {
+    return (str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  };
+
+  // Helper to create pre-rendered semantic HTML shell
+  const createPreRenderShell = (title: string, desc: string, pathStr: string) => {
+    return `<div id="root">
+      <header style="padding: 1rem 1.5rem; border-bottom: 1px solid #e5e7eb; background: #ffffff;">
+        <nav style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <a href="/" style="font-weight: 900; font-size: 1.25rem; color: #111827; text-decoration: none;">CARPLUS PNEUS</a>
+          <div>
+            <a href="/pneus" style="margin-right: 1rem; color: #374151; font-weight: 600; text-decoration: none;">Catálogo</a>
+            <a href="/quem-somos" style="margin-right: 1rem; color: #374151; font-weight: 600; text-decoration: none;">Quem Somos</a>
+            <a href="/contato" style="color: #374151; font-weight: 600; text-decoration: none;">Contato</a>
+          </div>
+        </nav>
+      </header>
+      <main style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, -apple-system, sans-serif;">
+        <h1 style="font-size: 1.75rem; font-weight: 800; color: #111827; line-height: 1.25; margin-bottom: 1rem;">${escapeHtml(title)}</h1>
+        <p style="font-size: 1rem; color: #4b5563; line-height: 1.6; margin-bottom: 1.5rem;">${escapeHtml(desc)}</p>
+        <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <h2 style="font-size: 1.1rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem;">Atendimento e Loja Física no Portão</h2>
+          <p style="font-size: 0.875rem; color: #4b5563; margin: 0.25rem 0;"><strong>Endereço:</strong> Av. Presidente Arthur da Silva Bernardes, 1323 - Portão, Curitiba - PR, 80320-300</p>
+          <p style="font-size: 0.875rem; color: #4b5563; margin: 0.25rem 0;"><strong>Telefone / WhatsApp:</strong> (41) 3082-7282</p>
+          <p style="font-size: 0.875rem; color: #4b5563; margin: 0.25rem 0;"><strong>Serviços:</strong> Venda de pneus novos com montagem inclusa, alinhamento 3D, balanceamento computadorizado e geometria.</p>
+        </div>
+      </main>
+    </div>`;
+  };
+
+  // Update homepage (dist/index.html) with semantic pre-rendered shell
+  const homeTitle = "Pneus, Auto Center e Oficina Mecânica em Curitiba | Carplus Portão";
+  const homeDesc = "Carplus Pneus é loja de pneus, auto center e oficina mecânica no Portão, Curitiba. Pneus novos multimarcas, montagem, alinhamento 3D, balanceamento e serviços automotivos.";
+  const homeShell = createPreRenderShell(homeTitle, homeDesc, "");
+  let updatedTemplateHtml = templateHtml.replace(/<div id="root"><\/div>/i, homeShell);
+  fs.writeFileSync(templatePath, updatedTemplateHtml);
+
+  // Write static subpages sequentially
   routes.forEach(r => {
     const targetDir = path.join(distPath, r.path);
     if (!fs.existsSync(targetDir)) {
       fs.mkdirSync(targetDir, { recursive: true });
     }
 
+    const pageUrl = `${DOMAIN}/${r.path}`;
     const robotsVal = r.isIndexable ? "index, follow" : "noindex, follow";
+    const subpageShell = createPreRenderShell(r.title, r.desc, r.path);
 
-    // Replace header values inside index.html for this layout
+    // Replace header and body values cleanly (no duplicate titles, canonicals, or OG tags)
     let rewritten = templateHtml
-      // Replace Title placeholder
-      .replace(/<title>[^<]*<\/title>/i, `<title>${r.title}</title>`)
-      // Replace or insert description
-      .replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, `<meta name="description" content="${r.desc}" />`)
-      // Inject keywords & robots control dynamically
-      .replace(/<head>/i, `<head>\n    <meta name="keywords" content="${r.keywords}" />\n    <meta name="robots" content="${robotsVal}" />\n    <link rel="canonical" href="${DOMAIN}/${r.path}" />`)
+      // Replace Title tag
+      .replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(r.title)}</title>`)
+      // Replace Description meta tag
+      .replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapeHtml(r.desc)}" />`)
+      // Replace Canonical tag cleanly
+      .replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${pageUrl}" />`)
+      // Replace Open Graph meta tags
+      .replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${escapeHtml(r.title)}" />`)
+      .replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${escapeHtml(r.desc)}" />`)
+      .replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`)
+      // Inject keywords & robots control inside <head>
+      .replace(/<head>/i, `<head>\n    <meta name="keywords" content="${escapeHtml(r.keywords)}" />\n    <meta name="robots" content="${robotsVal}" />`)
       // Inject custom JSON-LD Schema
-      .replace(/<\/head>/i, `    <script type="application/ld+json">\n${JSON.stringify(r.schema, null, 2)}\n    </script>\n  </head>`);
+      .replace(/<\/head>/i, `    <script type="application/ld+json">\n${JSON.stringify(r.schema, null, 2)}\n    </script>\n  </head>`)
+      // Inject pre-rendered semantic HTML shell
+      .replace(/<div id="root"><\/div>/i, subpageShell);
 
     fs.writeFileSync(path.join(targetDir, 'index.html'), rewritten);
   });
