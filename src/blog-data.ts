@@ -103,7 +103,7 @@ export const BLOG_POSTS: BlogPost[] = [
         level: 'h2',
         paragraphs: [
           'Se você busca pneus BYD Curitiba ou pneus GWM Curitiba com medidas originais de fábrica — desde o 175/55 R16 do Dolphin Mini até os aros 17, 18, 19 e 20 do Seal, Yuan Plus e Haval H6 —, a Carplus tem estoque a pronta entrega no bairro Portão.',
-          'Somos revendedores oficiais e especialistas em tecnologia Pirelli Elect menor preço e Continental EcoContact 6 Q. Nossa política comercial é clara e transparente: cobrimos qualquer orçamento comprovado da concorrência em Curitiba e Região Metropolitana, além de oferecer montagem computadorizada gratuita e condições em até 10x sem juros no cartão de crédito.'
+          'Trabalhamos com marcas de referência e somos especialistas em tecnologia Pirelli Elect e Continental EcoContact 6 Q. Nossa política comercial é clara e transparente: cobrimos orçamentos da concorrência em Curitiba e Região Metropolitana, além de oferecer montagem computadorizada e condições em até 10x sem juros no cartão de crédito.'
         ],
         internalLinks: [
           {

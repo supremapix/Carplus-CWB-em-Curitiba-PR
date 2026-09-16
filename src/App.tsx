@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, Suspense } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import TireCard from './components/TireCard';
@@ -170,14 +170,25 @@ export default function App() {
   // Unique manufacturers in our listing
   const carManufacturers = ['Todos', 'Fiat', 'Volkswagen', 'Chevrolet', 'Hyundai', 'Renault', 'Ford', 'Toyota', 'Honda', 'BYD', 'GWM'];
 
-  // Catalog State (loads lightweight fallback synchronously, full 1,962 models asynchronously in background)
+  // Catalog State (loads lightweight fallback synchronously, full 1,962 models on-demand only upon interaction)
   const [catalogList, setCatalogList] = useState<CatalogTire[]>(() => getCatalogSync());
+  const isCatalogLoadedRef = useRef(false);
 
-  useEffect(() => {
-    getFullCatalog().then(full => {
-      setCatalogList(full);
-    });
+  const ensureFullCatalog = useCallback(() => {
+    if (!isCatalogLoadedRef.current) {
+      isCatalogLoadedRef.current = true;
+      getFullCatalog().then(full => {
+        setCatalogList(full);
+      });
+    }
   }, []);
+
+  // Automatically ensure full catalog ONLY when navigating to full catalog or detail views
+  useEffect(() => {
+    if (currentView === 'catalogo-pneus' || currentView === 'catalogo-detalhe') {
+      ensureFullCatalog();
+    }
+  }, [currentView, ensureFullCatalog]);
 
   // Dynamic filter lists derived from catalog
   const uniqueBrands = ['Todas', ...DEFAULT_BRANDS];
@@ -343,6 +354,7 @@ export default function App() {
 
   // Quick measure filter applier (e.g. from Google searched list)
   const handleSearchMeasure = (ratioStr: string) => {
+    ensureFullCatalog();
     const cleaned = ratioStr.replace(/\s*R\s*/i, '/').replace(/r/i, '/').replace(/-/g, '/');
     const parts = cleaned.split('/').filter(Boolean);
     if (parts.length >= 3) {
@@ -1025,6 +1037,7 @@ export default function App() {
               onAddToCart={handleAddToCart}
               onSelectTire={handleShowTireDetail}
               onSelectRimFromSeo={(rim) => {
+                ensureFullCatalog();
                 setSelectedRim(rim);
                 setCurrentView('home');
                 setTimeout(() => {
@@ -1032,6 +1045,7 @@ export default function App() {
                 }, 50);
               }}
               onSelectBrandFromSeo={(brand) => {
+                ensureFullCatalog();
                 setSelectedBrand(brand);
                 setCurrentView('home');
                 setTimeout(() => {
@@ -1457,6 +1471,7 @@ export default function App() {
                       <button
                         key={`rim-portal-${rimVal}`}
                         onClick={() => {
+                          ensureFullCatalog();
                           setSelectedRim(isAll ? 'Todos' : Number(rimVal) as any);
                           handleScrollToSection('catalog');
                         }}
@@ -1624,6 +1639,7 @@ export default function App() {
                       <button
                         key={`brand-portal-${brandMeta.name}`}
                         onClick={() => {
+                          ensureFullCatalog();
                           setSelectedBrand(brandMeta.name);
                           handleScrollToSection('catalog');
                         }}
@@ -1810,7 +1826,7 @@ export default function App() {
                 style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', justifyItems: 'stretch' }}
               >
                 <button
-                  onClick={() => setSelectedBrand('Todas')}
+                  onClick={() => { ensureFullCatalog(); setSelectedBrand('Todas'); }}
                   style={selectedBrand === 'Todas' ? { textShadow: '1px 1px 2px rgba(0,0,0,0.9)' } : undefined}
                   className={`w-full h-14 min-h-[56px] px-3 py-2 border-2 text-xs font-black uppercase transition-all duration-300 cursor-pointer flex items-center justify-center text-center box-border ${
                     selectedBrand === 'Todas'
@@ -1825,7 +1841,7 @@ export default function App() {
                   return (
                     <button
                       key={`btn-logo-filter-${bName}`}
-                      onClick={() => setSelectedBrand(bName)}
+                      onClick={() => { ensureFullCatalog(); setSelectedBrand(bName); }}
                       className={`w-full h-14 min-h-[56px] px-3 py-2 border-2 bg-white flex items-center justify-center transition-all duration-300 cursor-pointer box-border ${
                         isSelected
                           ? 'border-[#f49e1a] bg-yellow-50/10'
@@ -1853,7 +1869,8 @@ export default function App() {
                 <label className="block text-xs font-black uppercase text-gray-700 mb-1">Escolher Marca</label>
                 <select
                   value={selectedBrand}
-                  onChange={(e) => setSelectedBrand(e.target.value)}
+                  onFocus={ensureFullCatalog}
+                  onChange={(e) => { ensureFullCatalog(); setSelectedBrand(e.target.value); }}
                   className="w-full text-sm font-bold border-2 border-gray-300 rounded-xl p-3 bg-white text-gray-900 focus:bg-yellow-50/10 focus:border-[#f49e1a]"
                   id="brand-dropdown"
                 >
@@ -1868,7 +1885,9 @@ export default function App() {
                 <label className="block text-xs font-black uppercase text-gray-700 mb-1">Aro (Rín)</label>
                 <select
                   value={selectedRim}
+                  onFocus={ensureFullCatalog}
                   onChange={(e) => {
+                    ensureFullCatalog();
                     const val = e.target.value;
                     setSelectedRim(val === 'Todos' ? 'Todos' : Number(val) as any);
                   }}
@@ -1887,7 +1906,8 @@ export default function App() {
                 <label className="block text-xs font-black uppercase text-gray-700 mb-1">Largura (mm)</label>
                 <select
                   value={filterWidth}
-                  onChange={(e) => setFilterWidth(e.target.value)}
+                  onFocus={ensureFullCatalog}
+                  onChange={(e) => { ensureFullCatalog(); setFilterWidth(e.target.value); }}
                   className="w-full text-sm font-bold border-2 border-gray-300 rounded-xl p-3 bg-white text-gray-900 focus:bg-yellow-50/10 focus:border-[#f49e1a]"
                   id="width-dropdown"
                 >
@@ -1903,7 +1923,8 @@ export default function App() {
                 <label className="block text-xs font-black uppercase text-gray-700 mb-1">Perfil (%)</label>
                 <select
                   value={filterProfile}
-                  onChange={(e) => setFilterProfile(e.target.value)}
+                  onFocus={ensureFullCatalog}
+                  onChange={(e) => { ensureFullCatalog(); setFilterProfile(e.target.value); }}
                   className="w-full text-sm font-bold border-2 border-gray-300 rounded-xl p-3 bg-white text-gray-905 focus:bg-yellow-50/10 focus:border-[#f49e1a]"
                   id="profile-dropdown"
                 >
@@ -1920,7 +1941,7 @@ export default function App() {
                   <input
                     type="checkbox"
                     checked={onlyOffers}
-                    onChange={(e) => setOnlyOffers(e.target.checked)}
+                    onChange={(e) => { ensureFullCatalog(); setOnlyOffers(e.target.checked); }}
                     className="w-5 h-5 rounded text-yellow-600 border-gray-300 focus:ring-yellow-500 cursor-pointer"
                   />
                   <span className="text-sm font-black text-gray-900 uppercase tracking-tight select-none">Só Pneus em Oferta</span>
@@ -1937,7 +1958,8 @@ export default function App() {
                 type="text"
                 placeholder="Busque por largura, aro, marca ou modelo (Ex: Michelin, 175/65, 185/60/15)..."
                 value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
+                onFocus={ensureFullCatalog}
+                onChange={(e) => { ensureFullCatalog(); setKeyword(e.target.value); }}
                 className="w-full text-sm sm:text-base border-2 border-gray-300 rounded-xl pl-10 pr-4 py-3.5 bg-white text-gray-950 font-medium placeholder-gray-400 focus:border-[#f49e1a]"
                 id="catalog-search-input"
               />
