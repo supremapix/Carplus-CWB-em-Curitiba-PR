@@ -49,7 +49,7 @@ export default function CartDrawer({
       text += `- *${item.quantity}x* Pneu ${item.tire.brand} ${item.tire.model} (Medida: ${item.tire.width}/${item.tire.aspectRatio} R${item.tire.rim}) - *Preço sob consulta*\n`;
     });
 
-    text += `\n_(Montagem, Montagem de bicos comuns, e Instalação na loja inclusos gratuitamente!)_\n\n`;
+    text += `\n_(Atendimento presencial e instalação técnica na loja do Portão)_\n\n`;
 
     text += `*DADOS DO CLIENTE:*\n`;
     text += `- *Nome:* ${userName || 'Não informado'}\n`;

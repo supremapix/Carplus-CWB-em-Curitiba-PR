@@ -1080,7 +1080,7 @@ export default function App() {
                   </h2>
                 </div>
                 <span className="bg-amber-500/10 text-amber-900 text-xs font-black px-4 py-2.5 rounded-2xl border border-amber-300/60 shrink-0 hidden md:inline shadow-2xs">
-                  ● Montagem inclusa + bicos de ar novos grátis
+                  ● Pneus a pronta entrega + estrutura completa no Portão
                 </span>
               </div>
 
@@ -1165,7 +1165,7 @@ export default function App() {
               {/* Informative description paragraph under the conveyor belt for senior readability and prominence */}
               <div className="mt-4 bg-yellow-500/5 border border-yellow-500/20 rounded-2xl p-4 sm:p-5 shadow-sm">
                 <p className="text-xs sm:text-sm text-gray-800 font-black text-justify leading-relaxed">
-                  Adquira pneus novos e originais de alta durabilidade com condições imbatíveis. Na Carplus Pneus, você tem direito a <strong>montagem avançada inclusa</strong>, <strong>substituição preventiva dos bicos de ar de graça</strong> e check-up de suspensão completo sem taxas embutidas. Toque em qualquer pneu da esteira acima para consultar aplicações no seu carro ou falar com nossa gerência no WhatsApp!
+                  Adquira pneus novos e originais de alta durabilidade com condições imbatíveis. Na Carplus Pneus, você conta com <strong>montagem técnica computadorizada</strong>, <strong>alinhamento 3D de alta precisão</strong> e check-up de suspensão completo na nossa oficina. Toque em qualquer pneu da esteira acima para consultar aplicações no seu carro ou falar com nossa gerência no WhatsApp!
                 </p>
               </div>
 
@@ -1225,18 +1225,18 @@ export default function App() {
                 </h2>
 
                 <p className="text-gray-700 text-base sm:text-lg font-bold leading-relaxed max-w-2xl">
-                  Referência absoluta no Portão. Trabalhamos com as melhores marcas mundiais com preços competitivos sob consulta, oferecendo <strong className="text-gray-950 font-black">montagem avançada inclusa</strong>, <strong className="text-gray-950 font-black">bicos de ar novos grátis</strong> e parcelamento em até 10x sem juros na loja física.
+                  Referência absoluta no Portão. Trabalhamos com as melhores marcas mundiais com preços competitivos sob consulta, oferecendo <strong className="text-gray-950 font-black">montagem avançada com maquinário anti-risco</strong>, <strong className="text-gray-950 font-black">alinhamento 3D computadorizado</strong> e parcelamento em até 10x sem juros na loja física.
                 </p>
 
                 {/* Trust Highlights Row */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full py-1">
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 text-center">
-                    <span className="block text-xs font-black text-gray-950 uppercase">Montagem Grátis</span>
-                    <span className="text-[10px] text-gray-600">Na instalação no Portão</span>
+                    <span className="block text-xs font-black text-gray-950 uppercase">Montagem Técnica</span>
+                    <span className="text-[10px] text-gray-600">Maquinário anti-risco no Portão</span>
                   </div>
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 text-center">
-                    <span className="block text-xs font-black text-gray-950 uppercase">Bicos Novos</span>
-                    <span className="text-[10px] text-gray-600">Substituição inclusa</span>
+                    <span className="block text-xs font-black text-gray-950 uppercase">Alinhamento 3D</span>
+                    <span className="text-[10px] text-gray-600">Geometria computadorizada</span>
                   </div>
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 text-center col-span-2 sm:col-span-1">
                     <span className="block text-xs font-black text-gray-950 uppercase">Até 10x Sem Juros</span>
@@ -1282,7 +1282,7 @@ export default function App() {
                   Pneus em Promoção no Portão
                 </h3>
                 <p className="text-xs text-gray-600 font-medium text-center lg:text-left leading-relaxed">
-                  Confira as 20 ofertas com montagem grátis e bicos novos inclusos:
+                  Confira as 20 ofertas com pronta entrega e instalação no Portão:
                 </p>
                 
                 <div className="max-h-[380px] overflow-y-auto pr-1 space-y-2.5 custom-scrollbar" id="promo-tires-hero-list">
@@ -1568,7 +1568,7 @@ export default function App() {
                       </div>
                       <h4 className="text-base font-black text-white mt-1">Pneus para BYD em Curitiba</h4>
                       <p className="text-xs text-gray-300 mt-1 leading-relaxed">
-                        Medidas originais homologadas para BYD King (215/55 R17), Dolphin (205/50 R17, 195/60 R16), Dolphin Mini (175/55 R16) e Seal com montagem inclusa.
+                        Medidas originais homologadas para BYD King (215/55 R17), Dolphin (205/50 R17, 195/60 R16), Dolphin Mini (175/55 R16) e Seal com instalação técnica no local.
                       </p>
                     </div>
                     <div className="mt-3 flex gap-2">
@@ -1998,7 +1998,7 @@ export default function App() {
                 Pneus em Estoque no Portão • ({filteredCatalogTires.length} modelos encontrados)
               </h3>
               <p className="text-xs text-gray-500 pl-4 mt-0.5 hidden sm:block">
-                Valores sob consulta com menor preço garantido de Curitiba e montagem grátis
+                Valores sob consulta com menor preço garantido de Curitiba e instalação no Portão
               </p>
             </div>
             
@@ -2152,9 +2152,9 @@ export default function App() {
               <div className="bg-yellow-100 text-yellow-800 p-2.5 rounded-xl mb-3">
                 <ShieldCheck className="w-6 h-6 shrink-0" />
               </div>
-              <h4 className="font-bold text-sm text-gray-900 uppercase">Instalação Inclusa</h4>
+              <h4 className="font-bold text-sm text-gray-900 uppercase">Instalação Completa</h4>
               <p className="text-xs text-gray-500 leading-relaxed mt-1">
-                Comprando conosco seu pneu já sai instalado! Realizamos a troca de bico comum e montagem correta na hora em Curitiba.
+                Compre e instale no mesmo local! Realizamos montagem computadorizada anti-risco com equipe técnica especializada na hora em Curitiba.
               </p>
             </div>
 
@@ -2216,7 +2216,7 @@ export default function App() {
               { url: '/images/galeria/tecnicos.jpg', fallback: 'https://img.carplusautos.com.br/cwb/tecnicos.jpg', label: 'Nossa Equipe de Técnicos Habilitados' },
               { url: '/images/galeria/troca-de-pneus.jpg', fallback: 'https://img.carplusautos.com.br/cwb/troca-de-pneus.jpg', label: 'Troca de Pneus de Alta Performance' },
               { url: '/images/galeria/rampa-de-geometria.jpg', fallback: 'https://img.carplusautos.com.br/cwb/rampa-de-geometria.jpg', label: 'Rampa de Geometria e Freio' },
-              { url: '/images/galeria/montagem-tecnica.jpg', fallback: 'https://img.carplusautos.com.br/cwb/montagem-tecnica.jpg', label: 'Montagem Técnica Inclusa de Cortesia' },
+              { url: '/images/galeria/montagem-tecnica.jpg', fallback: 'https://img.carplusautos.com.br/cwb/montagem-tecnica.jpg', label: 'Montagem Técnica Especializada' },
               { url: '/images/galeria/rodas-de-liga-leve.webp', fallback: 'https://img.carplusautos.com.br/cwb/rodas-de-liga-leve.webp', label: 'Troca de Rodas de Liga Leve' },
               { url: '/images/galeria/mostruario-pneus-novos.webp', fallback: 'https://img.carplusautos.com.br/cwb/mostruario-pneus-novos.webp', label: 'Mostruário Especial de Pneus Novos' },
               { url: '/images/galeria/show-row-pneus.webp', fallback: 'https://img.carplusautos.com.br/cwb/show-row-pneus.webp', label: 'Exposição e Estoque Próprio' },
@@ -2276,7 +2276,7 @@ export default function App() {
               },
               {
                 q: "Onde trocar pneus em Curitiba?",
-                a: "No auto center da Carplus no Portão. Realizamos a substituição completa com desmontadoras pneumáticas anti-risco de rodas, troca de bicos novos e montagem técnica de cortesia na compra dos pneus novos."
+                a: "No auto center da Carplus no Portão. Realizamos a substituição completa com desmontadoras pneumáticas anti-risco de rodas, alinhamento 3D computadorizado e montagem técnica especializada na nossa loja física."
               },
               {
                 q: "Onde encontrar auto center com pneus em Curitiba?",
@@ -2295,12 +2295,12 @@ export default function App() {
                 a: "Na Carplus Pneus no Portão. Você escolhe os modelos desejados e realiza toda a instalação, válvulas novas, balanceamento e alinhamento no mesmo estabelecimento sem deslocamentos adicionais."
               },
               {
-                q: "Como faço para reservar um pneu em oferta e garantir a montagem inclusa?",
+                q: "Como faço para reservar um pneu em oferta e agendar a instalação?",
                 a: "É super simples! Navegue em nosso catálogo, verifique as medidas desejadas e adicione ao carrinho de reserva online. Ao concluir o agendamento, você é direcionado ao atendimento integrado no WhatsApp para confirmar o melhor horário de atendimento. Não há cobrança prévia: você só realiza o pagamento na nossa sede física do Portão, após os pneus novos estarem instalados e balanceados no carro!"
               },
               {
-                q: "A montagem técnica dos pneus e as válvulas novas de ar são realmente cortesia?",
-                a: "Sim, absolutamente! Na compra de qualquer pneu de passeio, SUV ou comercial leve na Carplus Pneus, a montagem especializada de alta precisão e a substituição técnica das válvulas (bicos de borracha comum) estão completas e inclusas na cortesia, sem taxas extras surpresas no balcão."
+                q: "A Carplus realiza a montagem e instalação dos pneus no local?",
+                a: "Sim! Dispomos de auto center completo com desmontadoras pneumáticas anti-risco, balanceamento computadorizado e alinhamento 3D a laser. Você escolhe seus pneus e pode realizar todos os serviços de instalação no mesmo local no Portão."
               },
               {
                 q: "A Carplus trabalha apenas com pneus novos de marcas oficiais com garantia?",

@@ -48,7 +48,7 @@ export default function CatalogTireDetail({
   };
 
   const handleWhatsAppQuote = () => {
-    const text = `Olá Carplus! Estou na página do Pneu ${tire.nome} (${tire.medida} Aro ${tire.aro}) e gostaria de uma cotação para ${quantity} unidade(s) com montagem grátis na loja do Portão. Link: ${shareUrl}`;
+    const text = `Olá Carplus! Estou na página do Pneu ${tire.nome} (${tire.medida} Aro ${tire.aro}) e gostaria de uma cotação para ${quantity} unidade(s) na loja do Portão. Link: ${shareUrl}`;
     const url = `https://api.whatsapp.com/send?phone=554130827282&text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -161,7 +161,7 @@ export default function CatalogTireDetail({
                 </p>
               ) : (
                 <p className="text-sm text-gray-650 leading-relaxed bg-gray-50 p-4 rounded-2xl border border-gray-150">
-                  O pneu <strong>{tire.nome}</strong> na medida <strong>{tire.medida}</strong> (Aro {tire.aro}) da fabricante <strong>{tire.marca}</strong> entrega alto desempenho, aderência precisa e durabilidade garantida com montagem gratuita na Carplus Portão.
+                  O pneu <strong>{tire.nome}</strong> na medida <strong>{tire.medida}</strong> (Aro {tire.aro}) da fabricante <strong>{tire.marca}</strong> entrega alto desempenho, aderência precisa e durabilidade garantida na Carplus Portão.
                 </p>
               )}
             </div>

@@ -154,7 +154,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         question: 'Onde comprar pneus Pirelli Elect com menor preço em Curitiba?',
-        answer: 'Na Carplus Pneus & Oficina, localizada na Av. Arthur Bernardes, 1323, no Bairro Portão em Curitiba. Cobrimos qualquer orçamento da concorrência e oferecemos montagem grátis na hora.'
+        answer: 'Na Carplus Pneus & Oficina, localizada na Av. Arthur Bernardes, 1323, no Bairro Portão em Curitiba. Cobrimos qualquer orçamento da concorrência e oferecemos montagem técnica especializada na hora.'
       },
       {
         question: 'Quanto tempo dura o pneu de um carro elétrico?',
@@ -166,7 +166,7 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     ctaTitle: 'Vai trocar os pneus do seu Elétrico ou Híbrido em Curitiba?',
-    ctaText: 'Fale direto com nossos consultores técnicos no WhatsApp. Informe o modelo do seu carro elétrico e receba na hora a cotação com o menor preço garantido de Curitiba e montagem grátis!',
+    ctaText: 'Fale direto com nossos consultores técnicos no WhatsApp. Informe o modelo do seu carro elétrico e receba na hora a cotação com o menor preço garantido de Curitiba e atendimento especializado!',
     ctaButtonText: 'Garantir Menor Preço no WhatsApp',
     whatsappMessage: 'Olá Carplus! Vi a matéria no blog sobre pneus para carros elétricos e gostaria de um orçamento para o meu carro com o menor preço garantido.',
     relatedSlugs: [

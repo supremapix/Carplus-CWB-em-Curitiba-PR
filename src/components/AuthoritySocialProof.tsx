@@ -31,8 +31,8 @@ const TESTIMONIALS: Testimonial[] = [
     category: 'preco',
     categoryLabel: 'Preço & Economia',
     teamMention: 'Matheus',
-    quote: 'Cobriram o orçamento da concorrência e ainda deram a montagem!',
-    reviewText: 'Pesquisei em quatro grandes lojas de pneus de Curitiba antes de comprar. Cheguei na Carplus com um orçamento impresso e o Matheus cobriu na hora o valor do jogo Pirelli! Sem enrolação, sem taxas ocultas e a montagem com válvulas novas foi 100% cortesia. Economizei quase R$ 380 no jogo completo.',
+    quote: 'Cobriram o orçamento da concorrência com o melhor atendimento!',
+    reviewText: 'Pesquisei em quatro grandes lojas de pneus de Curitiba antes de comprar. Cheguei na Carplus com um orçamento impresso e o Matheus cobriu na hora o valor do jogo Pirelli! Sem enrolação, sem taxas ocultas e montagem com equipamentos de alta tecnologia. Economizei quase R$ 380 no jogo completo.',
     date: 'Avaliação real no Google',
     badge: 'Economia Comprovada',
     avatarLetter: 'C',
@@ -132,7 +132,7 @@ const TESTIMONIALS: Testimonial[] = [
 const CLOSING_FAQS = [
   {
     q: 'A Carplus realmente cobre qualquer orçamento de pneus em Curitiba?',
-    a: 'Sim, garantido! Se você recebeu uma cotação formal de qualquer loja de pneus ou autocenter de Curitiba e Região Metropolitana para o mesmo modelo e marca, envie uma foto pelo WhatsApp. Cobrimos o valor e ainda mantemos a montagem técnica gratuita!'
+    a: 'Sim, garantido! Se você recebeu uma cotação formal de qualquer loja de pneus ou autocenter de Curitiba e Região Metropolitana para o mesmo modelo e marca, envie uma foto pelo WhatsApp. Cobrimos o valor comprovado com atendimento técnico de excelência!'
   },
   {
     q: 'Como funciona o parcelamento em 10x sem juros?',
@@ -334,7 +334,7 @@ export default function AuthoritySocialProof() {
                 Já Tem um Orçamento da Concorrência? Nós Cobrimos!
               </h3>
               <p className="text-xs sm:text-sm text-gray-300 max-w-2xl leading-relaxed">
-                Mande agora uma foto ou mensagem com o orçamento que você recebeu. A equipe do Matheus, Vinicius e Jocimar responde em menos de 5 minutos com o menor preço garantido e montagem grátis no Portão.
+                Mande agora uma foto ou mensagem com o orçamento que você recebeu. A equipe do Matheus, Vinicius e Jocimar responde em menos de 5 minutos com o menor preço garantido e pronta entrega no Portão.
               </p>
             </div>
 

@@ -166,7 +166,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     const origin = typeof window !== 'undefined' ? window.location.origin : 'https://www.carpluscwb.com.br';
     let path = '';
     let title = 'Carplus Pneus e Oficina - Portão Curitiba';
-    let desc = 'Encontre pneus novos com o melhor preço de Curitiba, rampa 3D e montagem técnica inclusa com bico grátis!';
+    let desc = 'Encontre pneus novos com o melhor preço de Curitiba, rampa 3D e instalação técnica especializada no Portão!';
 
     if (currentView === 'pneu-detalhes' && selectedTire) {
       path = `/pneu/${selectedTire.id}`;
@@ -183,7 +183,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     } else if (currentView === 'barao-pneus-e-oficina-portao') {
       path = '/barao-pneus-e-oficina-portao';
       title = 'Alternativa a Barão Pneus e Oficina Portão | Carplus';
-      desc = 'Procurando serviços no Portão semelhantes a Barão Pneus? Conheça a alternativa Carplus Arthur Bernardes para Geometria 3D de alta precisão e bicos grátis.';
+      desc = 'Procurando serviços no Portão semelhantes a Barão Pneus? Conheça a alternativa Carplus Arthur Bernardes para Geometria 3D de alta precisão e pneus novos.';
     } else if (currentView === 'bana-pneus') {
       path = '/bana-pneus';
       title = 'Alternativa a Bana Pneus Curitiba - Serviços e Preços | Carplus';
@@ -191,7 +191,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     } else if (currentView === 'pneus-baratos-em-curitiba') {
       path = '/pneus-baratos-em-curitiba';
       title = 'Pneus Baratos em Curitiba - Preço de Atacado Completo | Carplus';
-      desc = 'Procura pneus baratos com preço de atacado e instalação de primeira classe em Curitiba? Veja a tabela de ofertas exclusivas com bicos de ar inclusos na Carplus Portão.';
+      desc = 'Procura pneus baratos com preço de atacado e instalação de primeira classe em Curitiba? Veja a tabela de ofertas exclusivas com procedência garantida na Carplus Portão.';
     } else if (currentView === 'xbri-pneus-curitiba') {
       path = '/xbri-pneus-curitiba';
       title = 'Xbri Pneus Curitiba - Ampla Linha de Medidas e Modelos | Carplus';
@@ -199,7 +199,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     } else if (currentView === 'pneus-pirelli-em-curitiba-melhor-preco') {
       path = '/pneus-pirelli-em-curitiba-melhor-preco';
       title = 'Pneus Pirelli em Curitiba Melhor Preço - Concessionária Completa | Carplus';
-      desc = 'Melhor preço garantido em pneus originais Pirelli em Curitiba. Estoque completo Cinturato P1, P7, Scorpion a pronta entrega com bico grátis e geometria 3D computadorizada no Portão.';
+      desc = 'Melhor preço garantido em pneus originais Pirelli em Curitiba. Estoque completo Cinturato P1, P7, Scorpion a pronta entrega e geometria 3D computadorizada no Portão.';
     } else if (currentView === 'seo-landing' && seoTarget) {
       const slugName = toSlug(seoTarget.name);
       const prefix = seoTarget.type === 'bairro' ? 'pneus-no-' : 'pneus-em-';
@@ -212,7 +212,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
       }
       
       title = `Pneus em ${seoTarget.name} - Carplus Pneus`;
-      desc = `Buscando pneus em ${seoTarget.name}? Conheça as ofertas especiais, pneus novos com bico grátis e geometria 3D no Portão na Carplus.`;
+      desc = `Buscando pneus em ${seoTarget.name}? Conheça as ofertas especiais, pneus novos de procedência e geometria 3D no Portão na Carplus.`;
     } else if (currentView !== 'home') {
       path = `/${currentView}`;
       // Format view name beautifully

@@ -88,7 +88,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
   const pageData = {
     'xbri-pneus-curitiba': {
       title: "Xbri Pneus Curitiba",
-      subtitle: "Ampla linha de modelos Xbri a pronta entrega com bicos de borracha novos e instalação de pista grátis.",
+      subtitle: "Ampla linha de modelos Xbri a pronta entrega com atendimento especializado e instalação ágil.",
       tag: "Custo-Benefício Premium",
       bgGradient: "from-emerald-950 to-gray-950",
       content: (
@@ -132,7 +132,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
           <div className="bg-yellow-500/5 border border-yellow-500/15 p-5 rounded-3xl space-y-2">
             <span className="font-mono text-[9px] text-[#f49e1a] uppercase font-black tracking-widest block">Compromisso Carplus</span>
             <p className="text-xs text-gray-800 leading-relaxed font-extrabold">
-              Compre o seu jogo de pneus Xbri na Carplus Pneus Portão e ganhe na hora a instalação em nossas desmontadoras profissionais, alinhamento técnico preventivo das rodas e bicos novos de vedação comuns grátis!
+              Compre o seu jogo de pneus Xbri na Carplus Pneus Portão e conte com instalação em nossas desmontadoras profissionais, alinhamento técnico preventivo das rodas e atendimento de pista especializado!
             </p>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       whatsappText: "Olá Carplus! Estou buscando orçamento de pneus Xbri Curitiba. Quais medidas vocês têm disponíveis a pronta entrega?",
       faqs: [
         { q: "O pneu Xbri é uma marca confiável?", a: "Sim, a Xbri é uma marca brasileira de renome com forte representação industrial na Ásia, certificada e validada com notas excelentes pelo Inmetro brasileiro." },
-        { q: "O bico de montagem é cobrado por fora?", a: "Absolutamente não! Na Carplus Pneus, a troca do pneu acompanha bicos de borracha comuns novos inteiramente de graça." }
+        { q: "A Carplus faz a instalação dos pneus Xbri?", a: "Sim! Dispomos de auto center completo no Portão com maquinário pneumático moderno e alinhamento 3D para instalar seus pneus novos com total comodidade." }
       ]
     },
     'pneus-baratos-em-curitiba': {
@@ -162,13 +162,13 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
             </div>
             <div className="border border-gray-150 p-4 rounded-2xl bg-gray-50 space-y-2">
               <span className="text-xl font-bold font-mono text-gray-850">02</span>
-              <h4 className="text-xs font-black uppercase text-gray-950">Instalação Inclusa</h4>
-              <p className="text-[10px] text-gray-500 font-semibold">Instalação computadorizada totalmente gratuita em nossa garagem no Portão.</p>
+              <h4 className="text-xs font-black uppercase text-gray-950">Instalação Profissional</h4>
+              <p className="text-[10px] text-gray-500 font-semibold">Instalação computadorizada com maquinário anti-risco em nosso auto center no Portão.</p>
             </div>
             <div className="border border-gray-150 p-4 rounded-2xl bg-gray-50 space-y-2">
               <span className="text-xl font-bold font-mono text-gray-850">03</span>
-              <h4 className="text-xs font-black uppercase text-gray-950">Bico Grátis de Verdade</h4>
-              <p className="text-[10px] text-gray-500 font-semibold">Substituição de bicos ressecados inclusa sem acréscimos na nota fiscal.</p>
+              <h4 className="text-xs font-black uppercase text-gray-950">Revisão Preventiva</h4>
+              <p className="text-[10px] text-gray-500 font-semibold">Checagem técnica da suspensão e alinhamento 3D para máxima vida útil dos pneus.</p>
             </div>
           </div>
 
@@ -225,7 +225,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
           <div className="space-y-3">
             <h3 className="text-sm font-black uppercase font-mono text-gray-950">Vantagens de Comprar Conosco na Internet</h3>
             <p className="text-xs text-gray-650 leading-relaxed font-medium">
-              Ao contrário de sites que cobram fretes altíssimos para entregar em Curitiba, aqui o preço exibido é o preço real que você pagará na loja com a montagem, bicos e calibragens inclusas. Sem letras miúdas, sem pegadinhas técnicas.
+              Ao contrário de sites que cobram fretes altíssimos para entregar em Curitiba, aqui você encontra preço competitivo real para retirar ou instalar na loja física no Portão. Sem letras miúdas, com nota fiscal e garantia de fábrica.
             </p>
           </div>
         </div>
@@ -233,7 +233,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       whatsappText: "Olá Carplus! Estou no melhor site para comprar pneus e quero tirar dúvidas sobre pneus novos e agendar uma montagem física no Portão.",
       faqs: [
         { q: "Preciso pagar adiantado no site?", a: "De forma alguma! Você faz a reserva do pneu pelo site ou WhatsApp sem adiantamentos e efetua o pagamento apenas na loja física." },
-        { q: "A montagem é cobrada à parte?", a: "Não. A montagem dos pneus em nosso auto center é cortesia integral Carplus ao comprar o jogo de composto." }
+        { q: "Posso instalar os pneus no mesmo local?", a: "Sim! Na Carplus Portão você escolhe os modelos desejados e pode realizar montagem, balanceamento e alinhamento 3D no mesmo endereço com total praticidade." }
       ]
     },
     'distribuidora-de-pneus-importados-atacado-curitiba': {
@@ -285,7 +285,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     },
     'pneu-hankook-curitiba': {
       title: "Pneu Hankook Curitiba",
-      subtitle: "Linhas Dynapro, Ventus e Optimo à pronta entrega com montagem robotizada e bicos grátis.",
+      subtitle: "Linhas Dynapro, Ventus e Optimo à pronta entrega com montagem robotizada e alinhamento 3D.",
       tag: "Tecnologia Coreana Máxima",
       bgGradient: "from-zinc-900 to-gray-950",
       content: (
@@ -344,7 +344,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
           <div className="space-y-3">
             <h3 className="text-sm font-semibold uppercase font-mono text-gray-950">Confira Preços Vantajosos Conosco</h3>
             <p className="text-xs text-gray-650 leading-relaxed font-bold">
-              Negociamos diretamente lotes de reposição e oferecemos preços extremamente competitivos frente às concessionárias de marcas de pneus comuns. Faça seu agendamento no Portão e garanta montagem, balanceamento computadorizado e bicos comuns inclusas no pacote técnico!
+              Negociamos diretamente lotes de reposição e oferecemos preços extremamente competitivos frente às concessionárias de marcas de pneus comuns. Faça seu agendamento no Portão e garanta atendimento prioritário para instalação e alinhamento 3D!
             </p>
           </div>
         </div>
@@ -363,7 +363,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       content: (
         <div className="space-y-6 text-left">
           <p className="text-sm text-gray-650 leading-relaxed font-semibold">
-            Se você reside próximo ao norte de Curitiba e está buscando por <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">Barão Pneus e Oficina Bacacheri Curitiba</strong>, saiba que a região conta com opções tradicionais interessantes. No entanto, se o seu foco é economizar de verdade nas melhores marcas importadas e nacionais com rampa 3D de nível internacional e montagem robotizada gratuita, vale a pena conhecer as exclusividades técnicas do box Carplus Pneus Portão.
+            Se você reside próximo ao norte de Curitiba e está buscando por <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">Barão Pneus e Oficina Bacacheri Curitiba</strong>, saiba que a região conta com opções tradicionais interessantes. No entanto, se o seu foco é economizar de verdade nas melhores marcas importadas e nacionais com rampa 3D de nível internacional e montagem computadorizada anti-risco, vale a pena conhecer as exclusividades técnicas do box Carplus Pneus Portão.
           </p>
 
           <div className="bg-gray-50 border border-gray-150 p-5 rounded-3xl space-y-3">
@@ -373,7 +373,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
             <ul className="text-xs text-gray-650 font-bold space-y-2">
               <li className="flex items-center gap-2">
                  <Check className="w-4 h-4 text-yellow-500 shrink-0" />
-                 <span><strong>Bicos Novos Comuns inteiramente de Graça</strong>: Sem surpresas na hora de receber sua nota de serviços.</span>
+                 <span><strong>Equipe Técnica Especializada</strong>: Atendimento transparente e honesto na hora de receber sua nota de serviços.</span>
               </li>
               <li className="flex items-center gap-2">
                  <Check className="w-4 h-4 text-yellow-500 shrink-0" />
@@ -422,7 +422,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     },
     'pneus-em-curitiba-melhor-preco': {
       title: "Pneus em Curitiba com o Melhor Preço",
-      subtitle: "Estoque amplo de pneus novos a pronta entrega, com montagem computadorizada e bicos de borracha inclusos no Portão.",
+      subtitle: "Estoque amplo de pneus novos a pronta entrega, com montagem computadorizada e alinhamento 3D no Portão.",
       tag: "Compra de Pneus em Curitiba",
       bgGradient: "from-emerald-950 to-gray-950",
       content: (
@@ -439,9 +439,9 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
               <p className="text-[11px] text-gray-600 leading-relaxed font-medium">Trabalhamos exclusivamente com pneus novos com 5 anos de garantia de fábrica e selo do Inmetro.</p>
             </div>
             <div className="border border-yellow-500/15 bg-yellow-500/5 p-4 rounded-2xl text-left space-y-1.5">
-              <span className="text-[10px] font-black uppercase text-yellow-800 font-mono">02. Sem Taxas Ocultas</span>
-              <h4 className="text-xs font-bold uppercase text-yellow-950 font-mono">Montagem e Válvulas Grátis</h4>
-              <p className="text-[11px] text-gray-600 leading-relaxed font-medium">Ao comprar seus pneus, a montagem técnica e os bicos novos de borracha são cortesia em nossa loja física.</p>
+              <span className="text-[10px] font-black uppercase text-yellow-800 font-mono">02. Transparência Total</span>
+              <h4 className="text-xs font-bold uppercase text-yellow-950 font-mono">Preço Justo e Sem Surpresas</h4>
+              <p className="text-[11px] text-gray-600 leading-relaxed font-medium">Preços claros e atendimento técnico ético, com orçamento prévio detalhado antes de qualquer serviço em nossa loja física.</p>
             </div>
             <div className="border border-gray-200 bg-gray-50 p-4 rounded-2xl text-left space-y-1.5">
               <span className="text-[10px] font-black uppercase text-gray-700 font-mono">03. Geometria Computadorizada</span>
@@ -522,10 +522,10 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
           </div>
         </div>
       ),
-      whatsappText: "Olá Carplus Curitiba! Gostaria de consultar o preço de pneus novos para o meu carro com montagem inclusa.",
+      whatsappText: "Olá Carplus Curitiba! Gostaria de consultar o preço de pneus novos para o meu carro.",
       faqs: [
-        { q: "Onde comprar pneus baratos e confiáveis em Curitiba?", a: "Na Carplus Pneus, localizada na Av. Presidente Arthur Bernardes, 1323 (Portão). Todos os pneus são novos, com 5 anos de garantia e instalação gratuita." },
-        { q: "A montagem e os bicos de ar são realmente gratuitos?", a: "Sim! Ao adquirir os pneus em nossa loja, você não paga nada pela montagem nem pelos bicos novos de borracha comuns." },
+        { q: "Onde comprar pneus baratos e confiáveis em Curitiba?", a: "Na Carplus Pneus, localizada na Av. Presidente Arthur Bernardes, 1323 (Portão). Todos os pneus são novos, com 5 anos de garantia de fábrica e instalação técnica disponível no Portão." },
+        { q: "A Carplus realiza a instalação dos pneus na loja?", a: "Sim! Dispomos de box completo no Portão com montagem computadorizada anti-risco, balanceamento dinâmico e alinhamento 3D." },
         { q: "Quais medidas de pneus vocês têm a pronta entrega?", a: "Temos estoque permanente dos aros 13, 14, 15, 16, 17, 18, 19 e 20 para veículos de passeio, SUVs e picapes." }
       ]
     },
@@ -562,7 +562,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       content: (
         <div className="space-y-6 text-left">
           <p className="text-sm text-gray-650 leading-relaxed font-semibold">
-            Quando se fala em pneus Goodyear tradicionais, a rede <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">Bana Pneus em Curitiba</strong> é uma das marcas históricas de auto center. No entanto, o motorista curitibano busca hoje diversidade de propostas de produtos, garantias facilitadas e montagem gratuita rápida.
+            Quando se fala em pneus Goodyear tradicionais, a rede <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">Bana Pneus em Curitiba</strong> é uma das marcas históricas de auto center. No entanto, o motorista curitibano busca hoje diversidade de propostas de produtos, garantias facilitadas e montagem especializada rápida.
           </p>
 
           <div className="bg-yellow-500/5 border border-yellow-500/15 p-5 rounded-3xl space-y-3">
@@ -685,7 +685,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     },
     'pneus-pirelli-em-curitiba-melhor-preco': {
       title: "Pneus Pirelli em Curitiba - Preços e Modelos",
-      subtitle: "Linhas Cinturato, Scorpion e Chrono com montagem expressa e bicos de cortesia no Portão.",
+      subtitle: "Linhas Cinturato, Scorpion e Chrono com montagem expressa e alinhamento 3D no Portão.",
       tag: "Pneus Pirelli em Curitiba",
       bgGradient: "from-amber-950 to-gray-950",
       content: (
@@ -745,22 +745,22 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
           </div>
         </div>
       ),
-      whatsappText: "Olá Carplus! Gostaria de cotar pneus Pirelli em Curitiba para o meu carro com montagem inclusa.",
+      whatsappText: "Olá Carplus! Gostaria de cotar pneus Pirelli em Curitiba para o meu carro.",
       faqs: [
         { q: "Os pneus Pirelli vendidos pela Carplus têm garantia?", a: "Sim, todos os pneus Pirelli comercializados são 100% novos e possuem 5 anos de garantia oficial de fábrica contra defeitos de fabricação." },
         { q: "Onde comprar pneus Pirelli no bairro Portão em Curitiba?", a: "Na loja física da Carplus Pneus, na Av. Presidente Arthur Bernardes, 1323 (Portão, Curitiba)." },
-        { q: "A montagem é cobrada a parte?", a: "Não, ao adquirir os pneus Pirelli na Carplus, a montagem e as válvulas de borracha novas são gratuitas." }
+        { q: "A Carplus instala os pneus Pirelli no local?", a: "Sim, realizamos a montagem técnica com desmontadoras pneumáticas especiais e calibração computadorizada no nosso auto center no Portão." }
       ]
     },
     'barao-pneus-e-oficina-portao': {
       title: "Pneus no Portão Curitiba - Loja de Pneus no Portão",
-      subtitle: "Estoque a pronta entrega, montagem técnica com bicos novos grátis, alinhamento 3D e balanceamento na Av. Arthur Bernardes.",
+      subtitle: "Estoque a pronta entrega, montagem técnica computadorizada, alinhamento 3D e balanceamento na Av. Arthur Bernardes.",
       tag: "Loja de Pneus no Portão",
       bgGradient: "from-zinc-900 to-gray-950",
       content: (
         <div className="space-y-6 text-left">
           <p className="text-sm text-gray-650 leading-relaxed font-semibold">
-            Procurando por <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">pneus no Portão em Curitiba</strong>? A Carplus Pneus é sua loja especializada no bairro Portão, localizada na Av. Presidente Arthur da Silva Bernardes, 1323. Oferecemos pronta entrega das melhores marcas de pneus (Pirelli, Bridgestone, Goodyear, Michelin, Continental, Firestone, Dunlop, Delinte, Xbri e Hankook) com bicos de borracha novos e montagem totalmente gratuita.
+            Procurando por <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">pneus no Portão em Curitiba</strong>? A Carplus Pneus é sua loja especializada no bairro Portão, localizada na Av. Presidente Arthur da Silva Bernardes, 1323. Oferecemos pronta entrega das melhores marcas de pneus (Pirelli, Bridgestone, Goodyear, Michelin, Continental, Firestone, Dunlop, Delinte, Xbri e Hankook) com estoque à pronta entrega e montagem especializada no local.
           </p>
 
           <div className="bg-yellow-500/5 border border-yellow-500/15 p-5 rounded-3xl space-y-3">
@@ -772,7 +772,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-yellow-600 shrink-0 mt-0.5" />
-                <span><strong>Montagem e Válvulas Grátis:</strong> trocamos seus pneus sem taxas escondidas com máquinas anti-risco.</span>
+                <span><strong>Montagem Técnica Especializada:</strong> trocamos seus pneus com maquinário profissional anti-risco.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-yellow-600 shrink-0 mt-0.5" />
@@ -795,7 +795,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     },
     'auto-center-curitiba': {
       title: "Auto Center e Centro Automotivo em Curitiba",
-      subtitle: "A Carplus integra loja de pneus novos, montagem técnica com bicos novos, alinhamento 3D computadorizado, balanceamento dinâmico e serviços de oficina mecânica no Portão.",
+      subtitle: "A Carplus integra loja de pneus novos, montagem técnica especializada, troca de válvulas, alinhamento 3D computadorizado, balanceamento dinâmico e serviços de oficina mecânica no Portão.",
       tag: "Auto Center Curitiba",
       bgGradient: "from-zinc-900 to-gray-950",
       content: (
@@ -816,7 +816,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
               </li>
               <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
                 <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
-                <span><strong>Montagem & Válvulas Cortesia:</strong> Desmontadora pneumática protetora e troca de bicos sem custo adicional na compra dos pneus.</span>
+                <span><strong>Montagem Técnica Especializada:</strong> Desmontadora pneumática protetora que não risca rodas de liga leve ou de ferro.</span>
               </li>
               <li className="flex items-start gap-2 border border-gray-200 bg-white p-3">
                 <CheckCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
@@ -848,18 +848,18 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       faqs: [
         { q: "Onde encontrar auto center com pneus em Curitiba?", a: "A Carplus Pneus e Oficina Mecânica reúne loja de pneus novos e centro automotivo completo no mesmo endereço: Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão, Curitiba." },
         { q: "Quais serviços de auto center a Carplus realiza?", a: "Venda e instalação de pneus novos, montagem técnica, troca de válvulas, balanceamento dinâmico, alinhamento 3D computadorizado, freios, suspensão e troca de óleo." },
-        { q: "É possível comprar os pneus e instalar tudo no mesmo local?", a: "Sim, absolutamente. Você seleciona a medida homologada do seu carro e nossa equipe realiza a montagem, bicos novos, balanceamento e alinhamento no mesmo local com total comodidade." }
+        { q: "É possível comprar os pneus e instalar tudo no mesmo local?", a: "Sim, absolutamente. Você seleciona a medida homologada do seu carro e nossa equipe realiza a montagem, balanceamento e alinhamento no mesmo local com total comodidade." }
       ]
     },
     'troca-de-pneus-curitiba': {
-      title: "Troca de Pneus em Curitiba com Montagem Inclusa",
+      title: "Troca de Pneus em Curitiba - Instalação e Auto Center",
       subtitle: "Troca profissional com maquinário anti-risco para rodas de liga leve, válvulas de borracha novas, balanceamento computadorizado e alinhamento 3D.",
       tag: "Troca de Pneus Curitiba",
       bgGradient: "from-zinc-900 to-gray-950",
       content: (
         <div className="space-y-6 text-left">
           <p className="text-sm text-gray-700 leading-relaxed font-semibold">
-            Precisa fazer a <strong className="text-gray-950 bg-[#f49e1a]/20 px-1 py-0.5 border border-[#f49e1a]/40">troca de pneus em Curitiba</strong>? Na Carplus Pneus, você adquire seus pneus novos e realiza a substituição no mesmo local. Toda compra de pneus na Carplus conta com montagem técnica especializada e troca de bicos/válvulas inclusas sem custos adicionais de mão de obra.
+            Precisa fazer a <strong className="text-gray-950 bg-[#f49e1a]/20 px-1 py-0.5 border border-[#f49e1a]/40">troca de pneus em Curitiba</strong>? Na Carplus Pneus, você adquire seus pneus novos e realiza a substituição no mesmo local com maquinário anti-risco, alinhamento 3D computadorizado e equipe especializada.
           </p>
 
           <div className="bg-neutral-50 border-2 border-black p-5 space-y-4">
@@ -893,9 +893,9 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       ),
       whatsappText: "Olá Carplus! Gostaria de agendar a troca de pneus para o meu carro na loja de vocês no Portão.",
       faqs: [
-        { q: "Onde trocar pneus em Curitiba?", a: "No auto center da Carplus Pneus, na Av. Presidente Arthur da Silva Bernardes, 1323, Portão. Oferecemos montagem técnica e troca de bicos inclusas na compra de pneus novos." },
-        { q: "Quanto tempo dura a troca dos 4 pneus?", a: "Em média, a desmontagem, substituição de válvulas, montagem dos 4 pneus novos e balanceamento leva entre 40 a 60 minutos." },
-        { q: "A montagem é cobrada à parte na troca de pneus?", a: "Não. Na compra de pneus novos na Carplus, a montagem técnica e a substituição das válvulas de borracha são cortesia, sem custos escondidos." }
+        { q: "Onde trocar pneus em Curitiba?", a: "No auto center da Carplus Pneus, na Av. Presidente Arthur da Silva Bernardes, 1323, Portão. Oferecemos montagem técnica e troca de pneus novos com maquinário especializado." },
+        { q: "Quanto tempo dura a troca dos 4 pneus?", a: "Em média, a desmontagem, montagem dos 4 pneus novos e balanceamento leva entre 40 a 60 minutos." },
+        { q: "Quais cuidados a Carplus toma na montagem dos pneus?", a: "Utilizamos desmontadoras automáticas com proteção em polímero para não riscar rodas de liga leve e balanceadoras dinâmicas para rodagem suave." }
       ]
     },
     'centro-automotivo-portao': {

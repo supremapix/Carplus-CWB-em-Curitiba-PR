@@ -51,7 +51,7 @@ export default function TireFinderWizard({ onSearchMeasure, onAddToCart }: TireF
           Qual pneu vai no seu carro?
         </h3>
         <p className="text-sm sm:text-base text-black font-extrabold mt-2 text-justify font-sans leading-relaxed">
-          Selecione a montadora e depois o modelo para encontrar a medida exata homologada e ver os pneus em estoque com instalação gratuita na loja de Curitiba.
+          Selecione a montadora e depois o modelo para encontrar a medida exata homologada e ver os pneus em estoque na loja de Curitiba.
         </p>
       </div>
 

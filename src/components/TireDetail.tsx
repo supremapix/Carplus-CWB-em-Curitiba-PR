@@ -140,7 +140,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                   </span>
                 </div>
                 <p className="text-[11px] text-gray-650 mt-1.5 font-sans">
-                  Consulte estoque, ofertas vigentes e o serviço correto para seu carro via WhatsApp. Instalação e bicos inclusos!
+                  Consulte estoque, ofertas vigentes e o serviço correto para seu carro via WhatsApp com nossa equipe técnica!
                 </p>
               </div>
 
@@ -181,9 +181,9 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
             <div className="bg-gray-50 rounded-2xl p-4 sm:p-5 border border-gray-200 space-y-3 font-sans">
               <h4 className="font-bold text-xs text-gray-900 uppercase">Porque comprar o modelo {tire.model} na Carplus?</h4>
               <ul className="text-xs text-gray-650 space-y-2 list-disc list-inside">
-                <li><strong>Montagem Profissional Inclusa:</strong> Você não paga nada a mais pela troca e colocação técnica das borrachas novas.</li>
+                <li><strong>Montagem Profissional Especializada:</strong> Equipe treinada com maquinário pneumático que preserva as rodas de liga leve.</li>
                 <li><strong>Retirada Segura:</strong> Faça o check-up mecânico preventivo de suspensão na hora com nossos profissionais habilitados.</li>
-                <li><strong>Válvula de Ar de Graça:</strong> Substituímos preventivamente o bico tradicional do seu pneu para afastar vazamentos ou esvaziamentos na pista.</li>
+                <li><strong>Geometria 3D de Precisão:</strong> Alinhamento computadorizado a laser para máxima durabilidade do seu pneu novo.</li>
               </ul>
             </div>
 
@@ -526,7 +526,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                       🛠️ Recomendações Técnicas Carplus
                     </h5>
                     <p className="text-xs text-gray-650 font-semibold leading-relaxed text-justify">
-                      Para assegurar a máxima integridade do conjunto em seu {selectedCompatCar}, nós incluímos <strong>gratuitamente</strong> a substituição das válvulas de ar (bicos novos de alta vedação) e o balanceamento dinâmico computadorizado de rodas durante a instalação técnica na nossa autocenter do Portão.
+                      Para assegurar a máxima integridade do conjunto em seu {selectedCompatCar}, nossa equipe realiza a inspeção técnica completa, verificação de alinhamento 3D e balanceamento dinâmico computadorizado de rodas em nosso auto center do Portão.
                     </p>
                   </div>
                 </div>
@@ -545,7 +545,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                   <div className="space-y-1 bg-yellow-50/30 p-3.5 border border-yellow-250 rounded-xl">
                     <span className="font-extrabold text-gray-950 uppercase tracking-tight block">❓ É necessário refazer o alinhamento de direção após colocar os pneus?</span>
                     <span className="text-gray-650 font-medium block leading-relaxed text-justify mt-1">
-                      Sim, é altamente indicado. Toda troca de composto altera micrometricamente o ângulo de caster/divergência. Fazendo a compra com a Carplus, nós executamos o check-up preventivo completo de geometria e oferecemos alinhamento oficial 3D computadorizado com desconto promocional em conjunto com a montagem grátis!
+                      Sim, é altamente indicado. Toda troca de composto altera micrometricamente o ângulo de caster/divergência. Fazendo a compra com a Carplus, nós executamos o check-up preventivo completo de geometria e oferecemos alinhamento oficial 3D computadorizado de alta precisão!
                     </span>
                   </div>
                 </div>
@@ -558,7 +558,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                 </span>
                 <button
                   onClick={() => {
-                    const text = `Olá Carplus! Estou namorando o Pneu ${tire.brand} (${tire.width}/${tire.aspectRatio} R${tire.rim}) para meu ${selectedCompatCar}. Gostaria de agendar a colocação gratuita de ${quantity} pneus e novas válvulas de ar no Portão!`;
+                    const text = `Olá Carplus! Estou namorando o Pneu ${tire.brand} (${tire.width}/${tire.aspectRatio} R${tire.rim}) para meu ${selectedCompatCar}. Gostaria de agendar a instalação de ${quantity} pneus no Portão!`;
                     const encoded = encodeURIComponent(text);
                     window.open(`https://api.whatsapp.com/send?phone=554130827282&text=${encoded}`, '_blank');
                   }}
@@ -601,8 +601,8 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
           <div className="space-y-3.5 max-w-3xl mx-auto">
             {[
               {
-                q: `A instalação dos pneus e as válvulas/bicos novos são realmente grátis?`,
-                a: "Sim, absolutamente garantido de verdade e sem nenhuma pegadinha! Ao comprar seus pneus novos na Carplus Pneus do Portão, os bicos novos de alta qualidade e a montagem técnica na autocenter são 100% cortesia. Não oferecemos serviços dispensáveis de empurrada; trabalhamos com ética total e transparência."
+                q: `A Carplus realiza a instalação dos pneus na própria loja?`,
+                a: "Sim! Contamos com auto center próprio na Av. Arthur Bernardes, 1323, com maquinário pneumático anti-risco, alinhamento 3D computadorizado e balanceamento dinâmico. Você sai com os pneus instalados e regulados com precisão."
               },
               {
                 q: `Qual o prazo real de garantia oferecido pela fábrica?`,

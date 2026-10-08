@@ -20,7 +20,7 @@ export const HeroPromoTires: React.FC<HeroPromoTiresProps> = ({ onSelectTire, on
 
   const handleWhatsAppQuote = (tire: PromoTire) => {
     const message = encodeURIComponent(
-      `Olá Carplus! Vi a promoção do pneu *${tire.marca} ${tire.medida} ${tire.modelo}* por *R$ ${tire.precoPromocional},00* e gostaria de agendar a montagem grátis na loja do Portão em Curitiba.`
+      `Olá Carplus! Vi a promoção do pneu *${tire.marca} ${tire.medida} ${tire.modelo}* por *R$ ${tire.precoPromocional},00* e gostaria de consultar a instalação na loja do Portão em Curitiba.`
     );
     window.open(`https://wa.me/554130827282?text=${message}`, '_blank');
   };
@@ -70,7 +70,7 @@ export const HeroPromoTires: React.FC<HeroPromoTiresProps> = ({ onSelectTire, on
             </h1>
 
             <p className="text-gray-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
-              Aproveite os melhores preços de Curitiba com <strong className="text-white font-black">montagem grátis</strong>, <strong className="text-white font-black">bicos novos inclusos</strong> e alinhamento 3D promocional no Portão.
+              Aproveite os melhores preços de Curitiba com <strong className="text-white font-black">estoque a pronta entrega</strong>, <strong className="text-white font-black">garantia de fábrica</strong> e alinhamento 3D promocional no Portão.
             </p>
           </div>
 
@@ -186,7 +186,7 @@ export const HeroPromoTires: React.FC<HeroPromoTiresProps> = ({ onSelectTire, on
 
                   <div className="text-[10px] text-gray-300 flex items-center gap-1 pt-1 font-semibold">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span className="line-clamp-1">Montagem grátis + bico novo</span>
+                    <span className="line-clamp-1">Pronta entrega no Portão</span>
                   </div>
 
                   {/* Price Box */}

@@ -40,7 +40,7 @@ const VIDEOS = [
     desc: "Acompanhe de perto a precisão cirúrgica de nossos profissionais na troca e alinhamento de pneus novos de alta durabilidade. Transparência operacional completa de quem é referência em Curitiba!",
     bullets: [
       "Profissionais qualificados com maquinário de fixação pneumática avançada.",
-      "Substituição gratuita do bico de borracha contra vazamentos residuais.",
+      "Substituição de válvulas de borracha para prevenção de vazamentos residuais.",
       "Checklist preventivo de suspensão e freios sem custo adicional."
     ]
   },
@@ -72,7 +72,7 @@ const SECRET_ACCORDIONS = [
   {
     icon: Lightbulb,
     title: "O Segredo dos Pneuzinhos Novos: Por que Trocar a Válvula (Bico) é 100% Obrigatório?",
-    content: "O bico de borracha comum segura dezenas de libras de pressão e resseca continuamente com o calor severo e a força centrífuga das ruas. Bicos velhos sofrem microfissuras que geram perda imperceptível e diária de pressão. Para protegê-lo, na Carplus Pneus você não corre riscos: no agendamento físico, a substituição com bicos novos de alta vedação é inteiramente gratuita e livre de taxa de serviço!"
+    content: "O bico de borracha comum segura dezenas de libras de pressão e resseca continuamente com o calor severo e a força centrífuga das ruas. Bicos velhos sofrem microfissuras que geram perda imperceptível e diária de pressão. Para protegê-lo, na Carplus Pneus você não corre riscos: no agendamento físico, a substituição por válvulas novas de alta vedação é realizada com total rigor técnico!"
   },
   {
     icon: Fuel,

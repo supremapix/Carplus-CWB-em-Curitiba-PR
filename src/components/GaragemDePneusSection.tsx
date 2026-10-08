@@ -34,7 +34,7 @@ export default function GaragemDePneusSection({
           Garagem de Pneus Curitiba
         </h1>
         <p className="text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed text-xs sm:text-sm">
-          Temos o maior e mais variado estoque de pneus novos com montagem rápida no Portão. Compare as marcas lendárias Pirelli, Goodyear, Bridgestone, Michelin de forma justa e garanta frete ou instalação grátis.
+          Temos o maior e mais variado estoque de pneus novos com montagem ágil no Portão. Compare as marcas lendárias Pirelli, Goodyear, Bridgestone e Michelin com estoque à pronta entrega.
         </p>
       </div>
 
@@ -42,7 +42,7 @@ export default function GaragemDePneusSection({
       <div className="bg-gray-150 border border-gray-350 p-5 rounded-2xl flex flex-col sm:flex-row items-center gap-4 text-xs">
         <Flame className="w-8 h-8 text-yellow-600 shrink-0 animate-pulse" />
         <p className="text-gray-700 leading-relaxed text-justify font-bold uppercase font-mono">
-          ➔ ESTOQUE ATUALIZADO: Rodando com pneus seguros e de alta performance. Reservando pelo site, garantimos seu horário exclusivo para instalação mecânica em nossa estufa física e bicos novos grátis.
+          ➔ ESTOQUE ATUALIZADO: Rodando com pneus seguros e de alta performance. Reservando pelo site, garantimos seu horário exclusivo para atendimento técnico e instalação em nosso box no Portão.
         </p>
       </div>
 

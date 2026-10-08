@@ -17,7 +17,7 @@ export default function AutoCenterSection({ onNavigateToPage }: AutoCenterSectio
     },
     {
       q: "Onde trocar pneus em Curitiba?",
-      a: "No auto center da Carplus no Portão. A troca é feita com desmontadoras pneumáticas anti-risco que protegem rodas de liga leve ou ferro, incluindo bicos de borracha novos e montagem técnica de cortesia na compra dos pneus novos.",
+      a: "No auto center da Carplus no Portão. A troca é feita com desmontadoras pneumáticas anti-risco que protegem rodas de liga leve ou ferro, com equipe técnica especializada na instalação e geometria 3D.",
       actionLabel: "Página de Troca de Pneus",
       actionPath: "/troca-de-pneus-curitiba"
     },
@@ -94,13 +94,13 @@ export default function AutoCenterSection({ onNavigateToPage }: AutoCenterSectio
               <div className="w-10 h-10 bg-[#f49e1a] text-black border border-black flex items-center justify-center mb-3">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
-              <h3 className="font-black text-sm uppercase text-black">Montagem & Válvulas</h3>
+              <h3 className="font-black text-sm uppercase text-black">Montagem Especializada</h3>
               <p className="text-xs text-gray-700 mt-2 leading-relaxed">
-                Montagem técnica de cortesia na compra dos pneus com maquinário pneumático que preserva as rodas, com bicos de borracha novos substituídos.
+                Montagem técnica de precisão com maquinário pneumático anti-risco que preserva as rodas de liga leve e de ferro.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-gray-200">
-              <span className="text-[11px] font-mono font-bold text-gray-900">Instalação sem taxa extra</span>
+              <span className="text-[11px] font-mono font-bold text-gray-900">Maquinário pneumático anti-risco</span>
             </div>
           </div>
 

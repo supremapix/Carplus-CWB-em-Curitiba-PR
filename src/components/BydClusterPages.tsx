@@ -118,7 +118,7 @@ export default function BydClusterPages({
               Pneus para BYD em Curitiba: Dolphin, Dolphin Mini, Dolphin GS, King e outros modelos
             </h1>
             <p className="text-gray-300 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
-              Consulte medidas, especificações técnicas e disponibilidade de pneus para a linha de veículos BYD na Carplus Pneus no bairro Portão. Pneus novos com garantia de fábrica, bicos de borracha inclusos e montagem técnica de precisão.
+              Consulte medidas, especificações técnicas e disponibilidade de pneus para a linha de veículos BYD na Carplus Pneus no bairro Portão. Pneus novos com garantia de fábrica, montagem técnica de precisão e alinhamento 3D.
             </p>
 
             <div className="pt-2 flex flex-wrap justify-center gap-3">
@@ -302,11 +302,11 @@ export default function BydClusterPages({
                   Pneu BYD Dolphin Original: Qual a Medida de Fábrica?
                 </h3>
                 <p className="text-gray-700 text-xs leading-relaxed">
-                  A especificação original mais comum no Brasil é a <strong>205/50 R17 (93V/W XL)</strong> com composto EV de baixa resistência ao rolamento. Lotes com rodas aro 16 utilizam a medida original <strong>195/60 R16 89H</strong>. Na Carplus você encontra as marcas homologadas com montagem grátis no Portão.
+                  A especificação original mais comum no Brasil é a <strong>205/50 R17 (93V/W XL)</strong> com composto EV de baixa resistência ao rolamento. Lotes com rodas aro 16 utilizam a medida original <strong>195/60 R16 89H</strong>. Na Carplus você encontra as marcas homologadas com estoque à pronta entrega no Portão.
                 </p>
                 <div className="pt-1">
                   <a
-                    href={formatWhatsAppUrl("Olá Carplus! Gostaria de consultar o Pneu BYD Dolphin Original homologado com montagem grátis.")}
+                    href={formatWhatsAppUrl("Olá Carplus! Gostaria de consultar o Pneu BYD Dolphin Original homologado.")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1"
@@ -328,7 +328,7 @@ export default function BydClusterPages({
                   Pneu BYD Dolphin Preço em Curitiba: Quanto Custa a Troca?
                 </h3>
                 <p className="text-gray-700 text-xs leading-relaxed">
-                  Os valores para o BYD Dolphin variam de <strong>R$ 389,00 a R$ 689,00</strong> dependendo da marca (Delinte, Xbri, Continental ou Pirelli Elect) e aro. A Carplus cobre orçamentos do Mercado Livre e Carrefour, já com montagem e bicos inclusos em até 10x sem juros.
+                  Os valores para o BYD Dolphin variam de <strong>R$ 389,00 a R$ 689,00</strong> dependendo da marca (Delinte, Xbri, Continental ou Pirelli Elect) e aro. A Carplus cobre orçamentos do Mercado Livre e Carrefour, com pronta entrega e pagamento em até 10x sem juros.
                 </p>
                 <div className="pt-1">
                   <a
@@ -402,11 +402,11 @@ export default function BydClusterPages({
                   Valor do Pneu do BYD Dolphin Mini em Curitiba: Quanto Custa?
                 </h3>
                 <p className="text-gray-700 text-xs leading-relaxed">
-                  O valor do pneu para o <strong>BYD Dolphin Mini (medida 175/55 R16 80H)</strong> varia entre <strong>R$ 289,90 e R$ 499,00</strong>. Na Carplus Portão, o valor inclui instalação técnica anti-risco, bicos novos de cortesia e geometria 3D no mesmo dia. Cobrimos qualquer orçamento!
+                  O valor do pneu para o <strong>BYD Dolphin Mini (medida 175/55 R16 80H)</strong> varia entre <strong>R$ 289,90 e R$ 499,00</strong>. Na Carplus Portão, o valor conta com instalação técnica anti-risco e geometria 3D no mesmo dia. Cobrimos qualquer orçamento!
                 </p>
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
-                    href={formatWhatsAppUrl("Olá Carplus! Gostaria de consultar o valor do pneu do BYD Dolphin Mini (175/55 R16) com montagem grátis no Portão.")}
+                    href={formatWhatsAppUrl("Olá Carplus! Gostaria de consultar o valor do pneu do BYD Dolphin Mini (175/55 R16) no Portão.")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
@@ -466,7 +466,7 @@ export default function BydClusterPages({
                   Onde comprar e trocar pneu para BYD em Curitiba?
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Na <strong>Carplus Pneus e Oficina Mecânica</strong>, localizada na <strong>Av. Presidente Arthur da Silva Bernardes, 1323 – Portão, Curitiba – PR</strong>. Telefone: <strong>(41) 3082-7282</strong>. Montagem técnica, bicos de borracha novos e alinhamento 3D no local.
+                  Na <strong>Carplus Pneus e Oficina Mecânica</strong>, localizada na <strong>Av. Presidente Arthur da Silva Bernardes, 1323 – Portão, Curitiba – PR</strong>. Telefone: <strong>(41) 3082-7282</strong>. Montagem técnica especializada e alinhamento 3D no local.
                 </p>
               </div>
             </div>
@@ -587,14 +587,14 @@ export default function BydClusterPages({
                 {
                   query: "Qual o pneu do BYD KING",
                   badge: "Especificação Oficial",
-                  answer: "O BYD King sai de fábrica principalmente com a medida 215/55 R17 (aro 17), existindo também versões com homologação 225/60 R16. Ambas estão disponíveis na Carplus com montagem gratuita.",
+                  answer: "O BYD King sai de fábrica principalmente com a medida 215/55 R17 (aro 17), existindo também versões com homologação 225/60 R16. Ambas estão disponíveis na Carplus com pronta entrega.",
                   actionLabel: "Guia Técnico BYD King",
                   slug: "/pneu-byd-king-curitiba"
                 },
                 {
                   query: "Pneu BYD King preço",
                   badge: "Menor Preço Garantido",
-                  answer: "Cobrimos os preços de grandes redes (Carrefour, Mercado Livre) com o diferencial da montagem computadorizada gratuita, troca de bicos e alinhamento 3D de alta precisão na loja.",
+                  answer: "Cobrimos os preços de grandes redes (Carrefour, Mercado Livre) com o diferencial do atendimento presencial, estoque próprio e alinhamento 3D de alta precisão na loja.",
                   actionLabel: "Cotar Preço no WhatsApp",
                   slug: "/pneu-byd-king-curitiba"
                 },
@@ -615,7 +615,7 @@ export default function BydClusterPages({
                 {
                   query: "Pneu BYD Dolphin preço",
                   badge: "Oferta Especial",
-                  answer: "Preços competitivos com parcelamento em até 10x sem juros no cartão de crédito direto na loja do Portão, sem frete e com montagem técnica inclusa.",
+                  answer: "Preços competitivos com parcelamento em até 10x sem juros no cartão de crédito direto na loja do Portão, sem frete e com instalação disponível no local.",
                   actionLabel: "Consultar Valores Dolphin",
                   slug: "/pneu-byd-dolphin-curitiba"
                 },
@@ -650,7 +650,7 @@ export default function BydClusterPages({
                 {
                   query: "Valor do pneu do BYD Dolphin Mini",
                   badge: "Cotação Imediata",
-                  answer: "Valores atualizados diariamente com estoque físico em Curitiba. Entre em contato no WhatsApp (41) 3082-7282 para receber cotação com montagem inclusa.",
+                  answer: "Valores atualizados diariamente com estoque físico em Curitiba. Entre em contato no WhatsApp (41) 3082-7282 para receber cotação com pronta entrega.",
                   actionLabel: "Cotar Dolphin Mini",
                   slug: "/pneu-byd-dolphin-mini-curitiba"
                 },
@@ -705,7 +705,7 @@ export default function BydClusterPages({
                 },
                 {
                   q: "Quanto custa um pneu para BYD Dolphin?",
-                  a: "O preço varia conforme a medida (aro 16 ou 17), marca e tecnologia do pneu (modelos com composto para EV, índices de carga e velocidade). Consulte a Carplus pelo WhatsApp (41) 3082-7282 para verificar o valor atualizado, com montagem profissional gratuita e bicos novos inclusos."
+                  a: "O preço varia conforme a medida (aro 16 ou 17), marca e tecnologia do pneu (modelos com composto para EV, índices de carga e velocidade). Consulte a Carplus pelo WhatsApp (41) 3082-7282 para verificar o valor atualizado com estoque a pronta entrega."
                 },
                 {
                   q: "Onde comprar pneu para BYD Dolphin em Curitiba?",
@@ -862,7 +862,7 @@ export default function BydClusterPages({
       measures: ["205/50 R17", "195/60 R16"],
       rims: [17, 16],
       description: "Encontre pneus compatíveis com o BYD Dolphin em Curitiba. A configuração mais comum comercializada no Brasil utiliza a medida 205/50 R17 (aro 17), com documentação contemplando também 195/60 R16.",
-      technicalDetails: "O BYD Dolphin entrega torque instantâneo e exige pneus com excelente aderência em pistas secas e molhadas. Na Carplus no Portão você encontra opções compatíveis com montagem técnica, bicos novos de borracha e alinhamento 3D.",
+      technicalDetails: "O BYD Dolphin entrega torque instantâneo e exige pneus com excelente aderência em pistas secas e molhadas. Na Carplus no Portão você encontra opções compatíveis com montagem técnica especializada e alinhamento 3D.",
       recommendedMeasureSlug: "pneu-205-50-r17-curitiba",
       faqs: [
         {
@@ -871,7 +871,7 @@ export default function BydClusterPages({
         },
         {
           q: "Quanto custa um pneu para BYD Dolphin?",
-          a: "O preço varia conforme a medida (aro 16 ou 17), a marca e a tecnologia do composto (como modelos otimizados para EV). Consulte a Carplus pelo WhatsApp (41) 3082-7282 para verificar a cotação atualizada com montagem gratuita e bicos novos."
+          a: "O preço varia conforme a medida (aro 16 ou 17), a marca e a tecnologia do composto (como modelos otimizados para EV). Consulte a Carplus pelo WhatsApp (41) 3082-7282 para verificar a cotação atualizada com pronta entrega."
         },
         {
           q: "Onde comprar pneu para BYD Dolphin em Curitiba?",
@@ -907,7 +907,7 @@ export default function BydClusterPages({
         },
         {
           q: "Quanto custa um pneu para BYD Dolphin Mini?",
-          a: "O valor varia conforme a marca e lote disponível. Consulte a Carplus pelo WhatsApp (41) 3082-7282 para obter a cotação imediata com montagem técnica gratuita e troca de bicos."
+          a: "O valor varia conforme a marca e lote disponível. Consulte a Carplus pelo WhatsApp (41) 3082-7282 para obter a cotação imediata com equipe especializada no Portão."
         },
         {
           q: "Onde comprar pneu para BYD Dolphin Mini em Curitiba?",
@@ -943,7 +943,7 @@ export default function BydClusterPages({
         },
         {
           q: "Quanto custa um pneu para BYD Dolphin GS?",
-          a: "Os valores dependem da medida e da marca selecionada. Consulte a Carplus no WhatsApp (41) 3082-7282 para receber cotação com montagem grátis e facilidades de pagamento."
+          a: "Os valores dependem da medida e da marca selecionada. Consulte a Carplus no WhatsApp (41) 3082-7282 para receber cotação com pronta entrega e facilidades de pagamento."
         },
         {
           q: "Onde comprar pneu para BYD Dolphin GS em Curitiba?",
@@ -969,7 +969,7 @@ export default function BydClusterPages({
       badge: "Sedã Híbrido Plug-in",
       measures: ["215/55 R17 (Original)", "225/60 R16"],
       rims: [17, 16],
-      description: "Pneu para BYD King em Curitiba na medida original 215/55 R17. Cobrimos qualquer oferta de grandes redes como Carrefour e Mercado Livre, com montagem computadorizada gratuita e alinhamento 3D especializado no Portão.",
+      description: "Pneu para BYD King em Curitiba na medida original 215/55 R17. Cobrimos qualquer oferta de grandes redes como Carrefour e Mercado Livre, com montagem computadorizada e alinhamento 3D especializado no Portão.",
       technicalDetails: "O BYD King combina motor híbrido com entrega de torque instantâneo e exige pneus com carcaça reforçada e composto de baixa resistência ao rolamento para maximizar a autonomia elétrica. Na Carplus você encontra a medida original 215/55 R17 a pronta entrega com montagem anti-risco sem encostar no verniz das rodas.",
       recommendedMeasureSlug: "pneu-215-55-r17-curitiba",
       faqs: [
@@ -979,7 +979,7 @@ export default function BydClusterPages({
         },
         {
           q: "Quanto custa um pneu para BYD King?",
-          a: "Temos o menor preço garantido em Curitiba com montagem computadorizada gratuita e bicos novos inclusos. Consulte no WhatsApp (41) 3082-7282."
+          a: "Temos o menor preço garantido em Curitiba com pneus originais à pronta entrega. Consulte no WhatsApp (41) 3082-7282."
         },
         {
           q: "Onde comprar pneu para BYD King em Curitiba?",
@@ -1044,8 +1044,8 @@ export default function BydClusterPages({
               <a
                 href={formatWhatsAppUrl(
                   view === 'pneu-byd-king-curitiba'
-                    ? "Olá Carplus! Sou dono de BYD King e gostaria de cotar o pneu na medida original 215/55 R17 com montagem grátis e menor preço garantido."
-                    : `Olá Carplus! Gostaria de consultar pneus para o ${config.modelName} em Curitiba com montagem grátis.`
+                    ? "Olá Carplus! Sou dono de BYD King e gostaria de cotar o pneu na medida original 215/55 R17 com o menor preço garantido."
+                    : `Olá Carplus! Gostaria de consultar pneus para o ${config.modelName} em Curitiba.`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -1354,7 +1354,7 @@ export default function BydClusterPages({
               Instalação e Serviços no Portão em Curitiba
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              Na compra de seus pneus na Carplus, a montagem computadorizada e os bicos novos de borracha são cortesia. Você também pode realizar o alinhamento 3D tridimensional e o balanceamento dinâmico no mesmo local:
+              Na compra de seus pneus na Carplus, dispomos de estrutura completa para montagem computadorizada. Você também pode realizar o alinhamento 3D tridimensional e o balanceamento dinâmico no mesmo local:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600">
               <div className="bg-gray-50 p-3 rounded-xl border border-gray-150">

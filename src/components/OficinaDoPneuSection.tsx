@@ -58,10 +58,10 @@ export default function OficinaDoPneuSection({ onNavigateHome }: OficinaDoPneuSe
       {/* Banner / Visual */}
       <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-6 sm:p-8 rounded-3xl text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-3 text-left">
-          <span className="font-mono text-yellow-500 uppercase tracking-widest text-xs font-black">Instalação Expressa</span>
-          <h2 className="text-xl sm:text-2xl font-black uppercase font-mono">Bicos de Borracha e Montagem de Graça</h2>
+          <span className="font-mono text-yellow-500 uppercase tracking-widest text-xs font-black">Instalação Especializada</span>
+          <h2 className="text-xl sm:text-2xl font-black uppercase font-mono">Montagem Técnica Computadorizada</h2>
           <p className="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-md font-medium">
-            Ao adquirir seus pneus novos na Carplus, nós realizamos a montagem técnica computadorizada e damos as válvulas novas gratuitamente em nossa oficina física na Arthur Bernardes.
+            Ao adquirir seus pneus novos na Carplus, nossa equipe realiza a montagem com maquinário pneumático anti-risco e alinhamento 3D em nossa oficina na Arthur Bernardes.
           </p>
         </div>
         <img 
@@ -187,7 +187,7 @@ export default function OficinaDoPneuSection({ onNavigateHome }: OficinaDoPneuSe
         >
           <span className="text-[9px] font-black uppercase text-yellow-600 font-mono">Estoque Novo</span>
           <h4 className="font-black text-xs uppercase text-gray-900 group-hover:text-yellow-600 transition">Pneus em Curitiba ➔</h4>
-          <p className="text-[11px] text-gray-550 leading-relaxed">Conheça nossa linha completa com montagem e bicos grátis no Portão.</p>
+          <p className="text-[11px] text-gray-550 leading-relaxed">Conheça nossa linha completa com pronta entrega e instalação no Portão.</p>
         </a>
 
         <a 

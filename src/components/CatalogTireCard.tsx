@@ -16,7 +16,7 @@ export default function CatalogTireCard({ tire, onSelect }: CatalogTireCardProps
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const message = `Olá Carplus! Gostaria de cotar o pneu ${tire.nome} (${tire.medida}) com montagem grátis no Portão. Link: https://www.carpluscwb.com.br/pneu/${tire.slug}`;
+    const message = `Olá Carplus! Gostaria de cotar o pneu ${tire.nome} (${tire.medida}) no Portão. Link: https://www.carpluscwb.com.br/pneu/${tire.slug}`;
     const url = `https://api.whatsapp.com/send?phone=554130827282&text=${encodeURIComponent(message)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };

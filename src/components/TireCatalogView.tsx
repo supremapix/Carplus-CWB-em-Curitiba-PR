@@ -215,7 +215,7 @@ export default function TireCatalogView({
                 Catálogo Completo de Pneus em Curitiba
               </h1>
               <p className="text-xs sm:text-sm text-gray-600 max-w-3xl leading-relaxed">
-                Navegue pelas principais marcas mundiais de pneus com garantia de fábrica, montagem computadorizada gratuita e alinhamento 3D de alta precisão na loja do Portão.
+                Navegue pelas principais marcas mundiais de pneus com garantia de fábrica, montagem computadorizada e alinhamento 3D de alta precisão na loja do Portão.
               </p>
             </div>
 
@@ -503,10 +503,10 @@ export default function TireCatalogView({
               {/* Quick Info Box */}
               <div className="bg-yellow-500/10 border border-yellow-500/20 p-3.5 rounded-2xl text-[11px] space-y-1">
                 <span className="font-bold text-gray-900 block flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-yellow-700" /> Montagem Gratuita
+                  <ShieldCheck className="w-4 h-4 text-yellow-700" /> Estrutura Especializada
                 </span>
                 <p className="text-gray-650 leading-relaxed">
-                  Todos os pneus contam com montagem computadorizada grátis e bicos novos na loja do Portão.
+                  Todos os pneus contam com maquinário pneumático anti-risco e alinhamento 3D no Portão.
                 </p>
               </div>
 

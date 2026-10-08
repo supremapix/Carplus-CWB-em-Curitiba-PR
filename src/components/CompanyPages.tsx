@@ -82,7 +82,7 @@ const CARPLUS_EQUIPE_GALLERY = [
     remoteImage: "https://img.carplusautos.com.br/cwb/montagem-tecnica.png",
     fallbackImage: "/images/galeria/montagem-tecnica.jpg",
     summary: "Montagem de pneus com máquinas pneumáticas que protegem as rodas de liga leve contra riscos.",
-    details: "Técnicos treinados realizam a desmontagem e montagem sem riscar ou danificar a borda de alumínio. Inclui troca da válvula de ar (bico novo de borracha) sem custo adicional.",
+    details: "Técnicos treinados realizam a desmontagem e montagem com equipamentos de proteção em polímero para não riscar ou danificar a borda de alumínio.",
     team: "Técnicos de borracharia avançada da Carplus."
   },
   {
@@ -268,7 +268,7 @@ export default function CompanyPages({
               const cleanedName = `Pneu ${item.tire.brand} ${item.tire.width}/${item.tire.aspectRatio}R${item.tire.rim} ${item.tire.model}`;
               return `• ${item.quantity}x ${cleanedName} - (Preço sob consulta)`;
             }).join('\n');
-            const message = `Olá equipe Carplus Pneus! Gostaria de consultar o preço, agendar a instalação e garantir os bicos de ar grátis para os seguintes pneus do meu carrinho:\n\n${listText}\n\nPor favor, me enviem o orçamento atualizado para pagamento facilitado em até 10x sem juros ou desconto considerável no PIX à vista!`;
+            const message = `Olá equipe Carplus Pneus! Gostaria de consultar o preço e agendar a instalação para os seguintes pneus do meu carrinho:\n\n${listText}\n\nPor favor, me enviem o orçamento atualizado para pagamento facilitado em até 10x sem juros ou desconto considerável no PIX à vista!`;
             return `https://api.whatsapp.com/send?phone=554130827282&text=${encodeURIComponent(message)}`;
           };
 
@@ -282,7 +282,7 @@ export default function CompanyPages({
                   Seu Carrinho • <span className="text-yellow-600">Revisão de Compra</span>
                 </h2>
                 <p className="text-sm max-w-2xl mt-2 text-justify leading-relaxed text-gray-650 font-medium">
-                  Confira as quantidades dos pneus novos da sua frota e usufrua do nosso combo de montagem qualificada sem custos: balanceamento calibrado, bicos de ar cortesia e vistoria preventiva de alinhamento incluídos na sede do Portão, Curitiba!
+                  Confira as quantidades dos pneus novos da sua frota e usufrua da nossa estrutura especializada no Portão: montagem técnica computadorizada, balanceamento dinâmico e alinhamento 3D de alta precisão!
                 </p>
               </div>
 
@@ -1148,7 +1148,7 @@ export default function CompanyPages({
                       Hub Oficina do Pneu & Mecânica
                     </h3>
                     <p className="text-xs text-gray-650 leading-relaxed font-semibold">
-                      Montagem técnica sem custo de bicos novos, balanceamento dinâmico, revisão preventiva de freios e amortecedores.
+                      Montagem técnica especializada, balanceamento dinâmico, revisão preventiva de freios e amortecedores.
                     </p>
                   </div>
                   <div className="pt-4 mt-2 border-t border-gray-150">
@@ -1853,7 +1853,7 @@ export default function CompanyPages({
                   <div>
                     <h4 className="font-black text-[#f49e1a] uppercase text-sm tracking-widest">Compromisso Carplus</h4>
                     <p className="text-xs text-justify text-gray-300 mt-2 leading-relaxed font-bold">
-                      Transparência total e laudos técnicos precisos. Sem taxas embutidas, sem serviços dispensáveis e com instalação de bicos novos gratuita de verdade com a nossa equipe de engenharia mecânica.
+                      Transparência total e laudos técnicos precisos. Sem taxas embutidas, sem serviços dispensáveis e atendimento técnico qualificado com a nossa equipe no Portão.
                     </p>
                   </div>
                   <div className="pt-2">
@@ -2003,10 +2003,10 @@ export default function CompanyPages({
                     Diretório Municipal de Curitiba
                   </span>
                   <h1 className="text-3xl sm:text-4xl font-black uppercase text-gray-950 font-mono">
-                    Pneus em Curitiba • <span className="text-yellow-600">Instalação Grátis nos Bairros</span>
+                    Pneus em Curitiba • <span className="text-yellow-600">Atendimento por Bairros</span>
                   </h1>
                   <p className="text-xs sm:text-sm text-gray-650 leading-relaxed max-w-4xl">
-                    Selecione sua região abaixo para conferir ofertas exclusivas de pneus novos <strong>Pirelli, Goodyear, Michelin, Bridgestone, Delinte</strong> e mais. Compre diretamente online e usufrua de nossa instalação profissional computadorizada e bicos de ar comuns de alto padrão sem custo extra no Portão!
+                    Selecione sua região abaixo para conferir ofertas exclusivas de pneus novos <strong>Pirelli, Goodyear, Michelin, Bridgestone, Delinte</strong> e mais. Compre diretamente online e usufrua de nossa instalação profissional computadorizada e alinhamento 3D no Portão!
                   </p>
                 </div>
               </div>
@@ -2108,7 +2108,7 @@ export default function CompanyPages({
                     Pneus na Região Metropolitana • <span className="text-yellow-600">Serviços e Pronta Entrega</span>
                   </h1>
                   <p className="text-xs sm:text-sm text-gray-650 leading-relaxed max-w-4xl">
-                    Selecione seu município na Região Metropolitana em que reside. Agende a montagem gratuita e bicos inclusos em nossa loja-sede do Portão, Curitiba. Garantia estendida oficial de 5 anos de fábrica contra avarias ou defeitos estruturais.
+                    Selecione seu município na Região Metropolitana em que reside. Agende sua instalação e montagem técnica em nossa loja-sede do Portão, Curitiba. Pneus novos com garantia oficial de fábrica.
                   </p>
                 </div>
               </div>
@@ -2224,7 +2224,7 @@ export default function CompanyPages({
           const localFaq = [
             {
               q: `A Carplus Pneus realmente atende moradores de ${seoTarget.name}?`,
-              a: `Sim, atendemos todos os condutores da região de ${seoTarget.name} com montagem gratuita de pneus adquiridos aqui no portal, oferecendo também a substituição das válvulas (bicos de borracha comum) sem nenhuma cobrança de mão de obra adicional.`
+              a: `Sim, atendemos todos os condutores da região de ${seoTarget.name} com montagem técnica especializada de pneus adquiridos aqui no portal, balanceamento computadorizado e alinhamento 3D no Portão.`
             },
             {
               q: `Como faço para chegar de ${seoTarget.name} até a loja no Portão?`,
@@ -2252,7 +2252,7 @@ export default function CompanyPages({
             { url: '/images/galeria/tecnicos.jpg', fallback: 'https://img.carplusautos.com.br/cwb/tecnicos.jpg', label: 'Nossa Equipe de Técnicos Habilitados' },
             { url: '/images/galeria/troca-de-pneus.jpg', fallback: 'https://img.carplusautos.com.br/cwb/troca-de-pneus.jpg', label: 'Troca de Pneus de Alta Performance' },
             { url: '/images/galeria/rampa-de-geometria.jpg', fallback: 'https://img.carplusautos.com.br/cwb/rampa-de-geometria.jpg', label: 'Rampa de Geometria e Freio' },
-            { url: '/images/galeria/montagem-tecnica.jpg', fallback: 'https://img.carplusautos.com.br/cwb/montagem-tecnica.jpg', label: 'Montagem Técnica Inclusa' },
+            { url: '/images/galeria/montagem-tecnica.jpg', fallback: 'https://img.carplusautos.com.br/cwb/montagem-tecnica.jpg', label: 'Montagem Técnica Especializada' },
             { url: '/images/galeria/rodas-de-liga-leve.webp', fallback: 'https://img.carplusautos.com.br/cwb/rodas-de-liga-leve.webp', label: 'Troca de Rodas de Liga Leve' },
             { url: '/images/galeria/mostruario-pneus-novos.webp', fallback: 'https://img.carplusautos.com.br/cwb/mostruario-pneus-novos.webp', label: 'Mostruário Especial de Pneus Novos' },
             { url: '/images/galeria/show-row-pneus.webp', fallback: 'https://img.carplusautos.com.br/cwb/show-row-pneus.webp', label: 'Exposição de Pneus de Qualidade' },
@@ -2305,7 +2305,7 @@ export default function CompanyPages({
                           A <strong className="text-gray-900">Carplus Pneus & Oficina</strong> está localizada na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba - PR, e atende com excelência clientes de <strong className="text-yellow-650">{seoTarget.name}</strong> e toda a Região Metropolitana.
                         </p>
                         <p>
-                          Oferecemos um portfólio completo com as marcas líderes do mercado em estoque (Bridgestone, Michelin, Pirelli, Dunlop, Goodyear, Continental e muito mais). Todos os pneus contam com montagem técnica gratuita e troca de válvulas novas em nossa loja sede do Portão.
+                          Oferecemos um portfólio completo com as marcas líderes do mercado em estoque (Bridgestone, Michelin, Pirelli, Dunlop, Goodyear, Continental e muito mais). Todos os pneus contam com opção de montagem técnica especializada e alinhamento 3D em nossa loja sede do Portão.
                         </p>
                       </div>
                     </div>
@@ -2459,10 +2459,10 @@ export default function CompanyPages({
                       {!isAro && !isCarro && (
                         <>
                           <h4 className="text-sm font-black text-gray-950 uppercase border-l-4 border-yellow-500 pl-3 leading-tight select-none font-mono">
-                            Destaques em Oferta com Instalação Grátis em {seoTarget.name}
+                            Destaques em Oferta com Pronta Entrega para {seoTarget.name}
                           </h4>
                           <p className="text-xs text-gray-600 mt-1">
-                            Pneus novos com montagem inclusa e troca de bicos grátis para motoristas de {seoTarget.name}:
+                            Pneus novos com pronta entrega e montagem especializada para motoristas de {seoTarget.name}:
                           </p>
                         </>
                       )}
@@ -2591,7 +2591,7 @@ export default function CompanyPages({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
                       { title: "35 Anos de Tradição de Mercado", desc: "Desde 1991 garantindo honestidade e precisão no orçamento, sem forçar reparos indesejados." },
-                      { title: "Técnicos Treinados e Habilitados", desc: "Troca e alinhamento com bicos novos, calibragem computadorizada e testes corretos de rolagem." },
+                      { title: "Técnicos Treinados e Habilitados", desc: "Troca e alinhamento com maquinário anti-risco, calibragem computadorizada e testes de rolagem." },
                       { title: "Geometria 3D e Alinhamento Preciso", desc: "Nossos equipamentos ajustam os eixos de cambagem seguindo as especificações exatas do seu modelo." },
                       { title: "Maior Nota de Aprovação no Google Mapas", desc: "Reconhecimento comprovado e real no mapa de Curitiba, com milhares de clientes satisfeitos recomendando." },
                       { title: "Facilidade de Pagamento Presencial", desc: "Parcele tudo em até 10x sem juros no cartão de crédito físico diretamente na nossa entrega técnica." },
@@ -2786,7 +2786,7 @@ export default function CompanyPages({
                     >
                       <div>
                         <span className="font-black text-gray-950 block uppercase font-mono mb-1">Oficina & Suspensão</span>
-                        <span className="text-[10px] text-gray-500 block leading-snug">Revisão rigorosa de amortecedores, molas, pastilhas e buchas com bicos novos grátis ➔</span>
+                        <span className="text-[10px] text-gray-500 block leading-snug">Revisão rigorosa de amortecedores, molas, pastilhas e buchas no Portão ➔</span>
                       </div>
                     </a>
 
@@ -2824,7 +2824,7 @@ export default function CompanyPages({
                       Outros Bairros / Mapa
                     </button>
                     <a
-                      href={formatWhatsApp(`Olá Carplus Pneus! Agendei a reserva do trajeto saindo de ${seoTarget.name} e gostaria de confirmar dia/hora para montagem inclusa gratuita.`)}
+                      href={formatWhatsApp(`Olá Carplus Pneus! Agendei a reserva do trajeto saindo de ${seoTarget.name} e gostaria de confirmar dia/hora para montagem e atendimento no Portão.`)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-[#f49e1a] hover:bg-yellow-400 text-gray-950 font-black text-xs uppercase px-5 py-2.5 rounded-xl transition border border-black flex items-center gap-1.5 cursor-pointer shadow-sm"
@@ -2867,7 +2867,7 @@ export default function CompanyPages({
                   Pneus Pirelli Curitiba
                 </h1>
                 <p className="text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed text-sm">
-                  Encontre pneus Pirelli novos para pronta entrega em Curitiba: linhas Cinturato, Scorpion e Chrono. Pneus 100% novos com 5 anos de garantia de fábrica, bicos de borracha inclusos e montagem especializada no bairro Portão.
+                  Encontre pneus Pirelli novos para pronta entrega em Curitiba: linhas Cinturato, Scorpion e Chrono. Pneus 100% novos com garantia de fábrica, montagem especializada e alinhamento 3D no bairro Portão.
                 </p>
               </div>
 
@@ -2882,7 +2882,7 @@ export default function CompanyPages({
                 <div className="space-y-3">
                   <h3 className="text-sm font-black uppercase text-gray-950 font-mono border-l-4 border-red-600 pl-3 leading-none">Loja de Pneus Pirelli no Portão</h3>
                   <p className="text-gray-700 leading-relaxed text-justify">
-                    Em nossa loja física na Av. Presidente Arthur Bernardes, 1323, você conta com elevadores pantográficos calibrados e técnicos capacitados. Na compra dos seus pneus Pirelli, a montagem e as válvulas novas de borracha são cortesia. Também realizamos alinhamento 3D tridimensional e balanceamento computadorizado no mesmo local.
+                    Em nossa loja física na Av. Presidente Arthur Bernardes, 1323, você conta com elevadores pantográficos calibrados e técnicos capacitados. Dispomos de estrutura para montagem computadorizada anti-risco, alinhamento 3D tridimensional e balanceamento dinâmico no mesmo local.
                   </p>
                 </div>
               </div>
