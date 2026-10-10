@@ -19,14 +19,48 @@ html, body, #root {
   color: #111827;
 }
 
-/* Hide floating WhatsApp button when mobile menu overlay is active */
-body.mobile-menu-open #live-whatsapp-chat {
+/* Universal responsive container and media safety */
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+img, svg, video, iframe {
+  max-width: 100%;
+}
+
+/* Universal overflow wrap prevention for long texts, URLs and titles */
+h1, h2, h3, h4, h5, h6, p, a, span, button, li {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Hide floating buttons when mobile menu overlay is active */
+body.mobile-menu-open #live-whatsapp-chat,
+body.mobile-menu-open #floating-share-btn,
+body.mobile-menu-open #scroll-to-top-btn {
   display: none !important;
 }
 
+/* Workshop gentle slow tire spinning */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 28s linear infinite;
+}
+
 /* Ensure no text justification globally for maximum elderly readability */
-p, h1, h2, h3, h4, h5, h6, span, li, a, button {
+body {
   text-align: left;
+}
+*:not(.text-center):not(.text-right) {
+  text-justify: none;
 }
 
 /* Accessible visible focus ring for keyboard navigation */

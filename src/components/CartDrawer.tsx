@@ -213,7 +213,7 @@ export default function CartDrawer({
             className="border-t border-gray-200 p-4 bg-gray-50/70 space-y-3 shrink-0"
             id="cart-drawer-scheduling-form"
           >
-            <h4 className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-1 text-center sm:text-justify">
+            <h4 className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-1 text-center sm:text-left">
               Agendar Instalação Carplus Portão:
             </h4>
 

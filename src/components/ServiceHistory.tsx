@@ -87,7 +87,7 @@ export default function ServiceHistory() {
           <h3 className="text-xl sm:text-2xl font-black text-[#1a1c20] tracking-tight">
             Histórico Digital de Serviços
           </h3>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1 text-justify">
+          <p className="text-xs sm:text-sm text-gray-500 mt-1 text-left">
             Consulte serviços realizados ou agendados na Carplus Pneus informando a placa ou o modelo do veículo.
           </p>
         </div>

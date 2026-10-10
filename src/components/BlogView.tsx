@@ -209,12 +209,12 @@ export const BlogView: React.FC<BlogViewProps> = ({
           </div>
 
           {/* H1 Title */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 break-words [overflow-wrap:anywhere]">
             {currentPost.h1}
           </h1>
 
           {/* Summary Lead */}
-          <div className="p-4 sm:p-5 bg-amber-50/80 border-l-4 border-amber-500 rounded-r-xl mb-8 text-slate-800 text-base sm:text-lg leading-relaxed font-medium">
+          <div className="p-4 sm:p-5 bg-amber-50/80 border-l-4 border-amber-500 rounded-r-xl mb-8 text-slate-800 text-base sm:text-lg leading-relaxed font-medium break-words [overflow-wrap:anywhere]">
             {currentPost.summary}
           </div>
 
@@ -227,7 +227,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
               }}
               alt={currentPost.imageAlt}
               loading="eager"
-              className="w-full h-64 sm:h-80 md:h-96 object-cover object-center"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover object-center max-w-full"
             />
             <div className="bg-white px-4 py-2 text-xs text-slate-500 italic border-t border-slate-100">
               {currentPost.imageAlt}
@@ -235,9 +235,9 @@ export const BlogView: React.FC<BlogViewProps> = ({
           </div>
 
           {/* Article Body Content */}
-          <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-xs border border-slate-200 space-y-8">
+          <div className="bg-white p-5 sm:p-8 md:p-10 rounded-2xl shadow-xs border border-slate-200 space-y-8 w-full max-w-full overflow-hidden">
             {/* Intro paragraph */}
-            <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-700 leading-relaxed break-words [overflow-wrap:anywhere]">
               {currentPost.intro}
             </p>
 
@@ -245,9 +245,9 @@ export const BlogView: React.FC<BlogViewProps> = ({
             {currentPost.sections.map((section, idx) => (
               <section key={idx} className="pt-2 border-t border-slate-100 first:border-0 first:pt-0 space-y-4">
                 {section.title && (
-                  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
-                    <span className="w-2 h-6 bg-amber-500 rounded-full inline-block"></span>
-                    {section.title}
+                  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-start gap-2.5 break-words [overflow-wrap:anywhere]">
+                    <span className="w-2 h-6 bg-amber-500 rounded-full inline-block shrink-0 mt-1"></span>
+                    <span className="min-w-0 flex-1">{section.title}</span>
                   </h2>
                 )}
 

@@ -50,7 +50,7 @@ export default function TireFinderWizard({ onSearchMeasure, onAddToCart }: TireF
         <h3 className="text-2xl sm:text-3xl font-black text-black uppercase leading-none tracking-tight">
           Qual pneu vai no seu carro?
         </h3>
-        <p className="text-sm sm:text-base text-black font-extrabold mt-2 text-justify font-sans leading-relaxed">
+        <p className="text-sm sm:text-base text-black font-extrabold mt-2 text-left font-sans leading-relaxed">
           Selecione a montadora e depois o modelo para encontrar a medida exata homologada e ver os pneus em estoque na loja de Curitiba.
         </p>
       </div>
@@ -144,7 +144,7 @@ export default function TireFinderWizard({ onSearchMeasure, onAddToCart }: TireF
 
           {/* Recommendation Description */}
           <div className="flex items-center justify-between gap-2 mb-3">
-            <p className="text-sm text-gray-800 font-extrabold text-justify leading-relaxed">
+            <p className="text-sm text-gray-800 font-extrabold text-left leading-relaxed">
               Modelos compatíveis em estoque no catálogo oficial Carplus para <strong>{selectedCar.name}</strong> ({selectedCar.recommendedTireRatio.replace('/', '/').replace('/', ' R')}):
             </p>
             {matchingCatalogTires.length > 0 && (

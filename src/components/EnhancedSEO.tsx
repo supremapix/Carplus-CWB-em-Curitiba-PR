@@ -56,9 +56,9 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
   }
 
   // 2. Determine Title, Description, and Keywords
-  let title = "Pneus, Auto Center e Oficina Mecânica em Curitiba | Carplus Portão";
-  let desc = "Carplus Pneus é loja de pneus, auto center e oficina mecânica no Portão, Curitiba. Pneus novos multimarcas, montagem, alinhamento 3D, balanceamento e serviços automotivos.";
-  let keywords = "auto center pneus curitiba, autocenter curitiba, centro automotivo curitiba, auto center portao, centro automotivo portao, loja de pneus curitiba, pneus curitiba, pneus no portao, oficina mecanica curitiba, troca de pneus curitiba, alinhamento e balanceamento curitiba, pneus com montagem curitiba";
+  let title = "Pneus e Auto Center em Curitiba – Portão | Carplus Pneus";
+  let desc = "Carplus Pneus e Auto Center no Portão, Curitiba. Mais de 1.900 pneus novos multimarcas com montagem na hora, alinhamento 3D a laser e garantia de 5 anos.";
+  let keywords = "auto center pneus curitiba, auto center curitiba, pneus curitiba, pneus e auto center em curitiba portao, centro automotivo curitiba, auto center portao, loja de pneus curitiba, alinhamento 3d curitiba, pneus novos com instalacao curitiba";
   let ogImage = `${domain}/og-carplus.webp`;
 
   if (selectedCatalogTire) {
@@ -67,9 +67,9 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     keywords = `pneu ${selectedCatalogTire.marca.toLowerCase()}, pneu ${selectedCatalogTire.medida.toLowerCase()}, pneu aro ${selectedCatalogTire.aro}, pneu curitiba, carplus pneus`;
     ogImage = selectedCatalogTire.imagemGrande || selectedCatalogTire.imagem || ogImage;
   } else if (currentView === 'catalogo-pneus') {
-    title = "Catálogo de Pneus em Curitiba - Mais de 1.962 Modelos | Carplus Pneus";
-    desc = "Explore o catálogo completo de pneus em Curitiba. Pneus Pirelli, Bridgestone, Continental, Goodyear, Michelin, Delinte e Prinx a pronta entrega no Portão.";
-    keywords = "catalogo de pneus, comprar pneus curitiba, pneus aro 13 ao 23, marcas de pneus, carplus pneus";
+    title = "Pneus e Auto Center em Curitiba – Portão | Catálogo Carplus";
+    desc = "Onde comprar pneus em Curitiba? No auto center da Carplus no Portão. Catálogo completo de aros 13 a 23 com montagem técnica, alinhamento 3D e pronta entrega.";
+    keywords = "pneus e auto center em curitiba portao, comprar pneus curitiba, pneus aro 13 ao 23, marcas de pneus, carplus pneus";
   } else if (selectedTire) {
     // ----------------------------------------------------------------------
     // WOOCOMMERCE / PRODUCT SEO ENGINE
@@ -356,9 +356,15 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
 
   // 3. Structured Data Models Creation (JSON-LD JSON Objects)
   const baseLocalBusiness = {
-    "@type": ["TireShop", "AutomotiveBusiness"],
-    "name": "Carplus Pneus",
-    "legalName": "Carplus Pneus e Auto Center",
+    "@type": ["TireShop", "AutoRepair", "AutomotiveBusiness"],
+    "name": "Carplus Pneus e Auto Center",
+    "alternateName": [
+      "Carplus Auto Center",
+      "Carplus Pneus Curitiba",
+      "Auto Center Carplus",
+      "Carplus Pneus & Oficina Mecânica"
+    ],
+    "legalName": "Carplus Pneus e Auto Center Ltda",
     "image": `${domain}/og-carplus.webp`,
     "@id": `${domain}/#loja`,
     "url": domain,
@@ -376,6 +382,51 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       "@type": "GeoCoordinates",
       "latitude": -25.477815,
       "longitude": -49.299557
+    },
+    "sameAs": [
+      "https://maps.google.com/?q=Carplus+Pneus+Curitiba",
+      "https://www.instagram.com/carpluscwb",
+      "https://www.facebook.com/carpluscwb"
+    ],
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Curitiba" },
+      { "@type": "AdministrativeArea", "name": "Portão" },
+      { "@type": "AdministrativeArea", "name": "Água Verde" },
+      { "@type": "AdministrativeArea", "name": "Santa Quitéria" },
+      { "@type": "AdministrativeArea", "name": "Novo Mundo" },
+      { "@type": "AdministrativeArea", "name": "Fazendinha" },
+      { "@type": "AdministrativeArea", "name": "Vila Izabel" },
+      { "@type": "AdministrativeArea", "name": "Capão Raso" },
+      { "@type": "AdministrativeArea", "name": "Pinheirinho" },
+      { "@type": "AdministrativeArea", "name": "Batel" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catálogo de Pneus e Serviços Automotivos Carplus",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Pneus Novos por Aro",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 13 Novos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 14 Novos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 15 Novos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 16 Novos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 17 Novos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 18 Novos" } }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Serviços de Auto Center e Mecânica Expressa",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Alinhamento 3D Computadorizado a Laser" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Balanceamento Dinâmico de Rodas" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Montagem Técnica Anti-Risco de Pneus" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Revisão Preventiva de Suspensão e Freios" } }
+          ]
+        }
+      ]
     },
     "openingHoursSpecification": [
       {
@@ -490,9 +541,20 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     breadcrumbList.itemListElement.push({
       "@type": "ListItem",
       "position": 2,
-      "name": "Blog",
+      "name": "Blog Automotivo",
       "item": `${domain}/blog`
     });
+    if (selectedBlogSlug) {
+      const activePost = getBlogPostBySlug(selectedBlogSlug);
+      if (activePost) {
+        breadcrumbList.itemListElement.push({
+          "@type": "ListItem",
+          "position": 3,
+          "name": activePost.title,
+          "item": `${domain}/blog/${activePost.slug}`
+        });
+      }
+    }
   } else if (currentView !== 'home') {
     breadcrumbList.itemListElement.push(
       {
@@ -698,7 +760,39 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
           "name": "Onde comprar pneus em Curitiba?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Na Carplus Pneus, localizada na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba. Amplo catálogo de pneus novos multimarcas para veículos de passeio, SUVs, utilitários e caminhonetes com pronta entrega e agendamento prático."
+            "text": "Na Carplus Pneus e Auto Center, localizada na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba. Dispomos de mais de 1.900 opções de pneus novos multimarcas com pronta entrega e montagem imediata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual auto center perto de mim no Portão?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Carplus Pneus e Auto Center atua na Av. Presidente Arthur Bernardes, 1323, no Portão. Centro automotivo completo com 10 boxes, montagem pneumática anti-risco e alinhamento 3D computadorizado a laser."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês fazem alinhamento e balanceamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! Realizamos alinhamento 3D computadorizado a laser com calibração milimétrica de convergência, cambagem e cáster, além de balanceamento dinâmico de rodas para rodagem macia e uniforme."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Atendem carros elétricos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, a equipe técnica da Carplus realiza montagem com equipamento anti-risco e alinhamento 3D para veículos elétricos e híbridos. A disponibilidade de medidas específicas e modelos homologados pode ser consultada diretamente com nossos técnicos pelo WhatsApp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Parcelam pneus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! Facilitamos o pagamento em até 10 vezes sem juros nos cartões de crédito físicos na loja do Portão, além de condições especiais com desconto para pagamento presencial via PIX."
           }
         },
         {
@@ -711,50 +805,10 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
         },
         {
           "@type": "Question",
-          "name": "Onde encontrar auto center com pneus em Curitiba?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A Carplus Pneus e Oficina Mecânica reúne loja de pneus novos e auto center completo no mesmo endereço no bairro Portão, integrando catálogo multimarcas com montagem, alinhamento 3D tridimensional, balanceamento e serviços mecânicos preventivos."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Qual centro automotivo no Portão?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A Carplus Pneus e Oficina Mecânica atua no Portão (Av. Presidente Arthur da Silva Bernardes, 1323), com fácil acesso para motoristas do Portão, Água Verde, Vila Izabel, Batel, Santa Quitéria, Fazendinha, Capão Raso e Novo Mundo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Onde fazer alinhamento e balanceamento em Curitiba?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Na rampa de Alinhamento 3D Computadorizado e balanceadoras dinâmicas da Carplus no Portão. A geometria 3D avalia convergência, cambagem e cáster com precisão milimétrica, assegurando desgaste uniforme dos pneus e estabilidade ao volante."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Onde comprar e instalar pneus no mesmo local em Curitiba?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Na Carplus Pneus no Portão. Você escolhe os pneus novos das principais fabricantes e realiza a montagem, balanceamento e alinhamento no mesmo local sem precisar se deslocar para outra oficina."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "A Carplus trabalha apenas com pneus novos de marcas oficiais com garantia?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sim, trabalhamos estritamente com pneus novos de primeira linha homologados pelo INMETRO (Bridgestone, Pirelli, Michelin, Goodyear, Firestone, Dunlop, Delinte, Xbri, Comforser, Linglong, Speedmax), todos com garantia de fábrica de 5 anos."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quais as formas de pagamento disponíveis na Carplus?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Aceitamos parcelamento em até 10 vezes sem juros no cartão de crédito físico, pagamento via PIX presencial com condições especiais, cartão de débito e dinheiro na sede física após a conclusão dos serviços."
           }
         }
       ]

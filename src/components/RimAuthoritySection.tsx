@@ -110,7 +110,7 @@ export default function RimAuthoritySection({ aroName, onSelectAro }: RimAuthori
           <p className="text-xs sm:text-sm text-yellow-600 font-mono font-black uppercase tracking-wider mb-4">
             Av. Presidente Arthur da Silva Bernardes, 1323 (Bairro Portão) • Atendimento Curitiba e Toda RMC
           </p>
-          <p className="text-sm sm:text-base text-gray-700 leading-relaxed text-justify">
+          <p className="text-sm sm:text-base text-gray-700 leading-relaxed text-left">
             A <strong>Carplus Pneus & Oficina</strong> é a maior autoridade do Sul do Brasil em fornecimento, montagem e alinhamento de <strong>pneus aro {rimConfig.number} em Curitiba</strong>. Mantemos o maior estoque à pronta entrega com menor preço garantido, cobrindo qualquer cotação de concessionárias e grandes redes com montagem computadorizada e atendimento especializado.
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function RimAuthoritySection({ aroName, onSelectAro }: RimAuthori
             <Wrench className="w-4 h-4 text-[#f49e1a]" />
             <span>Especificações Técnicas: Índice de Carga, Velocidade e Durabilidade</span>
           </div>
-          <p className="text-xs sm:text-sm text-gray-650 leading-relaxed text-justify">
+          <p className="text-xs sm:text-sm text-gray-650 leading-relaxed text-left">
             {rimConfig.technicalText}
           </p>
           

@@ -540,7 +540,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
             Na Carplus Pneus, assumimos a função de uma verdadeira <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">distribuidora de pneus em Curitiba</strong>. Variações expressas de preços que você geralmente vê em grandes redes estão disponíveis aqui na Arthur Bernardes direto para seu veículo de passeio.
           </p>
 
-          <div className="bg-gray-50 border border-gray-150 p-5 rounded-3xl space-y-2 text-justify">
+          <div className="bg-gray-50 border border-gray-150 p-5 rounded-3xl space-y-2 text-left">
             <span className="font-mono text-[9px] text-[#f49e1a] uppercase font-black tracking-widest block font-bold">Por Dentro de Nossa Distribuidora:</span>
             <p className="text-xs text-gray-650 leading-relaxed font-medium">
               Eliminamos o modelo tradicional de comissionamento embutido do varejo convencional. Ao comprar com um de nossos consultores de frota ou varejo técnico, apresentamos as opções mais duráveis de composto de acordo com a quilometragem média que seu veículo transita, garantindo a excelente relação de durabilidade e custo útil real.

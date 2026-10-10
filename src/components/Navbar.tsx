@@ -77,7 +77,7 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
 
       {/* Main navigation header */}
       <nav className="bg-black text-white py-3 px-3 sm:px-6 shadow-md border-b border-zinc-800 relative z-40 w-full overflow-hidden">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 w-full min-w-0">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 w-full">
           {/* Brand Logo */}
           <a 
             href="/" 
@@ -85,15 +85,28 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
               e.preventDefault();
               onScrollToSection('home');
             }} 
-            className="cursor-pointer shrink min-w-0 flex items-center min-h-[48px]"
+            className="cursor-pointer shrink-0 flex items-center min-h-[48px]"
           >
+            {/* Desktop Logo (≥ 1024px) - Exactly same source and fallback as Footer.tsx */}
             <img
               src="/images/logos/logo-horizontal.svg"
               onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
+                (e.currentTarget as HTMLImageElement).src = '/logo-horizontal.svg';
               }}
-              alt="Carplus Pneus e Oficina Mecânica"
-              className="h-8 sm:h-11 w-auto max-w-[170px] sm:max-w-none object-contain shrink-0"
+              alt="Carplus Pneus"
+              width="365"
+              height="52"
+              loading="eager"
+              className="hidden lg:block h-[52px] w-auto object-contain shrink-0"
+            />
+            {/* Mobile / Tablet Logo (< 1024px) */}
+            <img
+              src="/carplus-pneus-oficina-mecanica-full-service-horizontal.svg"
+              alt="Carplus Pneus"
+              width="166"
+              height="40"
+              loading="eager"
+              className="block lg:hidden h-[40px] w-auto max-w-[170px] sm:max-w-[200px] object-contain shrink-0"
             />
           </a>
 
@@ -151,12 +164,12 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
           {/* Top Bar: Logo & Written "Fechar ✕" Button */}
           <div className="flex items-center justify-between pb-4 border-b border-zinc-800 w-full gap-2 shrink-0">
             <img
-              src="/images/logos/logo-horizontal.svg"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
-              }}
+              src="/carplus-pneus-oficina-mecanica-full-service-horizontal.svg"
               alt="Carplus Pneus"
-              className="h-8 sm:h-9 w-auto max-w-[160px] object-contain shrink-0"
+              width="166"
+              height="40"
+              loading="eager"
+              className="h-[38px] sm:h-[40px] w-auto max-w-[160px] object-contain block shrink-0"
             />
             <button 
               onClick={() => setIsMobileMenuOpen(false)}

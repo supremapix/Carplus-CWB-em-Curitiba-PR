@@ -6,6 +6,7 @@ import {
   ExternalLink, Info, AlertTriangle, SlidersHorizontal, Award
 } from 'lucide-react';
 import { getCatalogSync, getFullCatalog } from '../data/catalogo-pneus';
+import { getBrandFallbackImage } from '../data';
 import CatalogTireCard from './CatalogTireCard';
 
 interface CatalogTireDetailProps {
@@ -92,6 +93,15 @@ export default function CatalogTireDetail({
                 src={displayImage}
                 alt={`Pneu ${tire.nome} medida ${tire.medida} Aro ${tire.aro} Curitiba`}
                 className="max-h-72 w-auto object-contain mx-auto transition-transform hover:scale-105 duration-300"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (!target.dataset.triedFallback) {
+                    target.dataset.triedFallback = 'true';
+                    target.src = getBrandFallbackImage(tire.marca, String(tire.id));
+                  } else {
+                    target.src = '/images/pneus/pneu-fallback.svg';
+                  }
+                }}
               />
               <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                 <span className="bg-gray-900 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">
@@ -156,11 +166,11 @@ export default function CatalogTireDetail({
 
               {/* Description */}
               {tire.descricao ? (
-                <p className="text-sm text-gray-650 leading-relaxed text-justify bg-gray-50 p-4 rounded-2xl border border-gray-150">
+                <p className="text-sm text-gray-650 leading-relaxed text-left bg-gray-50 p-4 rounded-2xl border border-gray-150 break-words [overflow-wrap:anywhere]">
                   {tire.descricao}
                 </p>
               ) : (
-                <p className="text-sm text-gray-650 leading-relaxed bg-gray-50 p-4 rounded-2xl border border-gray-150">
+                <p className="text-sm text-gray-650 leading-relaxed text-left bg-gray-50 p-4 rounded-2xl border border-gray-150 break-words [overflow-wrap:anywhere]">
                   O pneu <strong>{tire.nome}</strong> na medida <strong>{tire.medida}</strong> (Aro {tire.aro}) da fabricante <strong>{tire.marca}</strong> entrega alto desempenho, aderência precisa e durabilidade garantida na Carplus Portão.
                 </p>
               )}

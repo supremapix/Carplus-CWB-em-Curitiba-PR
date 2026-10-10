@@ -78,7 +78,12 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = getBrandFallbackImage(tire.brand, tire.id);
+                  if (!target.dataset.triedFallback) {
+                    target.dataset.triedFallback = 'true';
+                    target.src = getBrandFallbackImage(tire.brand, tire.id);
+                  } else {
+                    target.src = '/images/pneus/pneu-fallback.svg';
+                  }
                 }}
               />
               
@@ -267,11 +272,11 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                 {/* WhatsApp consultation CTA Button */}
                 <button
                   onClick={handleWhatsAppInquiry}
-                  className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black h-[52px] rounded-2xl flex items-center justify-center gap-2.5 text-xs sm:text-sm uppercase tracking-wide transition border border-[#1ebd53] shadow-md cursor-pointer"
+                  className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black min-h-[52px] h-auto py-3 px-3 rounded-2xl flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide transition border border-[#1ebd53] shadow-md cursor-pointer"
                   id="whatsapp-detail-btn"
                 >
                   <MessageSquare className="w-5 h-5 shrink-0 fill-current" />
-                  <span>Consultar no WhatsApp • {quantity} pneu(s)</span>
+                  <span className="text-center">Consultar no WhatsApp • {quantity} pneu(s)</span>
                 </button>
 
               </div>
@@ -389,7 +394,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
             </span>
           </div>
 
-          <p className="text-xs text-gray-650 leading-relaxed text-justify font-bold">
+          <p className="text-xs text-gray-650 leading-relaxed text-left font-bold">
             Confira abaixo os veículos mais populares do mercado nacional homologados para a medida <strong>{tire.width}/{tire.aspectRatio} R{tire.rim}</strong>. 
             <span className="text-yellow-600 block sm:inline font-black ml-1">👇 CLIQUE SOBRE O SEU VEÍCULO para ver o diagnóstico completo de como este pneu {tire.brand} se comporta especificamente nele!</span>
           </p>
@@ -496,7 +501,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                     <h5 className="text-[11px] uppercase font-black tracking-wider text-[#e68313] flex items-center gap-1.5">
                       🌧️ Comportamento em Chuva & Frenagem
                     </h5>
-                    <p className="text-xs text-gray-650 font-semibold leading-relaxed text-justify">
+                    <p className="text-xs text-gray-650 font-semibold leading-relaxed text-left">
                       O peso estrutural do <strong>{selectedCompatCar}</strong> é perfeitamente calibrado para as canelas rígidas e sulcos de escoamento deste pneu. Nos dias de chuva no asfalto liso de Curitiba, a tecnologia de sílica do composto diminui a distância de frenagem em até 2,8 metros comparado a marcas paralelas, entregando estabilidade direcional absoluta e prevenindo a aquaplanagem acidental.
                     </p>
                   </div>
@@ -505,7 +510,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                     <h5 className="text-[11px] uppercase font-black tracking-wider text-green-700 flex items-center gap-1.5">
                       🔋 Eficiência Energética & Durabilidade
                     </h5>
-                    <p className="text-xs text-gray-650 font-semibold leading-relaxed text-justify">
+                    <p className="text-xs text-gray-650 font-semibold leading-relaxed text-left">
                       Por ter baixa resistência ao rolamento, a instalação da medida original <strong>{tire.width}/{tire.aspectRatio} R{tire.rim}</strong> no seu veículo otimiza o arrasto mecânico, o que reduz o consumo de combustível em cerca de 4,5% na cidade. A borracha vulcanizada possui alto índice de Treadwear que compensa o desgaste natural que afeta as suspensões típicas do {selectedCompatCar}.
                     </p>
                   </div>
@@ -516,7 +521,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                     <h5 className="text-[11px] uppercase font-black tracking-wider text-blue-700 flex items-center gap-1.5">
                       🔊 Nível de Ruído & Conforto Acústico
                     </h5>
-                    <p className="text-xs text-gray-650 font-semibold leading-relaxed text-justify">
+                    <p className="text-xs text-gray-650 font-semibold leading-relaxed text-left">
                       O isolamento de cabine do <strong>{selectedCompatCar}</strong> e o design com blocos fechados e ranhuras otimizadas do {tire.model} neutralizam a propagação de ondas harmônicas. Em estradas rápidas como a BR-116 ou Rodovia do Xisto, o ruído percebido no habitáculo fica abaixo de 70dB, proporcionando uma viagem silenciosa e confortável para toda a sua família.
                     </p>
                   </div>
@@ -525,7 +530,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                     <h5 className="text-[11px] uppercase font-black tracking-wider text-purple-700 flex items-center gap-1.5">
                       🛠️ Recomendações Técnicas Carplus
                     </h5>
-                    <p className="text-xs text-gray-650 font-semibold leading-relaxed text-justify">
+                    <p className="text-xs text-gray-650 font-semibold leading-relaxed text-left">
                       Para assegurar a máxima integridade do conjunto em seu {selectedCompatCar}, nossa equipe realiza a inspeção técnica completa, verificação de alinhamento 3D e balanceamento dinâmico computadorizado de rodas em nosso auto center do Portão.
                     </p>
                   </div>
@@ -538,13 +543,13 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                   <div className="space-y-1 bg-yellow-50/30 p-3.5 border border-yellow-250 rounded-xl">
                     <span className="font-extrabold text-gray-950 uppercase tracking-tight block">❓ Este pneu altera a altura em relação ao solo ou raspa na lataria?</span>
-                    <span className="text-gray-650 font-medium block leading-relaxed text-justify mt-1">
+                    <span className="text-gray-650 font-medium block leading-relaxed text-left mt-1">
                       Não. A especificação {tire.width}/{tire.aspectRatio} R{tire.rim} atende rigorosamente às dimensões originais requeridas para o {selectedCompatCar}, garantindo que o para-lama e os componentes de suspensão operem livres de contato e com odômetro/velocímetro marcando 100% correto.
                     </span>
                   </div>
                   <div className="space-y-1 bg-yellow-50/30 p-3.5 border border-yellow-250 rounded-xl">
                     <span className="font-extrabold text-gray-950 uppercase tracking-tight block">❓ É necessário refazer o alinhamento de direção após colocar os pneus?</span>
-                    <span className="text-gray-650 font-medium block leading-relaxed text-justify mt-1">
+                    <span className="text-gray-650 font-medium block leading-relaxed text-left mt-1">
                       Sim, é altamente indicado. Toda troca de composto altera micrometricamente o ângulo de caster/divergência. Fazendo a compra com a Carplus, nós executamos o check-up preventivo completo de geometria e oferecemos alinhamento oficial 3D computadorizado de alta precisão!
                     </span>
                   </div>
@@ -636,7 +641,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                     </span>
                   </button>
                   {isOpen && (
-                    <div className="px-4 sm:px-5 pb-5 border-t border-black/10 pt-4 text-xs sm:text-sm text-gray-700 leading-relaxed font-semibold text-justify">
+                    <div className="px-4 sm:px-5 pb-5 border-t border-black/10 pt-4 text-xs sm:text-sm text-gray-700 leading-relaxed font-semibold text-left">
                       {faq.a}
                     </div>
                   )}

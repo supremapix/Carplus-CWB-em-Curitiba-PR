@@ -834,11 +834,22 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
     "@type": "AutoRepair",
     "@id": `${DOMAIN}/#localbusiness`,
     "name": "Carplus Pneus & Auto Center",
+    "alternateName": [
+      "Carplus Auto Center",
+      "Carplus Pneus Curitiba",
+      "Auto Center Carplus",
+      "Carplus Pneus & Oficina Mecânica"
+    ],
     "description": "Loja de pneus novos e centro automotivo especializado em alinhamento 3D, balanceamento computadorizado e oficina mecânica no Portão, Curitiba.",
     "url": DOMAIN,
     "telephone": NAP_PHONE,
     "priceRange": "$$",
     "image": `${DOMAIN}/carplus-logo.svg`,
+    "sameAs": [
+      "https://maps.google.com/?q=Carplus+Pneus+Curitiba",
+      "https://www.instagram.com/carpluscwb",
+      "https://www.facebook.com/carpluscwb"
+    ],
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Av. Presidente Arthur da Silva Bernardes, 1323",
@@ -1004,12 +1015,54 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
       "dateModified": post.updatedIso || post.publishedIso
     };
 
+    const blogGraph: any[] = [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": DOMAIN
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog Automotivo",
+            "item": `${DOMAIN}/blog`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": post.title,
+            "item": postUrl
+          }
+        ]
+      },
+      blogSchema
+    ];
+
+    if (post.faqs && post.faqs.length > 0) {
+      blogGraph.push({
+        "@type": "FAQPage",
+        "@id": `${postUrl}#faq`,
+        "mainEntity": post.faqs.map(f => ({
+          "@type": "Question",
+          "name": f.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": f.answer
+          }
+        }))
+      });
+    }
+
     routes.push({
       path: `blog/${post.slug}`,
       title: post.metaTitle || `${post.title} | Blog Carplus`,
       desc: post.metaDescription || post.summary,
       keywords: `${post.category}, pneus curitiba, dicas mecanica, ${post.title.toLowerCase().replace(/[^a-z0-9]/g, ' ')}`,
-      schema: blogSchema,
+      schema: { "@context": "https://schema.org", "@graph": blogGraph },
       isIndexable: true,
       customBodyHtml: renderBlogArticleShell(post)
     });

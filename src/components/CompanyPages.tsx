@@ -281,7 +281,7 @@ export default function CompanyPages({
                 <h2 className="text-3xl sm:text-4xl font-black uppercase text-gray-950 mt-3 tracking-tight">
                   Seu Carrinho • <span className="text-yellow-600">Revisão de Compra</span>
                 </h2>
-                <p className="text-sm max-w-2xl mt-2 text-justify leading-relaxed text-gray-650 font-medium">
+                <p className="text-sm max-w-2xl mt-2 text-left leading-relaxed text-gray-650 font-medium">
                   Confira as quantidades dos pneus novos da sua frota e usufrua da nossa estrutura especializada no Portão: montagem técnica computadorizada, balanceamento dinâmico e alinhamento 3D de alta precisão!
                 </p>
               </div>
@@ -479,7 +479,7 @@ export default function CompanyPages({
                         <ShieldCheck className="w-4 h-4 text-yellow-600" />
                         <span>Garantia de 5 anos Inclusa</span>
                       </h4>
-                      <p className="text-[11px] text-gray-650 leading-relaxed text-justify font-medium">
+                      <p className="text-[11px] text-gray-650 leading-relaxed text-left font-medium">
                         Todos os pneus em estoque acompanham o selo de qualidade do Inmetro, nota fiscal e cobertura de garantia total de 5 anos contra defeitos e anomalias de fábrica. Sua compra e rodagem estão amparadas com tranquilidade na Carplus.
                       </p>
                     </div>
@@ -498,10 +498,10 @@ export default function CompanyPages({
                 Tradição de Honestidade & Confiança
               </span>
               <h2 className="text-3xl sm:text-4xl font-black uppercase text-gray-950 mt-3 tracking-tight">
-                Quem Somos • <span className="text-yellow-600">Carplus Pneus & Oficina</span>
+                Quem Somos • <span className="text-yellow-600">Carplus Pneus & Auto Center</span>
               </h2>
-              <p className="text-sm max-w-2xl mt-2 text-justify leading-relaxed text-gray-650 font-medium">
-                Há 35 anos cuidando da segurança e performance do seu automóvel com total transparência, equipamentos 3D e equipe de engenharia mecânica qualificada em Curitiba.
+              <p className="text-sm max-w-2xl mt-2 text-left leading-relaxed text-gray-650 font-medium">
+                Há 35 anos cuidando da segurança e performance do seu automóvel como o auto center e loja de pneus de referência em Curitiba, com total transparência, alinhamento 3D e equipe qualificada.
               </p>
             </div>
 
@@ -511,11 +511,11 @@ export default function CompanyPages({
                   <h3 className="text-xl font-black text-gray-950 uppercase border-l-4 border-yellow-500 pl-3 leading-tight select-none">
                     Nossa História
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-700 text-justify leading-relaxed">
-                    Fundada no coração do Paraná, a Carplus Pneus nasceu com a proposta de oferecer uma nova experiência na venda e montagem de pneus e revisão mecânica preventiva completa. Longe das práticas abusivas e orçamentos "empurrados" que infelizmente são comuns, construímos nossa reputação baseada na honestidade e laudos fotográficos precisos.
+                  <p className="text-xs sm:text-sm text-gray-700 text-left leading-relaxed">
+                    Fundada no coração do Paraná, a Carplus Pneus & Auto Center nasceu com a proposta de oferecer uma nova experiência na venda e montagem de pneus e revisão mecânica preventiva completa. Longe das práticas abusivas e orçamentos "empurrados" que infelizmente são comuns, construímos nossa reputação baseada na honestidade e laudos fotográficos precisos.
                   </p>
-                  <p className="text-xs sm:text-sm text-gray-750 text-justify leading-relaxed font-semibold">
-                    Hoje, com 35 anos de atuação comercial na capital curitibana, a nossa unidade na Avenida Presidente Arthur da Silva Bernardes se tornou referência absoluta de satisfação, contando com a maior pontuação em avaliações reais dos clientes no Google Maps.
+                  <p className="text-xs sm:text-sm text-gray-750 text-left leading-relaxed font-semibold">
+                    Hoje, com 35 anos de atuação comercial na capital curitibana, a nossa unidade auto center na Avenida Presidente Arthur da Silva Bernardes se tornou referência absoluta de satisfação, contando com a maior pontuação em avaliações reais dos clientes no Google Maps.
                   </p>
                 </div>
                 
@@ -535,7 +535,7 @@ export default function CompanyPages({
                     <Star className="w-5 h-5 shrink-0" />
                   </div>
                   <h4 className="text-sm font-black text-gray-950 uppercase font-mono">Técnicos Treinados & Habilitados</h4>
-                  <p className="text-xs text-gray-650 text-justify leading-relaxed font-semibold">
+                  <p className="text-xs text-gray-650 text-left leading-relaxed font-semibold">
                     Nossos profissionais passam por certificações trimestrais de fabricantes de pneus e suspensão. Realizamos a troca de bicos com torque controlado e balanceamento dinâmico a laser.
                   </p>
                 </div>
@@ -545,7 +545,7 @@ export default function CompanyPages({
                     <Navigation className="w-5 h-5 shrink-0" />
                   </div>
                   <h4 className="text-sm font-black text-gray-950 uppercase font-mono">Geometria 3D de Última Geração</h4>
-                  <p className="text-xs text-gray-650 text-justify leading-relaxed font-semibold">
+                  <p className="text-xs text-gray-650 text-left leading-relaxed font-semibold">
                     Utilizamos sensores reflexivos de alta precisão que comparam milimetricamente as especificações de cambagem, convergência e cáster com o banco de dados oficial das montadoras de todo o mundo.
                   </p>
                 </div>
@@ -555,7 +555,7 @@ export default function CompanyPages({
                     <CheckCircle2 className="w-5 h-5 shrink-0" />
                   </div>
                   <h4 className="text-sm font-black text-gray-950 uppercase font-mono">Atendimento Sem Surpresas</h4>
-                  <p className="text-xs text-gray-650 text-justify leading-relaxed font-semibold">
+                  <p className="text-xs text-gray-650 text-left leading-relaxed font-semibold">
                     Você acompanha cada passo da manutenção. Orçamentos detalhados preestabelecidos e pagamento facilitado em até 10x sem juros no cartão de crédito físico na nossa loja.
                   </p>
                 </div>
@@ -916,7 +916,7 @@ export default function CompanyPages({
               <p className="text-[10px] text-gray-400 mt-1 font-mono font-extrabold">Última atualização: 11 de Junho de 2026</p>
             </div>
 
-            <div className="space-y-4 text-xs sm:text-sm text-gray-700 text-justify leading-relaxed">
+            <div className="space-y-4 text-xs sm:text-sm text-gray-700 text-left leading-relaxed">
               <p>
                 A Carplus Pneus está comprometida com a proteção de dados pessoais e privacidade de nossos clientes. Esta Política de Privacidade explica como coletamos, armazenamos e utilizamos as informações no âmbito deste portal e do agendamento comercial físico.
               </p>
@@ -957,7 +957,7 @@ export default function CompanyPages({
               <p className="text-[10px] text-gray-400 mt-1 font-mono font-extrabold">Em total conformidade com a Lei Federal nº 8.078/1990 (Código de Defesa do Consumidor - CDC).</p>
             </div>
 
-            <div className="space-y-4 text-xs sm:text-sm text-gray-700 text-justify leading-relaxed">
+            <div className="space-y-4 text-xs sm:text-sm text-gray-700 text-left leading-relaxed">
               <p>
                 A Carplus Pneus busca sempre a satisfação total e a integridade preventiva dos condutores de Curitiba e região metropolitana. Veja como funcionam as trocas e garantias em nossa oficina física do Portão:
               </p>
@@ -1380,7 +1380,7 @@ export default function CompanyPages({
 
             {/* CRITICAL INTEGRATION: SERVICE HISTORY */}
             <div className="border border-gray-250 p-1 bg-gray-50 rounded-3xl shadow-sm" id="integrated-service-history">
-              <div className="p-4 border-b border-gray-200 bg-white rounded-t-3xl text-center sm:text-justify flex flex-col sm:flex-row justify-between items-center gap-2">
+              <div className="p-4 border-b border-gray-200 bg-white rounded-t-3xl text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-2">
                 <div>
                   <span className="bg-yellow-500 text-gray-950 font-mono font-black text-[9px] uppercase px-2.5 py-1 rounded border border-black inline-block">
                     Área Exclusiva do Cliente
@@ -1580,7 +1580,7 @@ export default function CompanyPages({
                   </h3>
                 </div>
               </div>
-              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-11 gap-2 text-center font-mono">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2 text-center font-mono w-full max-w-full min-w-0">
                 {AROS.map((aro) => (
                   <button
                     key={`aro-link-${aro}`}
@@ -1644,7 +1644,7 @@ export default function CompanyPages({
                   Ver Hub Curitiba Completo →
                 </button>
               </div>
-              <p className="text-xs text-gray-600 text-justify font-medium">
+              <p className="text-xs text-gray-600 text-left font-medium">
                 Clique sobre qualquer bairro de Curitiba para carregar instruções de percurso e vantagens até a nossa loja na Av. Pres. Arthur da Silva Bernardes, 1323 (Portão).
               </p>
               
@@ -1667,7 +1667,7 @@ export default function CompanyPages({
               <h3 className="text-base sm:text-lg font-black uppercase text-gray-950 font-mono border-b border-gray-200 pb-2">
                 Vilas, Loteamentos & Bairros Não Oficiais (Buscas Populares em Curitiba)
               </h3>
-              <p className="text-xs text-gray-600 text-justify font-medium">
+              <p className="text-xs text-gray-600 text-left font-medium">
                 Termos regionais e microrregiões de grande circulação em Curitiba:
               </p>
 
@@ -1800,7 +1800,7 @@ export default function CompanyPages({
               <h2 className="text-3xl sm:text-4xl font-black uppercase text-gray-950 mt-3 tracking-tight">
                 Fale Conosco • <span className="text-[#f49e1a]">Página de Contato Completa</span>
               </h2>
-              <p className="text-sm max-w-2xl mt-2 text-justify leading-relaxed text-gray-650 font-semibold">
+              <p className="text-sm max-w-2xl mt-2 text-left leading-relaxed text-gray-650 font-semibold">
                 Entre em contato conosco para agendamento de suspensão, revisão, freios, serviços sob medida ou para dúvidas de compras e reservas de pneus novos no Portão.
               </p>
             </div>
@@ -1852,7 +1852,7 @@ export default function CompanyPages({
                 <div className="bg-black text-white rounded-3xl p-6 sm:p-8 space-y-4 shadow flex flex-col justify-between">
                   <div>
                     <h4 className="font-black text-[#f49e1a] uppercase text-sm tracking-widest">Compromisso Carplus</h4>
-                    <p className="text-xs text-justify text-gray-300 mt-2 leading-relaxed font-bold">
+                    <p className="text-xs text-left text-gray-300 mt-2 leading-relaxed font-bold">
                       Transparência total e laudos técnicos precisos. Sem taxas embutidas, sem serviços dispensáveis e atendimento técnico qualificado com a nossa equipe no Portão.
                     </p>
                   </div>
@@ -2300,7 +2300,7 @@ export default function CompanyPages({
                         Serviços de Troca de Pneus, Alinhamento 3D e Freios para condutores de {seoTarget.name}
                       </p>
 
-                      <div className="space-y-4 text-xs sm:text-sm text-gray-650 text-justify leading-relaxed font-semibold">
+                      <div className="space-y-4 text-xs sm:text-sm text-gray-650 text-left leading-relaxed font-semibold">
                         <p>
                           A <strong className="text-gray-900">Carplus Pneus & Oficina</strong> está localizada na Av. Presidente Arthur da Silva Bernardes, 1323, no bairro Portão em Curitiba - PR, e atende com excelência clientes de <strong className="text-yellow-650">{seoTarget.name}</strong> e toda a Região Metropolitana.
                         </p>
@@ -2409,7 +2409,7 @@ export default function CompanyPages({
                           <h5 className="text-gray-900 font-black text-sm uppercase mt-2 font-display">
                             Medida Ideal: {p.medida}
                           </h5>
-                          <p className="text-[11px] text-gray-550 mt-1.5 text-justify leading-relaxed font-semibold">
+                          <p className="text-[11px] text-gray-550 mt-1.5 text-left leading-relaxed font-semibold">
                             {p.motivo}
                           </p>
                           {p.sugestao && (
@@ -2539,12 +2539,12 @@ export default function CompanyPages({
                     </div>
                   </div>
 
-                  <div className="text-xs text-gray-700 leading-relaxed text-justify bg-white p-3.5 rounded-xl border border-gray-200 uppercase font-mono font-bold shadow-sm">
+                  <div className="text-xs text-gray-700 leading-relaxed text-left bg-white p-3.5 rounded-xl border border-gray-200 uppercase font-mono font-bold shadow-sm">
                     <strong className="text-gray-900 block uppercase text-[10px] tracking-wider mb-2 font-sans font-black">Passo a passo do percurso:</strong>
                     {getRouteInstructions(seoTarget.name, seoTarget.type).route}
                   </div>
 
-                  <div className="text-[10px] text-gray-500 text-justify flex items-start gap-1.5 font-medium leading-relaxed">
+                  <div className="text-[10px] text-gray-500 text-left flex items-start gap-1.5 font-medium leading-relaxed">
                     <AlertCircle className="w-4 h-4 text-[#f49e1a] shrink-0 mt-0.5" />
                     <p>
                       <strong>Atenção:</strong> Siga com segurança, respeitando as faixas exclusivas dos ônibus expressos biarticulados nas canaletas de Curitiba. Estamos localizados na Avenida Arthur Bernardes, uma avenida de super fácil acesso, com pátio amplo para manobras de veículos médios, caminhonetes ou SUVs.
@@ -2601,7 +2601,7 @@ export default function CompanyPages({
                         <CheckCircle2 className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
                         <div>
                           <h5 className="font-extrabold text-gray-905 text-xs uppercase">{adv.title}</h5>
-                          <p className="text-[11px] text-gray-600 mt-1 text-justify leading-relaxed font-semibold">{adv.desc}</p>
+                          <p className="text-[11px] text-gray-600 mt-1 text-left leading-relaxed font-semibold">{adv.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -2636,7 +2636,7 @@ export default function CompanyPages({
                           </button>
                           
                           {isOpen && (
-                            <div className="p-4 pt-4 border-t border-gray-200 bg-white text-xs text-gray-600 leading-relaxed text-justify font-semibold">
+                            <div className="p-4 pt-4 border-t border-gray-200 bg-white text-xs text-gray-600 leading-relaxed text-left font-semibold">
                               {faq.a}
                             </div>
                           )}
@@ -2875,13 +2875,13 @@ export default function CompanyPages({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-3xl border border-gray-200 shadow-sm text-xs sm:text-sm">
                 <div className="space-y-3">
                   <h3 className="text-sm font-black uppercase text-gray-950 font-mono border-l-4 border-red-600 pl-3 leading-none">Cinturato, Scorpion & Chrono</h3>
-                  <p className="text-gray-700 leading-relaxed text-justify">
+                  <p className="text-gray-700 leading-relaxed text-left">
                     A Pirelli é reconhecida mundialmente pela excelente aderência e estabilidade dinâmica. A linha <strong>Cinturato (P1 e P7)</strong> oferece rendimento quilométrico e frenagem eficiente no asfalto molhado de Curitiba. A linha <strong>Scorpion</strong> atende SUVs e picapes (Toro, Renegade, Compass, Duster), combinando tração e silêncio de rodagem. Já a linha <strong>Chrono</strong> atende vans e frotas comerciais com alta durabilidade sob carga.
                   </p>
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-sm font-black uppercase text-gray-950 font-mono border-l-4 border-red-600 pl-3 leading-none">Loja de Pneus Pirelli no Portão</h3>
-                  <p className="text-gray-700 leading-relaxed text-justify">
+                  <p className="text-gray-700 leading-relaxed text-left">
                     Em nossa loja física na Av. Presidente Arthur Bernardes, 1323, você conta com elevadores pantográficos calibrados e técnicos capacitados. Dispomos de estrutura para montagem computadorizada anti-risco, alinhamento 3D tridimensional e balanceamento dinâmico no mesmo local.
                   </p>
                 </div>
@@ -2939,7 +2939,7 @@ export default function CompanyPages({
                       <img 
                         src={tire.image || "/images/galeria/troca-pneu.webp"} 
                         alt={tire.name} 
-                        className="w-20 h-20 object-contain p-1 shrink-0 bg-gray-50 rounded-xl"
+                        className="w-20 h-20 object-contain p-1 shrink-0 bg-white rounded-xl"
                         referrerPolicy="no-referrer"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
@@ -3010,10 +3010,10 @@ export default function CompanyPages({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-3xl border border-gray-250 items-center justify-between">
                 <div className="space-y-4">
                   <h3 className="text-base font-black uppercase text-gray-950 font-mono border-l-4 border-yellow-500 pl-3 leading-tight">O que é Geometria Computadorizada 3D?</h3>
-                  <p className="text-xs sm:text-sm text-gray-705 leading-relaxed text-justify font-medium">
+                  <p className="text-xs sm:text-sm text-gray-705 leading-relaxed text-left font-medium">
                     Ao contrário do alinhamento óptico manual tradicional, o <strong>Alinhamento 3D</strong> utiliza garras reflexivas especiais fixadas nas rodas que interagem em tempo real com modernos projetores e sensores de laser infravermelho. O software decodifica a posição tridimensional do carro e a compara contra a biblioteca de tolerância oficial de caster, câmber e convergência atualizada diretamente das montadoras de veículos.
                   </p>
-                  <p className="text-xs sm:text-sm text-gray-705 leading-relaxed text-justify font-semibold">
+                  <p className="text-xs sm:text-sm text-gray-705 leading-relaxed text-left font-semibold">
                     Evitamos esforços do volante nas retas, reduzimos o arrasto prejudicial dos sulcos de pneu na asfalto, e aumentamos consideravelmente a durabilidade dos seus pneus e juntas homocinéticas da caixa mecânica de direção.
                   </p>
                 </div>
@@ -3032,21 +3032,21 @@ export default function CompanyPages({
                   <div className="bg-white p-4 rounded-xl border border-gray-150 space-y-1">
                     <span className="font-mono font-black text-yellow-500">Passo 01</span>
                     <h4 className="font-extrabold text-gray-950 uppercase">Mapeamento Geométrico</h4>
-                    <p className="text-[11px] text-gray-650 leading-relaxed text-justify">
+                    <p className="text-[11px] text-gray-650 leading-relaxed text-left">
                       Colocamos os alvos de leitura reflexiva e medimos em segundos as deformidades angulares do chassi do veículo.
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-gray-150 space-y-1">
                     <span className="font-mono font-black text-yellow-500">Passo 02</span>
                     <h4 className="font-extrabold text-gray-950 uppercase">Configuração Milimétrica</h4>
-                    <p className="text-[11px] text-gray-650 leading-relaxed text-justify">
+                    <p className="text-[11px] text-gray-650 leading-relaxed text-left">
                       Nossos técnicos experientes giram os tensores com ferramentas calibradas regulando converge/diverge até as barras ficarem perfeitamente centralizadas.
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-gray-150 space-y-1">
                     <span className="font-mono font-black text-yellow-500">Passo 03</span>
                     <h4 className="font-extrabold text-gray-950 uppercase">Balanceamento Final</h4>
-                    <p className="text-[11px] text-gray-650 leading-relaxed text-justify">
+                    <p className="text-[11px] text-gray-650 leading-relaxed text-left">
                       Adicionamos os contrapesos corretivos na máquina rotadora de balanceamento para anular descompensação dinâmica acima de 80 km/h.
                     </p>
                   </div>
@@ -3225,7 +3225,7 @@ export default function CompanyPages({
                   <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider font-mono">
                     Como é feito o Serviço?
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-justify font-medium">
+                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-left font-medium">
                     {selectedWheelService.details}
                   </p>
                 </div>
@@ -3236,7 +3236,7 @@ export default function CompanyPages({
                       <Users className="w-3.5 h-3.5" />
                       Equipe Carplus Pneus
                     </h5>
-                    <p className="text-[11px] text-gray-650 leading-relaxed text-justify font-bold">
+                    <p className="text-[11px] text-gray-650 leading-relaxed text-left font-bold">
                       {selectedWheelService.team}
                     </p>
                   </div>
@@ -3316,7 +3316,7 @@ export default function CompanyPages({
                   <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider font-mono">
                     Compromisso Técnico & Detalhes
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-justify font-medium">
+                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-left font-medium">
                     {selectedGalleryStep.details}
                   </p>
                 </div>
@@ -3327,7 +3327,7 @@ export default function CompanyPages({
                       <Users className="w-3.5 h-3.5" />
                       Nossa Equipe de Pista na Loja do Portão
                     </h5>
-                    <p className="text-[11px] text-gray-750 leading-relaxed text-justify font-bold bg-gray-50 border border-gray-150 p-3.5 rounded-xl">
+                    <p className="text-[11px] text-gray-750 leading-relaxed text-left font-bold bg-gray-50 border border-gray-150 p-3.5 rounded-xl">
                       {selectedGalleryStep.team}
                     </p>
                   </div>

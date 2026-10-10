@@ -41,7 +41,7 @@ export default function GaragemDePneusSection({
       {/* Stock info box */}
       <div className="bg-gray-150 border border-gray-350 p-5 rounded-2xl flex flex-col sm:flex-row items-center gap-4 text-xs">
         <Flame className="w-8 h-8 text-yellow-600 shrink-0 animate-pulse" />
-        <p className="text-gray-700 leading-relaxed text-justify font-bold uppercase font-mono">
+        <p className="text-gray-700 leading-relaxed text-left font-bold uppercase font-mono">
           ➔ ESTOQUE ATUALIZADO: Rodando com pneus seguros e de alta performance. Reservando pelo site, garantimos seu horário exclusivo para atendimento técnico e instalação em nosso box no Portão.
         </p>
       </div>
@@ -101,7 +101,7 @@ export default function GaragemDePneusSection({
                 <img 
                   src={tire.image || "/images/galeria/troca-pneu.webp"} 
                   alt={tire.name} 
-                  className="w-20 h-20 object-contain p-1 shrink-0 bg-gray-50 rounded-xl"
+                  className="w-20 h-20 object-contain p-1 shrink-0 bg-white rounded-xl"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;

@@ -211,11 +211,11 @@ export default function TireCatalogView({
                   {catalogList.length > 50 ? catalogList.length : 1962} Pneus em Estoque
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-gray-950">
-                Catálogo Completo de Pneus em Curitiba
+              <h1 className="text-2xl sm:text-3xl font-black text-gray-950 uppercase tracking-tight">
+                Pneus e Auto Center em Curitiba – Portão
               </h1>
-              <p className="text-xs sm:text-sm text-gray-600 max-w-3xl leading-relaxed">
-                Navegue pelas principais marcas mundiais de pneus com garantia de fábrica, montagem computadorizada e alinhamento 3D de alta precisão na loja do Portão.
+              <p className="text-sm sm:text-base text-gray-700 max-w-3xl leading-relaxed bg-amber-50/50 p-3.5 rounded-2xl border border-amber-200/60 mt-1">
+                Procurando <strong>onde comprar pneus em Curitiba</strong>? No catálogo oficial da Carplus Pneus e Auto Center no Portão (Av. Arthur Bernardes, 1323), você encontra mais de 1.900 opções de pneus novos multimarcas a pronta entrega, com montagem técnica anti-risco, alinhamento 3D a laser e garantia oficial de 5 anos de fábrica.
               </p>
             </div>
 
@@ -735,6 +735,101 @@ export default function TireCatalogView({
             </div>
           </div>
         )}
+
+        {/* Rich Authoritative SEO Guide & FAQ for Search Engines (Google, Bing, Yahoo) and LLMs */}
+        <section className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-10 space-y-8 shadow-xs mt-10" id="seo-pneus-curitiba-guide">
+          <div className="border-b border-gray-200 pb-6 space-y-3">
+            <span className="bg-[#F5A623]/20 text-zinc-900 border border-[#F5A623]/40 text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full inline-block">
+              Guia Completo do Consumidor • Curitiba & Região
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 uppercase tracking-tight">
+              Catálogo de Pneus em Curitiba: Guia Técnico de Compras & Instalação no Portão
+            </h2>
+            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              Comprar pneus novos em Curitiba exige atenção ao clima chuvoso da cidade, ao tipo de pavimento urbano e às especificações originais recomendadas pelas montadoras. Na <strong>Carplus Pneus e Auto Center</strong> (Av. Presidente Arthur Bernardes, 1323 - Portão), mantemos um acervo permanente com mais de <strong>1.900 modelos de pneus novos</strong> homologados das principais marcas mundiais a pronta entrega.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-gray-50 border border-gray-200 p-5 rounded-2xl space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-[#F5A623]/20 border border-[#F5A623]/40 flex items-center justify-center text-zinc-900 font-black">
+                <ShieldCheck className="w-5 h-5 text-amber-600" />
+              </div>
+              <h3 className="font-extrabold text-sm uppercase text-gray-900">Garantia Oficial de 5 Anos</h3>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Todos os pneus comercializados pela Carplus acompanham garantia oficial de 5 anos direto do fabricante contra defeitos de fabricação ou vícios de estrutura.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 p-5 rounded-2xl space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-[#F5A623]/20 border border-[#F5A623]/40 flex items-center justify-center text-zinc-900 font-black">
+                <Check className="w-5 h-5 text-amber-600" />
+              </div>
+              <h3 className="font-extrabold text-sm uppercase text-gray-900">Montagem & Balanceamento</h3>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Equipamentos de montagem anti-risco e alinhamento 3D computadorizado a laser para preservar suas rodas e garantir rodagem uniforme sem trepidações no volante.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-200 p-5 rounded-2xl space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-[#F5A623]/20 border border-[#F5A623]/40 flex items-center justify-center text-zinc-900 font-black">
+                <Car className="w-5 h-5 text-amber-600" />
+              </div>
+              <h3 className="font-extrabold text-sm uppercase text-gray-900">Aros 13 ao 23 a Pronta Entrega</h3>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                Linha completa para veículos populares (Gol, Uno, HB20, Onix), sedãs, SUVs (T-Cross, Creta, Compass), caminhonetes (Hilux, Ranger, S10) e carros elétricos (BYD Dolphin, Seal, GWM Haval).
+              </p>
+            </div>
+          </div>
+
+          {/* Marcas Parceiras */}
+          <div className="space-y-3 pt-2 border-t border-gray-200">
+            <h3 className="text-lg font-black uppercase text-gray-950">
+              Marcas Oficiais Comercializadas em Curitiba
+            </h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
+              Trabalhamos diretamente com os principais grupos pneumáticos do mundo: <strong>Pirelli, Bridgestone, Continental, Goodyear, Michelin, Firestone, Delinte, Xbri, Linglong, Yokohama, Prinx, Comforser, Speedmax, Zmax, Provato e Roadking</strong>.
+            </p>
+          </div>
+
+          {/* FAQ Accordion Section for Google, Bing, Yahoo & LLMs */}
+          <div className="space-y-4 pt-4 border-t border-gray-200" id="faq-pneus-curitiba">
+            <h3 className="text-xl font-black uppercase text-gray-950 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-[#F5A623]" />
+              Perguntas Frequentes sobre Pneus em Curitiba (FAQ)
+            </h3>
+
+            <div className="space-y-3">
+              <div className="bg-gray-50 border border-gray-200 p-4 rounded-2xl space-y-1.5 text-left">
+                <h4 className="font-black text-sm text-gray-900">Onde comprar pneus novos em Curitiba com menor preço garantido?</h4>
+                <p className="text-xs text-gray-700 leading-relaxed">
+                  Na <strong>Carplus Pneus e Auto Center</strong>, localizada na Av. Presidente Arthur Bernardes, 1323 - Bairro Portão, Curitiba - PR. Oferecemos preços de fábrica, montagem no local e orçamento transparente sem surpresas.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border border-gray-200 p-4 rounded-2xl space-y-1.5 text-left">
+                <h4 className="font-black text-sm text-gray-900">Como saber a medida exata do pneu para o meu carro?</h4>
+                <p className="text-xs text-gray-700 leading-relaxed">
+                  Você pode verificar na lateral do pneu atual do seu veículo (exemplo: <strong>205/55 R16 91V</strong>) ou consultar o manual do proprietário / etiqueta na coluna da porta do motorista. Nosso assistente online e equipe pelo WhatsApp (41) 3082-7282 auxiliam no diagnóstico exato.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border border-gray-200 p-4 rounded-2xl space-y-1.5 text-left">
+                <h4 className="font-black text-sm text-gray-900">Quando devo fazer a troca dos pneus?</h4>
+                <p className="text-xs text-gray-700 leading-relaxed">
+                  O limite legal do indicador TWI (Tread Wear Indicator) na banda de rodagem é de 1,6 mm. Se a borracha atingir essa marca ou se o pneu apresentar bolhas, ressecamento ou desgaste irregular, a substituição deve ser feita imediatamente para manter a segurança do veículo nas pistas molhadas de Curitiba.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border border-gray-200 p-4 rounded-2xl space-y-1.5 text-left">
+                <h4 className="font-black text-sm text-gray-900">A Carplus atende a quais bairros e regiões de Curitiba?</h4>
+                <p className="text-xs text-gray-700 leading-relaxed">
+                  Localizada no Portão, a Carplus é de fácil acesso para motoristas do Água Verde, Vila Izabel, Batel, Santa Quitéria, Fazendinha, Capão Raso, Novo Mundo, Cidade Industrial (CIC), Centro, Bigorrilho, Champagnat e toda a Região Metropolitana de Curitiba.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
       </div>
     </div>

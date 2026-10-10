@@ -32,20 +32,20 @@ export default function LiveWhatsAppChat() {
     : `https://api.whatsapp.com/send?phone=${phone}`;
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 font-sans" id="live-whatsapp-chat">
+    <div className="fixed bottom-5 right-4 sm:right-6 z-50 font-sans" id="live-whatsapp-chat">
       <a
         href={defaultUrl}
         onClick={handleClick}
         target="_blank"
         rel="noopener noreferrer"
         data-cta-location="flutuante"
-        className="flex items-center gap-2.5 h-[56px] px-5 bg-[#25D366] hover:bg-[#20ba59] text-white font-extrabold text-[18px] rounded-full shadow-2xl transition-all duration-200 transform hover:scale-105 active:scale-95 border-2 border-white cursor-pointer"
+        className="flex items-center justify-center gap-2 w-[52px] h-[52px] sm:w-auto sm:h-[48px] sm:px-4 bg-[#25D366] hover:bg-[#20ba59] text-white font-bold rounded-full shadow-2xl transition-all duration-200 transform hover:scale-105 active:scale-95 border-2 border-white cursor-pointer"
         aria-label="Falar no WhatsApp da Carplus"
         title="Falar no WhatsApp da Carplus"
         id="whatsapp-trigger-btn"
       >
-        <MessageCircle className="w-7 h-7 shrink-0 fill-current text-white" />
-        <span className="tracking-wide">WhatsApp</span>
+        <MessageCircle className="w-6 h-6 shrink-0 fill-current text-white" />
+        <span className="hidden sm:inline text-[15px] tracking-wide font-extrabold">WhatsApp</span>
       </a>
     </div>
   );

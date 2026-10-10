@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PROMO_TIRES, PromoTire } from '../data/promoTires';
+import { getBrandFallbackImage } from '../data';
 import { MessageSquare, ArrowRight, Eye, MapPin } from 'lucide-react';
 
 interface HeroPromoTiresProps {
@@ -116,26 +117,32 @@ export const HeroPromoTires: React.FC<HeroPromoTiresProps> = ({ onSelectTire }) 
             {displayedTires.map((tire) => (
               <div
                 key={tire.id}
-                className="bg-white text-zinc-900 rounded-[12px] p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition border border-zinc-200"
+                className="bg-white text-zinc-900 rounded-[14px] p-5 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 border-2 border-[#F5A623] hover:border-amber-400"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="bg-zinc-100 text-zinc-800 text-sm font-bold px-2.5 py-0.5 rounded">
+                    <span className="bg-zinc-900 text-[#F5A623] text-xs font-black px-2.5 py-1 rounded-md tracking-wider border border-zinc-800 uppercase">
                       Aro {tire.aro}
                     </span>
-                    <span className="text-xs font-semibold text-zinc-500 uppercase">
+                    <span className="text-xs font-black text-zinc-600 uppercase font-mono tracking-wider">
                       {tire.marca}
                     </span>
                   </div>
 
                   <div 
                     onClick={() => onSelectTire(tire.slug)}
-                    className="relative w-full h-36 bg-zinc-50 rounded-lg flex items-center justify-center p-2 mb-3 cursor-pointer"
+                    className="relative w-full h-36 bg-white rounded-lg flex items-center justify-center p-2 mb-3 cursor-pointer"
                   >
                     <img
-                      src={tire.imagem300}
+                      src={tire.imagem300 || tire.imagem600 || '/pneus/jk-tyre-300.webp'}
                       onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).src = tire.fallback300;
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (!target.dataset.triedFallback1) {
+                          target.dataset.triedFallback1 = 'true';
+                          target.src = getBrandFallbackImage(tire.marca, String(tire.id));
+                        } else {
+                          target.src = '/images/pneus/pneu-fallback.svg';
+                        }
                       }}
                       alt={`Pneu ${tire.marca} ${tire.medida} ${tire.modelo}`}
                       className="max-h-32 object-contain"

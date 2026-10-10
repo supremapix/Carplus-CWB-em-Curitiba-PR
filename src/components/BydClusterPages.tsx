@@ -672,7 +672,7 @@ export default function BydClusterPages({
                     <strong className="block text-sm font-bold text-white leading-snug">
                       "{item.query}"
                     </strong>
-                    <p className="text-gray-300 text-[11px] leading-relaxed text-justify">
+                    <p className="text-gray-300 text-[11px] leading-relaxed text-left">
                       {item.answer}
                     </p>
                   </div>

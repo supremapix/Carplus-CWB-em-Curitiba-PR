@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Radial metallic rim gradient -->
+    <radialGradient id="rimGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f4f4f5" />
+      <stop offset="65%" stop-color="#a1a1aa" />
+      <stop offset="85%" stop-color="#52525b" />
+      <stop offset="100%" stop-color="#27272a" />
+    </radialGradient>
+    <!-- Tyre Rubber gradient -->
+    <radialGradient id="tyreGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#18181b" />
+      <stop offset="82%" stop-color="#27272a" />
+      <stop offset="96%" stop-color="#09090b" />
+      <stop offset="100%" stop-color="#000000" />
+    </radialGradient>
+    <!-- Hubcap orange Carplus accent -->
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5A623" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+
+  <!-- Drop Shadow -->
+  <ellipse cx="200" cy="370" rx="140" ry="18" fill="rgba(0,0,0,0.3)" />
+
+  <!-- Outer Tyre Tread Ring -->
+  <circle cx="200" cy="200" r="170" fill="url(#tyreGrad)" stroke="#111" stroke-width="4" />
+
+  <!-- Tread Grooves (Repeated notches around perimeter) -->
+  <g stroke="#09090b" stroke-width="6" stroke-linecap="round">
+    <!-- 24 angled tread notches -->
+    <line x1="200" y1="30" x2="195" y2="48" />
+    <line x1="244" y1="36" x2="234" y2="52" />
+    <line x1="285" y1="53" x2="271" y2="67" />
+    <line x1="320" y1="80" x2="302" y2="92" />
+    <line x1="347" y1="115" x2="326" y2="124" />
+    <line x1="364" y1="156" x2="341" y2="162" />
+    <line x1="370" y1="200" x2="346" y2="200" />
+    <line x1="364" y1="244" x2="341" y2="238" />
+    <line x1="347" y1="285" x2="326" y2="276" />
+    <line x1="320" y1="320" x2="302" y2="308" />
+    <line x1="285" y1="347" x2="271" y2="333" />
+    <line x1="244" y1="364" x2="234" y2="348" />
+    <line x1="200" y1="370" x2="195" y2="352" />
+    <line x1="156" y1="364" x2="166" y2="348" />
+    <line x1="115" y1="347" x2="129" y2="333" />
+    <line x1="80" y1="320" x2="98" y2="308" />
+    <line x1="53" y1="285" x2="74" y2="276" />
+    <line x1="36" y1="244" x2="59" y2="238" />
+    <line x1="30" y1="200" x2="54" y2="200" />
+    <line x1="36" y1="156" x2="59" y2="162" />
+    <line x1="53" y1="115" x2="74" y2="124" />
+    <line x1="80" y1="80" x2="98" y2="92" />
+    <line x1="115" y1="53" x2="129" y2="67" />
+    <line x1="156" y1="36" x2="166" y2="52" />
+  </g>
+
+  <!-- Sidewall Inner Ring -->
+  <circle cx="200" cy="200" r="135" fill="#1c1917" stroke="#292524" stroke-width="2" />
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#44403c" stroke-width="1.5" stroke-dasharray="4 8" />
+
+  <!-- Rim Bead / Lip -->
+  <circle cx="200" cy="200" r="105" fill="url(#rimGrad)" stroke="#71717a" stroke-width="4" />
+  <circle cx="200" cy="200" r="96" fill="#18181b" />
+
+  <!-- Alloy Wheel 5-Spoke Pattern -->
+  <g fill="url(#rimGrad)" stroke="#3f3f46" stroke-width="1.5">
+    <!-- Spoke 1 (Top) -->
+    <polygon points="190,95 210,95 215,160 185,160" />
+    <!-- Spoke 2 (Right-Up) -->
+    <polygon points="275,130 290,145 235,185 220,170" />
+    <!-- Spoke 3 (Right-Down) -->
+    <polygon points="255,260 240,275 195,215 210,205" />
+    <!-- Spoke 4 (Left-Down) -->
+    <polygon points="145,260 160,275 205,215 190,205" />
+    <!-- Spoke 5 (Left-Up) -->
+    <polygon points="125,130 110,145 165,185 180,170" />
+  </g>
+
+  <!-- Center Hub with Carplus Orange Accent -->
+  <circle cx="200" cy="200" r="38" fill="url(#orangeGrad)" stroke="#000" stroke-width="2.5" />
+  <circle cx="200" cy="200" r="28" fill="#18181b" />
+
+  <!-- Wheel Lug Nuts (5 bolts) -->
+  <g fill="#d4d4d8" stroke="#18181b" stroke-width="1">
+    <circle cx="200" cy="182" r="3.5" />
+    <circle cx="217" cy="194" r="3.5" />
+    <circle cx="211" cy="214" r="3.5" />
+    <circle cx="189" cy="214" r="3.5" />
+    <circle cx="183" cy="194" r="3.5" />
+  </g>
+
+  <!-- Carplus "C" logo emblem in center -->
+  <path d="M204 195 C 196 195 194 198 194 200 C 194 202 196 205 204 205" fill="none" stroke="#F5A623" stroke-width="3" stroke-linecap="round" />
+</svg>
