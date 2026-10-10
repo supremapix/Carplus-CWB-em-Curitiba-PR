@@ -1,183 +1,165 @@
-import React from 'react';
-import { Phone, MapPin, Clock, Compass, Heart, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Phone, MapPin, Clock, MessageSquare, Share2, ArrowUp, Heart } from 'lucide-react';
 
 interface FooterProps {
-  onNavigate: (page: 'home' | 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site') => void;
+  onNavigate: (page: any) => void;
 }
 
 export default function Footer({ onNavigate }: FooterProps) {
+  const [shareCopied, setShareCopied] = useState(false);
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Carplus Pneus e Oficina - Portão Curitiba',
+        text: 'Encontre pneus novos com o melhor preço de Curitiba na Carplus Portão!',
+        url: window.location.href,
+      }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        setShareCopied(true);
+        setTimeout(() => setShareCopied(false), 2500);
+      });
+    }
+  };
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-[#f49e1a] text-black py-16 px-4 sm:px-6 border-t-[6px] border-black font-sans" id="main-footer">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-black text-white text-[18px] py-12 pb-28 sm:pb-12 px-5 sm:px-8 border-t border-zinc-800" id="main-footer">
+      <div className="max-w-7xl mx-auto space-y-10">
         
-        {/* Coluna 1: Logo e Descrição */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+        {/* (a) Logo + uma frase */}
+        <div className="space-y-3 max-w-xl">
           <img 
-            src="/images/logos/logo-footer.svg" 
+            src="/images/logos/logo-horizontal.svg" 
             onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-footer.svg';
+              (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
             }}
-            alt="Carplus Pneus Footer Logo" 
-            className="w-40 h-auto object-contain bg-black p-4 rounded-2xl mb-2 border border-black"
+            alt="Carplus Pneus e Oficina Mecânica" 
+            className="h-10 w-auto object-contain"
           />
-          <h4 className="font-black text-lg uppercase tracking-wide text-black">Carplus Pneus & Oficina</h4>
-          <p className="text-sm text-black font-bold leading-relaxed">
-            Qualidade, garantia e honestidade no coração do Portão em Curitiba. Trabalhamos com as melhores marcas de pneus nacionais e importados com garantia de fábrica.
+          <p className="text-zinc-300 text-[18px] leading-relaxed">
+            Sua loja de pneus e centro automotivo especializado no bairro Portão em Curitiba. Pneus novos multimarcas com garantia de fábrica.
           </p>
         </div>
 
-        {/* Coluna 2: Fale Conosco - Telefone em Destaque */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-          <h4 className="font-extrabold text-xl uppercase tracking-wider text-black border-b-4 border-black pb-2 w-full">Fale Conosco</h4>
-          <div className="space-y-4 w-full">
-            <p className="text-sm text-black font-extrabold uppercase">Ligue para tirar dúvidas ou agendar:</p>
-            <div className="bg-black text-white rounded-2xl p-5 shadow-lg flex flex-col items-center md:items-start gap-1 border-2 border-black w-full overflow-hidden">
-              <span className="text-xs uppercase tracking-widest text-[#f49e1a] font-extrabold font-mono whitespace-nowrap block">Telefone de Atendimento</span>
-              <p className="flex items-center gap-2 justify-center md:justify-start w-full whitespace-nowrap">
-                <Phone className="w-6 h-6 text-[#f49e1a] shrink-0" />
-                <span className="text-xl sm:text-2xl xl:text-3xl font-black tracking-tight text-white whitespace-nowrap">(41) 3082-7282</span>
-              </p>
-            </div>
-            
+        {/* (b) Contato: telefone, WhatsApp e endereço, cada um clicável com 48px de área de toque */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold text-[#F5A623]">Contato e Localização</h3>
+          
+          <div className="flex flex-col gap-3 max-w-2xl">
+            {/* Phone */}
             <a 
-              href="tel:4130827282" 
-              className="w-full flex items-center justify-center gap-2 bg-black hover:bg-white hover:text-black text-white font-black py-4 px-4 rounded-2xl text-sm lg:text-xs xl:text-sm transition-all duration-300 shadow-xl border-2 border-black active:scale-95 whitespace-nowrap cursor-pointer"
-              id="footer-call-btn"
+              href="tel:554130827282"
+              data-cta-location="footer"
+              className="flex items-center gap-3 p-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-xl min-h-[48px] transition cursor-pointer text-white font-medium"
             >
-              <Phone className="w-5 h-5 shrink-0 text-[#f49e1a]" />
-              LIGAR COM UM CLIQUE
+              <Phone className="w-6 h-6 text-[#F5A623] shrink-0" />
+              <span>Ligar: <strong>(41) 3082-7282</strong></span>
+            </a>
+
+            {/* WhatsApp */}
+            <a 
+              href="https://api.whatsapp.com/send?phone=554130827282&text=Ol%C3%A1%20Carplus!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta-location="footer"
+              className="flex items-center gap-3 p-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-xl min-h-[48px] transition cursor-pointer text-white font-medium"
+            >
+              <MessageSquare className="w-6 h-6 text-[#25D366] fill-current shrink-0" />
+              <span>WhatsApp: <strong>(41) 3082-7282</strong></span>
+            </a>
+
+            {/* Address */}
+            <a 
+              href="https://maps.google.com/?q=Av.+Presid.+Arthur+da+Silva+Bernardes,+1323+-+Portão,+Curitiba+-+PR"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta-location="footer"
+              className="flex items-start gap-3 p-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-xl min-h-[48px] transition cursor-pointer text-white font-medium"
+            >
+              <MapPin className="w-6 h-6 text-[#F5A623] shrink-0 mt-0.5" />
+              <span>Av. Pres. Arthur Bernardes, 1323 - Portão, Curitiba - PR</span>
             </a>
           </div>
         </div>
 
-        {/* Coluna 3: Horários de Atendimento */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-          <h4 className="font-extrabold text-xl uppercase tracking-wider text-black border-b-4 border-black pb-2 w-full">Horários</h4>
-          <div className="space-y-4 text-sm font-extrabold text-black">
-            <div className="space-y-3">
-              <p className="flex items-center gap-2 justify-center md:justify-start whitespace-nowrap text-sm xl:text-base">
-                <Clock className="w-5 h-5 text-black shrink-0" />
-                <span className="text-black font-semibold">Seg a Sex: <span className="font-black text-black text-base xl:text-lg">08:00 às 18:00</span></span>
-              </p>
-              <p className="flex items-center gap-2 justify-center md:justify-start whitespace-nowrap text-sm xl:text-base">
-                <Clock className="w-5 h-5 text-black shrink-0" />
-                <span className="text-black font-semibold">Sábado: <span className="font-black text-black text-base xl:text-lg">08:00 às 12:00</span></span>
-              </p>
-            </div>
-            <div 
-              className="bg-black text-white text-center font-black text-xs uppercase px-4 py-2 rounded-xl inline-flex items-center gap-1.5 border border-black"
-            >
-              <Sparkles className="w-4 h-4 text-[#f49e1a] shrink-0" />
-              <span>Atendimento rápido sem filas</span>
-            </div>
-          </div>
+        {/* (c) Horário de funcionamento em lista simples */}
+        <div className="space-y-3">
+          <h3 className="text-xl font-bold text-[#F5A623]">Horário de Funcionamento</h3>
+          <ul className="space-y-2 text-zinc-300">
+            <li className="flex items-center gap-2">
+              <Clock className="w-5 h-5 text-[#F5A623] shrink-0" />
+              <span>Segunda a Sexta: 08:00 às 18:00</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Clock className="w-5 h-5 text-[#F5A623] shrink-0" />
+              <span>Sábado: 08:00 às 12:00</span>
+            </li>
+            <li className="text-zinc-400 text-sm pl-7">Domingos e feriados: Fechado</li>
+          </ul>
         </div>
 
-        {/* Coluna 4: Endereço do Auto Center */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-          <h4 className="font-extrabold text-xl uppercase tracking-wider text-black border-b-4 border-black pb-2 w-full">Endereço da Loja</h4>
-          <div className="space-y-4 w-full">
-            <p className="flex items-start gap-3 justify-center md:justify-start text-sm text-black leading-relaxed">
-              <MapPin className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <span className="text-base font-black text-black text-left block leading-relaxed">
-                Av. Pres. Arthur da Silva Bernardes, 1323 <br />
-                Bairro Portão – Curitiba – PR <br />
-                CEP: 80320-300 <br />
-                <span className="text-xs text-black font-bold block mt-1">(Oficina mecânica de fácil acesso)</span>
-              </span>
-            </p>
-            <a 
-              href="#maps-section" 
-              className="inline-flex w-full items-center justify-center gap-2 bg-black hover:bg-white hover:text-black text-white font-black py-4 px-4 rounded-2xl text-sm lg:text-xs xl:text-sm transition-all shadow-xl border-2 border-black active:scale-95 cursor-pointer whitespace-nowrap"
+        {/* (d) Links úteis: Pneus, Serviços, Blog, Sobre, Contato, Compartilhar, ↑ Voltar ao topo */}
+        <div className="space-y-3 pt-4 border-t border-zinc-800">
+          <h3 className="text-xl font-bold text-[#F5A623]">Navegação Útil</h3>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 font-semibold text-[18px]">
+            <button 
+              onClick={() => { onNavigate('catalogo-pneus'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+              className="text-zinc-200 hover:text-[#F5A623] transition cursor-pointer min-h-[44px] py-1"
             >
-              <Compass className="w-5 h-5 shrink-0 text-[#f49e1a]" />
-              VER COMO CHEGAR
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Links de Auxílio e Navegação Rápida */}
-      <div className="max-w-7xl mx-auto border-t-4 border-black mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center gap-6" id="footer-bottom-bar">
-        <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-3 font-black text-sm uppercase tracking-wide">
-          <button 
-            onClick={() => { onNavigate('home'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Início
-          </button>
-          <button 
-            onClick={() => { onNavigate('auto-center-curitiba' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="bg-black text-white hover:bg-white hover:text-black cursor-pointer px-3 py-1.5 rounded-xl font-black transition-all duration-200 border border-black shadow-sm"
-          >
-            Auto Center Curitiba
-          </button>
-          <button 
-            onClick={() => { onNavigate('troca-de-pneus-curitiba' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Troca de Pneus
-          </button>
-          <button 
-            onClick={() => { onNavigate('centro-automotivo-portao' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Centro Automotivo Portão
-          </button>
-          <button 
-            onClick={() => { onNavigate('catalogo-pneus' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Catálogo de Pneus (1.962)
-          </button>
-          <button 
-            onClick={() => { onNavigate('alinhamento-3d-curitiba' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Alinhamento 3D
-          </button>
-          <button 
-            onClick={() => { onNavigate('quem-somos'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Quem Somos
-          </button>
-          <button 
-            onClick={() => { onNavigate('blog' as any); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Blog
-          </button>
-          <button 
-            onClick={() => { onNavigate('politica-privacidades'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Políticas de Privacidade
-          </button>
-          <button 
-            onClick={() => { onNavigate('politica-devolucao'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-            className="hover:underline text-black cursor-pointer p-1.5 font-black"
-          >
-            Trocas e Garantia
-          </button>
-        </div>
-
-        <div className="text-center lg:text-right text-xs font-bold text-black space-y-1">
-          <p className="font-extrabold text-black">
-            &copy; {new Date().getFullYear()} Carplus Pneus Portão. Todos os direitos reservados.
-          </p>
-          <p className="font-mono text-black text-[11px] font-bold">
-            Curitiba - PR • Av. Arthur Bernardes, 1323 • <button 
-              onClick={() => { onNavigate('mapa-do-site'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
-              className="text-[10px] text-black hover:underline transition-colors font-bold cursor-pointer uppercase"
-              id="footer-sitemap-link"
-              title="Mapa do Site"
-            >
-              mapa do site
+              Pneus (catálogo)
             </button>
-          </p>
+            <button 
+              onClick={() => { onNavigate('alinhamento-3d-curitiba'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+              className="text-zinc-200 hover:text-[#F5A623] transition cursor-pointer min-h-[44px] py-1"
+            >
+              Serviços e Alinhamento
+            </button>
+            <button 
+              onClick={() => { onNavigate('blog'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+              className="text-zinc-200 hover:text-[#F5A623] transition cursor-pointer min-h-[44px] py-1"
+            >
+              Blog
+            </button>
+            <button 
+              onClick={() => { onNavigate('quem-somos'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+              className="text-zinc-200 hover:text-[#F5A623] transition cursor-pointer min-h-[44px] py-1"
+            >
+              Sobre
+            </button>
+            <button 
+              onClick={() => { onNavigate('contato'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+              className="text-zinc-200 hover:text-[#F5A623] transition cursor-pointer min-h-[44px] py-1"
+            >
+              Contato
+            </button>
+            <button 
+              onClick={handleShare}
+              className="text-[#F5A623] hover:underline flex items-center gap-1.5 transition cursor-pointer min-h-[44px] py-1 font-bold"
+            >
+              <Share2 className="w-5 h-5 shrink-0" />
+              <span>{shareCopied ? 'Link copiado!' : 'Compartilhar esta página'}</span>
+            </button>
+            <button 
+              onClick={handleScrollToTop}
+              className="text-[#F5A623] hover:underline flex items-center gap-1.5 transition cursor-pointer min-h-[44px] py-1 font-bold"
+            >
+              <ArrowUp className="w-5 h-5 shrink-0" />
+              <span>↑ Voltar ao topo</span>
+            </button>
+          </div>
         </div>
+
+        {/* (e) Linha final com © e CNPJ em 14px */}
+        <div className="pt-6 border-t border-zinc-800 text-[14px] text-zinc-400 flex flex-col sm:flex-row justify-between gap-2">
+          <p>© {new Date().getFullYear()} Carplus Pneus & Oficina. Todos os direitos reservados.</p>
+          <p>CNPJ: 22.845.891/0001-08 • Av. Pres. Arthur Bernardes, 1323 - Portão, Curitiba/PR</p>
+        </div>
+
       </div>
 
       <SupremaCredit />
@@ -187,14 +169,11 @@ export default function Footer({ onNavigate }: FooterProps) {
 
 export function SupremaCredit() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t-2 border-black flex justify-center items-center">
-      <div className="bg-black border border-black rounded-2xl sm:rounded-full px-5 py-3 sm:py-2.5 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 transition-all duration-300 text-center max-w-full">
-        <div className="flex items-center justify-center gap-1.5 text-xs text-white font-bold select-none">
+    <div className="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-zinc-900 flex justify-center items-center">
+      <div className="flex flex-col sm:flex-row items-center gap-2 text-xs text-zinc-500">
+        <div className="flex items-center gap-1">
           <span>Desenvolvido com</span>
-          <Heart 
-            size={12} 
-            className="text-[#f49e1a] fill-[#f49e1a] shrink-0" 
-          /> 
+          <Heart size={12} className="text-[#F5A623] fill-[#F5A623]" /> 
           <span>por</span>
         </div>
         <a 
@@ -202,17 +181,12 @@ export function SupremaCredit() {
           href="https://supremasite.com.br" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="text-[#f49e1a] hover:text-white transition-all font-black text-xs inline-flex items-center gap-2 cursor-pointer border-b border-dashed border-[#f49e1a] pb-0.5 shrink-0"
+          className="text-zinc-300 hover:text-[#F5A623] transition font-bold"
         >
-          <span>Suprema Sites Express</span>
-          <img 
-            src="https://img.supremamidia.com/suprema-img.png" 
-            alt="Suprema" 
-            className="h-3.5 sm:h-4 w-auto self-center select-none shrink-0 transition-transform duration-300 hover:scale-105" 
-            referrerPolicy="no-referrer"
-          />
+          Suprema Sites Express
         </a>
       </div>
     </div>
   );
 }
+

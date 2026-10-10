@@ -1,185 +1,99 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tire } from '../types';
-import { ShoppingCart, MessageSquare, Tag } from 'lucide-react';
+import { MessageSquare, Eye } from 'lucide-react';
 import { getBrandFallbackImage } from '../data';
 import { formatWhatsApp } from '../utils/whatsapp';
-
-const BRAND_LOGOS: Record<string, string> = {
-  BRIDGESTONE: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/bridgestone.svg",
-  PIRELLI: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/pirelli.svg",
-  MICHELIN: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/michelin.svg",
-  CONTINENTAL: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/continental.svg",
-  GOODYEAR: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-goodyear.svg",
-  YOKOHAMA: "/yokohama.svg",
-  FIRESTONE: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-firestone.svg",
-  DELINTE: "https://s19532.pcdn.co/wp-content/uploads/2019/12/Delinte-Logo-1.jpg",
-  COMFORSER: "https://www.gtiresinternational.us/wp-content/uploads/2022/10/Comforser-Tires.png",
-  XBRI: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/xbri.svg",
-  PRINX: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKRauciXYNudC8XaeVj_7c3o5urb17rrs_uw&s",
-  LINGLONG: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-linglong.svg",
-  SPEEDMAX: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6La6GWmZDeZMCxlH4OA8rJcNjLj8mrjpW4A&s"
-};
 
 interface TireCardProps {
   key?: string;
   tire: Tire;
-  onAddToCart: (tire: Tire, quantity: number) => void;
+  onAddToCart?: (tire: Tire, quantity: number) => void;
   onSelectTire?: (tire: Tire) => void;
 }
 
-export default function TireCard({ tire, onAddToCart, onSelectTire }: TireCardProps) {
-  const [qty, setQty] = useState(2); // Default is set to 2 for a pair
-
-  const finalPrice = tire.promoPrice || tire.price;
-  const hasPromo = !!tire.promoPrice;
-  const discountPercentage = hasPromo ? Math.round(((tire.price - tire.promoPrice!) / tire.price) * 100) : 0;
+export default function TireCard({ tire, onSelectTire }: TireCardProps) {
+  const whatsappUrl = formatWhatsApp(
+    `Olá Carplus! Gostaria de consultar o preço e disponibilidade do Pneu ${tire.brand} ${tire.model} (${tire.width}/${tire.aspectRatio} R${tire.rim}) para instalação no Portão.`
+  );
 
   return (
     <div 
-      className={`bg-white rounded-3xl overflow-hidden border-2 transition-all duration-300 flex flex-col justify-between h-full group ${
-        tire.isOffer 
-          ? 'border-[#f49e1a] shadow-lg relative' 
-          : 'border-black shadow-md hover:border-[#f49e1a]'
-      }`}
+      className="bg-white rounded-[12px] shadow-sm hover:shadow-md border border-zinc-200 transition-all duration-200 p-5 flex flex-col justify-between h-full group"
       id={`tire-card-${tire.id}`}
     >
-      {/* Badges row */}
-      <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 pointer-events-none">
-        <span className="bg-black text-[#f49e1a] text-xs sm:text-sm uppercase font-black px-3 py-1.5 rounded-full shadow font-mono border border-black">
-          Aro {tire.rim}
-        </span>
-        {tire.isOffer && (
-          <span className="bg-[#f49e1a] text-black text-xs sm:text-sm uppercase font-black px-3 py-1.5 rounded-full shadow flex items-center gap-1 border border-black">
-            <Tag className="w-3.5 h-3.5 shrink-0" />
-            <span>OFERTA {discountPercentage}% OFF</span>
+      <div>
+        {/* Top badges */}
+        <div className="flex items-center justify-between mb-3">
+          <span className="bg-zinc-100 text-zinc-800 text-sm font-bold px-2.5 py-1 rounded-md">
+            Aro {tire.rim}
           </span>
-        )}
-      </div>
-
-      {/* Image container with totally white background - NO SHADOW on tire */}
-      <div 
-        onClick={() => onSelectTire && onSelectTire(tire)}
-        className="relative p-6 bg-white flex items-center justify-center min-h-[200px] cursor-pointer"
-      >
-        <img 
-          src={tire.image} 
-          alt={tire.name} 
-          className="max-h-44 object-contain w-auto transform transition duration-500 group-hover:scale-108"
-          referrerPolicy="no-referrer"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = getBrandFallbackImage(tire.brand, tire.id);
-          }}
-        />
-        <div className="absolute bottom-2 right-2 bg-black text-[#f49e1a] text-xs font-black px-2.5 py-1 rounded uppercase tracking-wider border border-black">
-          Estoque Imediato
+          <span className="text-xs font-semibold text-zinc-500 uppercase">
+            {tire.brand}
+          </span>
         </div>
-      </div>
 
-      {/* Content wrapper */}
-      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between text-center md:text-justify border-t-2 border-black bg-white">
+        {/* Tire Image */}
         <div 
           onClick={() => onSelectTire && onSelectTire(tire)}
-          className="cursor-pointer"
+          className="relative py-4 bg-zinc-50 rounded-lg flex items-center justify-center min-h-[180px] cursor-pointer mb-4"
         >
-          {/* Brand & Model */}
-          <div className="flex items-center justify-center md:justify-start gap-1.5 mb-2 h-12">
-            {BRAND_LOGOS[tire.brand.toUpperCase()] ? (
-              <img 
-                src={BRAND_LOGOS[tire.brand.toUpperCase()]} 
-                alt={tire.brand} 
-                className="h-10 w-auto max-w-[120px] object-contain select-none shrink-0"
-                referrerPolicy="no-referrer"
-              />
-            ) : (
-              <span className="text-xs sm:text-sm tracking-wider uppercase font-black text-black bg-white px-2.5 py-1 rounded border-2 border-black">
-                {tire.brand}
-              </span>
-            )}
-            <span className="text-black text-xs">•</span>
-            <span className="text-xs sm:text-sm text-black font-serif font-black">
-              Série {tire.model.split(' ')[0]}
-            </span>
-          </div>
-
-          {/* Catalog name */}
-          <h4 className="text-base font-black text-black leading-snug line-clamp-2 min-h-[44px] hover:text-[#f49e1a] transition" title={tire.name}>
-            {tire.name}
-          </h4>
-
-          {/* Technical Specs specs badges */}
-          <div className="mt-3 flex flex-wrap gap-2 justify-center md:justify-start">
-            <span className="bg-black text-white text-xs font-mono font-black border border-black px-2.5 py-1 rounded">
-              Lg. {tire.width}mm
-            </span>
-            <span className="bg-black text-white text-xs font-mono font-black border border-black px-2.5 py-1 rounded">
-              Perfil {tire.aspectRatio}%
-            </span>
-            <span className="bg-black text-white text-xs font-mono font-black border border-black px-2.5 py-1 rounded">
-              Aro R{tire.rim}
-            </span>
-          </div>
+          <img 
+            src={tire.image} 
+            alt={tire.name} 
+            className="max-h-40 object-contain w-auto transform transition duration-300 group-hover:scale-105"
+            referrerPolicy="no-referrer"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = getBrandFallbackImage(tire.brand, tire.id);
+            }}
+          />
         </div>
 
-        {/* Pricing tag replaced with Consultation Message */}
-        <div className="mt-4 border-t-2 border-black pt-3 flex flex-col items-center md:items-start">
-          <p className="text-xs sm:text-sm text-black font-extrabold capitalize mb-1 bg-[#f49e1a] text-black px-2.5 py-1 rounded-md w-full text-center md:text-left border border-black">
-            Instalação inclusa na loja do Portão!
-          </p>
-          
-          <div className="flex items-center gap-2 mt-1">
-            <span className="text-lg sm:text-xl font-black text-black uppercase tracking-wider">
-              Preço Sob Consulta
-            </span>
-          </div>
+        {/* Tire Name in 18px font */}
+        <h4 
+          onClick={() => onSelectTire && onSelectTire(tire)}
+          className="text-[18px] font-bold text-zinc-900 leading-snug line-clamp-2 min-h-[52px] cursor-pointer hover:text-[#F5A623] transition" 
+          title={tire.name}
+        >
+          {tire.name}
+        </h4>
 
-          <p className="text-xs sm:text-sm text-black font-sans mt-1 font-bold">
-            Consulte estoque, ofertas e os serviços adequados
-          </p>
+        {/* Specs */}
+        <p className="text-sm text-zinc-600 mt-2 font-medium">
+          Medida: {tire.width}/{tire.aspectRatio} R{tire.rim}
+        </p>
+
+        {/* Price status in dark green readable font */}
+        <div className="mt-3 py-1">
+          <span className="text-[18px] font-bold text-emerald-800">
+            Sob consulta
+          </span>
         </div>
+      </div>
 
-        {/* Add Actions row */}
-        <div className="mt-4 flex items-center justify-between gap-2.5">
-          {/* Quantity selector */}
-          <div className="flex items-center border-2 border-black rounded-xl h-10 overflow-hidden shrink-0 bg-white">
-            <button 
-              onClick={() => setQty(Math.max(1, qty - 1))}
-              className="px-3 hover:bg-black hover:text-[#f49e1a] font-black transition text-black text-base"
-              id={`decrease-qty-${tire.id}`}
-            >
-              -
-            </button>
-            <span className="px-4 font-mono font-black text-sm text-black">{qty}</span>
-            <button 
-              onClick={() => setQty(Math.min(12, qty + 1))}
-              className="px-3 hover:bg-black hover:text-[#f49e1a] font-black transition text-black text-base"
-              id={`increase-qty-${tire.id}`}
-            >
-              +
-            </button>
-          </div>
+      {/* Action Buttons with 48px height and normal casing */}
+      <div className="mt-4 pt-3 border-t border-zinc-100 grid grid-cols-2 gap-2">
+        <button
+          onClick={() => onSelectTire && onSelectTire(tire)}
+          className="h-[48px] min-h-[48px] px-3 bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-sm rounded-xl flex items-center justify-center gap-1.5 cursor-pointer transition"
+        >
+          <Eye className="w-4 h-4 text-zinc-700" />
+          <span>Ver detalhes</span>
+        </button>
 
-          {/* WhatsApp consultation CTA */}
-          <div className="flex-1 flex flex-col">
-            <a
-              href={formatWhatsApp(
-                `Olá Carplus! Gostaria de consultar o preço, estoque e o serviço correto para meu carro.\n\n` +
-                `Item: Pneu ${tire.brand} ${tire.model} (${tire.width}/${tire.aspectRatio} R${tire.rim})\n` +
-                `Quantidade desejada: ${qty} unidade(s)\n` +
-                `Por favor, informe a disponibilidade de instalação rápida inclusa na loja do Portão.`
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full bg-[#f49e1a] hover:bg-black hover:text-[#f49e1a] text-black font-black h-10 rounded-xl flex items-center justify-center gap-1.5 text-xs sm:text-sm uppercase tracking-wider transition duration-200 border-2 border-black text-center"
-              id={`whatsapp-consult-${tire.id}`}
-            >
-              <MessageSquare className="w-4 h-4 shrink-0 fill-current" />
-              <span>Cotar</span>
-            </a>
-            <span className="text-[9px] text-black font-bold text-center mt-0.5">Verificar preço e estoque.</span>
-          </div>
-        </div>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta-location="card-produto"
+          className="h-[48px] min-h-[48px] px-3 bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-sm rounded-xl flex items-center justify-center gap-1.5 cursor-pointer transition shadow-sm"
+          id={`whatsapp-consult-${tire.id}`}
+        >
+          <MessageSquare className="w-4 h-4 fill-current shrink-0" />
+          <span>Cotar</span>
+        </a>
       </div>
     </div>
   );
 }
+

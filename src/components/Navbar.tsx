@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Phone, Calendar, ShoppingCart, HelpCircle, FileText, Navigation, Menu, X, ArrowUpRight, MapPin, Clock, MessageSquare } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Phone, ShoppingCart, Menu, X, MapPin, MessageSquare, Compass, Home, Disc, HelpCircle, Wrench, Info, Mail } from 'lucide-react';
 
 interface NavbarProps {
   onScrollToSection: (sectionId: string) => void;
@@ -9,6 +9,32 @@ interface NavbarProps {
 
 export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Lock background scroll and set mobile-menu-open class when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.style.overflow = 'auto';
+      document.body.classList.remove('mobile-menu-open');
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.body.classList.remove('mobile-menu-open');
+    };
+  }, [isMobileMenuOpen]);
+
+  // Handle ESC key to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isMobileMenuOpen]);
 
   const formatWhatsApp = (text: string) => {
     return `https://api.whatsapp.com/send?phone=554130827282&text=${encodeURIComponent(text)}`;
@@ -24,365 +50,215 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
     { label: 'Contato', id: 'contato' }
   ];
 
+  const handleMobileNav = (sectionId: string) => {
+    onScrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <header className="sticky top-0 z-40 w-full" id="main-header">
-      {/* Dynamic Marquee Letreiro Top Bar */}
-      <div className="bg-black text-white py-2 border-b border-[#f49e1a] overflow-hidden relative z-50 group">
-        <div className="max-w-full flex cursor-pointer" title="Passe o mouse para pausar e clique nos links para ligar ou ver endereço!">
-          <div className="animate-top-marquee flex items-center gap-16 whitespace-nowrap">
-            {/* Array of info items, repeated to ensure loop is completely seamless */}
-            {Array.from({ length: 4 }).map((_, repeatIdx) => (
-              <React.Fragment key={`marquee-group-${repeatIdx}`}>
-                {/* Item 1: Endereço */}
-                <a 
-                  href="https://maps.google.com/?q=Av.+Presid.+Arthur+da+Silva+Bernardes,+1323+-+Portão,+Curitiba+-+PR"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 hover:text-[#f49e1a] transition-colors text-xs font-bold font-sans group/link text-white"
-                >
-                  <MapPin className="w-3.5 h-3.5 text-[#f49e1a] shrink-0" />
-                  <span className="text-[#f49e1a]">LOJA PORTÃO:</span>
-                  <span className="underline decoration-dashed decoration-white group-hover/link:decoration-[#f49e1a]">
-                    Av. Pres. Arthur Bernardes, 1323 - Curitiba, PR
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover/link:text-[#f49e1a]" />
-                </a>
-
-                {/* Item 2: Telefone de Atendimento */}
-                <a 
-                  href="tel:554130827282"
-                  className="inline-flex items-center gap-2 hover:text-[#f49e1a] transition-colors text-xs font-bold font-mono group/link text-white"
-                >
-                  <Phone className="w-3.5 h-3.5 text-[#f49e1a]" />
-                  <span className="text-[#f49e1a] font-sans">LIGUE JÁ:</span>
-                  <span className="underline decoration-dashed decoration-white group-hover/link:decoration-[#f49e1a]">
-                    (41) 3082-7282
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover/link:text-[#f49e1a]" />
-                </a>
-
-                {/* Item 3: Horários */}
-                <div className="inline-flex items-center gap-2 text-xs font-bold text-white font-sans">
-                  <Clock className="w-3.5 h-3.5 text-[#f49e1a] shrink-0" />
-                  <span className="text-[#f49e1a]">HORÁRIO:</span>
-                  <span className="font-mono text-white">Seg-Sex: 08:00 - 18:00 • Sáb: 08:00 - 12:00</span>
-                </div>
-
-                {/* Item 4: WhatsApp Solicitar Agendamento */}
-                <a 
-                  href={formatWhatsApp("Olá Carplus! Gostaria de agendar uma revisão rápida ou solicitar um orçamento de pneus.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 hover:text-[#f49e1a] transition-colors text-xs font-extrabold font-sans group/link text-white"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#f49e1a] shrink-0" />
-                  <span className="text-[#f49e1a]">WHATSAPP:</span>
-                  <span className="underline decoration-dashed decoration-white group-hover/link:decoration-[#f49e1a]">
-                    Fale Direto com Atendimento
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover/link:text-[#f49e1a]" />
-                </a>
-              </React.Fragment>
-            ))}
+    <header className="sticky top-0 z-40 w-full bg-black max-w-full overflow-x-hidden" id="main-header">
+      {/* Top Bar - Clean single centered phone link on mobile, Address + Phone on desktop */}
+      <div className="bg-zinc-900 text-zinc-300 py-1.5 px-4 border-b border-zinc-800 text-sm w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto flex items-center justify-center sm:justify-between gap-4">
+          <div className="hidden sm:flex items-center gap-2 truncate min-w-0">
+            <MapPin className="w-4 h-4 text-[#F5A623] shrink-0" />
+            <span className="truncate">Av. Pres. Arthur Bernardes, 1323 - Portão, Curitiba</span>
           </div>
+          <a 
+            href="tel:554130827282"
+            data-cta-location="header"
+            className="flex items-center justify-center gap-2 font-bold text-[#F5A623] hover:text-amber-300 transition shrink-0 min-h-[44px] px-2 text-center"
+          >
+            <Phone className="w-4 h-4 shrink-0" />
+            <span>(41) 3082-7282</span>
+          </a>
         </div>
       </div>
 
       {/* Main navigation header */}
-      <nav className="bg-black border-b-2 border-[#f49e1a] text-white py-2.5 px-3 sm:px-6 shadow-xl relative z-40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6">
-          {/* Brand Logo responsive picker */}
-          <div className="flex items-center shrink-0">
-            {/* Desktop Logo */}
-            <a 
-              href="/" 
-              onClick={(e) => {
-                e.preventDefault();
-                onScrollToSection('home');
-              }} 
-              className="hidden sm:block cursor-pointer shrink-0"
-            >
-              <img
-                src="/images/logos/logo-horizontal.svg"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
-                }}
-                alt="Carplus Pneus Oficina Mecânica"
-                className="h-10 xl:h-12 w-auto object-contain"
-              />
-            </a>
-            {/* Mobile Header Logo */}
-            <a 
-              href="/" 
-              onClick={(e) => {
-                e.preventDefault();
-                onScrollToSection('home');
-              }} 
-              className="block sm:hidden cursor-pointer shrink-0"
-            >
-              <img
-                src="/carplus-pneus-oficina-mecanica-full-service-horizontal.svg"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
-                }}
-                alt="Carplus Pneus Mobile"
-                className="h-9 w-auto object-contain"
-              />
-            </a>
-          </div>
+      <nav className="bg-black text-white py-3 px-3 sm:px-6 shadow-md border-b border-zinc-800 relative z-40 w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 w-full min-w-0">
+          {/* Brand Logo */}
+          <a 
+            href="/" 
+            onClick={(e) => {
+              e.preventDefault();
+              onScrollToSection('home');
+            }} 
+            className="cursor-pointer shrink min-w-0 flex items-center min-h-[48px]"
+          >
+            <img
+              src="/images/logos/logo-horizontal.svg"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
+              }}
+              alt="Carplus Pneus e Oficina Mecânica"
+              className="h-8 sm:h-11 w-auto max-w-[170px] sm:max-w-none object-contain shrink-0"
+            />
+          </a>
 
           {/* Core Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1.5 xl:gap-4 shrink-0">
+          <div className="hidden lg:flex items-center gap-6 shrink-0">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => onScrollToSection(link.id)}
-                className="text-xs uppercase font-extrabold tracking-wider text-white hover:text-[#f49e1a] px-2.5 py-1.5 rounded-lg hover:bg-white/10 transition duration-150 cursor-pointer whitespace-nowrap"
+                className="text-base font-semibold text-zinc-200 hover:text-[#F5A623] py-2 transition duration-150 cursor-pointer whitespace-nowrap min-h-[48px] flex items-center"
               >
                 {link.label}
               </button>
             ))}
           </div>
 
-          {/* CTA Buttons row */}
+          {/* Desktop Right CTA / Shopping Cart Button */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Shopping Cart Button */}
             <button
               onClick={onOpenCart}
-              className="bg-[#f49e1a] hover:bg-white hover:text-black text-black font-black p-2.5 sm:px-4 sm:py-2.5 rounded-xl flex items-center gap-2 shadow-md transition-all duration-300 relative border border-[#f49e1a] cursor-pointer shrink-0 whitespace-nowrap"
+              className="hidden sm:flex bg-[#F5A623] hover:bg-amber-400 text-zinc-950 font-bold px-4 py-2.5 rounded-xl items-center gap-2 shadow-sm transition shrink-0 min-h-[48px] cursor-pointer"
               id="header-cart-btn"
             >
-              <ShoppingCart className="w-4 h-4 shrink-0" />
-              <span className="hidden sm:inline text-xs uppercase tracking-wider font-extrabold">Carrinho</span>
+              <ShoppingCart className="w-5 h-5 shrink-0" />
+              <span className="text-sm font-extrabold">Carrinho</span>
               {cartCount > 0 && (
-                <span className="bg-black text-[#f49e1a] text-[10px] font-black px-1.5 py-0.5 rounded-full border border-[#f49e1a]">
+                <span className="bg-black text-[#F5A623] text-xs font-black px-2 py-0.5 rounded-full">
                   {cartCount}
                 </span>
               )}
             </button>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Header Menu Toggle Button (Requirement 1 & 3: Icon + Written "Menu", min 48x48px, fully visible) */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white hover:text-[#f49e1a] cursor-pointer rounded-xl bg-white/10 hover:bg-white/20 transition shrink-0"
+              className="lg:hidden flex items-center gap-1.5 px-3 py-2 text-white bg-zinc-800 hover:bg-zinc-700 cursor-pointer rounded-xl font-bold text-base min-w-[48px] min-h-[48px] transition shrink-0 border border-zinc-700 active:scale-95"
               id="mobile-menu-toggle"
-              aria-label="Abrir Menu"
+              aria-label="Abrir Menu de Navegação"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6 text-[#f49e1a]" /> : <Menu className="w-6 h-6 text-white" />}
+              <Menu className="w-5 h-5 text-[#F5A623] shrink-0" />
+              <span className="text-white font-extrabold text-base tracking-wide">Menu</span>
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile menu panel */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden mt-3 pt-4 border-t-2 border-[#f49e1a] pb-4 bg-black" id="mobile-navigation-links">
-            {/* Header with carplus logo & close hint */}
-            <div className="bg-black p-4 rounded-2xl border border-[#f49e1a] mb-4 flex flex-col items-center text-center">
-              <img
-                src="/images/logos/logo-horizontal.svg"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
-                }}
-                alt="Carplus Pneus e Oficina"
-                className="h-10 w-auto object-contain mb-2"
-              />
-              <span className="text-xs text-[#f49e1a] font-mono uppercase font-black tracking-widest">
-                Portão • Curitiba
-              </span>
-              <p className="text-xs text-white mt-2 font-medium">
-                Menu adaptado com letras grandes e botões fáceis de tocar para navegação simplificada.
-              </p>
-            </div>
+      {/* Mobile Menu Fullscreen Overlay (Requirement 3: Clean 6 items without numbers, Fechar visible, no Carrinho item) */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 z-[60] bg-black text-white flex flex-col justify-between p-4 sm:p-5 overflow-y-auto w-full max-w-full"
+          id="mobile-navigation-links"
+          role="dialog"
+          aria-modal="true"
+        >
+          {/* Top Bar: Logo & Written "Fechar ✕" Button */}
+          <div className="flex items-center justify-between pb-4 border-b border-zinc-800 w-full gap-2 shrink-0">
+            <img
+              src="/images/logos/logo-horizontal.svg"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = 'https://img.carplusautos.com.br/cwb/logo-horizontal.svg';
+              }}
+              alt="Carplus Pneus"
+              className="h-8 sm:h-9 w-auto max-w-[160px] object-contain shrink-0"
+            />
+            <button 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-1.5 px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-base rounded-xl min-h-[48px] min-w-[48px] cursor-pointer border border-zinc-700 transition shrink-0"
+              aria-label="Fechar Menu"
+            >
+              <span>Fechar</span>
+              <X className="w-5 h-5 text-[#F5A623] shrink-0" />
+            </button>
+          </div>
 
-            {/* List block */}
-            <div className="space-y-3">
-              <p className="text-xs text-[#f49e1a] uppercase font-black tracking-widest pl-1 mt-1">
-                Páginas mais procuradas:
-              </p>
+          {/* Clean 6-item Vertical Navigation List (Requirement 3: Início · Pneus (catálogo) · Qual pneu serve no meu carro? · Serviços e Alinhamento · Sobre · Contato) */}
+          <div className="py-4 my-auto space-y-1 w-full">
+            <button
+              onClick={() => handleMobileNav('home')}
+              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
+            >
+              <Home className="w-6 h-6 text-[#F5A623] shrink-0" />
+              <span className="text-[20px] font-bold text-white tracking-tight">Início</span>
+            </button>
 
-              {/* 0. Catálogo Completo de Pneus (1.962 modelos) */}
-              <button
-                onClick={() => {
-                  onScrollToSection('catalogo-pneus');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-between p-4 bg-black border-2 border-[#f49e1a] rounded-2xl text-left active:bg-[#f49e1a]/20 transition duration-200"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#f49e1a] text-black p-2.5 rounded-xl">
-                    <ShoppingCart className="w-6 h-6 shrink-0" />
-                  </div>
-                  <div>
-                    <span className="block text-base font-black text-white">Catálogo Completo (1.962 Pneus)</span>
-                    <span className="block text-[11px] text-[#f49e1a] font-bold">Filtre por marca, aro (13 ao 23) e medidas</span>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-[#f49e1a] shrink-0" />
-              </button>
+            <button
+              onClick={() => handleMobileNav('catalogo-pneus')}
+              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
+            >
+              <Disc className="w-6 h-6 text-[#F5A623] shrink-0" />
+              <span className="text-[20px] font-bold text-white tracking-tight">Pneus (catálogo)</span>
+            </button>
 
-              {/* 1. Ver estoque de pneus */}
-              <button
-                onClick={() => {
-                  onScrollToSection('catalog');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-between p-4 bg-black border-2 border-[#f49e1a] rounded-2xl text-left active:bg-black transition duration-200"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#f49e1a] text-black p-2.5 rounded-xl">
-                    <ShoppingCart className="w-6 h-6 shrink-0" />
-                  </div>
-                  <div>
-                    <span className="block text-base font-black text-white">Ver Ofertas e Pneus</span>
-                    <span className="block text-[11px] text-white font-medium">Consulta de marcas, aros e preços em promoção</span>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-[#f49e1a] shrink-0" />
-              </button>
+            <button
+              onClick={() => handleMobileNav('finder')}
+              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
+            >
+              <HelpCircle className="w-6 h-6 text-[#F5A623] shrink-0" />
+              <span className="text-[20px] font-bold text-white tracking-tight">Qual pneu serve no meu carro?</span>
+            </button>
 
-              {/* 2. Simulador */}
-              <button
-                onClick={() => {
-                  onScrollToSection('finder');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-between p-4 bg-black border-2 border-[#f49e1a] rounded-2xl text-left active:bg-black transition duration-200"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#f49e1a] text-black p-2.5 rounded-xl">
-                    <HelpCircle className="w-6 h-6 shrink-0" />
-                  </div>
-                  <div>
-                    <span className="block text-base font-black text-white">Descobrir Pneu do Meu Carro</span>
-                    <span className="block text-[11px] text-white font-medium">Guia fácil passo a passo para achar o modelo certo</span>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-[#f49e1a] shrink-0" />
-              </button>
+            <button
+              onClick={() => handleMobileNav('alinhamento-3d-curitiba')}
+              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
+            >
+              <Wrench className="w-6 h-6 text-[#F5A623] shrink-0" />
+              <span className="text-[20px] font-bold text-white tracking-tight">Serviços e Alinhamento</span>
+            </button>
 
-              {/* 3. Serviços e Oficina */}
-              <button
-                onClick={() => {
-                  onScrollToSection('alinhamento-3d-curitiba');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-between p-4 bg-black border-2 border-[#f49e1a] rounded-2xl text-left active:bg-black transition duration-200"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#f49e1a] text-black p-2.5 rounded-xl">
-                    <FileText className="w-6 h-6 shrink-0" />
-                  </div>
-                  <div>
-                    <span className="block text-base font-black text-white">Serviços e Alinhamento 3D</span>
-                    <span className="block text-[11px] text-white font-medium">Suspensão, freios, troca de óleo e revisão geral</span>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-[#f49e1a] shrink-0" />
-              </button>
+            <button
+              onClick={() => handleMobileNav('quem-somos')}
+              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
+            >
+              <Info className="w-6 h-6 text-[#F5A623] shrink-0" />
+              <span className="text-[20px] font-bold text-white tracking-tight">Sobre</span>
+            </button>
 
-              {/* 4. Ligar direto */}
-              <a
-                href="tel:554130827282"
-                className="w-full flex items-center justify-between p-4 bg-black border-2 border-[#f49e1a] rounded-2xl text-left active:bg-black transition duration-200"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#f49e1a] text-black p-2.5 rounded-xl">
-                    <Phone className="w-6 h-6 shrink-0 text-black" />
-                  </div>
-                  <div>
-                    <span className="block text-base font-black text-[#f49e1a]">LIGAR (41) 3082-7282</span>
-                    <span className="block text-[11px] text-white font-bold">Toque para telefonar grátis com um clique</span>
-                  </div>
-                </div>
-                <Phone className="w-5 h-5 text-[#f49e1a] shrink-0" />
-              </a>
+            <button
+              onClick={() => handleMobileNav('contato')}
+              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
+            >
+              <Mail className="w-6 h-6 text-[#F5A623] shrink-0" />
+              <span className="text-[20px] font-bold text-white tracking-tight">Contato</span>
+            </button>
+          </div>
 
-              {/* 5. WhatsApp */}
-              <a
-                href={formatWhatsApp('Olá Carplus! Quero agendar serviços ou orçamento para o meu carro.')}
+          {/* Bottom Action Area: 2 Large 56px Action Buttons + Simple Address */}
+          <div className="pt-4 border-t border-zinc-800 space-y-3 w-full shrink-0">
+            <a
+              href="tel:554130827282"
+              data-cta-location="header"
+              className="w-full h-[56px] min-h-[56px] bg-[#F5A623] hover:bg-amber-400 text-zinc-950 font-extrabold text-[18px] rounded-xl flex items-center justify-center gap-3 transition cursor-pointer"
+            >
+              <Phone className="w-6 h-6 shrink-0" />
+              <span>Ligar (41) 3082-7282</span>
+            </a>
+
+            <a
+              href={formatWhatsApp('Olá Carplus! Gostaria de consultar pneus e serviços para o meu carro.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta-location="header"
+              className="w-full h-[56px] min-h-[56px] bg-[#25D366] hover:bg-emerald-500 text-white font-extrabold text-[18px] rounded-xl flex items-center justify-center gap-3 transition cursor-pointer"
+            >
+              <MessageSquare className="w-6 h-6 shrink-0 fill-current" />
+              <span>Chamar no WhatsApp</span>
+            </a>
+
+            {/* Single clean address line with "Ver no mapa" link */}
+            <div className="pt-2 text-center text-sm text-zinc-400">
+              <span>Av. Pres. Arthur Bernardes, 1323 - Portão, Curitiba</span>
+              <a 
+                href="https://maps.google.com/?q=Av.+Presid.+Arthur+da+Silva+Bernardes,+1323+-+Portão,+Curitiba+-+PR" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-between p-4 bg-black border-2 border-[#f49e1a] rounded-2xl text-left active:bg-black transition duration-200"
+                data-cta-location="header"
+                className="text-[#F5A623] underline font-bold ml-2 inline-flex items-center gap-1"
               >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#f49e1a] text-black p-2.5 rounded-xl">
-                    <MessageSquare className="w-6 h-6 shrink-0 text-black" />
-                  </div>
-                  <div>
-                    <span className="block text-base font-black text-[#f49e1a]">Chamar no WhatsApp</span>
-                    <span className="block text-[11px] text-white font-bold">Consulte orçamentos por mensagem rápida</span>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-[#f49e1a] shrink-0" />
+                <Compass className="w-4 h-4 inline" />
+                <span>Ver no mapa</span>
               </a>
-
-              {/* 6. Endereço / Localização */}
-              <button
-                onClick={() => {
-                  onScrollToSection('maps-section');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-between p-4 bg-black border-2 border-[#f49e1a] rounded-2xl text-left active:bg-black transition duration-200"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#f49e1a] text-black p-2.5 rounded-xl">
-                    <MapPin className="w-6 h-6 shrink-0" />
-                  </div>
-                  <div>
-                    <span className="block text-base font-black text-white">Como Chegar (Endereço)</span>
-                    <span className="block text-[11px] text-white font-medium">Av. Arthur Bernardes, 1323 - Portão, Curitiba</span>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-[#f49e1a] shrink-0" />
-              </button>
-
-              {/* Outros links de texto grandes */}
-              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-[#f49e1a]">
-                <button
-                  onClick={() => {
-                    onScrollToSection('home');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="bg-black border-2 border-[#f49e1a] rounded-2xl p-2.5 text-center transition text-xs font-black text-white flex flex-col items-center gap-1 cursor-pointer"
-                >
-                  <Navigation className="w-4 h-4 text-[#f49e1a]" />
-                  <span>Início</span>
-                </button>
-                <button
-                  onClick={() => {
-                    onScrollToSection('quem-somos');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="bg-black border-2 border-[#f49e1a] rounded-2xl p-2.5 text-center transition text-xs font-black text-white flex flex-col items-center gap-1 cursor-pointer"
-                >
-                  <FileText className="w-4 h-4 text-[#f49e1a]" />
-                  <span>Sobre</span>
-                </button>
-                <button
-                  onClick={() => {
-                    onScrollToSection('blog');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="bg-black border-2 border-[#f49e1a] rounded-2xl p-2.5 text-center transition text-xs font-black text-white flex flex-col items-center gap-1 cursor-pointer"
-                >
-                  <FileText className="w-4 h-4 text-[#f49e1a]" />
-                  <span>Blog</span>
-                </button>
-                <button
-                  onClick={() => {
-                    onScrollToSection('contato');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="bg-black border-2 border-[#f49e1a] rounded-2xl p-2.5 text-center transition text-xs font-black text-white flex flex-col items-center gap-1 cursor-pointer"
-                >
-                  <Calendar className="w-4 h-4 text-[#f49e1a]" />
-                  <span>Contato</span>
-                </button>
-              </div>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   );
 }
+
