@@ -38,7 +38,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
   };
 
   const handleWhatsAppInquiry = () => {
-    const text = `Olá Carplus! Estou na página de detalhes do Pneu ${tire.brand} ${tire.model} (${tire.width}/${tire.aspectRatio} R${tire.rim}) e tenho interesse em reservar ${quantity} unidades com instalação gratuita na loja do Portão. No link: ${shareUrl}`;
+    const text = `Olá Carplus! Estou na página de detalhes do Pneu ${tire.brand} ${tire.model} (${tire.width}/${tire.aspectRatio} R${tire.rim}) e tenho interesse em reservar ${quantity} unidades com instalação profissional na loja do Portão. No link: ${shareUrl}`;
     const encoded = encodeURIComponent(text);
     const link = `https://api.whatsapp.com/send?phone=554130827282&text=${encoded}`;
     window.open(link, '_blank');
@@ -290,7 +290,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                 <div className="flex flex-wrap gap-2">
                   {/* WhatsApp */}
                   <a
-                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Olha só este Pneu ${tire.brand} ${tire.model} (${tire.width}/${tire.aspectRatio} R${tire.rim}) que encontrei na Carplus Curitiba com Instalação Grátis no Portão! Acesse: ${shareUrl}`)}`}
+                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Olha só este Pneu ${tire.brand} ${tire.model} (${tire.width}/${tire.aspectRatio} R${tire.rim}) que encontrei na Carplus Curitiba com Instalação Profissional no Portão! Acesse: ${shareUrl}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Compartilhar no WhatsApp"
@@ -326,7 +326,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
 
                   {/* Twitter / X */}
                   <a
-                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`Achei Pneu para meu carro com Instalação e Bicos Inclusos de graça na Carplus Pneus! Confira: `)}`}
+                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`Achei Pneu para meu carro na Carplus Pneus! Confira: `)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Compartilhar no Twitter"
@@ -339,7 +339,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
 
                   {/* Pinterest */}
                   <a
-                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}&media=${encodeURIComponent(tire.image)}&description=${encodeURIComponent(`Pneu ${tire.brand} ${tire.model} com Montagem Grátis em Curitiba`)}`}
+                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}&media=${encodeURIComponent(tire.image)}&description=${encodeURIComponent(`Pneu ${tire.brand} ${tire.model} com Montagem Especializada em Curitiba`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Compartilhar no Pinterest"

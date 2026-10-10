@@ -985,7 +985,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
         </div>
 
         <div className="pt-3 border-t border-white/10 flex flex-wrap gap-4 text-[10px] sm:text-[11px] text-gray-300 font-mono font-black uppercase">
-          <span className="flex items-center gap-1"><Check className="text-[#f49e1a] w-4 h-4" /> Montagem Técnica Grátis</span>
+          <span className="flex items-center gap-1"><Check className="text-[#f49e1a] w-4 h-4" /> Montagem Técnica Especializada</span>
           <span className="flex items-center gap-1"><Check className="text-[#f49e1a] w-4 h-4" /> Bicos de Borracha Novos</span>
           <span className="flex items-center gap-1"><Check className="text-[#f49e1a] w-4 h-4" /> Vistoria de Suspensão Cortesia</span>
         </div>

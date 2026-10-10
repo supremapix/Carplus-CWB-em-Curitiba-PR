@@ -428,7 +428,7 @@ export default function CompanyPages({
                         </div>
                         <div className="flex justify-between items-center text-gray-650">
                           <span>Montagem e Instalação</span>
-                          <span className="text-green-600 font-extrabold uppercase">Grátis</span>
+                          <span className="text-green-600 font-extrabold uppercase">Incluso</span>
                         </div>
                         <div className="flex justify-between items-center text-gray-650">
                           <span>Bicos de Borracha</span>
@@ -805,7 +805,7 @@ export default function CompanyPages({
                       </button>
 
                       <a 
-                        href={formatWhatsApp(`Olá Equipe Carplus! Vi a foto da oficina sobre "${CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].title}" e gostaria de agendar uma avaliação gratuita do meu automóvel.`)}
+                        href={formatWhatsApp(`Olá Equipe Carplus! Vi a foto da oficina sobre "${CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].title}" e gostaria de agendar uma avaliação técnica do meu automóvel.`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-850 font-extrabold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition text-center select-none"
@@ -938,7 +938,7 @@ export default function CompanyPages({
 
               <h4 className="text-gray-900 font-extrabold uppercase mt-4">4. Contato Encarregado</h4>
               <p>
-                Em caso de dúvidas para remoção ou atualização física de histórico automotivo local, por favor ligue gratuitamente para a gerência da Carplus Portão através do contato telefônico principal: <strong>(41) 3082-7282</strong>.
+                Em caso de dúvidas para remoção ou atualização física de histórico automotivo local, por favor ligue diretamente para a gerência da Carplus Portão através do contato telefônico principal: <strong>(41) 3082-7282</strong>.
               </p>
             </div>
           </div>
@@ -2236,7 +2236,7 @@ export default function CompanyPages({
             },
             {
               q: "Como funciona a garantia de 5 anos das borrachas?",
-              a: "Todos os pneus novos comercializados na Carplus possuem garantia de fábrica estendida de cinco anos contra eventuais imperfeições estruturais ou vícios de fundição. No ato da sua montagem, nossos técnicos ainda realizam um teste de suspensão preventivo totalmente gratuito."
+              a: "Todos os pneus novos comercializados na Carplus possuem garantia de fábrica estendida de cinco anos contra eventuais imperfeições estruturais ou vícios de fundição. No ato da sua montagem, nossos técnicos ainda realizam um teste de suspensão preventivo completo."
             },
             {
               q: "Como reservo o pneu e quando realiza o pagamento?",
@@ -2482,7 +2482,7 @@ export default function CompanyPages({
                               if (onAddToCart) {
                                 onAddToCart(tire, qty);
                               } else {
-                                const whatsappUrl = `https://wa.me/5541999999999?text=Olá%20Carplus!%20Gostaria%20de%20reservar%20${qty}%20unidades%20do%20pneu%20${encodeURIComponent(tire.name)}%20com%20instalação%20grátis%252c%20vi%20na%20página%20de%20${encodeURIComponent(seoTarget.name)}.`;
+                                const whatsappUrl = `https://wa.me/5541999999999?text=Olá%20Carplus!%20Gostaria%20de%20reservar%20${qty}%20unidades%20do%20pneu%20${encodeURIComponent(tire.name)}%20com%20instalação%20profissional%252c%20vi%20na%20página%20de%20${encodeURIComponent(seoTarget.name)}.`;
                                 window.open(whatsappUrl, '_blank');
                               }
                             }}
@@ -2499,7 +2499,7 @@ export default function CompanyPages({
                     <div className="bg-yellow-500/5 border border-[#f49e1a]/15 p-6 rounded-2xl text-center space-y-2">
                        <p className="text-xs font-black text-gray-900 uppercase">Gama Completa Sob Demanda</p>
                        <p className="text-[11px] text-gray-600 max-w-md mx-auto leading-relaxed">
-                         Não localizamos unidades de estoque imediato para esta medida específica agora, mas podemos importar e faturar direto do atacado em até 24 horas, mantendo a instalação gratuita no Portão!
+                         Não localizamos unidades de estoque imediato para esta medida específica agora, mas podemos importar e faturar direto do atacado em até 24 horas, mantendo a instalação profissional no Portão!
                        </p>
                        <a 
                          href={formatWhatsApp(`Olá Carplus! Gostaria de consultar pneu para meu veículo ${seoTarget.name}, que vi na página do site.`)}

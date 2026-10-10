@@ -42,7 +42,7 @@ const VIDEOS = [
     highlights: [
       { icon: Wrench, title: "Fixação Pneumática", desc: "Desmontadoras anti-risco de rodas" },
       { icon: ShieldCheck, title: "Válvulas Novas", desc: "Substituição preventiva de bicos" },
-      { icon: Gauge, title: "Check-up Grátis", desc: "Inspeção visual de freios e suspensão" }
+      { icon: Gauge, title: "Check-up Completo", desc: "Inspeção visual de freios e suspensão" }
     ]
   },
   {

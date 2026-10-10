@@ -2039,7 +2039,7 @@ export default function App() {
                     Checkup de Suspensão & Freios
                   </h4>
                   <p className="text-[16px] text-zinc-600 leading-relaxed mt-2 max-w-[60ch]">
-                    Inspeção visual gratuita no elevador: conferência de buchas, amortecedores, pastilhas e discos antes de colocar o carro de volta na rua.
+                    Inspeção visual técnica no elevador: conferência de buchas, amortecedores, pastilhas e discos antes de colocar o carro de volta na rua.
                   </p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-zinc-100 w-full flex items-center justify-between text-xs font-mono font-bold text-zinc-500">

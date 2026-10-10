@@ -209,7 +209,7 @@ export default function OficinaDoPneuSection({ onNavigateHome }: OficinaDoPneuSe
       <div className="bg-gray-50 border border-gray-200 p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="text-left space-y-1">
           <h4 className="font-black text-sm uppercase font-mono text-gray-950">Precisa de um orçamento sem compromisso?</h4>
-          <p className="text-xs text-gray-600">Traga seu veículo para uma inspeção visual gratuita de pneus, freios e suspensão.</p>
+          <p className="text-xs text-gray-600">Traga seu veículo para uma inspeção visual completa de pneus, freios e suspensão.</p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <button

@@ -125,7 +125,7 @@ export default function CatalogTireDetail({
               <div className="bg-emerald-50 border border-emerald-200 p-3 rounded-xl flex items-center gap-2">
                 <Wrench className="w-5 h-5 text-emerald-700 shrink-0" />
                 <div>
-                  <div className="font-black text-gray-900 text-[11px]">Montagem Grátis</div>
+                  <div className="font-black text-gray-900 text-[11px]">Montagem Especializada</div>
                   <div className="text-[10px] text-gray-600">Na loja do Portão</div>
                 </div>
               </div>
@@ -362,7 +362,7 @@ export default function CatalogTireDetail({
               <h3 className="text-base font-black text-gray-900">Vantagens Exclusivas ao Trocar na Carplus Curitiba</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                 <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl space-y-1">
-                  <span className="font-black text-emerald-900 block text-sm">1. Montagem Gratuita</span>
+                  <span className="font-black text-emerald-900 block text-sm">1. Montagem Especializada</span>
                   <p className="text-emerald-800 leading-relaxed text-[11px]">
                     Equipamentos computadorizados que evitam qualquer arranhão nas rodas de liga leve ou ferro do seu carro.
                   </p>
