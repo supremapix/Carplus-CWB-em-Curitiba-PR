@@ -1990,8 +1990,8 @@ export default function CompanyPages({
                   "@context": "https://schema.org",
                   "@type": "BreadcrumbList",
                   "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.carpluscwb.com.br" },
-                    { "@type": "ListItem", "position": 2, "name": "Curitiba", "item": "https://www.carpluscwb.com.br/curitiba" }
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.carpluspneuseoficina.com.br" },
+                    { "@type": "ListItem", "position": 2, "name": "Curitiba", "item": "https://www.carpluspneuseoficina.com.br/curitiba" }
                   ]
                 })}
               </script>
@@ -2092,8 +2092,8 @@ export default function CompanyPages({
                   "@context": "https://schema.org",
                   "@type": "BreadcrumbList",
                   "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.carpluscwb.com.br" },
-                    { "@type": "ListItem", "position": 2, "name": "Região Metropolitana", "item": "https://www.carpluscwb.com.br/regiao-metropolitana" }
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.carpluspneuseoficina.com.br" },
+                    { "@type": "ListItem", "position": 2, "name": "Região Metropolitana", "item": "https://www.carpluspneuseoficina.com.br/regiao-metropolitana" }
                   ]
                 })}
               </script>

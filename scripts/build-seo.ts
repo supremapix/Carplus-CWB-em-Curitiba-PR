@@ -49,7 +49,7 @@ export function getTireSlug(tire: { id: string; brand: string; name?: string; wi
   return parts.filter(Boolean).join('-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-');
 }
 
-const DOMAIN = "https://www.carpluscwb.com.br";
+const DOMAIN = "https://www.carpluspneuseoficina.com.br";
 const NAP_ADDRESS = "Av. Presidente Arthur da Silva Bernardes, 1323 - Portão, Curitiba - PR, 80320-300";
 const NAP_PHONE = "(41) 3082-7282";
 const NAP_WHATSAPP = "554130827282";
@@ -1247,7 +1247,7 @@ function generateSitemaps(routes: PrerenderRoute[]) {
     }
   };
 
-  // Home (matches canonical https://www.carpluscwb.com.br/)
+  // Home (matches canonical https://www.carpluspneuseoficina.com.br/)
   addInstUrl(`${DOMAIN}/`, "1.0");
 
   indexableRoutes.forEach(r => {

@@ -16,7 +16,7 @@ interface EnhancedSEOProps {
 }
 
 export default function EnhancedSEO({ currentView, seoTarget, selectedTire, selectedCatalogTire, selectedBlogSlug }: EnhancedSEOProps) {
-  const domain = "https://www.carpluscwb.com.br";
+  const domain = "https://www.carpluspneuseoficina.com.br";
   
   // 1. Calculate Individual Canonical URL
   let canonicalUrl = domain;
@@ -1067,7 +1067,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
             "name": "Carplus Pneus e Oficina Mecânica",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://www.carpluscwb.com.br/images/logos/logo-horizontal.svg"
+              "url": "https://www.carpluspneuseoficina.com.br/images/logos/logo-horizontal.svg"
             }
           },
           "articleSection": activePost.category

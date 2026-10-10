@@ -64,7 +64,7 @@ export default function AdminIndexacaoSection({ onNavigateHome }: AdminIndexacao
       .replace(/[^a-z0-9_-\s]/gi, '')
       .trim().replace(/\s+/g, '-').replace(/-+/g, '-');
 
-    const postText = `🚙 Buscando pneus novos de alta durabilidade e economia para rodar na região do ${selected.name === 'Curitiba' ? 'Centro' : selected.name}? ⭐️\n\nNa Carplus Pneus Arthur Bernardes (no Portão), oferecemos as melhores marcas mundiais como Pirelli, Goodyear, Bridgestone e Delinte com montagem técnica computadorizada e bicos de ar de brinde! 🛠\n\nMoradores e motoristas do ${selected.name} contam com condições incríveis de pagamento em até 10x sem juros! Consulte a medida recomendada para seu carro.\n\n👉 Acesse agora nossa página oficial de atendimento em ${selected.name}:\nhttps://www.carpluscwb.com.br/${selected.type}/${cleanSlug}`;
+    const postText = `🚙 Buscando pneus novos de alta durabilidade e economia para rodar na região do ${selected.name === 'Curitiba' ? 'Centro' : selected.name}? ⭐️\n\nNa Carplus Pneus Arthur Bernardes (no Portão), oferecemos as melhores marcas mundiais como Pirelli, Goodyear, Bridgestone e Delinte com montagem técnica computadorizada e bicos de ar de brinde! 🛠\n\nMoradores e motoristas do ${selected.name} contam com condições incríveis de pagamento em até 10x sem juros! Consulte a medida recomendada para seu carro.\n\n👉 Acesse agora nossa página oficial de atendimento em ${selected.name}:\nhttps://www.carpluspneuseoficina.com.br/${selected.type}/${cleanSlug}`;
     
     setCurrentGbpPost({ text: postText, pageName: selected.name });
     setCopySuccess(null);

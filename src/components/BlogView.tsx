@@ -132,10 +132,10 @@ export const BlogView: React.FC<BlogViewProps> = ({
       navigator.share({
         title: post.title,
         text: post.summary,
-        url: `https://www.carpluscwb.com.br/blog/${post.slug}`,
+        url: `https://www.carpluspneuseoficina.com.br/blog/${post.slug}`,
       }).catch(() => {});
     } else {
-      navigator.clipboard.writeText(`https://www.carpluscwb.com.br/blog/${post.slug}`);
+      navigator.clipboard.writeText(`https://www.carpluspneuseoficina.com.br/blog/${post.slug}`);
       alert('Link do artigo copiado para a área de transferência!');
     }
   };

@@ -38,7 +38,7 @@ export default function CatalogTireDetail({
   }, [tire.id, tire.slug]);
 
   const displayImage = tire.imagemGrande || tire.imagem || '/images/pneus/pneu-pirelli-p400-evo-600x600.webp';
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : `https://www.carpluscwb.com.br/pneu/${tire.slug}`;
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : `https://www.carpluspneuseoficina.com.br/pneu/${tire.slug}`;
 
   const handleCopyLink = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {

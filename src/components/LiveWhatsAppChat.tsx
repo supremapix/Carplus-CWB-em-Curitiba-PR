@@ -21,7 +21,7 @@ export default function LiveWhatsAppChat() {
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.carpluscwb.com.br/';
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.carpluspneuseoficina.com.br/';
     const message = `Olá Carplus! Gostaria de informações sobre pneus e serviços. Vim da página: ${currentUrl}`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');

@@ -29,7 +29,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [tire.id]);
 
-  const shareUrl = `https://www.carpluscwb.com.br/pneu/${getTireSlug(tire)}`;
+  const shareUrl = `https://www.carpluspneuseoficina.com.br/pneu/${getTireSlug(tire)}`;
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareUrl);

@@ -4,7 +4,7 @@
  */
 const https = require('https');
 
-const HOST = 'www.carpluscwb.com.br';
+const HOST = 'www.carpluspneuseoficina.com.br';
 const KEY = 'c7f0b9f5a6234b6890e72bd58a12c84e';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 

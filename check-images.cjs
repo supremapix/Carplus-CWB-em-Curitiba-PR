@@ -70,7 +70,7 @@ function checkAndFixCatalogoJson() {
       exists = true;
     }
 
-    if (!exists || currentImg.startsWith('http') || currentImg.includes('carpluscwb.com.br')) {
+    if (!exists || currentImg.startsWith('http') || currentImg.includes('carpluspneuseoficina.com.br')) {
       const correctThumb = resolveTireImage(item.marca, false);
       const correctLarge = resolveTireImage(item.marca, true);
       itemsFixed.push({
