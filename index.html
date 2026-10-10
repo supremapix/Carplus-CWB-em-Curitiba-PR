@@ -2,92 +2,12 @@
 <html lang="pt-BR">
   <head>
     <!-- Google tag (gtag.js) - GA4 Carplus CWB -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5PQXERS4ZP"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SM4151YFR"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-5PQXERS4ZP');
-    </script>
-
-    <!-- Rastreador de cliques Carplus (WhatsApp, telefone, mapa, redes, e-mail) -->
-    <script>
-    (function () {
-      var last = { key: '', t: 0 };
-
-      function classify(url) {
-        if (!url) return null;
-        var u = String(url).toLowerCase();
-        if (u.indexOf('wa.me/') > -1 || u.indexOf('api.whatsapp.com') > -1 ||
-            u.indexOf('web.whatsapp.com') > -1 || u.indexOf('whatsapp://') === 0) return 'whatsapp_click';
-        if (u.indexOf('tel:') === 0) return 'phone_click';
-        if (u.indexOf('mailto:') === 0) return 'email_click';
-        if (u.indexOf('maps.google') > -1 || u.indexOf('google.com/maps') > -1 ||
-            u.indexOf('goo.gl/maps') > -1 || u.indexOf('maps.app.goo.gl') > -1 ||
-            u.indexOf('waze.com') > -1) return 'map_click';
-        if (u.indexOf('instagram.com') > -1 || u.indexOf('facebook.com') > -1 ||
-            u.indexOf('tiktok.com') > -1 || u.indexOf('youtube.com') > -1) return 'social_click';
-        return null;
-      }
-
-      function locationOf(el) {
-        if (!el || !el.closest) return 'desconhecido';
-        var tagged = el.closest('[data-cta-location]');
-        if (tagged) return tagged.getAttribute('data-cta-location');
-        if (el.closest('header, nav')) return 'header';
-        if (el.closest('footer')) return 'footer';
-        var fixed = el;
-        while (fixed && fixed !== document.body) {
-          var pos = window.getComputedStyle(fixed).position;
-          if (pos === 'fixed' || pos === 'sticky') return 'flutuante';
-          fixed = fixed.parentElement;
-        }
-        var sec = el.closest('section[id], [id]');
-        return sec && sec.id ? sec.id : 'conteudo';
-      }
-
-      function send(evt, url, el) {
-        var key = evt + '|' + url;
-        var now = Date.now();
-        if (key === last.key && now - last.t < 1000) return; // evita duplicar
-        last = { key: key, t: now };
-        var text = el ? (el.getAttribute('aria-label') || el.innerText || el.title || '') : '';
-        if (typeof window.gtag !== 'function') return;
-        window.gtag('event', evt, {
-          link_url: String(url).slice(0, 300),
-          cta_location: locationOf(el),
-          cta_text: text.replace(/\s+/g, ' ').trim().slice(0, 100),
-          page_path: location.pathname,
-          transport_type: 'beacon'
-        });
-      }
-
-      // 1) Cliques em links <a href="...">
-      document.addEventListener('click', function (e) {
-        var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-        if (!a) return;
-        var evt = classify(a.href);
-        if (evt) send(evt, a.href, a);
-      }, true);
-
-      // 2) Botões que abrem WhatsApp via window.open(...)
-      var lastClicked = null;
-      document.addEventListener('click', function (e) { lastClicked = e.target; }, true);
-      var origOpen = window.open;
-      window.open = function (url) {
-        try {
-          var evt = classify(url);
-          if (evt) {
-            var el = lastClicked && lastClicked.closest ? (lastClicked.closest('button, a, [role="button"]') || lastClicked) : null;
-            send(evt, url, el);
-          }
-        } catch (err) {}
-        return origOpen.apply(window, arguments);
-      };
-
-      // 3) Redirecionamentos via location.href = 'https://wa.me/...'
-      //    (se o código usar isso, troque por window.open ou <a href> — o script acima cobre esses dois)
-    })();
+      gtag('config', 'G-7SM4151YFR', { transport_type: 'beacon' });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

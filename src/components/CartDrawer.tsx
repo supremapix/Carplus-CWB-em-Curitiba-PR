@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CartItem, Tire } from '../types';
 import { X, ShoppingBag, Trash2, ShieldAlert, CheckCircle, Calendar, MessageSquare, ExternalLink } from 'lucide-react';
 import { getBrandFallbackImage } from '../data';
+import { trackEvent } from '../lib/analytics';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -61,6 +62,15 @@ export default function CartDrawer({
 
     text += `\n*Unidade do agendamento:* Av. Presid. Arthur da Silva Bernardes, 1323 - Portão, Curitiba.\n`;
     text += `Por favor, me informe o preço atualizado para esses pneus e a disponibilidade de horário.`;
+
+    trackEvent('generate_lead', {
+      form_name: 'agendamento_carrinho',
+      service_name: 'Montagem e Alinhamento',
+      tire_size: cartItems[0]?.tire ? `${cartItems[0].tire.width}/${cartItems[0].tire.aspectRatio} R${cartItems[0].tire.rim}` : undefined,
+      contact_method: 'whatsapp',
+      currency: 'BRL',
+      value: 0
+    });
 
     const encoded = encodeURIComponent(text);
     const link = `https://api.whatsapp.com/send?phone=${phone}&text=${encoded}`;
