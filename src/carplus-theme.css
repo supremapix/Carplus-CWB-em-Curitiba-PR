@@ -25,11 +25,12 @@ html,body,#root{overflow-x:clip!important}
 #carplus-root main :is(.rounded-3xl,.rounded-2xl):not(:where(.carplus-product-card,.carplus-product-card *)){border-radius:10px}
 #carplus-root :is([class*="text-amber-"],[class*="text-orange-"],[class*="text-green-"],[class*="text-emerald-"],[class~="text-[#F5A623]"],[class~="text-[#f49e1a]"]):not(:where(.carplus-product-card,.carplus-product-card *)){color:#f59c00}
 #carplus-root :is([class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"],.bg-green-500,.bg-green-600,.bg-emerald-500,.bg-emerald-600,.bg-amber-400,.bg-amber-500){background-color:#f59c00;color:#080808}
-#carplus-root :is([class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"],.bg-green-500,.bg-green-600,.bg-emerald-500,.bg-emerald-600,.bg-amber-400,.bg-amber-500) :is(span,strong,svg){color:inherit}
+#carplus-root :is([class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"],.bg-green-500,.bg-green-600,.bg-emerald-500,.bg-emerald-600,.bg-amber-400,.bg-amber-500)>:is(span,strong,svg){color:inherit}
 #carplus-root :is([class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"]):hover{background-color:#f59c00;box-shadow:0 7px 25px rgb(245 156 0 / .15)}
 #carplus-root main :is([class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"],.bg-green-500,.bg-green-600,.bg-emerald-500,.bg-emerald-600){color:#080808}
 #carplus-root [class~="bg-[#25D366]"]{background:#f59c00;border-color:#f59c00;color:#080808;min-height:48px}
 #carplus-root [class~="bg-[#25D366]"] :is(span,svg){color:inherit}
+#carplus-root .bg-amber-600{background-color:#f59c00;color:#080808}
 #carplus-root main :is(input,select,textarea){background:#0c0c0c;color:#fff;border-color:#484848;min-height:48px}
 #carplus-root main input::placeholder{color:#929292}
 #carplus-root main :is(input[type="checkbox"],input[type="radio"]){min-height:0;accent-color:#f59c00}
@@ -73,7 +74,7 @@ html,body,#root{overflow-x:clip!important}
 #conveyor-belt-section>div>div:first-child{max-width:700px;text-align:left;margin-left:0}
 #conveyor-belt-section>div>div:first-child p{font-size:16px;color:#b9b9b9;margin-left:0}
 #brands-conveyor-belt-container{background:#111!important;border-color:#292929;box-shadow:none}
-#brands-conveyor-belt-container img{filter:grayscale(1) brightness(0) invert(1);opacity:.8}
+#brands-conveyor-belt-container img{filter:none;opacity:1}
 #promo-tires-strip details>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 25px;background:#151515;border:1px solid #333;border-radius:7px;color:#fff;font-size:18px;font-weight:700;min-height:76px}
 #promo-tires-strip details>summary::-webkit-details-marker{display:none}
 #promo-tires-strip details>summary::after{content:"+";color:#f59c00;font-size:30px;font-weight:400}
@@ -82,7 +83,7 @@ html,body,#root{overflow-x:clip!important}
 #categories h2,#carplus-real-gallery h3,#carplus-home-faq h3{font-family:var(--font-display);font-size:clamp(33px,3vw,45px)}
 #carplus-real-gallery>div:first-child p{font-size:15px;max-width:730px}
 #carplus-home-faq>div:first-child p{font-size:16px;max-width:670px}
-#carplus-root #benefits-section h4{font-size:19px;line-height:1.3;text-transform:none}
+#carplus-root #benefits-section h4{font-size:21px;line-height:1.3;text-transform:none}
 #carplus-root #benefits-section p{font-size:15px;color:#b9b9b9;line-height:1.8}
 #carplus-root main a[href*="whatsapp"]{scroll-margin-top:110px}
 .carplus-guide-links{display:flex;flex-wrap:wrap;gap:12px 25px;margin-top:24px}
@@ -95,3 +96,47 @@ html,body,#root{overflow-x:clip!important}
 @media(max-width:1100px){.carplus-hero-layout{padding-top:60px;min-height:610px}.carplus-hero-copy{width:66%}.carplus-hero-address{padding:20px 18px;max-width:280px}.carplus-hero-address strong{font-size:24px}.carplus-hero-services>div{padding-inline:18px;gap:12px}.carplus-hero-services strong{font-size:13px}.carplus-hero-services div div span{font-size:11px}}
 @media(max-width:760px){html{scroll-padding-top:90px}.carplus-hero-photo{left:20%;bottom:155px;opacity:.55}.carplus-hero-photo::after{background:linear-gradient(90deg,#080808 0%,rgb(8 8 8 / .75) 27%,rgb(8 8 8 / .15)),linear-gradient(0deg,#080808,transparent 60%)}.carplus-photo-caption{display:none}.carplus-hero-layout{display:block;padding:45px 24px 31px;min-height:0}.carplus-hero-copy{width:100%;max-width:620px}.carplus-eyebrow{font-size:10px}#carplus-root .carplus-hero h1{font-size:clamp(57px,11vw,80px);margin:25px 0 25px}.carplus-hero-copy>p:not(.carplus-hero-help){font-size:16px;max-width:490px;line-height:1.8}.carplus-hero-actions{flex-direction:column;max-width:420px;gap:11px}.carplus-button{min-height:57px;font-size:14px;padding:16px 14px}.carplus-hero-help{font-size:11px;margin-top:16px}.carplus-hero-address{margin:30px 0 0;max-width:420px;padding:18px 19px;background:#111}.carplus-hero-address strong{font-size:25px;margin:5px 0 10px}.carplus-hero-services{padding:0 24px;grid-template-columns:1fr}.carplus-hero-services>div,.carplus-hero-services>div:first-child{padding:16px 0;border-right:0;border-bottom:1px solid #292929}.carplus-hero-services strong{font-size:14px}.carplus-hero-services div div span{font-size:12px}.carplus-hero-services svg{width:25px;height:25px}.carplus-service-number{width:25px;font-size:32px}#conveyor-belt-section{padding:44px 20px}#promo-tires-strip details>summary{font-size:16px;padding:18px}#carplus-root main :is(input,select,textarea){font-size:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.carplus-button{transition:none}.carplus-button-primary:hover{transform:none}}
+
+/* Shared actions: one primary treatment and one secondary treatment. */
+#carplus-root :is(.carplus-action-primary,.carplus-action-secondary){display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:52px;padding:14px 22px;border-radius:6px;border:1px solid transparent;font:700 16px/1.5 var(--font-sans);text-align:center;text-transform:none;letter-spacing:normal;cursor:pointer;text-decoration:none;transition:background-color .2s,border-color .2s,box-shadow .2s}
+#carplus-root .carplus-action-primary{background:#f59c00;border-color:#f59c00;color:#080808!important}
+#carplus-root .carplus-action-primary :is(span,strong,svg){color:#080808!important}
+#carplus-root .carplus-action-primary:hover{background:#ffad1f;border-color:#ffad1f;box-shadow:0 5px 18px rgb(245 156 0 / .12)}
+#carplus-root .carplus-action-secondary{background:rgb(8 8 8 / .5);border-color:#666;color:#fff!important}
+#carplus-root .carplus-action-secondary :is(span,strong,svg){color:inherit!important}
+#carplus-root .carplus-action-secondary:hover{border-color:#f59c00;background:#191919}
+.carplus-home-section{width:min(100% - 64px,1216px);margin:0 auto}
+.carplus-section-label{color:#f59c00!important;font-size:12px!important;line-height:1.5;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.carplus-search-stage{position:relative;isolation:isolate;padding:58px 0;background:#0c0c0c;border-block:1px solid #292929;scroll-margin-top:95px}
+.carplus-search-stage::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgb(8 8 8 / .7),rgb(8 8 8 / .25)),url('/images/galeria/mostruario-pneus-novos.webp') center 45%/cover;filter:grayscale(1);opacity:.22}
+.carplus-home-search>.carplus-search-panel,.carplus-home-search>.carplus-help-panel{border-radius:8px;background:rgb(15 15 15 / .85);border-color:#3a3a3a}
+.carplus-home #conveyor-belt-section{padding-block:58px}
+.carplus-home #conveyor-belt-section h2{text-transform:none;font-size:clamp(36px,4vw,49px)}
+.carplus-home #conveyor-belt-section>div>div:first-child{max-width:780px}
+.carplus-home :is(h2,h3,h4):not(:where(.carplus-product-card *,.carplus-white-surface *)){color:#f5f5f5}
+.carplus-home .carplus-product-card :is(a,button){border-radius:6px;min-height:48px}
+.carplus-home .carplus-advice{position:relative;isolation:isolate;background:#0b0b0b;padding-block:56px}
+.carplus-home .carplus-advice::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#080808 25%,rgb(8 8 8 / .75)),url('/images/galeria/oficina-carros.webp') right center/cover;filter:grayscale(1);opacity:.2}
+.carplus-home .carplus-advice>div{max-width:1280px}
+.carplus-home .carplus-advice h2{font-size:clamp(36px,4vw,49px)}
+.carplus-home .carplus-advice details{background:rgb(15 15 15 / .92);border-radius:8px}
+.carplus-home #benefits-section{margin:52px auto;max-width:1248px}
+.carplus-home #benefits-section>div>div{border-radius:8px;box-shadow:none!important;transform:none!important;border-color:#333}
+.carplus-home #benefits-section>div>div>div:first-child{display:none}
+.carplus-home #benefits-section>div>div>div>div:last-child{display:none}
+.carplus-home .carplus-brand-comparison{border-radius:8px;padding:28px;background:#111}
+.carplus-home .carplus-brand-comparison h3{font-family:var(--font-display);font-size:28px;line-height:1.2;text-transform:none;letter-spacing:normal}
+.carplus-home .carplus-store-gallery{margin-block:46px 36px}
+.carplus-home .carplus-store-gallery h3{text-transform:none;font-size:clamp(33px,4vw,44px)}
+.carplus-home .carplus-store-gallery>div:first-child p:not(.carplus-section-label){font-size:16px;line-height:1.7}
+.carplus-home .carplus-store-gallery img{height:230px;filter:grayscale(1);opacity:.9}
+.carplus-home #maps-section{margin-block:45px 54px}
+.carplus-home #maps-section h3{text-transform:none;font-family:var(--font-display);font-size:36px}
+.carplus-home #maps-section p{font-size:15px;line-height:1.8}
+.carplus-home .carplus-store-details{padding-bottom:0}
+.carplus-home .carplus-store-details[open]{padding-bottom:24px}
+.carplus-home .carplus-store-details>summary{font-size:16px;min-height:60px;padding:18px 24px}
+.carplus-home .carplus-store-details #carplus-home-faq{width:calc(100% - 32px)}
+@media(max-width:760px){.carplus-home-section{width:calc(100% - 40px)}.carplus-search-stage{padding:36px 0}.carplus-home #conveyor-belt-section{padding-block:38px}.carplus-home .carplus-advice{padding-block:38px}.carplus-home .carplus-brand-comparison{padding:20px 16px}.carplus-home .carplus-store-gallery img{height:180px}.carplus-home #benefits-section{margin-block:34px}.carplus-home #maps-section{margin-block:30px 38px}#carplus-root :is(.carplus-action-primary,.carplus-action-secondary){font-size:16px;padding-inline:17px}}
+@media(max-width:639px){.carplus-home #conveyor-belt-container>article:nth-child(n+3){display:none}.carplus-home #conveyor-belt-container .carplus-product-media{height:170px}}
+@media(prefers-reduced-motion:reduce){#carplus-root :is(.carplus-action-primary,.carplus-action-secondary){transition:none}}

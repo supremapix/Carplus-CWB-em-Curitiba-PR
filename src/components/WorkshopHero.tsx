@@ -24,10 +24,10 @@ export default function WorkshopHero({ onSearchClick }: WorkshopHeroProps) {
           <h1 id="carplus-hero-title">PNEUS E<br />AUTO CENTER<br /><em>EM CURITIBA.</em></h1>
           <p>O pneu certo e o cuidado que seu carro precisa, no mesmo lugar. Fale com a Carplus, compare as opções e peça seu orçamento antes de vir à loja.</p>
           <div className="carplus-hero-actions" id="hero-action-buttons">
-            <a className="carplus-button carplus-button-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-cta-location="hero" id="hero-whatsapp-btn">
+            <a className="carplus-button carplus-button-primary carplus-action-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-cta-location="hero" id="hero-whatsapp-btn">
               <MessageSquare size={23} aria-hidden="true" /><span>Pedir orçamento no WhatsApp</span><ArrowRight size={19} aria-hidden="true" />
             </a>
-            <button className="carplus-button carplus-button-secondary" onClick={onSearchClick} data-cta-location="hero" id="hero-ver-pneus-btn"><Search size={19} aria-hidden="true" />Encontrar meu pneu</button>
+            <button className="carplus-button carplus-button-secondary carplus-action-secondary" onClick={onSearchClick} data-cta-location="hero" id="hero-ver-pneus-btn"><Search size={19} aria-hidden="true" />Encontrar meu pneu</button>
           </div>
           <p className="carplus-hero-help"><Check size={16} aria-hidden="true" />Não sabe a medida? Conte qual é o seu carro.</p>
         </div>

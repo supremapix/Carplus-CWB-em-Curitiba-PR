@@ -15,7 +15,7 @@ const primaryLinks = [
 ];
 const moreLinks = [
   { label: 'Início', id: 'home', href: '/' },
-  { label: 'Ofertas de pneus', id: 'catalog', href: '/#catalog' },
+  { label: 'Buscar pneus e preços', id: 'catalog', href: '/#catalog' },
   { label: 'Qual pneu serve no meu carro?', id: 'finder', href: '/#finder' },
   { label: 'Blog automotivo', id: 'blog', href: '/blog' },
 ];

@@ -49,7 +49,12 @@ export default function Footer({ onNavigate }: FooterProps) {
   const toTop = () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
 
   return (
-    <footer className="carplus-footer relative border-t border-white/15 bg-[#080808] pb-28 text-white sm:pb-12" id="main-footer" data-cta-location="footer">
+    <footer className="carplus-footer relative isolate border-t border-white/15 bg-[#080808] pb-28 text-white sm:pb-12" id="main-footer" data-cta-location="footer">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+        <img src="/images/galeria/fachada-carplus.webp" alt="" aria-hidden="true" width="1067" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover object-center grayscale" />
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(180deg, #080808 0%, rgba(8, 8, 8, 0.25) 35%, rgba(8, 8, 8, 0.5) 65%, #080808 100%)' }} />
+      </div>
       <div className="mx-auto max-w-7xl px-5 pt-12 sm:px-8 lg:pt-16">
         <div className="flex flex-col items-center text-center">
           <a href="/" onClick={event => navigate(event, 'home')} aria-label="Carplus Pneus — início" className={`block ${focusClass}`}><img src="/images/logos/logo-vertical.svg" alt="Carplus Pneus e Oficina Mecânica Full Service" width="224" height="240" loading="lazy" className="mx-auto h-auto w-[180px] object-contain sm:w-[210px]" /></a>
@@ -57,9 +62,9 @@ export default function Footer({ onNavigate }: FooterProps) {
           <p className="mt-4 max-w-lg text-base leading-relaxed text-white/65">Conte qual é o seu carro e o que você precisa. Nossa equipe confere as opções de pneus e serviços e prepara seu orçamento.</p>
         </div>
         <div className="mx-auto mt-8 grid max-w-5xl gap-3 lg:grid-cols-[1.5fr_1fr_1fr]">
-          <a href={whatsapp} target="_blank" rel="noopener noreferrer" data-cta-location="footer" className={`flex min-h-14 items-center justify-center gap-3 rounded-sm bg-[#f59c00] px-5 py-4 text-center text-base font-bold text-[#080808] transition-shadow hover:shadow-[0_0_0_3px_#f59c0033] ${focusClass}`}><MessageSquare className="h-5 w-5 shrink-0" aria-hidden="true" /><span>Falar com a equipe no WhatsApp</span></a>
-          <a href="tel:554130827282" data-cta-location="footer" className={`flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/30 px-4 py-4 text-base font-semibold transition-colors hover:border-[#f59c00] ${focusClass}`}><Phone className="h-5 w-5 shrink-0 text-[#f59c00]" aria-hidden="true" /><span>(41) 3082-7282</span></a>
-          <a href={maps} target="_blank" rel="noopener noreferrer" data-cta-location="footer" className={`flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/30 px-5 py-4 text-base font-semibold transition-colors hover:border-[#f59c00] ${focusClass}`}><MapPin className="h-5 w-5 shrink-0 text-[#f59c00]" aria-hidden="true" /><span>Como chegar</span></a>
+          <a href={whatsapp} target="_blank" rel="noopener noreferrer" data-cta-location="footer" className={`carplus-action-primary flex min-h-14 items-center justify-center gap-3 rounded-sm bg-[#f59c00] px-5 py-4 text-center text-base font-bold text-[#080808] transition-shadow hover:shadow-[0_0_0_3px_#f59c0033] ${focusClass}`}><MessageSquare className="h-5 w-5 shrink-0" aria-hidden="true" /><span>Falar com a equipe no WhatsApp</span></a>
+          <a href="tel:554130827282" data-cta-location="footer" className={`carplus-action-secondary flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/30 px-4 py-4 text-base font-semibold transition-colors hover:border-[#f59c00] ${focusClass}`}><Phone className="h-5 w-5 shrink-0 text-[#f59c00]" aria-hidden="true" /><span>(41) 3082-7282</span></a>
+          <a href={maps} target="_blank" rel="noopener noreferrer" data-cta-location="footer" className={`carplus-action-secondary flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/30 px-5 py-4 text-base font-semibold transition-colors hover:border-[#f59c00] ${focusClass}`}><MapPin className="h-5 w-5 shrink-0 text-[#f59c00]" aria-hidden="true" /><span>Como chegar</span></a>
         </div>
         <div className="mt-12 grid gap-9 border-t border-white/15 pt-9 sm:grid-cols-2 lg:mt-14 lg:grid-cols-[1.2fr_1fr_1fr] lg:gap-12">
           <section aria-labelledby="footer-address">

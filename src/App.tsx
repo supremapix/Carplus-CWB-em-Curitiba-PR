@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import TireCard from './components/TireCard';
 import CatalogTireCard from './components/CatalogTireCard';
-import ServiceHistory from './components/ServiceHistory';
 import ScrollToTop from './components/ScrollToTop';
 import { TIRES_DATA, MOST_SEARCHED_MEASURES, getBrandFallbackImage } from './data';
 import { toSlug, getTireSlug } from './utils/slugify';
@@ -22,14 +21,13 @@ import {
   PRESET_BRAND_COUNTS
 } from './data/catalogo-pneus';
 import { PROMO_TIRES } from './data/promoTires';
-import { HeroPromoTires } from './components/HeroPromoTires';
 import WorkshopHero from './components/WorkshopHero';
 import TireAdviceSection from './components/TireAdviceSection';
-import RimsSection from './components/RimsSection';
+import HomeTireSearch from './components/HomeTireSearch';
+import BrandComparisonStrip from './components/BrandComparisonStrip';
 
 // Lazy-loaded heavy components to optimize initial bundle and TBT
 const CartDrawer = React.lazy(() => import('./components/CartDrawer'));
-const TireFinderWizard = React.lazy(() => import('./components/TireFinderWizard'));
 const LiveWhatsAppChat = React.lazy(() => import('./components/LiveWhatsAppChat'));
 const CompanyPages = React.lazy(() => import('./components/CompanyPages'));
 const TireDetail = React.lazy(() => import('./components/TireDetail'));
@@ -484,6 +482,14 @@ export default function App() {
   useEffect(() => {
     setCurrentPage(1);
   }, [keyword, selectedBrand, selectedRim, filterWidth, filterProfile, onlyOffers]);
+
+  const handleHomeCatalogSearch = (query = '', brand = 'Todas', rim: number | 'Todos' = 'Todos') => {
+    setCatalogFilterSearch(query);
+    setCatalogFilterBrand(brand);
+    setCatalogFilterRim(rim);
+    setCatalogFilterCategory('Todas');
+    handleScrollToSection('catalogo-pneus');
+  };
 
   // --- INTEGRATED SPA CLIENT-SIDE URL ROUTING ENGINE ---
   const parsePathAndSetState = () => {
@@ -1055,22 +1061,8 @@ export default function App() {
               }}
               onAddToCart={handleAddToCart}
               onSelectTire={handleShowTireDetail}
-              onSelectRimFromSeo={(rim) => {
-                ensureFullCatalog();
-                setSelectedRim(rim);
-                setCurrentView('home');
-                setTimeout(() => {
-                  handleScrollToSection('catalog');
-                }, 50);
-              }}
-              onSelectBrandFromSeo={(brand) => {
-                ensureFullCatalog();
-                setSelectedBrand(brand);
-                setCurrentView('home');
-                setTimeout(() => {
-                  handleScrollToSection('catalog');
-                }, 50);
-              }}
+              onSelectRimFromSeo={rim => handleHomeCatalogSearch('', 'Todas', rim)}
+              onSelectBrandFromSeo={brand => handleHomeCatalogSearch('', brand)}
               cartItems={cartItems}
               onUpdateQuantity={handleUpdateQuantity}
               onRemoveFromCart={handleRemoveFromCart}
@@ -1079,7 +1071,7 @@ export default function App() {
           </Suspense>
         </main>
       ) : (
-        <main className="flex-1 w-full pb-16 bg-white">
+        <main className="carplus-home flex-1 w-full pb-16 bg-white">
 
           {/* 1. Workshop Hero Section (Requirement 3: Dark graphite background, tread texture, hazard stripe, spinning tire, strong title, 2 CTAs) */}
           <div ref={homeRef}>
@@ -1090,8 +1082,11 @@ export default function App() {
             />
           </div>
 
-          {/* Divisor de seção com marca de pneu */}
-          <TireAdviceSection onFindTire={() => handleScrollToSection('finder')} onNavigate={handleNavigateInternal} />
+          <section ref={finderRef} id="finder" className="carplus-search-stage">
+            <div ref={catalogRef} id="catalog" className="carplus-home-section">
+              <HomeTireSearch onSearch={query => handleHomeCatalogSearch(query)} onHelp={() => document.getElementById('guia-escolha')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
+            </div>
+          </section>
 
           {/* 3. Featured Tires Grid Section (Requirement 5 & 9: Centered alignment, workshop tire cards) */}
           <div 
@@ -1106,18 +1101,15 @@ export default function App() {
                   <span>ESCOLHA COM A CARPLUS</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 tracking-tight uppercase" id="conveyor-main-h1">
-                  ENCONTRE SEU PRÓXIMO PNEU.
+                  Compare opções para o seu carro.
                 </h2>
                 <p className="text-zinc-600 text-[18px] leading-relaxed max-w-[65ch] mx-auto">
-                  Compare marcas e medidas. Depois, fale com a equipe para confirmar a aplicação, o valor e a disponibilidade para o seu carro.
+                  Veja alguns modelos. Confirme a medida, o valor e a disponibilidade com a equipe antes de escolher.
                 </p>
                 <div className="pt-2">
                   <button 
-                    onClick={() => {
-                      const catEl = document.getElementById('catalog') || document.getElementById('catalogo-pneus');
-                      if (catEl) catEl.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="bg-[#F5A623] hover:bg-amber-400 text-zinc-950 font-black px-6 py-3.5 rounded-2xl text-base transition shrink-0 min-h-[48px] cursor-pointer shadow-md inline-flex items-center gap-2"
+                    onClick={() => handleHomeCatalogSearch('')}
+                    className="carplus-action-primary"
                   >
                     <span>Ver Catálogo Completo</span>
                     <ArrowRight className="w-4 h-4" />
@@ -1136,827 +1128,15 @@ export default function App() {
                 ))}
               </div>
 
-              {/* Static Brand Logos Strip */}
-              <div 
-                className="bg-white border border-zinc-200 rounded-2xl p-6 mt-8 shadow-xs"
-                id="brands-conveyor-belt-container"
-              >
-                <p className="text-center text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest mb-4">
-                  MARCAS PARA COMPARAR. ORIENTAÇÃO PARA ESCOLHER.
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
-                  {[
-                    "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/michelin.svg",
-                    "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/continental.svg",
-                    "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/xbri.svg",
-                    "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/bridgestone.svg",
-                    "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/pirelli.svg",
-                    "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-goodyear.svg",
-                    "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-linglong.svg",
-                    "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-firestone.svg"
-                  ].map((url, idx) => (
-                    <div 
-                      key={`brand-static-logo-${idx}`} 
-                      className="h-8 w-24 shrink-0 flex items-center justify-center filter grayscale opacity-60 hover:opacity-100 transition"
-                    >
-                      <img 
-                        src={url} 
-                        alt="Logo Marca Parceira Carplus" 
-                        className="h-full max-w-full object-contain"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                  ))}
-                </div>
+              <div ref={categoriesRef} id="categories">
+                <BrandComparisonStrip onSelectBrand={brand => handleHomeCatalogSearch('', brand)} />
               </div>
             </div>
           </div>
 
-          {/* Painel de 20 Pneus em Promoção */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" id="promo-tires-strip">
-            <details><summary>Quero comparar mais pneus e ofertas</summary>
-            <div className="bg-zinc-900 border-2 border-zinc-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl space-y-6">
-              <div className="text-center max-w-3xl mx-auto space-y-2">
-                <span className="bg-[#F5A623] text-black font-mono font-black text-xs uppercase px-3 py-1 rounded-full shadow-xs">
-                  Estoque a Pronta Entrega • Portão
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-wide">
-                  20 Ofertas de Pneus com Instalação Imediata
-                </h3>
-                <p className="text-zinc-300 text-[18px] leading-relaxed max-w-[65ch] mx-auto">
-                  Reserve online sem pagar nada adiantado. O pagamento só é realizado na recepção física após os pneus estarem montados no veículo!
-                </p>
-              </div>
+          <TireAdviceSection onFindTire={() => handleHomeCatalogSearch('')} onNavigate={handleNavigateInternal} />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-h-[460px] overflow-y-auto pr-1 custom-scrollbar" id="promo-tires-hero-list">
-                {PROMO_TIRES.map((tire) => (
-                  <div
-                    key={tire.id}
-                    onClick={() => handleSelectPromoTireBySlug(tire.slug)}
-                    className="p-3.5 bg-white hover:bg-amber-50/40 text-zinc-900 border-2 border-[#F5A623] hover:border-amber-400 rounded-2xl transition-all duration-200 cursor-pointer flex items-center gap-3 group shadow-sm hover:shadow-md"
-                  >
-                    <img
-                      src={tire.imagem300 || tire.imagem600 || '/pneus/jk-tyre-300.webp'}
-                      onError={(e) => {
-                        const target = e.currentTarget as HTMLImageElement;
-                        if (!target.dataset.triedFallback) {
-                          target.dataset.triedFallback = 'true';
-                          target.src = getBrandFallbackImage(tire.marca, String(tire.id));
-                        } else {
-                          target.src = '/images/pneus/pneu-fallback.svg';
-                        }
-                      }}
-                      alt={`Pneu ${tire.marca} ${tire.medida}`}
-                      className="w-14 h-14 object-contain shrink-0 group-hover:scale-105 transition-transform"
-                    />
-                    <div className="flex-grow min-w-0">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[11px] font-mono font-black uppercase text-amber-600">
-                          {tire.marca}
-                        </span>
-                        <span className="text-[10px] font-mono font-bold bg-zinc-900 text-[#F5A623] px-1.5 py-0.5 rounded">
-                          R{tire.aro}
-                        </span>
-                      </div>
-                      <span className="font-extrabold text-sm text-zinc-900 group-hover:text-amber-600 truncate block mt-0.5">
-                        {tire.medida}
-                      </span>
-                      <span className="text-xs text-zinc-500 font-medium truncate block">
-                        {tire.modelo}
-                      </span>
-                      <div className="mt-1 flex items-baseline gap-2">
-                        <span className="text-[11px] text-zinc-400 line-through">
-                          R$ {tire.precoOriginal}
-                        </span>
-                        <span className="text-sm font-black text-amber-600">
-                          R$ {tire.precoPromocional}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            </details>
-          </div>
-
-        {/* Wizard application guide (Qual pneu vai no meu carro?) */}
-        <section ref={finderRef} className="max-w-7xl mx-auto px-4 mt-8" id="finder">
-          <Suspense fallback={<div className="p-6 text-center text-gray-400 font-mono text-sm">Carregando assistente...</div>}>
-            <TireFinderWizard 
-              onSearchMeasure={handleSearchMeasure}
-              onAddToCart={handleAddToCart}
-            />
-          </Suspense>
-        </section>
-
-        {/* Full-Fidelity Interactive Solutions Hub (Aros, Marcas, Carros Lookups) */}
-        <section ref={categoriesRef} className="max-w-7xl mx-auto px-4 mt-10" id="categories">
-          <div className="bg-white text-gray-900 rounded-3xl p-6 border border-gray-200 shadow-lg mb-6">
-            <div className="text-center md:text-left mb-6">
-              <span className="bg-[#f49e1a]/10 text-gray-850 font-extrabold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full inline-block">
-                BUSQUE DO SEU JEITO
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-black uppercase text-gray-900 mt-2 tracking-tight select-none">
-                Encontre por <span className="text-[#f49e1a]">aro, marca ou carro</span>
-              </h3>
-              <p className="text-xs text-gray-500 mt-1 max-w-3xl text-left leading-relaxed">
-                Escolha o tamanho do aro, compare marcas ou consulte o modelo do seu carro. Se tiver dúvida, a equipe ajuda você pelo WhatsApp.
-              </p>
-
-              {/* Destaques Rápidos: BYD, GWM e Aros */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 pt-3 border-t border-gray-150 text-left">
-                <button
-                  onClick={() => handleNavigateInternal('/pneu-byd-king-curitiba')}
-                  className="bg-gray-900 hover:bg-black text-white p-3 rounded-2xl border border-yellow-500/30 transition flex flex-col justify-between group shadow-sm"
-                >
-                  <div className="flex items-center justify-between w-full">
-                    <span className="text-[10px] font-mono font-bold uppercase text-[#f49e1a]">BYD King</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#f49e1a] group-hover:translate-x-1 transition" />
-                  </div>
-                  <span className="text-xs font-bold text-gray-100 mt-1">215/55 R17 Original</span>
-                  <span className="text-[9px] text-gray-400">Menor Preço Garantido</span>
-                </button>
-
-                <button
-                  onClick={() => handleNavigateInternal('/pneus-byd-curitiba')}
-                  className="bg-gray-900 hover:bg-black text-white p-3 rounded-2xl border border-yellow-500/30 transition flex flex-col justify-between group shadow-sm"
-                >
-                  <div className="flex items-center justify-between w-full">
-                    <span className="text-[10px] font-mono font-bold uppercase text-[#f49e1a]">Linha BYD</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#f49e1a] group-hover:translate-x-1 transition" />
-                  </div>
-                  <span className="text-xs font-bold text-gray-100 mt-1">Dolphin, Mini & Plus</span>
-                  <span className="text-[9px] text-gray-400">Aros 16, 17 e 18</span>
-                </button>
-
-                <button
-                  onClick={() => {
-                    setCarSelectedBrand('GWM');
-                    setActiveCategoryTab('carros');
-                  }}
-                  className="bg-gray-900 hover:bg-black text-white p-3 rounded-2xl border border-yellow-500/30 transition flex flex-col justify-between group shadow-sm"
-                >
-                  <div className="flex items-center justify-between w-full">
-                    <span className="text-[10px] font-mono font-bold uppercase text-[#f49e1a]">GWM Brasil</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#f49e1a] group-hover:translate-x-1 transition" />
-                  </div>
-                  <span className="text-xs font-bold text-gray-100 mt-1">Haval H6 & Ora 03</span>
-                  <span className="text-[9px] text-gray-400">Guia Híbridos & Elétricos</span>
-                </button>
-
-                <button
-                  onClick={() => handleNavigateInternal('/pneus-aro-16-curitiba')}
-                  className="bg-gray-900 hover:bg-black text-white p-3 rounded-2xl border border-yellow-500/30 transition flex flex-col justify-between group shadow-sm"
-                >
-                  <div className="flex items-center justify-between w-full">
-                    <span className="text-[10px] font-mono font-bold uppercase text-[#f49e1a]">Pneus por Aro</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#f49e1a] group-hover:translate-x-1 transition" />
-                  </div>
-                  <span className="text-xs font-bold text-gray-100 mt-1">Pneus Aro 16 e 17</span>
-                  <span className="text-[9px] text-gray-400">Páginas Oficiais em Curitiba</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Quick switcher buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-200">
-              <button 
-                onClick={() => setActiveCategoryTab('aro')}
-                className={`py-3 px-4 rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 ${
-                  activeCategoryTab === 'aro' 
-                    ? 'bg-[#f49e1a] text-black shadow-md font-black' 
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
-                }`}
-              >
-                <Globe className="w-4 h-4 shrink-0" />
-                <span>Pneus por Aro (Wheel Size)</span>
-              </button>
-              <button 
-                onClick={() => setActiveCategoryTab('marcas')}
-                className={`py-3 px-4 rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 ${
-                  activeCategoryTab === 'marcas' 
-                    ? 'bg-[#f49e1a] text-black shadow-md font-black' 
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
-                }`}
-              >
-                <Award className="w-4 h-4 shrink-0" />
-                <span>Marcas no Catálogo</span>
-              </button>
-              <button 
-                onClick={() => setActiveCategoryTab('carros')}
-                className={`py-3 px-4 rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 ${
-                  activeCategoryTab === 'carros' 
-                    ? 'bg-[#f49e1a] text-black shadow-md font-black' 
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
-                }`}
-              >
-                <Car className="w-4 h-4 shrink-0" />
-                <span>Qual Pneu vai em qual Carro?</span>
-              </button>
-            </div>
-
-            {/* Tab content 1: Pneus por Aro */}
-            {activeCategoryTab === 'aro' && (
-              <div className="mt-6 space-y-6" id="tab-pneus-aro">
-                <div className="bg-white border-2 border-black p-4 text-xs text-black font-bold">
-                  Selecione um tamanho de <strong>Aro (Rín)</strong> abaixo para aplicar o filtro imediatamente ao nosso catálogo de vendas ou acerte o link direto para navegar na página oficial de ranking em Curitiba.
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12 gap-2.5">
-                  {[13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 'Todos'].map((rimVal) => {
-                    const isSelected = selectedRim === rimVal || (rimVal === 'Todos' && selectedRim === 'Todos');
-                    const isAll = rimVal === 'Todos';
-                    const rimCount = isAll 
-                      ? (catalogList.length > 50 ? catalogList.length : 1962)
-                      : (catalogList.length > 50 ? catalogList.filter(t => t.aro === rimVal).length : (PRESET_RIM_COUNTS[rimVal as number] || 0));
-                    return (
-                      <button
-                        key={`rim-portal-${rimVal}`}
-                        onClick={() => {
-                          ensureFullCatalog();
-                          setSelectedRim(isAll ? 'Todos' : Number(rimVal) as any);
-                          handleScrollToSection('catalog');
-                        }}
-                        className={`p-2.5 transition-all duration-300 border-2 rounded-2xl text-center flex flex-col justify-between items-center gap-2 relative overflow-hidden group cursor-pointer shadow-sm hover:shadow-lg ${
-                          isSelected 
-                            ? 'bg-amber-50 border-[#F5A623] ring-2 ring-[#F5A623]/40' 
-                            : 'bg-white border-zinc-300 hover:border-[#F5A623]'
-                        }`}
-                      >
-                        {/* Tread decorative stripe top */}
-                        <div className={`h-1 w-full absolute top-0 left-0 ${isSelected ? 'bg-[#F5A623]' : 'bg-zinc-200 group-hover:bg-[#F5A623]'}`} />
-
-                        {/* Animated Wheel SVG Icon */}
-                        <div className="w-12 h-12 my-0.5 relative shrink-0">
-                          <div className="w-full h-full transform transition-transform duration-700 ease-out group-hover:rotate-[360deg] group-hover:scale-110">
-                            <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md">
-                              {/* Outer Rubber Tire */}
-                              <circle cx="50" cy="50" r="48" fill="#18181b" stroke="#09090b" strokeWidth="4" />
-                              {/* Tread Grooves */}
-                              <circle cx="50" cy="50" r="44" fill="none" stroke="#27272a" strokeWidth="2" strokeDasharray="3 3" />
-                              {/* Sidewall */}
-                              <circle cx="50" cy="50" r="38" fill="#27272a" stroke="#3f3f46" strokeWidth="1" />
-                              {/* Metallic Alloy Rim */}
-                              <circle cx="50" cy="50" r="30" fill="#d4d4d8" stroke="#71717a" strokeWidth="2" />
-                              {/* Spokes */}
-                              <g stroke="#71717a" strokeWidth="3" strokeLinecap="round">
-                                <line x1="50" y1="50" x2="50" y2="24" />
-                                <line x1="50" y1="50" x2="75" y2="42" />
-                                <line x1="50" y1="50" x2="65" y2="73" />
-                                <line x1="50" y1="50" x2="35" y2="73" />
-                                <line x1="50" y1="50" x2="25" y2="42" />
-                              </g>
-                              {/* Center Cap with Carplus Orange */}
-                              <circle cx="50" cy="50" r="16" fill="#F5A623" stroke="#000" strokeWidth="1.5" />
-                              {/* Rim Number or ALL */}
-                              <text 
-                                x="50" 
-                                y="55" 
-                                textAnchor="middle" 
-                                fontSize={isAll ? "10" : "13"} 
-                                fontWeight="900" 
-                                fontFamily="monospace"
-                                fill="#000000"
-                              >
-                                {isAll ? 'ALL' : rimVal}
-                              </text>
-                            </svg>
-                          </div>
-                        </div>
-
-                        <div className="w-full">
-                          <div className="text-xs font-black text-zinc-900 group-hover:text-amber-600 transition leading-none">
-                            {isAll ? 'Todos' : `Aro ${rimVal}`}
-                          </div>
-                          <div className={`text-[10px] mt-1 font-mono font-bold inline-block px-2 py-0.5 rounded-full border ${
-                            isSelected ? 'bg-[#F5A623] text-black border-black/20' : 'bg-amber-100/80 text-amber-800 border-amber-200'
-                          }`}>
-                            {`${rimCount}`} mod.
-                          </div>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Páginas Dedicadas por Aro para Rankings no Google */}
-                <div className="bg-white border-2 border-black p-4 sm:p-6 space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-black pb-3">
-                    <span className="text-xs sm:text-sm font-black uppercase text-black flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-[#f49e1a] shrink-0" />
-                      Páginas Dedicadas por Aro em Curitiba (Catálogo Completo):
-                    </span>
-                    <span className="text-xs text-black font-bold font-mono bg-[#f49e1a] px-2.5 py-1 border-2 border-black inline-block w-fit">1.962 Pneus Homologados</span>
-                  </div>
-                  <div 
-                    className="grid w-full gap-3"
-                    style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px' }}
-                  >
-                    {[13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].map((rimNum) => (
-                      <button
-                        key={`rim-seo-btn-${rimNum}`}
-                        onClick={() => handleNavigateInternal(`/pneus-aro-${rimNum}-curitiba`)}
-                        className="w-full h-full min-h-[46px] bg-white hover:bg-[#f49e1a] text-black hover:text-black border-2 border-black text-xs font-black py-3 px-4 transition flex items-center justify-between cursor-pointer group box-border text-left"
-                      >
-                        <span className="uppercase tracking-wider">Pneus Aro {rimNum}</span>
-                        <ArrowRight className="w-4 h-4 text-black group-hover:text-black shrink-0 ml-2" />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Sub-meta details box of current Rims transformed into simple Accordions (Requirement 7) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-                  {[
-                    { rim: '13 e 14', desc: 'Siena, Uno, Gol, Palio, Classic, Celta, Kwid', common: '175/65/R14, 175/70/R13, 185/60/R14', badge: 'Retífica & Compactos' },
-                    { rim: '15 e 16', desc: 'Argo, Polo, Fox, Civic, Corolla, Sandero, HB20, BYD Dolphin Mini (175/55 R16)', common: '185/60/R15, 195/55/R15, 205/55/R16, 195/60/R16', badge: 'Hatchs & Sedans Médios' },
-                    { rim: '17 e 18', desc: 'BYD King (215/55 R17), Dolphin Plus, T-Cross, Nivus, Corolla Altis, Jeep Compass, Haval H6', common: '205/55/R17, 215/55/R17, 215/50/R17, 225/65/R17, 265/60/R18', badge: 'SUVs, Sedãs & Híbridos' },
-                    { rim: '19 e 20', desc: 'BYD Song Plus (235/50 R19), Seal (235/45 R19), Haval H6 PHEV, Equinox, Tiguan', common: '235/50/R19, 235/45/R19, 235/55/R19, 245/40/R20', badge: 'Premium & EV High Performance' },
-                  ].map((det, id) => {
-                    const isOpen = openCategoryAccordion === id;
-                    return (
-                      <div 
-                        key={id} 
-                        className={`rounded-xl border overflow-hidden transition-all duration-300 ${
-                          isOpen 
-                            ? 'border-zinc-300 border-l-4 border-l-[#F5A623] bg-amber-50/20 shadow-sm' 
-                            : 'border-zinc-200 bg-white hover:border-zinc-300'
-                        }`}
-                      >
-                        <button
-                          onClick={() => toggleCategoryAccordion(id)}
-                          className="w-full p-4 flex items-center justify-between text-left hover:bg-zinc-50 transition cursor-pointer min-h-[56px]"
-                        >
-                          <div className="flex items-center gap-3">
-                            <Disc className={`w-6 h-6 shrink-0 ${isOpen ? 'text-[#F5A623]' : 'text-zinc-500'}`} />
-                            <span className="font-bold text-[18px] text-zinc-900">{det.badge}</span>
-                            <span className="text-xs font-black text-zinc-600 bg-zinc-100 px-2.5 py-1 rounded-md border border-zinc-200">Aro {det.rim}</span>
-                          </div>
-                          
-                          {/* Indicador de abrir em forma de pequena roda que gira ao abrir */}
-                          <div 
-                            className={`w-8 h-8 rounded-full border-2 border-zinc-300 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                              isOpen ? 'rotate-180 border-[#F5A623] bg-[#F5A623]/10' : ''
-                            }`}
-                            title="Girar para abrir"
-                          >
-                            <svg viewBox="0 0 24 24" className="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" strokeWidth="2">
-                              <circle cx="12" cy="12" r="9" />
-                              <line x1="12" y1="3" x2="12" y2="21" />
-                              <line x1="3" y1="12" x2="21" y2="12" />
-                              <circle cx="12" cy="12" r="3" fill="#F5A623" />
-                            </svg>
-                          </div>
-                        </button>
-
-                        {isOpen && (
-                          <div className="p-5 pt-2 border-t border-zinc-100 text-[18px] text-zinc-700 space-y-2 bg-zinc-50/50">
-                            <p><strong>Veículos recomendados:</strong> {det.desc}</p>
-                            <p className="text-base font-mono text-zinc-600"><strong>Medidas de fábrica:</strong> {det.common}</p>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-
-              </div>
-            )}
-
-            {/* Tab content 2: Marcas */}
-            {activeCategoryTab === 'marcas' && (
-              <div className="mt-6 space-y-4" id="tab-marcas">
-                <div className="bg-gray-50 border border-gray-200 p-4 rounded-2xl text-xs text-gray-650 text-left">
-                  Trabalhamos com marcas certificadas com a maior nota do Inmetro. Selecione uma fabricante de pneus oficial abaixo para navegar diretamente em seus produtos correspondentes em estoque, ou confira nossos guias especializados para montadoras de alta tecnologia como <strong>BYD</strong> e <strong>GWM</strong>.
-                </div>
-
-                {/* Montadoras em Destaque: BYD e GWM */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
-                  <div className="bg-gray-900 text-white p-4 rounded-2xl border border-yellow-500/40 flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-xs font-mono font-bold text-[#f49e1a] uppercase">Guia de Aplicação</span>
-                        <span className="bg-yellow-500/20 text-[#f49e1a] text-[10px] px-2 py-0.5 rounded font-bold">100% Elétricos & Híbridos</span>
-                      </div>
-                      <h4 className="text-base font-black text-white mt-1">Pneus para BYD em Curitiba</h4>
-                      <p className="text-xs text-gray-300 mt-1 leading-relaxed">
-                        Medidas originais homologadas para BYD King (215/55 R17), Dolphin (205/50 R17, 195/60 R16), Dolphin Mini (175/55 R16) e Seal com instalação técnica no local.
-                      </p>
-                    </div>
-                    <div className="mt-3 flex gap-2">
-                      <button
-                        onClick={() => handleNavigateInternal('/pneu-byd-king-curitiba')}
-                        className="bg-[#f49e1a] hover:bg-[#d88912] text-black font-black text-xs px-3 py-1.5 rounded-xl transition"
-                      >
-                        BYD King 215/55 R17
-                      </button>
-                      <button
-                        onClick={() => handleNavigateInternal('/pneus-byd-curitiba')}
-                        className="bg-white/15 hover:bg-white/25 text-white font-bold text-xs px-3 py-1.5 rounded-xl transition"
-                      >
-                        Hub Completo BYD
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="bg-gray-900 text-white p-4 rounded-2xl border border-gray-700 flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-xs font-mono font-bold text-gray-300 uppercase">Guia de Aplicação</span>
-                        <span className="bg-gray-700 text-gray-200 text-[10px] px-2 py-0.5 rounded font-bold">Híbridos & Elétricos GWM</span>
-                      </div>
-                      <h4 className="text-base font-black text-white mt-1">Pneus para GWM em Curitiba</h4>
-                      <p className="text-xs text-gray-300 mt-1 leading-relaxed">
-                        Pneus reforçados para Haval H6 HEV (225/65 R17), Haval H6 PHEV / GT (235/55 R19), Ora 03 Skin/GT (215/50 R18) e Tank 300 (265/65 R17).
-                      </p>
-                    </div>
-                    <div className="mt-3 flex gap-2">
-                      <button
-                        onClick={() => {
-                          setCarSelectedBrand('GWM');
-                          setActiveCategoryTab('carros');
-                        }}
-                        className="bg-white hover:bg-gray-100 text-black font-black text-xs px-3 py-1.5 rounded-xl transition"
-                      >
-                        Ver Modelos GWM
-                      </button>
-                      <button
-                        onClick={() => handleSearchMeasure('225/65/17')}
-                        className="bg-white/15 hover:bg-white/25 text-white font-bold text-xs px-3 py-1.5 rounded-xl transition"
-                      >
-                        Medida Haval 225/65 R17
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {[
-                    { name: 'BRIDGESTONE', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/bridgestone.svg", slogan: 'Suavidade Japonesa', style: 'Origem japonesa. Máxima durabilidade nas rodovias, frenagem macia e excelente controle acústico de ruídos.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'PIRELLI', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/pirelli.svg", slogan: 'Desempenho Italiano', style: 'Tradição italiana mundial. Grande aderência em pistas secas e molhadas sob condições adversas.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'MICHELIN', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/michelin.svg", slogan: 'Máxima Performance', style: 'Padrão mundial em segurança e durabilidade lendária. Menor desgaste e resistência a rolamentos.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'CONTINENTAL', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/continental.svg", slogan: 'Engenharia Alemã', style: 'Pneus alemães de alta proteção contra furos e aquaplanagens. Excelente tração em curvas sinuosas.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'GOODYEAR', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-goodyear.svg", slogan: 'Segurança Longa Pista', style: 'Excelente estabilidade estrutural e aderência ideal em asfalto ondulado ou de terra.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'YOKOHAMA', logo: "/yokohama.svg", slogan: 'Linha Premium Racing', style: 'Excelente esportividade e performance em alta velocidade para veículos esportivos e de luxo.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'FIRESTONE', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-firestone.svg", slogan: 'Robustez Reconhecida', style: 'Subdivisão Bridgestone reconhecida pela alta durabilidade em veículos civis e comerciais leves.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'DELINTE', logo: "https://s19532.pcdn.co/wp-content/uploads/2019/12/Delinte-Logo-1.jpg", slogan: 'Tecnologia Inovadora', style: 'Banda de rodagem inovadora, rodar extremamente seguro e ótimos custos de aquisição direta.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'COMFORSER', logo: "https://www.gtiresinternational.us/wp-content/uploads/2022/10/Comforser-Tires.png", slogan: 'Durabilidade Diária', style: 'Excelente maciez e resistência na pavimentação urbana nacional. Custo-benefício de destaque.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'XBRI', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/SVGBrands/xbri.svg", slogan: 'Excelente Tração Diária', style: 'Casing robusto projetado com asfalto nacional em mente. Ótimas notas de maciez diárias.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'PRINX', logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKRauciXYNudC8XaeVj_7c3o5urb17rrs_uw&s", slogan: 'Equilíbrio e Conforto', style: 'Pneus silenciosos inovadores excelentes para o dia-a-dia em metrópoles.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'LINGLONG', logo: "https://pneufree.s3.sa-east-1.amazonaws.com/PneufreeReact/Images/Quem-somos/marcas/lg-linglong.svg", slogan: 'Inovação Silenciosa', style: 'Firme aderência e escoamento hídrico exemplar para curvas e frenagens em dias chuvosos.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' },
-                    { name: 'SPEEDMAX', logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6La6GWmZDeZMCxlH4OA8rJcNjLj8mrjpW4A&s", slogan: 'Trabalho Pesado Eficiente', style: 'Marca robusta projetada para render mais quilometragem com desgaste lateral uniforme.', color: 'from-white to-gray-50', pMin: 'Sob Consulta' }
-                  ].map((brandMeta) => {
-                    const isSelected = selectedBrand.toUpperCase() === brandMeta.name;
-                    return (
-                      <button
-                        key={`brand-portal-${brandMeta.name}`}
-                        onClick={() => {
-                          ensureFullCatalog();
-                          setSelectedBrand(brandMeta.name);
-                          handleScrollToSection('catalog');
-                        }}
-                        className={`p-4 rounded-xl transition-all duration-300 border text-left flex flex-col justify-between bg-gradient-to-br relative overflow-hidden group ${brandMeta.color} ${
-                          isSelected 
-                            ? 'border-[#f49e1a] ring-4 ring-[#f49e1a]/15 bg-yellow-50/10 shadow-md' 
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}
-                      >
-                        <div className="flex justify-between items-center w-full gap-2">
-                          <img
-                            src={brandMeta.logo}
-                            alt={brandMeta.name}
-                            className="h-9 max-h-[36px] w-auto max-w-[120px] object-contain opacity-90 group-hover:opacity-100 transition rounded"
-                            referrerPolicy="no-referrer"
-                          />
-                          <span className="text-[9px] bg-[#f49e1a]/15 px-2 py-0.5 rounded text-gray-950 font-bold font-mono shrink-0">
-                            {brandMeta.slogan}
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-gray-600 mt-3 leading-relaxed text-left">
-                          {brandMeta.style}
-                        </p>
-                        <div className="mt-3 pt-2 border-t border-gray-200 flex justify-between items-center text-[10px]">
-                          <span className="text-gray-500 font-bold font-mono">
-                            {(() => {
-                              const count = catalogList.length > 50 
-                                ? catalogList.filter(t => t.marca.toUpperCase() === brandMeta.name.toUpperCase()).length
-                                : (PRESET_BRAND_COUNTS[brandMeta.name.toUpperCase()] || 0);
-                              return count > 0 ? `${count} modelos cadastrados` : 'Modelos sob encomenda';
-                            })()}
-                          </span>
-                          <span className="font-extrabold text-[#1ebd53] text-xs uppercase font-mono">{brandMeta.pMin}</span>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* Tab content 3: Veículos guia de aplicação */}
-            {activeCategoryTab === 'carros' && (
-              <div className="mt-6 space-y-4" id="tab-carros-lookup">
-                <div className="bg-gray-50 border border-gray-200 p-4 rounded-2xl text-xs text-gray-650 text-left font-sans leading-relaxed">
-                  Encontre a medida ideal homologada para o seu veículo em nosso amplo diretório de montadoras. Busque um veículo abaixo ou filtre por montadora. Clique em <strong>"Aplicar Medida"</strong> para ajustar o estoque à dimensão exata recomendada de fábrica.
-                </div>
-
-                {/* Internal Search Filters */}
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
-                  <div className="sm:col-span-4 relative">
-                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                      <Search className="w-5 h-5 text-gray-400" />
-                    </span>
-                    <input
-                      type="text"
-                      value={carSearchQuery}
-                      onChange={(e) => setCarSearchQuery(e.target.value)}
-                      placeholder="Busque modelo do veículo (Ex: Onix, Gol, Civic, Argo)..."
-                      className="w-full text-xs font-semibold bg-white border border-gray-300 text-gray-900 pl-9 pr-3 py-2.5 rounded-xl placeholder:text-gray-400 focus:outline-[#f49e1a]"
-                    />
-                  </div>
-
-                  <div className="sm:col-span-8 flex flex-wrap gap-1.5 justify-center sm:justify-start">
-                    {carManufacturers.map((manu) => (
-                      <button
-                        key={`manu-tab-${manu}`}
-                        onClick={() => setCarSelectedBrand(manu)}
-                        className={`px-3 py-1.5 rounded-xl font-bold text-[11px] uppercase tracking-wide transition ${
-                          carSelectedBrand === manu 
-                            ? 'bg-[#f49e1a] text-black font-black' 
-                            : 'bg-gray-100 border border-gray-250 text-gray-700 hover:bg-gray-200 hover:text-black'
-                        }`}
-                      >
-                        {manu}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Results Table scroll list */}
-                <div className="overflow-x-auto rounded-xl border border-gray-200 max-h-72 overflow-y-auto bg-white shadow-inner">
-                  <table className="w-full text-left text-xs text-gray-700">
-                    <thead className="bg-gray-100 text-[10px] text-gray-600 uppercase tracking-wider font-extrabold sticky top-0 border-b border-gray-250">
-                      <tr>
-                        <th className="px-4 py-3">Montadora</th>
-                        <th className="px-4 py-3">Modelo do Veículo</th>
-                        <th className="px-4 py-3">Anos / Motorização</th>
-                        <th className="px-4 py-3 text-center">Medida Ideal</th>
-                        <th className="px-4 py-3 text-right">Ação Direta</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                      {ALL_BRANDS_CARS.filter((item) => {
-                        if (carSelectedBrand !== 'Todos' && item.brand !== carSelectedBrand) {
-                          return false;
-                        }
-                        if (carSearchQuery.trim()) {
-                          const query = carSearchQuery.toLowerCase();
-                          const inModel = item.model.toLowerCase().includes(query);
-                          const inBrand = item.brand.toLowerCase().includes(query);
-                          const inMeasure = item.measure.includes(query);
-                          if (!inModel && !inBrand && !inMeasure) return false;
-                        }
-                        return true;
-                      }).length > 0 ? (
-                        ALL_BRANDS_CARS.filter((item) => {
-                          if (carSelectedBrand !== 'Todos' && item.brand !== carSelectedBrand) {
-                            return false;
-                          }
-                          if (carSearchQuery.trim()) {
-                            const query = carSearchQuery.toLowerCase();
-                            const inModel = item.model.toLowerCase().includes(query);
-                            const inBrand = item.brand.toLowerCase().includes(query);
-                            const inMeasure = item.measure.includes(query);
-                            if (!inModel && !inBrand && !inMeasure) return false;
-                          }
-                          return true;
-                        }).map((item, idx) => (
-                          <tr key={`car-ref-${idx}`} className="hover:bg-gray-50 transition duration-155">
-                            <td className="px-4 py-3 font-extrabold text-gray-900 uppercase">{item.brand}</td>
-                            <td className="px-4 py-3 font-semibold text-gray-850">{item.model}</td>
-                            <td className="px-4 py-3 text-gray-500 font-mono text-[11px]">
-                              {item.years} ({item.engine})
-                            </td>
-                            <td className="px-4 py-3 text-center font-bold font-mono text-[#f49e1a]">
-                              {item.measure.split('/').join(' / ')}
-                            </td>
-                            <td className="px-4 py-3 text-right">
-                              <button
-                                onClick={() => handleSearchMeasure(item.measure)}
-                                className="bg-white hover:bg-[#f49e1a] hover:text-black border border-gray-200 hover:border-[#f49e1a] text-gray-700 font-extrabold text-[10px] px-3 py-1.5 rounded-lg transition cursor-pointer"
-                              >
-                                Aplicar Medida
-                              </button>
-                            </td>
-                          </tr>
-                        ))
-                      ) : (
-                        <tr>
-                          <td colSpan={5} className="text-center py-10 text-gray-500">
-                            Nenhum veículo cadastrado com esse critério. Tente outro termo!
-                          </td>
-                        </tr>
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="bg-white rounded-2xl p-6 border border-zinc-200 shadow-sm text-zinc-900 space-y-6" id="filter-controls-panel">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-100">
-              <div>
-                <h3 className="text-xl font-bold text-zinc-900 flex items-center gap-2">
-                  <SlidersHorizontal className="w-5 h-5 text-[#F5A623]" />
-                  Catálogo de Busca e Filtros
-                </h3>
-              </div>
-
-              {((keyword || selectedBrand !== 'Todas' || selectedRim !== 'Todos' || filterWidth !== 'Todos' || filterProfile !== 'Todos' || onlyOffers)) && (
-                <button
-                  onClick={resetFilters}
-                  className="text-sm font-semibold text-zinc-600 hover:text-black underline cursor-pointer"
-                  id="reset-all-filters"
-                >
-                  Limpar todos os filtros
-                </button>
-              )}
-            </div>
-
-            {/* 1. Large Search Input 56px (Requirement 5) */}
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                <Search className="w-6 h-6 text-zinc-400" />
-              </span>
-              <input
-                type="text"
-                placeholder="Digite a medida ou o carro, ex: 195/55 R16"
-                value={keyword}
-                onFocus={ensureFullCatalog}
-                onChange={(e) => { ensureFullCatalog(); setKeyword(e.target.value); }}
-                className="w-full h-[56px] min-h-[56px] text-[18px] pl-12 pr-4 bg-white border border-zinc-300 rounded-xl text-zinc-900 font-medium placeholder-zinc-400 focus:outline-[#F5A623]"
-                id="catalog-search-input"
-              />
-            </div>
-
-            {/* 2. Brand Filter Chips (Requirement 5) */}
-            <div>
-              <p className="text-sm font-bold text-zinc-700 mb-2">Filtrar por marca:</p>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => { ensureFullCatalog(); setSelectedBrand('Todas'); }}
-                  className={`h-[44px] min-h-[44px] px-4 rounded-xl font-bold text-sm transition cursor-pointer ${
-                    selectedBrand === 'Todas'
-                      ? 'bg-[#F5A623] text-zinc-950 shadow-sm'
-                      : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
-                  }`}
-                >
-                  Todas Marcas
-                </button>
-                {['Pirelli', 'Bridgestone', 'Continental', 'Michelin', 'Goodyear', 'Xbri', 'Delinte', 'Firestone', 'Yokohama'].map((bName) => {
-                  const isSelected = selectedBrand.toUpperCase() === bName.toUpperCase();
-                  return (
-                    <button
-                      key={`chip-brand-${bName}`}
-                      onClick={() => { ensureFullCatalog(); setSelectedBrand(bName); }}
-                      className={`h-[44px] min-h-[44px] px-4 rounded-xl font-bold text-sm transition cursor-pointer ${
-                        isSelected
-                          ? 'bg-[#F5A623] text-zinc-950 shadow-sm'
-                          : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
-                      }`}
-                    >
-                      {bName}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* 3. Collapsible Advanced Filters button (Requirement 5) */}
-            <div>
-              <button
-                onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-                className="h-[48px] px-4 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold text-sm rounded-xl border border-zinc-300 flex items-center gap-2 cursor-pointer transition"
-              >
-                <span>{showAdvancedFilters ? 'Ocultar filtros avançados' : 'Mais filtros (Aro, Largura, Perfil)'}</span>
-                {showAdvancedFilters ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-              </button>
-
-              {showAdvancedFilters && (
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-4 p-4 bg-zinc-50 rounded-xl border border-zinc-200">
-                  <div>
-                    <label className="block text-xs font-bold text-zinc-700 mb-1">Escolher Marca</label>
-                    <select
-                      value={selectedBrand}
-                      onFocus={ensureFullCatalog}
-                      onChange={(e) => { ensureFullCatalog(); setSelectedBrand(e.target.value); }}
-                      className="w-full text-sm font-semibold border border-zinc-300 rounded-lg p-2.5 bg-white text-zinc-900"
-                      id="brand-dropdown"
-                    >
-                      {uniqueBrands.map((brand) => (
-                        <option key={brand} value={brand}>{brand}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-zinc-700 mb-1">Aro</label>
-                    <select
-                      value={selectedRim}
-                      onFocus={ensureFullCatalog}
-                      onChange={(e) => {
-                        ensureFullCatalog();
-                        const val = e.target.value;
-                        setSelectedRim(val === 'Todos' ? 'Todos' : Number(val) as any);
-                      }}
-                      className="w-full text-sm font-semibold border border-zinc-300 rounded-lg p-2.5 bg-white text-zinc-900"
-                      id="rim-dropdown"
-                    >
-                      <option value="Todos">Todos os Aros</option>
-                      {uniqueRims.filter(r => r !== 'Todos').map((rim) => (
-                        <option key={rim} value={rim}>Aro R{rim}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-zinc-700 mb-1">Largura (mm)</label>
-                    <select
-                      value={filterWidth}
-                      onFocus={ensureFullCatalog}
-                      onChange={(e) => { ensureFullCatalog(); setFilterWidth(e.target.value); }}
-                      className="w-full text-sm font-semibold border border-zinc-300 rounded-lg p-2.5 bg-white text-zinc-900"
-                      id="width-dropdown"
-                    >
-                      <option value="Todos">Todas</option>
-                      {uniqueWidths.filter(w => w !== 'Todos').map((w) => (
-                        <option key={w} value={w}>{w} mm</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-zinc-700 mb-1">Perfil (%)</label>
-                    <select
-                      value={filterProfile}
-                      onFocus={ensureFullCatalog}
-                      onChange={(e) => { ensureFullCatalog(); setFilterProfile(e.target.value); }}
-                      className="w-full text-sm font-semibold border border-zinc-300 rounded-lg p-2.5 bg-white text-zinc-900"
-                      id="profile-dropdown"
-                    >
-                      <option value="Todos">Todos</option>
-                      {uniqueProfiles.filter(p => p !== 'Todos').map((p) => (
-                        <option key={p} value={p}>{p}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="col-span-2 md:col-span-1 flex items-center pt-3">
-                    <label className="flex items-center gap-2 cursor-pointer" id="only-offers-toggle">
-                      <input
-                        type="checkbox"
-                        checked={onlyOffers}
-                        onChange={(e) => { ensureFullCatalog(); setOnlyOffers(e.target.checked); }}
-                        className="w-5 h-5 rounded text-amber-500 border-zinc-300 cursor-pointer"
-                      />
-                      <span className="text-sm font-bold text-zinc-800 select-none">Só Ofertas</span>
-                    </label>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-        </section>
-
-        {/* Callout Card na Home direcionando para a página dedicada /pneus */}
-        <section className="max-w-7xl mx-auto px-4 my-10" id="home-pneus-catalog-banner">
-          <div className="bg-zinc-900 border-2 border-zinc-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="space-y-2 text-center md:text-left">
-              <span className="bg-[#F5A623] text-black font-mono font-black text-xs uppercase px-3.5 py-1.5 rounded-full inline-block">
-                Catálogo Geral Completo • 1.962 Pneus
-              </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight">
-                Pneus em Curitiba – <span className="text-[#F5A623]">1.962 Opções</span> de Aros 13 a 23
-              </h2>
-              <p className="text-zinc-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-                Navegue pelo nosso acervo completo com todas as marcas homologadas (Pirelli, Bridgestone, Continental, Goodyear, Michelin, Delinte, Xbri e mais) com montagem técnica e alinhamento 3D no Portão.
-              </p>
-            </div>
-
-            <button
-              onClick={() => handleNavigateInternal('/pneus')}
-              className="bg-[#F5A623] hover:bg-amber-400 text-zinc-950 font-black px-8 py-4 rounded-2xl text-base uppercase tracking-wider transition-all duration-300 flex items-center gap-3 shadow-lg shrink-0 cursor-pointer active:scale-98"
-            >
-              <span>Acessar Catálogo Completo</span>
-              <ArrowRight className="w-5 h-5 stroke-[3]" />
-            </button>
-          </div>
-        </section>
-
-        {/* Benefits & Services Row (Workshop Personalized Style) */}
+        {/* Installation services support the tire purchase. */}
         <section className="max-w-7xl mx-auto px-4 mt-12 w-full min-w-0 overflow-hidden" id="benefits-section">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-zinc-900 w-full min-w-0">
             
@@ -1979,10 +1159,10 @@ export default function App() {
                     <Wrench className="w-6 h-6 shrink-0 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <h4 className="font-extrabold text-[18px] text-zinc-900 uppercase tracking-tight">
-                    Montagem Anti-Risco
+                    Montagem na Carplus
                   </h4>
                   <p className="text-[16px] text-zinc-600 leading-relaxed mt-2 max-w-[60ch]">
-                    Compre e instale no mesmo box! Maquinário pneumático de precisão com braço auxiliar que preserva rodas diamantadas e sensores TPMS na hora.
+                    Escolha o pneu e consulte a montagem na loja. A equipe confere a aplicação e os cuidados com as rodas.
                   </p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-zinc-100 w-full flex items-center justify-between text-xs font-mono font-bold text-zinc-500">
@@ -2011,10 +1191,10 @@ export default function App() {
                     <Gauge className="w-6 h-6 shrink-0 group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <h4 className="font-extrabold text-[18px] text-zinc-900 uppercase tracking-tight">
-                    Alinhamento 3D a Laser
+                    Alinhamento e balanceamento
                   </h4>
                   <p className="text-[16px] text-zinc-600 leading-relaxed mt-2 max-w-[60ch]">
-                    Rampa computadorizada com câmeras digitais de alta precisão. Calibração milimétrica de cáster, cambagem e convergência para zero desgaste irregular.
+                    Consulte os serviços indicados para o seu carro e organize a instalação no mesmo endereço.
                   </p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-zinc-100 w-full flex items-center justify-between text-xs font-mono font-bold text-zinc-500">
@@ -2043,10 +1223,10 @@ export default function App() {
                     <Car className="w-6 h-6 shrink-0 group-hover:-translate-y-1 transition-transform duration-300" />
                   </div>
                   <h4 className="font-extrabold text-[18px] text-zinc-900 uppercase tracking-tight">
-                    Checkup de Suspensão & Freios
+                    Avaliação de suspensão e freios
                   </h4>
                   <p className="text-[16px] text-zinc-600 leading-relaxed mt-2 max-w-[60ch]">
-                    Inspeção visual técnica no elevador: conferência de buchas, amortecedores, pastilhas e discos antes de colocar o carro de volta na rua.
+                    Informe ruídos, vibrações ou desgaste nos pneus. A equipe avalia o veículo e explica o orçamento.
                   </p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-zinc-100 w-full flex items-center justify-between text-xs font-mono font-bold text-zinc-500">
@@ -2069,26 +1249,21 @@ export default function App() {
           </details>
         </section>
 
-        {/* High-Authority CRO Social Proof Section (Real Google Reviews & FAQ) */}
-        <Suspense fallback={null}>
-          <AuthoritySocialProof />
-        </Suspense>
+
 
         {/* Real Structure Image Gallery Section (Carplus Authentic Showroom) */}
-        <section className="max-w-7xl mx-auto px-4 mt-12 bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-sm" id="carplus-real-gallery">
+        <section className="carplus-home-section carplus-store-gallery" id="carplus-real-gallery">
           <div className="text-center sm:text-left space-y-2 mb-6">
-            <span className="bg-[#f49e1a]/10 text-gray-900 border border-[#f49e1a]/20 font-mono font-black text-[9px] uppercase tracking-widest px-3 py-1 rounded-full">
-              Estrutura Física Garantida
-            </span>
+            <p className="carplus-section-label">Pneus e serviços no mesmo endereço</p>
             <h3 className="text-xl sm:text-2xl font-black text-gray-900 uppercase tracking-tight font-display">
-              CONHEÇA A CARPLUS NO PORTÃO.
+              Conheça a Carplus no Portão.
             </h3>
             <p className="text-xs text-gray-500 max-w-2xl leading-relaxed">
               Uma loja de pneus e oficina no mesmo endereço. Veja nossa estrutura e converse com a equipe para organizar sua visita.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { url: '/images/galeria/fachada-carplus.webp', fallback: 'https://img.carplusautos.com.br/cwb/fachada-carplus.webp', label: 'Fachada e Logo Carplus Portão' },
               { url: '/images/galeria/loja-de-pneus-em-curitiba.webp', fallback: 'https://img.carplusautos.com.br/cwb/loja-de-pneus-em-curitiba.webp', label: 'Showroom de Medidas Pirelli' },
@@ -2106,7 +1281,7 @@ export default function App() {
               { url: '/images/galeria/consultoria-avaliacao-estrutural.jpg', fallback: 'https://img.carplusautos.com.br/cwb/consultoria-avaliacao-estrutural.jpg', label: 'Consultoria e Avaliação Estrutural' },
               { url: '/images/galeria/auto-center-de-pneus-em-curitiba.jpg', fallback: 'https://img.carplusautos.com.br/cwb/auto-center-de-pneus-em-curitiba.jpg', label: 'Auto Center de Pneus em Curitiba' },
               { url: '/images/galeria/pneus-auto-center.jpg', fallback: 'https://img.carplusautos.com.br/cwb/pneus-auto-center.jpg', label: 'Pneus e Serviços Auto Center' }
-            ].map((img, idx) => (
+            ].slice(0, 3).map((img, idx) => (
               <div key={idx} className="group relative overflow-hidden rounded-2xl bg-gray-50 border border-gray-200 transition shadow">
                 <img 
                   src={img.url} 
@@ -2132,8 +1307,11 @@ export default function App() {
           </div>
         </section>
 
-        {/* Dedicated Auto Center & Centro Automotivo section */}
-        <AutoCenterSection onNavigateToPage={handleNavigateInternal} />
+        <section className="carplus-home-section">
+          <details className="carplus-more-content carplus-store-details">
+            <summary>Avaliações, serviços e informações da loja</summary>
+            <Suspense fallback={null}><AuthoritySocialProof /></Suspense>
+            <AutoCenterSection onNavigateToPage={handleNavigateInternal} />
 
         {/* Global Homepage Interactive FAQ Accordions (Workshop Style) */}
         <section className="max-w-7xl mx-auto px-4 mt-12 bg-white border border-zinc-200 rounded-3xl p-6 sm:p-8 shadow-sm" id="carplus-home-faq">
@@ -2244,6 +1422,9 @@ export default function App() {
           </div>
         </section>
 
+          </details>
+        </section>
+
         {/* Google Maps Integration details / directions */}
         <section className="max-w-7xl mx-auto px-4 mt-12 mb-6" id="maps-section">
 
@@ -2255,7 +1436,7 @@ export default function App() {
                 Como Chegar
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-gray-900 leading-tight uppercase">
-                Fácil Acesso no Portão, Curitiba
+                Venha à Carplus no Portão.
               </h3>
               
               <p className="text-xs sm:text-sm text-gray-500 text-left leading-relaxed">
@@ -2263,7 +1444,7 @@ export default function App() {
               </p>
               
               <p className="text-xs text-gray-400 text-left">
-                Avenida de pista dupla com facilidade para estacionar. Suba seu veículo nos elevadores de última geração da Carplus Pneus enquanto toma um café em nossa sala de espera climatizada.
+                Converse com a equipe antes da visita para confirmar pneus, serviços e horário de atendimento.
               </p>
 
               <div className="bg-black border border-yellow-500/20 p-4 rounded-2xl text-white text-xs space-y-2">
@@ -2273,7 +1454,7 @@ export default function App() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-yellow-500 shrink-0" />
-                  <span><strong>Telefone de Suporte:</strong> (41) 3082-7282</span>
+                  <span><strong>Telefone:</strong> (41) 3082-7282</span>
                 </p>
                 <p className="flex items-center gap-2">
                   <Navigation className="w-4 h-4 text-yellow-500 shrink-0" />
@@ -2286,15 +1467,15 @@ export default function App() {
                   href="https://www.google.com/maps/dir/?api=1&destination=Av.+Pres.+Arthur+da+Silva+Bernardes,+1323+-+Port%C3%A3o,+Curitiba+-+PR,+80320-300"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-900 hover:bg-yellow-500 hover:text-gray-950 text-[#f49e1a] font-bold px-4 py-3 rounded-xl text-xs uppercase tracking-wide transition inline-flex items-center gap-1.5 shadow"
+                  className="carplus-action-secondary"
                   id="google-maps-directions-link"
                 >
                   <Navigation className="w-4 h-4 shrink-0" />
-                  Navegar Agora (Celular / Waze)
+                  Como chegar
                 </a>
                 <a
                   href="tel:4130827282"
-                  className="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-bold px-4 py-3 rounded-xl text-xs uppercase tracking-wide transition inline-flex items-center gap-1.5 shadow"
+                  className="carplus-action-secondary"
                 >
                   <Phone className="w-3.5 h-3.5" />
                   Ligar na Loja
