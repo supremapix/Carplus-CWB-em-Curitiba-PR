@@ -3,6 +3,7 @@ import * as path from 'path';
 import { TIRES_DATA, CAR_MODELS_DATA } from '../src/data';
 import { BLOG_POSTS, BlogPost } from '../src/blog-data';
 import { isPageReleased, calculateLocalScore, AROS, CARS } from '../src/utils/seoWaves';
+import { FAQ_ADVICE, TIRE_ADVICE_SCHEMA } from '../src/data/tireAdvice';
 
 // Helper to escape HTML attributes and text
 function escapeHtml(str: string): string {
@@ -785,6 +786,14 @@ function renderHomeShell(): string {
         </div>
       </section>
 
+      <section id="guia-escolha" style="margin: 3rem 0; padding: 1.5rem; background: #111; color: #fff; border-top: 3px solid #f59c00; border-radius: .5rem;">
+        <script type="application/ld+json">${JSON.stringify(TIRE_ADVICE_SCHEMA).replace(/</g, '\\u003c')}</script>
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #f59c00;">Qual pneu faz sentido para você?</h2>
+        <p>Compare pela marca, pelo seu carro ou pela aplicação para elétricos e híbridos. A Carplus ajuda a conferir as especificações antes de indicar uma opção.</p>
+        ${FAQ_ADVICE.map(faq => `<details style="border-bottom: 1px solid #444; padding: 1rem 0;"><summary style="cursor: pointer; font-weight: 700;">${escapeHtml(faq.question)}</summary><p style="margin-top: 1rem; line-height: 1.8;">${escapeHtml(faq.answer)}</p></details>`).join('')}
+        <p style="margin-top: 1.5rem;"><a href="https://api.whatsapp.com/send?phone=${NAP_WHATSAPP}&amp;text=${encodeURIComponent('Olá, Carplus! Quero ajuda para escolher um pneu para o meu carro.')}" style="display: inline-block; padding: 1rem 1.25rem; background: #f59c00; color: #080808; font-weight: 700; border-radius: .25rem; text-decoration: none;">Tirar minha dúvida no WhatsApp</a></p>
+        <p>Veja também os guias para <a href="/pneus-byd-curitiba" style="color: #f59c00;">pneus BYD</a>, <a href="/pneu-byd-dolphin-curitiba" style="color: #f59c00;">BYD Dolphin</a> e <a href="/pneu-byd-dolphin-mini-curitiba" style="color: #f59c00;">Dolphin Mini</a>.</p>
+      </section>
       ${renderNapBlock()}
     </main>
     ${renderFooter()}

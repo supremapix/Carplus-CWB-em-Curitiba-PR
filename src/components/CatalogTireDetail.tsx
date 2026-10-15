@@ -65,19 +65,19 @@ export default function CatalogTireDetail({
         <div className="flex flex-wrap items-center justify-between gap-4">
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-gray-700 hover:text-black transition bg-white px-4 py-2 rounded-xl border border-gray-250 shadow-2xs"
+            className="inline-flex min-h-[44px] items-center gap-2 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-gray-700 hover:text-[#f59c00] transition bg-white px-4 py-2 rounded-xl border border-gray-250 shadow-2xs"
           >
-            <ArrowLeft className="w-4 h-4 text-[#f49e1a]" />
+            <ArrowLeft className="w-4 h-4 text-[#f59c00]" />
             <span>Voltar para o Catálogo</span>
           </button>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyLink}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-700 bg-white hover:bg-gray-100 px-3 py-2 rounded-xl border border-gray-250 transition shadow-2xs"
+              className="inline-flex min-h-[44px] items-center gap-1.5 text-xs font-bold text-gray-700 bg-white hover:bg-gray-100 px-3 py-2 rounded-xl border border-gray-250 transition shadow-2xs"
               title="Copiar link da página"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-3.5 h-3.5 text-[#f59c00]" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Link Copiado!' : 'Compartilhar'}</span>
             </button>
           </div>
@@ -88,7 +88,7 @@ export default function CatalogTireDetail({
           
           {/* Left Column: Product Image & Highlights */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
-            <div className="relative bg-white rounded-2xl border border-gray-150 p-6 flex items-center justify-center min-h-[320px] shadow-2xs">
+            <div className="carplus-white-surface relative bg-white rounded-2xl border border-gray-150 p-6 flex items-center justify-center min-h-[320px] shadow-2xs">
               <img
                 src={displayImage}
                 alt={`Pneu ${tire.nome} medida ${tire.medida} Aro ${tire.aro} Curitiba`}
@@ -107,7 +107,7 @@ export default function CatalogTireDetail({
                 <span className="bg-gray-900 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">
                   {tire.marca}
                 </span>
-                <span className="bg-[#f49e1a] text-black text-[10px] font-black px-2.5 py-1 rounded-md">
+                <span className="bg-[#f59c00] text-[#080808] text-[10px] font-black px-2.5 py-1 rounded-md">
                   Aro {tire.aro}
                 </span>
               </div>
@@ -115,15 +115,15 @@ export default function CatalogTireDetail({
 
             {/* Quick Guarantees Strip */}
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-xl flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-yellow-700 shrink-0" />
+              <div className="bg-[#f59c00]/10 border border-[#f59c00]/20 p-3 rounded-xl flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-[#f59c00] shrink-0" />
                 <div>
                   <div className="font-black text-gray-900 text-[11px]">5 Anos Garantia</div>
                   <div className="text-[10px] text-gray-600">Contra defeitos de fábrica</div>
                 </div>
               </div>
-              <div className="bg-emerald-50 border border-emerald-200 p-3 rounded-xl flex items-center gap-2">
-                <Wrench className="w-5 h-5 text-emerald-700 shrink-0" />
+              <div className="bg-[#161616] border border-white/15 p-3 rounded-xl flex items-center gap-2">
+                <Wrench className="w-5 h-5 text-[#f59c00] shrink-0" />
                 <div>
                   <div className="font-black text-gray-900 text-[11px]">Montagem Especializada</div>
                   <div className="text-[10px] text-gray-600">Na loja do Portão</div>
@@ -145,7 +145,7 @@ export default function CatalogTireDetail({
                   </span>
                 )}
                 {tire.novoModelo && (
-                  <span className="text-xs font-black uppercase bg-emerald-600 text-white px-2 py-0.5 rounded">
+                  <span className="text-xs font-black uppercase bg-[#f59c00] text-[#080808] px-2 py-0.5 rounded">
                     Lançamento
                   </span>
                 )}
@@ -156,7 +156,7 @@ export default function CatalogTireDetail({
               </h1>
 
               <div className="flex items-center gap-3">
-                <span className="text-lg font-black font-mono bg-gray-900 text-[#f49e1a] px-3.5 py-1 rounded-xl">
+                <span className="text-lg font-black font-mono bg-gray-900 text-[#f59c00] px-3.5 py-1 rounded-xl">
                   {tire.medida}
                 </span>
                 <span className="text-sm font-semibold text-gray-600">
@@ -166,41 +166,42 @@ export default function CatalogTireDetail({
 
               {/* Description */}
               {tire.descricao ? (
-                <p className="text-sm text-gray-650 leading-relaxed text-left bg-gray-50 p-4 rounded-2xl border border-gray-150 break-words [overflow-wrap:anywhere]">
+                <p className="text-sm text-zinc-300 leading-relaxed text-left bg-gray-50 p-4 rounded-2xl border border-gray-150 break-words [overflow-wrap:anywhere]">
                   {tire.descricao}
                 </p>
               ) : (
-                <p className="text-sm text-gray-650 leading-relaxed text-left bg-gray-50 p-4 rounded-2xl border border-gray-150 break-words [overflow-wrap:anywhere]">
+                <p className="text-sm text-zinc-300 leading-relaxed text-left bg-gray-50 p-4 rounded-2xl border border-gray-150 break-words [overflow-wrap:anywhere]">
                   O pneu <strong>{tire.nome}</strong> na medida <strong>{tire.medida}</strong> (Aro {tire.aro}) da fabricante <strong>{tire.marca}</strong> entrega alto desempenho, aderência precisa e durabilidade garantida na Carplus Portão.
                 </p>
               )}
             </div>
 
             {/* Price match promise */}
-            <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white p-4 rounded-2xl border border-yellow-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+            <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white p-4 rounded-2xl border border-[#f59c00]/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
               <div className="space-y-0.5 text-center sm:text-left">
-                <div className="text-xs font-mono font-bold text-[#f49e1a] uppercase flex items-center justify-center sm:justify-start gap-1.5">
+                <div className="text-xs font-mono font-bold text-[#f59c00] uppercase flex items-center justify-center sm:justify-start gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" /> Menor Preço Garantido em Curitiba
                 </div>
                 <div className="text-sm font-bold text-white">Cobrimos qualquer orçamento de grandes redes</div>
               </div>
-              <span className="text-[11px] font-bold bg-yellow-500/20 text-[#f49e1a] px-3 py-1 rounded-full border border-yellow-500/40 shrink-0">
+              <span className="text-[11px] font-bold bg-[#f59c00]/20 text-[#f59c00] px-3 py-1 rounded-full border border-[#f59c00]/40 shrink-0">
                 Pronta Entrega no Portão
               </span>
             </div>
 
             {/* Quantity Selector and WhatsApp Purchase */}
             <div className="bg-gray-50 p-4 rounded-2xl border border-gray-200 space-y-4">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
                 <span className="text-xs font-black uppercase text-gray-800">Quantidade desejada:</span>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   {[1, 2, 4, 5].map((q) => (
                     <button
                       key={q}
                       onClick={() => setQuantity(q)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                      aria-pressed={quantity === q}
+                      className={`min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl text-xs font-bold transition ${
                         quantity === q
-                          ? 'bg-gray-900 text-white shadow-xs'
+                          ? 'bg-[#f59c00] text-[#080808] shadow-xs'
                           : 'bg-white text-gray-700 border border-gray-250 hover:bg-gray-100'
                       }`}
                     >
@@ -214,9 +215,9 @@ export default function CatalogTireDetail({
                 <button
                   type="button"
                   onClick={handleWhatsAppQuote}
-                  className="w-full bg-[#f49e1a] hover:bg-[#d88912] text-black font-black text-sm py-3.5 px-4 rounded-2xl transition flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                  className="w-full bg-[#f59c00] hover:bg-[#f59c00] text-[#080808] font-black text-sm py-3.5 px-4 rounded-2xl transition flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
                 >
-                  <MessageSquare className="w-5 h-5 text-black" />
+                  <MessageSquare className="w-5 h-5 text-[#080808]" />
                   <span>Cotar no WhatsApp ({quantity} pneus)</span>
                 </button>
 
@@ -238,37 +239,37 @@ export default function CatalogTireDetail({
           <div className="flex items-center border-b border-gray-200 gap-4 overflow-x-auto pb-2">
             <button
               onClick={() => setActiveTab('especificacoes')}
-              className={`pb-3 font-bold text-sm flex items-center gap-2 border-b-2 transition whitespace-nowrap ${
+              className={`min-h-[44px] pb-3 font-bold text-sm flex items-center gap-2 border-b-2 transition whitespace-nowrap ${
                 activeTab === 'especificacoes'
-                  ? 'border-yellow-500 text-black font-black'
+                  ? 'border-[#f59c00] text-[#f59c00] font-black'
                   : 'border-transparent text-gray-500 hover:text-gray-800'
               }`}
             >
-              <SlidersHorizontal className="w-4 h-4 text-yellow-600" />
+              <SlidersHorizontal className="w-4 h-4 text-[#f59c00]" />
               <span>Ficha Técnica Completa</span>
             </button>
 
             <button
               onClick={() => setActiveTab('compatibilidade')}
-              className={`pb-3 font-bold text-sm flex items-center gap-2 border-b-2 transition whitespace-nowrap ${
+              className={`min-h-[44px] pb-3 font-bold text-sm flex items-center gap-2 border-b-2 transition whitespace-nowrap ${
                 activeTab === 'compatibilidade'
-                  ? 'border-yellow-500 text-black font-black'
+                  ? 'border-[#f59c00] text-[#f59c00] font-black'
                   : 'border-transparent text-gray-500 hover:text-gray-800'
               }`}
             >
-              <Car className="w-4 h-4 text-yellow-600" />
+              <Car className="w-4 h-4 text-[#f59c00]" />
               <span>Veículos Compatíveis ({tire.carros?.length || 0})</span>
             </button>
 
             <button
               onClick={() => setActiveTab('servicos')}
-              className={`pb-3 font-bold text-sm flex items-center gap-2 border-b-2 transition whitespace-nowrap ${
+              className={`min-h-[44px] pb-3 font-bold text-sm flex items-center gap-2 border-b-2 transition whitespace-nowrap ${
                 activeTab === 'servicos'
-                  ? 'border-yellow-500 text-black font-black'
+                  ? 'border-[#f59c00] text-[#f59c00] font-black'
                   : 'border-transparent text-gray-500 hover:text-gray-800'
               }`}
             >
-              <Wrench className="w-4 h-4 text-yellow-600" />
+              <Wrench className="w-4 h-4 text-[#f59c00]" />
               <span>Serviços Inclusos na Loja</span>
             </button>
           </div>
@@ -322,11 +323,11 @@ export default function CatalogTireDetail({
                 </div>
                 <div className="bg-gray-50 p-3.5 rounded-xl border border-gray-200">
                   <span className="text-gray-500 block text-[11px]">Origem / Selo</span>
-                  <span className="font-black text-emerald-700 text-sm">Homologado Inmetro</span>
+                  <span className="font-black text-[#f59c00] text-sm">Homologado Inmetro</span>
                 </div>
                 <div className="bg-gray-50 p-3.5 rounded-xl border border-gray-200">
                   <span className="text-gray-500 block text-[11px]">Disponibilidade</span>
-                  <span className="font-black text-emerald-700 text-sm">Pronta Entrega CWB</span>
+                  <span className="font-black text-[#f59c00] text-sm">Pronta Entrega CWB</span>
                 </div>
               </div>
             </div>
@@ -341,7 +342,7 @@ export default function CatalogTireDetail({
                   {tire.carros.map((car, idx) => (
                     <span
                       key={idx}
-                      className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-yellow-500/20 text-gray-900 text-xs font-bold px-3 py-2 rounded-xl border border-gray-200 transition"
+                      className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-[#f59c00]/20 text-gray-900 text-xs font-bold px-3 py-2 rounded-xl border border-gray-200 transition"
                     >
                       <Car className="w-3.5 h-3.5 text-gray-500" />
                       <span>{car}</span>
@@ -361,13 +362,13 @@ export default function CatalogTireDetail({
             <div className="space-y-4">
               <h3 className="text-base font-black text-gray-900">Vantagens Exclusivas ao Trocar na Carplus Curitiba</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl space-y-1">
-                  <span className="font-black text-emerald-900 block text-sm">1. Montagem Especializada</span>
-                  <p className="text-emerald-800 leading-relaxed text-[11px]">
+                <div className="bg-[#161616] border border-white/15 p-4 rounded-2xl space-y-1">
+                  <span className="font-black text-white block text-sm">1. Montagem Especializada</span>
+                  <p className="text-zinc-300 leading-relaxed text-[11px]">
                     Equipamentos computadorizados que evitam qualquer arranhão nas rodas de liga leve ou ferro do seu carro.
                   </p>
                 </div>
-                <div className="bg-yellow-500/10 border border-yellow-500/30 p-4 rounded-2xl space-y-1">
+                <div className="bg-[#f59c00]/10 border border-[#f59c00]/30 p-4 rounded-2xl space-y-1">
                   <span className="font-black text-gray-900 block text-sm">2. Alinhamento 3D Laser</span>
                   <p className="text-gray-700 leading-relaxed text-[11px]">
                     Leitura tridimensional de alta precisão para garantir desgaste uniforme e máxima quilometragem dos seus novos pneus.
@@ -393,7 +394,7 @@ export default function CatalogTireDetail({
               </h2>
               <button
                 onClick={onBack}
-                className="text-xs font-bold text-yellow-700 hover:text-yellow-800"
+                className="min-h-[44px] text-xs font-bold text-[#f59c00] hover:underline"
               >
                 Ver todo o catálogo →
               </button>

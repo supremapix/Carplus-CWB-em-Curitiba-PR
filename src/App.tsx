@@ -24,14 +24,13 @@ import {
 import { PROMO_TIRES } from './data/promoTires';
 import { HeroPromoTires } from './components/HeroPromoTires';
 import WorkshopHero from './components/WorkshopHero';
+import TireAdviceSection from './components/TireAdviceSection';
 import RimsSection from './components/RimsSection';
-import TireTreadDivider from './components/TireTreadDivider';
 
 // Lazy-loaded heavy components to optimize initial bundle and TBT
 const CartDrawer = React.lazy(() => import('./components/CartDrawer'));
 const TireFinderWizard = React.lazy(() => import('./components/TireFinderWizard'));
 const LiveWhatsAppChat = React.lazy(() => import('./components/LiveWhatsAppChat'));
-const FloatingShare = React.lazy(() => import('./components/FloatingShare'));
 const CompanyPages = React.lazy(() => import('./components/CompanyPages'));
 const TireDetail = React.lazy(() => import('./components/TireDetail'));
 const TireCatalogView = React.lazy(() => import('./components/TireCatalogView'));
@@ -73,6 +72,7 @@ export default function App() {
   const [seoTarget, setSeoTarget] = useState<{ type: 'bairro' | 'cidade' | 'aro' | 'carro'; name: string; region?: string; detail?: string; } | null>(null);
   const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null);
   const [activeHomeFaqIdx, setActiveHomeFaqIdx] = useState<number | null>(null);
+  const [isRouteReady, setIsRouteReady] = useState(false);
   const [selectedTire, setSelectedTire] = useState<Tire | null>(null);
   const [selectedCatalogTire, setSelectedCatalogTire] = useState<CatalogTire | null>(null);
   const [catalogFilterBrand, setCatalogFilterBrand] = useState<string>('Todas');
@@ -302,6 +302,7 @@ export default function App() {
 
   // Scroll handler and page navigation mapping
   const handleScrollToSection = (sectionId: string) => {
+    setSelectedCatalogTire(null);
     // Normalization & Aliases
     let targetView = sectionId;
     if (sectionId === 'servicos' || sectionId === 'alinhamento') {
@@ -486,6 +487,7 @@ export default function App() {
 
   // --- INTEGRATED SPA CLIENT-SIDE URL ROUTING ENGINE ---
   const parsePathAndSetState = () => {
+    setSelectedCatalogTire(null);
     const rawPath = window.location.pathname;
     const parts = rawPath.split('/').filter(Boolean);
     
@@ -903,6 +905,7 @@ export default function App() {
 
   useEffect(() => {
     parsePathAndSetState();
+    setIsRouteReady(true);
     
     const handlePopState = () => {
       parsePathAndSetState();
@@ -915,6 +918,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    // Read the incoming URL before synchronizing the initially empty home state.
+    if (!isRouteReady) return;
     let idealPath = '/';
     if (selectedCatalogTire) {
       idealPath = `/pneu/${selectedCatalogTire.slug}`;
@@ -948,7 +953,7 @@ export default function App() {
       window.history.pushState(null, '', idealPath);
     }
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [currentView, seoTarget, selectedTire, selectedBlogSlug]);
+  }, [isRouteReady, currentView, seoTarget, selectedTire, selectedCatalogTire, selectedBlogSlug]);
 
   // Hot offers in stock to highlight
   const spotlightOffers = TIRES_DATA.filter(t => t.isOffer);
@@ -1086,7 +1091,7 @@ export default function App() {
           </div>
 
           {/* Divisor de seção com marca de pneu */}
-          <TireTreadDivider />
+          <TireAdviceSection onFindTire={() => handleScrollToSection('finder')} onNavigate={handleNavigateInternal} />
 
           {/* 3. Featured Tires Grid Section (Requirement 5 & 9: Centered alignment, workshop tire cards) */}
           <div 
@@ -1098,13 +1103,13 @@ export default function App() {
               <div className="text-center max-w-3xl mx-auto space-y-3">
                 <div className="inline-flex items-center gap-2 bg-zinc-900 text-[#F5A623] px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Pronta Entrega no Portão</span>
+                  <span>ESCOLHA COM A CARPLUS</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 tracking-tight uppercase" id="conveyor-main-h1">
-                  Pneus em Destaque na Loja
+                  ENCONTRE SEU PRÓXIMO PNEU.
                 </h2>
                 <p className="text-zinc-600 text-[18px] leading-relaxed max-w-[65ch] mx-auto">
-                  Estoque verificado com garantia oficial de 5 anos na Av. Arthur Bernardes, 1323. Montagem técnica e balanceamento computadorizado no mesmo local.
+                  Compare marcas e medidas. Depois, fale com a equipe para confirmar a aplicação, o valor e a disponibilidade para o seu carro.
                 </p>
                 <div className="pt-2">
                   <button 
@@ -1137,7 +1142,7 @@ export default function App() {
                 id="brands-conveyor-belt-container"
               >
                 <p className="text-center text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest mb-4">
-                  Marcas Oficiais Homologadas com Garantia de Fábrica
+                  MARCAS PARA COMPARAR. ORIENTAÇÃO PARA ESCOLHER.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
                   {[
@@ -1169,6 +1174,7 @@ export default function App() {
 
           {/* Painel de 20 Pneus em Promoção */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" id="promo-tires-strip">
+            <details><summary>Quero comparar mais pneus e ofertas</summary>
             <div className="bg-zinc-900 border-2 border-zinc-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl space-y-6">
               <div className="text-center max-w-3xl mx-auto space-y-2">
                 <span className="bg-[#F5A623] text-black font-mono font-black text-xs uppercase px-3 py-1 rounded-full shadow-xs">
@@ -1231,6 +1237,7 @@ export default function App() {
                 ))}
               </div>
             </div>
+            </details>
           </div>
 
         {/* Wizard application guide (Qual pneu vai no meu carro?) */}
@@ -1248,13 +1255,13 @@ export default function App() {
           <div className="bg-white text-gray-900 rounded-3xl p-6 border border-gray-200 shadow-lg mb-6">
             <div className="text-center md:text-left mb-6">
               <span className="bg-[#f49e1a]/10 text-gray-850 font-extrabold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full inline-block">
-                Portal de Busca & Diretório Premium
+                BUSQUE DO SEU JEITO
               </span>
               <h3 className="text-2xl sm:text-3xl font-black uppercase text-gray-900 mt-2 tracking-tight select-none">
-                Guias Rápidos de <span className="text-[#f49e1a]">Medidas & Marcas</span>
+                Encontre por <span className="text-[#f49e1a]">aro, marca ou carro</span>
               </h3>
               <p className="text-xs text-gray-500 mt-1 max-w-3xl text-left leading-relaxed">
-                Navegue pelas páginas oficiais de marcas consagradas, filtre pneus novos pelo tamanho do aro da sua roda ou consulte em nosso guia qual a rota ideal para o modelo de seu veículo.
+                Escolha o tamanho do aro, compare marcas ou consulte o modelo do seu carro. Se tiver dúvida, a equipe ajuda você pelo WhatsApp.
               </p>
 
               {/* Destaques Rápidos: BYD, GWM e Aros */}
@@ -2054,9 +2061,12 @@ export default function App() {
 
         {/* Verification Videos Section for Elderly and High Trust */}
         <section className="max-w-7xl mx-auto px-4">
-          <Suspense fallback={null}>
-            <CarplusVideosSection />
-          </Suspense>
+          <details className="carplus-more-content">
+            <summary>Veja os serviços e a estrutura em vídeo</summary>
+            <Suspense fallback={null}>
+              <CarplusVideosSection />
+            </Suspense>
+          </details>
         </section>
 
         {/* High-Authority CRO Social Proof Section (Real Google Reviews & FAQ) */}
@@ -2071,10 +2081,10 @@ export default function App() {
               Estrutura Física Garantida
             </span>
             <h3 className="text-xl sm:text-2xl font-black text-gray-900 uppercase tracking-tight font-display">
-              Nossa Autocenter em Curitiba
+              CONHEÇA A CARPLUS NO PORTÃO.
             </h3>
             <p className="text-xs text-gray-500 max-w-2xl leading-relaxed">
-              Conheça as instalações da Carplus Pneus localizada na Avenida Arthur Bernardes. Contamos com pátio de manobras, sala de espera climatizada e maquinário computadorizado de alta tecnologia para carros, SUVs e caminhonetes:
+              Uma loja de pneus e oficina no mesmo endereço. Veja nossa estrutura e converse com a equipe para organizar sua visita.
             </p>
           </div>
 
@@ -2130,13 +2140,13 @@ export default function App() {
           <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
             <span className="bg-[#F5A623]/15 text-zinc-950 border border-[#F5A623]/30 font-mono font-black text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-[#F5A623]" />
-              Dúvidas Claras e Seguras
+              ANTES DE VIR À LOJA
             </span>
             <h3 className="text-2xl sm:text-3xl font-black text-zinc-900 uppercase tracking-tight font-display pt-1">
-              Perguntas Frequentes (FAQ) da Carplus
+              O QUE VOCÊ PRECISA SABER.
             </h3>
             <p className="text-[18px] text-zinc-600 leading-relaxed max-w-[65ch] mx-auto">
-              Consulte as respostas diretas para as principais dúvidas sobre nossa mecânica expressa, marcas oficiais homologadas, agendamentos on-line e políticas de pagamentos inclusas na entrega técnica:
+              Tire suas dúvidas sobre pneus, serviços, pagamento e atendimento. Para confirmar valores e disponibilidade, fale com a Carplus pelo WhatsApp.
             </p>
           </div>
 
@@ -2317,22 +2327,14 @@ export default function App() {
         <InstagramFeed />
       </Suspense>
 
-      {/* Floating Share trigger and Live WhatsApp trigger */}
+      {/* Primary contact remains available while browsing. Sharing is in the footer. */}
       <Suspense fallback={null}>
-        <FloatingShare 
-          currentView={currentView} 
-          seoTarget={seoTarget} 
-          selectedTire={selectedTire} 
-        />
         <LiveWhatsAppChat />
       </Suspense>
       <ScrollToTop />
 
       {/* Structured Footer */}
-      <Footer onNavigate={(page) => {
-        setCurrentView(page);
-        setSeoTarget(null);
-      }} />
+      <Footer onNavigate={handleScrollToSection} />
 
       {/* Cart side panel Drawer */}
       <Suspense fallback={null}>

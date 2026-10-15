@@ -160,7 +160,7 @@ export function initAnalyticsListeners() {
     const params: TrackEventParams = {
       click_location,
       button_text,
-      link_url: String(url).slice(0, 300),
+      link_url: el?.closest('[data-analytics-url]')?.getAttribute('data-analytics-url') || String(url).slice(0, 300),
     };
     if (service_name) params.service_name = service_name;
     if (tire_size) params.tire_size = tire_size;

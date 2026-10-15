@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Phone, ShoppingCart, Menu, X, MapPin, MessageSquare, Compass, Home, Disc, HelpCircle, Wrench, Info, Mail } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Menu, MessageSquare, Phone, ShoppingCart, X } from 'lucide-react';
 
 interface NavbarProps {
   onScrollToSection: (sectionId: string) => void;
@@ -7,271 +7,96 @@ interface NavbarProps {
   onOpenCart: () => void;
 }
 
+const primaryLinks = [
+  { label: 'Pneus', id: 'catalogo-pneus', href: '/pneus' },
+  { label: 'Serviços', id: 'alinhamento-3d-curitiba', href: '/alinhamento-3d-curitiba' },
+  { label: 'Sobre a Carplus', id: 'quem-somos', href: '/quem-somos' },
+  { label: 'Contato', id: 'contato', href: '/contato' },
+];
+const moreLinks = [
+  { label: 'Início', id: 'home', href: '/' },
+  { label: 'Ofertas de pneus', id: 'catalog', href: '/#catalog' },
+  { label: 'Qual pneu serve no meu carro?', id: 'finder', href: '/#finder' },
+  { label: 'Blog automotivo', id: 'blog', href: '/blog' },
+];
+const whatsapp = 'https://api.whatsapp.com/send?phone=554130827282&text=Ol%C3%A1%20Carplus!%20Gostaria%20de%20consultar%20pneus%20e%20servi%C3%A7os%20para%20o%20meu%20carro.';
+const maps = 'https://maps.google.com/?q=Av.+Presid.+Arthur+da+Silva+Bernardes,+1323+-+Port%C3%A3o,+Curitiba+-+PR';
+const focusClass = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f59c00]';
+
 export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
-  // Lock background scroll and set mobile-menu-open class when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.classList.add('mobile-menu-open');
-    } else {
-      document.body.style.overflow = 'auto';
-      document.body.classList.remove('mobile-menu-open');
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-      document.body.classList.remove('mobile-menu-open');
-    };
-  }, [isMobileMenuOpen]);
-
-  // Handle ESC key to close mobile menu
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isMobileMenuOpen]);
-
-  const formatWhatsApp = (text: string) => {
-    return `https://api.whatsapp.com/send?phone=554130827282&text=${encodeURIComponent(text)}`;
+  const closeMenu = (returnFocus = false) => {
+    setIsMobileMenuOpen(false);
+    if (returnFocus) toggleRef.current?.focus();
   };
 
-  const navLinks = [
-    { label: 'Início', id: 'home' },
-    { label: 'Catálogo', id: 'catalogo-pneus' },
-    { label: 'Ofertas', id: 'catalog' },
-    { label: 'Serviços', id: 'alinhamento-3d-curitiba' },
-    { label: 'Quem Somos', id: 'quem-somos' },
-    { label: 'Blog', id: 'blog' },
-    { label: 'Contato', id: 'contato' }
-  ];
+  useEffect(() => {
+    document.body.classList.toggle('mobile-menu-open', isMobileMenuOpen);
+    return () => document.body.classList.remove('mobile-menu-open');
+  }, [isMobileMenuOpen]);
 
-  const handleMobileNav = (sectionId: string) => {
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    panelRef.current?.querySelector<HTMLAnchorElement>('a[href]')?.focus();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setIsMobileMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const handleOutsideClick = (event: PointerEvent) => {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setIsMobileMenuOpen(false);
+    };
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    const handleDesktop = () => { if (desktop.matches) setIsMobileMenuOpen(false); };
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('pointerdown', handleOutsideClick);
+    desktop.addEventListener('change', handleDesktop);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('pointerdown', handleOutsideClick);
+      desktop.removeEventListener('change', handleDesktop);
+    };
+  }, [isMobileMenuOpen]);
+
+  const navigate = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    closeMenu();
     onScrollToSection(sectionId);
-    setIsMobileMenuOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-black max-w-full overflow-x-hidden" id="main-header">
-      {/* Top Bar - Clean single centered phone link on mobile, Address + Phone on desktop */}
-      <div className="bg-zinc-900 text-zinc-300 py-1.5 px-4 border-b border-zinc-800 text-sm w-full overflow-hidden">
-        <div className="max-w-7xl mx-auto flex items-center justify-center sm:justify-between gap-4">
-          <div className="hidden sm:flex items-center gap-2 truncate min-w-0">
-            <MapPin className="w-4 h-4 text-[#F5A623] shrink-0" />
-            <span className="truncate">Av. Pres. Arthur Bernardes, 1323 - Portão, Curitiba</span>
-          </div>
-          <a 
-            href="tel:554130827282"
-            data-cta-location="header"
-            className="flex items-center justify-center gap-2 font-bold text-[#F5A623] hover:text-amber-300 transition shrink-0 min-h-[44px] px-2 text-center"
-          >
-            <Phone className="w-4 h-4 shrink-0" />
-            <span>(41) 3082-7282</span>
-          </a>
+    <header ref={headerRef} className="carplus-navbar sticky top-0 z-40 w-full border-b border-white/10 bg-[#080808] text-white" id="main-header" data-cta-location="header" onBlur={event => { if (event.relatedTarget instanceof Node && !event.currentTarget.contains(event.relatedTarget)) setIsMobileMenuOpen(false); }}>
+      <div className="mx-auto flex min-h-[84px] max-w-7xl items-center justify-between gap-3 px-4 sm:gap-5 sm:px-6 xl:min-h-[92px]">
+        <a href="/" onClick={event => navigate(event, 'home')} aria-label="Carplus Pneus — início" className={`flex min-h-12 min-w-0 shrink-0 items-center ${focusClass}`}>
+          <img src="/images/logos/logo-horizontal.svg" onError={event => { if (event.currentTarget.getAttribute('src') !== '/logo-horizontal.svg') event.currentTarget.src = '/logo-horizontal.svg'; }} alt="Carplus Pneus e Oficina Mecânica" width="300" height="43" loading="eager" className="h-auto w-[210px] max-w-[calc(100vw-140px)] object-contain sm:w-[235px] xl:w-[245px]" />
+        </a>
+        <nav aria-label="Navegação principal" className="hidden items-center gap-1 xl:flex">
+          {primaryLinks.map(link => <a key={link.id} href={link.href} onClick={event => navigate(event, link.id)} className={`inline-flex min-h-12 items-center whitespace-nowrap px-3 text-[15px] font-semibold text-white/80 transition-colors hover:text-[#f59c00] ${focusClass}`}>{link.label}</a>)}
+        </nav>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <a href="tel:554130827282" data-cta-location="header" aria-label="Ligar para a Carplus: (41) 3082-7282" className={`hidden min-h-12 items-center justify-center gap-2 px-2 text-sm font-semibold text-white/85 transition-colors hover:text-[#f59c00] md:inline-flex ${focusClass}`}><Phone className="h-5 w-5 shrink-0 text-[#f59c00]" aria-hidden="true" /><span className="hidden 2xl:inline">(41) 3082-7282</span></a>
+          <button type="button" onClick={onOpenCart} id="header-cart-btn" aria-label={`Abrir carrinho${cartCount > 0 ? `, ${cartCount} ${cartCount === 1 ? 'item' : 'itens'}` : ''}`} className={`relative hidden min-h-12 min-w-12 items-center justify-center rounded-sm border border-white/20 text-white transition-colors hover:border-[#f59c00] hover:text-[#f59c00] sm:inline-flex ${focusClass}`}><ShoppingCart className="h-5 w-5" aria-hidden="true" />{cartCount > 0 && <span className="absolute -right-2 -top-2 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#f59c00] px-1 text-xs font-bold text-[#080808]" aria-hidden="true">{cartCount}</span>}</button>
+          <a href={whatsapp} target="_blank" rel="noopener noreferrer" data-cta-location="header" className={`hidden min-h-12 items-center justify-center gap-2 rounded-sm bg-[#f59c00] px-4 text-sm font-bold text-[#080808] transition-shadow hover:shadow-[0_0_0_3px_#f59c0033] xl:inline-flex ${focusClass}`}><MessageSquare className="h-5 w-5 shrink-0" aria-hidden="true" />Pedir orçamento no WhatsApp</a>
+          <button ref={toggleRef} type="button" onClick={() => setIsMobileMenuOpen(open => !open)} id="mobile-menu-toggle" aria-controls="mobile-navigation-links" aria-expanded={isMobileMenuOpen} aria-label={isMobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'} className={`inline-flex min-h-12 min-w-[84px] items-center justify-center gap-2 rounded-sm border border-[#f59c00] px-3 text-[15px] font-bold text-[#f59c00] transition-colors hover:bg-[#f59c00] hover:text-[#080808] xl:hidden ${focusClass}`}>{isMobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}<span>{isMobileMenuOpen ? 'Fechar' : 'Menu'}</span></button>
         </div>
       </div>
-
-      {/* Main navigation header */}
-      <nav className="bg-black text-white py-3 px-3 sm:px-6 shadow-md border-b border-zinc-800 relative z-40 w-full overflow-hidden">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 w-full">
-          {/* Brand Logo */}
-          <a 
-            href="/" 
-            onClick={(e) => {
-              e.preventDefault();
-              onScrollToSection('home');
-            }} 
-            className="cursor-pointer shrink-0 flex items-center min-h-[48px]"
-          >
-            {/* Desktop Logo (≥ 1024px) - Exactly same source and fallback as Footer.tsx */}
-            <img
-              src="/images/logos/logo-horizontal.svg"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = '/logo-horizontal.svg';
-              }}
-              alt="Carplus Pneus"
-              width="365"
-              height="52"
-              loading="eager"
-              className="hidden lg:block h-[52px] w-auto object-contain shrink-0"
-            />
-            {/* Mobile / Tablet Logo (< 1024px) */}
-            <img
-              src="/carplus-pneus-oficina-mecanica-full-service-horizontal.svg"
-              alt="Carplus Pneus"
-              width="166"
-              height="40"
-              loading="eager"
-              className="block lg:hidden h-[40px] w-auto max-w-[170px] sm:max-w-[200px] object-contain shrink-0"
-            />
-          </a>
-
-          {/* Core Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6 shrink-0">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => onScrollToSection(link.id)}
-                className="text-base font-semibold text-zinc-200 hover:text-[#F5A623] py-2 transition duration-150 cursor-pointer whitespace-nowrap min-h-[48px] flex items-center"
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Desktop Right CTA / Shopping Cart Button */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <button
-              onClick={onOpenCart}
-              className="hidden sm:flex bg-[#F5A623] hover:bg-amber-400 text-zinc-950 font-bold px-4 py-2.5 rounded-xl items-center gap-2 shadow-sm transition shrink-0 min-h-[48px] cursor-pointer"
-              id="header-cart-btn"
-            >
-              <ShoppingCart className="w-5 h-5 shrink-0" />
-              <span className="text-sm font-extrabold">Carrinho</span>
-              {cartCount > 0 && (
-                <span className="bg-black text-[#F5A623] text-xs font-black px-2 py-0.5 rounded-full">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-
-            {/* Mobile Header Menu Toggle Button (Requirement 1 & 3: Icon + Written "Menu", min 48x48px, fully visible) */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden flex items-center gap-1.5 px-3 py-2 text-white bg-zinc-800 hover:bg-zinc-700 cursor-pointer rounded-xl font-bold text-base min-w-[48px] min-h-[48px] transition shrink-0 border border-zinc-700 active:scale-95"
-              id="mobile-menu-toggle"
-              aria-label="Abrir Menu de Navegação"
-            >
-              <Menu className="w-5 h-5 text-[#F5A623] shrink-0" />
-              <span className="text-white font-extrabold text-base tracking-wide">Menu</span>
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu Fullscreen Overlay (Requirement 3: Clean 6 items without numbers, Fechar visible, no Carrinho item) */}
       {isMobileMenuOpen && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black text-white flex flex-col justify-between p-4 sm:p-5 overflow-y-auto w-full max-w-full"
-          id="mobile-navigation-links"
-          role="dialog"
-          aria-modal="true"
-        >
-          {/* Top Bar: Logo & Written "Fechar ✕" Button */}
-          <div className="flex items-center justify-between pb-4 border-b border-zinc-800 w-full gap-2 shrink-0">
-            <img
-              src="/carplus-pneus-oficina-mecanica-full-service-horizontal.svg"
-              alt="Carplus Pneus"
-              width="166"
-              height="40"
-              loading="eager"
-              className="h-[38px] sm:h-[40px] w-auto max-w-[160px] object-contain block shrink-0"
-            />
-            <button 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center gap-1.5 px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-base rounded-xl min-h-[48px] min-w-[48px] cursor-pointer border border-zinc-700 transition shrink-0"
-              aria-label="Fechar Menu"
-            >
-              <span>Fechar</span>
-              <X className="w-5 h-5 text-[#F5A623] shrink-0" />
-            </button>
-          </div>
-
-          {/* Clean 6-item Vertical Navigation List (Requirement 3: Início · Pneus (catálogo) · Qual pneu serve no meu carro? · Serviços e Alinhamento · Sobre · Contato) */}
-          <div className="py-4 my-auto space-y-1 w-full">
-            <button
-              onClick={() => handleMobileNav('home')}
-              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
-            >
-              <Home className="w-6 h-6 text-[#F5A623] shrink-0" />
-              <span className="text-[20px] font-bold text-white tracking-tight">Início</span>
-            </button>
-
-            <button
-              onClick={() => handleMobileNav('catalogo-pneus')}
-              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
-            >
-              <Disc className="w-6 h-6 text-[#F5A623] shrink-0" />
-              <span className="text-[20px] font-bold text-white tracking-tight">Pneus (catálogo)</span>
-            </button>
-
-            <button
-              onClick={() => handleMobileNav('finder')}
-              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
-            >
-              <HelpCircle className="w-6 h-6 text-[#F5A623] shrink-0" />
-              <span className="text-[20px] font-bold text-white tracking-tight">Qual pneu serve no meu carro?</span>
-            </button>
-
-            <button
-              onClick={() => handleMobileNav('alinhamento-3d-curitiba')}
-              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
-            >
-              <Wrench className="w-6 h-6 text-[#F5A623] shrink-0" />
-              <span className="text-[20px] font-bold text-white tracking-tight">Serviços e Alinhamento</span>
-            </button>
-
-            <button
-              onClick={() => handleMobileNav('quem-somos')}
-              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
-            >
-              <Info className="w-6 h-6 text-[#F5A623] shrink-0" />
-              <span className="text-[20px] font-bold text-white tracking-tight">Sobre</span>
-            </button>
-
-            <button
-              onClick={() => handleMobileNav('contato')}
-              className="w-full h-[64px] min-h-[64px] flex items-center gap-4 px-2 border-b border-zinc-800 text-left active:bg-zinc-900 transition cursor-pointer"
-            >
-              <Mail className="w-6 h-6 text-[#F5A623] shrink-0" />
-              <span className="text-[20px] font-bold text-white tracking-tight">Contato</span>
-            </button>
-          </div>
-
-          {/* Bottom Action Area: 2 Large 56px Action Buttons + Simple Address */}
-          <div className="pt-4 border-t border-zinc-800 space-y-3 w-full shrink-0">
-            <a
-              href="tel:554130827282"
-              data-cta-location="header"
-              className="w-full h-[56px] min-h-[56px] bg-[#F5A623] hover:bg-amber-400 text-zinc-950 font-extrabold text-[18px] rounded-xl flex items-center justify-center gap-3 transition cursor-pointer"
-            >
-              <Phone className="w-6 h-6 shrink-0" />
-              <span>Ligar (41) 3082-7282</span>
-            </a>
-
-            <a
-              href={formatWhatsApp('Olá Carplus! Gostaria de consultar pneus e serviços para o meu carro.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cta-location="header"
-              className="w-full h-[56px] min-h-[56px] bg-[#25D366] hover:bg-emerald-500 text-white font-extrabold text-[18px] rounded-xl flex items-center justify-center gap-3 transition cursor-pointer"
-            >
-              <MessageSquare className="w-6 h-6 shrink-0 fill-current" />
-              <span>Chamar no WhatsApp</span>
-            </a>
-
-            {/* Single clean address line with "Ver no mapa" link */}
-            <div className="pt-2 text-center text-sm text-zinc-400">
-              <span>Av. Pres. Arthur Bernardes, 1323 - Portão, Curitiba</span>
-              <a 
-                href="https://maps.google.com/?q=Av.+Presid.+Arthur+da+Silva+Bernardes,+1323+-+Portão,+Curitiba+-+PR" 
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cta-location="header"
-                className="text-[#F5A623] underline font-bold ml-2 inline-flex items-center gap-1"
-              >
-                <Compass className="w-4 h-4 inline" />
-                <span>Ver no mapa</span>
-              </a>
-            </div>
-          </div>
+        <div ref={panelRef} id="mobile-navigation-links" className="max-h-[calc(100dvh-85px)] overflow-y-auto overscroll-contain border-t border-white/15 bg-[#080808] px-5 pb-6 pt-4 shadow-2xl sm:px-6 xl:hidden">
+          <nav aria-label="Navegação móvel" className="mx-auto max-w-3xl">
+            <div className="grid gap-0 sm:grid-cols-2 sm:gap-x-7">{primaryLinks.map(link => <a key={link.id} href={link.href} onClick={event => navigate(event, link.id)} className={`flex min-h-14 items-center justify-between gap-4 border-b border-white/15 py-3 text-lg font-semibold text-white hover:text-[#f59c00] ${focusClass}`}>{link.label}<ArrowUpRight className="h-5 w-5 text-[#f59c00]" aria-hidden="true" /></a>)}</div>
+            <div className="mt-4 grid sm:grid-cols-2 sm:gap-x-7">{moreLinks.map(link => <a key={link.id} href={link.href} onClick={event => navigate(event, link.id)} className={`flex min-h-12 items-center py-2 text-[15px] text-white/75 hover:text-[#f59c00] ${focusClass}`}>{link.label}</a>)}<button type="button" onClick={() => { closeMenu(); onOpenCart(); }} className={`flex min-h-12 items-center gap-2 py-2 text-left text-[15px] text-white/75 hover:text-[#f59c00] ${focusClass}`}><ShoppingCart className="h-4 w-4" aria-hidden="true" />Carrinho{cartCount > 0 ? ` (${cartCount})` : ''}</button></div>
+            <div className="mt-5 grid gap-3 border-t border-white/15 pt-5 sm:grid-cols-2"><a href={whatsapp} target="_blank" rel="noopener noreferrer" data-cta-location="header" className={`flex min-h-14 items-center justify-center gap-3 rounded-sm bg-[#f59c00] px-4 py-3 text-center text-base font-bold text-[#080808] ${focusClass}`}><MessageSquare className="h-5 w-5 shrink-0" aria-hidden="true" />Pedir orçamento no WhatsApp</a><a href="tel:554130827282" data-cta-location="header" className={`flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/30 px-4 py-3 text-base font-semibold text-white ${focusClass}`}><Phone className="h-5 w-5 shrink-0 text-[#f59c00]" aria-hidden="true" />(41) 3082-7282</a></div>
+            <a href={maps} target="_blank" rel="noopener noreferrer" data-cta-location="header" className={`mt-3 flex min-h-12 items-center justify-between gap-3 py-3 text-sm text-white/65 hover:text-[#f59c00] ${focusClass}`}><span>Av. Pres. Arthur Bernardes, 1323 · Portão, Curitiba</span><ArrowUpRight className="h-4 w-4 shrink-0 text-[#f59c00]" aria-hidden="true" /></a>
+          </nav>
         </div>
       )}
     </header>
   );
 }
-

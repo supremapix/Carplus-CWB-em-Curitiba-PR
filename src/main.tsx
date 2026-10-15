@@ -4,6 +4,7 @@ import {HelmetProvider} from 'react-helmet-async';
 import ErrorBoundary from './components/ErrorBoundary.tsx';
 import App from './App.tsx';
 import './index.css';
+import './carplus-theme.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

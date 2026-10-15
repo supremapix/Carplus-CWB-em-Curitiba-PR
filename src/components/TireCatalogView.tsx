@@ -208,14 +208,14 @@ export default function TireCatalogView({
                   Catálogo Oficial Carplus
                 </span>
                 <span className="text-[11px] font-bold bg-yellow-500/10 text-yellow-800 px-2.5 py-0.5 rounded-full border border-yellow-500/20">
-                  {catalogList.length > 50 ? catalogList.length : 1962} Pneus em Estoque
+                  {catalogList.length > 50 ? catalogList.length : 1962} opções no catálogo
                 </span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-black text-gray-950 uppercase tracking-tight">
                 Pneus e Auto Center em Curitiba – Portão
               </h1>
               <p className="text-sm sm:text-base text-gray-700 max-w-3xl leading-relaxed bg-amber-50/50 p-3.5 rounded-2xl border border-amber-200/60 mt-1">
-                Procurando <strong>onde comprar pneus em Curitiba</strong>? No catálogo oficial da Carplus Pneus e Auto Center no Portão (Av. Arthur Bernardes, 1323), você encontra mais de 1.900 opções de pneus novos multimarcas a pronta entrega, com montagem técnica anti-risco, alinhamento 3D a laser e garantia oficial de 5 anos de fábrica.
+                Encontre pneus por medida, marca ou carro. Compare as opções e consulte preço, disponibilidade e aplicação pelo WhatsApp. Montagem e serviços na Carplus, no Portão, Curitiba.
               </p>
             </div>
 
@@ -235,6 +235,7 @@ export default function TireCatalogView({
               <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
+                aria-label="Buscar pneus por medida, marca ou carro"
                 value={searchTerm}
                 onChange={(e) => handleFilterChange(() => setSearchTerm(e.target.value))}
                 placeholder="Busque por medida (ex: 205/55R16), marca, modelo ou carro (ex: Corolla, HB20, Dolphin)..."
@@ -243,6 +244,7 @@ export default function TireCatalogView({
               {searchTerm && (
                 <button
                   onClick={() => handleFilterChange(() => setSearchTerm(''))}
+                  aria-label="Limpar busca de pneus"
                   className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   <X className="w-4 h-4" />
@@ -253,6 +255,7 @@ export default function TireCatalogView({
             <div className="flex items-center gap-2 md:col-span-4 lg:col-span-3">
               <div className="relative w-full">
                 <select
+                  aria-label="Ordenar pneus"
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
                   className="w-full appearance-none bg-gray-50 border border-gray-250 py-3 pl-3 pr-8 rounded-2xl text-xs font-bold text-gray-800 focus:bg-white focus:border-[#f49e1a] outline-none cursor-pointer"
@@ -269,6 +272,7 @@ export default function TireCatalogView({
               {/* Mobile filter toggle button */}
               <button
                 onClick={() => setIsMobileFiltersOpen(true)}
+                aria-label="Abrir filtros de pneus"
                 className="lg:hidden bg-gray-900 text-white p-3 rounded-2xl flex items-center justify-center gap-1.5 shrink-0 relative font-bold text-xs"
               >
                 <Filter className="w-4 h-4 text-[#f49e1a]" />
@@ -647,7 +651,8 @@ export default function TireCatalogView({
                   </span>
                   <button
                     onClick={() => setIsMobileFiltersOpen(false)}
-                    className="p-2 rounded-full hover:bg-gray-100 text-gray-500"
+                    aria-label="Fechar filtros de pneus"
+                    className="min-h-11 min-w-11 p-2 rounded-full hover:bg-gray-100 text-gray-500"
                   >
                     <X className="w-5 h-5" />
                   </button>

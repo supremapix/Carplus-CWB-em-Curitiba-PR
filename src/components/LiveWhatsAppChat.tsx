@@ -4,6 +4,7 @@ import { MessageCircle } from 'lucide-react';
 export default function LiveWhatsAppChat() {
   const phone = '554130827282'; // (41) 3082-7282
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   useEffect(() => {
     const checkMenuState = () => {
@@ -14,38 +15,34 @@ export default function LiveWhatsAppChat() {
     const observer = new MutationObserver(checkMenuState);
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-    return () => observer.disconnect();
+    const footer = document.querySelector('footer');
+    const footerObserver = 'IntersectionObserver' in window && footer
+      ? new IntersectionObserver(([entry]) => setIsFooterVisible(entry.isIntersecting)) : null;
+    if (footer && footerObserver) footerObserver.observe(footer);
+    return () => { observer.disconnect(); footerObserver?.disconnect(); };
   }, []);
 
-  if (isMenuOpen) return null;
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.carpluspneuseoficina.com.br/';
-    const message = `Olá Carplus! Gostaria de informações sobre pneus e serviços. Vim da página: ${currentUrl}`;
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-  };
+  if (isMenuOpen || isFooterVisible) return null;
 
   const defaultUrl = typeof window !== 'undefined'
-    ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(`Olá Carplus! Gostaria de informações sobre pneus e serviços. Vim da página: ${window.location.href}`)}`
+    ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(`Olá, Carplus! Quero um orçamento de pneus ou serviços. Vim da página: ${window.location.origin}${window.location.pathname}`)}`
     : `https://api.whatsapp.com/send?phone=${phone}`;
 
   return (
     <div className="fixed bottom-5 right-4 sm:right-6 z-50 font-sans" id="live-whatsapp-chat">
       <a
         href={defaultUrl}
-        onClick={handleClick}
         target="_blank"
         rel="noopener noreferrer"
         data-cta-location="flutuante"
-        className="flex items-center justify-center gap-2 w-[52px] h-[52px] sm:w-auto sm:h-[48px] sm:px-4 bg-[#25D366] hover:bg-[#20ba59] text-white font-bold rounded-full shadow-2xl transition-all duration-200 transform hover:scale-105 active:scale-95 border-2 border-white cursor-pointer"
+        data-analytics-url="https://api.whatsapp.com/send?phone=554130827282"
+        className="flex items-center justify-center gap-2 w-[54px] h-[54px] sm:w-auto sm:h-[52px] sm:px-5 bg-[#f59c00] text-[#080808] font-bold rounded-full shadow-2xl transition-transform duration-200 hover:-translate-y-1 border-2 border-[#080808] cursor-pointer"
         aria-label="Falar no WhatsApp da Carplus"
         title="Falar no WhatsApp da Carplus"
         id="whatsapp-trigger-btn"
       >
-        <MessageCircle className="w-6 h-6 shrink-0 fill-current text-white" />
-        <span className="hidden sm:inline text-[15px] tracking-wide font-extrabold">WhatsApp</span>
+        <MessageCircle className="w-6 h-6 shrink-0" />
+        <span className="hidden sm:inline text-[14px] font-bold">Falar no WhatsApp</span>
       </a>
     </div>
   );
