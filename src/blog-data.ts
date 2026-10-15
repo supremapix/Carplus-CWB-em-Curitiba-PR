@@ -81,7 +81,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedIso: '2026-08-16',
     readingTime: '7 min de leitura',
     featuredImage: '/images/galeria/loja-de-pneus-em-curitiba.webp',
-    imageAlt: 'Oficina Carplus Curitiba: instalação de pneus Pirelli Elect em carro elétrico com menor preço da região',
+    imageAlt: 'Fachada da Carplus iluminada, com letreiro e telefone visíveis.',
     intro: 'Se você dirige um veículo elétrico ou híbrido plug-in pelas ruas de Curitiba e Região Metropolitana, já deve ter notado que a dinâmica de condução é completamente diferente de um carro a combustão tradicional. A aceleração instantânea e o silêncio da cabine são fascinantes, mas impõem um desafio brutal sobre a borracha: os pneus de carros elétricos sofrem um desgaste até 30% mais rápido se não forem o modelo homologado correto. É por isso que a Carplus Pneus & Oficina se consolidou como a principal oficina especializada em carros elétricos em Curitiba, combinando consultoria técnica de alto nível, estrutura para elevação segura de baterias e a garantia incondicional do menor preço da cidade.',
     sections: [
       {
@@ -190,7 +190,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
     featuredImage: '/images/galeria/alinhamento.jpg',
-    imageAlt: 'Alinhamento 3D computadorizado em veículo na oficina Carplus Pneus no Portão em Curitiba',
+    imageAlt: 'Roda de veículo com alvo de alinhamento e técnico na oficina.',
     intro: 'Você está dirigindo em uma via plana e reta, solta as mãos suavemente do volante por um segundo e percebe que o veículo imediatamente começa a derivar para a direita ou para a esquerda? Esse é um dos sintomas mais comuns relatados pelos motoristas nas oficinas de Curitiba. Embora pareça um incômodo menor no início, o carro puxando para o lado compromete a dirigibilidade, acelera o desgaste irregular dos pneus e sobrecarrega os componentes da direção.',
     sections: [
       {
@@ -308,7 +308,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '5 min de leitura',
     featuredImage: '/images/galeria/rampa-de-geometria.jpg',
-    imageAlt: 'Mecânicos profissionais avaliando sistema de suspensão em elevador automotivo na Carplus',
+    imageAlt: 'Jeep Compass branco sobre a rampa de alinhamento na oficina.',
     intro: 'Passar por quebra-molas, valetas e desníveis no asfalto faz parte da rotina de qualquer motorista em Curitiba. No entanto, quando essa transposição vem acompanhada de barulhos como estalos metálicos, "toc-toc" seco ou rangidos de borracha, é sinal claro de que algum componente do conjunto de suspensão sofreu desgaste ou atingiu o fim de sua vida útil.',
     sections: [
       {
@@ -398,7 +398,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '5 min de leitura',
     featuredImage: '/images/galeria/montagem-tecnica.jpg',
-    imageAlt: 'Equipamento de balanceamento dinâmico de rodas e pneus na oficina Carplus Curitiba',
+    imageAlt: 'Técnico manuseando pneu junto ao equipamento da oficina.',
     intro: 'Alinhamento e balanceamento são dois dos serviços mais procurados em centros automotivos, mas ainda geram dúvidas entre muitos motoristas. Embora frequentemente sejam realizados juntos, tratam-se de procedimentos técnicos completamente distintos, que corrigem problemas diferentes e atuam em conjuntos específicos do veículo.',
     sections: [
       {
@@ -501,7 +501,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
     featuredImage: '/images/galeria/troca-de-pneus.jpg',
-    imageAlt: 'Técnico examinando indicador de desgaste e banda de rodagem de pneu na Carplus',
+    imageAlt: 'Homem ao lado de um pneu no equipamento da oficina.',
     intro: 'Os pneus são o único ponto de contato entre o automóvel e o asfalto. Em condições ideais de alinhamento, calibragem e suspensão, a banda de rodagem deve se desgastar de maneira perfeitamente homogênea e uniforme em toda a sua largura. Quando você observa que um dos ombros do pneu está "comendo" mais rápido do que o centro ou a borda oposta, há uma anomalia mecânica que precisa de atenção imediata.',
     sections: [
       {
@@ -603,7 +603,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '7 min de leitura',
     featuredImage: '/images/galeria/fachada-carplus.webp',
-    imageAlt: 'Revisão preventiva completa de automóvel em oficina mecânica Carplus em Curitiba',
+    imageAlt: 'Fachada da Carplus com letreiro e símbolo da marca.',
     intro: 'Planejar uma viagem com a família ou amigos é sempre empolgante, seja descendo a serra rumo ao litoral do Paraná e Santa Catarina, seja pegando rodovias interestaduais como BR-277, BR-376 e BR-116. No entanto, rodar em alta velocidade contínua e com o carro carregado de passageiros e bagagens exige muito mais de todos os sistemas mecânicos do que o uso urbano diário. Um checklist preventivo bem executado evita contratempos perigosos e gastos imprevistos.',
     sections: [
       {
@@ -719,7 +719,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
     featuredImage: '/images/galeria/tecnicos.jpg',
-    imageAlt: 'Profissional da Carplus realizando teste e avaliação detalhada da suspensão automotiva',
+    imageAlt: 'Técnico trabalhando junto ao capô aberto de um veículo.',
     intro: 'O sistema de suspensão é um dos conjuntos mais importantes do automóvel. Sua função primordial não é apenas proporcionar conforto aos ocupantes, mas principalmente manter as quatro rodas em contato firme e constante com o solo em qualquer situação — acelerando, manobrando em curvas ou freando bruscamente. Conheça os 7 sinais mais claros de que sua suspensão precisa de uma inspeção técnica.',
     sections: [
       {
@@ -823,7 +823,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '5 min de leitura',
     featuredImage: '/images/galeria/auto-center-pneus-portao.jpg',
-    imageAlt: 'Diagnóstico de vibração de direção e balanceamento na Carplus Pneus Curitiba',
+    imageAlt: 'Rodas e pneus em primeiro plano, com equipamentos da oficina ao fundo.',
     intro: 'Poucas coisas são tão irritantes e preocupantes ao dirigir quanto sentir o volante trepidar nas mãos. A vibração no volante nunca é normal: ela indica que alguma força centrífuga, oscilação geométrica ou desbalanceamento de massa está sendo transmitido através da coluna de direção até as suas mãos.',
     sections: [
       {
@@ -914,7 +914,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '5 min de leitura',
     featuredImage: '/images/galeria/caminhonete-suv.jpg',
-    imageAlt: 'Inspeção e manutenção de pastilhas e discos de freio automotivo na Carplus Portão',
+    imageAlt: 'SUVs suspensos sem rodas e outros veículos no interior da oficina.',
     intro: 'O sistema de freios é, sem sombra de dúvidas, o item de segurança ativa mais crucial do seu veículo. Por ser acionado centenas de vezes todos os dias nas vias urbanas movimentadas de Curitiba, ele sofre atrito e desgaste contínuos por projeto. Portanto, quando o freio começa a emitir ruídos, ele está literalmente enviando um sinal sonoro de que algo precisa ser verificado.',
     sections: [
       {
@@ -1012,7 +1012,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
     featuredImage: '/images/galeria/consultoria-avaliacao-estrutural.jpg',
-    imageAlt: 'Verificação técnica de óleo do motor e filtros em auto center Carplus Curitiba',
+    imageAlt: 'Dois homens junto a um veículo suspenso na oficina.',
     intro: 'O óleo lubrificante é popularmente conhecido como o "sangue do motor", e essa analogia é perfeita. Ele tem a missão vital de lubrificar as peças móveis (pistões, bielas, virabrequim e comando de válvulas), reduzir o atrito e o calor, limpar resíduos de combustão e proteger contra corrosão. Trocar o óleo no prazo correto é a manutenção mais barata e eficaz para evitar a retífica prematura do motor.',
     sections: [
       {
@@ -1115,7 +1115,7 @@ export const BLOG_POSTS: BlogPost[] = [
     updatedIso: '2026-08-14',
     readingTime: '6 min de leitura',
     featuredImage: '/images/galeria/rodas-de-liga-leve.webp',
-    imageAlt: 'Mostruário de rodas de liga leve e pneus de alta performance na Carplus Pneus Portão',
+    imageAlt: 'Rodas de liga leve expostas no interior da loja.',
     intro: 'Personalizar o carro com um novo conjunto de rodas de liga leve é o sonho de muitos motoristas. As rodas certas transformam o visual do automóvel, valorizam o veículo e podem até melhorar a estabilidade. No entanto, escolher rodas baseando-se apenas na estética é uma das principais causas de problemas de raspagem na lataria, danos à suspensão e até riscos de acidentes. Entenda as especificações técnicas obrigatórias.',
     sections: [
       {
@@ -1211,7 +1211,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "publishedIso": "2026-10-10",
     "readingTime": "9 min de leitura",
     "featuredImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
-    "imageAlt": "Pneus especializados para carros elétricos e híbridos na loja Carplus em Curitiba",
+    "imageAlt": "Fachada da Carplus iluminada, com letreiro e telefone visíveis.",
     "intro": "A transição para a mobilidade elétrica já é uma realidade visível no trânsito de Curitiba e de toda a Região Metropolitana. Modelos 100% elétricos e híbridos plug-in tornaram-se presença diária em avenidas movimentadas como a Presidente Arthur Bernardes, República Argentina e Mário Tourinho. No entanto, muitos proprietários descobrem apenas na primeira revisão ou troca preventiva que os pneus desses veículos possuem exigências de engenharia totalmente distintas dos carros a combustão tradicionais. O peso elevado dos conjuntos de baterias de íons de lítio, a entrega instantânea de torque máximo desde a primeira rotação do motor elétrico e a ausência de ruído mecânico criam um ambiente operacional severo para os compostos de borracha. Neste guia completo elaborado pela equipe da Carplus Pneus e Auto Center, explicamos detalhadamente o que muda na dinâmica dos pneus para veículos elétricos, quanto tempo eles costumam durar nas ruas paranaenses, como decifrar as marcações específicas de carga e de que maneira escolher a medida homologada correta para o seu veículo no bairro Portão.",
     "sections": [
       {
@@ -1349,7 +1349,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "publishedIso": "2026-10-10",
     "readingTime": "8 min de leitura",
     "featuredImage": "/images/galeria/troca-de-pneus.jpg",
-    "imageAlt": "Verificação técnica de índice de carga e montagem de pneus para veículos elétricos e híbridos na Carplus",
+    "imageAlt": "Homem ao lado de um pneu no equipamento da oficina.",
     "intro": "Ao chegar o momento da primeira troca de pneus de um veículo híbrido ou totalmente elétrico, uma das perguntas mais frequentes que recebemos no balcão da Carplus Pneus e Auto Center no bairro Portão é: \"Posso instalar um pneu comum, desses que uso no meu carro a gasolina, desde que tenha a mesma medida numérica?\". A dúvida é totalmente compreensível, uma vez que a diferença de valor ou a facilidade de encontrar modelos convencionais no mercado pode parecer um caminho atrativo. No entanto, a resposta técnica exige cautela e conhecimento aprofundado de engenharia de chassis. Embora fisicamente um pneu de medidas idênticas possa ser montado na roda, os índices de carga, a resistência mecânica, a taxa de ruído e a preservação da garantia do veículo envolvem critérios rigorosos. Neste artigo, desmistificamos os aspectos técnicos que todo condutor em Curitiba precisa conhecer antes de tomar essa decisão.",
     "sections": [
       {
@@ -1487,7 +1487,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "publishedIso": "2026-10-10",
     "readingTime": "10 min de leitura",
     "featuredImage": "/images/galeria/mostruario-pneus-novos.webp",
-    "imageAlt": "Demonstração de indicadores TWI e sulcos de segurança em pneus novos na Carplus Curitiba",
+    "imageAlt": "Pneus com etiquetas organizados em prateleiras na loja.",
     "intro": "Cuidar dos pneus do carro não precisa ser um assunto complicado repleto de jargões de oficina. Para muitos condutores — especialmente motoristas com mais de 50 ou 60 anos que prezam pela segurança inegociável da família e pela tranquilidade de rodar sem surpresas —, entender os sinais básicos de desgaste do pneu é o caminho mais seguro para evitar multas, economizar combustível e prevenir acidentes graves. Neste guia didático preparado pelos profissionais da Carplus Pneus e Auto Center, respondemos de forma direta, clara e acessível às dúvidas mais frequentes sobre o indicador TWI de 1,6 mm, como descobrir a idade do pneu pelo código DOT, a maneira correta de calibrar os pneus no clima instável de Curitiba e o momento exato em que a troca se torna indispensável.",
     "sections": [
       {
@@ -1624,7 +1624,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "publishedIso": "2026-10-10",
     "readingTime": "9 min de leitura",
     "featuredImage": "/images/galeria/fachada-carplus.webp",
-    "imageAlt": "Fachada e instalações completas da Carplus Auto Center e Pneus no bairro Portão em Curitiba",
+    "imageAlt": "Fachada da Carplus com letreiro e símbolo da marca.",
     "intro": "Encontrar um auto center de pneus de inteira confiança em Curitiba é uma das principais preocupações de quem depende do carro diariamente para trabalhar, levar a família ou viajar. Termos como \"auto center pneus Curitiba\", \"auto center Curitiba\" e \"auto center mais próximo\" figuram diariamente entre as buscas mais recorrentes no Google e nos assistentes de inteligência artificial. Afinal, ninguém quer ser surpreendido por diagnósticos inventados, cobranças indevidas de serviços desnecessários ou, pior ainda, ter as rodas de liga leve do carro riscadas por ferramentas obsoletas. Neste artigo transparente e detalhado, apresentamos um checklist prático com os cinco critérios inegociáveis para escolher uma oficina de pneus de excelência em Curitiba e explicamos por que a Carplus Pneus e Auto Center, localizada estrategicamente na Av. Presidente Arthur Bernardes no Portão, consolidou-se como referência para motoristas do Portão, Água Verde, Santa Quitéria, Vila Izabel, Novo Mundo, Fazendinha, Capão Raso e Pinheirinho.",
     "sections": [
       {
@@ -1764,7 +1764,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "publishedIso": "2026-10-10",
     "readingTime": "10 min de leitura",
     "featuredImage": "/images/galeria/mostruario-pneus-novos.webp",
-    "imageAlt": "Mostruário completo de pneus novos homologados para venda e instalação na Carplus em Curitiba",
+    "imageAlt": "Pneus com etiquetas organizados em prateleiras na loja.",
     "intro": "Comprar pneus novos em Curitiba pode parecer uma tarefa desafiadora diante da imensa quantidade de marcas, medidas, índices e opções disponíveis no mercado. Seja você o condutor de um carro popular para deslocamento diário, de um sedã para viagens de fim de semana, de uma picape de trabalho ou de um moderno SUV familiar, a escolha do pneu correto impacta diretamente a estabilidade, a distância de frenagem no asfalto molhado e o consumo de combustível. Mais do que encontrar um preço atraente, o grande segredo para uma compra inteligente é aliar produtos de primeira linha com serviço de montagem técnica e alinhamento 3D realizados no mesmo local, eliminando retrabalhos e dores de cabeça. Neste guia definitivo elaborado pela equipe da Carplus Pneus e Auto Center, apresentamos um panorama completo sobre como escolher as melhores fabricantes, entender a divisão por tamanho de aro (do aro 13 ao aro 18) e aproveitar todas as vantagens da instalação no bairro Portão em Curitiba.",
     "sections": [
       {

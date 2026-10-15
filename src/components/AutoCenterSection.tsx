@@ -52,7 +52,8 @@ export default function AutoCenterSection({ onNavigateToPage }: AutoCenterSectio
       <div className="bg-white border-2 border-black p-6 sm:p-8">
         
         {/* Header Block */}
-        <div className="border-b-2 border-black pb-6">
+        <div className="grid items-center gap-7 border-b border-white/15 pb-7 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="bg-[#f49e1a] text-black font-mono font-black text-[11px] uppercase tracking-wider px-3 py-1 border border-black inline-flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />
@@ -70,6 +71,11 @@ export default function AutoCenterSection({ onNavigateToPage }: AutoCenterSectio
           <p className="text-gray-800 text-sm sm:text-base font-medium mt-3 max-w-4xl leading-relaxed">
             A <strong>Carplus Pneus</strong> é loja de pneus, autocenter e centro automotivo no Portão, Curitiba, com pneus novos multimarcas, montagem especializada e serviços automotivos completos para veículos de passeio, SUVs, utilitários e caminhonetes.
           </p>
+          </div>
+          <figure className="overflow-hidden rounded-xl border border-[#f59c00]/25 bg-[#080808]">
+            <img src="/images/carplus-real/consultoria-avaliacao-estrutural.webp" alt="Atendimento na oficina Carplus com veículo no elevador, no Portão" width="1384" height="924" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" onError={event => { const image = event.currentTarget; if (image.dataset.realFallback) return; image.dataset.realFallback = 'true'; image.src = '/images/galeria/consultoria-avaliacao-estrutural.jpg'; }} />
+            <figcaption className="border-t border-white/10 px-4 py-4 text-[16px] leading-relaxed text-[#c3c3c3]">Nossa estrutura e atendimento no Portão, Curitiba.</figcaption>
+          </figure>
         </div>
 
         {/* 4 Core Pillars of Service */}

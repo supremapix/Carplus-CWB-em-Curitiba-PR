@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
 
-export default function LiveWhatsAppChat() {
+export default function LiveWhatsAppChat({ pageKey }: { pageKey?: string }) {
   const phone = '554130827282'; // (41) 3082-7282
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const [isHeroActionVisible, setIsHeroActionVisible] = useState(false);
 
   useEffect(() => {
     const checkMenuState = () => {
@@ -19,10 +20,15 @@ export default function LiveWhatsAppChat() {
     const footerObserver = 'IntersectionObserver' in window && footer
       ? new IntersectionObserver(([entry]) => setIsFooterVisible(entry.isIntersecting)) : null;
     if (footer && footerObserver) footerObserver.observe(footer);
-    return () => { observer.disconnect(); footerObserver?.disconnect(); };
-  }, []);
+    const heroAction = document.getElementById('hero-whatsapp-btn');
+    setIsHeroActionVisible(false);
+    const heroObserver = 'IntersectionObserver' in window && heroAction
+      ? new IntersectionObserver(([entry]) => setIsHeroActionVisible(entry.isIntersecting)) : null;
+    if (heroAction && heroObserver) heroObserver.observe(heroAction);
+    return () => { observer.disconnect(); footerObserver?.disconnect(); heroObserver?.disconnect(); };
+  }, [pageKey]);
 
-  if (isMenuOpen || isFooterVisible) return null;
+  if (isMenuOpen || isFooterVisible || isHeroActionVisible) return null;
 
   const defaultUrl = typeof window !== 'undefined'
     ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(`Olá, Carplus! Quero um orçamento de pneus ou serviços. Vim da página: ${window.location.origin}${window.location.pathname}`)}`

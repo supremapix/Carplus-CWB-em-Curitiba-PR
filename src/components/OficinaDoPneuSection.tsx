@@ -56,7 +56,7 @@ export default function OficinaDoPneuSection({ onNavigateHome }: OficinaDoPneuSe
       </div>
 
       {/* Banner / Visual */}
-      <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-6 sm:p-8 rounded-3xl text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="grid items-center gap-7 overflow-hidden rounded-2xl border border-[#f59c00]/25 bg-[#111111] p-5 text-white sm:p-7 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="space-y-3 text-left">
           <span className="font-mono text-yellow-500 uppercase tracking-widest text-xs font-black">Instalação Especializada</span>
           <h2 className="text-xl sm:text-2xl font-black uppercase font-mono">Montagem Técnica Computadorizada</h2>
@@ -64,12 +64,10 @@ export default function OficinaDoPneuSection({ onNavigateHome }: OficinaDoPneuSe
             Ao adquirir seus pneus novos na Carplus, nossa equipe realiza a montagem com maquinário pneumático anti-risco e alinhamento 3D em nossa oficina na Arthur Bernardes.
           </p>
         </div>
-        <img 
-          src="/images/galeria/oficina-carros.webp" 
-          alt="Oficina Carplus Portão"
-          className="w-full md:w-56 h-36 object-cover rounded-2xl border border-white/10"
-          referrerPolicy="no-referrer"
-        />
+        <figure className="overflow-hidden rounded-xl border border-[#f59c00]/25 bg-[#080808]">
+          <img src="/images/carplus-real/montagem-tecnica.webp" alt="Técnico trabalhando na montagem de pneus na Carplus, unidade Portão" width="1384" height="924" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" onError={event => { const image = event.currentTarget; if (image.dataset.realFallback) return; image.dataset.realFallback = 'true'; image.src = '/images/galeria/montagem-tecnica.jpg'; }} />
+          <figcaption className="border-t border-white/10 px-4 py-4 text-[16px] leading-relaxed text-[#c3c3c3]">Montagem de pneus na nossa oficina no Portão.</figcaption>
+        </figure>
       </div>
 
       {/* Bento Grid Features */}

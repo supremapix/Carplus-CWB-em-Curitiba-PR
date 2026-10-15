@@ -1,0 +1,616 @@
+{
+  "verifiedOn": "2026-10-15",
+  "requestedPage": "https://www.carpluscwb.com.br/alinhamento-3d-curitiba",
+  "method": "Inspeção visual das 30 imagens locais, agrupamento por SHA256 e comparação byte a byte de 16 originais reais com os arquivos públicos do domínio Carplus fornecido. As descrições registram o que é visível; não identificam cargos ou serviços que a imagem não demonstra.",
+  "originalPageWarning": "A imagem chamada alinhamento-jeep.webp, extraída da página indicada, mostrava um BMW azul estacionado em paisagem e não foi aceita como prova de alinhamento ou de Jeep. O nome de arquivo ou texto alternativo isolado não foi usado para verificar autenticidade.",
+  "optimization": "Novas variantes WebP com largura máxima de 1600 px, qualidade 84 e sem ampliação. Quando o WebP original já é mais leve, seus bytes são reutilizados sem recompressão. Os 16 originais reais permanecem intactos. Os 14 aliases genéricos mantêm suas dimensões, extensões e URLs, com fotos reais adequadas.",
+  "originals": [
+    {
+      "filename": "alinhamento.jpg",
+      "description": "Roda de veículo com alvo de alinhamento e técnico na oficina.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/alinhamento.jpg",
+      "sourceLocalPath": "/images/galeria/alinhamento.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 2021745,
+      "sha256": "5c5496d394b91c40d014df9d5eb2a9198eee73229523b93756e016a750e60c63",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/alinhamento.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 142682,
+        "sha256": "0c642e4c31048d88afbe5411a96dc74fd7eedee9a4cf37095d06938a955e88c1",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "auto-center-de-pneus-em-curitiba.jpg",
+      "description": "Pneus Prinx expostos com etiquetas no interior da loja.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/auto-center-de-pneus-em-curitiba.jpg",
+      "sourceLocalPath": "/images/galeria/auto-center-de-pneus-em-curitiba.jpg",
+      "width": 2714,
+      "height": 1812,
+      "bytes": 2088537,
+      "sha256": "7a25ffe5d101087003c5fc61a365a08a4948c1ba30c94692a36f1303f7cc04dd",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/auto-center-de-pneus-em-curitiba.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 53634,
+        "sha256": "1243529681233d64b4ee953a89a2f4f74289c879a19e6dfbb8476b1753b2b2f7",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "auto-center-pneus-portao.jpg",
+      "description": "Rodas e pneus em primeiro plano, com equipamentos da oficina ao fundo.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/auto-center-pneus-portao.jpg",
+      "sourceLocalPath": "/images/galeria/auto-center-pneus-portao.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 1873646,
+      "sha256": "80295cede4cb4c1e7add912c104150c34781fdec26f5b6b7fb0ec5102a4d51af",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/auto-center-pneus-portao.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 68722,
+        "sha256": "5ff1e129e1c2ff4cd05edcf842ff7fdbbae75bddf89861e0ff3901223022fa7c",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "caminhonete-suv.jpg",
+      "description": "SUVs suspensos sem rodas e outros veículos no interior da oficina.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/caminhonete-suv.jpg",
+      "sourceLocalPath": "/images/galeria/caminhonete-suv.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 2223132,
+      "sha256": "e3be0ae15331418dd45ae7dfef2a73020212712e3199ef824f301ed142b4dd68",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/caminhonete-suv.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 130256,
+        "sha256": "50599b3d4010109958fd69ff6ef42ca7b55e05e2a898e9eda85b68611a69302c",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "consultoria-avaliacao-estrutural.jpg",
+      "description": "Dois homens junto a um veículo suspenso na oficina.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/consultoria-avaliacao-estrutural.jpg",
+      "sourceLocalPath": "/images/galeria/consultoria-avaliacao-estrutural.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 2505991,
+      "sha256": "fa1a2caa53442efd375fe79b6b65b8a20c0c9dd8d5e1747eb19aee1638631949",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/consultoria-avaliacao-estrutural.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 173208,
+        "sha256": "733772f58ad4a2208c7a675fbc20db45f6083d58956ad09d549619951ace6764",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "montagem-tecnica.jpg",
+      "description": "Técnico manuseando pneu junto ao equipamento da oficina.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/montagem-tecnica.jpg",
+      "sourceLocalPath": "/images/galeria/montagem-tecnica.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 2446232,
+      "sha256": "8e64d4588b71fa35486e94de1c8c1c8e34b2efd907bcd0cd435c43846d0b09db",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/montagem-tecnica.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 161748,
+        "sha256": "22798e983d148accb4a80f44d9df22db6a5cfa3d7ea9d33902867e1a50e6c759",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "pneus-auto-center.jpg",
+      "description": "Roda com pneu em equipamento, sendo manuseada por um técnico.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/pneus-auto-center.jpg",
+      "sourceLocalPath": "/images/galeria/pneus-auto-center.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 2169545,
+      "sha256": "0b16157b281baa2e790edac854347d9a299e4f763d458851b10732042be58dc8",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/pneus-auto-center.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 133318,
+        "sha256": "38a9fe957c9deb22e1ae069e9b612f06902c82d7bc2021bcaae6e565ce596c56",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "rampa-de-geometria.jpg",
+      "description": "Jeep Compass branco sobre a rampa de alinhamento na oficina.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/rampa-de-geometria.jpg",
+      "sourceLocalPath": "/images/galeria/rampa-de-geometria.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 2710790,
+      "sha256": "58b84f103626380722e6de63de42267e953a3e70293b35e8de2de715a5262051",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/rampa-de-geometria.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 245706,
+        "sha256": "887ed9c2ae938e9ab924b9617ec33001f275b25ba13968b9aa9f205f06606645",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "recepcao.jpg",
+      "description": "Área de atendimento da loja com balcões, cadeiras e exposição de pneus.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/recepcao.jpg",
+      "sourceLocalPath": "/images/galeria/recepcao.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 1512153,
+      "sha256": "dfa486606af8b94529f3ee45951ae64f097172b22f28cb6092ffa2317cbd1b06",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/recepcao.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 94028,
+        "sha256": "b7b376104a6071343dd6fd763c3f733551cdd99fc2f46e89f604a1d126241a51",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "tecnicos.jpg",
+      "description": "Técnico trabalhando junto ao capô aberto de um veículo.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/tecnicos.jpg",
+      "sourceLocalPath": "/images/galeria/tecnicos.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 2173706,
+      "sha256": "32305f8b12d6d08d8a466b7eeea9c3823e9294b9849ca2c29516d2c7648bb0ed",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/tecnicos.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 123988,
+        "sha256": "fde3aade3aa05155a9b7d56ec4e227f4c1434211f2666728d6d36a7db43928e3",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "troca-de-pneus.jpg",
+      "description": "Homem ao lado de um pneu no equipamento da oficina.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/troca-de-pneus.jpg",
+      "sourceLocalPath": "/images/galeria/troca-de-pneus.jpg",
+      "width": 2768,
+      "height": 1848,
+      "bytes": 2347760,
+      "sha256": "b416fcfc2d2657dd878d03c22a5de15f665ea5961bb98eb34a7bf9dc150e33d8",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/troca-de-pneus.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 156364,
+        "sha256": "bad226c728db399a358dbc6be980f7e406105e9475b3f42743b3d8d696ccb272",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "fachada-carplus.webp",
+      "description": "Fachada da Carplus com letreiro e símbolo da marca.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/fachada-carplus.webp",
+      "sourceLocalPath": "/images/galeria/fachada-carplus.webp",
+      "width": 1067,
+      "height": 800,
+      "bytes": 91026,
+      "sha256": "e4d1aba95243d2967c876eebb7e280b603adae4171a5a07eb4d54e0ad0832730",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/fachada-carplus.webp",
+        "width": 1067,
+        "height": 800,
+        "bytes": 91026,
+        "sha256": "e4d1aba95243d2967c876eebb7e280b603adae4171a5a07eb4d54e0ad0832730",
+        "enlarged": false,
+        "method": "Cópia do WebP original já mais leve, sem recompressão."
+      }
+    },
+    {
+      "filename": "loja-de-pneus-em-curitiba.webp",
+      "description": "Fachada da Carplus iluminada, com letreiro e telefone visíveis.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "sourceLocalPath": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "width": 1067,
+      "height": 800,
+      "bytes": 97630,
+      "sha256": "47da2bcfa22e535a0b29b24582f52acda1987589c5f545ea1a1c6af1ae8e94c4",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/loja-de-pneus-em-curitiba.webp",
+        "width": 1067,
+        "height": 800,
+        "bytes": 97630,
+        "sha256": "47da2bcfa22e535a0b29b24582f52acda1987589c5f545ea1a1c6af1ae8e94c4",
+        "enlarged": false,
+        "method": "Cópia do WebP original já mais leve, sem recompressão."
+      }
+    },
+    {
+      "filename": "rodas-de-liga-leve.webp",
+      "description": "Rodas de liga leve expostas no interior da loja.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/rodas-de-liga-leve.webp",
+      "sourceLocalPath": "/images/galeria/rodas-de-liga-leve.webp",
+      "width": 680,
+      "height": 454,
+      "bytes": 45176,
+      "sha256": "a2272e5766cda4c81b0e57b5fd0f4b605d2c4c53425f0118b4c2ac86c5b5be9b",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/rodas-de-liga-leve.webp",
+        "width": 680,
+        "height": 454,
+        "bytes": 40258,
+        "sha256": "64d3e6207c62f91581f96d8d000c85e676e53c5a5af4e06e9a9c86767eeb321a",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "mostruario-pneus-novos.webp",
+      "description": "Pneus com etiquetas organizados em prateleiras na loja.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/mostruario-pneus-novos.webp",
+      "sourceLocalPath": "/images/galeria/mostruario-pneus-novos.webp",
+      "width": 340,
+      "height": 510,
+      "bytes": 29948,
+      "sha256": "0092b6c8e3eceb017661e3ce5c651dd8822e687a6a4123286b340e6f3ac9bf59",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/mostruario-pneus-novos.webp",
+        "width": 340,
+        "height": 510,
+        "bytes": 28510,
+        "sha256": "3fcbbc4e7ad234378684fa7f16d60077e62500964f25b76e884a6db72f56f196",
+        "enlarged": false
+      }
+    },
+    {
+      "filename": "show-row-pneus.webp",
+      "description": "Área de atendimento e exposição de pneus com identificação Carplus na imagem.",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/show-row-pneus.webp",
+      "sourceLocalPath": "/images/galeria/show-row-pneus.webp",
+      "width": 680,
+      "height": 510,
+      "bytes": 57788,
+      "sha256": "415dc69e5178d4261ec4581a6c0d3744a001b4107ac03804233e31877a92b30c",
+      "remoteMatchesLocal": true,
+      "optimized": {
+        "path": "/images/carplus-real/show-row-pneus.webp",
+        "width": 680,
+        "height": 510,
+        "bytes": 53444,
+        "sha256": "871013fada37e2d3d4d07b3d962ac2de9199562a0e340b09aee79bed5f1dfa27",
+        "enlarged": false
+      }
+    }
+  ],
+  "replacements": [
+    {
+      "targetPath": "/images/galeria/alinhamento-jeep.webp",
+      "previous": {
+        "description": "Fotografia genérica de BMW azul estacionado ao ar livre.",
+        "width": 800,
+        "height": 600,
+        "bytes": 44340,
+        "sha256": "0476c928ed18b8657ae2cf4134129326e854b64ca44d1d6d1612254c01786053"
+      },
+      "sourceLocalPath": "/images/galeria/rampa-de-geometria.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/rampa-de-geometria.jpg",
+      "description": "Jeep Compass branco sobre a rampa de alinhamento na oficina.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 99580,
+        "sha256": "8cd336548914747a07018f5235d0b63f272f034b4add3ff61a52322544471b3c",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/montagem-pneu.webp",
+      "previous": {
+        "description": "Mesma fotografia genérica do BMW azul, sem montagem de pneus.",
+        "width": 800,
+        "height": 600,
+        "bytes": 44340,
+        "sha256": "0476c928ed18b8657ae2cf4134129326e854b64ca44d1d6d1612254c01786053"
+      },
+      "sourceLocalPath": "/images/galeria/montagem-tecnica.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/montagem-tecnica.jpg",
+      "description": "Técnico manuseando pneu junto ao equipamento da oficina.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 69708,
+        "sha256": "fb7e73950d1f2f71592c46cc80fcecccf22717cc1f097aee2217037337e47770",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/rodas-pretas.webp",
+      "previous": {
+        "description": "Mesma fotografia genérica do BMW azul.",
+        "width": 800,
+        "height": 600,
+        "bytes": 44340,
+        "sha256": "0476c928ed18b8657ae2cf4134129326e854b64ca44d1d6d1612254c01786053"
+      },
+      "sourceLocalPath": "/images/galeria/auto-center-pneus-portao.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/auto-center-pneus-portao.jpg",
+      "description": "Rodas e pneus em primeiro plano, com equipamentos da oficina ao fundo.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 32084,
+        "sha256": "5e83e80d1323f15237fb4bceb94c48f39abb7bed2ef4e660d2d52754b3d449b1",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/caminhonete.webp",
+      "previous": {
+        "description": "Fotografia genérica de SUV Ford em paisagem desértica.",
+        "width": 800,
+        "height": 600,
+        "bytes": 69804,
+        "sha256": "530ce072dff8d776734d0145c9ed50d6248f2714f396bf3b5bd1667e70b8613f"
+      },
+      "sourceLocalPath": "/images/galeria/caminhonete-suv.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/caminhonete-suv.jpg",
+      "description": "SUVs suspensos sem rodas e outros veículos no interior da oficina.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 51690,
+        "sha256": "816328d4c98b92834083ea69953b97558e42535ea06c9d79f44835fff6dcf242",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/jeep-compass.webp",
+      "previous": {
+        "description": "Mesma fotografia genérica de SUV Ford, que não corresponde ao nome Jeep Compass.",
+        "width": 800,
+        "height": 600,
+        "bytes": 69804,
+        "sha256": "530ce072dff8d776734d0145c9ed50d6248f2714f396bf3b5bd1667e70b8613f"
+      },
+      "sourceLocalPath": "/images/galeria/rampa-de-geometria.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/rampa-de-geometria.jpg",
+      "description": "Jeep Compass branco sobre a rampa de alinhamento na oficina.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 99580,
+        "sha256": "8cd336548914747a07018f5235d0b63f272f034b4add3ff61a52322544471b3c",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/fachada-logo.webp",
+      "previous": {
+        "description": "Fotografia genérica de mãos trabalhando em um motor, sem fachada ou marca Carplus visível.",
+        "width": 800,
+        "height": 600,
+        "bytes": 42126,
+        "sha256": "7625d4f19375571360990bd736179e3cdf464c281fb47eb31093ff30b8cf70c1"
+      },
+      "sourceLocalPath": "/images/galeria/fachada-carplus.webp",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/fachada-carplus.webp",
+      "description": "Fachada da Carplus com letreiro e símbolo da marca.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 72088,
+        "sha256": "aeb64baed5d5f3d60da560521e54fd70d083eb35e2ba37dc5d4335328eb362ab",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/oficina-carros.webp",
+      "previous": {
+        "description": "Mesma fotografia genérica de mãos trabalhando em um motor.",
+        "width": 800,
+        "height": 600,
+        "bytes": 42126,
+        "sha256": "7625d4f19375571360990bd736179e3cdf464c281fb47eb31093ff30b8cf70c1"
+      },
+      "sourceLocalPath": "/images/galeria/auto-center-pneus-portao.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/auto-center-pneus-portao.jpg",
+      "description": "Rodas e pneus em primeiro plano, com equipamentos da oficina ao fundo.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 32084,
+        "sha256": "5e83e80d1323f15237fb4bceb94c48f39abb7bed2ef4e660d2d52754b3d449b1",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/display-pneus.webp",
+      "previous": {
+        "description": "Fotografia genérica de pneus empilhados ao ar livre.",
+        "width": 800,
+        "height": 600,
+        "bytes": 52282,
+        "sha256": "2b11c6390a2c5c8f9c5c4cd9f3c31b28ee7d90a46c9059139a4b9d6ba69c63af"
+      },
+      "sourceLocalPath": "/images/galeria/auto-center-de-pneus-em-curitiba.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/auto-center-de-pneus-em-curitiba.jpg",
+      "description": "Pneus Prinx expostos com etiquetas no interior da loja.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 22298,
+        "sha256": "a89d000f1d44f4da6849d0a62268f7d9e53a5b2ea306fc9e82b0b78957e9fd6a",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/troca-pneu.webp",
+      "previous": {
+        "description": "Mesma fotografia genérica de pneus empilhados ao ar livre, sem serviço de troca.",
+        "width": 800,
+        "height": 600,
+        "bytes": 52282,
+        "sha256": "2b11c6390a2c5c8f9c5c4cd9f3c31b28ee7d90a46c9059139a4b9d6ba69c63af"
+      },
+      "sourceLocalPath": "/images/galeria/pneus-auto-center.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/pneus-auto-center.jpg",
+      "description": "Roda com pneu em equipamento, sendo manuseada por um técnico.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 58008,
+        "sha256": "860dd0f5eb1f11a6d987bf10b3e161bc961bf4489a0e1b7f82e36204a6e3c150",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/loja-de-pneus-portao-curitiba-pirelli.png",
+      "previous": {
+        "description": "Fotografia genérica dos pneus empilhados, também salva em PNG.",
+        "width": 800,
+        "height": 600,
+        "bytes": 241171,
+        "sha256": "146590488646ca84ab91f72da3aae7a7e6ae27babd863ff6107fbaedeae3780d"
+      },
+      "sourceLocalPath": "/images/galeria/recepcao.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/recepcao.jpg",
+      "description": "Área de atendimento da loja com balcões, cadeiras e exposição de pneus.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 858556,
+        "sha256": "dd8ad7ce494beecaffab669d1cde5237526181bb2541841b1bcba649dce6fd90",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/mecanico-motor.webp",
+      "previous": {
+        "description": "Fotografia genérica de estabelecimento com peças e escapamentos expostos, sem técnico ou motor em serviço.",
+        "width": 800,
+        "height": 600,
+        "bytes": 82442,
+        "sha256": "6b9fd2e8de615cd68c12267f1ad998986a526f1da7c7fac17bf76eeac3be504e"
+      },
+      "sourceLocalPath": "/images/galeria/tecnicos.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/tecnicos.jpg",
+      "description": "Técnico trabalhando junto ao capô aberto de um veículo.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 60134,
+        "sha256": "9f9df60303200bd2a69293e6ec0693054034b3f9dc8196237b84820585d949cf",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/mecanicos-trabalho.webp",
+      "previous": {
+        "description": "Mesma fotografia genérica do estabelecimento com peças e escapamentos.",
+        "width": 800,
+        "height": 600,
+        "bytes": 82442,
+        "sha256": "6b9fd2e8de615cd68c12267f1ad998986a526f1da7c7fac17bf76eeac3be504e"
+      },
+      "sourceLocalPath": "/images/galeria/consultoria-avaliacao-estrutural.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/consultoria-avaliacao-estrutural.jpg",
+      "description": "Dois homens junto a um veículo suspenso na oficina.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 62586,
+        "sha256": "b8abb14a333cc32052c7f76f75ef98289ffcc3d359a76656566be2d0fd11a75a",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/proprietario-pneu.webp",
+      "previous": {
+        "description": "Mesma fotografia genérica do estabelecimento, sem pessoa junto ao pneu.",
+        "width": 800,
+        "height": 600,
+        "bytes": 82442,
+        "sha256": "6b9fd2e8de615cd68c12267f1ad998986a526f1da7c7fac17bf76eeac3be504e"
+      },
+      "sourceLocalPath": "/images/galeria/troca-de-pneus.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/troca-de-pneus.jpg",
+      "description": "Homem ao lado de um pneu no equipamento da oficina.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 71562,
+        "sha256": "70bdd038f794607156d52d25c27b978b4c4520cafa8adbee374c4377934c5f8d",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    },
+    {
+      "targetPath": "/images/galeria/escritorio.webp",
+      "previous": {
+        "description": "Fotografia genérica de espaço corporativo vazio com divisórias de vidro.",
+        "width": 800,
+        "height": 600,
+        "bytes": 32470,
+        "sha256": "f7933e7fef2734d54405ad2560250ff1bc22b6ea78976f50e1ec0bc4d3236fba"
+      },
+      "sourceLocalPath": "/images/galeria/recepcao.jpg",
+      "sourceUrl": "https://www.carpluscwb.com.br/images/galeria/recepcao.jpg",
+      "description": "Área de atendimento da loja com balcões, cadeiras e exposição de pneus.",
+      "output": {
+        "width": 800,
+        "height": 600,
+        "bytes": 40242,
+        "sha256": "9a7728d720e9d4e0b56a529c9da85a86b271e273e4c39fbc7cb31c193eee71a9",
+        "enlarged": false
+      },
+      "reason": "Substituição de imagem genérica por foto real da mesma atividade ou da estrutura Carplus, mantendo a URL antiga."
+    }
+  ],
+  "contactSheets": [
+    "carplus-galeria-inventario-1.png",
+    "carplus-galeria-inventario-2.png",
+    "carplus-galeria-inventario-3.png"
+  ]
+}

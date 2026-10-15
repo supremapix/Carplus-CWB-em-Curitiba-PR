@@ -140,3 +140,23 @@ html,body,#root{overflow-x:clip!important}
 @media(max-width:760px){.carplus-home-section{width:calc(100% - 40px)}.carplus-search-stage{padding:36px 0}.carplus-home #conveyor-belt-section{padding-block:38px}.carplus-home .carplus-advice{padding-block:38px}.carplus-home .carplus-brand-comparison{padding:20px 16px}.carplus-home .carplus-store-gallery img{height:180px}.carplus-home #benefits-section{margin-block:34px}.carplus-home #maps-section{margin-block:30px 38px}#carplus-root :is(.carplus-action-primary,.carplus-action-secondary){font-size:16px;padding-inline:17px}}
 @media(max-width:639px){.carplus-home #conveyor-belt-container>article:nth-child(n+3){display:none}.carplus-home #conveyor-belt-container .carplus-product-media{height:170px}}
 @media(prefers-reduced-motion:reduce){#carplus-root :is(.carplus-action-primary,.carplus-action-secondary){transition:none}}
+
+/* Real store photography stays visible, with captions outside the image. */
+.carplus-photo-frame{margin:0;overflow:hidden;border:1px solid #575047;border-top:3px solid #f59c00;border-radius:9px;background:#131313}
+.carplus-photo-frame img{display:block;width:100%;object-fit:cover;filter:none;opacity:1}
+.carplus-photo-frame figcaption{padding:16px 20px;color:#e0e0e0;font-size:16px;line-height:1.65;border-top:1px solid #393939;background:#131313}
+.carplus-real-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.carplus-home .carplus-real-photo-grid img{height:290px;filter:none;opacity:1}
+.carplus-search-stage::before{background-image:linear-gradient(90deg,rgb(8 8 8 / .6),rgb(8 8 8 / .15)),url('/images/carplus-real/auto-center-de-pneus-em-curitiba.webp');filter:none;opacity:.4}
+.carplus-home .carplus-advice::before{background-image:linear-gradient(90deg,#080808 25%,rgb(8 8 8 / .45)),url('/images/carplus-real/consultoria-avaliacao-estrutural.webp');filter:none;opacity:.35}
+/* The supplied campaign art puts the Prinx tires on the right of the hero. */
+.carplus-hero-photo{left:32%;bottom:99px}
+.carplus-hero-photo img{filter:none;object-position:right center}
+.carplus-hero-photo::after{background:linear-gradient(90deg,#080808 0%,#080808 38%,rgb(8 8 8 / .82) 48%,rgb(8 8 8 / .05) 75%),linear-gradient(0deg,#080808,transparent 22%)}
+.carplus-hero-layout{min-height:680px;align-items:flex-end;padding-top:58px}
+.carplus-hero-copy{width:67%;max-width:730px}
+#carplus-root .carplus-hero h1{font-size:clamp(60px,6.3vw,88px)}
+.carplus-photo-caption{top:20px;right:28px;padding:8px 12px;font-size:11px;letter-spacing:.07em;background:rgb(8 8 8 / .82);border:1px solid #6d5129;color:#fff}
+@media(max-width:1100px) and (min-width:761px){.carplus-hero-copy{width:66%}#carplus-root .carplus-hero h1{font-size:68px}.carplus-hero-layout{gap:20px}.carplus-hero-address{max-width:250px}}
+@media(max-width:760px){.carplus-real-photo-grid{grid-template-columns:1fr;gap:20px}.carplus-home .carplus-real-photo-grid img{height:260px}.carplus-hero-photo{inset:0 0 auto 0;height:300px;opacity:1}.carplus-hero-photo img{object-position:right center}.carplus-hero-photo::after{background:linear-gradient(0deg,#080808,transparent 35%)}.carplus-photo-caption{display:block;top:16px;right:20px;font-size:9px}.carplus-hero-layout{padding-top:322px;min-height:0;display:block}.carplus-hero-copy{width:100%;max-width:none}#carplus-root .carplus-hero h1{font-size:clamp(48px,11.7vw,74px);margin-top:22px}.carplus-hero-copy>p:not(.carplus-hero-help){line-height:1.75}.carplus-hero-address{max-width:420px}.carplus-hero-actions{max-width:100%}.carplus-hero-help{font-size:13px}.carplus-eyebrow{letter-spacing:.07em}}
+@media(max-width:760px){.carplus-hero-photo{overflow:hidden}.carplus-hero-photo img{transform:scale(1.45);transform-origin:right center}}

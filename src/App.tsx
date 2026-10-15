@@ -1263,46 +1263,16 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="carplus-real-photo-grid">
             {[
-              { url: '/images/galeria/fachada-carplus.webp', fallback: 'https://img.carplusautos.com.br/cwb/fachada-carplus.webp', label: 'Fachada e Logo Carplus Portão' },
-              { url: '/images/galeria/loja-de-pneus-em-curitiba.webp', fallback: 'https://img.carplusautos.com.br/cwb/loja-de-pneus-em-curitiba.webp', label: 'Showroom de Medidas Pirelli' },
-              { url: '/images/galeria/auto-center-pneus-portao.jpg', fallback: 'https://img.carplusautos.com.br/cwb/auto-center-pneus-portao.jpg', label: 'Auto Center Pneus no Portão' },
-              { url: '/images/galeria/alinhamento.jpg', fallback: 'https://img.carplusautos.com.br/cwb/alinhamento.jpg', label: 'Alinhamento 3D Computadorizado' },
-              { url: '/images/galeria/tecnicos.jpg', fallback: 'https://img.carplusautos.com.br/cwb/tecnicos.jpg', label: 'Nossa Equipe de Técnicos Habilitados' },
-              { url: '/images/galeria/troca-de-pneus.jpg', fallback: 'https://img.carplusautos.com.br/cwb/troca-de-pneus.jpg', label: 'Troca de Pneus de Alta Performance' },
-              { url: '/images/galeria/rampa-de-geometria.jpg', fallback: 'https://img.carplusautos.com.br/cwb/rampa-de-geometria.jpg', label: 'Rampa de Geometria e Freio' },
-              { url: '/images/galeria/montagem-tecnica.jpg', fallback: 'https://img.carplusautos.com.br/cwb/montagem-tecnica.jpg', label: 'Montagem Técnica Especializada' },
-              { url: '/images/galeria/rodas-de-liga-leve.webp', fallback: 'https://img.carplusautos.com.br/cwb/rodas-de-liga-leve.webp', label: 'Troca de Rodas de Liga Leve' },
-              { url: '/images/galeria/mostruario-pneus-novos.webp', fallback: 'https://img.carplusautos.com.br/cwb/mostruario-pneus-novos.webp', label: 'Mostruário Especial de Pneus Novos' },
-              { url: '/images/galeria/show-row-pneus.webp', fallback: 'https://img.carplusautos.com.br/cwb/show-row-pneus.webp', label: 'Exposição e Estoque Próprio' },
-              { url: '/images/galeria/recepcao.jpg', fallback: 'https://img.carplusautos.com.br/cwb/recepcao.jpg', label: 'Recepção e Espera Climatizada' },
-              { url: '/images/galeria/caminhonete-suv.jpg', fallback: 'https://img.carplusautos.com.br/cwb/caminhonete-suv.jpg', label: 'Serviço em Camionetes e SUVs' },
-              { url: '/images/galeria/consultoria-avaliacao-estrutural.jpg', fallback: 'https://img.carplusautos.com.br/cwb/consultoria-avaliacao-estrutural.jpg', label: 'Consultoria e Avaliação Estrutural' },
-              { url: '/images/galeria/auto-center-de-pneus-em-curitiba.jpg', fallback: 'https://img.carplusautos.com.br/cwb/auto-center-de-pneus-em-curitiba.jpg', label: 'Auto Center de Pneus em Curitiba' },
-              { url: '/images/galeria/pneus-auto-center.jpg', fallback: 'https://img.carplusautos.com.br/cwb/pneus-auto-center.jpg', label: 'Pneus e Serviços Auto Center' }
-            ].slice(0, 3).map((img, idx) => (
-              <div key={idx} className="group relative overflow-hidden rounded-2xl bg-gray-50 border border-gray-200 transition shadow">
-                <img 
-                  src={img.url} 
-                  onError={(e) => {
-                    const target = e.currentTarget as HTMLImageElement;
-                    if (img.fallback && target.src !== img.fallback) {
-                      target.src = img.fallback;
-                    } else {
-                      target.src = '/images/galeria/oficina-carros.webp';
-                    }
-                  }}
-                  alt={img.label} 
-                  loading="lazy"
-                  className="h-36 sm:h-44 w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent flex items-end p-2 sm:p-3">
-                  <p className="text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-wider truncate w-full">
-                    {img.label}
-                  </p>
-                </div>
-              </div>
+              { url: '/images/carplus-real/auto-center-de-pneus-em-curitiba.webp', fallback: '/images/galeria/auto-center-de-pneus-em-curitiba.jpg', label: 'Pneus Prinx na Carplus', alt: 'Pneus Prinx expostos com etiquetas no interior da loja Carplus' },
+              { url: '/images/carplus-real/montagem-tecnica.webp', fallback: '/images/galeria/montagem-tecnica.jpg', label: 'Montagem de pneus na nossa oficina', alt: 'Técnico trabalhando na montagem de pneus na oficina Carplus' },
+              { url: '/images/carplus-real/loja-de-pneus-em-curitiba.webp', fallback: '/images/galeria/loja-de-pneus-em-curitiba.webp', label: 'Nossa loja no Portão, Curitiba', alt: 'Fachada iluminada da Carplus Pneus e interior da loja' }
+            ].map(photo => (
+              <figure key={photo.url} className="carplus-photo-frame">
+                <img src={photo.url} onError={event => { const image = event.currentTarget; if (image.dataset.realFallback) return; image.dataset.realFallback = 'true'; image.src = photo.fallback; }} alt={photo.alt} width="1600" height="1068" loading="lazy" decoding="async" />
+                <figcaption>{photo.label}</figcaption>
+              </figure>
             ))}
           </div>
         </section>
@@ -1510,7 +1480,7 @@ export default function App() {
 
       {/* Primary contact remains available while browsing. Sharing is in the footer. */}
       <Suspense fallback={null}>
-        <LiveWhatsAppChat />
+        <LiveWhatsAppChat pageKey={currentView} />
       </Suspense>
       <ScrollToTop />
 

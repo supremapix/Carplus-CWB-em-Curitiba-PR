@@ -9,6 +9,8 @@
  * selection clears that prevent stale startup/navigation state from replacing URLs.
  * --allow-social-preview permits only the specified home OG/Twitter preview and
  * the exact share-link analytics guard; secondary-page SEO remains unchanged.
+ * --allow-real-photos permits only the 16 approved factual imageAlt strings in
+ * BLOG_POSTS; image URLs and every other byte of blog data remain protected.
  * HEAD is the default baseline; pin the original
  * commit when checking again after committing the UI change.
  */
@@ -28,10 +30,11 @@ const warnings = [];
 const allowHomeAdvice = argv.includes('--allow-home-advice');
 const allowRouteStartupFix = argv.includes('--allow-route-startup-fix');
 const allowSocialPreview = argv.includes('--allow-social-preview');
-const homeSocialImage = 'https://www.carpluspneuseoficina.com.br/images/social/carplus-prinx-eletricos-og.png';
+const allowRealPhotos = argv.includes('--allow-real-photos');
+const homeSocialImage = 'https://www.carpluspneuseoficina.com.br/images/social/carplus-prinx-nova-energia-og.png';
 const homeSocialTitle = 'Pneus Prinx para elétricos e híbridos | Carplus';
 const homeSocialDescription = 'Encontre pneus para seu elétrico ou híbrido em Curitiba. Consulte a medida e as opções Prinx com a Carplus pelo WhatsApp: (41) 3082-7282.';
-const homeSocialAlt = 'Carplus Pneus, Prinx e pneus para elétricos e híbridos. WhatsApp (41) 3082-7282.';
+const homeSocialAlt = 'Carplus Pneus para Elétricos: Nova energia, a mesma confiança. Linha Prinx para elétricos e híbridos.';
 const homeSocialValues = {
   'og:type': 'website', 'og:url': 'https://www.carpluspneuseoficina.com.br/',
   'og:title': homeSocialTitle, 'og:description': homeSocialDescription,
@@ -79,6 +82,67 @@ function normalizeAllowedShareAnalytics(baseline, working) {
   const prefix = '  function handleInteraction(url: string | null, el: HTMLElement | null) {\n';
   if (after.split(`${prefix}${guard}`).length === 2) return after.replace(`${prefix}${guard}`, prefix);
   return after;
+}
+
+function normalizeRealPhotoBlogData(baseline, working) {
+  const before = normalized(baseline);
+  const after = normalized(working);
+  if (!allowRealPhotos) return after;
+  // These are descriptions of the existing, visually verified Carplus photos.
+  // Each key is a post ID, never a positional or unrestricted property match.
+  const approved = {
+    'pneus-para-carro-eletrico-em-curitiba': ['loja-de-pneus-em-curitiba.webp', 'Fachada da Carplus iluminada, com letreiro e telefone visíveis.'],
+    '1': ['alinhamento.jpg', 'Roda de veículo com alvo de alinhamento e técnico na oficina.'],
+    '2': ['rampa-de-geometria.jpg', 'Jeep Compass branco sobre a rampa de alinhamento na oficina.'],
+    '3': ['montagem-tecnica.jpg', 'Técnico manuseando pneu junto ao equipamento da oficina.'],
+    '4': ['troca-de-pneus.jpg', 'Homem ao lado de um pneu no equipamento da oficina.'],
+    '5': ['fachada-carplus.webp', 'Fachada da Carplus com letreiro e símbolo da marca.'],
+    '6': ['tecnicos.jpg', 'Técnico trabalhando junto ao capô aberto de um veículo.'],
+    '7': ['auto-center-pneus-portao.jpg', 'Rodas e pneus em primeiro plano, com equipamentos da oficina ao fundo.'],
+    '8': ['caminhonete-suv.jpg', 'SUVs suspensos sem rodas e outros veículos no interior da oficina.'],
+    '9': ['consultoria-avaliacao-estrutural.jpg', 'Dois homens junto a um veículo suspenso na oficina.'],
+    '10': ['rodas-de-liga-leve.webp', 'Rodas de liga leve expostas no interior da loja.'],
+    'pneus-para-carro-eletrico-o-que-muda-quanto-duram-como-escolher': ['loja-de-pneus-em-curitiba.webp', 'Fachada da Carplus iluminada, com letreiro e telefone visíveis.'],
+    'posso-usar-pneu-comum-no-meu-carro-eletrico-ou-hibrido': ['troca-de-pneus.jpg', 'Homem ao lado de um pneu no equipamento da oficina.'],
+    'duvidas-sobre-pneus-quando-trocar-twi-validade-calibragem-rodizio': ['mostruario-pneus-novos.webp', 'Pneus com etiquetas organizados em prateleiras na loja.'],
+    'auto-center-em-curitiba-como-escolher-oficina-de-pneus-de-confianca': ['fachada-carplus.webp', 'Fachada da Carplus com letreiro e símbolo da marca.'],
+    'pneus-em-curitiba-guia-completo-comprar-pneus-novos-com-instalacao': ['mostruario-pneus-novos.webp', 'Pneus com etiquetas organizados em prateleiras na loja.']
+  };
+  const ts = require('typescript');
+  function posts(source) {
+    const ast = ts.createSourceFile('src/blog-data.ts', source, ts.ScriptTarget.Latest, true);
+    const declarations = ast.statements.filter(ts.isVariableStatement).flatMap(statement => [...statement.declarationList.declarations]).filter(declaration => ts.isIdentifier(declaration.name) && declaration.name.text === 'BLOG_POSTS');
+    if (declarations.length !== 1 || !ts.isArrayLiteralExpression(declarations[0].initializer)) throw new Error('Expected one literal BLOG_POSTS array for the real-photo exception');
+    const entries = new Map();
+    for (const post of declarations[0].initializer.elements) {
+      if (!ts.isObjectLiteralExpression(post)) throw new Error('Unexpected BLOG_POSTS entry in real-photo exception');
+      const fields = {};
+      for (const key of ['id', 'featuredImage', 'imageAlt']) {
+        const properties = post.properties.filter(property => ts.isPropertyAssignment(property) && property.name.text === key);
+        if (properties.length !== 1 || !ts.isStringLiteral(properties[0].initializer)) throw new Error(`Expected a single literal ${key} per blog post`);
+        const literal = properties[0].initializer;
+        fields[key] = { value: literal.text, start: literal.getStart(ast), end: literal.getEnd() };
+      }
+      if (entries.has(fields.id.value)) throw new Error(`Duplicate blog ID: ${fields.id.value}`);
+      entries.set(fields.id.value, fields);
+    }
+    return entries;
+  }
+  const beforePosts = posts(before);
+  const afterPosts = posts(after);
+  const ids = Object.keys(approved);
+  if (beforePosts.size !== ids.length || afterPosts.size !== ids.length) throw new Error('Real-photo exception requires exactly the original 16 blog posts');
+  const replacements = [];
+  for (const id of ids) {
+    const original = beforePosts.get(id);
+    const current = afterPosts.get(id);
+    const [file, alt] = approved[id];
+    if (!original || !current || original.featuredImage.value !== `/images/galeria/${file}` || current.featuredImage.value !== original.featuredImage.value) throw new Error(`Blog image URL changed or missing for ${id}`);
+    if (current.imageAlt.value !== alt) throw new Error(`Blog imageAlt is not the approved factual description for ${id}`);
+    replacements.push({ start: current.imageAlt.start, end: current.imageAlt.end, value: before.slice(original.imageAlt.start, original.imageAlt.end) });
+  }
+  // Replacing only literal ranges preserves every other character for the hash.
+  return replacements.sort((a, b) => b.start - a.start).reduce((source, replacement) => source.slice(0, replacement.start) + replacement.value + source.slice(replacement.end), after);
 }
 
 function normalizeSocialIndexSource(source, validate = false) {
@@ -374,6 +438,7 @@ try {
         let permitted = working;
         if (file === 'src/lib/analytics.ts') permitted = normalizeAllowedAdviceAnalytics(baseline, normalizeAllowedShareAnalytics(baseline, working));
         if (allowSocialPreview && file === 'src/components/EnhancedSEO.tsx') permitted = normalizeSocialEnhancedSeo(baseline, working);
+        if (allowRealPhotos && file === 'src/blog-data.ts') permitted = normalizeRealPhotoBlogData(baseline, working);
         compare(`Protected file ${file}`, digest(baseline), digest(permitted));
       }
     }
@@ -436,6 +501,7 @@ try {
   if (allowHomeAdvice) warnings.push('Additive home advice enabled: existing text/metadata must remain; additional home JSON-LD must be FAQPage; only the exact data-analytics-url fallback is permitted in analytics.ts');
   if (allowRouteStartupFix) warnings.push('Route startup fix enabled: only the exact readiness state/gate/dependencies and first catalog clear in the two navigation handlers are normalized');
   if (allowSocialPreview) warnings.push('Home social preview enabled: exact OG/Twitter values and fallback markers, exact EnhancedSEO edits and one exact share analytics guard only; secondary-page metadata remains unchanged');
+  if (allowRealPhotos) warnings.push('Real photos enabled: only the exact factual imageAlt literal for each of the 16 original blog IDs is normalized; featuredImage URLs and all other blog data remain protected');
   if (argv.includes('--sources-only')) warnings.push('dist was not checked (--sources-only); run the full verification after the production build');
   for (const warning of warnings) console.warn(`WARN: ${warning}`);
   if (failures.length) {

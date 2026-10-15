@@ -30,113 +30,6 @@ import OficinaDoPneuSection from './OficinaDoPneuSection';
 import AdminIndexacaoSection from './AdminIndexacaoSection';
 
 
-const WHEEL_SERVICES = [
-  {
-    id: 1,
-    title: "Pintura Eletrostática Especializada",
-    badge: "Oxidação severa → pintura eletrostática",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oxidacao%20severa%20%E2%86%92%20pintura%20eletrostatica-x6lyP8nFMo2iNxOXrTbBQR8kGcHI9t.png",
-    summary: "Seu automóvel com rodas de liga leve protegidas contra oxidação extrema e com brilho original de fábrica.",
-    details: "Nossa equipe utiliza tecnologia de cura térmica por indução eletrostática de alta resistência. Primeiramente, as rodas passam por uma limpeza profunda por banho químico especial para remoção completa de impurezas ferruginosas. O pó polimérico é pulverizado com carga elétrica oposta à roda, garantindo uma aderência perfeita de nível micrométrico. Em seguida, as rodas são curadas em forno especial de estufa a 200ºC. O resultado é um acabamento profissional blindado de alta resistência contra batidas de pedra, poeira ácida de frenagem e produtos químicos, devolvendo o visual original das rodas de marcas esportivas e premium.",
-    team: "Executado por pintores metalúrgicos experientes de nossa equipe, dentro de cabine pressurizada e utilizando maquinários de aplicação da mais alta tecnologia da oficina Carplus.",
-    time: "Prazo aproximado de execução: 1 a 2 dias úteis."
-  },
-  {
-    id: 2,
-    title: "Desempeno de Liga Leve e Reparo Expresso",
-    badge: "Roda amassada → restaurada em 2h",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Roda%20amassada%20%E2%86%92%20restaurada%20em%202h-dFTVy6dSoaU0u7xdkPprLwtEJhSajO.png",
-    summary: "Ajuste milimétrico de rodas de alumínio ou ferro deformadas por impactos severos em buracos.",
-    details: "Rodas amassadas ou empenadas provocam vibrações indesejáveis no volante, desgaste acelerado dos pneus novos e até vazamentos lentos nos talões de borracha. Nosso método premium utiliza gabarito importado e prensa hidráulica de compressão progressiva e pressão controlada para recuperar a concentricidade e integridade radial milimétrica original da liga leve sem aquecimento térmico pernicioso (o que fragilizaria o alumínio, resultando em trincas futuras). Todo o processo é monitorado por relógio comparador centesimal de alta precisão para atingir erro próximo a zero milímetros.",
-    team: "Realizado por especialistas de alinhamento com formação técnica e calibrador centesimal de tolerâncias estruturais.",
-    time: "Prazo aproximado de execução: em até 2 horas."
-  },
-  {
-    id: 3,
-    title: "Restauração de Riscos & Diamantação",
-    badge: "Risco profundo → recuperação total",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Risco%20profundo%20%E2%86%92%20recuperacao%20total-U6WANiatYVSBrd9DVnwKajZ3hiA3mk.png",
-    summary: "Atendimento estético profissional para curar danos provocados por raspadas profundas em guias.",
-    details: "As superfícies usinadas diamantadas de alumínio polido exigem maquinário avançado e sensível. Na Carplus, utilizamos o torno copiador diamantador computadorizado CNC para cortar uma microscópica camada de milímetros no flanco da liga leve, limpando riscos de guias de calçada e reestabelecendo as ranhuras finas exclusivas do acabamento diamantado original. Após o corte de engenharia, aplicamos uma densa cobertura de verniz acrílico automotivo secado sob infravermelho de estufa, selando a liga de alumínio contra poeiras e oxidações indesejáveis.",
-    team: "Operado por torneiros CNC dedicados com longa experiência em acabamentos estéticos de alta precisão.",
-    time: "Prazo aproximado de execução: 1 dia útil."
-  }
-];
-
-const CARPLUS_EQUIPE_GALLERY = [
-  {
-    id: 1,
-    title: "Pneus & Auto Center Especializado",
-    badge: "Estrutura Completa",
-    image: "/images/quemsomos/pneus-auto-center.jpg",
-    remoteImage: "https://img.carplusautos.com.br/cwb/pneus-auto-center.jpg",
-    summary: "Showroom e estoque completo de pneus novos para passeios, SUVs e vans no Portão, Curitiba.",
-    details: "Espaço amplo preparado para atendimento rápido com estoque pronta-entrega das principais marcas mundiais e nacionais (Pirelli, Goodyear, Michelin, Continental, Bridgestone, XBRI, Delinte e mais).",
-    team: "Consultoria comercial e técnica especializada no Portão."
-  },
-  {
-    id: 2,
-    title: "Montagem Técnica Especializada",
-    badge: "Equipamentos de Precisão",
-    image: "https://img.carplusautos.com.br/cwb/montagem-tecnica.png",
-    remoteImage: "https://img.carplusautos.com.br/cwb/montagem-tecnica.png",
-    fallbackImage: "/images/galeria/montagem-tecnica.jpg",
-    summary: "Montagem de pneus com máquinas pneumáticas que protegem as rodas de liga leve contra riscos.",
-    details: "Técnicos treinados realizam a desmontagem e montagem com equipamentos de proteção em polímero para não riscar ou danificar a borda de alumínio.",
-    team: "Técnicos de borracharia avançada da Carplus."
-  },
-  {
-    id: 3,
-    title: "Vistoria e Alinhamento Detalhado",
-    badge: "Diagnóstico Preventivo",
-    image: "/images/quemsomos/vistoria-alinhamento.jpg",
-    remoteImage: "https://img.carplusautos.com.br/cwb/vistoria-alinhamento.jpg",
-    summary: "Inspeção visual e tática dos componentes da suspensão antes de alinhar.",
-    details: "Verificamos pivôs, buchas, amortecedores, coxins e folgas na caixa de direção. Nenhum serviço desnecessário é empurrado; fornecemos laudo honesto e transparente.",
-    team: "Equipe técnica de suspensões e geometria da Carplus."
-  },
-  {
-    id: 4,
-    title: "Amplo Elevador Automotivo de Alta Capacidade",
-    badge: "Segurança de Pista",
-    image: "/images/quemsomos/amplo-elevador.png",
-    remoteImage: "https://img.carplusautos.com.br/cwb/amplo-elevador.png",
-    summary: "Elevadores pantográficos e de braços reforçados para veículos de passeio, SUVs e utilitários pesados.",
-    details: "Erguimento seguro respeitando os pontos de apoio especificados pela fábrica do veículo, garantindo proteção total à caixa de bateria de carros elétricos e híbridos e ao assoalho.",
-    team: "Equipe de pista da oficina Carplus."
-  },
-  {
-    id: 5,
-    title: "Acabamento Seguro e Cuidado com as Rodas",
-    badge: "Proteção das Ligas Leves",
-    image: "/images/quemsomos/acabamento-seguro.png",
-    remoteImage: "https://img.carplusautos.com.br/cwb/acabamento-seguro.png",
-    summary: "Aperto de parafusos com torquímetro calibrado para máxima segurança do cubo de roda.",
-    details: "Zero risco de espanação de roscas ou sobretorque nos parafusos de roda. Tratamento cuidadoso e profissional para veículos esportivos, SUVs e carros de passeio.",
-    team: "Especialistas em montagem e acabamento da Carplus."
-  },
-  {
-    id: 6,
-    title: "Check-up de Motores & Fluidos Auto Center",
-    badge: "Manutenção Preventiva",
-    image: "/images/quemsomos/check-up-motores-fluidos-auto-center.png",
-    remoteImage: "https://img.carplusautos.com.br/cwb/check-up-motores-fluidos-auto-center.png",
-    summary: "Aferição de nível e qualidade do óleo do motor, fluido de freio, arrefecimento e filtros.",
-    details: "Diagnóstico preventivo para evitar superaquecimento ou falhas graves de lubrificação, mantendo a vida útil do motor estendida.",
-    team: "Mecânicos especialistas em lubrificantes e mecânica geral da Carplus."
-  },
-  {
-    id: 7,
-    title: "Alinhamento Computadorizado Tridimensional",
-    badge: "Geometria 3D Laser",
-    image: "/images/quemsomos/alinhamento-computadorizado-tridmencional.png",
-    remoteImage: "https://img.carplusautos.com.br/cwb/alinhamento-computadorizado-tridmencional.png",
-    summary: "Leitura 3D de alta precisão para regulagem exata dos ângulos de câmber, cáster e convergência.",
-    details: "Painel com tecnologia tridimensional de garras de alta fidelidade que lê o desgaste e angulação das quatro rodas simultaneamente, garantindo estabilidade e economia de combustível.",
-    team: "Especialistas em geometria 3D da Carplus."
-  }
-];
-
 interface CompanyPagesProps {
   view: 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site' | 'seo-landing' | 'contato' | 'curitiba' | 'regiao-metropolitana' | 'admin-indexacao' | 'carrinho' | 'oficina-do-pneu-curitiba' | 'garagem-de-pneus-curitiba' | 'pneus-pirelli-curitiba' | 'alinhamento-3d-curitiba' | 'blog' | 'xbri-pneus-curitiba' | 'pneus-baratos-em-curitiba' | 'melhor-site-para-comprar-pneus' | 'distribuidora-de-pneus-importados-atacado-curitiba' | 'pneu-hankook-curitiba' | 'pneus-bridgestone-curitiba-precos' | 'barao-pneus-e-oficina-bacacheri-curitiba' | 'barao-pneus-sao-jose-pinhais' | 'pneus-em-curitiba-melhor-preco' | 'distribuidora-de-pneus-em-curitiba' | 'bana-pneus' | 'loja-de-pneus-em-curitiba' | 'pneus-pirelli-em-curitiba-melhor-preco' | 'barao-pneus-e-oficina-portao' | 'auto-center-curitiba' | 'troca-de-pneus-curitiba' | 'centro-automotivo-portao' | BydClusterView;
   seoTarget: { type: 'bairro' | 'cidade' | 'aro' | 'carro'; name: string; region?: string; detail?: string; } | null;
@@ -219,13 +112,6 @@ export default function CompanyPages({
   const [contactMessage, setContactMessage] = useState('');
   const [isContactSubmitted, setIsContactSubmitted] = useState(false);
 
-  // Sliders on Quem Somos page
-  const [wheelSlideIdx, setWheelSlideIdx] = useState(0);
-  const [selectedWheelService, setSelectedWheelService] = useState<typeof WHEEL_SERVICES[0] | null>(null);
-
-  const [gallerySlideIdx, setGallerySlideIdx] = useState(0);
-  const [selectedGalleryStep, setSelectedGalleryStep] = useState<typeof CARPLUS_EQUIPE_GALLERY[0] | null>(null);
-
   // Offers of tires
   const offersOnSale = TIRES_DATA.filter(t => t.isOffer);
 
@@ -238,10 +124,10 @@ export default function CompanyPages({
   }, [offersOnSale.length]);
 
   return (
-    <div className="bg-white text-gray-900 min-h-screen py-10 px-4 sm:px-6 font-sans select-none" id="company-pages-container">
+    <div className={view === 'blog' ? 'min-h-screen font-sans' : 'bg-white text-gray-900 min-h-screen py-10 px-4 sm:px-6 font-sans'} id="company-pages-container">
       
       {/* Header element */}
-      <div className="max-w-6xl mx-auto flex items-center justify-between border-b border-gray-205 pb-5 mb-8">
+      {view !== 'blog' && view !== 'quem-somos' && <div className="max-w-6xl mx-auto flex items-center justify-between border-b border-gray-205 pb-5 mb-8">
         <button 
           onClick={onNavigateHome}
           className="flex items-center gap-2.5 text-xs sm:text-sm uppercase font-extrabold tracking-wider text-yellow-600 hover:text-yellow-700 cursor-pointer"
@@ -253,9 +139,9 @@ export default function CompanyPages({
         <span className="text-[10px] uppercase font-mono tracking-widest text-gray-500 font-extrabold">
           Carplus Pneus • Unidade Portão Curitiba
         </span>
-      </div>
+      </div>}
 
-      <div className="max-w-6xl mx-auto">
+      <div className={view === 'blog' ? '' : 'max-w-6xl mx-auto'}>
 
         {/* VIEW: CARRINHO DE COMPRAS WOOCOMMERCE SIMULADO */}
         {view === 'carrinho' && (() => {
@@ -492,417 +378,98 @@ export default function CompanyPages({
 
         {/* VIEW: QUEM SOMOS */}
         {view === 'quem-somos' && (
-          <div className="space-y-8" id="view-quem-somos">
-            <div className="text-center md:text-left">
-              <span className="bg-yellow-550/10 text-yellow-650 border border-yellow-500/25 font-bold text-xs uppercase tracking-widest px-3 py-1.5 rounded-full inline-block">
-                Tradição de Honestidade & Confiança
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black uppercase text-gray-950 mt-3 tracking-tight">
-                Quem Somos • <span className="text-yellow-600">Carplus Pneus & Auto Center</span>
-              </h2>
-              <p className="text-sm max-w-2xl mt-2 text-left leading-relaxed text-gray-650 font-medium">
-                Há 35 anos cuidando da segurança e performance do seu automóvel como o auto center e loja de pneus de referência em Curitiba, com total transparência, alinhamento 3D e equipe qualificada.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch pt-2">
-              <div className="bg-gray-50 border border-gray-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-black text-gray-950 uppercase border-l-4 border-yellow-500 pl-3 leading-tight select-none">
-                    Nossa História
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-700 text-left leading-relaxed">
-                    Fundada no coração do Paraná, a Carplus Pneus & Auto Center nasceu com a proposta de oferecer uma nova experiência na venda e montagem de pneus e revisão mecânica preventiva completa. Longe das práticas abusivas e orçamentos "empurrados" que infelizmente são comuns, construímos nossa reputação baseada na honestidade e laudos fotográficos precisos.
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-750 text-left leading-relaxed font-semibold">
-                    Hoje, com 35 anos de atuação comercial na capital curitibana, a nossa unidade auto center na Avenida Presidente Arthur da Silva Bernardes se tornou referência absoluta de satisfação, contando com a maior pontuação em avaliações reais dos clientes no Google Maps.
-                  </p>
-                </div>
-                
-                <div className="mt-6 bg-white p-4 rounded-2xl border border-gray-200 flex items-center gap-3 shadow-inner">
-                  <Star className="w-8 h-8 text-yellow-500 shrink-0 fill-yellow-500 animate-pulse" />
-                  <div>
-                    <h4 className="text-xs font-bold text-gray-900 uppercase font-mono">Líder absoluta em Curitiba</h4>
-                    <p className="text-[10px] text-gray-500">Milhares de motoristas que rodam no Portão, Água Verde e CIC confiam em nossos técnicos.</p>
-                  </div>
+          <div className="space-y-12 text-white sm:space-y-16" id="view-quem-somos">
+            <section className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12" aria-labelledby="about-carplus-title">
+              <div>
+                <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#f59c00]">Portão · Curitiba</p>
+                <h1 id="about-carplus-title" className="mt-3 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-white sm:text-5xl">Quem Somos • <span className="text-[#f59c00]">Carplus Pneus &amp; Auto Center</span></h1>
+                <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-[#c3c3c3]">Pneus e serviços automotivos no mesmo endereço. Conte qual é o seu carro e a equipe ajuda a conferir a medida, as opções e o orçamento antes da sua visita.</p>
+                <div className="mt-7 flex flex-col gap-3 sm:items-start">
+                  <a href={formatWhatsApp('Olá, Carplus! Conheci a loja pela página Quem Somos e quero um orçamento para o meu carro.')} target="_blank" rel="noopener noreferrer" data-cta-location="quem-somos-hero" className="carplus-action-primary inline-flex min-h-[56px] items-center justify-center gap-3 rounded-xl bg-[#f59c00] px-6 py-4 text-center text-[16px] font-bold text-[#080808]"><Phone aria-hidden="true" className="h-5 w-5 shrink-0" />Pedir orçamento no WhatsApp<ArrowRight aria-hidden="true" className="h-5 w-5 shrink-0" /></a>
+                  <a href="/pneus" onClick={event => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); onNavigateToPage('catalogo-pneus'); }} className="carplus-action-secondary inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border border-white/25 px-6 py-3 text-[16px] font-semibold text-white">Ver pneus no catálogo<ArrowRight aria-hidden="true" className="h-4 w-4" /></a>
                 </div>
               </div>
+              <figure className="overflow-hidden rounded-2xl border border-[#f59c00]/30 bg-[#111111]">
+                <img src="/images/carplus-real/rampa-de-geometria.webp" alt="Veículo na rampa de geometria da unidade Carplus no Portão" width="1384" height="924" fetchPriority="high" decoding="async" className="aspect-[4/3] w-full object-cover sm:min-h-[360px]" onError={event => { const image = event.currentTarget; if (image.dataset.realFallback) return; image.dataset.realFallback = 'true'; image.src = '/images/galeria/rampa-de-geometria.jpg'; }} />
+                <figcaption className="border-t border-white/10 px-5 py-4 text-[15px] leading-relaxed text-[#c3c3c3]">Nossa estrutura de atendimento no Portão, Curitiba.</figcaption>
+              </figure>
+            </section>
 
-              {/* Core assets column */}
-              <div className="space-y-4 flex flex-col justify-between">
-                <div className="bg-gray-50 border border-gray-200 rounded-3xl p-6 space-y-3 shadow-sm">
-                  <div className="text-yellow-600 bg-yellow-500/10 p-2 rounded-xl w-fit">
-                    <Star className="w-5 h-5 shrink-0" />
-                  </div>
-                  <h4 className="text-sm font-black text-gray-950 uppercase font-mono">Técnicos Treinados & Habilitados</h4>
-                  <p className="text-xs text-gray-650 text-left leading-relaxed font-semibold">
-                    Nossos profissionais passam por certificações trimestrais de fabricantes de pneus e suspensão. Realizamos a troca de bicos com torque controlado e balanceamento dinâmico a laser.
-                  </p>
+            <section className="grid gap-4 md:grid-cols-3" aria-label="Como a Carplus ajuda você">
+              {[
+                { Icon: CheckCircle2, title: 'Ajuda para escolher', text: 'Conferimos a medida e a aplicação para comparar as opções para o seu carro.' },
+                { Icon: Wrench, title: 'Pneus e serviços no mesmo lugar', text: 'Consulte pneus, montagem, balanceamento e alinhamento 3D na nossa unidade.' },
+                { Icon: Navigation, title: 'Loja no Portão', text: 'Av. Presidente Arthur da Silva Bernardes, 1323, em Curitiba. Fale com a equipe antes de vir.' },
+              ].map(({ Icon, title, text }) => (
+                <div key={title} className="rounded-2xl border border-white/15 bg-[#111111] p-6">
+                  <Icon aria-hidden="true" className="h-6 w-6 text-[#f59c00]" />
+                  <h2 className="mt-4 text-[20px] font-semibold leading-snug text-white">{title}</h2>
+                  <p className="mt-2 text-[16px] leading-relaxed text-[#c3c3c3]">{text}</p>
                 </div>
+              ))}
+            </section>
 
-                <div className="bg-gray-50 border border-gray-200 rounded-3xl p-6 space-y-3 shadow-sm">
-                  <div className="text-yellow-600 bg-yellow-500/10 p-2 rounded-xl w-fit">
-                    <Navigation className="w-5 h-5 shrink-0" />
-                  </div>
-                  <h4 className="text-sm font-black text-gray-950 uppercase font-mono">Geometria 3D de Última Geração</h4>
-                  <p className="text-xs text-gray-650 text-left leading-relaxed font-semibold">
-                    Utilizamos sensores reflexivos de alta precisão que comparam milimetricamente as especificações de cambagem, convergência e cáster com o banco de dados oficial das montadoras de todo o mundo.
-                  </p>
-                </div>
+            <section aria-labelledby="about-how-title">
+              <h2 id="about-how-title" className="font-display text-3xl font-bold uppercase text-white sm:text-4xl">Do primeiro contato à sua visita.</h2>
+              <ol className="mt-6 grid gap-6 md:grid-cols-3">
+                {[
+                  { number: '01', title: 'Conte qual é o seu carro', text: 'Envie modelo, ano e medida do pneu, se souber.' },
+                  { number: '02', title: 'Confira as opções e o orçamento', text: 'A equipe confere a aplicação, as marcas e a disponibilidade.' },
+                  { number: '03', title: 'Combine sua visita', text: 'Confirme o atendimento pelo WhatsApp e venha à loja.' },
+                ].map(({ number, title, text }) => (
+                  <li key={number} className="border-t border-[#f59c00]/40 pt-5">
+                    <span className="text-[14px] font-bold tracking-wider text-[#f59c00]">{number}</span>
+                    <h3 className="mt-2 text-[19px] font-semibold leading-snug text-white">{title}</h3>
+                    <p className="mt-2 text-[16px] leading-relaxed text-[#c3c3c3]">{text}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
 
-                <div className="bg-gray-50 border border-gray-200 rounded-3xl p-6 space-y-3 shadow-sm">
-                  <div className="text-yellow-600 bg-yellow-500/10 p-2 rounded-xl w-fit">
-                    <CheckCircle2 className="w-5 h-5 shrink-0" />
-                  </div>
-                  <h4 className="text-sm font-black text-gray-950 uppercase font-mono">Atendimento Sem Surpresas</h4>
-                  <p className="text-xs text-gray-650 text-left leading-relaxed font-semibold">
-                    Você acompanha cada passo da manutenção. Orçamentos detalhados preestabelecidos e pagamento facilitado em até 10x sem juros no cartão de crédito físico na nossa loja.
-                  </p>
-                </div>
+            <section className="grid gap-5 md:grid-cols-2" aria-label="Fotos reais da Carplus">
+              {[
+                { src: '/images/carplus-real/montagem-tecnica.webp', fallback: '/images/galeria/montagem-tecnica.jpg', alt: 'Técnico da Carplus trabalhando na montagem de um pneu', caption: 'Montagem de pneus na nossa oficina.' },
+                { src: '/images/carplus-real/alinhamento.webp', fallback: '/images/galeria/alinhamento.jpg', alt: 'Equipamento de alinhamento na roda de um veículo na Carplus', caption: 'Equipamentos e atendimento na unidade Portão.' },
+              ].map(photo => (
+                <figure key={photo.src} className="overflow-hidden rounded-2xl border border-[#f59c00]/25 bg-[#111111]">
+                  <img src={photo.src} alt={photo.alt} width="1384" height="924" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" onError={event => { const image = event.currentTarget; if (image.dataset.realFallback) return; image.dataset.realFallback = 'true'; image.src = photo.fallback; }} />
+                  <figcaption className="border-t border-white/10 px-5 py-4 text-[16px] leading-relaxed text-[#c3c3c3]">{photo.caption}</figcaption>
+                </figure>
+              ))}
+            </section>
+
+            <section className="grid gap-7 rounded-2xl border border-[#f59c00]/30 bg-[#111111] p-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr]" aria-labelledby="about-visit-title">
+              <div>
+                <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-[#f59c00]">Venha à Carplus</p>
+                <h2 id="about-visit-title" className="mt-3 font-display text-3xl font-bold uppercase text-white">Seu próximo passo começa no WhatsApp.</h2>
+                <p className="mt-3 text-[16px] leading-relaxed text-[#c3c3c3]">Tire sua dúvida, consulte as opções e combine o atendimento com a nossa equipe.</p>
+                <a href={formatWhatsApp('Olá, Carplus! Quero consultar pneus ou serviços para o meu carro e combinar uma visita à loja.')} target="_blank" rel="noopener noreferrer" data-cta-location="quem-somos-visita" className="carplus-action-primary mt-5 inline-flex min-h-[56px] items-center justify-center gap-3 rounded-xl bg-[#f59c00] px-6 py-4 text-center text-[16px] font-bold text-[#080808]"><Phone aria-hidden="true" className="h-5 w-5 shrink-0" />Falar com a equipe no WhatsApp</a>
               </div>
-            </div>
-
-            {/* 1. SLIDER 1: SERVIÇOS EM DESTAQUE PARA RODAS */}
-            <div className="bg-gray-55 border border-gray-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm bg-gray-50 text-gray-900" id="slider-servicos-rodas">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                  <span className="bg-yellow-500/10 text-yellow-650 border border-yellow-500/20 font-bold text-xs uppercase tracking-widest px-3 py-1.5 rounded-full inline-block">
-                    Alta Performance Comercial para Rodas
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-gray-950 uppercase mt-2 select-none">
-                    Serviços em Destaque para Rodas de Liga Leve
-                  </h3>
-                  <p className="text-xs text-gray-600 mt-1 max-w-xl">
-                    Tecnologias avançadas de restauração de pintura eletrostática, desempeno hidráulico expresso e diamantação computadorizada.
-                  </p>
-                </div>
-                
-                {/* Manual Navigation Controls */}
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={() => setWheelSlideIdx((prev) => (prev === 0 ? WHEEL_SERVICES.length - 1 : prev - 1))}
-                    className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-yellow-550/10 hover:border-yellow-550 text-gray-800 hover:text-yellow-600 flex items-center justify-center transition cursor-pointer select-none"
-                    aria-label="Slide anterior"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <span className="text-xs font-mono font-extrabold text-gray-500 select-none">
-                    {wheelSlideIdx + 1} / {WHEEL_SERVICES.length}
-                  </span>
-                  <button 
-                    onClick={() => setWheelSlideIdx((prev) => (prev === WHEEL_SERVICES.length - 1 ? 0 : prev + 1))}
-                    className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-yellow-550/10 hover:border-yellow-550 text-gray-800 hover:text-yellow-600 flex items-center justify-center transition cursor-pointer select-none"
-                    aria-label="Próximo slide"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
+              <div className="border-t border-white/15 pt-6 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
+                <h3 className="text-[18px] font-semibold text-white">Endereço e atendimento</h3>
+                <address className="mt-3 text-[16px] not-italic leading-relaxed text-[#c3c3c3]">Av. Presidente Arthur da Silva Bernardes, 1323<br />Portão · Curitiba / PR</address>
+                <p className="mt-4 text-[16px] leading-relaxed text-[#c3c3c3]">Segunda a sexta: 8h às 18h<br />Sábado: 8h às 12h</p>
+                <a href="tel:554130827282" className="mt-3 inline-flex min-h-[48px] items-center gap-2 text-[17px] font-semibold text-white"><Phone aria-hidden="true" className="h-4 w-4 text-[#f59c00]" />(41) 3082-7282</a>
+                <a href="https://maps.google.com/?q=Av.+Presid.+Arthur+da+Silva+Bernardes,+1323+-+Port%C3%A3o,+Curitiba+-+PR" target="_blank" rel="noopener noreferrer" data-cta-location="quem-somos-localizacao" className="carplus-action-secondary mt-3 flex min-h-[52px] items-center justify-center gap-2 rounded-xl border border-white/25 px-5 py-3 text-[16px] font-semibold text-white"><Navigation aria-hidden="true" className="h-5 w-5 text-[#f59c00]" />Como chegar à loja</a>
               </div>
+            </section>
 
-              {/* Slider Active Body Container */}
-              <div className="relative overflow-hidden bg-white border border-gray-250 rounded-2xl shadow-inner p-4 sm:p-6">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-8 items-center">
-                  
-                  {/* Slide Image Panel (Left/Span 2 cols) */}
-                  <div className="md:col-span-2 relative group overflow-hidden rounded-xl border border-gray-150 h-56 sm:h-64 flex items-center justify-center bg-gray-50">
-                    <img 
-                      src={WHEEL_SERVICES[wheelSlideIdx].image} 
-                      alt={WHEEL_SERVICES[wheelSlideIdx].title} 
-                      className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
-                    
-                    {/* Visual Hover Hint Overlay */}
-                    <div 
-                      onClick={() => setSelectedWheelService(WHEEL_SERVICES[wheelSlideIdx])}
-                      className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300 cursor-pointer text-white text-xs font-bold uppercase tracking-wider gap-2 select-none"
-                    >
-                      <Info className="w-5 h-5 text-yellow-550" />
-                      <span>Ver Detalhes & Equipe</span>
-                    </div>
-
-                    {/* Badge Overlay */}
-                    <span className="absolute bottom-3 left-3 bg-gray-950 text-white border border-yellow-500/50 font-mono text-[9px] uppercase tracking-wide px-2.5 py-1 rounded shadow select-none">
-                      {WHEEL_SERVICES[wheelSlideIdx].badge}
-                    </span>
-                  </div>
-
-                  {/* Slide Info panel content (Right/Span 3 cols) */}
-                  <div className="md:col-span-3 space-y-4 flex flex-col justify-between h-full py-1 text-center md:text-left">
-                    <div className="space-y-2">
-                      <span className="text-yellow-600 font-mono font-extrabold text-[10px] uppercase tracking-wider">
-                        Serviço com Prazo Rápido
-                      </span>
-                      <h4 className="text-lg sm:text-xl font-extrabold text-gray-950 uppercase tracking-tight">
-                        {WHEEL_SERVICES[wheelSlideIdx].title}
-                      </h4>
-                      <p className="text-xs sm:text-sm text-gray-650 leading-relaxed font-semibold">
-                        {WHEEL_SERVICES[wheelSlideIdx].summary}
-                      </p>
-                    </div>
-
-                    {/* Quick Specs List */}
-                    <div className="grid grid-cols-2 gap-4 bg-gray-50 p-3 sm:p-4 rounded-xl border border-gray-150 text-left">
-                      <div>
-                        <span className="text-[9px] text-gray-400 font-mono block font-bold uppercase">Tempo estimado</span>
-                        <span className="text-xs text-gray-800 font-extrabold flex items-center gap-1.5 mt-0.5 font-mono">
-                          <Clock className="w-3.5 h-3.5 text-yellow-600" />
-                          {WHEEL_SERVICES[wheelSlideIdx].time}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-[9px] text-gray-400 font-mono block font-bold uppercase">Reserva Online</span>
-                        <span className="text-xs text-yellow-600 font-extrabold flex items-center gap-1.5 mt-0.5">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          Pronta Entrega
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Interactive Action Button bar */}
-                    <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
-                      <button 
-                        onClick={() => setSelectedWheelService(WHEEL_SERVICES[wheelSlideIdx])}
-                        className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-black px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition shadow flex items-center justify-center gap-2 cursor-pointer border border-black"
-                      >
-                        <Wrench className="w-4 h-4" />
-                        <span>Abrir Informações do Trabalho</span>
-                      </button>
-                      
-                      <a 
-                        href={formatWhatsApp(`Olá Carplus! Gostaria de agendar o serviço de rodas de liga leve: "${WHEEL_SERVICES[wheelSlideIdx].title}" para o meu veículo.`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full sm:w-auto hover:bg-gray-100 border border-gray-300 text-gray-800 font-extrabold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition text-center select-none"
-                      >
-                        Simular Orçamento
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* Slider Dot Indicators bar */}
-                <div className="flex justify-center items-center gap-1.5 mt-6 border-t border-gray-100 pt-4 select-none">
-                  {WHEEL_SERVICES.map((_, idx) => (
-                    <button
-                      key={`wheel-dot-${idx}`}
-                      onClick={() => setWheelSlideIdx(idx)}
-                      className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${wheelSlideIdx === idx ? 'w-8 bg-yellow-600' : 'w-2.5 bg-gray-250 hover:bg-gray-400'}`}
-                      aria-label={`Ir para slide ${idx + 1}`}
-                    />
-                  ))}
-                </div>
+            <section aria-labelledby="about-faq-title">
+              <h2 id="about-faq-title" className="font-display text-3xl font-bold uppercase text-white">Antes de falar com a equipe.</h2>
+              <div className="mt-5 divide-y divide-white/15 border-y border-white/15">
+                {[
+                  { question: 'Preciso saber a medida do pneu para pedir um orçamento?', answer: 'Não. Envie o modelo, a versão e o ano do carro. Se puder, mande também uma foto da medida na lateral do pneu ou da etiqueta do veículo para ajudar na conferência.' },
+                  { question: 'Posso comprar e instalar os pneus no mesmo local?', answer: 'Sim. Na unidade Portão você pode consultar pneus e serviços de montagem, balanceamento e alinhamento 3D. Confirme as opções, os valores e o atendimento com a equipe pelo WhatsApp.' },
+                ].map(({ question, answer }) => (
+                  <details key={question} className="group">
+                    <summary className="flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-4 py-4 text-[17px] font-semibold leading-relaxed text-white [&::-webkit-details-marker]:hidden"><span>{question}</span><ChevronDown aria-hidden="true" className="h-5 w-5 shrink-0 text-[#f59c00] transition-transform group-open:rotate-180" /></summary>
+                    <p className="pb-5 pr-8 text-[16px] leading-relaxed text-[#c3c3c3]">{answer}</p>
+                  </details>
+                ))}
               </div>
-            </div>
-
-            {/* 2. SLIDER 2: A CARPLUS POR DENTRO - NOSSA EQUIPE & ESTÚDIO */}
-            <div className="bg-gray-55 border border-gray-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm bg-gray-50 text-gray-900" id="slider-equipe-carplus">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                  <span className="bg-yellow-500/10 text-yellow-650 border border-yellow-500/20 font-bold text-xs uppercase tracking-widest px-3 py-1.5 rounded-full inline-block">
-                    Transparência no Seu Atendimento
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-gray-950 uppercase mt-2 select-none">
-                    A Carplus por Dentro • Nossa Equipe & Oficina
-                  </h3>
-                  <p className="text-xs text-gray-650 mt-1 max-w-xl">
-                    Veja nossa equipe em ação, os equipamentos de geometria 3D, montagem técnica com torque e balanceamentos de precisão no Portão.
-                  </p>
-                </div>
-                
-                {/* Manual Navigation Controls for Slider 2 */}
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={() => setGallerySlideIdx((prev) => (prev === 0 ? CARPLUS_EQUIPE_GALLERY.length - 1 : prev - 1))}
-                    className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-yellow-550/10 hover:border-yellow-550 text-gray-850 hover:text-yellow-600 flex items-center justify-center transition cursor-pointer select-none"
-                    aria-label="Slide anterior equipe"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <span className="text-xs font-mono font-extrabold text-gray-500 select-none">
-                    {gallerySlideIdx + 1} / {CARPLUS_EQUIPE_GALLERY.length}
-                  </span>
-                  <button 
-                    onClick={() => setGallerySlideIdx((prev) => (prev === CARPLUS_EQUIPE_GALLERY.length - 1 ? 0 : prev + 1))}
-                    className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-yellow-550/10 hover:border-yellow-550 text-gray-850 hover:text-yellow-600 flex items-center justify-center transition cursor-pointer select-none"
-                    aria-label="Próximo slide equipe"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Slider 2 Active Body Container */}
-              <div className="relative overflow-hidden bg-white border border-gray-200 rounded-2xl shadow-inner p-4 sm:p-6">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-8 items-center">
-                  
-                  {/* Image (Left Frame / Span 2 cols) */}
-                  <div className="md:col-span-2 relative group overflow-hidden rounded-xl border border-gray-150 h-56 sm:h-64 flex items-center justify-center bg-gray-50 shadow-inner">
-                    <img 
-                      src={CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].image} 
-                      onError={(e) => {
-                        const target = e.currentTarget as HTMLImageElement;
-                        const item = CARPLUS_EQUIPE_GALLERY[gallerySlideIdx];
-                        if (target.src !== item.remoteImage && item.remoteImage) {
-                          target.src = item.remoteImage;
-                        } else if (item.fallbackImage) {
-                          target.src = item.fallbackImage;
-                        }
-                      }}
-                      alt={CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].title} 
-                      className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
-
-                    {/* Interactive Click Visual Overlay */}
-                    <div 
-                      onClick={() => setSelectedGalleryStep(CARPLUS_EQUIPE_GALLERY[gallerySlideIdx])}
-                      className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300 cursor-pointer text-white text-xs font-bold uppercase tracking-wider gap-2 select-none"
-                    >
-                      <Users className="w-5 h-5 text-yellow-500" />
-                      <span>Conhecer Equipe & Serviço</span>
-                    </div>
-
-                    {/* Info Badge Overlay */}
-                    <span className="absolute bottom-3 left-3 bg-gray-950 text-white border border-yellow-500/50 font-mono text-[9px] uppercase tracking-wide px-2.5 py-1 rounded shadow select-none">
-                      {CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].badge}
-                    </span>
-                  </div>
-
-                  {/* Text Details (Right Frame/ Span 3 cols) */}
-                  <div className="md:col-span-3 space-y-4 flex flex-col justify-between h-full py-1 text-center md:text-left">
-                    <div className="space-y-2">
-                      <span className="text-yellow-600 font-mono font-extrabold text-[10px] uppercase tracking-wider flex items-center justify-center md:justify-start gap-1">
-                        <Users className="w-3.5 h-3.5 text-yellow-604" />
-                        Rotas de Trabalho Diário
-                      </span>
-                      <h4 className="text-lg sm:text-xl font-extrabold text-gray-950 uppercase tracking-tight">
-                        {CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].title}
-                      </h4>
-                      <p className="text-xs sm:text-sm text-gray-650 leading-relaxed font-semibold">
-                        {CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].summary}
-                      </p>
-                    </div>
-
-                    {/* Quick Specs Board */}
-                    <div className="p-3.5 bg-gray-50 rounded-xl border border-gray-150 text-left">
-                      <span className="text-[9px] text-gray-400 font-mono block font-bold uppercase">Compromisso do Técnico</span>
-                      <p className="text-xs text-gray-800 font-extrabold leading-relaxed mt-1 flex items-start gap-1.5">
-                        <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-                        <span>Transparência total nos reparos com laudos justificados de verdade.</span>
-                      </p>
-                    </div>
-
-                    {/* Controls Footer buttons */}
-                    <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
-                      <button 
-                        onClick={() => setSelectedGalleryStep(CARPLUS_EQUIPE_GALLERY[gallerySlideIdx])}
-                        className="w-full sm:w-auto bg-gray-950 hover:bg-gray-850 text-white font-black px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition shadow flex items-center justify-center gap-2 cursor-pointer"
-                      >
-                        <Info className="w-4 h-4 text-yellow-500" />
-                        <span>Ler sobre Equipe & Trabalho</span>
-                      </button>
-
-                      <a 
-                        href={formatWhatsApp(`Olá Equipe Carplus! Vi a foto da oficina sobre "${CARPLUS_EQUIPE_GALLERY[gallerySlideIdx].title}" e gostaria de agendar uma avaliação técnica do meu automóvel.`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-850 font-extrabold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition text-center select-none"
-                      >
-                        Solicitar Orçamento Geral
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* Dots indicator index */}
-                <div className="flex justify-center items-center gap-1.5 mt-6 border-t border-gray-100 pt-4 select-none">
-                  {CARPLUS_EQUIPE_GALLERY.map((_, idx) => (
-                    <button
-                      key={`gallery-dot-${idx}`}
-                      onClick={() => setGallerySlideIdx(idx)}
-                      className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${gallerySlideIdx === idx ? 'w-8 bg-gray-800' : 'w-2.5 bg-gray-250 hover:bg-gray-400'}`}
-                      aria-label={`Ir para foto ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Grid of all 7 Transparency photos */}
-                <div className="mt-8 pt-6 border-t border-gray-100">
-                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-gray-500 mb-4 text-center sm:text-left">
-                    Galeria Completa de Transparência no Atendimento (7 Registros)
-                  </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                    {CARPLUS_EQUIPE_GALLERY.map((item, idx) => (
-                      <div
-                        key={`equipe-grid-item-${item.id}`}
-                        onClick={() => {
-                          setGallerySlideIdx(idx);
-                          const element = document.getElementById('slider-equipe-carplus');
-                          if (element) element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }}
-                        className={`group relative rounded-xl border transition duration-300 cursor-pointer overflow-hidden bg-gray-50 p-2 flex flex-col justify-between ${
-                          gallerySlideIdx === idx 
-                            ? 'border-yellow-500 ring-2 ring-yellow-500/30 bg-yellow-500/5' 
-                            : 'border-gray-200 hover:border-yellow-400 hover:shadow-md'
-                        }`}
-                      >
-                        <div className="aspect-[4/3] overflow-hidden rounded-lg relative bg-gray-200">
-                          <img
-                            src={item.image}
-                            onError={(e) => {
-                              const target = e.currentTarget as HTMLImageElement;
-                              if (target.src !== item.remoteImage && item.remoteImage) {
-                                target.src = item.remoteImage;
-                              } else if (item.fallbackImage) {
-                                target.src = item.fallbackImage;
-                              }
-                            }}
-                            alt={item.title}
-                            className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                            referrerPolicy="no-referrer"
-                          />
-                          <span className="absolute top-1.5 left-1.5 bg-black/80 backdrop-blur-xs text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded">
-                            #{item.id}
-                          </span>
-                        </div>
-                        <div className="mt-2 text-left space-y-0.5">
-                          <span className="text-[9px] font-mono font-bold text-yellow-600 block uppercase tracking-tight line-clamp-1">
-                            {item.badge}
-                          </span>
-                          <h5 className="text-xs font-extrabold text-gray-900 leading-tight line-clamp-2">
-                            {item.title}
-                          </h5>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <CarplusVideosSection />
-
-            <div className="bg-gray-900 text-white rounded-3xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow">
-              <div className="text-center sm:text-left">
-                <h4 className="font-extrabold uppercase text-yellow-500">Agende sua visita na loja física ou tire suas dúvidas!</h4>
-                <p className="text-xs text-gray-300 mt-1 max-w-xl">Nossos consultores no Portão estão de plantão para simular fretes, conferir medidas e reservar seus pneus.</p>
-              </div>
-              <a 
-                href={formatWhatsApp('Olá Carplus! Gostaria de falar com um atendente sabendo que vocês trabalham há 35 anos em Curitiba.')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-black px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition shrink-0 border border-black shadow"
-                id="whatsapp-about-cta"
-              >
-                Falar com Atendimento
-              </a>
-            </div>
+            </section>
           </div>
         )}
-
         {/* VIEW: PRIVACY POLICY */}
         {view === 'politica-privacidades' && (
           <div className="bg-gray-50 border border-gray-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm" id="view-privacy-policy">
@@ -2245,22 +1812,12 @@ export default function CompanyPages({
           ];
 
           const CARPLUS_GALLERY = [
-            { url: '/images/galeria/fachada-carplus.webp', fallback: 'https://img.carplusautos.com.br/cwb/fachada-carplus.webp', label: 'Fachada e Logo Carplus Portão' },
-            { url: '/images/galeria/loja-de-pneus-em-curitiba.webp', fallback: 'https://img.carplusautos.com.br/cwb/loja-de-pneus-em-curitiba.webp', label: 'Showroom de Medidas Pirelli' },
-            { url: '/images/galeria/auto-center-pneus-portao.jpg', fallback: 'https://img.carplusautos.com.br/cwb/auto-center-pneus-portao.jpg', label: 'Auto Center Pneus no Portão' },
-            { url: '/images/galeria/alinhamento.jpg', fallback: 'https://img.carplusautos.com.br/cwb/alinhamento.jpg', label: 'Alinhamento 3D Computadorizado' },
-            { url: '/images/galeria/tecnicos.jpg', fallback: 'https://img.carplusautos.com.br/cwb/tecnicos.jpg', label: 'Nossa Equipe de Técnicos Habilitados' },
-            { url: '/images/galeria/troca-de-pneus.jpg', fallback: 'https://img.carplusautos.com.br/cwb/troca-de-pneus.jpg', label: 'Troca de Pneus de Alta Performance' },
-            { url: '/images/galeria/rampa-de-geometria.jpg', fallback: 'https://img.carplusautos.com.br/cwb/rampa-de-geometria.jpg', label: 'Rampa de Geometria e Freio' },
-            { url: '/images/galeria/montagem-tecnica.jpg', fallback: 'https://img.carplusautos.com.br/cwb/montagem-tecnica.jpg', label: 'Montagem Técnica Especializada' },
-            { url: '/images/galeria/rodas-de-liga-leve.webp', fallback: 'https://img.carplusautos.com.br/cwb/rodas-de-liga-leve.webp', label: 'Troca de Rodas de Liga Leve' },
-            { url: '/images/galeria/mostruario-pneus-novos.webp', fallback: 'https://img.carplusautos.com.br/cwb/mostruario-pneus-novos.webp', label: 'Mostruário Especial de Pneus Novos' },
-            { url: '/images/galeria/show-row-pneus.webp', fallback: 'https://img.carplusautos.com.br/cwb/show-row-pneus.webp', label: 'Exposição de Pneus de Qualidade' },
-            { url: '/images/galeria/recepcao.jpg', fallback: 'https://img.carplusautos.com.br/cwb/recepcao.jpg', label: 'Recepção e Espera Climatizada' },
-            { url: '/images/galeria/caminhonete-suv.jpg', fallback: 'https://img.carplusautos.com.br/cwb/caminhonete-suv.jpg', label: 'Serviço em Camionetes e SUVs' },
-            { url: '/images/galeria/consultoria-avaliacao-estrutural.jpg', fallback: 'https://img.carplusautos.com.br/cwb/consultoria-avaliacao-estrutural.jpg', label: 'Consultoria e Avaliação Estrutural' },
-            { url: '/images/galeria/auto-center-de-pneus-em-curitiba.jpg', fallback: 'https://img.carplusautos.com.br/cwb/auto-center-de-pneus-em-curitiba.jpg', label: 'Auto Center de Pneus em Curitiba' },
-            { url: '/images/galeria/pneus-auto-center.jpg', fallback: 'https://img.carplusautos.com.br/cwb/pneus-auto-center.jpg', label: 'Pneus e Serviços Auto Center' }
+            { url: '/images/carplus-real/rampa-de-geometria.webp', fallback: '/images/galeria/rampa-de-geometria.jpg', label: 'Rampa de geometria da Carplus' },
+            { url: '/images/carplus-real/montagem-tecnica.webp', fallback: '/images/galeria/montagem-tecnica.jpg', label: 'Montagem de pneus na nossa oficina' },
+            { url: '/images/carplus-real/alinhamento.webp', fallback: '/images/galeria/alinhamento.jpg', label: 'Equipamento de alinhamento da unidade Portão' },
+            { url: '/images/carplus-real/tecnicos.webp', fallback: '/images/galeria/tecnicos.jpg', label: 'Atendimento técnico na oficina Carplus' },
+            { url: '/images/carplus-real/consultoria-avaliacao-estrutural.webp', fallback: '/images/galeria/consultoria-avaliacao-estrutural.jpg', label: 'Atendimento na unidade Portão' },
+            { url: '/images/carplus-real/auto-center-pneus-portao.webp', fallback: '/images/galeria/auto-center-pneus-portao.jpg', label: 'Equipamentos e estrutura da nossa oficina' }
           ];
 
           return (
@@ -2482,7 +2039,7 @@ export default function CompanyPages({
                               if (onAddToCart) {
                                 onAddToCart(tire, qty);
                               } else {
-                                const whatsappUrl = `https://wa.me/5541999999999?text=Olá%20Carplus!%20Gostaria%20de%20reservar%20${qty}%20unidades%20do%20pneu%20${encodeURIComponent(tire.name)}%20com%20instalação%20profissional%252c%20vi%20na%20página%20de%20${encodeURIComponent(seoTarget.name)}.`;
+                                const whatsappUrl = `https://wa.me/554130827282?text=Olá%20Carplus!%20Gostaria%20de%20reservar%20${qty}%20unidades%20do%20pneu%20${encodeURIComponent(tire.name)}%20com%20instalação%20profissional%252c%20vi%20na%20página%20de%20${encodeURIComponent(seoTarget.name)}.`;
                                 window.open(whatsappUrl, '_blank');
                               }
                             }}
@@ -2561,23 +2118,26 @@ export default function CompanyPages({
                     Veja fotos reais de nossa infraestrutura na Unidade Portão, equipada com rampas computadorizadas de Alinhamento 3D:
                   </p>
 
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {CARPLUS_GALLERY.map((img, idx) => (
-                      <div key={idx} className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm transition">
+                      <figure key={idx} className="overflow-hidden rounded-2xl border border-[#f59c00]/25 bg-[#111111]">
                         <img 
                           src={img.url} 
                           onError={(e) => {
-                            if (img.fallback) (e.currentTarget as HTMLImageElement).src = img.fallback;
+                            const image = e.currentTarget;
+                            if (image.dataset.realFallback) return;
+                            image.dataset.realFallback = 'true';
+                            image.src = img.fallback;
                           }}
                           alt={img.label}
-                          className="h-40 w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-102 transition-all duration-300"
+                          width="1384"
+                          height="924"
+                          loading="lazy"
+                          decoding="async"
+                          className="aspect-[3/2] w-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent flex items-end p-2 sm:p-3">
-                          <p className="text-[10px] font-bold text-white uppercase tracking-wide truncate w-full">
-                            {img.label}
-                          </p>
-                        </div>
-                      </div>
+                        <figcaption className="border-t border-white/10 px-4 py-4 text-[16px] leading-relaxed text-[#c3c3c3]">{img.label}</figcaption>
+                      </figure>
                     ))}
                   </div>
                 </div>
@@ -3007,7 +2567,7 @@ export default function CompanyPages({
               </div>
 
               {/* Structured explanation of 3D technology */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-3xl border border-gray-250 items-center justify-between">
+              <div className="grid grid-cols-1 items-center gap-7 rounded-2xl border border-[#f59c00]/25 bg-[#111111] p-5 sm:p-7 lg:grid-cols-[0.85fr_1.15fr]">
                 <div className="space-y-4">
                   <h3 className="text-base font-black uppercase text-gray-950 font-mono border-l-4 border-yellow-500 pl-3 leading-tight">O que é Geometria Computadorizada 3D?</h3>
                   <p className="text-xs sm:text-sm text-gray-705 leading-relaxed text-left font-medium">
@@ -3017,12 +2577,10 @@ export default function CompanyPages({
                     Evitamos esforços do volante nas retas, reduzimos o arrasto prejudicial dos sulcos de pneu na asfalto, e aumentamos consideravelmente a durabilidade dos seus pneus e juntas homocinéticas da caixa mecânica de direção.
                   </p>
                 </div>
-                <img 
-                  src="/images/galeria/alinhamento-jeep.webp" 
-                  alt="Alinhamento Jeep Compass em Curitiba"
-                  className="w-full h-56 object-cover rounded-2xl border border-gray-200"
-                  referrerPolicy="no-referrer"
-                />
+                <figure className="overflow-hidden rounded-xl border border-[#f59c00]/25 bg-[#080808]">
+                  <img src="/images/carplus-real/rampa-de-geometria.webp" alt="Jeep Compass na rampa de geometria da unidade Carplus no Portão" width="1384" height="924" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover sm:min-h-[300px]" onError={event => { const image = event.currentTarget; if (image.dataset.realFallback) return; image.dataset.realFallback = 'true'; image.src = '/images/galeria/rampa-de-geometria.jpg'; }} />
+                  <figcaption className="border-t border-white/10 px-4 py-4 text-[16px] leading-relaxed text-[#c3c3c3]">Rampa de geometria da nossa unidade no Portão.</figcaption>
+                </figure>
               </div>
 
               {/* Step-by-Step Box */}
@@ -3184,176 +2742,6 @@ export default function CompanyPages({
         )}
 
       </div>
-
-      {/* MODAL 1: WHEEL SERVICE DETAILS */}
-      <AnimatePresence>
-        {selectedWheelService && (
-          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 font-sans select-none" id="modal-wheel-service-detail">
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="bg-white rounded-3xl border border-gray-200 shadow-2xl overflow-hidden max-w-2xl w-full"
-            >
-              <div className="relative h-64 sm:h-72 bg-gray-900 border-b border-gray-200">
-                <img 
-                  src={selectedWheelService.image} 
-                  alt={selectedWheelService.title} 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-                <button 
-                  onClick={() => setSelectedWheelService(null)}
-                  className="absolute top-4 right-4 bg-gray-950/75 text-white hover:bg-yellow-500 hover:text-gray-950 p-2.5 rounded-full transition shadow-lg shrink-0 cursor-pointer"
-                  aria-label="Fechar"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-                <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 rounded-xl text-white">
-                  <span className="bg-yellow-500 text-gray-950 font-mono font-black text-[9px] uppercase px-2.5 py-1 rounded inline-block">
-                    {selectedWheelService.badge}
-                  </span>
-                  <h3 className="text-lg sm:text-xl font-black uppercase mt-1 text-yellow-500 font-mono">
-                    {selectedWheelService.title}
-                  </h3>
-                </div>
-              </div>
-              
-              <div className="p-6 sm:p-8 space-y-5">
-                <div className="space-y-3">
-                  <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider font-mono">
-                    Como é feito o Serviço?
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-left font-medium">
-                    {selectedWheelService.details}
-                  </p>
-                </div>
-
-                <div className="border-t border-gray-150 pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <h5 className="text-[10px] uppercase font-mono font-black text-yellow-600 flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5" />
-                      Equipe Carplus Pneus
-                    </h5>
-                    <p className="text-[11px] text-gray-650 leading-relaxed text-left font-bold">
-                      {selectedWheelService.team}
-                    </p>
-                  </div>
-                  
-                  <div className="space-y-1.5 bg-gray-50 p-3.5 rounded-xl border border-gray-150">
-                    <h5 className="text-[10px] uppercase font-mono font-black text-gray-500 flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5" />
-                      Prazo & Execução
-                    </h5>
-                    <p className="text-[11px] text-gray-700 font-extrabold">
-                      {selectedWheelService.time}
-                    </p>
-                    <p className="text-[9px] text-gray-400 font-medium">Agende sua avaliação gratuita em Curitiba!</p>
-                  </div>
-                </div>
-
-                {/* Modal Footer actions */}
-                <div className="border-t border-gray-150 pt-4 flex items-center justify-end gap-3">
-                  <button 
-                    onClick={() => setSelectedWheelService(null)}
-                    className="text-gray-400 hover:text-gray-600 font-extrabold text-xs uppercase px-4 py-2 rounded transition cursor-pointer"
-                  >
-                    Fechar Janela
-                  </button>
-                  <a 
-                    href={formatWhatsApp(`Olá Carplus Curitiba! Li os detalhes do serviço técnico de "${selectedWheelService.title}" e gostaria de agendar uma vistoria imediata das minhas rodas de liga leve.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-black px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow cursor-pointer border border-black"
-                  >
-                    Agendar / WhatsApp
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* MODAL 2: CARPLUS GALLERY AND TEAM DETAILS */}
-      <AnimatePresence>
-        {selectedGalleryStep && (
-          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 font-sans select-none" id="modal-gallery-step-detail">
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="bg-white rounded-3xl border border-gray-200 shadow-2xl overflow-hidden max-w-2xl w-full"
-            >
-              <div className="relative h-64 sm:h-72 bg-gray-900 border-b border-gray-200">
-                <img 
-                  src={selectedGalleryStep.image} 
-                  alt={selectedGalleryStep.title} 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-                <button 
-                  onClick={() => setSelectedGalleryStep(null)}
-                  className="absolute top-4 right-4 bg-gray-950/75 text-white hover:bg-yellow-500 hover:text-gray-950 p-2.5 rounded-full transition shadow-lg shrink-0 cursor-pointer"
-                  aria-label="Fechar"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-                <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 rounded-xl text-white">
-                  <span className="bg-yellow-500 text-gray-950 font-mono font-black text-[9px] uppercase px-2.5 py-1 rounded inline-block">
-                    {selectedGalleryStep.badge}
-                  </span>
-                  <h3 className="text-lg sm:text-xl font-black uppercase mt-1 text-yellow-500 font-mono">
-                    {selectedGalleryStep.title}
-                  </h3>
-                </div>
-              </div>
-              
-              <div className="p-6 sm:p-8 space-y-5">
-                <div className="space-y-3">
-                  <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider font-mono">
-                    Compromisso Técnico & Detalhes
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-left font-medium">
-                    {selectedGalleryStep.details}
-                  </p>
-                </div>
-
-                <div className="border-t border-gray-150 pt-4">
-                  <div className="space-y-1.5">
-                    <h5 className="text-[10px] uppercase font-mono font-black text-yellow-600 flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5" />
-                      Nossa Equipe de Pista na Loja do Portão
-                    </h5>
-                    <p className="text-[11px] text-gray-750 leading-relaxed text-left font-bold bg-gray-50 border border-gray-150 p-3.5 rounded-xl">
-                      {selectedGalleryStep.team}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="border-t border-gray-150 pt-4 flex items-center justify-end gap-3">
-                  <button 
-                    onClick={() => setSelectedGalleryStep(null)}
-                    className="text-gray-400 hover:text-gray-600 font-extrabold text-xs uppercase px-4 py-2 rounded transition cursor-pointer"
-                  >
-                    Fechar Janela
-                  </button>
-                  <a 
-                    href={formatWhatsApp(`Olá Carplus Curitiba! Vi a foto da equipe técnica sobre "${selectedGalleryStep.title}" e gostaria de marcar uma revisão mecânica na Arthur Bernardes.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-black px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow cursor-pointer border border-black"
-                  >
-                    Agendar Revisão Gratuita
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
     </div>
   );

@@ -40,8 +40,8 @@ export default function Footer({ onNavigate, pageKey }: FooterProps) {
   return (
     <footer className="carplus-footer relative isolate border-t border-white/15 bg-[#080808] pb-28 text-white sm:pb-12" id="main-footer" data-cta-location="footer">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-        <img src="/images/galeria/fachada-carplus.webp" alt="" aria-hidden="true" width="1067" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover object-center grayscale" />
-        <div className="absolute inset-0 bg-black/90" />
+        <img src="/images/carplus-real/loja-de-pneus-em-curitiba.webp" alt="" aria-hidden="true" width="1067" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover object-center" />
+        <div className="absolute inset-0 bg-black/80" />
         <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(180deg, #080808 0%, rgba(8, 8, 8, 0.25) 35%, rgba(8, 8, 8, 0.5) 65%, #080808 100%)' }} />
       </div>
       <div className="mx-auto max-w-7xl px-5 pt-12 sm:px-8 lg:pt-16">

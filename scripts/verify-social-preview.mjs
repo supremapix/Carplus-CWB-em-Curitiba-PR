@@ -17,11 +17,11 @@ const option = (name, fallback) => args.includes(name) ? args[args.indexOf(name)
 const baseRef = option('--base', 'HEAD');
 const dist = path.resolve(root, option('--dist', 'dist'));
 const origin = 'https://www.carpluspneuseoficina.com.br';
-const imagePath = '/images/social/carplus-prinx-eletricos-og.png';
+const imagePath = '/images/social/carplus-prinx-nova-energia-og.png';
 const imageUrl = `${origin}${imagePath}`;
 const title = 'Pneus Prinx para elétricos e híbridos | Carplus';
 const description = 'Encontre pneus para seu elétrico ou híbrido em Curitiba. Consulte a medida e as opções Prinx com a Carplus pelo WhatsApp: (41) 3082-7282.';
-const imageAlt = 'Carplus Pneus, Prinx e pneus para elétricos e híbridos. WhatsApp (41) 3082-7282.';
+const imageAlt = 'Carplus Pneus para Elétricos: Nova energia, a mesma confiança. Linha Prinx para elétricos e híbridos.';
 const marker = 'data-carplus-social-fallback';
 const expectedSocial = {
   'og:type': 'website', 'og:url': `${origin}/`, 'og:title': title, 'og:description': description,
