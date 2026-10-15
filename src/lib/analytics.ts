@@ -145,6 +145,7 @@ export function initAnalyticsListeners() {
   }
 
   function handleInteraction(url: string | null, el: HTMLElement | null) {
+    if (el?.closest('[data-share-channel]')) return;
     const evt = classify(url);
     if (!evt) return;
 

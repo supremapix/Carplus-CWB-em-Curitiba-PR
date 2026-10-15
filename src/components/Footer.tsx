@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { ArrowUp, ArrowUpRight, Clock, Heart, MapPin, MessageSquare, Phone, Share2 } from 'lucide-react';
+import React from 'react';
+import { ArrowUp, ArrowUpRight, Clock, Heart, MapPin, MessageSquare, Phone } from 'lucide-react';
+import ShareSitePanel from './ShareSitePanel';
 
-interface FooterProps { onNavigate: (page: any) => void; }
+interface FooterProps { onNavigate: (page: any) => void; pageKey?: string; }
 
 const maps = 'https://maps.google.com/?q=Av.+Presid.+Arthur+da+Silva+Bernardes,+1323+-+Port%C3%A3o,+Curitiba+-+PR';
 const whatsapp = 'https://api.whatsapp.com/send?phone=554130827282&text=Ol%C3%A1%20Carplus!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento.';
@@ -21,19 +22,7 @@ const information = [
   { label: 'Mapa do site', page: 'mapa-do-site', href: '/mapa-do-site' },
 ];
 
-export default function Footer({ onNavigate }: FooterProps) {
-  const [shareMessage, setShareMessage] = useState('');
-
-  const handleShare = async () => {
-    try {
-      if (navigator.share) await navigator.share({ title: 'Carplus Pneus e Oficina — Portão, Curitiba', text: 'Pneus e serviços automotivos na Carplus.', url: window.location.href });
-      else if (navigator.clipboard?.writeText) { await navigator.clipboard.writeText(window.location.href); setShareMessage('Link copiado!'); }
-      else setShareMessage('Copie o endereço desta página para compartilhar.');
-    } catch (error) {
-      if (!(error instanceof Error && error.name === 'AbortError')) setShareMessage('Copie o endereço desta página para compartilhar.');
-    }
-  };
-
+export default function Footer({ onNavigate, pageKey }: FooterProps) {
   const navigate = (event: React.MouseEvent<HTMLAnchorElement>, page: string) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
@@ -77,7 +66,8 @@ export default function Footer({ onNavigate }: FooterProps) {
           <nav aria-label="Links úteis no rodapé"><h2 className="mb-3 text-lg font-semibold">Encontre o que precisa</h2>{navigation.map(link => <a key={link.page} href={link.href} onClick={event => navigate(event, link.page)} className={`flex min-h-12 items-center justify-between gap-3 border-b border-white/10 py-3 text-base text-white/70 transition-colors hover:text-[#f59c00] ${focusClass}`}><span>{link.label}</span><ArrowUpRight className="h-4 w-4 shrink-0 text-[#f59c00]" aria-hidden="true" /></a>)}{[{ label: 'Ofertas de pneus', id: 'catalog' }, { label: 'Qual pneu serve no meu carro?', id: 'finder' }].map(link => <a key={link.id} href={`/#${link.id}`} onClick={event => navigateHomeSection(event, link.id)} className={`flex min-h-12 items-center justify-between gap-3 border-b border-white/10 py-3 text-base text-white/70 transition-colors hover:text-[#f59c00] ${focusClass}`}><span>{link.label}</span><ArrowUpRight className="h-4 w-4 shrink-0 text-[#f59c00]" aria-hidden="true" /></a>)}</nav>
           <nav aria-label="Informações da Carplus"><h2 className="mb-3 text-lg font-semibold">Mais informações</h2>{information.map(link => <a key={link.page} href={link.href} onClick={event => navigate(event, link.page)} className={`flex min-h-12 items-center border-b border-white/10 py-3 text-base text-white/70 transition-colors hover:text-[#f59c00] ${focusClass}`}>{link.label}</a>)}</nav>
         </div>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 border-t border-white/15 py-5 sm:justify-between"><button type="button" onClick={handleShare} className={`inline-flex min-h-12 items-center gap-2 text-sm font-semibold text-white/75 hover:text-[#f59c00] ${focusClass}`}><Share2 className="h-4 w-4 text-[#f59c00]" aria-hidden="true" />Compartilhar esta página</button><span role="status" className="text-sm text-[#f59c00]">{shareMessage}</span><button type="button" onClick={toTop} className={`inline-flex min-h-12 items-center gap-2 text-sm font-semibold text-white/75 hover:text-[#f59c00] ${focusClass}`}>Voltar ao topo<ArrowUp className="h-4 w-4 text-[#f59c00]" aria-hidden="true" /></button></div>
+        <ShareSitePanel className="mt-9" pageKey={pageKey} />
+        <div className="flex justify-center py-4 sm:justify-end"><button type="button" onClick={toTop} className={`inline-flex min-h-12 items-center gap-2 text-sm font-semibold text-white/75 hover:text-[#f59c00] ${focusClass}`}>Voltar ao topo<ArrowUp className="h-4 w-4 text-[#f59c00]" aria-hidden="true" /></button></div>
         <div className="flex flex-col justify-between gap-3 border-t border-white/15 pt-6 text-center text-xs leading-relaxed text-white/55 sm:flex-row sm:text-left"><p>© {new Date().getFullYear()} <strong className="font-semibold text-white/80">Carplus Pneus &amp; Oficina Mecânica.</strong><br />Todos os direitos reservados.</p><p>CNPJ: 22.845.891/0001-08<br />Portão, Curitiba / PR</p></div>
       </div>
       <SupremaCredit />

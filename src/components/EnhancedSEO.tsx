@@ -5,6 +5,7 @@ import { toSlug, getTireSlug } from '../utils/slugify';
 import { isPageReleased, getSavedGSCRate } from '../utils/seoWaves';
 import { getBlogPostBySlug } from '../blog-data';
 import { RIM_SEO_DATA } from '../data/rim-seo-data';
+import { HOME_SOCIAL_IMAGE_URL, HOME_SOCIAL_TITLE, HOME_SOCIAL_DESCRIPTION, HOME_SOCIAL_IMAGE_ALT } from '../lib/socialPreview';
 
 // Types definition for our EnhancedSEO component
 interface EnhancedSEOProps {
@@ -59,7 +60,8 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
   let title = "Pneus e Auto Center em Curitiba – Portão | Carplus Pneus";
   let desc = "Carplus Pneus e Auto Center no Portão, Curitiba. Mais de 1.900 pneus novos multimarcas com montagem na hora, alinhamento 3D a laser e garantia de 5 anos.";
   let keywords = "auto center pneus curitiba, auto center curitiba, pneus curitiba, pneus e auto center em curitiba portao, centro automotivo curitiba, auto center portao, loja de pneus curitiba, alinhamento 3d curitiba, pneus novos com instalacao curitiba";
-  let ogImage = `${domain}/og-carplus.webp`;
+  const isHomeSocialPreview = currentView === 'home' && !selectedTire && !selectedCatalogTire && !seoTarget;
+  let ogImage = isHomeSocialPreview ? HOME_SOCIAL_IMAGE_URL : `${domain}/og-carplus.webp`;
 
   if (selectedCatalogTire) {
     title = `Pneu ${selectedCatalogTire.marca} ${selectedCatalogTire.medida} ${selectedCatalogTire.linha || ''} em Curitiba | Carplus Pneus`;
@@ -1119,21 +1121,23 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       {/* 5. Open Graph Meta Tags (Facebook & general social preview) */}
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={desc} />
+      <meta property="og:title" content={isHomeSocialPreview ? HOME_SOCIAL_TITLE : title} />
+      <meta property="og:description" content={isHomeSocialPreview ? HOME_SOCIAL_DESCRIPTION : desc} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="Carplus Pneus" />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:secure_url" content={ogImage} />
+      {isHomeSocialPreview && <meta property="og:image:type" content="image/png" />}
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Carplus Pneus Portão Curitiba" />
+      <meta property="og:image:alt" content={isHomeSocialPreview ? HOME_SOCIAL_IMAGE_ALT : 'Carplus Pneus Portão Curitiba'} />
 
       {/* 6. Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={desc} />
+      <meta name="twitter:title" content={isHomeSocialPreview ? HOME_SOCIAL_TITLE : title} />
+      <meta name="twitter:description" content={isHomeSocialPreview ? HOME_SOCIAL_DESCRIPTION : desc} />
       <meta name="twitter:image" content={ogImage} />
+      {isHomeSocialPreview && <meta name="twitter:image:alt" content={HOME_SOCIAL_IMAGE_ALT} />}
 
       {/* 7. Font Optimization & Preload Hints */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -6,6 +6,9 @@ import App from './App.tsx';
 import './index.css';
 import './carplus-theme.css';
 
+// Crawlers receive static social tags; React owns them after the app starts.
+document.head.querySelectorAll('meta[data-carplus-social-fallback]').forEach(tag => tag.remove());
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>

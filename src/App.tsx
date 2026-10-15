@@ -1515,7 +1515,7 @@ export default function App() {
       <ScrollToTop />
 
       {/* Structured Footer */}
-      <Footer onNavigate={handleScrollToSection} />
+      <Footer onNavigate={handleScrollToSection} pageKey={`${currentView}:${selectedCatalogTire?.slug || selectedTire?.id || selectedBlogSlug || seoTarget?.name || ''}`} />
 
       {/* Cart side panel Drawer */}
       <Suspense fallback={null}>

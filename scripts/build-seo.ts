@@ -4,6 +4,7 @@ import { TIRES_DATA, CAR_MODELS_DATA } from '../src/data';
 import { BLOG_POSTS, BlogPost } from '../src/blog-data';
 import { isPageReleased, calculateLocalScore, AROS, CARS } from '../src/utils/seoWaves';
 import { FAQ_ADVICE, TIRE_ADVICE_SCHEMA } from '../src/data/tireAdvice';
+import { HOME_SOCIAL_IMAGE_URL } from '../src/lib/socialPreview';
 
 // Helper to escape HTML attributes and text
 function escapeHtml(str: string): string {
@@ -1363,6 +1364,10 @@ function runPrerendering(routes: PrerenderRoute[]) {
   }
 
   const templateHtml = fs.readFileSync(templatePath, 'utf8');
+  // Keep the electric-tire campaign preview on home; retain existing subpage previews.
+  const subpageTemplateHtml = templateHtml
+    .replaceAll(HOME_SOCIAL_IMAGE_URL, `${DOMAIN}/og-carplus.webp`)
+    .replace(/\s*<meta\s+data-carplus-social-fallback="true"\s+(?:property="og:image:(?:secure_url|type|alt)"|name="twitter:[^"]+")\s+content="[^"]*"\s*\/?>/gi, '');
 
   console.log(`Writing pre-rendered static HTML for ${routes.length} paths...`);
 
@@ -1391,13 +1396,13 @@ function runPrerendering(routes: PrerenderRoute[]) {
     const subpageShell = r.customBodyHtml || renderServiceShell(r.title, r.desc);
 
     // Replace header and body values cleanly
-    let rewritten = templateHtml
+    let rewritten = subpageTemplateHtml
       .replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(r.title)}</title>`)
       .replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapeHtml(r.desc)}" />`)
       .replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${pageUrl}" />`)
-      .replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${escapeHtml(r.title)}" />`)
-      .replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${escapeHtml(r.desc)}" />`)
-      .replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`)
+      .replace(/<meta\s+(?:data-carplus-social-fallback="true"\s+)?property="og:title"\s+content="[^"]*"\s*\/?>/i, `<meta data-carplus-social-fallback="true" property="og:title" content="${escapeHtml(r.title)}" />`)
+      .replace(/<meta\s+(?:data-carplus-social-fallback="true"\s+)?property="og:description"\s+content="[^"]*"\s*\/?>/i, `<meta data-carplus-social-fallback="true" property="og:description" content="${escapeHtml(r.desc)}" />`)
+      .replace(/<meta\s+(?:data-carplus-social-fallback="true"\s+)?property="og:url"\s+content="[^"]*"\s*\/?>/i, `<meta data-carplus-social-fallback="true" property="og:url" content="${pageUrl}" />`)
       .replace(/<head>/i, `<head>\n    <meta name="keywords" content="${escapeHtml(r.keywords)}" />\n    <meta name="robots" content="${robotsVal}" />`)
       .replace(/<\/head>/i, `    <script type="application/ld+json">\n${JSON.stringify(r.schema, null, 2)}\n    </script>\n  </head>`)
       .replace(/<div id="root"><\/div>/i, subpageShell);

@@ -7,6 +7,8 @@
  * FAQ and the new src/data/tireAdvice.ts, while retaining existing SEO and text.
  * --allow-route-startup-fix permits only the readiness gate and initial catalog
  * selection clears that prevent stale startup/navigation state from replacing URLs.
+ * --allow-social-preview permits only the specified home OG/Twitter preview and
+ * the exact share-link analytics guard; secondary-page SEO remains unchanged.
  * HEAD is the default baseline; pin the original
  * commit when checking again after committing the UI change.
  */
@@ -25,6 +27,20 @@ const failures = [];
 const warnings = [];
 const allowHomeAdvice = argv.includes('--allow-home-advice');
 const allowRouteStartupFix = argv.includes('--allow-route-startup-fix');
+const allowSocialPreview = argv.includes('--allow-social-preview');
+const homeSocialImage = 'https://www.carpluspneuseoficina.com.br/images/social/carplus-prinx-eletricos-og.png';
+const homeSocialTitle = 'Pneus Prinx para elétricos e híbridos | Carplus';
+const homeSocialDescription = 'Encontre pneus para seu elétrico ou híbrido em Curitiba. Consulte a medida e as opções Prinx com a Carplus pelo WhatsApp: (41) 3082-7282.';
+const homeSocialAlt = 'Carplus Pneus, Prinx e pneus para elétricos e híbridos. WhatsApp (41) 3082-7282.';
+const homeSocialValues = {
+  'og:type': 'website', 'og:url': 'https://www.carpluspneuseoficina.com.br/',
+  'og:title': homeSocialTitle, 'og:description': homeSocialDescription,
+  'og:image': homeSocialImage, 'og:image:secure_url': homeSocialImage,
+  'og:image:type': 'image/png', 'og:image:width': '1200', 'og:image:height': '630', 'og:image:alt': homeSocialAlt,
+  'twitter:card': 'summary_large_image', 'twitter:title': homeSocialTitle,
+  'twitter:description': homeSocialDescription, 'twitter:image': homeSocialImage, 'twitter:image:alt': homeSocialAlt
+};
+const mutableHomeSocialKeys = new Set(Object.keys(homeSocialValues).filter(key => !['og:type', 'og:url'].includes(key)));
 const normalized = value => String(value).replace(/\r\n?/g, '\n');
 const digest = value => crypto.createHash('sha256').update(normalized(value)).digest('hex');
 const posix = value => value.replace(/\\/g, '/');
@@ -53,6 +69,63 @@ function normalizeAllowedAdviceAnalytics(baseline, working) {
   const after = normalized(working);
   if (allowHomeAdvice && before.split(original).length === 2 && after.split(allowed).length === 2) return after.replace(allowed, original);
   return after;
+}
+
+function normalizeAllowedShareAnalytics(baseline, working) {
+  const guard = "    if (el?.closest('[data-share-channel]')) return;\n";
+  const before = normalized(baseline);
+  const after = normalized(working);
+  if (!allowSocialPreview || before.includes(guard)) return after;
+  const prefix = '  function handleInteraction(url: string | null, el: HTMLElement | null) {\n';
+  if (after.split(`${prefix}${guard}`).length === 2) return after.replace(`${prefix}${guard}`, prefix);
+  return after;
+}
+
+function normalizeSocialIndexSource(source, validate = false) {
+  const text = normalized(source);
+  if (validate) {
+    validateHomeSocialMetadata(htmlSeo(text, 'index.html').metas, 'index.html');
+    for (const match of text.matchAll(/<meta\b[^>]*>/gi)) {
+      const meta = attributes(match[0]);
+      const key = meta.property || meta.name || '';
+      if (!Object.hasOwn(homeSocialValues, key)) continue;
+      check(meta['data-carplus-social-fallback'] === 'true', `index.html: missing social fallback marker on ${key}`);
+      check(Object.keys(meta).every(attribute => ['property', 'name', 'content', 'data-carplus-social-fallback'].includes(attribute)), `index.html: unexpected attributes on ${key}`);
+    }
+  }
+  return text.replace(/^[\t ]*<meta\b[^>]*>[\t ]*\n?/gm, tag => {
+    const meta = attributes(tag);
+    return Object.hasOwn(homeSocialValues, meta.property || meta.name || '') ? '' : tag;
+  });
+}
+
+function normalizeSocialEnhancedSeo(baseline, working) {
+  const before = normalized(baseline);
+  let after = normalized(working);
+  if (!allowSocialPreview || before === after) return after;
+  const replacements = [
+    ["import { HOME_SOCIAL_IMAGE_URL, HOME_SOCIAL_TITLE, HOME_SOCIAL_DESCRIPTION, HOME_SOCIAL_IMAGE_ALT } from '../lib/socialPreview';\n", ''],
+    ["  const isHomeSocialPreview = currentView === 'home' && !selectedTire && !selectedCatalogTire && !seoTarget;\n", ''],
+    ['  let ogImage = isHomeSocialPreview ? HOME_SOCIAL_IMAGE_URL : `${domain}/og-carplus.webp`;', '  let ogImage = `${domain}/og-carplus.webp`;'],
+    ['<meta property="og:title" content={isHomeSocialPreview ? HOME_SOCIAL_TITLE : title} />', '<meta property="og:title" content={title} />'],
+    ['<meta property="og:description" content={isHomeSocialPreview ? HOME_SOCIAL_DESCRIPTION : desc} />', '<meta property="og:description" content={desc} />'],
+    ['      {isHomeSocialPreview && <meta property="og:image:type" content="image/png" />}\n', ''],
+    ['<meta property="og:image:alt" content={isHomeSocialPreview ? HOME_SOCIAL_IMAGE_ALT : \'Carplus Pneus Portão Curitiba\'} />', '<meta property="og:image:alt" content="Carplus Pneus Portão Curitiba" />'],
+    ['<meta name="twitter:title" content={isHomeSocialPreview ? HOME_SOCIAL_TITLE : title} />', '<meta name="twitter:title" content={title} />'],
+    ['<meta name="twitter:description" content={isHomeSocialPreview ? HOME_SOCIAL_DESCRIPTION : desc} />', '<meta name="twitter:description" content={desc} />'],
+    ['      {isHomeSocialPreview && <meta name="twitter:image:alt" content={HOME_SOCIAL_IMAGE_ALT} />}\n', '']
+  ];
+  for (const [permitted, original] of replacements) {
+    if (!before.includes(permitted) && after.split(permitted).length === 2) after = after.replace(permitted, original);
+  }
+  return after;
+}
+
+function validateHomeSocialMetadata(metas, label) {
+  for (const [key, expected] of Object.entries(homeSocialValues)) {
+    const values = metas.filter(([name]) => name === key).map(([, value]) => value);
+    compare(`${label}: exact social metadata ${key}`, [expected], values);
+  }
 }
 
 function protectedPath(file) {
@@ -115,6 +188,10 @@ function htmlSeo(html, file) {
 function compareSeo(label, file, beforeHtml, afterHtml, permitAdvice = false) {
   const before = htmlSeo(beforeHtml, file);
   const after = htmlSeo(afterHtml, file);
+  if (allowSocialPreview && file === 'index.html') {
+    validateHomeSocialMetadata(after.metas, label);
+    after.metas = [...after.metas.filter(([key]) => !mutableHomeSocialKeys.has(key)), ...before.metas.filter(([key]) => mutableHomeSocialKeys.has(key))].sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+  }
   if (!permitAdvice || file !== 'index.html') { compare(label, before, after); return; }
   const { schemas: beforeSchemas, bodyText: beforeText, ...beforeMetadata } = before;
   const { schemas: afterSchemas, bodyText: afterText, ...afterMetadata } = after;
@@ -283,7 +360,7 @@ try {
   const protectedFiles = sorted([...baseFiles, ...workingFiles].filter(protectedPath));
   for (const file of protectedFiles) {
     if (allowHomeAdvice && file === 'src/data/tireAdvice.ts' && !baseSet.has(file)) continue;
-    if (allowHomeAdvice && file === 'scripts/build-seo.ts') {
+    if ((allowHomeAdvice || allowSocialPreview) && file === 'scripts/build-seo.ts') {
       check(fs.existsSync(path.join(root, file)), `Protected file removed: ${file}`);
       continue; // All of its generated pages, metadata, schemas and text are checked below.
     }
@@ -292,7 +369,13 @@ try {
     if (baseSet.has(file) && fs.existsSync(path.join(root, file))) {
       const baseline = readBase(file);
       const working = readWorking(file);
-      compare(`Protected file ${file}`, digest(baseline), digest(file === 'src/lib/analytics.ts' ? normalizeAllowedAdviceAnalytics(baseline, working) : working));
+      if (allowSocialPreview && file === 'index.html') compare(`Protected file ${file}`, digest(normalizeSocialIndexSource(baseline)), digest(normalizeSocialIndexSource(working, true)));
+      else {
+        let permitted = working;
+        if (file === 'src/lib/analytics.ts') permitted = normalizeAllowedAdviceAnalytics(baseline, normalizeAllowedShareAnalytics(baseline, working));
+        if (allowSocialPreview && file === 'src/components/EnhancedSEO.tsx') permitted = normalizeSocialEnhancedSeo(baseline, working);
+        compare(`Protected file ${file}`, digest(baseline), digest(permitted));
+      }
     }
   }
 
@@ -303,7 +386,8 @@ try {
   let ts;
   try { ts = require('typescript'); }
   catch { throw new Error('Install repository dependencies with npm ci before running this verifier (typescript is required)'); }
-  const beforeContract = routeContract(ts, readBase('src/App.tsx'));
+  const baseApp = readBase('src/App.tsx');
+  const beforeContract = routeContract(ts, baseApp, allowRouteStartupFix && /\[isRouteReady,\s*setIsRouteReady\]\s*=\s*useState\(false\)/.test(baseApp));
   const afterContract = routeContract(ts, readWorking('src/App.tsx'), allowRouteStartupFix);
   for (const key of Object.keys(beforeContract)) compare(`App route/SEO contract: ${key}`, beforeContract[key], afterContract[key]);
 
@@ -323,7 +407,7 @@ try {
     if (!expected.has(output)) expected.set(output, readBase(file));
   }
   const expectedBuild = new Map(expected);
-  if (allowHomeAdvice && currentGenerated.has('index.html')) expectedBuild.set('index.html', currentGenerated.get('index.html'));
+  if ((allowHomeAdvice || allowSocialPreview) && currentGenerated.has('index.html')) expectedBuild.set('index.html', currentGenerated.get('index.html'));
 
   if (!argv.includes('--sources-only')) {
     const dist = path.resolve(root, option('--dist', 'dist'));
@@ -351,6 +435,7 @@ try {
   console.log(`App routing contracts: ${Object.keys(beforeContract).join(', ')}`);
   if (allowHomeAdvice) warnings.push('Additive home advice enabled: existing text/metadata must remain; additional home JSON-LD must be FAQPage; only the exact data-analytics-url fallback is permitted in analytics.ts');
   if (allowRouteStartupFix) warnings.push('Route startup fix enabled: only the exact readiness state/gate/dependencies and first catalog clear in the two navigation handlers are normalized');
+  if (allowSocialPreview) warnings.push('Home social preview enabled: exact OG/Twitter values and fallback markers, exact EnhancedSEO edits and one exact share analytics guard only; secondary-page metadata remains unchanged');
   if (argv.includes('--sources-only')) warnings.push('dist was not checked (--sources-only); run the full verification after the production build');
   for (const warning of warnings) console.warn(`WARN: ${warning}`);
   if (failures.length) {
