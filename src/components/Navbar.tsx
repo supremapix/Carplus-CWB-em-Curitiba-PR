@@ -75,7 +75,10 @@ export default function Navbar({ onScrollToSection, cartCount, onOpenCart }: Nav
     <header ref={headerRef} className="carplus-navbar sticky top-0 z-40 w-full border-b border-white/10 bg-[#080808] text-white" id="main-header" data-cta-location="header" onBlur={event => { if (event.relatedTarget instanceof Node && !event.currentTarget.contains(event.relatedTarget)) setIsMobileMenuOpen(false); }}>
       <div className="mx-auto flex min-h-[84px] max-w-7xl items-center justify-between gap-3 px-4 sm:gap-5 sm:px-6 xl:min-h-[92px]">
         <a href="/" onClick={event => navigate(event, 'home')} aria-label="Carplus Pneus — início" className={`flex min-h-12 min-w-0 shrink-0 items-center ${focusClass}`}>
-          <img src="/images/logos/logo-horizontal.svg" onError={event => { if (event.currentTarget.getAttribute('src') !== '/logo-horizontal.svg') event.currentTarget.src = '/logo-horizontal.svg'; }} alt="Carplus Pneus e Oficina Mecânica" width="300" height="43" loading="eager" className="h-auto w-[210px] max-w-[calc(100vw-140px)] object-contain sm:w-[235px] xl:w-[245px]" />
+          <picture className="block w-[245px] max-w-[calc(100vw-152px)] sm:w-[235px] sm:max-w-none xl:w-[245px]">
+            <source media="(max-width: 640px)" srcSet="/images/logos/carplus-eletricos.svg" width="245" height="58" />
+            <img src="/images/logos/logo-horizontal.svg" onError={event => { if (event.currentTarget.getAttribute('src') !== '/logo-horizontal.svg') event.currentTarget.src = '/logo-horizontal.svg'; }} alt="Carplus Pneus e Oficina Mecânica" width="300" height="43" loading="eager" className="block h-auto w-full object-contain" />
+          </picture>
         </a>
         <nav aria-label="Navegação principal" className="hidden items-center gap-1 xl:flex">
           {primaryLinks.map(link => <a key={link.id} href={link.href} onClick={event => navigate(event, link.id)} className={`inline-flex min-h-12 items-center whitespace-nowrap px-3 text-[15px] font-semibold text-white/80 transition-colors hover:text-[#f59c00] ${focusClass}`}>{link.label}</a>)}
