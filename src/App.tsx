@@ -1239,10 +1239,10 @@ export default function App() {
           </div>
         </section>
 
-        {/* Verification Videos Section for Elderly and High Trust */}
+        {/* Carplus videos */}
         <section className="max-w-7xl mx-auto px-4">
           <details className="carplus-more-content">
-            <summary>Veja os serviços e a estrutura em vídeo</summary>
+            <summary>Vídeos da Carplus: pneus, serviços e estrutura</summary>
             <Suspense fallback={null}>
               <CarplusVideosSection />
             </Suspense>

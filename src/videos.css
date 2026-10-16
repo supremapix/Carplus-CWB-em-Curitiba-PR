@@ -1,0 +1,101 @@
+#carplus-root .carplus-videos { width: 100%; min-width: 0; color: #fff; user-select: text; container-type: inline-size; }
+#carplus-root .carplus-videos .videos-panel { padding: 30px; border: 1px solid #f59c004d; border-radius: 10px; background: #080808; }
+#carplus-root .carplus-videos .videos-heading { max-width: 780px; margin-bottom: 27px; }
+#carplus-root .carplus-videos .videos-eyebrow { margin: 0 0 11px; color: #f59c00; font-size: 14px; font-weight: 700; letter-spacing: .08em; line-height: 1.6; text-transform: uppercase; }
+#carplus-root .carplus-videos .videos-title { margin: 0; color: #fff; font: 700 clamp(32px, 3.5vw, 44px)/1.1 "Barlow Condensed", sans-serif; letter-spacing: -.01em; }
+#carplus-root .carplus-videos .videos-intro { margin: 15px 0 0; color: #c3c3c3; font-size: 17px; line-height: 1.8; }
+#carplus-root .carplus-videos .videos-layout { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(310px, 1fr); gap: 25px; align-items: start; }
+#carplus-root .carplus-videos .videos-feature { min-width: 0; overflow: hidden; border: 1px solid #424242; border-radius: 8px; background: #111; }
+#carplus-root .carplus-videos .videos-player { position: relative; width: 100%; min-height: 200px; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+#carplus-root .carplus-videos .videos-player iframe { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+#carplus-root .carplus-videos .videos-poster { position: absolute; inset: 0; display: flex; width: 100%; height: 100%; min-height: 200px; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 20px; border: 0; border-radius: 0; color: #fff; background: #111; cursor: pointer; }
+#carplus-root .carplus-videos .videos-poster > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; filter: none; }
+#carplus-root .carplus-videos .videos-poster:focus-visible { outline-offset: -5px!important; }
+#carplus-root .carplus-videos .videos-play-symbol { position: relative; display: flex; width: 76px; height: 76px; align-items: center; justify-content: center; border: 1px solid #f59c00; border-radius: 50%; color: #080808; background: #f59c00; box-shadow: 0 3px 25px #0007; transition: background-color .2s, transform .2s; }
+#carplus-root .carplus-videos .videos-play-symbol svg { width: 31px; height: 31px; margin-left: 4px; fill: currentColor; }
+#carplus-root .carplus-videos .videos-poster:hover .videos-play-symbol { transform: scale(1.04); background: #ffad1f; }
+#carplus-root .carplus-videos .videos-play-label { position: relative; padding: 8px 14px; border: 1px solid #ffffff59; border-radius: 5px; color: #fff; background: #080808e6; font-size: 16px; font-weight: 600; line-height: 1.5; }
+#carplus-root .carplus-videos .videos-feature-copy { padding: 20px 22px 15px; border-top: 1px solid #303030; }
+#carplus-root .carplus-videos .videos-player-status { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; margin: 0 0 13px; color: #c3c3c3; font-size: 15px; line-height: 1.6; }
+#carplus-root .carplus-videos .videos-player-status span:last-child { color: #f59c00; }
+#carplus-root .carplus-videos .videos-active-title { margin: 0; color: #fff; font: 700 30px/1.2 "Barlow Condensed", sans-serif; letter-spacing: 0; }
+#carplus-root .carplus-videos .videos-description { margin: 10px 0 0; color: #c3c3c3; font-size: 17px; line-height: 1.8; }
+#carplus-root .carplus-videos .videos-external-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; margin-top: 7px; }
+#carplus-root .carplus-videos .videos-external-links a { display: inline-flex; min-height: 52px; align-items: center; gap: 8px; color: #f59c00; font-size: 16px; font-weight: 600; line-height: 1.5; text-decoration: none; }
+#carplus-root .carplus-videos .videos-external-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+#carplus-root .carplus-videos .videos-external-links svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+#carplus-root .carplus-videos .videos-playlist { min-width: 0; }
+#carplus-root .carplus-videos .videos-playlist-title { margin: 0 0 15px; color: #fff; font-size: 19px; font-weight: 600; line-height: 1.5; }
+#carplus-root .carplus-videos .videos-playlist-items { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+#carplus-root .carplus-videos .videos-playlist-items > li { min-width: 0; margin: 0; padding: 0; }
+#carplus-root .carplus-videos .videos-playlist-button { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 14px; align-items: center; width: 100%; min-height: 104px; padding: 12px; border: 1px solid #424242; border-radius: 8px; color: #fff; background: #111; text-align: left; cursor: pointer; transition: border-color .2s, background-color .2s; }
+#carplus-root .carplus-videos .videos-playlist-button:hover { border-color: #858585; background: #171717; }
+#carplus-root .carplus-videos .videos-playlist-button.is-selected { border-color: #f59c00; background: #201b10; }
+#carplus-root .carplus-videos .videos-playlist-thumb { position: relative; display: flex; width: 112px; min-height: 72px; aspect-ratio: 16 / 10; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #414141; border-radius: 5px; color: #f59c00; background: #080808; }
+#carplus-root .carplus-videos .videos-playlist-thumb > svg { width: 23px; height: 23px; fill: currentColor; }
+#carplus-root .carplus-videos .videos-playlist-thumb > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: none; opacity: 1; }
+#carplus-root .carplus-videos .videos-playlist-copy { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 4px; }
+#carplus-root .carplus-videos .videos-category { color: #bdbdbd; font-size: 14px; line-height: 1.5; }
+#carplus-root .carplus-videos .videos-playlist-video-title { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.45; overflow-wrap: anywhere; }
+#carplus-root .carplus-videos .videos-playlist-label { color: #c3c3c3; font-size: 14px; line-height: 1.5; }
+#carplus-root .carplus-videos .videos-playlist-button.is-selected .videos-playlist-label { color: #f59c00; }
+
+#carplus-root .carplus-videos .videos-conversion { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; margin-top: 29px; padding-top: 24px; border-top: 1px solid #303030; }
+#carplus-root .carplus-videos .videos-conversion-title { margin: 0; color: #fff; font: 700 29px/1.2 "Barlow Condensed", sans-serif; }
+#carplus-root .carplus-videos .videos-conversion p { margin: 9px 0 0; color: #c3c3c3; font-size: 16px; line-height: 1.8; }
+#carplus-root .carplus-videos .videos-conversion .carplus-action-primary { flex-shrink: 0; }
+#carplus-root .carplus-videos .videos-conversion a > svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+#carplus-root .carplus-videos .videos-tips { margin-top: 18px; padding-inline: 23px; border: 1px solid #3b3b3b; border-radius: 8px; color: #fff; background: #111; }
+#carplus-root .carplus-videos .videos-tips > summary { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 16px; padding-block: 17px; color: #fff; font-size: 17px; font-weight: 600; line-height: 1.6; list-style: none; cursor: pointer; }
+#carplus-root .carplus-videos .videos-tips > summary::-webkit-details-marker { display: none; }
+#carplus-root .carplus-videos .videos-tips > summary > svg { width: 21px; height: 21px; flex-shrink: 0; color: #f59c00; transition: transform .2s; }
+#carplus-root .carplus-videos .videos-tips[open] > summary > svg { transform: rotate(180deg); }
+#carplus-root .carplus-videos .videos-tips-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 23px 30px; margin: 0; padding: 23px 0; border-top: 1px solid #303030; }
+#carplus-root .carplus-videos .videos-tips-list dt { margin: 0; color: #fff; font-size: 17px; font-weight: 600; line-height: 1.6; }
+#carplus-root .carplus-videos .videos-tips-list dd { margin: 8px 0 0; color: #c3c3c3; font-size: 16px; line-height: 1.8; }
+
+@media (max-width: 1050px) {
+  #carplus-root .carplus-videos .videos-panel { padding: 24px; }
+  #carplus-root .carplus-videos .videos-layout { grid-template-columns: minmax(0, 1.25fr) minmax(280px, 1fr); gap: 19px; }
+  #carplus-root .carplus-videos .videos-playlist-button { grid-template-columns: 94px minmax(0, 1fr); gap: 12px; padding: 11px; }
+  #carplus-root .carplus-videos .videos-playlist-thumb { width: 94px; min-height: 68px; }
+}
+
+@media (max-width: 860px) {
+  #carplus-root .carplus-videos .videos-layout { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  #carplus-root .carplus-videos .videos-playlist-button { grid-template-columns: 128px minmax(0, 1fr); min-height: 110px; gap: 16px; padding: 13px; }
+  #carplus-root .carplus-videos .videos-playlist-thumb { width: 128px; min-height: 80px; }
+  #carplus-root .carplus-videos .videos-playlist-title { font-size: 20px; }
+}
+
+@media (max-width: 540px) {
+  #carplus-root .carplus-videos .videos-panel { padding: 19px 16px; }
+  #carplus-root .carplus-videos .videos-heading { margin-bottom: 21px; }
+  #carplus-root .carplus-videos .videos-title { font-size: 35px; }
+  #carplus-root .carplus-videos .videos-eyebrow { font-size: 13px; }
+  #carplus-root .carplus-videos .videos-feature-copy { padding: 18px 16px 11px; }
+  #carplus-root .carplus-videos .videos-play-symbol { width: 68px; height: 68px; }
+  #carplus-root .carplus-videos .videos-active-title { font-size: 29px; }
+  #carplus-root .carplus-videos .videos-playlist-button { grid-template-columns: 102px minmax(0, 1fr); min-height: 104px; gap: 12px; padding: 11px; }
+  #carplus-root .carplus-videos .videos-playlist-thumb { width: 102px; min-height: 74px; }
+  #carplus-root .carplus-videos .videos-playlist-video-title { font-size: 17px; }
+  #carplus-root .carplus-videos .videos-player-status { font-size: 14px; }
+  #carplus-root .carplus-videos .videos-conversion { align-items: stretch; flex-direction: column; }
+  #carplus-root .carplus-videos .videos-conversion .carplus-action-primary { width: 100%; }
+  #carplus-root .carplus-videos .videos-tips { padding-inline: 17px; }
+  #carplus-root .carplus-videos .videos-tips-list { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #carplus-root .carplus-videos .videos-play-symbol,
+  #carplus-root .carplus-videos .videos-playlist-button,
+  #carplus-root .carplus-videos .videos-tips > summary > svg { transition: none; }
+  #carplus-root .carplus-videos .videos-poster:hover .videos-play-symbol { transform: none; }
+}
+
+@container (max-width: 320px) {
+  #carplus-root .carplus-videos .videos-playlist-button { grid-template-columns: 72px minmax(0, 1fr); gap: 10px; padding: 10px; }
+  #carplus-root .carplus-videos .videos-playlist-thumb { width: 72px; min-height: 64px; }
+}
