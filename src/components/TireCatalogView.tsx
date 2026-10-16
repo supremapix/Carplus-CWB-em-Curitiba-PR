@@ -196,39 +196,11 @@ export default function TireCatalogView({
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-8 px-4 sm:px-6 font-sans" id="tire-catalog-page">
+    <div className="bg-gray-50 min-h-screen py-4 sm:py-8 px-4 sm:px-6 font-sans" id="tire-catalog-page">
       <div className="max-w-7xl mx-auto space-y-6">
         
-        {/* Page Header */}
-        <div className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-150 pb-5">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#f49e1a]">
-                  Catálogo Oficial Carplus
-                </span>
-                <span className="text-[11px] font-bold bg-yellow-500/10 text-yellow-800 px-2.5 py-0.5 rounded-full border border-yellow-500/20">
-                  {catalogList.length > 50 ? catalogList.length : 1962} opções no catálogo
-                </span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-gray-950 uppercase tracking-tight">
-                Pneus e Auto Center em Curitiba – Portão
-              </h1>
-              <p className="text-sm sm:text-base text-gray-700 max-w-3xl leading-relaxed bg-amber-50/50 p-3.5 rounded-2xl border border-amber-200/60 mt-1">
-                Encontre pneus por medida, marca ou carro. Compare as opções e consulte preço, disponibilidade e aplicação pelo WhatsApp. Montagem e serviços na Carplus, no Portão, Curitiba.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                onClick={onNavigateHome}
-                className="text-xs font-bold text-gray-600 hover:text-black bg-gray-100 hover:bg-gray-200 px-4 py-2.5 rounded-xl transition"
-              >
-                Voltar à Página Inicial
-              </button>
-            </div>
-          </div>
-
+        {/* Search, sorting and active filters stay above the products. */}
+        <div id="catalog-search-controls" className="bg-white rounded-3xl border border-gray-200 p-4 sm:p-8 shadow-xs space-y-4">
           {/* Quick Search & Sort Bar */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-3 pt-1">
             <div className="relative md:col-span-8 lg:col-span-9">
@@ -638,6 +610,37 @@ export default function TireCatalogView({
 
           </main>
         </div>
+
+        {/* Store presentation follows the products so visitors can browse immediately. */}
+        <section id="catalog-presentation" aria-labelledby="catalog-page-title" className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#f49e1a]">
+                  Catálogo Oficial Carplus
+                </span>
+                <span className="text-[11px] font-bold bg-yellow-500/10 text-yellow-800 px-2.5 py-0.5 rounded-full border border-yellow-500/20">
+                  {catalogList.length > 50 ? catalogList.length : 1962} opções no catálogo
+                </span>
+              </div>
+              <h1 id="catalog-page-title" className="text-2xl sm:text-3xl font-black text-gray-950 uppercase tracking-tight">
+                Pneus e Auto Center em Curitiba – Portão
+              </h1>
+              <p className="text-sm sm:text-base text-gray-700 max-w-3xl leading-relaxed bg-amber-50/50 p-3.5 rounded-2xl border border-amber-200/60 mt-1">
+                Encontre pneus por medida, marca ou carro. Compare as opções e consulte preço, disponibilidade e aplicação pelo WhatsApp. Montagem e serviços na Carplus, no Portão, Curitiba.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={onNavigateHome}
+                className="text-xs font-bold text-gray-600 hover:text-black bg-gray-100 hover:bg-gray-200 px-4 py-2.5 rounded-xl transition"
+              >
+                Voltar à Página Inicial
+              </button>
+            </div>
+          </div>
+        </section>
 
         {/* Mobile Filter Drawer / Modal */}
         {isMobileFiltersOpen && (
