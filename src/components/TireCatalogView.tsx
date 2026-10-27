@@ -1,17 +1,26 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+import '../tire-catalog.css';
 import { CatalogTire } from '../types';
-import { 
+import {
   getCatalogSync, getFullCatalog,
-  CATALOG_BRANDS, CATALOG_CATEGORIES, 
-  CATALOG_RIMS, CATALOG_WIDTHS, CATALOG_PROFILES, 
-  CATALOG_VEHICLE_TYPES 
+  CATALOG_BRANDS, CATALOG_CATEGORIES,
+  CATALOG_RIMS, CATALOG_WIDTHS, CATALOG_PROFILES,
+  CATALOG_VEHICLE_TYPES
 } from '../data/catalogo-pneus';
 import CatalogTireCard from './CatalogTireCard';
-import { 
-  Search, SlidersHorizontal, X, ArrowUpDown, ChevronLeft, 
-  ChevronRight, Filter, Sparkles, Check, RotateCcw, 
-  Car, ShieldCheck, Tag, ShoppingBag, Loader2
-} from 'lucide-react';
+import { Search, X, ChevronLeft, ChevronRight, ChevronDown, SlidersHorizontal, Sparkles, Check, Car, ShieldCheck, Loader2 } from 'lucide-react';
+
+export interface TireCatalogState {
+  searchTerm: string;
+  selectedBrand: string;
+  selectedRim: number | 'Todos';
+  selectedWidth: number | 'Todas';
+  selectedProfile: number | 'Todos';
+  selectedCategory: string;
+  selectedVehicleType: string;
+  sortBy: 'relevancia' | 'marca' | 'aro-asc' | 'aro-desc' | 'nome';
+  currentPage: number;
+}
 
 interface TireCatalogViewProps {
   initialBrand?: string;
@@ -19,11 +28,15 @@ interface TireCatalogViewProps {
   initialCategory?: string;
   initialSearch?: string;
   initialPage?: number;
+  initialState?: TireCatalogState;
+  onStateChange?: (state: TireCatalogState) => void;
   onSelectTire: (tire: CatalogTire) => void;
   onNavigateHome: () => void;
 }
 
 const ITEMS_PER_PAGE = 24;
+const normalizeBrand = (brand?: string) => CATALOG_BRANDS.find(option => option.toLowerCase() === brand?.toLowerCase()) || brand || 'Todas';
+const normalizeCategory = (category?: string) => CATALOG_CATEGORIES.find(option => option.toLowerCase() === category?.toLowerCase()) || category || 'Todas';
 
 export default function TireCatalogView({
   initialBrand,
@@ -31,6 +44,8 @@ export default function TireCatalogView({
   initialCategory,
   initialSearch = '',
   initialPage = 1,
+  initialState,
+  onStateChange,
   onSelectTire,
   onNavigateHome
 }: TireCatalogViewProps) {
@@ -52,30 +67,42 @@ export default function TireCatalogView({
   }, []);
 
   // Filter states
-  const [searchTerm, setSearchTerm] = useState(initialSearch);
-  const [selectedBrand, setSelectedBrand] = useState<string>(initialBrand || 'Todas');
-  const [selectedRim, setSelectedRim] = useState<number | 'Todos'>(initialRim || 'Todos');
-  const [selectedWidth, setSelectedWidth] = useState<number | 'Todas'>('Todas');
-  const [selectedProfile, setSelectedProfile] = useState<number | 'Todos'>('Todos');
-  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'Todas');
-  const [selectedVehicleType, setSelectedVehicleType] = useState<string>('Todos');
-  
+  const [searchTerm, setSearchTerm] = useState(initialState?.searchTerm ?? initialSearch);
+  const [selectedBrand, setSelectedBrand] = useState<string>(initialState?.selectedBrand ?? normalizeBrand(initialBrand));
+  const [selectedRim, setSelectedRim] = useState<number | 'Todos'>(initialState?.selectedRim ?? (initialRim || 'Todos'));
+  const [selectedWidth, setSelectedWidth] = useState<number | 'Todas'>(initialState?.selectedWidth ?? 'Todas');
+  const [selectedProfile, setSelectedProfile] = useState<number | 'Todos'>(initialState?.selectedProfile ?? 'Todos');
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialState?.selectedCategory ?? normalizeCategory(initialCategory));
+  const [selectedVehicleType, setSelectedVehicleType] = useState<string>(initialState?.selectedVehicleType ?? 'Todos');
+
   // Sort state
-  const [sortBy, setSortBy] = useState<'relevancia' | 'marca' | 'aro-asc' | 'aro-desc' | 'nome'>('relevancia');
+  const [sortBy, setSortBy] = useState<TireCatalogState['sortBy']>(initialState?.sortBy ?? 'relevancia');
 
   // Pagination state
-  const [currentPage, setCurrentPage] = useState<number>(initialPage || 1);
+  const [currentPage, setCurrentPage] = useState<number>(initialState?.currentPage ?? (initialPage || 1));
 
-  // Mobile filter drawer state
-  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
-  // Sync initial props if changed
+  // Restore a returning visitor's filters; a new navigation request resets them.
+  const initialPropsKey = JSON.stringify([initialBrand, initialRim, initialCategory, initialSearch, initialPage]);
+  const previousInitialProps = useRef(initialPropsKey);
   useEffect(() => {
-    if (initialBrand) setSelectedBrand(initialBrand);
-    if (initialRim) setSelectedRim(initialRim);
-    if (initialCategory) setSelectedCategory(initialCategory);
-    if (initialPage) setCurrentPage(initialPage);
-  }, [initialBrand, initialRim, initialCategory, initialPage]);
+    if (previousInitialProps.current === initialPropsKey) return;
+    previousInitialProps.current = initialPropsKey;
+    setSelectedBrand(normalizeBrand(initialBrand));
+    setSelectedRim(initialRim || 'Todos');
+    setSelectedCategory(normalizeCategory(initialCategory));
+    setSearchTerm(initialSearch);
+    setSelectedWidth('Todas');
+    setSelectedProfile('Todos');
+    setSelectedVehicleType('Todos');
+    setSortBy('relevancia');
+    setCurrentPage(initialPage || 1);
+  }, [initialPropsKey, initialBrand, initialRim, initialCategory, initialSearch, initialPage]);
+
+  useEffect(() => {
+    onStateChange?.({ searchTerm, selectedBrand, selectedRim, selectedWidth, selectedProfile, selectedCategory, selectedVehicleType, sortBy, currentPage });
+  }, [searchTerm, selectedBrand, selectedRim, selectedWidth, selectedProfile, selectedCategory, selectedVehicleType, sortBy, currentPage, onStateChange]);
 
   // Reset page when filters change
   const handleFilterChange = (setter: () => void) => {
@@ -166,7 +193,7 @@ export default function TireCatalogView({
 
     return result;
   }, [
-    searchTerm, selectedBrand, selectedRim, selectedWidth, 
+    catalogList, searchTerm, selectedBrand, selectedRim, selectedWidth,
     selectedProfile, selectedCategory, selectedVehicleType, sortBy
   ]);
 
@@ -192,560 +219,153 @@ export default function TireCatalogView({
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 120, behavior: 'smooth' });
+    resultsRef.current?.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    resultsRef.current?.focus({ preventScroll: true });
   };
 
+  const activeFilters = [
+    ...(searchTerm.trim() ? [{ label: `Busca: ${searchTerm}`, clear: () => setSearchTerm('') }] : []),
+    ...(selectedRim !== 'Todos' ? [{ label: `Aro ${selectedRim}`, clear: () => setSelectedRim('Todos') }] : []),
+    ...(selectedBrand !== 'Todas' ? [{ label: selectedBrand, clear: () => setSelectedBrand('Todas') }] : []),
+    ...(selectedWidth !== 'Todas' ? [{ label: `Largura ${selectedWidth} mm`, clear: () => setSelectedWidth('Todas') }] : []),
+    ...(selectedProfile !== 'Todos' ? [{ label: `Perfil ${selectedProfile}%`, clear: () => setSelectedProfile('Todos') }] : []),
+    ...(selectedCategory !== 'Todas' ? [{ label: selectedCategory, clear: () => setSelectedCategory('Todas') }] : []),
+    ...(selectedVehicleType !== 'Todos' ? [{ label: selectedVehicleType, clear: () => setSelectedVehicleType('Todos') }] : []),
+  ];
+
   return (
-    <div className="bg-gray-50 min-h-screen py-4 sm:py-8 px-4 sm:px-6 font-sans" id="tire-catalog-page">
-      <div className="max-w-7xl mx-auto space-y-6">
-        
-        {/* Search, sorting and active filters stay above the products. */}
-        <div id="catalog-search-controls" className="bg-white rounded-3xl border border-gray-200 p-4 sm:p-8 shadow-xs space-y-4">
-          {/* Quick Search & Sort Bar */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 pt-1">
-            <div className="relative md:col-span-8 lg:col-span-9">
-              <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                aria-label="Buscar pneus por medida, marca ou carro"
-                value={searchTerm}
-                onChange={(e) => handleFilterChange(() => setSearchTerm(e.target.value))}
-                placeholder="Busque por medida (ex: 205/55R16), marca, modelo ou carro (ex: Corolla, HB20, Dolphin)..."
-                className="w-full pl-11 pr-10 py-3 bg-gray-50 border border-gray-250 rounded-2xl text-xs sm:text-sm text-gray-900 focus:bg-white focus:border-[#f49e1a] focus:ring-2 focus:ring-yellow-500/20 outline-none transition"
-              />
-              {searchTerm && (
-                <button
-                  onClick={() => handleFilterChange(() => setSearchTerm(''))}
-                  aria-label="Limpar busca de pneus"
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
-            </div>
+    <div className="carplus-catalog" id="tire-catalog-page">
+      <div className="catalog-container">
+        <nav className="catalog-breadcrumb" aria-label="Navegação estrutural">
+          <a href="/" onClick={event => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); onNavigateHome(); } }}>Início</a>
+          <ChevronRight aria-hidden="true" />
+          <span aria-current="page">Catálogo de pneus</span>
+        </nav>
 
-            <div className="flex items-center gap-2 md:col-span-4 lg:col-span-3">
-              <div className="relative w-full">
-                <select
-                  aria-label="Ordenar pneus"
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
-                  className="w-full appearance-none bg-gray-50 border border-gray-250 py-3 pl-3 pr-8 rounded-2xl text-xs font-bold text-gray-800 focus:bg-white focus:border-[#f49e1a] outline-none cursor-pointer"
-                >
-                  <option value="relevancia">Mais Relevantes</option>
-                  <option value="marca">Marca (A-Z)</option>
-                  <option value="aro-asc">Aro Crescente (13 → 23)</option>
-                  <option value="aro-desc">Aro Decrescente (23 → 13)</option>
-                  <option value="nome">Nome do Pneu (A-Z)</option>
-                </select>
-                <ArrowUpDown className="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+        <header className="catalog-heading" id="catalog-presentation">
+          <p className="catalog-eyebrow">Carplus · Portão, Curitiba</p>
+          <h1 id="catalog-page-title">Encontre o pneu para seu carro</h1>
+          <p>Busque pela medida ou escolha o aro e a marca. Veja os detalhes de cada pneu e consulte preço e disponibilidade.</p>
+        </header>
+
+        <section className="catalog-search-panel" id="catalog-search-controls" aria-label="Busca e filtros de pneus">
+          <div className="catalog-primary-filters">
+            <div className="catalog-field catalog-search-field">
+              <label htmlFor="catalog-search">Medida, marca ou carro</label>
+              <div className="catalog-search-input">
+                <Search aria-hidden="true" />
+                <input
+                  id="catalog-search" type="search" value={searchTerm}
+                  onChange={event => handleFilterChange(() => setSearchTerm(event.target.value))}
+                  placeholder="Ex.: 205/55 R16 ou Corolla"
+                  aria-describedby="catalog-search-help" autoComplete="off"
+                />
+                {searchTerm && <button type="button" onClick={() => handleFilterChange(() => setSearchTerm(''))} aria-label="Limpar busca de pneus"><X aria-hidden="true" /></button>}
               </div>
-
-              {/* Mobile filter toggle button */}
-              <button
-                onClick={() => setIsMobileFiltersOpen(true)}
-                aria-label="Abrir filtros de pneus"
-                className="lg:hidden bg-gray-900 text-white p-3 rounded-2xl flex items-center justify-center gap-1.5 shrink-0 relative font-bold text-xs"
-              >
-                <Filter className="w-4 h-4 text-[#f49e1a]" />
-                <span className="hidden sm:inline">Filtros</span>
-                {activeFilterCount > 0 && (
-                  <span className="bg-[#f49e1a] text-black text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">
-                    {activeFilterCount}
-                  </span>
-                )}
-              </button>
+              <p id="catalog-search-help">A medida está escrita na lateral do pneu. Confirme a aplicação no manual do veículo.</p>
+            </div>
+            <div className="catalog-field">
+              <label htmlFor="catalog-rim">Aro da roda</label>
+              <select id="catalog-rim" value={selectedRim} onChange={event => handleFilterChange(() => setSelectedRim(event.target.value === 'Todos' ? 'Todos' : Number(event.target.value)))}>
+                <option value="Todos">Todos os aros</option>
+                {CATALOG_RIMS.map(rim => <option key={rim} value={rim}>Aro {rim}</option>)}
+              </select>
+            </div>
+            <div className="catalog-field">
+              <label htmlFor="catalog-brand">Marca</label>
+              <select id="catalog-brand" value={selectedBrand} onChange={event => handleFilterChange(() => setSelectedBrand(event.target.value))}>
+                <option value="Todas">Todas as marcas</option>
+                {selectedBrand !== 'Todas' && !CATALOG_BRANDS.includes(selectedBrand) && <option value={selectedBrand}>{selectedBrand}</option>}
+                {CATALOG_BRANDS.map(brand => <option key={brand} value={brand}>{brand}</option>)}
+              </select>
             </div>
           </div>
 
-          {/* Active Filter Pills Strip */}
-          {activeFilterCount > 0 && (
-            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-gray-100 text-xs">
-              <span className="text-gray-500 font-bold text-[11px]">Filtros ativos:</span>
-              
-              {selectedBrand !== 'Todas' && (
-                <span className="inline-flex items-center gap-1 bg-gray-900 text-white px-2.5 py-1 rounded-lg text-xs font-bold">
-                  Marca: {selectedBrand}
-                  <X className="w-3 h-3 cursor-pointer hover:text-yellow-400" onClick={() => handleFilterChange(() => setSelectedBrand('Todas'))} />
-                </span>
-              )}
-
-              {selectedRim !== 'Todos' && (
-                <span className="inline-flex items-center gap-1 bg-[#f49e1a] text-black px-2.5 py-1 rounded-lg text-xs font-black">
-                  Aro: {selectedRim}
-                  <X className="w-3 h-3 cursor-pointer" onClick={() => handleFilterChange(() => setSelectedRim('Todos'))} />
-                </span>
-              )}
-
-              {selectedCategory !== 'Todas' && (
-                <span className="inline-flex items-center gap-1 bg-gray-200 text-gray-800 px-2.5 py-1 rounded-lg text-xs font-bold">
-                  Categoria: {selectedCategory}
-                  <X className="w-3 h-3 cursor-pointer hover:text-black" onClick={() => handleFilterChange(() => setSelectedCategory('Todas'))} />
-                </span>
-              )}
-
-              {selectedWidth !== 'Todas' && (
-                <span className="inline-flex items-center gap-1 bg-gray-200 text-gray-800 px-2.5 py-1 rounded-lg text-xs font-bold">
-                  Largura: {selectedWidth} mm
-                  <X className="w-3 h-3 cursor-pointer hover:text-black" onClick={() => handleFilterChange(() => setSelectedWidth('Todas'))} />
-                </span>
-              )}
-
-              {selectedProfile !== 'Todos' && (
-                <span className="inline-flex items-center gap-1 bg-gray-200 text-gray-800 px-2.5 py-1 rounded-lg text-xs font-bold">
-                  Perfil: {selectedProfile}%
-                  <X className="w-3 h-3 cursor-pointer hover:text-black" onClick={() => handleFilterChange(() => setSelectedProfile('Todos'))} />
-                </span>
-              )}
-
-              {selectedVehicleType !== 'Todos' && (
-                <span className="inline-flex items-center gap-1 bg-gray-200 text-gray-800 px-2.5 py-1 rounded-lg text-xs font-bold">
-                  Veículo: {selectedVehicleType}
-                  <X className="w-3 h-3 cursor-pointer hover:text-black" onClick={() => handleFilterChange(() => setSelectedVehicleType('Todos'))} />
-                </span>
-              )}
-
-              {searchTerm && (
-                <span className="inline-flex items-center gap-1 bg-yellow-500/20 text-yellow-900 border border-yellow-500/30 px-2.5 py-1 rounded-lg text-xs font-bold">
-                  Busca: "{searchTerm}"
-                  <X className="w-3 h-3 cursor-pointer" onClick={() => handleFilterChange(() => setSearchTerm(''))} />
-                </span>
-              )}
-
-              <button
-                onClick={handleResetFilters}
-                className="text-xs font-extrabold text-red-600 hover:text-red-700 underline ml-2"
-              >
-                Limpar todos os filtros
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* Main Content Layout: Sidebar Filters + Products Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          {/* Desktop Filter Sidebar */}
-          <aside className="hidden lg:block lg:col-span-3 space-y-4">
-            <div className="bg-white rounded-3xl border border-gray-200 p-5 shadow-xs space-y-6 sticky top-24">
-              <div className="flex items-center justify-between border-b border-gray-150 pb-3">
-                <span className="text-sm font-black text-gray-900 flex items-center gap-2">
-                  <SlidersHorizontal className="w-4 h-4 text-[#f49e1a]" /> Filtros de Busca
-                </span>
-                {activeFilterCount > 0 && (
-                  <button
-                    onClick={handleResetFilters}
-                    className="text-[11px] font-bold text-gray-500 hover:text-red-600 flex items-center gap-1"
-                  >
-                    <RotateCcw className="w-3 h-3" /> Limpar
-                  </button>
-                )}
-              </div>
-
-              {/* Marca */}
-              <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-wider text-gray-700 block">
-                  Marca ({CATALOG_BRANDS.length})
-                </label>
-                <div className="grid grid-cols-2 gap-1.5 max-h-48 overflow-y-auto pr-1">
-                  <button
-                    onClick={() => handleFilterChange(() => setSelectedBrand('Todas'))}
-                    className={`text-left text-xs font-bold px-2.5 py-1.5 rounded-lg transition ${
-                      selectedBrand === 'Todas'
-                        ? 'bg-gray-900 text-white'
-                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Todas
-                  </button>
-                  {CATALOG_BRANDS.map(brand => (
-                    <button
-                      key={brand}
-                      onClick={() => handleFilterChange(() => setSelectedBrand(brand))}
-                      className={`text-left text-xs font-bold px-2.5 py-1.5 rounded-lg transition truncate ${
-                        selectedBrand.toLowerCase() === brand.toLowerCase()
-                          ? 'bg-gray-900 text-white'
-                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                      }`}
-                      title={brand}
-                    >
-                      {brand}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Aro */}
-              <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-wider text-gray-700 block">
-                  Aro da Roda
-                </label>
-                <div className="grid grid-cols-4 gap-1.5">
-                  <button
-                    onClick={() => handleFilterChange(() => setSelectedRim('Todos'))}
-                    className={`text-xs font-bold py-1.5 rounded-lg transition text-center ${
-                      selectedRim === 'Todos'
-                        ? 'bg-[#f49e1a] text-black font-black'
-                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Todos
-                  </button>
-                  {CATALOG_RIMS.map(rim => (
-                    <button
-                      key={rim}
-                      onClick={() => handleFilterChange(() => setSelectedRim(rim))}
-                      className={`text-xs font-bold py-1.5 rounded-lg transition text-center ${
-                        selectedRim === rim
-                          ? 'bg-[#f49e1a] text-black font-black'
-                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                      }`}
-                    >
-                      Aro {rim}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Categoria */}
-              <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-wider text-gray-700 block">
-                  Categoria de Uso
-                </label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => handleFilterChange(() => setSelectedCategory(e.target.value))}
-                  className="w-full bg-gray-50 border border-gray-250 py-2 px-3 rounded-xl text-xs font-bold text-gray-800 outline-none"
-                >
-                  <option value="Todas">Todas as Categorias</option>
-                  {CATALOG_CATEGORIES.map(cat => (
-                    <option key={cat} value={cat}>{cat}</option>
-                  ))}
+          <details className="catalog-extra-filters">
+            <summary><SlidersHorizontal aria-hidden="true" /><span>Refinar por medida e uso</span><ChevronDown aria-hidden="true" /></summary>
+            <div className="catalog-extra-grid">
+              <div className="catalog-field">
+                <label htmlFor="catalog-width">Largura (mm)</label>
+                <select id="catalog-width" value={selectedWidth} onChange={event => handleFilterChange(() => setSelectedWidth(event.target.value === 'Todas' ? 'Todas' : Number(event.target.value)))}>
+                  <option value="Todas">Todas as larguras</option>
+                  {CATALOG_WIDTHS.map(width => <option key={width} value={width}>{width} mm</option>)}
                 </select>
               </div>
-
-              {/* Largura & Perfil */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-black uppercase text-gray-700 block">
-                    Largura (mm)
-                  </label>
-                  <select
-                    value={selectedWidth}
-                    onChange={(e) => handleFilterChange(() => setSelectedWidth(e.target.value === 'Todas' ? 'Todas' : parseInt(e.target.value, 10)))}
-                    className="w-full bg-gray-50 border border-gray-250 py-2 px-2 rounded-xl text-xs font-bold text-gray-800 outline-none"
-                  >
-                    <option value="Todas">Todas</option>
-                    {CATALOG_WIDTHS.map(w => (
-                      <option key={w} value={w}>{w}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-black uppercase text-gray-700 block">
-                    Perfil (%)
-                  </label>
-                  <select
-                    value={selectedProfile}
-                    onChange={(e) => handleFilterChange(() => setSelectedProfile(e.target.value === 'Todos' ? 'Todos' : parseInt(e.target.value, 10)))}
-                    className="w-full bg-gray-50 border border-gray-250 py-2 px-2 rounded-xl text-xs font-bold text-gray-800 outline-none"
-                  >
-                    <option value="Todos">Todos</option>
-                    {CATALOG_PROFILES.map(p => (
-                      <option key={p} value={p}>{p}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Tipo de Veículo */}
-              <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-wider text-gray-700 block">
-                  Tipo de Veículo
-                </label>
-                <select
-                  value={selectedVehicleType}
-                  onChange={(e) => handleFilterChange(() => setSelectedVehicleType(e.target.value))}
-                  className="w-full bg-gray-50 border border-gray-250 py-2 px-3 rounded-xl text-xs font-bold text-gray-800 outline-none"
-                >
-                  <option value="Todos">Todos os Veículos</option>
-                  {CATALOG_VEHICLE_TYPES.map(vt => (
-                    <option key={vt} value={vt}>{vt}</option>
-                  ))}
+              <div className="catalog-field">
+                <label htmlFor="catalog-profile">Perfil (%)</label>
+                <select id="catalog-profile" value={selectedProfile} onChange={event => handleFilterChange(() => setSelectedProfile(event.target.value === 'Todos' ? 'Todos' : Number(event.target.value)))}>
+                  <option value="Todos">Todos os perfis</option>
+                  {CATALOG_PROFILES.map(profile => <option key={profile} value={profile}>{profile}%</option>)}
                 </select>
               </div>
-
-              {/* Quick Info Box */}
-              <div className="bg-yellow-500/10 border border-yellow-500/20 p-3.5 rounded-2xl text-[11px] space-y-1">
-                <span className="font-bold text-gray-900 block flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-yellow-700" /> Estrutura Especializada
-                </span>
-                <p className="text-gray-650 leading-relaxed">
-                  Todos os pneus contam com maquinário pneumático anti-risco e alinhamento 3D no Portão.
-                </p>
+              <div className="catalog-field">
+                <label htmlFor="catalog-category">Categoria de uso</label>
+                <select id="catalog-category" value={selectedCategory} onChange={event => handleFilterChange(() => setSelectedCategory(event.target.value))}>
+                  <option value="Todas">Todas as categorias</option>
+                  {selectedCategory !== 'Todas' && !CATALOG_CATEGORIES.includes(selectedCategory) && <option value={selectedCategory}>{selectedCategory}</option>}
+                  {CATALOG_CATEGORIES.map(category => <option key={category} value={category}>{category}</option>)}
+                </select>
               </div>
-
+              <div className="catalog-field">
+                <label htmlFor="catalog-vehicle">Tipo de veículo</label>
+                <select id="catalog-vehicle" value={selectedVehicleType} onChange={event => handleFilterChange(() => setSelectedVehicleType(event.target.value))}>
+                  <option value="Todos">Todos os veículos</option>
+                  {CATALOG_VEHICLE_TYPES.map(vehicle => <option key={vehicle} value={vehicle}>{vehicle}</option>)}
+                </select>
+              </div>
             </div>
-          </aside>
+          </details>
 
-          {/* Products Grid & Pagination */}
-          <main className="lg:col-span-9 space-y-6">
-            
-            {/* Counter bar */}
-            <div className="flex items-center justify-between text-xs font-bold text-gray-600 bg-white px-4 py-3 rounded-2xl border border-gray-200">
-              <span>
-                Exibindo <strong className="text-gray-950">{totalItems > 0 ? startIndex + 1 : 0}-{endIndex}</strong> de <strong className="text-gray-950">{totalItems}</strong> pneus encontrados
-              </span>
-              <span className="text-gray-400 hidden sm:inline">
-                Página {validCurrentPage} de {totalPages}
-              </span>
-            </div>
-
-            {/* Products Grid */}
-            {currentTires.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4" id="catalog-products-grid">
-                {currentTires.map((tire) => (
-                  <CatalogTireCard
-                    key={`tire-${tire.id}-${tire.slug}`}
-                    tire={tire}
-                    onSelect={onSelectTire}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="bg-white rounded-3xl border border-gray-200 p-12 text-center space-y-4">
-                <div className="w-12 h-12 bg-yellow-500/10 text-yellow-700 rounded-full flex items-center justify-center mx-auto">
-                  <Search className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-black text-gray-900">
-                  Nenhum pneu encontrado com esses filtros
-                </h3>
-                <p className="text-xs text-gray-600 max-w-md mx-auto">
-                  Tente limpar os filtros de busca ou procurar por outra medida, aro ou marca de pneu.
-                </p>
-                <button
-                  onClick={handleResetFilters}
-                  className="bg-gray-900 text-white text-xs font-black px-5 py-2.5 rounded-xl hover:bg-black transition"
-                >
-                  Restaurar Todos os Produtos
-                </button>
-              </div>
-            )}
-
-            {/* Pagination Controls (24 per page) */}
-            {totalPages > 1 && (
-              <div className="bg-white rounded-3xl border border-gray-200 p-4 sm:p-6 flex flex-wrap items-center justify-between gap-4 shadow-xs">
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => handlePageChange(validCurrentPage - 1)}
-                    disabled={validCurrentPage === 1}
-                    className="px-3.5 py-2 rounded-xl text-xs font-bold border border-gray-250 bg-white hover:bg-gray-100 disabled:opacity-40 disabled:pointer-events-none transition flex items-center gap-1"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                    <span className="hidden sm:inline">Anterior</span>
-                  </button>
-
-                  <button
-                    onClick={() => handlePageChange(validCurrentPage + 1)}
-                    disabled={validCurrentPage === totalPages}
-                    className="px-3.5 py-2 rounded-xl text-xs font-bold border border-gray-250 bg-white hover:bg-gray-100 disabled:opacity-40 disabled:pointer-events-none transition flex items-center gap-1"
-                  >
-                    <span className="hidden sm:inline">Próxima</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Page Number Buttons */}
-                <div className="flex items-center gap-1.5 overflow-x-auto max-w-full py-1">
-                  {/* First page */}
-                  {validCurrentPage > 3 && (
-                    <>
-                      <button
-                        onClick={() => handlePageChange(1)}
-                        className="w-8 h-8 rounded-lg text-xs font-bold border border-gray-200 hover:bg-gray-100 text-gray-700"
-                      >
-                        1
-                      </button>
-                      {validCurrentPage > 4 && <span className="text-gray-400 text-xs px-1">...</span>}
-                    </>
-                  )}
-
-                  {/* Middle pages window */}
-                  {Array.from({ length: totalPages }, (_, i) => i + 1)
-                    .filter(p => Math.abs(p - validCurrentPage) <= 2)
-                    .map(page => (
-                      <button
-                        key={page}
-                        onClick={() => handlePageChange(page)}
-                        className={`w-8 h-8 rounded-lg text-xs font-bold transition ${
-                          validCurrentPage === page
-                            ? 'bg-[#f49e1a] text-black font-black shadow-xs'
-                            : 'border border-gray-200 hover:bg-gray-100 text-gray-700'
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
-
-                  {/* Last page */}
-                  {validCurrentPage < totalPages - 2 && (
-                    <>
-                      {validCurrentPage < totalPages - 3 && <span className="text-gray-400 text-xs px-1">...</span>}
-                      <button
-                        onClick={() => handlePageChange(totalPages)}
-                        className="w-8 h-8 rounded-lg text-xs font-bold border border-gray-200 hover:bg-gray-100 text-gray-700"
-                      >
-                        {totalPages}
-                      </button>
-                    </>
-                  )}
-                </div>
-
-                <div className="text-xs text-gray-500 font-medium">
-                  Total: {totalPages} páginas ({totalItems} produtos)
-                </div>
-              </div>
-            )}
-
-          </main>
-        </div>
-
-        {/* Store presentation follows the products so visitors can browse immediately. */}
-        <section id="catalog-presentation" aria-labelledby="catalog-page-title" className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#f49e1a]">
-                  Catálogo Oficial Carplus
-                </span>
-                <span className="text-[11px] font-bold bg-yellow-500/10 text-yellow-800 px-2.5 py-0.5 rounded-full border border-yellow-500/20">
-                  {catalogList.length > 50 ? catalogList.length : 1962} opções no catálogo
-                </span>
-              </div>
-              <h1 id="catalog-page-title" className="text-2xl sm:text-3xl font-black text-gray-950 uppercase tracking-tight">
-                Pneus e Auto Center em Curitiba – Portão
-              </h1>
-              <p className="text-sm sm:text-base text-gray-700 max-w-3xl leading-relaxed bg-amber-50/50 p-3.5 rounded-2xl border border-amber-200/60 mt-1">
-                Encontre pneus por medida, marca ou carro. Compare as opções e consulte preço, disponibilidade e aplicação pelo WhatsApp. Montagem e serviços na Carplus, no Portão, Curitiba.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                onClick={onNavigateHome}
-                className="text-xs font-bold text-gray-600 hover:text-black bg-gray-100 hover:bg-gray-200 px-4 py-2.5 rounded-xl transition"
-              >
-                Voltar à Página Inicial
-              </button>
-            </div>
-          </div>
+          {activeFilterCount > 0 && <div className="catalog-active-filters" aria-label="Filtros selecionados">
+            {activeFilters.map(filter => <button className="catalog-filter-chip" type="button" key={filter.label} onClick={() => handleFilterChange(filter.clear)} aria-label={`Remover filtro ${filter.label}`}><span>{filter.label}</span><X aria-hidden="true" /></button>)}
+            <button type="button" className="catalog-clear" onClick={handleResetFilters}>Limpar filtros</button>
+          </div>}
         </section>
 
-        {/* Mobile Filter Drawer / Modal */}
-        {isMobileFiltersOpen && (
-          <div className="fixed inset-0 z-50 flex bg-black/60 backdrop-blur-xs lg:hidden">
-            <div className="bg-white w-full max-w-md h-full ml-auto overflow-y-auto p-6 space-y-6 flex flex-col justify-between">
-              
-              <div className="space-y-6">
-                <div className="flex items-center justify-between border-b border-gray-200 pb-4">
-                  <span className="text-base font-black text-gray-950 flex items-center gap-2">
-                    <SlidersHorizontal className="w-5 h-5 text-[#f49e1a]" /> Filtros do Catálogo
-                  </span>
-                  <button
-                    onClick={() => setIsMobileFiltersOpen(false)}
-                    aria-label="Fechar filtros de pneus"
-                    className="min-h-11 min-w-11 p-2 rounded-full hover:bg-gray-100 text-gray-500"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-
-                {/* Marca */}
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase text-gray-700 block">Marca</label>
-                  <div className="grid grid-cols-2 gap-1.5 max-h-40 overflow-y-auto">
-                    <button
-                      onClick={() => handleFilterChange(() => setSelectedBrand('Todas'))}
-                      className={`text-xs font-bold p-2 rounded-xl text-left ${selectedBrand === 'Todas' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'}`}
-                    >
-                      Todas
-                    </button>
-                    {CATALOG_BRANDS.map(brand => (
-                      <button
-                        key={brand}
-                        onClick={() => handleFilterChange(() => setSelectedBrand(brand))}
-                        className={`text-xs font-bold p-2 rounded-xl text-left truncate ${selectedBrand.toLowerCase() === brand.toLowerCase() ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'}`}
-                      >
-                        {brand}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Aro */}
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase text-gray-700 block">Aro</label>
-                  <div className="grid grid-cols-4 gap-1.5">
-                    <button
-                      onClick={() => handleFilterChange(() => setSelectedRim('Todos'))}
-                      className={`text-xs font-bold p-2 rounded-xl ${selectedRim === 'Todos' ? 'bg-[#f49e1a] text-black font-black' : 'bg-gray-100 text-gray-800'}`}
-                    >
-                      Todos
-                    </button>
-                    {CATALOG_RIMS.map(rim => (
-                      <button
-                        key={rim}
-                        onClick={() => handleFilterChange(() => setSelectedRim(rim))}
-                        className={`text-xs font-bold p-2 rounded-xl ${selectedRim === rim ? 'bg-[#f49e1a] text-black font-black' : 'bg-gray-100 text-gray-800'}`}
-                      >
-                        {rim}"
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Categoria */}
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase text-gray-700 block">Categoria</label>
-                  <select
-                    value={selectedCategory}
-                    onChange={(e) => handleFilterChange(() => setSelectedCategory(e.target.value))}
-                    className="w-full bg-gray-100 p-2.5 rounded-xl text-xs font-bold text-gray-900"
-                  >
-                    <option value="Todas">Todas as Categorias</option>
-                    {CATALOG_CATEGORIES.map(cat => (
-                      <option key={cat} value={cat}>{cat}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Bottom Actions */}
-              <div className="pt-4 border-t border-gray-200 space-y-2">
-                <button
-                  onClick={() => setIsMobileFiltersOpen(false)}
-                  className="w-full bg-[#f49e1a] text-black font-black py-3 rounded-2xl text-sm"
-                >
-                  Ver {totalItems} Resultados
-                </button>
-                <button
-                  onClick={() => {
-                    handleResetFilters();
-                    setIsMobileFiltersOpen(false);
-                  }}
-                  className="w-full bg-gray-100 text-gray-700 font-bold py-2.5 rounded-2xl text-xs"
-                >
-                  Limpar Filtros
-                </button>
-              </div>
-
+        <section className="catalog-results" aria-labelledby="catalog-results-title" aria-busy={isLoadingCatalog}>
+          <div className="catalog-results-toolbar" ref={resultsRef} tabIndex={-1}>
+            <div>
+              <h2 id="catalog-results-title">{isLoadingCatalog ? 'Carregando catálogo…' : `${totalItems.toLocaleString('pt-BR')} pneus encontrados`}</h2>
+              <p role="status" aria-live="polite">{isLoadingCatalog ? 'Buscando todas as opções para você.' : totalItems > 0 ? `Mostrando ${startIndex + 1}–${endIndex} · Página ${validCurrentPage} de ${totalPages}` : 'Experimente outra medida ou remova um filtro.'}</p>
+            </div>
+            <div className="catalog-field catalog-sort">
+              <label htmlFor="catalog-sort">Ordenar por</label>
+              <select id="catalog-sort" value={sortBy} onChange={event => handleFilterChange(() => setSortBy(event.target.value as typeof sortBy))}>
+                <option value="relevancia">Relevância</option>
+                <option value="marca">Marca (A–Z)</option>
+                <option value="aro-asc">Aro crescente</option>
+                <option value="aro-desc">Aro decrescente</option>
+                <option value="nome">Nome do pneu (A–Z)</option>
+              </select>
             </div>
           </div>
-        )}
+
+          {currentTires.length > 0 ? (
+            <div className="catalog-products" id="catalog-products-grid">
+              {currentTires.map(tire => <CatalogTireCard key={`tire-${tire.id}-${tire.slug}`} tire={tire} onSelect={onSelectTire} />)}
+            </div>
+          ) : isLoadingCatalog ? (
+            <div className="catalog-empty"><Loader2 className="catalog-loading-icon" aria-hidden="true" /><p>Carregando pneus…</p></div>
+          ) : (
+            <div className="catalog-empty">
+              <Search aria-hidden="true" />
+              <h3>Nenhum pneu encontrado</h3>
+              <p>Tente outra medida, aro ou marca. Você também pode limpar os filtros para voltar ao catálogo completo.</p>
+              <button type="button" onClick={handleResetFilters}>Ver todos os pneus</button>
+            </div>
+          )}
+
+          {totalPages > 1 && <nav className="catalog-pagination" aria-label="Páginas do catálogo">
+            <button type="button" onClick={() => handlePageChange(validCurrentPage - 1)} disabled={validCurrentPage === 1}><ChevronLeft aria-hidden="true" />Anterior</button>
+            <label className="catalog-page-select">Página <select aria-label="Ir para a página" value={validCurrentPage} onChange={event => handlePageChange(Number(event.target.value))}>{Array.from({ length: totalPages }, (_, index) => <option key={index + 1} value={index + 1}>{index + 1}</option>)}</select><span>de {totalPages}</span></label>
+            <button type="button" onClick={() => handlePageChange(validCurrentPage + 1)} disabled={validCurrentPage === totalPages}>Próxima<ChevronRight aria-hidden="true" /></button>
+          </nav>}
+        </section>
 
         {/* Rich Authoritative SEO Guide & FAQ for Search Engines (Google, Bing, Yahoo) and LLMs */}
-        <section className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-10 space-y-8 shadow-xs mt-10" id="seo-pneus-curitiba-guide">
+        <details className="catalog-guide" id="seo-pneus-curitiba-guide">
+          <summary><span>Guia de medidas e dúvidas sobre pneus</span><ChevronDown aria-hidden="true" /></summary>
+          <div className="catalog-guide-content space-y-8">
           <div className="border-b border-gray-200 pb-6 space-y-3">
             <span className="bg-[#F5A623]/20 text-zinc-900 border border-[#F5A623]/40 text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full inline-block">
               Guia Completo do Consumidor • Curitiba & Região
@@ -837,7 +457,8 @@ export default function TireCatalogView({
               </div>
             </div>
           </div>
-        </section>
+          </div>
+        </details>
 
       </div>
     </div>

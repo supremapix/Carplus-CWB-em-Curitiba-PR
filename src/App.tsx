@@ -24,6 +24,7 @@ import { PROMO_TIRES } from './data/promoTires';
 import WorkshopHero from './components/WorkshopHero';
 import TireAdviceSection from './components/TireAdviceSection';
 import HomeTireSearch from './components/HomeTireSearch';
+import type { TireCatalogState } from './components/TireCatalogView';
 import BrandComparisonStrip from './components/BrandComparisonStrip';
 
 // Lazy-loaded heavy components to optimize initial bundle and TBT
@@ -77,6 +78,39 @@ export default function App() {
   const [catalogFilterRim, setCatalogFilterRim] = useState<number | 'Todos'>('Todos');
   const [catalogFilterCategory, setCatalogFilterCategory] = useState<string>('Todas');
   const [catalogFilterSearch, setCatalogFilterSearch] = useState<string>('');
+  const [catalogRestoreState, setCatalogRestoreState] = useState<TireCatalogState | undefined>(undefined);
+  const [catalogNavigationKey, setCatalogNavigationKey] = useState(0);
+  const lastCatalogState = useRef<TireCatalogState | undefined>(undefined);
+
+  const resetCatalogNavigation = () => {
+    lastCatalogState.current = undefined;
+    setCatalogRestoreState(undefined);
+    setCatalogNavigationKey(value => value + 1);
+  };
+
+  const rememberCatalogState = useCallback((state: TireCatalogState) => {
+    lastCatalogState.current = state;
+    // Keep the current history entry, URL and canonical unchanged.
+    if (/^\/pneus(?:\/|$)/.test(window.location.pathname)) {
+      const previous = window.history.state;
+      window.history.replaceState({ ...(previous && typeof previous === 'object' ? previous : {}), carplusCatalog: state }, '', window.location.href);
+    }
+  }, []);
+
+  const restoreCatalogNavigation = () => {
+    const saved = window.history.state?.carplusCatalog;
+    const valid = saved && typeof saved === 'object'
+      && ['searchTerm', 'selectedBrand', 'selectedCategory', 'selectedVehicleType'].every(key => typeof saved[key] === 'string')
+      && (saved.selectedRim === 'Todos' || Number.isFinite(saved.selectedRim))
+      && (saved.selectedWidth === 'Todas' || Number.isFinite(saved.selectedWidth))
+      && (saved.selectedProfile === 'Todos' || Number.isFinite(saved.selectedProfile))
+      && ['relevancia', 'marca', 'aro-asc', 'aro-desc', 'nome'].includes(saved.sortBy)
+      && Number.isInteger(saved.currentPage) && saved.currentPage > 0;
+    const restored: TireCatalogState | undefined = valid ? saved : undefined;
+    lastCatalogState.current = restored;
+    setCatalogRestoreState(restored);
+    setCatalogNavigationKey(value => value + 1);
+  };
   const [isConveyorPaused, setIsConveyorPaused] = useState(false);
 
   // Search and Filter States
@@ -299,8 +333,9 @@ export default function App() {
   ];
 
   // Scroll handler and page navigation mapping
-  const handleScrollToSection = (sectionId: string) => {
+  const handleScrollToSection = (sectionId: string, preserveCatalogEntryFilters = false) => {
     setSelectedCatalogTire(null);
+    resetCatalogNavigation();
     // Normalization & Aliases
     let targetView = sectionId;
     if (sectionId === 'servicos' || sectionId === 'alinhamento') {
@@ -308,6 +343,12 @@ export default function App() {
     } else if (sectionId === 'fale-conosco' || sectionId === 'faleconosco') {
       targetView = 'contato';
     } else if (sectionId === 'catalogo-pneus' || sectionId === 'pneus' || sectionId === 'catalogo') {
+      if (!preserveCatalogEntryFilters) {
+        setCatalogFilterBrand('Todas');
+        setCatalogFilterRim('Todos');
+        setCatalogFilterCategory('Todas');
+        setCatalogFilterSearch('');
+      }
       setSelectedTire(null);
       setSelectedCatalogTire(null);
       setSeoTarget(null);
@@ -488,7 +529,7 @@ export default function App() {
     setCatalogFilterBrand(brand);
     setCatalogFilterRim(rim);
     setCatalogFilterCategory('Todas');
-    handleScrollToSection('catalogo-pneus');
+    handleScrollToSection('catalogo-pneus', true);
   };
 
   // --- INTEGRATED SPA CLIENT-SIDE URL ROUTING ENGINE ---
@@ -496,6 +537,15 @@ export default function App() {
     setSelectedCatalogTire(null);
     const rawPath = window.location.pathname;
     const parts = rawPath.split('/').filter(Boolean);
+    setCatalogFilterBrand('Todas');
+    setCatalogFilterRim('Todos');
+    setCatalogFilterCategory('Todas');
+    setCatalogFilterSearch('');
+    if (parts[0]?.toLowerCase() === 'pneus') {
+      restoreCatalogNavigation();
+    } else if (!(parts[0] === 'pneu' || parts[0]?.startsWith('pneu-'))) {
+      resetCatalogNavigation();
+    }
     
     if (parts.length === 0) {
       setCurrentView('home');
@@ -956,7 +1006,15 @@ export default function App() {
     }
 
     if (window.location.pathname !== idealPath) {
-      window.history.pushState(null, '', idealPath);
+      if (currentView === 'catalogo-pneus' && /^\/pneus\//.test(window.location.pathname)) {
+        // Normalize existing catalog aliases without trapping Back in an alias loop.
+        window.history.replaceState(window.history.state, '', idealPath);
+      } else {
+        window.history.pushState(null, '', idealPath);
+      }
+    }
+    if (currentView === 'catalogo-pneus' && lastCatalogState.current) {
+      rememberCatalogState(lastCatalogState.current);
     }
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [isRouteReady, currentView, seoTarget, selectedTire, selectedCatalogTire, selectedBlogSlug]);
@@ -990,6 +1048,8 @@ export default function App() {
             <CatalogTireDetail 
               tire={selectedCatalogTire}
               onBack={() => {
+                setCatalogRestoreState(lastCatalogState.current);
+                setCatalogNavigationKey(value => value + 1);
                 setCurrentView('catalogo-pneus');
                 setSelectedCatalogTire(null);
               }}
@@ -1003,7 +1063,10 @@ export default function App() {
       ) : currentView === 'catalogo-pneus' ? (
         <main className="flex-1 w-full bg-white">
           <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center p-12 text-sm text-gray-500 font-mono">Carregando catálogo de pneus...</div>}>
-            <TireCatalogView 
+            <TireCatalogView
+              key={catalogNavigationKey}
+              initialState={catalogRestoreState}
+              onStateChange={rememberCatalogState}
               initialBrand={catalogFilterBrand}
               initialRim={catalogFilterRim === 'Todos' ? undefined : catalogFilterRim}
               initialCategory={catalogFilterCategory}

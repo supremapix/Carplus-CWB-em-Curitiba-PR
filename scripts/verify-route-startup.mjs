@@ -17,12 +17,12 @@ const print = node => printer.printNode(ts.EmitHint.Unspecified, node, source);
 const declarations = new Map();
 const initializers = new Map();
 const setters = new Map();
-let mountEffect, syncEffect, syncDependencies, footerNavigation;
-const stateNames = new Set(['currentView', 'seoTarget', 'selectedTire', 'selectedCatalogTire', 'selectedBlogSlug', 'isRouteReady', 'catalogFilterBrand', 'catalogFilterRim', 'catalogFilterCategory']);
+let mountEffect, syncEffect, syncDependencies, footerNavigation, catalogBack;
+const stateNames = new Set(['currentView', 'seoTarget', 'selectedTire', 'selectedCatalogTire', 'selectedBlogSlug', 'isRouteReady', 'catalogFilterBrand', 'catalogFilterRim', 'catalogFilterCategory', 'catalogFilterSearch', 'catalogRestoreState', 'catalogNavigationKey']);
 
 function find(node) {
   if (ts.isVariableDeclaration(node)) {
-    if (ts.isIdentifier(node.name) && ['PAGE_VIEWS', 'parsePathAndSetState', 'handleScrollToSection'].includes(node.name.text)) declarations.set(node.name.text, node);
+    if (ts.isIdentifier(node.name) && ['PAGE_VIEWS', 'resetCatalogNavigation', 'rememberCatalogState', 'restoreCatalogNavigation', 'parsePathAndSetState', 'handleScrollToSection'].includes(node.name.text)) declarations.set(node.name.text, node);
     if (ts.isArrayBindingPattern(node.name) && ts.isCallExpression(node.initializer) && node.initializer.expression.getText(source) === 'useState') {
       const name = node.name.elements[0]?.name?.getText(source);
       if (stateNames.has(name)) {
@@ -35,6 +35,9 @@ function find(node) {
     const text = node.getText(source);
     if (/\blet\s+idealPath\b/.test(text)) { syncEffect = node.arguments[0]; syncDependencies = node.arguments[1]; }
     else if (/\bparsePathAndSetState\s*\(/.test(text)) mountEffect = node.arguments[0];
+  }
+  if (ts.isJsxSelfClosingElement(node) && node.tagName.getText(source) === 'CatalogTireDetail') {
+    catalogBack = node.attributes.properties.find(attribute => ts.isJsxAttribute(attribute) && attribute.name.getText(source) === 'onBack')?.initializer?.expression;
   }
   if (ts.isJsxSelfClosingElement(node) && node.tagName.getText(source) === 'Footer') {
     footerNavigation = node.attributes.properties.find(attribute => ts.isJsxAttribute(attribute) && attribute.name.getText(source) === 'onNavigate');
@@ -86,17 +89,21 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
   const queue = [];
   const history = [];
   const listeners = new Map();
-  const location = { pathname: incomingPath, search: '', hash: '' };
+  const location = { pathname: incomingPath, search: '', hash: '', href: `https://www.carpluscwb.com.br${incomingPath}` };
   const window = {
     location,
-    history: { pushState(_state, _title, url) { const parsed = new URL(url, 'https://carplus.example'); location.pathname = parsed.pathname; location.search = parsed.search; location.hash = parsed.hash; history.push(parsed.pathname); } },
+    history: {
+      state: null,
+      pushState(nextState, _title, url) { const parsed = new URL(url, 'https://carplus.example'); this.state = nextState; location.pathname = parsed.pathname; location.search = parsed.search; location.hash = parsed.hash; location.href = parsed.href; history.push(parsed.pathname); },
+      replaceState(nextState, _title, url) { this.state = nextState; if (url) { const parsed = new URL(url, 'https://carplus.example'); location.pathname = parsed.pathname; location.search = parsed.search; location.hash = parsed.hash; location.href = parsed.href; } }
+    },
     scrollTo() {},
     addEventListener(name, callback) { if (!listeners.has(name)) listeners.set(name, new Set()); listeners.get(name).add(callback); },
     removeEventListener(name, callback) { listeners.get(name)?.delete(callback); }
   };
   const context = vm.createContext({
     window, document: { getElementById() { return null; } },
-    console, URL, setTimeout(callback) { callback(); return 1; },
+    console, URL, Number, useCallback: fn => fn, lastCatalogState: { current: undefined }, setTimeout(callback) { callback(); return 1; },
     ...catalog, ...tireData, ...slugs, ...geography,
     homeRef: { current: null }, finderRef: { current: null }, catalogRef: { current: null }, categoriesRef: { current: null }, mapsRef: { current: null }
   });
@@ -107,9 +114,9 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
     assert.ok(ts.isIfStatement(syncEffect.body.statements[0]), 'Negative control needs the first readiness gate');
     actualSync = arrowBody(syncEffect, syncEffect.body.statements.slice(1));
   }
-  const handlerCode = ['PAGE_VIEWS', 'parsePathAndSetState', 'handleScrollToSection'].map(name => {
+  const handlerCode = ['PAGE_VIEWS', 'resetCatalogNavigation', 'rememberCatalogState', 'restoreCatalogNavigation', 'parsePathAndSetState', 'handleScrollToSection'].map(name => {
     const declaration = declarations.get(name);
-    if (!removeCatalogClears || name === 'PAGE_VIEWS') return `const ${print(declaration)};`;
+    if (!removeCatalogClears || !['parsePathAndSetState', 'handleScrollToSection'].includes(name)) return `const ${print(declaration)};`;
     const arrow = declaration.initializer;
     assert.equal(print(arrow.body.statements[0]).trim(), 'setSelectedCatalogTire(null);', 'Negative control needs the first product clear');
     return `const ${name} = ${print(arrowBody(arrow, arrow.body.statements.slice(1)))};`;
@@ -117,7 +124,7 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
   const factorySource = `function renderRoutes(snapshot) {
     const {${[...stateNames].join(',')}} = snapshot;
     ${handlerCode}
-    return {parsePathAndSetState, handleScrollToSection, mount:${print(mountEffect)}, sync:${print(actualSync)}, dependencies:${print(syncDependencies)}};
+    return {parsePathAndSetState, handleScrollToSection, rememberCatalogState, catalogBack:${print(catalogBack)}, mount:${print(mountEffect)}, sync:${print(actualSync)}, dependencies:${print(syncDependencies)}};
   }`;
   const compiled = ts.transpileModule(factorySource, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText;
   new vm.Script(compiled).runInContext(context);
@@ -157,8 +164,12 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
   return {
     state, location, history,
     navigate(section) { committed.handleScrollToSection(section); settle(); },
-    popTo(url) { location.pathname = url; for (const callback of listeners.get('popstate') || []) callback(); settle(); },
-    selectCatalog(product) { context.setSelectedCatalogTire(product); settle(); }
+    popTo(url, entryState = null) { window.history.state = entryState; location.pathname = url; location.href = `https://www.carpluscwb.com.br${url}`; for (const callback of listeners.get('popstate') || []) callback(); settle(); },
+    selectCatalog(product) { context.setSelectedCatalogTire(product); settle(); },
+    rememberCatalog(snapshot) { committed.rememberCatalogState(snapshot); },
+    getHistoryState() { return window.history.state; },
+    backToCatalog() { committed.catalogBack(); settle(); }
+
   };
 }
 
@@ -210,4 +221,36 @@ const brokenExit = harness(`/pneu/${products[0].slug}`, { removeCatalogClears: t
 brokenExit.navigate('contato');
 assert.notEqual(brokenExit.location.pathname, '/contato', 'Negative control must reproduce stale-product URL when only the clears are removed');
 
-console.log(`PASS: ${cases.length} real direct routes under StrictMode/state batching; catalog product changes; product → services/contact/home; browser history; footer handler; both regression controls reproduce the original failures.`);
+const snapshot = {
+  searchTerm: '', selectedBrand: 'PIRELLI', selectedRim: 16, selectedWidth: 'Todas', selectedProfile: 'Todos',
+  selectedCategory: 'Todas', selectedVehicleType: 'Todos', sortBy: 'marca', currentPage: 2
+};
+const aliasJourney = harness('/pneus/aro-17');
+assert.equal(aliasJourney.location.pathname, '/pneus');
+assert.equal(aliasJourney.history.length, 0, 'Catalog alias normalization replaces rather than pushes an entry, avoiding a Back loop');
+const catalogJourney = harness('/pneus');
+catalogJourney.rememberCatalog(snapshot);
+assert.equal(catalogJourney.getHistoryState().carplusCatalog, snapshot, 'Save selection in the existing history entry without adding a URL');
+const savedEntry = catalogJourney.getHistoryState();
+catalogJourney.selectCatalog(products[0]);
+catalogJourney.backToCatalog();
+assert.equal(catalogJourney.state.currentView, 'catalogo-pneus');
+assert.equal(catalogJourney.state.catalogRestoreState, snapshot, 'Internal back restores all filters, sort and page');
+catalogJourney.selectCatalog(products[0]);
+catalogJourney.popTo('/pneus', savedEntry);
+assert.equal(catalogJourney.state.catalogRestoreState, snapshot, 'Browser Back restores the catalog history snapshot');
+catalogJourney.popTo(`/pneu/${products[0].slug}`);
+catalogJourney.backToCatalog();
+assert.equal(catalogJourney.state.catalogRestoreState, snapshot, 'Browser Forward then internal back keeps catalog context');
+catalogJourney.navigate('catalogo-pneus');
+assert.equal(catalogJourney.state.catalogRestoreState, undefined, 'Fresh catalog navigation clears restoration');
+assert.equal(catalogJourney.state.catalogFilterBrand, 'Todas');
+assert.equal(catalogJourney.state.catalogFilterRim, 'Todos');
+catalogJourney.popTo('/pneus/marca/michelin');
+assert.equal(catalogJourney.state.catalogRestoreState, undefined, 'Fresh brand URL does not reuse the last catalog snapshot');
+assert.equal(catalogJourney.state.catalogFilterBrand, 'michelin');
+assert.equal(catalogJourney.state.catalogFilterRim, 'Todos');
+catalogJourney.popTo('/pneus', { carplusCatalog: { currentPage: 2 } });
+assert.equal(catalogJourney.state.catalogRestoreState, undefined, 'Malformed history entries are ignored');
+
+console.log(`PASS: catalog filter/page snapshots, internal back, browser Back/Forward, fresh navigation and malformed history; ${cases.length} real direct routes under StrictMode/state batching; catalog product changes; product → services/contact/home; browser history; footer handler; both regression controls reproduce the original failures.`);
