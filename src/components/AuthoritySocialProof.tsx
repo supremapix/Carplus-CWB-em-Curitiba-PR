@@ -179,18 +179,7 @@ export default function AuthoritySocialProof() {
                 : 'bg-white border border-gray-200 text-gray-700 hover:border-gray-400'
             }`}
           >
-            Todos os Depoimentos (6)
-          </button>
-          <button
-            onClick={() => setActiveCategory('preco')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
-              activeCategory === 'preco'
-                ? 'bg-emerald-600 text-white shadow-md scale-105'
-                : 'bg-white border border-gray-200 text-gray-700 hover:border-emerald-500'
-            }`}
-          >
-            <DollarSign className="w-3.5 h-3.5" />
-            Preço & Economia
+            Todos os Depoimentos ({TESTIMONIALS.length})
           </button>
           <button
             onClick={() => setActiveCategory('eletrico')}
