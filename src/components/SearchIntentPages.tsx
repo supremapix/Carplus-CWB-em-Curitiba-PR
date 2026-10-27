@@ -145,8 +145,8 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     },
     'pneus-baratos-em-curitiba': {
       title: "Pneus Baratos em Curitiba",
-      subtitle: "Garantia real de menor preço à pronta entrega. Mais de 10.000 pneus novos nacionais e importados.",
-      tag: "Economia Real Garantida",
+      subtitle: "Pneus à pronta entrega. Mais de 10.000 pneus novos nacionais e importados.",
+      tag: "Pneus Nacionais e Importados",
       bgGradient: "from-amber-950 to-gray-950",
       content: (
         <div className="space-y-6 text-left">
@@ -181,8 +181,8 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
 
           <div className="bg-yellow-500/5 border border-yellow-500/15 p-5 rounded-3xl flex items-center justify-between gap-4 text-xs font-sans">
             <div>
-              <p className="font-extrabold text-gray-950 uppercase">Cobrimos Orçamentos da Concorrência</p>
-              <p className="text-gray-550 leading-relaxed font-semibold">Traga a proposta impressa da região metropolitana que garantimos menor valor real à vista.</p>
+              <p className="font-extrabold text-gray-950 uppercase">Solicite um Orçamento</p>
+              <p className="text-gray-550 leading-relaxed font-semibold">Informe a medida do pneu ou o modelo do veículo para consultar preços e disponibilidade.</p>
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       content: (
         <div className="space-y-6 text-left">
           <p className="text-sm text-gray-650 leading-relaxed font-semibold">
-            A Carplus opera como uma sólida <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">distribuidora de pneus importados no atacado em Curitiba</strong>, oferecendo o maior catálogo de compostos asiáticos e de marcas consolidadas pelo menor preço em grande escala do Sul do país.
+            A Carplus opera como uma sólida <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">distribuidora de pneus importados no atacado em Curitiba</strong>, oferecendo o maior catálogo de compostos asiáticos e de marcas consolidadas para compras em grande escala no Sul do país.
           </p>
 
           <div className="border border-dashed border-gray-200 rounded-2xl p-5 bg-yellow-500/5 space-y-3">
@@ -344,7 +344,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
           <div className="space-y-3">
             <h3 className="text-sm font-semibold uppercase font-mono text-gray-950">Confira Preços Vantajosos Conosco</h3>
             <p className="text-xs text-gray-650 leading-relaxed font-bold">
-              Negociamos diretamente lotes de reposição e oferecemos preços extremamente competitivos frente às concessionárias de marcas de pneus comuns. Faça seu agendamento no Portão e garanta atendimento prioritário para instalação e alinhamento 3D!
+              Negociamos diretamente lotes de reposição de pneus. Consulte preços e disponibilidade com nossa equipe. Faça seu agendamento no Portão e garanta atendimento prioritário para instalação e alinhamento 3D!
             </p>
           </div>
         </div>
@@ -381,7 +381,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
               </li>
               <li className="flex items-center gap-2">
                  <Check className="w-4 h-4 text-yellow-500 shrink-0" />
-                 <span><strong>Estoque Unificado de Varejo direto do Atacado</strong>: O melhor valor final líquido real em pneus Pirelli, Delinte, Goodyear, Bridgestone, Xbri, Hankook e Dunlop.</span>
+                 <span><strong>Estoque Unificado de Varejo direto do Atacado</strong>: Pneus Pirelli, Delinte, Goodyear, Bridgestone, Xbri, Hankook e Dunlop para consulta.</span>
               </li>
             </ul>
           </div>
@@ -395,7 +395,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     },
     'barao-pneus-sao-jose-pinhais': {
       title: "Conheça Alternativa a Barão Pneus São José Pinhais",
-      subtitle: "Descubra preços muito mais baratos em pneus novos de fábrica com rampa 3D computadorizada.",
+      subtitle: "Conheça pneus novos de fábrica e os serviços de alinhamento 3D computadorizado.",
       tag: "Distribuição Direta Paraná",
       bgGradient: "from-blue-950 to-gray-950",
       content: (
@@ -421,14 +421,14 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       ]
     },
     'pneus-em-curitiba-melhor-preco': {
-      title: "Pneus em Curitiba com o Melhor Preço",
+      title: "Pneus em Curitiba - Preços e Modelos",
       subtitle: "Estoque amplo de pneus novos a pronta entrega, com montagem computadorizada e alinhamento 3D no Portão.",
       tag: "Compra de Pneus em Curitiba",
       bgGradient: "from-emerald-950 to-gray-950",
       content: (
         <div className="space-y-6 text-left">
           <p className="text-sm text-gray-650 leading-relaxed font-semibold">
-            Se você está pesquisando por <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">pneus em Curitiba</strong> ou quer saber <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">onde comprar pneus com o melhor preço</strong>, a Carplus Pneus oferece atendimento transparente, estoque próprio e suporte técnico especializado na Av. Presidente Arthur Bernardes, 1323 (Portão).
+            Se você está pesquisando por <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">pneus em Curitiba</strong> ou quer saber <strong className="text-gray-955 bg-yellow-500/10 px-1 py-0.5 rounded">onde consultar preços e modelos de pneus</strong>, a Carplus Pneus oferece atendimento transparente, estoque próprio e suporte técnico especializado na Av. Presidente Arthur Bernardes, 1323 (Portão).
           </p>
 
           {/* Destaques comerciais */}
@@ -1035,7 +1035,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
           Gostaria de falar com o consultor técnico e poupar em pneus novos hoje?
         </h3>
         <p className="text-xs text-gray-650 max-w-xl mx-auto leading-relaxed font-bold">
-          Efetue uma cotação rápida no WhatsApp oficial da Carplus. Garantimos estoque real imediato e a melhor proposta em Curitiba no Portão!
+          Efetue uma cotação rápida no WhatsApp oficial da Carplus. Consulte preços, disponibilidade e serviços em nossa loja no Portão, em Curitiba!
         </p>
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a 

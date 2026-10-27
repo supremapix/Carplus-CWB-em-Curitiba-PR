@@ -283,7 +283,7 @@ export default function CartDrawer({
                 <span className="text-xl font-black text-[#1ebd53] uppercase tracking-wider">Sob Consulta</span>
               </div>
               <div className="text-right text-[10px] text-yellow-600 font-bold bg-yellow-500/10 px-2.5 py-1.5 rounded-lg border border-yellow-500/20">
-                Instalação Inclusa!
+                Consulte a instalação
               </div>
             </div>
 

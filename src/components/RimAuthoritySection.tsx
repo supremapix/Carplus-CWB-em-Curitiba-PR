@@ -111,7 +111,7 @@ export default function RimAuthoritySection({ aroName, onSelectAro }: RimAuthori
             Av. Presidente Arthur da Silva Bernardes, 1323 (Bairro Portão) • Atendimento Curitiba e Toda RMC
           </p>
           <p className="text-sm sm:text-base text-gray-700 leading-relaxed text-left">
-            A <strong>Carplus Pneus & Oficina</strong> é a maior autoridade do Sul do Brasil em fornecimento, montagem e alinhamento de <strong>pneus aro {rimConfig.number} em Curitiba</strong>. Mantemos o maior estoque à pronta entrega com menor preço garantido, cobrindo qualquer cotação de concessionárias e grandes redes com montagem computadorizada e atendimento especializado.
+            A <strong>Carplus Pneus & Oficina</strong> é a maior autoridade do Sul do Brasil em fornecimento, montagem e alinhamento de <strong>pneus aro {rimConfig.number} em Curitiba</strong>. Mantemos estoque à pronta entrega, com montagem computadorizada e atendimento especializado.
           </p>
         </div>
 
@@ -197,7 +197,7 @@ export default function RimAuthoritySection({ aroName, onSelectAro }: RimAuthori
                 <div className="mt-3 pt-2 border-t border-gray-200/60 flex items-center justify-between">
                   <span className="text-[11px] font-bold text-emerald-700">✓ Em Estoque</span>
                   <a
-                    href={formatWhatsApp(`Olá Carplus! Gostaria de consultar o menor preço e disponibilidade para o pneu ${item.measure} (Aro ${rimConfig.number}) em Curitiba.`)}
+                    href={formatWhatsApp(`Olá Carplus! Gostaria de consultar preço e disponibilidade para o pneu ${item.measure} (Aro ${rimConfig.number}) em Curitiba.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-black text-gray-950 hover:text-yellow-600 flex items-center gap-1 transition"
@@ -255,7 +255,7 @@ export default function RimAuthoritySection({ aroName, onSelectAro }: RimAuthori
           </div>
 
           <a
-            href={formatWhatsApp(`Olá equipe Carplus! Preciso de cotação para pneus Aro ${rimConfig.number} com o menor preço garantido de Curitiba.`)}
+            href={formatWhatsApp(`Olá equipe Carplus! Preciso de cotação para pneus Aro ${rimConfig.number} em Curitiba.`)}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gray-950 hover:bg-black text-[#f49e1a] hover:text-white font-black text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-2xl flex items-center gap-2 transition-all shadow-md shrink-0 group cursor-pointer"
@@ -299,7 +299,7 @@ export default function RimAuthoritySection({ aroName, onSelectAro }: RimAuthori
             }}
             className="bg-gray-100 hover:bg-yellow-400 hover:text-black text-gray-800 px-3 py-1.5 rounded-lg border border-gray-300 transition"
           >
-            🛞 Pneus Pirelli com Menor Preço Garantido
+            🛞 Pneus Pirelli em Curitiba
           </a>
         </div>
 

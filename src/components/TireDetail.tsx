@@ -131,7 +131,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
               </h1>
               
               <p className="text-sm font-semibold text-[#f59c00] uppercase leading-none">
-                Instalação & Bicos Inclusos na loja física do Portão
+                Consulte instalação na loja física do Portão
               </p>
             </div>
 

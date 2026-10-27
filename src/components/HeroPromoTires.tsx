@@ -49,7 +49,7 @@ export const HeroPromoTires: React.FC<HeroPromoTiresProps> = ({ onSelectTire }) 
         {/* Short Heading & Support Sentence (Requirement 5) */}
         <div className="space-y-4 max-w-3xl">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
-            Pneus Novos em Curitiba com Menor Preço e Pronta Entrega
+            Pneus Novos em Curitiba com Pronta Entrega
           </h1>
 
           <p className="text-zinc-300 text-[18px] sm:text-[20px] font-normal leading-relaxed">

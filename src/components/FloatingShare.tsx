@@ -26,7 +26,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     ? `Pneu ${selectedTire.brand} ${selectedTire.model} (${selectedTire.width}/${selectedTire.aspectRatio} R${selectedTire.rim}) | Carplus Curitiba`
     : seoTarget?.title || 'Carplus Pneus e Oficina Mecânica | Curitiba Portão';
   const shareDesc = selectedTire
-    ? `Com instalação especializada, alinhamento e balanceamento inclusos em Curitiba. Confira!`
+    ? `Consulte pneus, instalação especializada, alinhamento e balanceamento em Curitiba. Confira!`
     : 'Especialistas em pneus novos, importados, nacionais e mecânica full service no Portão, Curitiba.';
   
   // NEVER use logo as share preview image per user request ("a imagem do botao compartilhar nao pode ser a logo")

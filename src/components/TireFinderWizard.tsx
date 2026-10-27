@@ -186,7 +186,7 @@ export default function TireFinderWizard({ onSearchMeasure, onAddToCart }: TireF
                       </div>
                       <h5 className="text-sm font-black text-gray-900 line-clamp-1 mt-0.5">{ct.nome}</h5>
                       <p className="text-xs text-[#1ebd53] font-black uppercase">
-                        Preço Sob Consulta • Montagem Inclusa
+                        Preço e Montagem Sob Consulta
                       </p>
                     </div>
                   </div>

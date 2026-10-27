@@ -21,40 +21,6 @@ interface Testimonial {
 
 const TESTIMONIALS: Testimonial[] = [
   // Categoria 1: Preço e Economia
-  {
-    id: 't1',
-    name: 'Carlos Eduardo Mendes',
-    vehicle: 'Toyota Corolla XEi',
-    carType: 'Sedan Premium',
-    city: 'Curitiba (Água Verde)',
-    rating: 5,
-    category: 'preco',
-    categoryLabel: 'Preço & Economia',
-    teamMention: 'Matheus',
-    quote: 'Cobriram o orçamento da concorrência com o melhor atendimento!',
-    reviewText: 'Pesquisei em quatro grandes lojas de pneus de Curitiba antes de comprar. Cheguei na Carplus com um orçamento impresso e o Matheus cobriu na hora o valor do jogo Pirelli! Sem enrolação, sem taxas ocultas e montagem com equipamentos de alta tecnologia. Economizei quase R$ 380 no jogo completo.',
-    date: 'Avaliação real no Google',
-    badge: 'Economia Comprovada',
-    avatarLetter: 'C',
-    avatarColor: 'bg-emerald-600'
-  },
-  {
-    id: 't2',
-    name: 'Mariana Silveira Ramos',
-    vehicle: 'Jeep Compass Longitude',
-    carType: 'SUV Médio',
-    city: 'Curitiba (Portão)',
-    rating: 5,
-    category: 'preco',
-    categoryLabel: 'Preço & Economia',
-    teamMention: 'Vinicius',
-    quote: 'Menor preço de Curitiba em 10x sem juros reais!',
-    reviewText: 'Passei em dois autocenters na Linha Verde que queriam empurrar mil serviços extras além dos pneus. Na Carplus o Vinicius me atendeu com honestidade pura, fez o menor preço à vista em 10x no cartão sem acréscimo e entregou o carro alinhado em menos de 45 minutos. Nota 1000!',
-    date: 'Avaliação real no Google',
-    badge: '10x Sem Juros',
-    avatarLetter: 'M',
-    avatarColor: 'bg-amber-600'
-  },
 
   // Categoria 2: Especialista em Carros Elétricos / Premium
   {
@@ -73,23 +39,6 @@ const TESTIMONIALS: Testimonial[] = [
     badge: 'BYD Homologado',
     avatarLetter: 'R',
     avatarColor: 'bg-blue-600'
-  },
-  {
-    id: 't4',
-    name: 'Fernando Guimarães Castro',
-    vehicle: 'GWM Haval H6 Premium',
-    carType: 'Híbrido Plug-in',
-    city: 'São José dos Pinhais (RMC)',
-    rating: 5,
-    category: 'eletrico',
-    categoryLabel: 'Especialista em EVs',
-    teamMention: 'Matheus & Jocimar',
-    quote: 'Pneus Pirelli Elect aro 19 a pronta entrega e preço imbatível.',
-    reviewText: 'Vim de São José dos Pinhais porque nenhuma loja tinha a medida homologada do Haval H6 em estoque ou cobravam um absurdo. O Matheus me atendeu pelo WhatsApp, separou os pneus e o Jocimar fez a geometria 3D respeitando todos os parâmetros de fábrica. Serviço de concessionária com preço justo.',
-    date: 'Avaliação real no Google',
-    badge: 'Pirelli Elect EV',
-    avatarLetter: 'F',
-    avatarColor: 'bg-indigo-600'
   },
 
   // Categoria 3: Atendimento e Honestidade
@@ -131,8 +80,8 @@ const TESTIMONIALS: Testimonial[] = [
 
 const CLOSING_FAQS = [
   {
-    q: 'A Carplus realmente cobre qualquer orçamento de pneus em Curitiba?',
-    a: 'Sim, garantido! Se você recebeu uma cotação formal de qualquer loja de pneus ou autocenter de Curitiba e Região Metropolitana para o mesmo modelo e marca, envie uma foto pelo WhatsApp. Cobrimos o valor comprovado com atendimento técnico de excelência!'
+    q: 'Como consultar pneus e condições de compra na Carplus?',
+    a: 'Informe a medida do pneu, o modelo do veículo e a quantidade desejada pelo WhatsApp. Nossa equipe orienta sobre opções, disponibilidade e condições de compra.'
   },
   {
     q: 'Como funciona o parcelamento em 10x sem juros?',
@@ -199,8 +148,8 @@ export default function AuthoritySocialProof() {
             <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1">
               <DollarSign className="w-5 h-5 font-black" />
             </div>
-            <span className="text-xl sm:text-2xl font-black text-gray-950 font-display">Menor Preço</span>
-            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Cobrimos Orçamentos de CWB</span>
+            <span className="text-xl sm:text-2xl font-black text-gray-950 font-display">Consulte Pneus</span>
+            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Atendimento no Portão</span>
           </div>
 
           <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 shadow-sm text-center flex flex-col items-center justify-center">
@@ -328,25 +277,25 @@ export default function AuthoritySocialProof() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="space-y-2 text-center lg:text-left">
               <span className="bg-[#f49e1a] text-gray-950 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-full inline-block">
-                Desafio Menor Preço Carplus
+                Atendimento Carplus
               </span>
               <h3 className="text-xl sm:text-3xl font-black uppercase font-display tracking-tight text-white">
-                Já Tem um Orçamento da Concorrência? Nós Cobrimos!
+                Precisa de pneus? Fale com a nossa equipe
               </h3>
               <p className="text-xs sm:text-sm text-gray-300 max-w-2xl leading-relaxed">
-                Mande agora uma foto ou mensagem com o orçamento que você recebeu. A equipe do Matheus, Vinicius e Jocimar responde em menos de 5 minutos com o menor preço garantido e pronta entrega no Portão.
+                Informe a medida do pneu e o modelo do seu carro. Consulte opções, disponibilidade e condições de compra com a equipe da Carplus no Portão.
               </p>
             </div>
 
             <a
-              href={formatWhatsApp('Olá Matheus e equipe Carplus! Já tenho um orçamento de pneus em Curitiba e gostaria de cobrir com o menor preço garantido da loja.')}
+              href={formatWhatsApp('Olá equipe Carplus! Gostaria de consultar pneus, disponibilidade e condições de compra.')}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#f49e1a] hover:bg-white hover:text-gray-950 text-gray-950 font-black text-sm uppercase tracking-wider px-8 py-4 rounded-2xl flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-2xl shrink-0 group cursor-pointer"
               id="cta-social-proof-whatsapp"
             >
               <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>Cobrir Meu Orçamento no WhatsApp</span>
+              <span>Consultar Pneus no WhatsApp</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

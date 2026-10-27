@@ -320,7 +320,7 @@ export default function BydClusterPages({
               <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 space-y-2 hover:border-yellow-500/50 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono font-black uppercase text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                    Menor Preço Garantido
+                    Consulte Preços e Modelos
                   </span>
                   <span className="text-[10px] font-bold text-gray-500">Atacarejo Portão</span>
                 </div>
@@ -328,11 +328,11 @@ export default function BydClusterPages({
                   Pneu BYD Dolphin Preço em Curitiba: Quanto Custa a Troca?
                 </h3>
                 <p className="text-gray-700 text-xs leading-relaxed">
-                  Os valores para o BYD Dolphin variam de <strong>R$ 389,00 a R$ 689,00</strong> dependendo da marca (Delinte, Xbri, Continental ou Pirelli Elect) e aro. A Carplus cobre orçamentos do Mercado Livre e Carrefour, com pronta entrega e pagamento em até 10x sem juros.
+                  Os valores para o BYD Dolphin variam de <strong>R$ 389,00 a R$ 689,00</strong> dependendo da marca (Delinte, Xbri, Continental ou Pirelli Elect) e aro. A Carplus conta com pronta entrega e pagamento em até 10x sem juros.
                 </p>
                 <div className="pt-1">
                   <a
-                    href={formatWhatsAppUrl("Olá Carplus! Gostaria de saber o preço atualizado do Pneu BYD Dolphin com cobertura de orçamento.")}
+                    href={formatWhatsAppUrl("Olá Carplus! Gostaria de saber o preço atualizado do Pneu BYD Dolphin.")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1"
@@ -402,7 +402,7 @@ export default function BydClusterPages({
                   Valor do Pneu do BYD Dolphin Mini em Curitiba: Quanto Custa?
                 </h3>
                 <p className="text-gray-700 text-xs leading-relaxed">
-                  O valor do pneu para o <strong>BYD Dolphin Mini (medida 175/55 R16 80H)</strong> varia entre <strong>R$ 289,90 e R$ 499,00</strong>. Na Carplus Portão, o valor conta com instalação técnica anti-risco e geometria 3D no mesmo dia. Cobrimos qualquer orçamento!
+                  O valor do pneu para o <strong>BYD Dolphin Mini (medida 175/55 R16 80H)</strong> varia entre <strong>R$ 289,90 e R$ 499,00</strong>. Na Carplus Portão, consulte também os serviços de instalação técnica anti-risco e geometria 3D.
                 </p>
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
@@ -593,8 +593,8 @@ export default function BydClusterPages({
                 },
                 {
                   query: "Pneu BYD King preço",
-                  badge: "Menor Preço Garantido",
-                  answer: "Cobrimos os preços de grandes redes (Carrefour, Mercado Livre) com o diferencial do atendimento presencial, estoque próprio e alinhamento 3D de alta precisão na loja.",
+                  badge: "Consulte Preços e Modelos",
+                  answer: "Consulte preços e disponibilidade com nossa equipe. A loja conta com atendimento presencial, estoque próprio e alinhamento 3D de alta precisão.",
                   actionLabel: "Cotar Preço no WhatsApp",
                   slug: "/pneu-byd-king-curitiba"
                 },
@@ -964,12 +964,12 @@ export default function BydClusterPages({
       ]
     },
     'pneu-byd-king-curitiba': {
-      title: "Pneu para BYD King em Curitiba: Medida Original 215/55 R17 com Menor Preço Garantido",
+      title: "Pneu para BYD King em Curitiba: Medida Original 215/55 R17",
       modelName: "BYD King DM-i",
       badge: "Sedã Híbrido Plug-in",
       measures: ["215/55 R17 (Original)", "225/60 R16"],
       rims: [17, 16],
-      description: "Pneu para BYD King em Curitiba na medida original 215/55 R17. Cobrimos qualquer oferta de grandes redes como Carrefour e Mercado Livre, com montagem computadorizada e alinhamento 3D especializado no Portão.",
+      description: "Pneu para BYD King em Curitiba na medida original 215/55 R17. Consulte preços e disponibilidade, além dos serviços de montagem computadorizada e alinhamento 3D especializado no Portão.",
       technicalDetails: "O BYD King combina motor híbrido com entrega de torque instantâneo e exige pneus com carcaça reforçada e composto de baixa resistência ao rolamento para maximizar a autonomia elétrica. Na Carplus você encontra a medida original 215/55 R17 a pronta entrega com montagem anti-risco sem encostar no verniz das rodas.",
       recommendedMeasureSlug: "pneu-215-55-r17-curitiba",
       faqs: [
@@ -979,7 +979,7 @@ export default function BydClusterPages({
         },
         {
           q: "Quanto custa um pneu para BYD King?",
-          a: "Temos o menor preço garantido em Curitiba com pneus originais à pronta entrega. Consulte no WhatsApp (41) 3082-7282."
+          a: "Temos pneus originais à pronta entrega em Curitiba. Consulte no WhatsApp (41) 3082-7282."
         },
         {
           q: "Onde comprar pneu para BYD King em Curitiba?",
@@ -1044,7 +1044,7 @@ export default function BydClusterPages({
               <a
                 href={formatWhatsAppUrl(
                   view === 'pneu-byd-king-curitiba'
-                    ? "Olá Carplus! Sou dono de BYD King e gostaria de cotar o pneu na medida original 215/55 R17 com o menor preço garantido."
+                    ? "Olá Carplus! Sou dono de BYD King e gostaria de cotar o pneu na medida original 215/55 R17."
                     : `Olá Carplus! Gostaria de consultar pneus para o ${config.modelName} em Curitiba.`
                 )}
                 target="_blank"

@@ -11,12 +11,6 @@ export default function InstagramFeed() {
           <p className="mt-2 text-base leading-relaxed text-white/65">Veja nossa estrutura, os serviços e a rotina da equipe no Portão.</p>
         </div>
         <a href="https://www.instagram.com/carpluscwb/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/30 px-6 py-3 text-base font-semibold text-white hover:border-[#f59c00]">Visitar o Instagram<ArrowUpRight aria-hidden="true" className="h-5 w-5 text-[#f59c00]" /></a>
-        <details className="md:col-span-2">
-          <summary className="min-h-12 cursor-pointer py-3 text-sm text-white/65">Ver publicações aqui no site</summary>
-          <div className="mx-auto mt-4 max-w-[480px] overflow-hidden rounded-lg bg-white">
-            <iframe src="https://www.instagram.com/carpluscwb/embed" title="Publicações da Carplus no Instagram" loading="lazy" className="block h-[430px] w-full border-0" />
-          </div>
-        </details>
       </div>
     </section>
   );

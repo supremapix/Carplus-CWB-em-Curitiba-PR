@@ -385,7 +385,7 @@ function renderProductShell(tire: typeof TIRES_DATA[0], slug: string): string {
 
       <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; font-size: 0.95rem; color: #334155;">
         <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <span style="color: #16a34a; font-weight: 900;">✓</span> <strong>Montagem Técnica Grátis:</strong> Feita na hora em nosso Auto Center Portão.
+          <span style="color: #16a34a; font-weight: 900;">✓</span> <strong>Montagem Técnica:</strong> Feita na hora em nosso Auto Center Portão.
         </div>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <span style="color: #16a34a; font-weight: 900;">✓</span> <strong>Válvulas / Bicos Novos Grátis:</strong> Substituição preventiva inclusa.
@@ -437,7 +437,7 @@ function renderProductShell(tire: typeof TIRES_DATA[0], slug: string): string {
         </tr>
         <tr style="border-bottom: 1px solid #e5e7eb; background: #f9fafb;">
           <td style="padding: 0.75rem 1rem; font-weight: 700; color: #374151;">Instalação e Montagem</td>
-          <td style="padding: 0.75rem 1rem; color: #15803d; font-weight: 700;">Gratuita na Loja Carplus Portão</td>
+          <td style="padding: 0.75rem 1rem; color: #15803d; font-weight: 700;">Consulte condições na Loja Carplus Portão</td>
         </tr>
         <tr style="border-bottom: 1px solid #e5e7eb;">
           <td style="padding: 0.75rem 1rem; font-weight: 700; color: #374151;">Garantia</td>
@@ -526,7 +526,7 @@ function renderCarShell(carName: string): string {
       </div>
       <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem;">
         <h3 style="font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 0.35rem;">Xbri / Linha Econômica</h3>
-        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 0.75rem;">O melhor custo por quilômetro rodado para frotistas e motoristas de aplicativo.</p>
+        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 0.75rem;">Opções para frotistas e motoristas de aplicativo.</p>
         <span style="font-size: 0.85rem; font-weight: 700; color: #15803d;">Pronta entrega no Portão</span>
       </div>
     </div>
@@ -591,7 +591,7 @@ function renderAroShell(aroNum: number): string {
     </h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; color: #374151; font-size: 0.95rem;">
       <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 1rem;">
-        <strong style="display: block; color: #111827; margin-bottom: 0.25rem;">🔧 Montagem sem Custos Adicionais</strong>
+        <strong style="display: block; color: #111827; margin-bottom: 0.25rem;">🔧 Montagem Especializada</strong>
         Troca de pneus rápida e profissional com máquinas modernas que não riscam suas rodas.
       </div>
       <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 1rem;">
@@ -641,7 +641,7 @@ function renderBairroShell(bairroName: string): string {
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1.5rem;">
-          <h2 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">🚗 Pneus Novos com Montagem Inclusa</h2>
+          <h2 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">🚗 Pneus Novos e Montagem Especializada</h2>
           <p style="font-size: 0.95rem; color: #475569; line-height: 1.5;">Linha completa de pneus Pirelli, Goodyear, Bridgestone, Continental e marcas importadas com 5 anos de garantia de fábrica.</p>
         </div>
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1.5rem;">
@@ -738,7 +738,7 @@ function renderHomeShell(): string {
           Pneus Novos em Curitiba com Alinhamento 3D e Pronta Entrega
         </h1>
         <p style="font-size: 1.15rem; color: #e5e7eb; max-width: 750px; margin: 0 auto 1.75rem auto; line-height: 1.6;">
-          Compre pneus nacionais e importados de aro 13 a 22 pelo menor preço, com garantia de fábrica, montagem computadorizada e pagamento facilitado em até 10x sem juros.
+          Compre pneus nacionais e importados de aro 13 a 22, com garantia de fábrica, montagem computadorizada e pagamento facilitado em até 10x sem juros.
         </p>
         <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
           <a href="/pneus" style="background: #f49e1a; color: #000000; padding: 0.85rem 1.75rem; border-radius: 0.5rem; font-weight: 900; font-size: 1rem; text-decoration: none;">
@@ -965,18 +965,18 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
     { slug: 'pneus-pirelli-curitiba', title: 'Pneus Pirelli em Curitiba - Linha Completa no Portão | Carplus', desc: 'Buscando pneus Pirelli em Curitiba? Grade completa de medidas Cinturato P7, Scorpion e P-Zero. Pronta entrega e montagem computadorizada em nossa rampa 3D no Portão.' },
     { slug: 'alinhamento-3d-curitiba', title: 'Alinhamento 3D Curitiba - Prevenção de Desgaste e Geometria | Carplus', desc: 'Alinhamento Computadorizado Tridimensional de alta precisão em Curitiba. Evite desgaste precoce de pneus e desvios nas retas. Equipamentos novos e precisos.' },
     { slug: 'xbri-pneus-curitiba', title: 'Xbri Pneus Curitiba - Ampla Linha de Medidas e Modelos | Carplus', desc: 'Buscando pneus Xbri em Curitiba com o melhor custo-benefício, alta durabilidade e aderência garantida? Ampla linha de medidas a pronta entrega no Portão.' },
-    { slug: 'pneus-baratos-em-curitiba', title: 'Pneus Baratos em Curitiba - Preço de Atacado Completo | Carplus', desc: 'Onde comprar pneus baratos em Curitiba? Seleção de pneus importados e nacionais pelo menor preço à pronta entrega com montagem técnica especializada no Portão.' },
+    { slug: 'pneus-baratos-em-curitiba', title: 'Pneus Baratos em Curitiba - Preço de Atacado Completo | Carplus', desc: 'Onde comprar pneus baratos em Curitiba? Seleção de pneus importados e nacionais à pronta entrega com montagem técnica especializada no Portão.' },
     { slug: 'melhor-site-para-comprar-pneus', title: 'Melhor Site para Comprar Pneus no Brasil - Reserva Online Segura | Carplus', desc: 'Descubra a Carplus Pneus como o melhor site para comprar pneus: pesquise com transparência total de preços, faça sua reserva online e consulte opções no Portão.' },
-    { slug: 'distribuidora-de-pneus-importados-atacado-curitiba', title: 'Distribuidora de Pneus Importados Atacado Curitiba - Faturado CNPJ | Carplus', desc: 'Importação direta e venda corporativa de pneus em Curitiba. Condições de atacado imbatíveis no faturamento empresarial, frotistas e revendas com envio ágil para todo o estado.' },
+    { slug: 'distribuidora-de-pneus-importados-atacado-curitiba', title: 'Distribuidora de Pneus Importados Atacado Curitiba - Faturado CNPJ | Carplus', desc: 'Importação direta e venda corporativa de pneus em Curitiba. Condições de atacado no faturamento empresarial, frotistas e revendas com envio ágil para todo o estado.' },
     { slug: 'pneu-hankook-curitiba', title: 'Pneu Hankook Curitiba - Linha Premium Dynapro e Ventus | Carplus Pneus', desc: 'Encontre pneus Hankook em Curitiba. Alta durabilidade, altíssima performance asiática homologada como equipamento original de montadoras mundiais de luxo no Portão.' },
-    { slug: 'pneus-bridgestone-curitiba-precos', title: 'Pneus Bridgestone Curitiba Preços - Modelos Turanza e Ecopia | Carplus', desc: 'Precisa de pneus Bridgestone em Curitiba? Faça simulações e compre com preços imbatíveis. Instalação profissional expressa e balanceamento computadorizado no Portão.' },
+    { slug: 'pneus-bridgestone-curitiba-precos', title: 'Pneus Bridgestone Curitiba Preços - Modelos Turanza e Ecopia | Carplus', desc: 'Precisa de pneus Bridgestone em Curitiba? Consulte modelos e condições de compra. Instalação profissional expressa e balanceamento computadorizado no Portão.' },
     { slug: 'barao-pneus-e-oficina-bacacheri-curitiba', title: 'Alternativa a Barão Pneus e Oficina Bacacheri Curitiba | Carplus', desc: 'Buscando alternativa a Barão Pneus e Oficina Bacacheri no norte de Curitiba? Compare e descubra as vantagens exclusivas e equipamentos 3D da Carplus Portão.' },
     { slug: 'barao-pneus-sao-jose-pinhais', title: 'Conheça Alternativa a Barão Pneus São José Pinhais | Carplus', desc: 'Pesquisando Barão Pneus em São José dos Pinhais? Conheça a alternativa de pneus novos na Carplus. Localização de fácil acesso pela rápida do Portão.' },
-    { slug: 'pneus-em-curitiba-melhor-preco', title: 'Pneus em Curitiba com Melhor Preço - Cobrimos Orçamentos | Carplus', desc: 'Garantia absoluta de pneus em Curitiba com o melhor preço real do mercado! Linha completa Pirelli, Delinte e Goodyear de aro 13 a 20 a pronta entrega no Portão.' },
-    { slug: 'distribuidora-de-pneus-em-curitiba', title: 'Distribuidora de Pneus em Curitiba - Estoque Completo Portão | Carplus', desc: 'Distribuidora ágil de pneus novos com venda varejo direta pelo menor custo para o motorista de Curitiba. Atendimento ágil e suporte técnico em suspensões no Portão.' },
+    { slug: 'pneus-em-curitiba-melhor-preco', title: 'Pneus em Curitiba - Catálogo de Marcas e Medidas | Carplus', desc: 'Consulte pneus em Curitiba e as condições de compra na Carplus. Linha completa Pirelli, Delinte e Goodyear de aro 13 a 20 a pronta entrega no Portão.' },
+    { slug: 'distribuidora-de-pneus-em-curitiba', title: 'Distribuidora de Pneus em Curitiba - Estoque Completo Portão | Carplus', desc: 'Distribuidora ágil de pneus novos com venda varejo direta para o motorista de Curitiba. Atendimento ágil e suporte técnico em suspensões no Portão.' },
     { slug: 'bana-pneus', title: 'Alternativa a Bana Pneus Curitiba - Serviços e Preços | Carplus', desc: 'Procurando alternativa a Bana Pneus em Curitiba? Conheça diferenciais de qualidade, prazos de garantia de 5 anos e condições exclusivas da Carplus Portão com serviços expressos.' },
     { slug: 'loja-de-pneus-em-curitiba', title: 'Loja de Pneus em Curitiba - Box Rápido e Atendimento Sede | Carplus', desc: 'Venha conhecer sua melhor loja de pneus novos em Curitiba ao lado da Arthur Bernardes. Troca veloz, maquinários modernos anti-riscos e equipe técnica qualificada.' },
-    { slug: 'pneus-pirelli-em-curitiba-melhor-preco', title: 'Pneus Pirelli em Curitiba com Melhor Preço - Linha Completa | Carplus', desc: 'Melhor preço em pneus novos Pirelli em Curitiba. Estoque completo Cinturato P1, P7, Scorpion a pronta entrega e geometria 3D computadorizada no Portão.' },
+    { slug: 'pneus-pirelli-em-curitiba-melhor-preco', title: 'Pneus Pirelli em Curitiba - Linha Completa | Carplus', desc: 'Pneus novos Pirelli em Curitiba. Estoque completo Cinturato P1, P7, Scorpion a pronta entrega e geometria 3D computadorizada no Portão.' },
     { slug: 'barao-pneus-e-oficina-portao', title: 'Alternativa a Barão Pneus e Oficina Portão | Carplus', desc: 'Procurando serviços no Portão semelhantes a Barão Pneus? Conheça a alternativa Carplus Arthur Bernardes para Geometria 3D de alta precisão e montagem técnica.' },
     { slug: 'auto-center-curitiba', title: 'Auto Center e Centro Automotivo em Curitiba | Carplus Pneus', desc: 'Auto Center completo em Curitiba com pneus novos multimarcas, montagem técnica computadorizada, alinhamento 3D e oficina mecânica no Portão.' },
     { slug: 'troca-de-pneus-curitiba', title: 'Troca de Pneus em Curitiba - Serviços Técnicos de Auto Center | Carplus', desc: 'Troca de pneus em Curitiba com desmontadora anti-risco, balanceamento computadorizado e alinhamento 3D na Av. Arthur Bernardes, Portão.' },
@@ -1083,8 +1083,8 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
     const isReleased = isPageReleased(n, 'bairro', 80);
     routes.push({
       path: `bairro/${toSlug(n)}`,
-      title: `Pneus no Bairro ${n}, Curitiba - Menor Preço e Pronta Entrega | Carplus`,
-      desc: `Precisa de pneus no bairro ${n} em Curitiba? Compre na Carplus com os melhores preços da região e instalação no Auto Center Portão!`,
+      title: `Pneus no Bairro ${n}, Curitiba - Pronta Entrega no Portão | Carplus`,
+      desc: `Precisa de pneus no bairro ${n} em Curitiba? Compre na Carplus e consulte instalação no Auto Center Portão!`,
       keywords: `pneus no bairro ${n}, pneus em curitiba, pneus ${n} curitiba, pneus perto do ${n}, borracharia ${n}`,
       schema: { "@context": "https://schema.org", "@graph": [makeLocalBusiness(n)] },
       isIndexable: isReleased,
@@ -1095,7 +1095,7 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
       routes.push({
         path: `bairro/cic`,
         title: `Pneus no CIC (Cidade Industrial de Curitiba) - Preço Baixo e Pronta Entrega | Carplus`,
-        desc: `Buscando pneus novos no CIC em Curitiba? Compre na Carplus com os menores preços da região e estoque a pronta entrega no Portão!`,
+        desc: `Buscando pneus novos no CIC em Curitiba? Compre na Carplus com estoque a pronta entrega no Portão!`,
         keywords: `pneus no cic, pneus cidade industrial de curitiba, pneus cic, borracharia cic, pneus perto do cic`,
         schema: { "@context": "https://schema.org", "@graph": [makeLocalBusiness("Cidade Industrial (CIC)")] },
         isIndexable: isReleased,
@@ -1108,8 +1108,8 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
   NON_OFFICIAL_NEIGHBORHOODS.forEach(n => {
     routes.push({
       path: `bairro/${toSlug(n.name)}`,
-      title: `Pneus no Bairro ${n.name}, Curitiba - Menor Preço e Pronta Entrega | Carplus`,
-      desc: `Precisa de pneus no bairro ${n.name} em Curitiba? Compre na Carplus com os melhores preços da região e instalação no Auto Center Portão!`,
+      title: `Pneus no Bairro ${n.name}, Curitiba - Pronta Entrega no Portão | Carplus`,
+      desc: `Precisa de pneus no bairro ${n.name} em Curitiba? Compre na Carplus e consulte instalação no Auto Center Portão!`,
       keywords: `pneus no bairro ${n.name}, pneus em curitiba, pneus ${n.name} curitiba, pneus perto do ${n.name}, borracharia ${n.name}`,
       schema: { "@context": "https://schema.org", "@graph": [makeLocalBusiness(n.name)] },
       isIndexable: isPageReleased(n.name, 'bairro', 80),

@@ -74,15 +74,15 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Pneus para Carro Elétrico em Curitiba: Guia Técnico de Pneus e Troca Especializada',
     h1: 'Pneus para Carro Elétrico em Curitiba: Guia Técnico de Pneus e Troca Especializada',
     category: 'Pneus',
-    summary: 'Guia completo para proprietários de BYD, GWM, Volvo e Tesla em Curitiba e RMC. Descubra a tecnologia dos pneus HL para elétricos, Pirelli Elect com menor preço garantido e alinhamento 3D especializado no Portão.',
-    metaTitle: 'Pneus para Carro Elétrico em Curitiba | Menor Preço | Carplus',
-    metaDescription: 'Buscando pneus para seu BYD, GWM ou Volvo em Curitiba? Conheça a oficina especializada Carplus. Menor preço em Pirelli e Continental. Ligue (41) 3082-7282.',
+    summary: 'Guia completo para proprietários de BYD, GWM, Volvo e Tesla em Curitiba e RMC. Descubra a tecnologia dos pneus HL para elétricos, Pirelli Elect e alinhamento 3D especializado no Portão.',
+    metaTitle: 'Pneus para Carro Elétrico em Curitiba | Carplus',
+    metaDescription: 'Buscando pneus para seu BYD, GWM ou Volvo em Curitiba? Conheça a oficina especializada Carplus. Pneus Pirelli e Continental. Ligue (41) 3082-7282.',
     publishedDate: '16 de Agosto de 2026',
     publishedIso: '2026-08-16',
     readingTime: '7 min de leitura',
     featuredImage: '/images/galeria/loja-de-pneus-em-curitiba.webp',
     imageAlt: 'Fachada da Carplus iluminada, com letreiro e telefone visíveis.',
-    intro: 'Se você dirige um veículo elétrico ou híbrido plug-in pelas ruas de Curitiba e Região Metropolitana, já deve ter notado que a dinâmica de condução é completamente diferente de um carro a combustão tradicional. A aceleração instantânea e o silêncio da cabine são fascinantes, mas impõem um desafio brutal sobre a borracha: os pneus de carros elétricos sofrem um desgaste até 30% mais rápido se não forem o modelo homologado correto. É por isso que a Carplus Pneus & Oficina se consolidou como a principal oficina especializada em carros elétricos em Curitiba, combinando consultoria técnica de alto nível, estrutura para elevação segura de baterias e a garantia incondicional do menor preço da cidade.',
+    intro: 'Se você dirige um veículo elétrico ou híbrido plug-in pelas ruas de Curitiba e Região Metropolitana, já deve ter notado que a dinâmica de condução é completamente diferente de um carro a combustão tradicional. A aceleração instantânea e o silêncio da cabine são fascinantes, mas impõem um desafio brutal sobre a borracha: os pneus de carros elétricos sofrem um desgaste até 30% mais rápido se não forem o modelo homologado correto. É por isso que a Carplus Pneus & Oficina se consolidou como a principal oficina especializada em carros elétricos em Curitiba, combinando consultoria técnica de alto nível e estrutura para elevação segura de baterias.',
     sections: [
       {
         title: '1. O Desafio dos EVs: Por que Pneus Convencionais Não Aguentam Carros Elétricos?',
@@ -99,11 +99,11 @@ export const BLOG_POSTS: BlogPost[] = [
         }
       },
       {
-        title: '2. Pneus BYD e GWM em Curitiba: As Melhores Marcas com Menor Preço Garantido',
+        title: '2. Pneus BYD e GWM em Curitiba: Marcas e Modelos',
         level: 'h2',
         paragraphs: [
           'Se você busca pneus BYD Curitiba ou pneus GWM Curitiba com medidas originais de fábrica — desde o 175/55 R16 do Dolphin Mini até os aros 17, 18, 19 e 20 do Seal, Yuan Plus e Haval H6 —, a Carplus tem estoque a pronta entrega no bairro Portão.',
-          'Trabalhamos com marcas de referência e somos especialistas em tecnologia Pirelli Elect e Continental EcoContact 6 Q. Nossa política comercial é clara e transparente: cobrimos orçamentos da concorrência em Curitiba e Região Metropolitana, além de oferecer montagem computadorizada e condições em até 10x sem juros no cartão de crédito.'
+          'Trabalhamos com marcas de referência e somos especialistas em tecnologia Pirelli Elect e Continental EcoContact 6 Q. Em Curitiba e Região Metropolitana, oferecemos montagem computadorizada e condições em até 10x sem juros no cartão de crédito.'
         ],
         internalLinks: [
           {
@@ -112,7 +112,7 @@ export const BLOG_POSTS: BlogPost[] = [
             description: 'Medidas originais para Dolphin, Dolphin Mini, Song Plus, Seal e King.'
           },
           {
-            text: 'Conheça os pneus Pirelli em Curitiba com o menor preço garantido',
+            text: 'Conheça os pneus Pirelli em Curitiba',
             url: '/pneus-pirelli-em-curitiba-melhor-preco',
             description: 'Modelos Cinturato, Scorpion e linhas homologadas Elect para veículos eletrificados.'
           }
@@ -153,8 +153,8 @@ export const BLOG_POSTS: BlogPost[] = [
         answer: 'Não é recomendado. Pneus comuns sofrem sobrecarga pelo peso extra das baterias e pelo torque instantâneo, resultando em desgaste acelerado em até 30%, menor autonomia da bateria e ruído elevado de rodagem na cabine.'
       },
       {
-        question: 'Onde comprar pneus Pirelli Elect com menor preço em Curitiba?',
-        answer: 'Na Carplus Pneus & Oficina, localizada na Av. Arthur Bernardes, 1323, no Bairro Portão em Curitiba. Cobrimos qualquer orçamento da concorrência e oferecemos montagem técnica especializada na hora.'
+        question: 'Onde comprar pneus Pirelli Elect em Curitiba?',
+        answer: 'Na Carplus Pneus & Oficina, localizada na Av. Arthur Bernardes, 1323, no Bairro Portão em Curitiba. Consulte preços e disponibilidade de pneus e serviços de montagem técnica especializada.'
       },
       {
         question: 'Quanto tempo dura o pneu de um carro elétrico?',
@@ -166,9 +166,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     ctaTitle: 'Vai trocar os pneus do seu Elétrico ou Híbrido em Curitiba?',
-    ctaText: 'Fale direto com nossos consultores técnicos no WhatsApp. Informe o modelo do seu carro elétrico e receba na hora a cotação com o menor preço garantido de Curitiba e atendimento especializado!',
-    ctaButtonText: 'Garantir Menor Preço no WhatsApp',
-    whatsappMessage: 'Olá Carplus! Vi a matéria no blog sobre pneus para carros elétricos e gostaria de um orçamento para o meu carro com o menor preço garantido.',
+    ctaText: 'Fale direto com nossos consultores técnicos no WhatsApp. Informe o modelo do seu carro elétrico e consulte preços e disponibilidade com atendimento especializado!',
+    ctaButtonText: 'Solicitar Orçamento no WhatsApp',
+    whatsappMessage: 'Olá Carplus! Vi a matéria no blog sobre pneus para carros elétricos e gostaria de um orçamento para o meu carro.',
     relatedSlugs: [
       'carro-puxando-para-o-lado',
       'quando-fazer-alinhamento-balanceamento',

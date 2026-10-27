@@ -217,7 +217,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
   } else if (currentView === 'pneus-em-curitiba-melhor-preco') {
     title = "Pneus em Curitiba - Catálogo de Marcas e Medidas | Carplus";
     desc = "Catálogo de pneus em Curitiba. Linha completa de marcas como Pirelli, Delinte, Xbri e Goodyear com atendimento especializado na Car Plus Portão.";
-    keywords = "pneus em curitiba melhor preco, comprar pneu curitiba barato, orçamento pneu curitiba, pneu nacional importado parana";
+    keywords = "pneus em curitiba, comprar pneu curitiba barato, orçamento pneu curitiba, pneu nacional importado parana";
   } else if (currentView === 'distribuidora-de-pneus-em-curitiba') {
     title = "Distribuidora de Pneus em Curitiba - Loja no Portão | Carplus";
     desc = "Pneus novos com atendimento direto para o motorista de Curitiba. Amplo catálogo de medidas com suporte técnico na Car Plus Portão.";
@@ -233,7 +233,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
   } else if (currentView === 'pneus-pirelli-em-curitiba-melhor-preco') {
     title = "Pneus Pirelli em Curitiba - Linha Completa | Carplus";
     desc = "Pneus originais Pirelli em Curitiba. Modelos Cinturato P1, P7 e Scorpion com suporte técnico e geometria 3D computadorizada no Portão.";
-    keywords = "pneus pirelli em curitiba melhor preco, pirelli cinturato curitiba, comprar pneu pirelli porto, oficina especialista em pirelli";
+    keywords = "pneus pirelli em curitiba, pirelli cinturato curitiba, comprar pneu pirelli porto, oficina especialista em pirelli";
   } else if (currentView === 'barao-pneus-e-oficina-portao') {
     title = "Pneus no Portão Curitiba - Loja de Pneus no Portão | Carplus Pneus";
     desc = "Loja de pneus no Portão em Curitiba. Troca de pneus, alinhamento 3D e balanceamento na Av. Presidente Arthur Bernardes na Carplus.";
@@ -252,23 +252,23 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     keywords = "centro automotivo portao, auto center portao, centro automotivo pneus portao, oficina mecanica portao curitiba, pneus no portao curitiba, auto center arthur bernardes";
   } else if (currentView === 'pneus-byd-curitiba') {
     title = "Pneus para BYD em Curitiba | Dolphin, Dolphin Mini, King | Carplus";
-    desc = "Pneus para BYD em Curitiba. Medidas originais para Dolphin, Dolphin Mini, Dolphin GS e King com menor preço e alinhamento 3D no Portão.";
+    desc = "Pneus para BYD em Curitiba. Medidas originais para Dolphin, Dolphin Mini, Dolphin GS e King com alinhamento 3D no Portão.";
     keywords = "pneu byd king 215 55 r17, qual o pneu do byd king, pneu byd king preco, pneu byd dolphin original, pneu byd dolphin gs original, pneu byd dolphin preco, pneu byd dolphin gs preco, pneu byd dolphin mini, pneu byd dolphin 195 60 r16 89h, pneu dolphin gs 195 60 r16, valor do pneu do byd dolphin mini, pneus para carros eletricos curitiba";
   } else if (currentView === 'pneu-byd-dolphin-curitiba') {
     title = "Pneu BYD Dolphin Original em Curitiba | Preço e Medidas | Carplus";
-    desc = "Pneu BYD Dolphin original em Curitiba nas medidas 205/50 R17 e 195/60 R16. Menor preço garantido e alinhamento 3D especializado no Portão.";
+    desc = "Pneu BYD Dolphin original em Curitiba nas medidas 205/50 R17 e 195/60 R16. Alinhamento 3D especializado no Portão.";
     keywords = "pneu byd dolphin original, pneu byd dolphin preco, valor do pneu do byd dolphin, pneu 205 50 r17 byd dolphin curitiba, pneu byd dolphin 195 60 r16 89h, onde comprar pneu byd dolphin curitiba, pneu para carros eletricos curitiba";
   } else if (currentView === 'pneu-byd-dolphin-mini-curitiba') {
     title = "Valor do Pneu do BYD Dolphin Mini em Curitiba | 175/55 R16 | Carplus";
-    desc = "Consulte o valor do pneu do BYD Dolphin Mini em Curitiba na medida 175/55 R16 80H. Menor preço comprovado e pronta entrega no Portão.";
+    desc = "Consulte o valor do pneu do BYD Dolphin Mini em Curitiba na medida 175/55 R16 80H. Pronta entrega no Portão.";
     keywords = "valor do pneu do byd dolphin mini, pneu byd dolphin mini, preco pneu byd dolphin mini, pneu byd dolphin mini curitiba, medida pneu byd dolphin mini, pneu 175 55 r16 80h curitiba, pneu eletrico dolphin mini";
   } else if (currentView === 'pneu-byd-dolphin-gs-curitiba') {
     title = "Pneu BYD Dolphin GS Original | 195/60 R16 89H e 205/50 R17 | Carplus";
-    desc = "Pneu BYD Dolphin GS original em Curitiba. Medida 195/60 R16 89H e 205/50 R17 com menor preço e alinhamento 3D de alta precisão no Portão.";
+    desc = "Pneu BYD Dolphin GS original em Curitiba. Medida 195/60 R16 89H e 205/50 R17 com alinhamento 3D de alta precisão no Portão.";
     keywords = "pneu byd dolphin gs original, pneu dolphin gs 195 60 r16, pneu byd dolphin 195 60 r16 89h, pneu byd dolphin gs preco, pneu byd dolphin preco, medida pneu byd dolphin gs curitiba";
   } else if (currentView === 'pneu-byd-king-curitiba') {
-    title = "Pneu para BYD King em Curitiba: Medida Original 215/55 R17 com Menor Preço Garantido | Carplus";
-    desc = "Pneu para BYD King em Curitiba na medida original 215/55 R17. Cobrimos qualquer oferta de Carrefour e Mercado Livre com alinhamento 3D no Portão.";
+    title = "Pneu para BYD King em Curitiba: Medida Original 215/55 R17 | Carplus";
+    desc = "Pneu para BYD King em Curitiba na medida original 215/55 R17. Consulte modelos e condições de compra, com alinhamento 3D no Portão.";
     keywords = "pneu byd king preco, pneu byd king 215 55 r17, qual o pneu do byd king, pneu byd dolphin original, pneus para carros eletricos curitiba, pneu 215 55 r17 curitiba, pneu 225 60 r16 byd king";
   } else if (currentView === 'pneu-175-55-r16-curitiba') {
     title = "Pneu 175/55 R16 em Curitiba | Pneu BYD Dolphin Mini | Carplus Pneus";
@@ -276,7 +276,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     keywords = "pneu 175 55 r16 curitiba, valor do pneu do byd dolphin mini, pneu 175 55 r16 80h, comprar pneu 175 55 16 curitiba, pneu dolphin mini preco";
   } else if (currentView === 'pneu-195-60-r16-curitiba') {
     title = "Pneu 195/60 R16 em Curitiba | Pneu BYD Dolphin 195 60 R16 89H | Carplus";
-    desc = "Pneu 195/60 R16 em Curitiba. Medida homologada 195/60 R16 89H para BYD Dolphin, Dolphin GS e crossovers. Menor preço e pronta entrega no Portão.";
+    desc = "Pneu 195/60 R16 em Curitiba. Medida homologada 195/60 R16 89H para BYD Dolphin, Dolphin GS e crossovers. Pronta entrega no Portão.";
     keywords = "pneu 195 60 r16 curitiba, pneu byd dolphin 195 60 r16 89h, pneu dolphin gs 195 60 r16, pneu 195 60 16 curitiba preco, pneu aro 16 89h";
   } else if (currentView === 'pneu-205-50-r17-curitiba') {
     title = "Pneu 205/50 R17 em Curitiba | Medida para BYD Dolphin e Sedãs | Carplus";
@@ -311,8 +311,8 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
         desc = "Compre pneus Pirelli novos e originais com garantia de fábrica de 5 anos e instalação técnica qualificada em Curitiba. Parcelamento em até 10x sem juros na Car Plus."; // exactly 156 characters!
         keywords = "pneus pirelli curitiba, pneu pirelli porto, comprar pirelli curitiba, pirelli scorpion, cinturato";
       } else {
-        title = `Pneus no Bairro ${name}, Curitiba - Menor Preço e Pronta Entrega | Carplus`;
-        desc = `Precisa de pneus no bairro ${name} em Curitiba? Compre na Carplus com os melhores preços da região e instalação no Auto Center Portão!`;
+        title = `Pneus no Bairro ${name}, Curitiba - Pronta Entrega no Portão | Carplus`;
+        desc = `Precisa de pneus no bairro ${name} em Curitiba? Compre na Carplus e consulte instalação no Auto Center Portão!`;
         keywords = `pneus no bairro ${name}, pneus em curitiba, pneus ${name} curitiba, pneus perto do ${name}, borracharia ${name}, pneus curitiba ${toSlug(name)}`;
       }
     } else if (type === 'cidade') {
@@ -331,7 +331,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       if (rimConfig) {
         title = rimConfig.metaTitle;
         desc = rimConfig.metaDescription;
-        keywords = `pneus aro ${cleanAroNum} em curitiba, pneu aro ${cleanAroNum} curitiba, pneus aro ${cleanAroNum}, comprar pneu aro ${cleanAroNum} curitiba, pneus aro ${cleanAroNum} menor preco, loja de pneus portao curitiba`;
+        keywords = `pneus aro ${cleanAroNum} em curitiba, pneu aro ${cleanAroNum} curitiba, pneus aro ${cleanAroNum}, comprar pneu aro ${cleanAroNum} curitiba, pneus aro ${cleanAroNum}, loja de pneus portao curitiba`;
       } else if (name === '14') {
         // Special Aro 14 Override Target
         title = "Pneus Aro 14 em Curitiba | Ofertas e Instalação | Car Plus";
@@ -659,10 +659,10 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       questionsList = [
         {
           "@type": "Question",
-          "name": `Onde comprar Pneus Aro ${cleanAroNum || seoTarget.name} com menor preço em Curitiba?`,
+          "name": `Onde comprar Pneus Aro ${cleanAroNum || seoTarget.name} em Curitiba?`,
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": `Na Carplus Pneus & Oficina, localizada na Av. Presidente Arthur Bernardes, 1323, no Bairro Portão em Curitiba. Cobrimos qualquer orçamento de pneus Aro ${cleanAroNum || seoTarget.name} da concorrência com montagem técnica especializada e pronta entrega.`
+            "text": `Na Carplus Pneus & Oficina, localizada na Av. Presidente Arthur Bernardes, 1323, no Bairro Portão em Curitiba. Consulte pneus Aro ${cleanAroNum || seoTarget.name}, montagem técnica especializada e disponibilidade.`
           }
         },
         {
@@ -688,7 +688,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
         "@type": "CollectionPage",
         "@id": `${canonicalUrl}#collection`,
         "name": `Pneus Aro ${cleanAroNum || seoTarget.name} em Curitiba`,
-        "description": `Catálogo de pneus aro ${cleanAroNum || seoTarget.name} em Curitiba com menor preço garantido e pronta entrega no Portão.`,
+        "description": `Catálogo de pneus aro ${cleanAroNum || seoTarget.name} em Curitiba com pronta entrega no Portão.`,
         "url": canonicalUrl,
         "mainEntity": {
           "@type": "OfferCatalog",
@@ -1004,7 +1004,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
           "name": "Quanto custa um pneu para BYD King?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Temos o menor preço garantido em Curitiba com pronta entrega e montagem computadorizada no Portão. Consulte no WhatsApp (41) 3082-7282."
+            "text": "Consulte pneus em Curitiba, disponibilidade e montagem computadorizada no Portão. Consulte no WhatsApp (41) 3082-7282."
           }
         },
         {

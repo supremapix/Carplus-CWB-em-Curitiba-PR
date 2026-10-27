@@ -176,13 +176,13 @@ export default function CatalogTireDetail({
               )}
             </div>
 
-            {/* Price match promise */}
+            {/* Product consultation */}
             <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white p-4 rounded-2xl border border-[#f59c00]/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
               <div className="space-y-0.5 text-center sm:text-left">
                 <div className="text-xs font-mono font-bold text-[#f59c00] uppercase flex items-center justify-center sm:justify-start gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" /> Menor Preço Garantido em Curitiba
+                  <Sparkles className="w-3.5 h-3.5" /> Pneus em Curitiba
                 </div>
-                <div className="text-sm font-bold text-white">Cobrimos qualquer orçamento de grandes redes</div>
+                <div className="text-sm font-bold text-white">Consulte preço e disponibilidade com nossa equipe</div>
               </div>
               <span className="text-[11px] font-bold bg-[#f59c00]/20 text-[#f59c00] px-3 py-1 rounded-full border border-[#f59c00]/40 shrink-0">
                 Pronta Entrega no Portão
@@ -270,7 +270,7 @@ export default function CatalogTireDetail({
               }`}
             >
               <Wrench className="w-4 h-4 text-[#f59c00]" />
-              <span>Serviços Inclusos na Loja</span>
+              <span>Serviços na Loja</span>
             </button>
           </div>
 
@@ -357,7 +357,7 @@ export default function CatalogTireDetail({
             </div>
           )}
 
-          {/* Tab 3: Serviços Inclusos */}
+          {/* Tab 3: Serviços na Loja */}
           {activeTab === 'servicos' && (
             <div className="space-y-4">
               <h3 className="text-base font-black text-gray-900">Vantagens Exclusivas ao Trocar na Carplus Curitiba</h3>

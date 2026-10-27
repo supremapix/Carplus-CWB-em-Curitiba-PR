@@ -91,7 +91,7 @@ export default function GaragemDePneusSection({
       <div className="space-y-4">
         <div className="flex items-center justify-between border-b border-gray-200 pb-2">
           <h3 className="text-sm font-black uppercase font-mono text-gray-950">Medidas Disponíveis na Garagem ({filteredTires.length})</h3>
-          <span className="text-[10px] text-gray-500 font-bold uppercase font-mono">Montagem Expressa inclusa</span>
+          <span className="text-[10px] text-gray-500 font-bold uppercase font-mono">Consulte a montagem expressa</span>
         </div>
 
         {filteredTires.length > 0 ? (

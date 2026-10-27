@@ -174,7 +174,7 @@ function carplus_generate_product_seo_description($product) {
     if ($len < 145) {
         // Encorpa o texto mantendo o foco local
         $desc = sprintf(
-            "Compre seu %s original com garantia estendida de 5 anos, parcelamento facilitado em até 10x e instalação computadorizada grátis na Car Plus em Curitiba.",
+            "Compre seu %s original com garantia estendida de 5 anos, parcelamento facilitado em até 10x e instalação computadorizada na Car Plus em Curitiba.",
             $product_name
         );
     }

@@ -314,7 +314,7 @@ export default function CompanyPages({
                         </div>
                         <div className="flex justify-between items-center text-gray-650">
                           <span>Montagem e Instalação</span>
-                          <span className="text-green-600 font-extrabold uppercase">Incluso</span>
+                          <span className="text-green-600 font-extrabold uppercase">Sob Consulta</span>
                         </div>
                         <div className="flex justify-between items-center text-gray-650">
                           <span>Bicos de Borracha</span>
@@ -989,7 +989,7 @@ export default function CompanyPages({
                     </li>
                     <li>
                       <button onClick={() => onNavigateToPage('pneus-pirelli-em-curitiba-melhor-preco')} className="hover:text-yellow-600 transition cursor-pointer text-left flex items-center justify-between w-full">
-                        <span>Pirelli em Curitiba Melhor Preço</span>
+                        <span>Pirelli em Curitiba</span>
                         <ArrowRight className="w-3.5 h-3.5 text-gray-400" />
                       </button>
                     </li>
@@ -1029,7 +1029,7 @@ export default function CompanyPages({
                     </li>
                     <li>
                       <button onClick={() => onNavigateToPage('pneus-em-curitiba-melhor-preco')} className="hover:text-yellow-600 transition cursor-pointer text-left flex items-center justify-between w-full">
-                        <span>Pneus em Curitiba Melhor Preço</span>
+                        <span>Pneus em Curitiba</span>
                         <ArrowRight className="w-3.5 h-3.5 text-gray-400" />
                       </button>
                     </li>
@@ -1915,7 +1915,7 @@ export default function CompanyPages({
                                   </div>
                                   <div className="pt-3">
                                     <a
-                                      href={formatWhatsApp(`Olá Carplus! Vi o Pneu ${t.name} nas buscas do bairro/cidade ${seoTarget.name} e gostaria de reservá-lo para instalação inclusa.`)}
+                                      href={formatWhatsApp(`Olá Carplus! Vi o Pneu ${t.name} nas buscas do bairro/cidade ${seoTarget.name} e gostaria de reservá-lo e consultar as condições de instalação.`)}
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white hover:text-white font-black py-2.5 rounded-xl text-[10px] uppercase tracking-wider transition text-center block cursor-pointer border border-[#1ebd53] shadow-sm"

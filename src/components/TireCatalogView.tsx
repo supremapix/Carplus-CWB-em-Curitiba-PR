@@ -809,7 +809,7 @@ export default function TireCatalogView({
 
             <div className="space-y-3">
               <div className="bg-gray-50 border border-gray-200 p-4 rounded-2xl space-y-1.5 text-left">
-                <h4 className="font-black text-sm text-gray-900">Onde comprar pneus novos em Curitiba com menor preço garantido?</h4>
+                <h4 className="font-black text-sm text-gray-900">Onde comprar pneus novos em Curitiba?</h4>
                 <p className="text-xs text-gray-700 leading-relaxed">
                   Na <strong>Carplus Pneus e Auto Center</strong>, localizada na Av. Presidente Arthur Bernardes, 1323 - Bairro Portão, Curitiba - PR. Oferecemos preços de fábrica, montagem no local e orçamento transparente sem surpresas.
                 </p>

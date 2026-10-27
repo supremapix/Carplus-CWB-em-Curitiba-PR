@@ -22,9 +22,9 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
   '13': {
     aro: '13',
     number: 13,
-    h1: 'Pneu Aro 13 em Curitiba: Menor Preço e Pronta Entrega no Portão',
-    metaTitle: 'Pneu Aro 13 em Curitiba | Menor Preço e Pronta Entrega | Carplus',
-    metaDescription: 'Pneu Aro 13 em Curitiba com preço de atacado e pronta entrega no Portão. Marcas Xbri, Delinte, Itaro e Pirelli para Mobi, Kwid, Uno, Celta e Palio. Cobrimos orçamentos!',
+    h1: 'Pneu Aro 13 em Curitiba: Pronta Entrega no Portão',
+    metaTitle: 'Pneu Aro 13 em Curitiba | Pronta Entrega | Carplus',
+    metaDescription: 'Pneu Aro 13 em Curitiba com preço de atacado e pronta entrega no Portão. Marcas Xbri, Delinte, Itaro e Pirelli para Mobi, Kwid, Uno, Celta e Palio.',
     profileCategory: 'Popular & Custo-Benefício',
     recommendedBrands: ['Xbri (Fastway)', 'Delinte (DH2)', 'Itaro', 'Pirelli (Cinturato P1)', 'Goodyear (Kelly Edge)'],
     vehicleExamples: ['Fiat Mobi', 'Renault Kwid', 'Fiat Uno', 'Chevrolet Celta', 'Fiat Palio', 'Ford Ka (antigo)', 'Chevrolet Corsa'],
@@ -35,14 +35,14 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
     technicalText: 'O Aro 13 é o campeão absoluto em economia de combustível e baixo custo de manutenção para quem roda no trânsito diário de Curitiba. Na Carplus Portão, você encontra pneus com estrutura reforçada contra buracos, alta durabilidade quilométrica e composto especial que reduz o custo por KM rodado.',
     antiScratchAssurance: 'Montagem computadorizada expressa com maquinário anti-risco e alinhamento 3D rápido de alta precisão.',
     priceFrom: 'R$ 219,90',
-    ctaText: 'Procurando pneu Aro 13 barato em Curitiba? Cobrimos qualquer orçamento da internet ou da concorrência no Portão. Chame agora no WhatsApp (41) 3082-7282!'
+    ctaText: 'Procurando pneu Aro 13 barato em Curitiba? Consulte preços e disponibilidade no Portão. Chame agora no WhatsApp (41) 3082-7282!'
   },
   '14': {
     aro: '14',
     number: 14,
-    h1: 'Pneu Aro 14 em Curitiba: Menor Preço e Pronta Entrega no Portão',
-    metaTitle: 'Pneu Aro 14 em Curitiba | Menor Preço e Pronta Entrega | Carplus',
-    metaDescription: 'Compre Pneu Aro 14 em Curitiba pelo menor preço garantido e pronta entrega. Xbri, Delinte, Itaro, Pirelli e Continental para HB20, Onix, Gol, Fox e Ka no Portão.',
+    h1: 'Pneu Aro 14 em Curitiba: Pronta Entrega no Portão',
+    metaTitle: 'Pneu Aro 14 em Curitiba | Pronta Entrega | Carplus',
+    metaDescription: 'Compre Pneu Aro 14 em Curitiba com pronta entrega. Xbri, Delinte, Itaro, Pirelli e Continental para HB20, Onix, Gol, Fox e Ka no Portão.',
     profileCategory: 'Popular & Custo-Benefício',
     recommendedBrands: ['Xbri (Ecology)', 'Delinte (DH2)', 'Itaro', 'Pirelli (Cinturato P1 Plus)', 'Continental (PowerContact 2)', 'Goodyear (Direction)'],
     vehicleExamples: ['Hyundai HB20', 'Chevrolet Onix', 'VW Gol G5/G6/G7', 'Ford Ka', 'VW Fox / Up!', 'Fiat Siena / Grand Siena', 'VW Voyage'],
@@ -54,14 +54,14 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
     technicalText: 'O Aro 14 equipa os carros mais vendidos de Curitiba e exige pneus de alta durabilidade e frenagem segura na chuva. O atacarejo de pneus da Carplus no Portão oferece opções com 5 anos de garantia de fábrica, excelente índice de tração A e menor resistência ao rolamento.',
     antiScratchAssurance: 'Montagem técnica computadorizada imediata, balanceamento dinâmico e alinhamento 3D de alta precisão.',
     priceFrom: 'R$ 249,90',
-    ctaText: 'Pneu Aro 14 para HB20, Onix ou Gol em Curitiba? Venha para a Carplus no Portão e garanta o menor preço à pronta entrega. WhatsApp (41) 3082-7282!'
+    ctaText: 'Pneu Aro 14 para HB20, Onix ou Gol em Curitiba? Venha para a Carplus no Portão e consulte os modelos à pronta entrega. WhatsApp (41) 3082-7282!'
   },
   '15': {
     aro: '15',
     number: 15,
-    h1: 'Pneu Aro 15 em Curitiba: Menor Preço e Pronta Entrega no Portão',
-    metaTitle: 'Pneu Aro 15 em Curitiba | Menor Preço e Pronta Entrega | Carplus',
-    metaDescription: 'Pneu Aro 15 em Curitiba com preço imbatível de atacado e pronta entrega. Delinte, Xbri, Itaro, Continental e Pirelli para Polo, Virtus, Etios, Yaris, Sandero e Argo.',
+    h1: 'Pneu Aro 15 em Curitiba: Pronta Entrega no Portão',
+    metaTitle: 'Pneu Aro 15 em Curitiba | Pronta Entrega | Carplus',
+    metaDescription: 'Pneu Aro 15 em Curitiba com preço de atacado e pronta entrega. Delinte, Xbri, Itaro, Continental e Pirelli para Polo, Virtus, Etios, Yaris, Sandero e Argo.',
     profileCategory: 'Popular & Custo-Benefício',
     recommendedBrands: ['Delinte (DH2)', 'Xbri (Sport Plus / Ecology)', 'Itaro', 'Continental (PowerContact 2)', 'Pirelli (Cinturato P7)', 'Bridgestone (Turanza ER300)'],
     vehicleExamples: ['VW Polo', 'VW Virtus', 'Toyota Etios / Yaris', 'Renault Sandero / Logan', 'Fiat Argo / Cronos', 'Chevrolet Spin / Cobalt', 'Hyundai HB20X'],
@@ -75,13 +75,13 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
     technicalText: 'O Aro 15 é a medida favorita de motoristas de aplicativo, frotistas e famílias em Curitiba pela combinação perfeita de conforto, dirigibilidade e custo por quilômetro. Na Carplus você encontra as melhores opções com ranhuras longitudinais anti-aquaplanagem projetadas para o clima chuvoso de Curitiba.',
     antiScratchAssurance: 'Montagem técnica computadorizada na hora com proteção em polímero para rodas e alinhamento 3D de alta precisão.',
     priceFrom: 'R$ 269,90',
-    ctaText: 'Orçamento sem compromisso para Pneu Aro 15 em Curitiba? Cobrimos qualquer oferta com pronta entrega no Portão. Fale no WhatsApp (41) 3082-7282!'
+    ctaText: 'Orçamento sem compromisso para Pneu Aro 15 em Curitiba? Consulte os modelos à pronta entrega no Portão. Fale no WhatsApp (41) 3082-7282!'
   },
   '16': {
     aro: '16',
     number: 16,
-    h1: 'Pneu Aro 16 em Curitiba: Menor Preço e Pronta Entrega no Portão',
-    metaTitle: 'Pneu Aro 16 em Curitiba | Menor Preço e Pronta Entrega | Carplus',
+    h1: 'Pneu Aro 16 em Curitiba: Pronta Entrega no Portão',
+    metaTitle: 'Pneu Aro 16 em Curitiba | Pronta Entrega | Carplus',
     metaDescription: 'Pneus Aro 16 em Curitiba com preço de atacado e pronta entrega no Portão. Estoque completo Xbri, Delinte, Pirelli e Continental para Civic, Corolla, Renegade e SUVs.',
     profileCategory: 'Popular & Custo-Benefício',
     recommendedBrands: ['Xbri (Forza)', 'Delinte (DH2 / DS2)', 'Itaro', 'Pirelli (Cinturato P1/P7)', 'Continental (PowerContact 2)', 'Goodyear (EfficientGrip)'],
@@ -94,17 +94,17 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
       { measure: '215/65 R16', vehicles: 'Renault Duster, Oroch, Jeep Renegade Sport, Fiat Toro Endurance', loadSpeed: '98H / 102T' },
       { measure: '175/55 R16', vehicles: 'BYD Dolphin Mini 100% Elétrico', loadSpeed: '80H EV Extra Load' }
     ],
-    technicalText: 'O Aro 16 é o padrão mais versátil do mercado, equipando sedãs médios, SUVs compactos e carros elétricos em Curitiba. Na Carplus Portão, você tem o atacarejo de pneus com o menor preço garantido, durabilidade estendida e compostos de alta aderência para rodovias e avenidas de Curitiba.',
+    technicalText: 'O Aro 16 é o padrão mais versátil do mercado, equipando sedãs médios, SUVs compactos e carros elétricos em Curitiba. Na Carplus Portão, você tem o atacarejo de pneus com durabilidade estendida e compostos de alta aderência para rodovias e avenidas de Curitiba.',
     antiScratchAssurance: 'Montagem computadorizada expressa com proteção para rodas de liga leve e alinhamento 3D de alta precisão que preserva os pneus.',
     priceFrom: 'R$ 289,90',
-    ctaText: 'Pneu Aro 16 com o menor preço de Curitiba? Cobrimos orçamentos comprovados na hora no Portão. WhatsApp (41) 3082-7282!'
+    ctaText: 'Procurando Pneu Aro 16 em Curitiba? Consulte preços e disponibilidade no Portão. WhatsApp (41) 3082-7282!'
   },
   '17': {
     aro: '17',
     number: 17,
-    h1: 'Pneus Aro 17 em Curitiba: Menor Preço e Estoque Pronta Entrega',
-    metaTitle: 'Pneus Aro 17 em Curitiba | Menor Preço e Pronta Entrega | Carplus',
-    metaDescription: 'Compre Pneus Aro 17 em Curitiba pelo menor preço garantido. Linha completa Pirelli Cinturato/Scorpion, Continental, Michelin e Delinte para Corolla, Compass, HR-V e BYD King.',
+    h1: 'Pneus Aro 17 em Curitiba: Estoque Pronta Entrega',
+    metaTitle: 'Pneus Aro 17 em Curitiba | Pronta Entrega | Carplus',
+    metaDescription: 'Compre Pneus Aro 17 em Curitiba. Linha completa Pirelli Cinturato/Scorpion, Continental, Michelin e Delinte para Corolla, Compass, HR-V e BYD King.',
     profileCategory: 'Popular & Custo-Benefício',
     recommendedBrands: ['Pirelli (Cinturato P7 / Scorpion)', 'Continental (UltraContact / MaxContact MC6)', 'Michelin (Primacy 4+)', 'Goodyear (Eagle Sport 2)', 'Bridgestone (Turanza T005)', 'Delinte (DH2)'],
     vehicleExamples: ['Jeep Compass Sport', 'Toyota Corolla Altis', 'Honda HR-V', 'VW T-Cross Highline', 'Audi A3', 'BMW Série 1/3', 'BYD King EV/DM-i'],
@@ -119,13 +119,13 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
     technicalText: 'Os Pneus Aro 17 exigem rigidez lateral superior e compostos de alta aderência para rodovias como a BR-277 e BR-376. Oferecemos opções homologadas com banda de rodagem assimétrica, baixa resistência ao rolamento e índices de carga elevados para sedãs médios e SUVs.',
     antiScratchAssurance: 'Rampas pantográficas de acesso ultra suave e garras com proteção de polímero para instalação impecável em rodas diamantadas sem marcas.',
     priceFrom: 'R$ 349,90',
-    ctaText: 'Cotação rápida para Pneus Aro 17 em Curitiba com cobertura de qualquer orçamento comprovado da concorrência!'
+    ctaText: 'Solicite uma cotação para Pneus Aro 17 em Curitiba e consulte os modelos disponíveis!'
   },
   '18': {
     aro: '18',
     number: 18,
-    h1: 'Pneus Aro 18 em Curitiba: Menor Preço e Estoque Pronta Entrega',
-    metaTitle: 'Pneus Aro 18 em Curitiba | Menor Preço e Pronta Entrega | Carplus',
+    h1: 'Pneus Aro 18 em Curitiba: Estoque Pronta Entrega',
+    metaTitle: 'Pneus Aro 18 em Curitiba | Pronta Entrega | Carplus',
     metaDescription: 'Pneus Aro 18 em Curitiba com preço de atacado e pronta entrega no Portão. Michelin Pilot Sport, Pirelli P Zero/Scorpion, Continental para BMW 320i, Compass, Tesla e SUVs.',
     profileCategory: 'Alta Performance & SUVs',
     recommendedBrands: ['Michelin (Pilot Sport 4 / 5)', 'Pirelli (P Zero / Scorpion Verde All Season)', 'Continental (PremiumContact 6 / SportContact)', 'Bridgestone (Potenza Sport)', 'Delinte (DS2 / Desert Storm II)', 'Xbri (Forza)'],
@@ -146,9 +146,9 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
   '19': {
     aro: '19',
     number: 19,
-    h1: 'Pneus Aro 19 em Curitiba: Menor Preço e Estoque Pronta Entrega',
-    metaTitle: 'Pneus Aro 19 em Curitiba | Pirelli, Michelin e Menor Preço | Carplus',
-    metaDescription: 'Estoque exclusivo de Pneus Aro 19 em Curitiba para BYD Seal, Haval H6, Volvo XC60, Porsche Macan e BMW. Pirelli Elect, Michelin Pilot Sport com menor preço garantido.',
+    h1: 'Pneus Aro 19 em Curitiba: Estoque Pronta Entrega',
+    metaTitle: 'Pneus Aro 19 em Curitiba | Pirelli e Michelin | Carplus',
+    metaDescription: 'Estoque exclusivo de Pneus Aro 19 em Curitiba para BYD Seal, Haval H6, Volvo XC60, Porsche Macan e BMW. Modelos Pirelli Elect e Michelin Pilot Sport.',
     profileCategory: 'Alta Performance & SUVs',
     recommendedBrands: ['Michelin (Pilot Sport 4 SUV / Pilot Sport 5)', 'Pirelli (P Zero PZ4 / Scorpion Elect)', 'Continental (SportContact 7 / EcoContact 6 Q)', 'Yokohama (Advan Sport V105)', 'Bridgestone (Alenza 001)'],
     vehicleExamples: ['BYD Seal AWD (245/45 R19)', 'GWM Haval H6 GT', 'Volvo XC60 Recharge (235/55 R19)', 'Porsche Macan', 'Audi A6 / S4', 'BMW Série 5 / X3', 'Tesla Model Y'],
@@ -163,13 +163,13 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
     technicalText: 'Pneus de Aro 19 para carros elétricos e esportivos premium exigem tecnologia de absorção acústica interna (espuma PNCS/SoundComfort) e carcaças High Load (HL) para segurar o torque instantâneo de veículos que passam de 500 cavalos.',
     antiScratchAssurance: 'Ferramental especial com ponteira de teflon e alinhamento 3D computadorizado que garante dirigibilidade perfeita sem arranhões em rodas aro 19.',
     priceFrom: 'R$ 579,90',
-    ctaText: 'Procurando pneus homologados para seu BYD Seal, Haval H6 ou Volvo em Curitiba? Menor preço de Aro 19 comprovado no Portão!'
+    ctaText: 'Procurando pneus homologados para seu BYD Seal, Haval H6 ou Volvo em Curitiba? Consulte pneus Aro 19 no Portão!'
   },
   '20': {
     aro: '20',
     number: 20,
-    h1: 'Pneus Aro 20 em Curitiba: Menor Preço e Estoque Pronta Entrega',
-    metaTitle: 'Pneus Aro 20 em Curitiba | Menor Preço e Montagem Especializada | Carplus',
+    h1: 'Pneus Aro 20 em Curitiba: Estoque Pronta Entrega',
+    metaTitle: 'Pneus Aro 20 em Curitiba | Montagem Especializada | Carplus',
     metaDescription: 'Pneus Aro 20 em Curitiba com pronta entrega para Volvo XC90, Porsche Cayenne, BMW X5, Defender e RAM 1500. Maquinário touchless que não risca rodas.',
     profileCategory: 'Exclusividade & Super SUVs',
     recommendedBrands: ['Pirelli (P Zero Elect / Scorpion Zero All Season)', 'Michelin (Latitude Sport 3 / Pilot Sport 4 SUV)', 'Continental (CrossContact RX / SportContact 6)', 'Yokohama (Geolandar X-CV)'],
@@ -190,9 +190,9 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
   '21': {
     aro: '21',
     number: 21,
-    h1: 'Pneus Aro 21 em Curitiba: Menor Preço e Estoque Pronta Entrega',
+    h1: 'Pneus Aro 21 em Curitiba: Estoque Pronta Entrega',
     metaTitle: 'Pneus Aro 21 em Curitiba | BYD Tan, Porsche, Audi e BMW | Carplus',
-    metaDescription: 'Pneus Aro 21 em Curitiba a pronta entrega para BYD Tan EV, Porsche Cayenne, Audi e-tron, Volvo XC90 e BMW X7. Menor preço garantido e montagem de alta precisão.',
+    metaDescription: 'Pneus Aro 21 em Curitiba a pronta entrega para BYD Tan EV, Porsche Cayenne, Audi e-tron, Volvo XC90 e BMW X7. Montagem de alta precisão.',
     profileCategory: 'Exclusividade & Super SUVs',
     recommendedBrands: ['Michelin (Pilot Sport 4 SUV / Pilot Sport EV)', 'Pirelli (P Zero Corsa / P Zero PZ4 Elect)', 'Continental (SportContact 6 / 7)', 'Goodyear (Eagle F1 Asymmetric 3 SUV)'],
     vehicleExamples: ['BYD Tan EV (265/45 R21)', 'Porsche Cayenne Turbo / GTS', 'Audi e-tron / Q8 e-tron', 'Volvo XC90 Excellence', 'BMW X7 / X5 M', 'Range Rover Sport'],
@@ -206,12 +206,12 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
     technicalText: 'O Aro 21 é a medida padrão de hiper-SUVs elétricos e esportivos como o BYD Tan e Porsche Cayenne. A Carplus oferece pneus com índice HL (High Load), homologação original de montadora (marcações AO, N0, *, e Elect) e compostos de borracha de alta temperatura.',
     antiScratchAssurance: 'Equipamentos calibrados com garras de nylon e balanceador de precisão a laser com chumbos ocultos estéticos que mantêm o visual perfeito das suas rodas aro 21.',
     priceFrom: 'R$ 990,00',
-    ctaText: 'Pneus para BYD Tan ou Hiper-SUVs Aro 21 em Curitiba? Cobrimos orçamentos de concessionária com instalação imediata no Portão!'
+    ctaText: 'Pneus para BYD Tan ou Hiper-SUVs Aro 21 em Curitiba? Consulte preços, modelos e serviços de instalação no Portão!'
   },
   '22': {
     aro: '22',
     number: 22,
-    h1: 'Pneus Aro 22 em Curitiba: Menor Preço e Estoque Pronta Entrega',
+    h1: 'Pneus Aro 22 em Curitiba: Estoque Pronta Entrega',
     metaTitle: 'Pneus Aro 22 em Curitiba | Porsche Cayenne, Urus, RAM e BMW | Carplus',
     metaDescription: 'Pneus Aro 22 em Curitiba a pronta entrega. Linha exclusiva para Porsche Cayenne Coupe, Audi RSQ8, BMW X6 M, Range Rover e RAM 1500. Montagem touchless sem riscar rodas.',
     profileCategory: 'Exclusividade & Super SUVs',
@@ -233,7 +233,7 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
   '23': {
     aro: '23',
     number: 23,
-    h1: 'Pneus Aro 23 em Curitiba: Menor Preço e Estoque Pronta Entrega',
+    h1: 'Pneus Aro 23 em Curitiba: Estoque Pronta Entrega',
     metaTitle: 'Pneus Aro 23 em Curitiba | Lamborghini Urus, DBX, RSQ8 e Maybach | Carplus',
     metaDescription: 'Pneus Aro 23 em Curitiba para Super SUVs de ultra-luxo: Lamborghini Urus, Aston Martin DBX 707, Audi RSQ8, Range Rover SV e Maybach. Atendimento VIP na Carplus Portão.',
     profileCategory: 'Exclusividade & Super SUVs',
@@ -248,6 +248,6 @@ export const RIM_SEO_DATA: Record<string, RimSeoConfig> = {
     technicalText: 'O Aro 23 representa o ápice da engenharia pneumática global para super SUVs com mais de 650 cv e velocidade máxima superior a 305 km/h. Na Carplus Portão, disponibilizamos compostos homologados de pista para rua com aderência extrema em piso seco e drenagem máxima no piso molhado de Curitiba.',
     antiScratchAssurance: 'Protocolo VIP de Atendimento: montagem robotizada assistida por computador com proteção integral para rodas forjadas e alinhamento 3D milimétrico dedicado a superesportivos.',
     priceFrom: 'R$ 1.890,00',
-    ctaText: 'Não encontrou seu Pneu Aro 23 na concessionária de Curitiba? Temos o maior estoque e menor preço com atendimento exclusivo no Portão. Chame agora no (41) 3082-7282!'
+    ctaText: 'Não encontrou seu Pneu Aro 23 na concessionária de Curitiba? Consulte nosso estoque e atendimento no Portão. Chame agora no (41) 3082-7282!'
   }
 };
