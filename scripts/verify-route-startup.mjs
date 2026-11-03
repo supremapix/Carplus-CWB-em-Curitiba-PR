@@ -89,7 +89,8 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
   const queue = [];
   const history = [];
   const listeners = new Map();
-  const location = { pathname: incomingPath, search: '', hash: '', href: `https://www.carpluscwb.com.br${incomingPath}` };
+  const incomingUrl = new URL(incomingPath, 'https://www.carpluscwb.com.br');
+  const location = { pathname: incomingUrl.pathname, search: incomingUrl.search, hash: incomingUrl.hash, href: incomingUrl.href };
   const window = {
     location,
     history: {
@@ -103,7 +104,7 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
   };
   const context = vm.createContext({
     window, document: { getElementById() { return null; } },
-    console, URL, Number, useCallback: fn => fn, lastCatalogState: { current: undefined }, setTimeout(callback) { callback(); return 1; },
+    console, URL, URLSearchParams, Number, useCallback: fn => fn, lastCatalogState: { current: undefined }, setTimeout(callback) { callback(); return 1; },
     ...catalog, ...tireData, ...slugs, ...geography,
     homeRef: { current: null }, finderRef: { current: null }, catalogRef: { current: null }, categoriesRef: { current: null }, mapsRef: { current: null }
   });
@@ -164,7 +165,7 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
   return {
     state, location, history,
     navigate(section) { committed.handleScrollToSection(section); settle(); },
-    popTo(url, entryState = null) { window.history.state = entryState; location.pathname = url; location.href = `https://www.carpluscwb.com.br${url}`; for (const callback of listeners.get('popstate') || []) callback(); settle(); },
+    popTo(url, entryState = null) { window.history.state = entryState; const parsed = new URL(url, 'https://www.carpluscwb.com.br'); location.pathname = parsed.pathname; location.search = parsed.search; location.hash = parsed.hash; location.href = parsed.href; for (const callback of listeners.get('popstate') || []) callback(); settle(); },
     selectCatalog(product) { context.setSelectedCatalogTire(product); settle(); },
     rememberCatalog(snapshot) { committed.rememberCatalogState(snapshot); },
     getHistoryState() { return window.history.state; },
@@ -254,3 +255,14 @@ catalogJourney.popTo('/pneus', { carplusCatalog: { currentPage: 2 } });
 assert.equal(catalogJourney.state.catalogRestoreState, undefined, 'Malformed history entries are ignored');
 
 console.log(`PASS: catalog filter/page snapshots, internal back, browser Back/Forward, fresh navigation and malformed history; ${cases.length} real direct routes under StrictMode/state batching; catalog product changes; product → services/contact/home; browser history; footer handler; both regression controls reproduce the original failures.`);
+
+const queryJourney = harness('/pneus?aro=17&busca=205%2F50R17');
+assert.equal(queryJourney.state.catalogFilterRim,17);
+assert.equal(queryJourney.state.catalogFilterSearch,'205/50R17');
+queryJourney.popTo('/pneus?busca=195%2F60R16');
+assert.equal(queryJourney.state.catalogFilterRim,'Todos');
+assert.equal(queryJourney.state.catalogFilterSearch,'195/60R16');
+queryJourney.popTo('/pneus?aro=99');
+assert.equal(queryJourney.state.catalogFilterRim,'Todos');
+assert.equal(queryJourney.state.catalogFilterSearch,'');
+console.log('PASS: actual catalog query filters for rim and measure, Back/Forward query changes and invalid rims.');

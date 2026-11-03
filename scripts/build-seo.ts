@@ -1,3 +1,12 @@
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import BydClusterPages, { BydClusterView } from '../src/components/BydClusterPages';
+import ElectricGuides from '../src/components/ElectricGuides';
+import { ELECTRIC_GUIDES, ELECTRIC_GUIDE_ROUTES } from '../src/data/electricGuides';
+import RimAuthoritySection from '../src/components/RimAuthoritySection';
+import LocalAreaGuide from '../src/components/LocalAreaGuide';
+import CatalogTireDetail from '../src/components/CatalogTireDetail';
+import { getFullCatalog, getCatalogSync } from '../src/data/catalogo-pneus';
 import * as fs from 'fs';
 import * as path from 'path';
 import { TIRES_DATA, CAR_MODELS_DATA } from '../src/data';
@@ -51,7 +60,7 @@ export function getTireSlug(tire: { id: string; brand: string; name?: string; wi
   return parts.filter(Boolean).join('-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-');
 }
 
-const DOMAIN = "https://www.carpluspneuseoficina.com.br";
+const DOMAIN = "https://www.carpluscwb.com.br";
 const NAP_ADDRESS = "Av. Presidente Arthur da Silva Bernardes, 1323 - Portão, Curitiba - PR, 80320-300";
 const NAP_PHONE = "(41) 3082-7282";
 const NAP_WHATSAPP = "554130827282";
@@ -868,11 +877,6 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
       "postalCode": "80320-300",
       "addressCountry": "BR"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -25.477815,
-      "longitude": -49.299557
-    },
     ...(areaServedName ? { "areaServed": { "@type": "AdministrativeArea", "name": areaServedName } } : {})
   });
 
@@ -1208,6 +1212,50 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
     });
   });
 
+  // One static document per public inner route, independent of client JS.
+  const wrap = (node: React.ReactNode) => `<div id="root"><div id="carplus-root" class="carplus-inner-pages">${renderHeader()}<main>${renderToStaticMarkup(node)}</main>${renderFooter()}</div></div>`;
+  const byds: [BydClusterView, string][] = [
+    ['pneus-byd-curitiba', 'Pneus para BYD em Curitiba'],
+    ['pneu-byd-dolphin-curitiba', 'Pneus para BYD Dolphin em Curitiba'],
+    ['pneu-byd-dolphin-mini-curitiba', 'Pneus para BYD Dolphin Mini em Curitiba'],
+    ['pneu-byd-dolphin-gs-curitiba', 'Pneus para BYD Dolphin GS em Curitiba'],
+    ['pneu-byd-king-curitiba', 'Pneus para BYD King em Curitiba'],
+    ['pneu-175-55-r16-curitiba', 'Pneus 175/55 R16 em Curitiba'],
+    ['pneu-195-60-r16-curitiba', 'Pneus 195/60 R16 em Curitiba'],
+    ['pneu-205-50-r17-curitiba', 'Pneus 205/50 R17 em Curitiba'],
+    ['pneu-215-55-r17-curitiba', 'Pneus 215/55 R17 em Curitiba'],
+    ['pneu-225-60-r16-curitiba', 'Pneus 225/60 R16 em Curitiba'],
+  ];
+  for (const [slug, title] of byds) routes.push({ path: slug, title: `${title} | Carplus`, desc: 'Confira aplicação, medidas e cuidados. Consulte pneus e serviços na Carplus, no Portão, Curitiba.', keywords: '', schema: { '@context': 'https://schema.org', '@type': 'WebPage', name: title, url: `${DOMAIN}/${slug}` }, isIndexable: true, customBodyHtml: wrap(React.createElement(BydClusterPages, {view: slug, onNavigateHome: () => {}})) });
+  for (const kind of ['electric', 'hybrid'] as const) {
+    const guide = ELECTRIC_GUIDES[kind]; const slug = ELECTRIC_GUIDE_ROUTES[kind].slice(1);
+    routes.push({ path: slug, title: guide.metaTitle, desc: guide.description, keywords: '', schema: { '@context': 'https://schema.org', '@type': 'WebPage', name: guide.title, url: `${DOMAIN}/${slug}` }, isIndexable: true, customBodyHtml: wrap(React.createElement(ElectricGuides, {kind})) });
+  }
+  for (const route of routes) {
+    if (route.path.startsWith('aro/')) {
+      const aro = route.path.split('/')[1];
+      route.title = `Pneus aro ${aro} em Curitiba | Carplus Portão`;
+      route.desc = `Compare medidas e especificações de pneus aro ${aro}. Consulte opções e serviços com a Carplus no Portão, Curitiba.`;
+      route.customBodyHtml = wrap(React.createElement(RimAuthoritySection, {aroName: aro}));
+    }
+    if (route.path.startsWith('bairro/') || route.path.startsWith('cidade/')) {
+      const type = route.path.startsWith('bairro/') ? 'bairro' : 'cidade';
+      const slug = route.path.split('/')[1];
+      const names = [...OFFICIAL_NEIGHBORHOODS, ...NON_OFFICIAL_NEIGHBORHOODS.map(n=>n.name), ...METROPOLITAN_CITIES];
+      const name = names.find(n=>toSlug(n)===slug) || slug.replaceAll('-', ' ');
+      route.customBodyHtml = wrap(React.createElement(LocalAreaGuide, {name, type}));
+      route.title = `Pneus para quem está em ${name} | Carplus no Portão`;
+      route.desc = `Está em ${name}? Consulte pneus, alinhamento e serviços na unidade Carplus do Portão, em Curitiba. Veja como organizar seu atendimento.`;
+    }
+  }
+  routes.push({ path: 'pneus', title: 'Catálogo de pneus em Curitiba | Carplus Portão', desc: 'Encontre pneus por medida, aro e marca. Compare especificações e consulte disponibilidade com a Carplus no Portão.', keywords: '', isIndexable: true, schema: {'@context':'https://schema.org','@type':'CollectionPage',name:'Catálogo de pneus Carplus',url:`${DOMAIN}/pneus`}, customBodyHtml: `<div id="root"><div id="carplus-root" class="carplus-inner-pages">${renderHeader()}<main style="padding:2rem;max-width:1200px;margin:auto"><h1>Catálogo de pneus em Curitiba</h1><p>Compare medida, carga, velocidade e aplicação. Consulte preço e disponibilidade com a Carplus no Portão.</p><nav aria-label="Pneus por aro">${AROS.map(a=>`<a href="/aro/${a}" style="display:inline-block;padding:12px">Aro ${a}</a>`).join('')}</nav><p><a href="/pneus-eletricos-curitiba">Pneus para elétricos</a> · <a href="/pneus-hibridos-curitiba">Pneus para híbridos</a></p><h2>Explore os pneus cadastrados</h2><ul>${getCatalogSync().map(t=>`<li><a href="/pneu/${t.slug}">${escapeHtml(t.nome)} — ${escapeHtml(t.medida)}</a></li>`).join('')}</ul></main>${renderFooter()}</div></div>` });
+  for (const tire of getCatalogSync()) {
+    const slug = `pneu/${tire.slug}`;
+    if (routes.some(r=>r.path===slug)) continue;
+    routes.push({ path: slug, title: `${tire.nome} | Carplus Curitiba`, desc: `Consulte ${tire.nome}, medida ${tire.medida}. Confira aplicação, índices e disponibilidade com a Carplus no Portão.`, keywords: '', isIndexable: true,
+      schema: {'@context':'https://schema.org','@type':'Product',name:tire.nome,sku:String(tire.id),brand:{'@type':'Brand',name:tire.marca},url:`${DOMAIN}/${slug}`},
+      customBodyHtml: wrap(React.createElement(CatalogTireDetail, {tire,onBack:()=>{},onSelectTire:()=>{}})) });
+  }
   return routes;
 }
 
@@ -1257,7 +1305,7 @@ function generateSitemaps(routes: PrerenderRoute[]) {
     }
   };
 
-  // Home (matches canonical https://www.carpluspneuseoficina.com.br/)
+  // Home (matches canonical https://www.carpluscwb.com.br/)
   addInstUrl(`${DOMAIN}/`, "1.0");
 
   indexableRoutes.forEach(r => {
@@ -1444,10 +1492,12 @@ function runPrerendering(routes: PrerenderRoute[]) {
 
 // Main execution block
 try {
+  await getFullCatalog();
   const routes = getAllPrerenderRoutes();
   runPrerendering(routes);
   generateSitemaps(routes);
   generateRobots();
 } catch (e) {
   console.error("Error building SEO scripts: ", e);
+  process.exitCode = 1;
 }

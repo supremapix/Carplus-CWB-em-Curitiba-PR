@@ -1,3 +1,4 @@
+import LocalAreaGuide from './LocalAreaGuide';
 import React, { useState, useEffect } from 'react';
 import { 
   Building, ShieldCheck, HelpCircle, ArrowLeft, Navigation, 
@@ -1557,8 +1558,8 @@ export default function CompanyPages({
                   "@context": "https://schema.org",
                   "@type": "BreadcrumbList",
                   "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.carpluspneuseoficina.com.br" },
-                    { "@type": "ListItem", "position": 2, "name": "Curitiba", "item": "https://www.carpluspneuseoficina.com.br/curitiba" }
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.carpluscwb.com.br" },
+                    { "@type": "ListItem", "position": 2, "name": "Curitiba", "item": "https://www.carpluscwb.com.br/curitiba" }
                   ]
                 })}
               </script>
@@ -1659,8 +1660,8 @@ export default function CompanyPages({
                   "@context": "https://schema.org",
                   "@type": "BreadcrumbList",
                   "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.carpluspneuseoficina.com.br" },
-                    { "@type": "ListItem", "position": 2, "name": "Região Metropolitana", "item": "https://www.carpluspneuseoficina.com.br/regiao-metropolitana" }
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.carpluscwb.com.br" },
+                    { "@type": "ListItem", "position": 2, "name": "Região Metropolitana", "item": "https://www.carpluscwb.com.br/regiao-metropolitana" }
                   ]
                 })}
               </script>
@@ -1748,6 +1749,8 @@ export default function CompanyPages({
 
         {/* VIEW: SEO DYNAMIC LANDING PAGE */}
         {view === 'seo-landing' && seoTarget && (() => {
+          if (String(seoTarget.type) === 'aro') return <RimAuthoritySection aroName={seoTarget.name} />;
+          if (String(seoTarget.type) === 'bairro' || String(seoTarget.type) === 'cidade') return <LocalAreaGuide name={seoTarget.name} type={seoTarget.type as 'bairro' | 'cidade'} />;
           const sampleSearched = getMostSearchedTires(seoTarget.name, seoTarget.type);
           const isAro = seoTarget.type === 'aro';
           const isCarro = seoTarget.type === 'carro';

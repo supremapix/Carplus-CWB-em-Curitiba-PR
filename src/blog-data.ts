@@ -68,6 +68,346 @@ export const BLOG_CATEGORIES = [
 ] as const;
 
 export const BLOG_POSTS: BlogPost[] = [
+{
+  "id": "desgaste-pneus-carros-eletricos",
+  "slug": "desgaste-pneus-carros-eletricos",
+  "title": "Pneus de carros elétricos desgastam mais? O que observar antes de trocar",
+  "h1": "Pneus de carros elétricos desgastam mais? O que observar antes de trocar",
+  "category": "Pneus",
+  "summary": "Entenda fatores de desgaste nos pneus de elétricos, sinais de atenção e o que conferir antes da troca. Fale com a Carplus no Portão.",
+  "metaTitle": "Pneus de elétricos: desgaste e cuidados | Carplus Curitiba",
+  "metaDescription": "Entenda fatores de desgaste nos pneus de elétricos, sinais de atenção e o que conferir antes da troca. Fale com a Carplus no Portão.",
+  "publishedDate": "3 de novembro de 2026",
+  "publishedIso": "2026-11-03",
+  "readingTime": "3 min de leitura",
+  "featuredImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+  "imageAlt": "Fachada da Carplus no Portão, em Curitiba.",
+  "intro": "Peso suportado pelos pneus e entrega de torque podem aumentar as exigências em um carro elétrico. A Michelin destaca esses fatores ao explicar o desgaste em veículos eletrificados. Isso não permite prever a durabilidade do seu conjunto só pelo tipo de motor: condução, pressão, condições das vias e estado do veículo também entram na avaliação.",
+  "sections": [
+    {
+      "title": "A quilometragem não conta a história inteira",
+      "level": "h2",
+      "paragraphs": [
+        "Acelerações progressivas ajudam a reduzir solicitações desnecessárias. Já o rodízio deve respeitar o plano do fabricante e a configuração do carro: não adote uma regra de quilômetros copiada de outro modelo."
+      ]
+    },
+    {
+      "title": "Observe como o pneu está gastando",
+      "level": "h2",
+      "paragraphs": [
+        "Desgaste mais intenso em uma região pede investigação. A Michelin relaciona padrões irregulares a fatores como pressão inadequada, geometria e componentes da suspensão. Trocar o pneu sem avaliar a causa pode deixar o problema presente no conjunto novo.",
+        "Anote quando percebeu a mudança e se houve impacto em buraco, alteração na direção ou manutenção recente. Fotos ajudam na conversa inicial, mas não substituem a inspeção."
+      ]
+    },
+    {
+      "title": "Como encaminhar o atendimento",
+      "level": "h2",
+      "paragraphs": [
+        "Para organizar sua consulta à Carplus, informe modelo, versão, ano e o sintoma observado. Diga também se o desgaste aparece em um ou nos dois lados do eixo. A conversa deve começar pela avaliação do conjunto e da aplicação, não pela promessa de uma quilometragem fixa para o pneu novo."
+      ]
+    },
+    {
+      "title": "Fontes e leitura complementar",
+      "level": "h2",
+      "paragraphs": [
+        "Conteúdo editorial preparado em 3 de novembro de 2026, com base nas orientações dos fabricantes abaixo. Consulte sempre o manual da versão do seu veículo."
+      ],
+      "internalLinks": [
+        {
+          "text": "Michelin, desgaste em elétricos",
+          "url": "https://www.michelinman.com/auto/auto-tips-and-advice/electric-mobility-guide/how-to-reduce-tire-wear"
+        },
+        {
+          "text": "Michelin, desgaste irregular",
+          "url": "https://www.michelin.com.br/auto/conselhos/troca-de-pneus/desgaste-de-pneu"
+        }
+      ]
+    }
+  ],
+  "faqs": [],
+  "ctaTitle": "Converse com a Carplus no Portão",
+  "ctaText": "Notou desgaste diferente nos pneus do elétrico? Fale com a Carplus no Portão e consulte a avaliação indicada para seu veículo.",
+  "ctaButtonText": "Consultar aplicação e atendimento",
+  "whatsappMessage": "Olá, Carplus! Gostaria de consultar pneus para meu elétrico ou híbrido. Vou informar modelo, ano, versão e medida.",
+  "relatedSlugs": [
+    "como-escolher-pneus-carros-hibridos",
+    "pneus-pressao-autonomia-carro-eletrico",
+    "ruido-vibracao-pneus-carro-eletrico"
+  ]
+},
+{
+  "id": "como-escolher-pneus-carros-hibridos",
+  "slug": "como-escolher-pneus-carros-hibridos",
+  "title": "Pneus para carros híbridos: como escolher sem depender apenas do selo EV",
+  "h1": "Pneus para carros híbridos: como escolher sem depender apenas do selo EV",
+  "category": "Pneus",
+  "summary": "Saiba o que conferir na escolha dos pneus de um híbrido: aplicação, medida, carga, velocidade e características de uso.",
+  "metaTitle": "Pneus para híbridos: como escolher | Carplus Curitiba",
+  "metaDescription": "Saiba o que conferir na escolha dos pneus de um híbrido: aplicação, medida, carga, velocidade e características de uso.",
+  "publishedDate": "3 de novembro de 2026",
+  "publishedIso": "2026-11-03",
+  "readingTime": "3 min de leitura",
+  "featuredImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+  "imageAlt": "Fachada da Carplus no Portão, em Curitiba.",
+  "intro": "Ter motor elétrico e motor a combustão não define, sozinho, qual pneu comprar. Comece pela identificação completa do veículo e pelas especificações de sua versão. Dois carros com nomes parecidos podem exigir conjuntos diferentes.",
+  "sections": [
+    {
+      "title": "Híbrido não é uma medida de pneu",
+      "level": "h2",
+      "paragraphs": [
+        "A medida deve ser lida inteira. O diâmetro do aro não substitui largura e perfil, e os índices de carga e velocidade também fazem parte da seleção. A Michelin explica que esses índices representam capacidades do pneu; eles precisam ser compatíveis com as exigências do veículo."
+      ]
+    },
+    {
+      "title": "O que significa uma tecnologia voltada a eletrificados?",
+      "level": "h2",
+      "paragraphs": [
+        "Fabricantes desenvolvem soluções para necessidades como eficiência, conforto acústico e carga. A Pirelli apresenta ELECT como tecnologia para elétricos e híbridos. Essa identificação informa uma proposta técnica, mas não autoriza instalar qualquer pneu com o selo no seu carro.",
+        "Compare o modelo exato, a medida oferecida e a aplicação indicada. Evite decidir apenas por uma marca, por um anúncio com a palavra “híbrido” ou pelo mesmo aro de outro veículo."
+      ]
+    },
+    {
+      "title": "Leve a informação certa ao atendimento",
+      "level": "h2",
+      "paragraphs": [
+        "Antes do orçamento, reúna o ano, a versão, as especificações do manual e uma foto legível da lateral do pneu. Se houver diferença entre os eixos ou modificação anterior de rodas, avise. O pneu já instalado pode não representar a configuração original correta."
+      ]
+    },
+    {
+      "title": "Fontes e leitura complementar",
+      "level": "h2",
+      "paragraphs": [
+        "Conteúdo editorial preparado em 3 de novembro de 2026, com base nas orientações dos fabricantes abaixo. Consulte sempre o manual da versão do seu veículo."
+      ],
+      "internalLinks": [
+        {
+          "text": "Michelin, índices de carga e velocidade",
+          "url": "https://www.michelin.com.br/auto/conselhos/informacoes-basicas-sobre-pneus/indice-de-carga-do-pneu-e-classificacao-de-velocidade-do-pneu"
+        },
+        {
+          "text": "Pirelli ELECT",
+          "url": "https://www.pirelli.com/tyres/pt-br/carro/tecnologia-e-conhecimento/elect"
+        }
+      ]
+    }
+  ],
+  "faqs": [],
+  "ctaTitle": "Converse com a Carplus no Portão",
+  "ctaText": "Está escolhendo pneus para seu híbrido? Envie os dados à Carplus para consultar opções e confirmar a aplicação antes da compra. Preço e disponibilidade dependem do atendimento.",
+  "ctaButtonText": "Consultar aplicação e atendimento",
+  "whatsappMessage": "Olá, Carplus! Gostaria de consultar pneus para meu elétrico ou híbrido. Vou informar modelo, ano, versão e medida.",
+  "relatedSlugs": [
+    "desgaste-pneus-carros-eletricos",
+    "pneus-pressao-autonomia-carro-eletrico",
+    "ruido-vibracao-pneus-carro-eletrico"
+  ]
+},
+{
+  "id": "pneus-pressao-autonomia-carro-eletrico",
+  "slug": "pneus-pressao-autonomia-carro-eletrico",
+  "title": "Autonomia caiu? Confira a pressão e a escolha dos pneus do elétrico",
+  "h1": "Autonomia caiu? Confira a pressão e a escolha dos pneus do elétrico",
+  "category": "Pneus",
+  "summary": "Veja como a pressão e as características dos pneus entram na eficiência do elétrico, sem receitas universais de calibragem.",
+  "metaTitle": "Pressão dos pneus e autonomia do elétrico | Carplus",
+  "metaDescription": "Veja como a pressão e as características dos pneus entram na eficiência do elétrico, sem receitas universais de calibragem.",
+  "publishedDate": "3 de novembro de 2026",
+  "publishedIso": "2026-11-03",
+  "readingTime": "3 min de leitura",
+  "featuredImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+  "imageAlt": "Fachada da Carplus no Portão, em Curitiba.",
+  "intro": "A resistência ao rolamento é um dos fatores ligados ao consumo de energia do veículo. A Continental considera esse aspecto no desenvolvimento de pneus para elétricos. Ainda assim, uma queda de autonomia não prova defeito no pneu: é necessário avaliar o contexto de uso, sem atribuir toda mudança a um único componente.",
+  "sections": [
+    {
+      "title": "Pneus entram na avaliação, mas não explicam tudo",
+      "level": "h2",
+      "paragraphs": []
+    },
+    {
+      "title": "Use a referência do seu carro",
+      "level": "h2",
+      "paragraphs": [
+        "Consulte a pressão indicada no manual ou na etiqueta do veículo, observando as condições de carga e de medição previstas pelo fabricante. A pressão máxima escrita na lateral do pneu não é uma recomendação universal de calibragem para o automóvel.",
+        "A Michelin explica que pressão insuficiente aumenta a resistência ao rolamento e pode prejudicar desgaste e comportamento do carro. Também não é adequado aumentar a pressão por conta própria para tentar ganhar autonomia."
+      ]
+    },
+    {
+      "title": "O alerta do painel não substitui os cuidados",
+      "level": "h2",
+      "paragraphs": [
+        "O monitoramento de pressão é um auxílio. Não espere apenas pelo aviso para seguir as verificações indicadas no manual. Quando a pressão volta a cair, procure a causa em vez de apenas completar o ar repetidamente.",
+        "Para o atendimento, registre em que condições o alerta surgiu, se afeta sempre a mesma roda e se houve reparo ou troca recente. Não é necessário fazer testes dirigindo com pressão incorreta."
+      ]
+    },
+    {
+      "title": "Fontes e leitura complementar",
+      "level": "h2",
+      "paragraphs": [
+        "Conteúdo editorial preparado em 3 de novembro de 2026, com base nas orientações dos fabricantes abaixo. Consulte sempre o manual da versão do seu veículo."
+      ],
+      "internalLinks": [
+        {
+          "text": "Continental, pneus de elétricos",
+          "url": "https://www.continental-tires.com/tire-knowledge/electric-vehicle-tires/"
+        },
+        {
+          "text": "Michelin, pressão e manutenção",
+          "url": "https://www.michelinman.com/auto/auto-tips-and-advice/electric-mobility-guide/ev-tire-pressure-and-maintenance"
+        }
+      ]
+    }
+  ],
+  "faqs": [],
+  "ctaTitle": "Converse com a Carplus no Portão",
+  "ctaText": "Precisa conferir a medida ou conversar sobre pneus para seu elétrico? Consulte a Carplus. Se houver alerta persistente de sistema eletrônico, siga também a orientação do fabricante do veículo.",
+  "ctaButtonText": "Consultar aplicação e atendimento",
+  "whatsappMessage": "Olá, Carplus! Gostaria de consultar pneus para meu elétrico ou híbrido. Vou informar modelo, ano, versão e medida.",
+  "relatedSlugs": [
+    "desgaste-pneus-carros-eletricos",
+    "como-escolher-pneus-carros-hibridos",
+    "ruido-vibracao-pneus-carro-eletrico"
+  ]
+},
+{
+  "id": "ruido-vibracao-pneus-carro-eletrico",
+  "slug": "ruido-vibracao-pneus-carro-eletrico",
+  "title": "Ruído e vibração no carro elétrico: quando olhar pneus, rodas e suspensão",
+  "h1": "Ruído e vibração no carro elétrico: quando olhar pneus, rodas e suspensão",
+  "category": "Pneus",
+  "summary": "Entenda a diferença entre ruído de rodagem, vibração e alterações na direção. Saiba que informações levar à avaliação.",
+  "metaTitle": "Ruído e vibração no elétrico: o que avaliar | Carplus",
+  "metaDescription": "Entenda a diferença entre ruído de rodagem, vibração e alterações na direção. Saiba que informações levar à avaliação.",
+  "publishedDate": "3 de novembro de 2026",
+  "publishedIso": "2026-11-03",
+  "readingTime": "3 min de leitura",
+  "featuredImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+  "imageAlt": "Fachada da Carplus no Portão, em Curitiba.",
+  "intro": "Em um veículo com menor ruído do motor, o som de rodagem pode chamar mais atenção. A Continental trata o conforto acústico como uma necessidade relevante nos elétricos e desenvolve tecnologias específicas para esse objetivo.",
+  "sections": [
+    {
+      "title": "Perceber mais o pneu não significa que tudo é normal",
+      "level": "h2",
+      "paragraphs": [
+        "Um barulho novo, porém, não deve ser explicado automaticamente pelo tipo de propulsão. Registre quando ele começou, a superfície em que aparece e se existe vibração associada. Não faça manobras ou testes de velocidade para tentar descobrir a origem."
+      ]
+    },
+    {
+      "title": "Alinhamento e balanceamento não são o mesmo serviço",
+      "level": "h2",
+      "paragraphs": [
+        "O balanceamento trata a distribuição de massa no conjunto roda e pneu. O alinhamento ajusta os ângulos das rodas conforme as especificações do veículo. A Michelin distingue esses procedimentos e alerta para os efeitos de alterações na geometria e no equilíbrio do conjunto.",
+        "Por isso, “o volante vibra” não é diagnóstico suficiente para escolher um serviço. Pneus, rodas e outros componentes precisam ser avaliados. Um impacto recente ou uma montagem anterior são informações importantes para a inspeção."
+      ]
+    },
+    {
+      "title": "Organize o próximo passo",
+      "level": "h2",
+      "paragraphs": [
+        "A Carplus informa oferecer alinhamento, balanceamento e serviços de suspensão. Consulte o atendimento apropriado ao sintoma e ao seu modelo, sem partir da ideia de que um único procedimento resolverá qualquer ruído."
+      ]
+    },
+    {
+      "title": "Fontes e leitura complementar",
+      "level": "h2",
+      "paragraphs": [
+        "Conteúdo editorial preparado em 3 de novembro de 2026, com base nas orientações dos fabricantes abaixo. Consulte sempre o manual da versão do seu veículo."
+      ],
+      "internalLinks": [
+        {
+          "text": "Continental, mobilidade elétrica",
+          "url": "https://www.continental-tires.com/about-us/technologies-and-innovations/electric-mobility/"
+        },
+        {
+          "text": "Michelin, alinhamento e balanceamento",
+          "url": "https://www.michelin.com.br/auto/conselhos/cuidados-com-pneus/alinhamento-de-roda-balanceamento-de-roda"
+        }
+      ]
+    }
+  ],
+  "faqs": [],
+  "ctaTitle": "Converse com a Carplus no Portão",
+  "ctaText": "Seu elétrico ou híbrido começou a vibrar ou apresentar ruído diferente? Conte à Carplus quando acontece e consulte a avaliação do conjunto.",
+  "ctaButtonText": "Consultar aplicação e atendimento",
+  "whatsappMessage": "Olá, Carplus! Gostaria de consultar pneus para meu elétrico ou híbrido. Vou informar modelo, ano, versão e medida.",
+  "relatedSlugs": [
+    "desgaste-pneus-carros-eletricos",
+    "como-escolher-pneus-carros-hibridos",
+    "pneus-pressao-autonomia-carro-eletrico"
+  ]
+},
+{
+  "id": "bolha-furo-desgaste-pneu-eletrico-hibrido",
+  "slug": "bolha-furo-desgaste-pneu-eletrico-hibrido",
+  "title": "Bolha, furo e desgaste: quando o pneu do elétrico precisa de atenção imediata",
+  "h1": "Bolha, furo e desgaste: quando o pneu do elétrico precisa de atenção imediata",
+  "category": "Pneus",
+  "summary": "Reconheça sinais que pedem atenção nos pneus de elétricos e híbridos e entenda por que uma avaliação presencial é necessária.",
+  "metaTitle": "Bolha, furo e desgaste nos pneus | Carplus Curitiba",
+  "metaDescription": "Reconheça sinais que pedem atenção nos pneus de elétricos e híbridos e entenda por que uma avaliação presencial é necessária.",
+  "publishedDate": "3 de novembro de 2026",
+  "publishedIso": "2026-11-03",
+  "readingTime": "3 min de leitura",
+  "featuredImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+  "imageAlt": "Fachada da Carplus no Portão, em Curitiba.",
+  "intro": "A Michelin relaciona uma bolha lateral a dano na estrutura do pneu. Não espere que desapareça com calibragem. Diante de deformação, perda importante de pressão ou dano visível, pare em local seguro e procure assistência conforme as orientações do veículo, sem continuar o trajeto para testar o comportamento.",
+  "sections": [
+    {
+      "title": "Bolha não é apenas uma marca na borracha",
+      "level": "h2",
+      "paragraphs": []
+    },
+    {
+      "title": "Um furo exige avaliação interna",
+      "level": "h2",
+      "paragraphs": [
+        "A possibilidade de reparo depende da localização, extensão do dano, condição do pneu e recomendações aplicáveis. A Michelin descreve a desmontagem e inspeção interna como parte da avaliação profissional. Uma foto de fora não permite garantir que o reparo seja adequado.",
+        "Caso o carro tenha kit de mobilidade, use-o apenas conforme o manual da versão. Selantes e soluções emergenciais não significam liberação para seguir usando o pneu indefinidamente. Informe ao profissional se algum produto foi aplicado."
+      ]
+    },
+    {
+      "title": "Confira também os indicadores de desgaste",
+      "level": "h2",
+      "paragraphs": [
+        "Os indicadores TWI ajudam a reconhecer o limite de desgaste da banda de rodagem. A orientação da Michelin no Brasil usa sulcos de 1,6 mm como referência de substituição. Isso não significa que um pneu acima dessa medida esteja sempre seguro: danos e desgaste irregular exigem atenção própria."
+      ]
+    },
+    {
+      "title": "Fontes e leitura complementar",
+      "level": "h2",
+      "paragraphs": [
+        "Conteúdo editorial preparado em 3 de novembro de 2026, com base nas orientações dos fabricantes abaixo. Consulte sempre o manual da versão do seu veículo."
+      ],
+      "internalLinks": [
+        {
+          "text": "Michelin, danos no flanco",
+          "url": "https://www.michelin.com.br/auto/conselhos/troca-de-pneus/danos-no-flanco-do-pneu"
+        },
+        {
+          "text": "Michelin, reparabilidade",
+          "url": "https://www.michelin.com.br/auto/conselhos/troca-de-pneus/conserto-de-pneus"
+        },
+        {
+          "text": "Michelin, TWI",
+          "url": "https://www.michelin.com.br/auto/conselhos/troca-de-pneus/indicador-de-desgaste-do-pneu"
+        },
+        {
+          "text": "BYD, manuais por modelo",
+          "url": "https://www.byd.com/br/manual-proprietario"
+        }
+      ]
+    }
+  ],
+  "faqs": [],
+  "ctaTitle": "Converse com a Carplus no Portão",
+  "ctaText": "Precisa consultar a troca de um pneu danificado? Fale com a Carplus e informe modelo, versão, ano e medida. Não se desloque com o pneu comprometido apenas para chegar à loja; organize a assistência adequada.",
+  "ctaButtonText": "Consultar aplicação e atendimento",
+  "whatsappMessage": "Olá, Carplus! Gostaria de consultar pneus para meu elétrico ou híbrido. Vou informar modelo, ano, versão e medida.",
+  "relatedSlugs": [
+    "desgaste-pneus-carros-eletricos",
+    "como-escolher-pneus-carros-hibridos",
+    "pneus-pressao-autonomia-carro-eletrico"
+  ]
+},
   {
     id: 'pneus-para-carro-eletrico-em-curitiba',
     slug: 'pneus-para-carro-eletrico-em-curitiba',

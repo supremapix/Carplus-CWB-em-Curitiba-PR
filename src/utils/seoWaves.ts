@@ -13,7 +13,7 @@ export const PRIORITY_CITIES = [
 ];
 
 // 2. All Aros & Cars
-export const AROS = ["13", "14", "15", "16", "17", "18", "19", "20"];
+export const AROS = ["13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
 
 export const CARS = [
   "Fiat Palio", "Fiat Uno", "Fiat Argo", "Fiat Cronos", "Fiat Mobi", "Fiat Siena", "Fiat Strada",
@@ -184,31 +184,8 @@ export function getWave2Cidades(): string[] {
 
 // Core checker to see if a link is indexable based on current simulation GSC rate
 export function isPageReleased(name: string, type: 'bairro' | 'cidade' | 'carro' | 'aro', gscIndexationRate: number): boolean {
-  if (gscIndexationRate >= 90) {
-    // Phase 3: ALL is released
-    return true;
-  }
-
-  if (gscIndexationRate >= 80) {
-    // Phase 2: Priority + Wave 2 elements
-    if (type === 'bairro') {
-      return PRIORITY_NEIGHBORHOODS.includes(name) || getWave2Bairros().includes(name);
-    }
-    if (type === 'cidade') {
-      return PRIORITY_CITIES.includes(name) || getWave2Cidades().includes(name);
-    }
-    // Cars and Aros are released only in Phase 3
-    return false;
-  }
-
-  // Phase 1 (Initial / GSC Indexation rate < 80)
-  if (type === 'bairro') {
-    return PRIORITY_NEIGHBORHOODS.includes(name);
-  }
-  if (type === 'cidade') {
-    return PRIORITY_CITIES.includes(name);
-  }
-  return false;
+  // Publish useful public routes consistently; localStorage is not Search Console evidence.
+  return true;
 }
 
 // Retrieve GSC indexing state from localStorage (client only) or fall back to Phase 3 rate (100%)

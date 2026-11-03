@@ -1,3 +1,5 @@
+import { BYD_PAGES, BydClusterView } from './BydClusterPages';
+import { ELECTRIC_GUIDES } from '../data/electricGuides';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Tire, CatalogTire } from '../types';
@@ -17,7 +19,7 @@ interface EnhancedSEOProps {
 }
 
 export default function EnhancedSEO({ currentView, seoTarget, selectedTire, selectedCatalogTire, selectedBlogSlug }: EnhancedSEOProps) {
-  const domain = "https://www.carpluspneuseoficina.com.br";
+  const domain = "https://www.carpluscwb.com.br";
   
   // 1. Calculate Individual Canonical URL
   let canonicalUrl = domain;
@@ -356,6 +358,23 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     }
   }
 
+  if (currentView === 'pneus-eletricos-curitiba' || currentView === 'pneus-hibridos-curitiba') {
+    const guide = ELECTRIC_GUIDES[currentView === 'pneus-eletricos-curitiba' ? 'electric' : 'hybrid'];
+    title = guide.metaTitle; desc = guide.description;
+  }
+  if (seoTarget?.type === 'aro') {
+    title = `Pneus aro ${seoTarget.name} em Curitiba | Carplus Portão`;
+    desc = `Compare medidas e especificações de pneus aro ${seoTarget.name}. Consulte opções e serviços com a Carplus no Portão, Curitiba.`;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(BYD_PAGES, currentView)) {
+    title = `${BYD_PAGES[currentView as BydClusterView].label} | Carplus`;
+    desc = 'Confira aplicação, medidas e cuidados. Consulte pneus e serviços na Carplus, no Portão, Curitiba.';
+  }
+  if (seoTarget?.type === 'bairro' || seoTarget?.type === 'cidade') {
+    title = `Pneus para quem está em ${seoTarget.name} | Carplus no Portão`;
+    desc = `Está em ${seoTarget.name}? Consulte pneus, alinhamento e serviços na unidade Carplus do Portão, em Curitiba. Veja como organizar seu atendimento.`;
+  }
   // 3. Structured Data Models Creation (JSON-LD JSON Objects)
   const baseLocalBusiness = {
     "@type": ["TireShop", "AutoRepair", "AutomotiveBusiness"],
@@ -651,70 +670,13 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       ];
     } else if (seoTarget.type === 'aro') {
       const cleanAroNum = seoTarget.name.replace(/\D/g, '');
-      const rimConfig = RIM_SEO_DATA[cleanAroNum];
-      const startingPrice = rimConfig ? rimConfig.priceFrom.replace('R$', '').trim().replace(',', '.') : '289.90';
-      const brandsText = rimConfig ? rimConfig.recommendedBrands.join(', ') : 'Pirelli, Continental, Goodyear, Michelin, Delinte e Xbri';
-      const measuresText = rimConfig ? rimConfig.topDimensions.map(d => d.measure).join(', ') : 'medidas homologadas';
-
-      questionsList = [
-        {
-          "@type": "Question",
-          "name": `Onde comprar Pneus Aro ${cleanAroNum || seoTarget.name} em Curitiba?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Na Carplus Pneus & Oficina, localizada na Av. Presidente Arthur Bernardes, 1323, no Bairro Portão em Curitiba. Consulte pneus Aro ${cleanAroNum || seoTarget.name}, montagem técnica especializada e disponibilidade.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `Quais fabricantes e medidas de Pneus Aro ${cleanAroNum || seoTarget.name} estão disponíveis de prontidão?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Contamos com um amplo estoque de Pneus Aro R${cleanAroNum || seoTarget.name} novos e homologados pelo INMETRO das marcas ${brandsText} em medidas populares como ${measuresText}.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `Como funciona a montagem dos pneus Aro ${cleanAroNum || seoTarget.name} novos?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Toda reserva efetuada na Carplus Pneus para pneus Aro R${cleanAroNum || seoTarget.name} conta com suporte de montagem computadorizada expressa e alinhamento 3D especializado em nosso autocenter no Portão.`
-          }
-        }
-      ];
-
-      // Add ProductCollection / ItemList Schema for Google Rich Snippets with "A partir de R$..." and 5.0 Stars
-      const productCollectionSchema = {
+      graph.push({
         "@type": "CollectionPage",
         "@id": `${canonicalUrl}#collection`,
-        "name": `Pneus Aro ${cleanAroNum || seoTarget.name} em Curitiba`,
-        "description": `Catálogo de pneus aro ${cleanAroNum || seoTarget.name} em Curitiba com pronta entrega no Portão.`,
-        "url": canonicalUrl,
-        "mainEntity": {
-          "@type": "OfferCatalog",
-          "name": `Catálogo Pneus Aro ${cleanAroNum || seoTarget.name} Curitiba`,
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Product",
-                "name": `Pneus Aro ${cleanAroNum || seoTarget.name} Novos Homologados`,
-                "description": `Linha completa de pneus aro ${cleanAroNum || seoTarget.name} das marcas ${brandsText} com garantia de fábrica e pronta entrega em Curitiba.`
-              },
-              "priceCurrency": "BRL",
-              "price": startingPrice,
-              "priceValidUntil": "2027-12-31",
-              "availability": "https://schema.org/InStock",
-              "seller": {
-                "@type": "TireShop",
-                "name": "Carplus Pneus",
-                "url": domain
-              }
-            }
-          ]
-        }
-      };
-      graph.push(productCollectionSchema);
+        "name": `Pneus aro ${cleanAroNum} em Curitiba`,
+        "description": `Orientações para escolher pneus aro ${cleanAroNum}, conferir especificações e consultar medidas e disponibilidade com a Carplus no Portão.`,
+        "url": canonicalUrl
+      });
     } else if (seoTarget.type === 'carro') {
       questionsList = [
         {
@@ -1069,7 +1031,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
             "name": "Carplus Pneus e Oficina Mecânica",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://www.carpluspneuseoficina.com.br/images/logos/logo-horizontal.svg"
+              "url": "https://www.carpluscwb.com.br/images/logos/logo-horizontal.svg"
             }
           },
           "articleSection": activePost.category
@@ -1095,6 +1057,19 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     }
   }
 
+  // Revised guides expose no legacy FAQ claims absent from their visible content.
+  if (currentView !== 'home') {
+    for (let i = graph.length - 1; i >= 0; i--) {
+      const types = [graph[i]['@type']].flat();
+      if (types.includes('FAQPage') && (Object.prototype.hasOwnProperty.call(BYD_PAGES, currentView) || seoTarget)) graph.splice(i, 1);
+      else if (types.includes('AutoRepair')) {
+        delete graph[i].geo;
+        delete graph[i].hasOfferCatalog;
+      } else if (types.includes('WebSite')) {
+        graph[i].description = 'Pneus e serviços automotivos na Carplus, no Portão em Curitiba. Consulte especificações e disponibilidade.';
+      }
+    }
+  }
   const structuredDataString = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": graph

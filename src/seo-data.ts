@@ -101,114 +101,19 @@ export const METROPOLITAN_CITIES: string[] = [
   "Itaperuçu", "Tijucas do Sul"
 ];
 
-// Curitiba-centric directions to Carplus Portão on Av. Arthur Bernardes, 1323
+// The published address is the destination, not a geocoded point or route estimate.
+export const CARPLUS_STORE_ADDRESS = 'Av. Presidente Arthur da Silva Bernardes, 1323, Portão, Curitiba - PR, 80320-300';
+export const CARPLUS_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(CARPLUS_STORE_ADDRESS)}&travelmode=driving`;
+
 export function getRouteInstructions(locationName: string, type: string): { route: string; distance: string; time: string } {
-  const norm = locationName.toLowerCase();
+  const origin = locationName.trim();
+  const departure = type === 'rmc'
+    ? `Para sair de ${origin}, informe seu endereço de partida no aplicativo de mapas.`
+    : `Para quem está em ${origin}, o trajeto depende do ponto exato de saída.`;
 
-  // Region calculations/simulated routing descriptions
-  if (norm.includes("são josé dos pinhais") || norm.includes("sjp")) {
-    return {
-      route: "Siga pela Av. das Torres (BR-376) sentido Curitiba, pegue a Linha Verde (BR-116) sentido Sul e acesse a Av. Presidente Wenceslau Braz. Continue direto e vire à direita na Av. Presidente Arthur da Silva Bernardes. A Carplus estará à sua direita no número 1323.",
-      distance: "16.8 km",
-      time: "22 min"
-    };
-  }
-  if (norm.includes("araucária") || norm.includes("araucaria")) {
-    return {
-      route: "Siga pela Rodovia do Xisto (BR-476) sentido Curitiba, entre na Av. Juscelino Kubitschek de Oliveira (CIC) e acesse a Av. Winston Churchill / Linha Verde. Siga em direção ao bairro Portão via Av. República Argentina e vire à esquerda na Av. Arthur Bernardes buscando o número 1323.",
-      distance: "18.2 km",
-      time: "24 min"
-    };
-  }
-  if (norm.includes("pinhais")) {
-    return {
-      route: "Siga pela Av. Victor Ferreira do Amaral, acesse a Rodovia BR-277 sentido Curitiba/Centro, entre na Av. Prefeito Omar Sabbag / Viaduto do Capanema. Siga pela Av. Silva Jardim até o Seminário, vire à esquerda na Av. Arthur Bernardes e prossiga até o 1323.",
-      distance: "14.5 km",
-      time: "19 min"
-    };
-  }
-  if (norm.includes("colombo")) {
-    return {
-      route: "Acesse a Rodovia da Uva (PR-417) sentido Sul, siga pela Av. Anita Garibaldi e entre no Barreirinha. Continue pela rápida sentido Cabral/Centro e pegue a Av. Arthur Bernardes cruzando o Seminário direto até o número 1323.",
-      distance: "19.5 km",
-      time: "28 min"
-    };
-  }
-  if (norm.includes("campo largo")) {
-    return {
-      route: "Siga pela Rodovia BR-277 sentido Curitiba (Parque Barigui), entre no Mossunguê pela canaleta/via rápida e pegue a Av. Mário Tourinho sentido Portão. Prossiga pela Av. Arthur Bernardes direto até a nossa oficina.",
-      distance: "26.0 km",
-      time: "25 min"
-    };
-  }
-  if (norm.includes("fazenda rio grande")) {
-    return {
-      route: "Siga pela BR-116 (Régis Bittencourt) sentido Norte, acesse o contorno e entre no Pinheirinho via marginal da Linha Verde. Cruze o Capão Raso via Av. Winston Churchill e Av. República Argentina, e dobre à esquerda na Av. Arthur Bernardes.",
-      distance: "23.4 km",
-      time: "26 min"
-    };
-  }
-  if (norm.includes("neoville") || norm.includes("neo ville")) {
-    return {
-      route: "Siga pela Av. das Indústrias ou Av. Neoville, acesse a Av. Juscelino Kubitschek de Oliveira e suba pela Av. João Bettega sentido Portão. Vire à esquerda na Av. Arthur da Silva Bernardes buscando o número 1323.",
-      distance: "8.2 km",
-      time: "14 min"
-    };
-  }
-  if (norm.includes("portão") || norm.includes("portao")) {
-    return {
-      route: "Já estamos localizados no coração do Portão! Dirija-se à Avenida Presidente Arthur da Silva Bernardes, nº 1323, logo após o cruzamento com a rápida sentido Centro. Fácil acesso com estacionamento próprio e box rápido de atendimento.",
-      distance: "0 km (Estamos aqui!)",
-      time: "1 min"
-    };
-  }
-  if (norm.includes("cic") || norm.includes("cidade industrial") || norm.includes("sandra") || norm.includes("verde") || norm.includes("régia")) {
-    return {
-      route: "Siga pela Av. Juscelino Kubitschek de Oliveira ou Av. João Bettega sentido Leste/Portão. Atravesse os cruzamentos principais da João Bettega e vire à esquerda na Av. Arthur da Silva Bernardes. Siga até o número 1323.",
-      distance: "6.5 km",
-      time: "11 min"
-    };
-  }
-  if (norm.includes("água verde") || norm.includes("agua verde")) {
-    return {
-      route: "Estamos bem do lado! Acesse a Av. República Argentina ou a Av. Getúlio Vargas sentido Seminário/Portão, contorne pela Av. President Arthur Bernardes e pare no número 1323 para a sua instalação rápida.",
-      distance: "1.9 km",
-      time: "4 min"
-    };
-  }
-  if (norm.includes("sítio cercado") || norm.includes("sitio cercado") || norm.includes("osternack")) {
-    return {
-      route: "Siga pela Av. Izaac Ferreira da Cruz, suba sentido Pinheirinho pela Winston Churchill, pegue a rápida sentido Centro e vire na Av. Arthur Bernardes direto até o número 1323.",
-      distance: "11.2 km",
-      time: "18 min"
-    };
-  }
-  if (norm.includes("boqueirão") || norm.includes("hauer") || norm.includes("xaxim")) {
-    return {
-      route: "Siga pela Av. Marechal Floriano Peixoto ou Winston Churchill sentido Portão, pegue o binário da Wenceslau Braz sentido Leste e continue direto para a Av. Arthur Bernardes.",
-      distance: "7.8 km",
-      time: "13 min"
-    };
-  }
-  if (norm.includes("santa felicidade") || norm.includes("orleans") || norm.includes("são braz")) {
-    return {
-      route: "Siga pela Av. Manoel Ribas sentido Centro, contorne no Mercês sentido Seminário via Av. Mário Tourinho, continue por ela até se tornar Av. Arthur Bernardes, siga direto até o 1323.",
-      distance: "9.5 km",
-      time: "14 min"
-    };
-  }
-  if (norm.includes("cajuru") || norm.includes("uberaba") || norm.includes("capão da imbuia") || norm.includes("imbuia")) {
-    return {
-      route: "Acesse a Av. das Torres ou a BR-277 no sentido Centro, entre na Av. Silva Jardim, cruze a Rebouças, cruze o Batel, vire à esquerda na Av. Arthur Bernardes e siga até o número 1323.",
-      distance: "9.9 km",
-      time: "15 min"
-    };
-  }
-
-  // Default close standard route from any Curitiba suburb
   return {
-    route: "Dirija-se à Avenida Presidente Arthur da Silva Bernardes (pista dupla importante de ligação no Portão / Seminário). A Carplus se encontra no número 1323, entre as esquinas do Portão e Seminário, com fácil acesso de retorno por ambos os lados.",
-    distance: "4.5 km",
-    time: "8 min"
+    route: `${departure} O atendimento é na loja do Portão: ${CARPLUS_STORE_ADDRESS}. Abra a rota no Google Maps, confira o destino e consulte as condições atuais do percurso antes de sair.`,
+    distance: 'Consulte a rota',
+    time: 'Varia conforme o trajeto'
   };
 }

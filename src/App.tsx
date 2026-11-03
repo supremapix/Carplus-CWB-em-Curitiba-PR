@@ -1,3 +1,5 @@
+import ElectricGuides from './components/ElectricGuides';
+import InnerPageNav from './components/InnerPageNav';
 import React, { useState, useEffect, useRef, useMemo, useCallback, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -67,7 +69,7 @@ export default function App() {
   // Global States
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site' | 'seo-landing' | 'pneu-detalhes' | 'contato' | 'curitiba' | 'regiao-metropolitana' | 'admin-indexacao' | 'carrinho' | 'oficina-do-pneu-curitiba' | 'garagem-de-pneus-curitiba' | 'pneus-pirelli-curitiba' | 'alinhamento-3d-curitiba' | 'blog' | 'xbri-pneus-curitiba' | 'pneus-baratos-em-curitiba' | 'melhor-site-para-comprar-pneus' | 'distribuidora-de-pneus-importados-atacado-curitiba' | 'pneu-hankook-curitiba' | 'pneus-bridgestone-curitiba-precos' | 'barao-pneus-e-oficina-bacacheri-curitiba' | 'barao-pneus-sao-jose-pinhais' | 'pneus-em-curitiba-melhor-preco' | 'distribuidora-de-pneus-em-curitiba' | 'bana-pneus' | 'loja-de-pneus-em-curitiba' | 'pneus-pirelli-em-curitiba-melhor-preco' | 'barao-pneus-e-oficina-portao' | 'auto-center-curitiba' | 'troca-de-pneus-curitiba' | 'centro-automotivo-portao' | 'pneus-byd-curitiba' | 'pneu-byd-dolphin-curitiba' | 'pneu-byd-dolphin-mini-curitiba' | 'pneu-byd-dolphin-gs-curitiba' | 'pneu-byd-king-curitiba' | 'pneu-175-55-r16-curitiba' | 'pneu-195-60-r16-curitiba' | 'pneu-205-50-r17-curitiba' | 'pneu-215-55-r17-curitiba' | 'pneu-225-60-r16-curitiba' | 'catalogo-pneus' | 'catalogo-detalhe'>('home');
+  const [currentView, setCurrentView] = useState<'pneus-eletricos-curitiba' | 'pneus-hibridos-curitiba' | 'home' | 'quem-somos' | 'politica-privacidades' | 'politica-devolucao' | 'mapa-do-site' | 'seo-landing' | 'pneu-detalhes' | 'contato' | 'curitiba' | 'regiao-metropolitana' | 'admin-indexacao' | 'carrinho' | 'oficina-do-pneu-curitiba' | 'garagem-de-pneus-curitiba' | 'pneus-pirelli-curitiba' | 'alinhamento-3d-curitiba' | 'blog' | 'xbri-pneus-curitiba' | 'pneus-baratos-em-curitiba' | 'melhor-site-para-comprar-pneus' | 'distribuidora-de-pneus-importados-atacado-curitiba' | 'pneu-hankook-curitiba' | 'pneus-bridgestone-curitiba-precos' | 'barao-pneus-e-oficina-bacacheri-curitiba' | 'barao-pneus-sao-jose-pinhais' | 'pneus-em-curitiba-melhor-preco' | 'distribuidora-de-pneus-em-curitiba' | 'bana-pneus' | 'loja-de-pneus-em-curitiba' | 'pneus-pirelli-em-curitiba-melhor-preco' | 'barao-pneus-e-oficina-portao' | 'auto-center-curitiba' | 'troca-de-pneus-curitiba' | 'centro-automotivo-portao' | 'pneus-byd-curitiba' | 'pneu-byd-dolphin-curitiba' | 'pneu-byd-dolphin-mini-curitiba' | 'pneu-byd-dolphin-gs-curitiba' | 'pneu-byd-king-curitiba' | 'pneu-175-55-r16-curitiba' | 'pneu-195-60-r16-curitiba' | 'pneu-205-50-r17-curitiba' | 'pneu-215-55-r17-curitiba' | 'pneu-225-60-r16-curitiba' | 'catalogo-pneus' | 'catalogo-detalhe'>('home');
   const [seoTarget, setSeoTarget] = useState<{ type: 'bairro' | 'cidade' | 'aro' | 'carro'; name: string; region?: string; detail?: string; } | null>(null);
   const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null);
   const [activeHomeFaqIdx, setActiveHomeFaqIdx] = useState<number | null>(null);
@@ -556,6 +558,10 @@ export default function App() {
 
     const firstRoute = parts[0].toLowerCase();
 
+    if (firstRoute === 'pneus-eletricos-curitiba' || firstRoute === 'pneus-hibridos-curitiba') {
+      setCurrentView(firstRoute); setSeoTarget(null); setSelectedTire(null); return;
+    }
+
     // Specific SEO vanity URLs matching for Aros (13 to 23)
     const aroMatch = firstRoute.match(/^(?:pneus?-aro-|aro-)(\d{2})(?:-curitiba)?$/);
     if (aroMatch && aroMatch[1]) {
@@ -769,6 +775,11 @@ export default function App() {
       setSeoTarget(null);
       setSelectedTire(null);
     } else if (firstRoute === 'pneus') {
+      const query = new URLSearchParams(window.location.search);
+      const queryRim = query.get('aro');
+      if (queryRim && /^(1[3-9]|2[0-3])$/.test(queryRim)) setCatalogFilterRim(Number(queryRim));
+      const querySearch = query.get('busca');
+      if (querySearch) setCatalogFilterSearch(querySearch.trim().slice(0, 120));
       if (parts[1] && (/^aro-(\d+)/.test(parts[1]) || /^\d+$/.test(parts[1]))) {
         const rimMatch = parts[1].match(/(?:aro-)?(\d+)/);
         const rimNumber = rimMatch ? parseInt(rimMatch[1], 10) : 16;
@@ -1023,7 +1034,7 @@ export default function App() {
   const spotlightOffers = TIRES_DATA.filter(t => t.isOffer);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col font-sans selection:bg-[#f49e1a] selection:text-gray-950 pb-24 sm:pb-0 overflow-x-hidden w-full max-w-full" id="carplus-root">
+    <div className={`min-h-screen bg-gray-50 flex flex-col font-sans selection:bg-[#f49e1a] selection:text-gray-950 pb-24 sm:pb-0 overflow-x-hidden w-full max-w-full${currentView !== 'home' ? ' carplus-inner-pages' : ''}`} id="carplus-root" data-page={currentView} data-inner={currentView !== 'home' ? 'true' : undefined}>
       
       {/* Dynamic Advanced Helmet-driven Head & Structured Data Management */}
       <EnhancedSEO 
@@ -1041,8 +1052,11 @@ export default function App() {
         onOpenCart={() => setIsCartOpen(true)}
       />
 
+      {currentView !== 'home' && <InnerPageNav />}
       {/* Main Content Layout */}
-      {currentView === 'catalogo-detalhe' && selectedCatalogTire ? (
+      {currentView === 'pneus-eletricos-curitiba' || currentView === 'pneus-hibridos-curitiba' ? (
+        <main className="flex-1 w-full bg-white"><ElectricGuides kind={currentView === 'pneus-eletricos-curitiba' ? 'electric' : 'hybrid'} /></main>
+      ) : currentView === 'catalogo-detalhe' && selectedCatalogTire ? (
         <main className="flex-1 w-full bg-white">
           <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center p-12 text-sm text-gray-500 font-mono">Carregando detalhes do pneu...</div>}>
             <CatalogTireDetail 

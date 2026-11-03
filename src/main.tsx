@@ -5,6 +5,7 @@ import ErrorBoundary from './components/ErrorBoundary.tsx';
 import App from './App.tsx';
 import './index.css';
 import './carplus-theme.css';
+import './inner-pages.css';
 
 // Crawlers receive static social tags; React owns them after the app starts.
 document.head.querySelectorAll('meta[data-carplus-social-fallback]').forEach(tag => tag.remove());

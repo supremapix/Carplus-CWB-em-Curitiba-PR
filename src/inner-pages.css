@@ -1,0 +1,109 @@
+/* Inner-page theme only. Never target html/body or the Home subtree here. */
+#carplus-root.carplus-inner-pages {
+  --inner-ink: #202124;
+  --inner-muted: #555b65;
+  --inner-line: #dce0e5;
+  --inner-accent: #b4232c;
+  background: #fff;
+  color: var(--inner-ink);
+  color-scheme: light;
+}
+#carplus-root.carplus-inner-pages main { background: #fff; color: var(--inner-ink); }
+#carplus-root.carplus-inner-pages main :is(h1,h2,h3,h4) { line-height: 1.2; }
+#carplus-root.carplus-inner-pages main [style*="text-shadow"] { text-shadow: none!important; }
+#carplus-root.carplus-inner-pages main :is(h1,h2) { letter-spacing: -.025em; }
+#carplus-root.carplus-inner-pages main :is(p,li) { line-height: 1.8; }
+#carplus-root.carplus-inner-pages main :is(.font-mono) { font-family: var(--font-sans); }
+#carplus-root.carplus-inner-pages main :is(.text-xs,.text-\[10px\],.text-\[11px\]):not(:where(.carplus-product-card *)) { font-size: 14px; line-height: 1.7; }
+
+/* Undo the legacy dark utility remapping without touching product photography. */
+#carplus-root.carplus-inner-pages main :is(.bg-white,.bg-gray-50,.bg-zinc-50,.bg-neutral-50,.bg-slate-50,[class~="bg-[#F7F7F7]"]):not(:where(.carplus-product-card,.carplus-product-card *,.carplus-white-surface *)) { background-color: #fff; }
+#carplus-root.carplus-inner-pages main :is(.bg-gray-100,.bg-gray-200,.bg-zinc-100,.bg-neutral-100,[class*="bg-amber-50"],[class*="bg-yellow-50"],[class*="bg-green-50"],[class*="bg-emerald-50"],[class*="bg-red-50"],.bg-red-100,.bg-amber-100):not(:where(.carplus-product-card *)) { background-color: #f5f6f8; }
+#carplus-root.carplus-inner-pages main :is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-850,.bg-gray-800,.bg-zinc-950,.bg-zinc-900,.bg-slate-900,[class~="bg-[#080808]"],[class~="bg-[#111111]"],[class~="bg-[#0a0a0a]"],[class~="bg-[#161616]"],[class~="bg-[#1e2026]"]):not(.absolute):not(:where(.carplus-product-card *)) { background-color: #f4f5f7; color: var(--inner-ink); }
+#carplus-root.carplus-inner-pages main :is([class*="from-gray-"],[class*="from-slate-"],[class*="from-emerald-"],[class*="from-blue-"],[class*="from-zinc-"],[class*="from-amber-"],[class*="from-sky-"],[class*="from-red-"]):not(.absolute) { background-image: linear-gradient(130deg,#f7f8fa,#fff); }
+#carplus-root.carplus-inner-pages main :is(.text-white,.text-black,[class*="text-gray-9"],.text-gray-800,.text-gray-700,.text-zinc-950,.text-zinc-900,.text-zinc-800,.text-zinc-700,.text-slate-900):not(:where(.carplus-product-card *)) { color: var(--inner-ink); }
+#carplus-root.carplus-inner-pages main :is([class*="text-gray-3"],[class*="text-gray-4"],[class*="text-gray-5"],[class*="text-gray-6"],.text-gray-750,.text-gray-705,.text-zinc-300,.text-zinc-400,.text-zinc-500,.text-zinc-600,.text-neutral-600):not(:where(.carplus-product-card *)) { color: var(--inner-muted); }
+#carplus-root.carplus-inner-pages main :is([class*="text-amber-"],[class*="text-orange-"],[class*="text-yellow-"],[class*="text-red-"],[class*="text-blue-"],[class*="text-green-"],[class*="text-emerald-"],[class~="text-[#F5A623]"],[class~="text-[#f49e1a]"],[class~="text-[#f59c00]"]):not(:where(.carplus-product-card *)) { color: var(--inner-accent); }
+#carplus-root.carplus-inner-pages main :is([class*="border-gray-"],[class*="border-zinc-"],.border-black,.border-neutral-200,[class*="border-white/"]):not(:where(.carplus-product-card *)) { border-color: var(--inner-line); }
+#carplus-root.carplus-inner-pages main :is(.shadow-xl,.shadow-2xl) { box-shadow: 0 8px 28px rgb(24 31 43 / .06); }
+#carplus-root.carplus-inner-pages main :is(input,select,textarea) { background: #fff; color: var(--inner-ink); border-color: #939aa5; color-scheme: light; }
+#carplus-root.carplus-inner-pages main input::placeholder { color: #646b75; opacity: 1; }
+#carplus-root.carplus-inner-pages main :is(input[type="checkbox"],input[type="radio"]) { accent-color: var(--inner-accent); }
+#carplus-root.carplus-inner-pages :is(a,button,input,select,textarea,summary):focus-visible { outline: 3px solid #b4232c!important; outline-offset: 4px!important; }
+#carplus-root.carplus-inner-pages main :is(a,button,summary) { text-underline-offset: 4px; }
+#carplus-root.carplus-inner-pages main :is(button,summary) { min-height: 44px; }
+#carplus-root.carplus-inner-pages main a:hover { text-decoration-thickness: 2px; }
+#carplus-root.carplus-inner-pages main :is(.carplus-action-primary,.carplus-button-primary,[class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"],[class~="bg-[#f59c00]"],[class~="bg-[#25D366]"],.bg-green-500,.bg-green-600,.bg-emerald-500,.bg-emerald-600,.bg-amber-400,.bg-amber-500,.bg-amber-600) { background: var(--inner-accent); border-color: var(--inner-accent); color: #fff!important; }
+#carplus-root.carplus-inner-pages main :is(.carplus-action-primary,.carplus-button-primary,[class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"],[class~="bg-[#f59c00]"],[class~="bg-[#25D366]"]) :is(span,strong,svg) { color: #fff!important; }
+#carplus-root.carplus-inner-pages main :is(.carplus-action-primary,.carplus-button-primary):hover { background: #941c24; border-color: #941c24; box-shadow: 0 4px 16px rgb(180 35 44 / .12); }
+#carplus-root.carplus-inner-pages main :is(.carplus-action-secondary,.carplus-button-secondary) { background: #fff; border-color: #a4aab3; color: var(--inner-ink)!important; }
+#carplus-root.carplus-inner-pages main :is(.carplus-action-secondary,.carplus-button-secondary):hover { background: #f5f6f8; border-color: var(--inner-accent); }
+#carplus-root.carplus-inner-pages .carplus-product-card { background: #fff; color: #17191d; border-color: var(--inner-line); }
+#carplus-root.carplus-inner-pages main :is(.carplus-photo-frame,.carplus-photo-frame figcaption) { background: #f7f8fa; color: var(--inner-muted); border-color: var(--inner-line); }
+#carplus-root.carplus-inner-pages main .carplus-photo-frame { border-top-color: var(--inner-accent); }
+#carplus-root.carplus-inner-pages main table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.65; }
+#carplus-root.carplus-inner-pages main :is(th,td) { padding: 14px 16px; border-bottom: 1px solid var(--inner-line); text-align: left; }
+#carplus-root.carplus-inner-pages main th { background: #f0f2f5; color: var(--inner-ink); font-weight: 700; }
+#carplus-root.carplus-inner-pages main tbody tr:nth-child(even) { background: #fafbfc; }
+
+/* Compact, native secondary navigation: the global header remains familiar. */
+#carplus-root.carplus-inner-pages .inner-page-nav { background: #fff; border-bottom: 1px solid var(--inner-line); color: var(--inner-ink); position: relative; z-index: 20; }
+#carplus-root.carplus-inner-pages .inner-page-nav-shell { display: flex; align-items: center; gap: 18px; max-width: 1280px; margin: auto; padding: 10px 32px; }
+#carplus-root.carplus-inner-pages .inner-page-nav-links { display: flex; flex: 1; flex-wrap: wrap; gap: 4px 16px; }
+#carplus-root.carplus-inner-pages .inner-page-nav a,
+#carplus-root.carplus-inner-pages .inner-page-nav summary { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 5px; border-radius: 4px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #444a54; text-decoration: none; cursor: pointer; }
+#carplus-root.carplus-inner-pages .inner-page-nav .inner-page-home { border-right: 1px solid var(--inner-line); border-radius: 0; padding-right: 20px; }
+#carplus-root.carplus-inner-pages .inner-page-nav :is(a:hover,a[aria-current="page"]) { color: var(--inner-accent); text-decoration: underline; text-underline-offset: 6px; }
+#carplus-root.carplus-inner-pages .inner-page-rims { position: relative; flex-shrink: 0; }
+#carplus-root.carplus-inner-pages .inner-page-rims summary { list-style: none; }
+#carplus-root.carplus-inner-pages .inner-page-rims summary::-webkit-details-marker { display: none; }
+#carplus-root.carplus-inner-pages .inner-page-rims[open] summary { color: var(--inner-accent); }
+#carplus-root.carplus-inner-pages .inner-page-rim-links { position: absolute; right: 0; top: calc(100% + 6px); width: 290px; display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; padding: 14px; background: #fff; border: 1px solid var(--inner-line); border-radius: 8px; box-shadow: 0 12px 35px rgb(24 31 43 / .12); }
+#carplus-root.carplus-inner-pages .inner-page-rim-links a { justify-content: center; background: #f6f7f9; }
+
+/* Catalog-specific styles use IDs and need explicit scoped overrides. */
+#carplus-root.carplus-inner-pages #tire-catalog-page { background: #f8f9fb; color: var(--inner-ink); padding-top: 30px; }
+#carplus-root.carplus-inner-pages #tire-catalog-page :is(.catalog-heading h1,.catalog-results-toolbar h2,.catalog-empty h3,.catalog-field>label,.catalog-guide>summary) { color: var(--inner-ink); }
+#carplus-root.carplus-inner-pages #tire-catalog-page :is(.catalog-breadcrumb,.catalog-breadcrumb a,.catalog-heading>p:last-child,.catalog-results-toolbar p,.catalog-sort>label,.catalog-search-field>p,.catalog-page-select,.catalog-empty p,.catalog-clear,.catalog-extra-filters>summary) { color: var(--inner-muted); }
+#carplus-root.carplus-inner-pages #tire-catalog-page :is(.catalog-eyebrow,.catalog-extra-filters>summary svg,.catalog-guide>summary svg,.catalog-empty>svg) { color: var(--inner-accent); }
+#carplus-root.carplus-inner-pages #tire-catalog-page :is(.catalog-search-panel,.catalog-empty,.catalog-guide) { background: #fff; border-color: var(--inner-line); box-shadow: 0 3px 16px rgb(24 31 43 / .03); }
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-search-panel { border-top-color: var(--inner-accent); }
+#carplus-root.carplus-inner-pages #tire-catalog-page :is(input,select) { background: #fff; color: var(--inner-ink); border-color: #939aa5; }
+#carplus-root.carplus-inner-pages #tire-catalog-page input::placeholder { color: #646b75; }
+#carplus-root.carplus-inner-pages #tire-catalog-page :is(.catalog-search-input>svg,.catalog-search-input button) { color: var(--inner-muted); }
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-search-input button:hover { background: #eef0f3; }
+#carplus-root.carplus-inner-pages #tire-catalog-page :is(.catalog-extra-filters,.catalog-active-filters,.catalog-pagination) { border-color: var(--inner-line); }
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-filter-chip { color: #8f1c24; border-color: #e7b7bb; background: #fff4f5; }
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-filter-chip:hover { background: #ffe7e9; }
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-pagination>button { color: var(--inner-ink); background: #fff; border-color: #a4aab3; }
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-empty button { background: var(--inner-accent); color: #fff; border-color: var(--inner-accent); }
+
+/* Editorial surfaces and readable long-form text. */
+#carplus-root.carplus-inner-pages .carplus-blog { --blog-gold: #b4232c; --blog-text: #4b515b; --blog-line: #dce0e5; background: #fff; color: var(--inner-ink); }
+#carplus-root.carplus-inner-pages .carplus-blog :is(.blog-list-title,.blog-card-link,.blog-card-title,.blog-panel-title,.blog-article-title,.blog-section-heading,.blog-callout-title,.blog-internal-title,.blog-phone-link,.blog-back-link,.blog-local-details a,.blog-faq summary,.blog-catalog-details>summary,.blog-filter-panel label,.blog-manual-copy label) { color: var(--inner-ink); }
+#carplus-root.carplus-inner-pages .carplus-blog :is(.blog-breadcrumb,.blog-breadcrumb a,.blog-header-photo figcaption,.blog-featured-photo figcaption,.blog-results-count,.blog-card-meta,.blog-card-summary,.blog-article-meta,.blog-article-lead,.blog-internal-description,.blog-editorial-notice p,.blog-local-details p,.blog-share-status) { color: var(--inner-muted); }
+#carplus-root.carplus-inner-pages .carplus-blog :is(.blog-header-photo,.blog-featured-photo,.blog-filter-panel,.blog-card,.blog-empty-state,.blog-contact-panel,.blog-callout,.blog-internal-link,.blog-editorial-notice,.blog-catalog-details,.blog-featured-photo img,.blog-card-photo) { background: #f8f9fb; border-color: var(--inner-line); }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-card { background: #fff; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-card:hover { border-color: #c4a0a3; box-shadow: 0 7px 24px rgb(24 31 43 / .07); }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-category { background: #fff4f5; border-color: #ebc5c8; }
+#carplus-root.carplus-inner-pages .carplus-blog :is(.blog-filter-panel input,.blog-filter-panel select,.blog-manual-copy input) { background: #fff; color: var(--inner-ink); border-color: #939aa5; color-scheme: light; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-filter-panel input::placeholder { color: #646b75; }
+#carplus-root.carplus-inner-pages .carplus-blog :is(.blog-article-meta svg,.blog-card-meta svg) { color: #646b75; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-callout { border-left-color: var(--inner-accent); }
+@media(max-width:900px) {
+  #carplus-root.carplus-inner-pages .inner-page-nav-shell { flex-wrap: wrap; gap: 0 14px; padding-inline: 20px; }
+  #carplus-root.carplus-inner-pages .inner-page-nav-links { order: 3; flex-basis: 100%; gap: 2px 16px; border-top: 1px solid #edf0f3; margin-top: 5px; padding-top: 5px; }
+  #carplus-root.carplus-inner-pages .inner-page-rims { margin-left: auto; }
+}
+@media(max-width:600px) {
+  #carplus-root.carplus-inner-pages .inner-page-nav-shell { padding-inline: 18px; }
+  #carplus-root.carplus-inner-pages .inner-page-nav-links { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2px 8px; }
+  #carplus-root.carplus-inner-pages .inner-page-nav a { font-size: 13px; }
+  #carplus-root.carplus-inner-pages .inner-page-rim-links { width: min(290px,calc(100vw - 36px)); }
+  #carplus-root.carplus-inner-pages main :is(h1,h2,h3) { overflow-wrap: anywhere; }
+  #carplus-root.carplus-inner-pages main :is(th,td) { padding: 12px 10px; }
+}
+/* Preserve selected filter states and dark secondary controls on light panels. */
+#carplus-root.carplus-inner-pages main :is(button,a):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-900):not(:where(.carplus-product-card *)) { background: #272b32; color: #fff; border-color: #272b32; }
+#carplus-root.carplus-inner-pages main :is(button,a):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-900):not(:where(.carplus-product-card *)) :is(span,strong,svg) { color: inherit; }
+#carplus-root.carplus-inner-pages main :is(button,a):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-900):hover { background: #414752; }

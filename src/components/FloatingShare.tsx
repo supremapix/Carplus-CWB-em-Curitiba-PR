@@ -21,7 +21,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     return () => observer.disconnect();
   }, []);
 
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.carpluspneuseoficina.com.br';
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.carpluscwb.com.br';
   const shareTitle = selectedTire 
     ? `Pneu ${selectedTire.brand} ${selectedTire.model} (${selectedTire.width}/${selectedTire.aspectRatio} R${selectedTire.rim}) | Carplus Curitiba`
     : seoTarget?.title || 'Carplus Pneus e Oficina Mecânica | Curitiba Portão';
@@ -30,7 +30,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     : 'Especialistas em pneus novos, importados, nacionais e mecânica full service no Portão, Curitiba.';
   
   // NEVER use logo as share preview image per user request ("a imagem do botao compartilhar nao pode ser a logo")
-  const shareImage = selectedTire?.image || selectedTire?.imagem || selectedTire?.imagemGrande || 'https://www.carpluspneuseoficina.com.br/images/galeria/pneus-auto-center.jpg';
+  const shareImage = selectedTire?.image || selectedTire?.imagem || selectedTire?.imagemGrande || 'https://www.carpluscwb.com.br/images/galeria/pneus-auto-center.jpg';
 
   const handleCopyLink = async () => {
     try {
@@ -95,7 +95,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
                 src={shareImage} 
                 alt="Preview" 
                 className="w-full h-full object-cover rounded-lg" 
-                onError={(e)=>{ (e.target as HTMLImageElement).src = 'https://www.carpluspneuseoficina.com.br/og-carplus.webp'; }}
+                onError={(e)=>{ (e.target as HTMLImageElement).src = 'https://www.carpluscwb.com.br/og-carplus.webp'; }}
               />
             </div>
             <div className="min-w-0 flex-1">

@@ -1,4 +1,4 @@
-export const SITE_ORIGIN = 'https://www.carpluspneuseoficina.com.br';
+export const SITE_ORIGIN = 'https://www.carpluscwb.com.br';
 export const HOME_SOCIAL_IMAGE_PATH = '/images/social/carplus-prinx-nova-energia-og.png';
 export const HOME_SOCIAL_IMAGE_URL = `${SITE_ORIGIN}${HOME_SOCIAL_IMAGE_PATH}`;
 export const HOME_SOCIAL_TITLE = 'Pneus Prinx para elétricos e híbridos | Carplus';

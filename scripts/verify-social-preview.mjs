@@ -16,7 +16,9 @@ const args = process.argv.slice(2);
 const option = (name, fallback) => args.includes(name) ? args[args.indexOf(name) + 1] : fallback;
 const baseRef = option('--base', 'HEAD');
 const dist = path.resolve(root, option('--dist', 'dist'));
-const origin = 'https://www.carpluspneuseoficina.com.br';
+const origin = 'https://www.carpluscwb.com.br';
+const previousOrigin = 'https://www.carpluspneuseoficina.com.br';
+const migrateDomain = value => JSON.parse(JSON.stringify(value).replaceAll(previousOrigin, origin));
 const imagePath = '/images/social/carplus-prinx-nova-energia-og.png';
 const imageUrl = `${origin}${imagePath}`;
 const title = 'Pneus Prinx para elétricos e híbridos | Carplus';
@@ -132,7 +134,7 @@ try {
   validateMarkers(sourceIndex.tags, 'source home');
   validateMarkers(builtIndex.tags, 'crawler home');
   assert.equal(builtIndex.title, originalIndex.title, 'SEO title is preserved independently of the social title');
-  assert.deepEqual(builtIndex.canonical, originalIndex.canonical, 'Home canonical is preserved');
+  assert.deepEqual(builtIndex.canonical, migrateDomain(originalIndex.canonical), 'Home canonical migrates to this property without changing its path');
   assert.deepEqual(builtIndex.metas.filter(([key]) => key === 'description'), originalIndex.metas.filter(([key]) => key === 'description'), 'SEO description is preserved independently of the social description');
 
   const image = fs.readFileSync(path.join(dist, imagePath.slice(1)));
@@ -177,6 +179,7 @@ try {
     { label: 'catalog product', props: { ...baseProps, currentView: 'catalogo-detalhe', selectedCatalogTire: promo } },
     { label: 'legacy product', props: { ...baseProps, currentView: 'pneu-detalhes', selectedTire: legacy } },
     { label: 'blog article', props: { ...baseProps, currentView: 'blog', selectedBlogSlug: post.slug } },
+    ...Array.from({length:11},(_,i)=>({label:`rim ${i+13}`,props:{...baseProps,currentView:'seo-landing',seoTarget:{type:'aro',name:String(i+13)}}})),
     ...[{ type: 'bairro', name: 'Portão' }, { type: 'cidade', name: 'São José dos Pinhais' }, { type: 'aro', name: '16' }, { type: 'carro', name: 'Toyota Corolla' }].map(seoTarget => ({ label: `SEO ${seoTarget.type}`, props: { ...baseProps, currentView: 'seo-landing', seoTarget } }))
   );
   for (const fixture of fixtures) {
@@ -187,9 +190,26 @@ try {
       before.metas = before.metas.filter(([key]) => !mutableKeys.has(key));
       after.metas = after.metas.filter(([key]) => !mutableKeys.has(key));
     }
-    assert.deepEqual(after, before, `React SEO preserved: ${fixture.label}`);
+    if (fixture.label === 'home') {
+      assert.deepEqual(after, migrateDomain(before), 'Home SEO preserved except authorized own-domain correction');
+    } else {
+      if(fixture.props.seoTarget?.type === 'aro') assert.ok(!/OfferCatalog|InStock|priceValidUntil|pronta entrega/.test(JSON.stringify(after.schemas)), `No invented rim offers: ${fixture.label}`);
+      for (const schema of after.schemas) {
+        for (const record of schema['@graph'] || [schema]) {
+          if ([record['@type']].flat().includes('AutoRepair')) assert.ok(!Object.hasOwn(record, 'geo'), `No unverified inner business geo: ${fixture.label}`);
+        }
+      }
+      assert.equal(after.canonical.length, 1, `One canonical: ${fixture.label}`);
+      assert.ok(after.canonical[0].startsWith(origin + '/'), `Own-domain canonical: ${fixture.label}`);
+      assert.ok(after.title.length > 0, `Nonempty title: ${fixture.label}`);
+      assert.ok(!after.metas.some(([, value]) => value === imageUrl || value === title || value === description || value === imageAlt), `No home campaign in ${fixture.label}`);
+      // Inner-page metadata/content was explicitly revised. Check the public SEO contract
+      // instead of freezing obsolete descriptions and simulated geographic claims.
+      const ogUrls = after.metas.filter(([key]) => key === 'og:url').map(([, value]) => value);
+      assert.deepEqual(ogUrls, after.canonical, `Social URL follows canonical: ${fixture.label}`);
+    }
   }
-  console.log(`PASS: crawler home preview is complete and unique; PNG 1200x630; ${secondaryPages} secondary HTML files isolated; scoped pre-React cleanup; ${fixtures.length} React metadata cases preserve SEO and page-specific previews against ${baseCommit}.`);
+  console.log(`PASS: crawler home preview is complete and unique; PNG 1200x630; ${secondaryPages} secondary HTML files isolated; scoped pre-React cleanup; ${fixtures.length} React metadata cases preserve Home SEO with authorized domain correction and enforce inner-page preview isolation against ${baseCommit}.`);
 } catch (error) {
   console.error(`FAIL: ${error.message}`);
   process.exitCode = 1;
