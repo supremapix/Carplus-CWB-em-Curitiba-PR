@@ -150,7 +150,7 @@
   --control-line: #8f1c24;
 }
 #carplus-root.carplus-inner-pages #tire-catalog-page .catalog-filter-chip:hover { --control-fill: #ffe7e9; }
-#carplus-root.carplus-inner-pages main :is(button,[role="button"],summary,a[class*="bg-"],.carplus-action-primary,.carplus-action-secondary,.carplus-button,.eg-button,.catalog-filter-chip) :is(span,strong,small,svg) {
+#carplus-root.carplus-inner-pages main :is(button,[role="button"],summary,a[class*="bg-"],.carplus-action-primary,.carplus-action-secondary,.carplus-button,.eg-button,.catalog-filter-chip) :is(span,strong,small,svg,p,div,b,em,h2,h3,h4) {
   color: inherit!important;
 }
 #carplus-root.carplus-inner-pages main :is(button,[role="button"]):is(:disabled,[aria-disabled="true"]) {
@@ -168,3 +168,31 @@
   outline-offset: 3px!important;
   box-shadow: 0 0 0 3px #ffffff!important;
 }
+
+/* Legacy light-gray captions need dark ink on the inner light surfaces. */
+#carplus-root.carplus-inner-pages main :is([class~="text-[#c3c3c3]"],.text-slate-300,.text-slate-400,.text-neutral-300,.text-neutral-400) { color: var(--inner-muted); }
+#carplus-root.carplus-inner-pages main :is([class~="text-[#1ebd53]"]) { color: #16703a; }
+#carplus-root.carplus-inner-pages main :is([class~="bg-[#18181b]"],[class~="bg-zinc-900/90"]) { background: #f4f5f7; color: var(--inner-ink); }
+
+/* Static badges are surfaces too: pair their fill and ink even when absolute
+   or inside a white photo frame. Exact class tokens exclude decorative shadows.
+   Scope is deliberately not a blanket descendant override on large panels. */
+#carplus-root.carplus-inner-pages main :is(span,div.absolute,div.inline-flex):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-950,.bg-zinc-900,.bg-slate-900,.bg-neutral-900,[class~="bg-[#080808]"],[class~="bg-[#111111]"],[class~="bg-[#161616]"],[class~="bg-[#202020]"],[class~="bg-[#1a1c20]"]) {
+  background: #272b32!important;
+  color: #ffffff!important;
+  border-color: #272b32!important;
+  opacity: 1!important;
+  animation: none!important;
+}
+#carplus-root.carplus-inner-pages main :is(span,div.absolute,div.inline-flex):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-950,.bg-zinc-900,.bg-slate-900,.bg-neutral-900,[class~="bg-[#080808]"],[class~="bg-[#111111]"],[class~="bg-[#161616]"],[class~="bg-[#202020]"],[class~="bg-[#1a1c20]"]) :is(span,strong,small,svg,p,div,b,em,h2,h3,h4) {
+  color: inherit!important;
+}
+/* Red status labels are not buttons; keep their nested copy paired as well. */
+#carplus-root.carplus-inner-pages main :is(span,div.absolute):is(.bg-red-500,.bg-red-600,.bg-red-700) {
+  background: #b4232c!important;
+  color: #ffffff!important;
+  border-color: #b4232c!important;
+  opacity: 1!important;
+  animation: none!important;
+}
+#carplus-root.carplus-inner-pages main :is(span,div.absolute):is(.bg-red-500,.bg-red-600,.bg-red-700) :is(span,strong,small,svg,p,div,b,em) { color: inherit!important; }

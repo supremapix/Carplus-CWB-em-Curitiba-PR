@@ -14,3 +14,18 @@ for(const [state,fg,bg] of pairs) assert(contrast(fg,bg)>=4.5,`${state}: normal 
 assert(contrast('#005fcc','#ffffff')>=3,'Focus indicator against white separation');
 for(const marker of ['[aria-pressed="true"]','[aria-selected="true"]',':disabled','[aria-disabled="true"]',':focus-visible','color: inherit!important','background: var(--control-fill)!important','color: var(--control-ink)!important'])assert(controlCss.includes(marker),marker);
 console.log(JSON.stringify({result:'PASS',scope:'inner pages only',colorPairs:pairs.map(([state,fg,bg])=>({state,ratio:contrast(fg,bg).toFixed(2)})),note:'Palette and CSS contract guard; actual browser computed-style QA still required'},null,2));
+
+// Screenshot regression: static dark labels were excluded from control styling.
+const badgeCss=css.slice(css.indexOf('/* Static badges are surfaces too:'));
+for(const marker of ['span,div.absolute,div.inline-flex','.bg-black','.bg-gray-900','.bg-zinc-900','background: #272b32!important','color: #ffffff!important','opacity: 1!important','animation: none!important',':is(span,strong,small,svg,p,div,b,em,h2,h3,h4)','color: inherit!important']) assert(badgeCss.includes(marker),`Static badge contract: ${marker}`);
+for(const file of ['src/components/TireDetail.tsx','src/components/CatalogTireDetail.tsx']) {
+ const source=fs.readFileSync(file,'utf8');
+ assert(source.includes('bg-gray-900'),'Keep a real dark-label fixture');
+}
+const detail=fs.readFileSync('src/components/TireDetail.tsx','utf8');
+assert.match(detail,/<span className="absolute[^\"]*bg-black[^\"]*text-white[^\"]*">[\s\S]*?PREÇO REDUZIDO/,'Discount screenshot fixture');
+assert.match(detail,/<div className="absolute[^\"]*bg-gray-900[^\"]*text-white[^\"]*">\s*Pronta Entrega/,'Availability screenshot fixture');
+console.log('PASS: static dark badges, white-frame overlays, nested labels/icons and opacity are paired independently of buttons; browser computed-style QA required.');
+
+for (const marker of ['text-[#c3c3c3]', 'text-[#1ebd53]', 'bg-[#1a1c20]', 'svg,p,div,b,em,h2,h3,h4']) assert(css.includes(marker), `Shared caption/descendant regression: ${marker}`);
+assert(css.includes(':is(.bg-red-500,.bg-red-600,.bg-red-700)'), 'Red status labels must pair fill and ink');
