@@ -1,3 +1,4 @@
+import VerifiedStoreInfo, { VERIFIED_STORE_PAGES } from './VerifiedStoreInfo';
 import React, { useState } from 'react';
 import { 
   Award, Shield, Check, Phone, MapPin, Zap, TrendingUp, Percent, 
@@ -944,6 +945,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     }
   };
 
+  if (VERIFIED_STORE_PAGES[view]) return <VerifiedStoreInfo slug={view} />;
   const activePage = pageData[view];
 
   if (!activePage) {

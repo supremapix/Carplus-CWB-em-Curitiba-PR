@@ -27,3 +27,14 @@ for (const file of ['RimAuthoritySection.tsx','BydClusterPages.tsx','ElectricGui
  assert(code.includes('Índices de carga e velocidade a confirmar'), `Explicit index confirmation: ${file}`);
 }
 console.log('PASS: new hubs do not expose conflicting fallback load/speed labels; catalog data unchanged.');
+
+for(const slug of ['barao-pneus-e-oficina-bacacheri-curitiba','barao-pneus-sao-jose-pinhais','barao-pneus-e-oficina-portao','pneus-pirelli-em-curitiba-melhor-preco','distribuidora-de-pneus-em-curitiba']) {
+ const html=fs.readFileSync(path.join('dist',slug,'index.html'),'utf8');
+ assert(html.includes('name="robots" content="index, follow"'));
+ assert(!/pronta entrega|Estoque Completo|garantindo geometria/i.test(html),`No invented stock/performance: ${slug}`);
+ if(slug.startsWith('barao-'))assert(html.includes('Não somos uma filial nem representantes da Barão Pneus.'),`Independent identity: ${slug}`);
+}
+const evArticle=fs.readFileSync('dist/blog/pneus-para-carro-eletrico-em-curitiba/index.html','utf8');
+assert(!/Não Aguentam|até 30%|até 10%|até 20%|protegendo 100%|35.000 km a 50.000/.test(evArticle),'No unsupported EV guarantees');
+assert(evArticle.includes('continentaltire.com/ev-compatible'),'Manufacturer evidence linked');
+console.log('PASS: targeted legacy EV and five institutional routes have qualified claims; URLs/index policy preserved.');

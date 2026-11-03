@@ -13,6 +13,7 @@ import { Tire, CartItem, CatalogTire } from './types';
 import AutoCenterSection from './components/AutoCenterSection';
 import { 
   getCatalogSync, 
+  CATALOGO_PNEUS,
   getFullCatalog, 
   findCatalogTireBySlug,
   DEFAULT_BRANDS,
@@ -113,6 +114,8 @@ export default function App() {
     setCatalogRestoreState(restored);
     setCatalogNavigationKey(value => value + 1);
   };
+  const [routeNotice, setRouteNotice] = useState<'loading' | 'missing' | 'error' | null>(null);
+  const routeRequest = useRef(0);
   const [isConveyorPaused, setIsConveyorPaused] = useState(false);
 
   // Search and Filter States
@@ -337,6 +340,9 @@ export default function App() {
   // Scroll handler and page navigation mapping
   const handleScrollToSection = (sectionId: string, preserveCatalogEntryFilters = false) => {
     setSelectedCatalogTire(null);
+    routeRequest.current++;
+    setRouteNotice(null);
+    setIsRouteReady(true);
     resetCatalogNavigation();
     // Normalization & Aliases
     let targetView = sectionId;
@@ -537,6 +543,9 @@ export default function App() {
   // --- INTEGRATED SPA CLIENT-SIDE URL ROUTING ENGINE ---
   const parsePathAndSetState = () => {
     setSelectedCatalogTire(null);
+    const request = ++routeRequest.current;
+    setRouteNotice(null);
+    setIsRouteReady(true);
     const rawPath = window.location.pathname;
     const parts = rawPath.split('/').filter(Boolean);
     setCatalogFilterBrand('Todas');
@@ -839,10 +848,19 @@ export default function App() {
           setSelectedCatalogTire(null);
           setSeoTarget(null);
         } else {
-          setCurrentView('catalogo-pneus');
+          // Keep the requested URL while the code-split catalog is loading.
+          setIsRouteReady(false);
+          setRouteNotice('loading');
+          setCurrentView('catalogo-detalhe');
           setSeoTarget(null);
           setSelectedTire(null);
-          setSelectedCatalogTire(null);
+          getFullCatalog().then(full => {
+            if (request !== routeRequest.current || window.location.pathname !== rawPath) return;
+            if (findCatalogTireBySlug(tireSlugParam)) parsePathAndSetState();
+            else setRouteNotice(full.length > CATALOGO_PNEUS.length ? 'missing' : 'error');
+          }).catch(() => {
+            if (request === routeRequest.current && window.location.pathname === rawPath) setRouteNotice('error');
+          });
         }
       }
     } else if (firstRoute.startsWith('pneus-no-') || firstRoute.startsWith('pneus-em-')) {
@@ -972,7 +990,6 @@ export default function App() {
 
   useEffect(() => {
     parsePathAndSetState();
-    setIsRouteReady(true);
     
     const handlePopState = () => {
       parsePathAndSetState();
@@ -980,6 +997,7 @@ export default function App() {
 
     window.addEventListener('popstate', handlePopState);
     return () => {
+      routeRequest.current++;
       window.removeEventListener('popstate', handlePopState);
     };
   }, []);
@@ -1054,7 +1072,14 @@ export default function App() {
 
       {currentView !== 'home' && <InnerPageNav />}
       {/* Main Content Layout */}
-      {currentView === 'pneus-eletricos-curitiba' || currentView === 'pneus-hibridos-curitiba' ? (
+      {routeNotice ? (
+        <main className="flex-1 w-full bg-white p-8 text-gray-900" aria-busy={routeNotice === 'loading'}>
+          <h1 className="text-2xl font-bold">{routeNotice === 'loading' ? 'Carregando detalhes do pneu…' : routeNotice === 'missing' ? 'Pneu não encontrado no catálogo' : 'Não foi possível carregar este pneu'}</h1>
+          <p role="status" className="my-4">{routeNotice === 'loading' ? 'Aguarde a consulta ao catálogo completo.' : 'Confira o endereço ou consulte as opções disponíveis no catálogo.'}</p>
+          {routeNotice !== 'loading' && <button className="carplus-action-secondary" onClick={parsePathAndSetState}>Tentar novamente</button>}
+          <button className="carplus-action-primary m-3" onClick={() => handleScrollToSection('catalogo-pneus')}>Ver catálogo de pneus</button>
+        </main>
+      ) : currentView === 'pneus-eletricos-curitiba' || currentView === 'pneus-hibridos-curitiba' ? (
         <main className="flex-1 w-full bg-white"><ElectricGuides kind={currentView === 'pneus-eletricos-curitiba' ? 'electric' : 'hybrid'} /></main>
       ) : currentView === 'catalogo-detalhe' && selectedCatalogTire ? (
         <main className="flex-1 w-full bg-white">

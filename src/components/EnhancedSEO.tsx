@@ -1,3 +1,4 @@
+import { VERIFIED_STORE_PAGES } from './VerifiedStoreInfo';
 import { BYD_PAGES, BydClusterView } from './BydClusterPages';
 import { ELECTRIC_GUIDES } from '../data/electricGuides';
 import React from 'react';
@@ -376,6 +377,8 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     desc = `Está em ${seoTarget.name}? Consulte pneus, alinhamento e serviços na unidade Carplus do Portão, em Curitiba. Veja como organizar seu atendimento.`;
   }
   // 3. Structured Data Models Creation (JSON-LD JSON Objects)
+  if (VERIFIED_STORE_PAGES[currentView]) { title = VERIFIED_STORE_PAGES[currentView].title; desc = VERIFIED_STORE_PAGES[currentView].description; keywords = ''; }
+
   const baseLocalBusiness = {
     "@type": ["TireShop", "AutoRepair", "AutomotiveBusiness"],
     "name": "Carplus Pneus e Auto Center",
@@ -1061,7 +1064,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
   if (currentView !== 'home') {
     for (let i = graph.length - 1; i >= 0; i--) {
       const types = [graph[i]['@type']].flat();
-      if (types.includes('FAQPage') && (Object.prototype.hasOwnProperty.call(BYD_PAGES, currentView) || seoTarget)) graph.splice(i, 1);
+      if (types.includes('FAQPage') && (Object.prototype.hasOwnProperty.call(BYD_PAGES, currentView) || VERIFIED_STORE_PAGES[currentView] || seoTarget)) graph.splice(i, 1);
       else if (types.includes('AutoRepair')) {
         delete graph[i].geo;
         delete graph[i].hasOfferCatalog;

@@ -18,7 +18,7 @@ const declarations = new Map();
 const initializers = new Map();
 const setters = new Map();
 let mountEffect, syncEffect, syncDependencies, footerNavigation, catalogBack;
-const stateNames = new Set(['currentView', 'seoTarget', 'selectedTire', 'selectedCatalogTire', 'selectedBlogSlug', 'isRouteReady', 'catalogFilterBrand', 'catalogFilterRim', 'catalogFilterCategory', 'catalogFilterSearch', 'catalogRestoreState', 'catalogNavigationKey']);
+const stateNames = new Set(['routeNotice', 'currentView', 'seoTarget', 'selectedTire', 'selectedCatalogTire', 'selectedBlogSlug', 'isRouteReady', 'catalogFilterBrand', 'catalogFilterRim', 'catalogFilterCategory', 'catalogFilterSearch', 'catalogRestoreState', 'catalogNavigationKey']);
 
 function find(node) {
   if (ts.isVariableDeclaration(node)) {
@@ -86,6 +86,9 @@ function arrowBody(arrow, statements) {
 
 function harness(incomingPath, { removeStartupGate = false, removeCatalogClears = false } = {}) {
   const state = {};
+  let loadedCatalog = null;
+  let resolveCatalog;
+  const catalogPromise = new Promise(resolve => { resolveCatalog = resolve; });
   const queue = [];
   const history = [];
   const listeners = new Map();
@@ -106,6 +109,9 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
     window, document: { getElementById() { return null; } },
     console, URL, URLSearchParams, Number, useCallback: fn => fn, lastCatalogState: { current: undefined }, setTimeout(callback) { callback(); return 1; },
     ...catalog, ...tireData, ...slugs, ...geography,
+    routeRequest: {current:0},
+    getFullCatalog: () => catalogPromise,
+    findCatalogTireBySlug: slug => catalog.findCatalogTireBySlug(slug) || loadedCatalog?.find(t=>t.slug===slug||t.id===slug),
     homeRef: { current: null }, finderRef: { current: null }, catalogRef: { current: null }, categoriesRef: { current: null }, mapsRef: { current: null }
   });
   for (const [name, expression] of initializers) state[name] = new vm.Script(`(${expression})`).runInContext(context);
@@ -164,6 +170,7 @@ function harness(incomingPath, { removeStartupGate = false, removeCatalogClears 
   assert.equal(listeners.get('popstate')?.size, 1, 'StrictMode replay must leave one active popstate listener');
   return {
     state, location, history,
+    async completeCatalog(items) { loadedCatalog=items; resolveCatalog(items); await Promise.resolve(); await Promise.resolve(); settle(); },
     navigate(section) { committed.handleScrollToSection(section); settle(); },
     popTo(url, entryState = null) { window.history.state = entryState; const parsed = new URL(url, 'https://www.carpluscwb.com.br'); location.pathname = parsed.pathname; location.search = parsed.search; location.hash = parsed.hash; location.href = parsed.href; for (const callback of listeners.get('popstate') || []) callback(); settle(); },
     selectCatalog(product) { context.setSelectedCatalogTire(product); settle(); },
@@ -266,3 +273,41 @@ queryJourney.popTo('/pneus?aro=99');
 assert.equal(queryJourney.state.catalogFilterRim,'Todos');
 assert.equal(queryJourney.state.catalogFilterSearch,'');
 console.log('PASS: actual catalog query filters for rim and measure, Back/Forward query changes and invalid rims.');
+
+const fullRawCatalog=JSON.parse(fs.readFileSync(path.join(root,'catalogo-pneus.json'),'utf8'));
+const fullCatalog=[...products,...fullRawCatalog];
+const nonPromo=fullRawCatalog.find(t=>!products.some(p=>p.slug===t.slug));
+assert(nonPromo);
+const direct=harness(`/pneu/${nonPromo.slug}`);
+assert.equal(direct.state.routeNotice,'loading');
+assert.equal(direct.location.pathname,`/pneu/${nonPromo.slug}`);
+await direct.completeCatalog(fullCatalog);
+assert.equal(direct.state.currentView,'catalogo-detalhe');
+assert.equal(direct.state.selectedCatalogTire.slug,nonPromo.slug);
+assert.equal(direct.state.routeNotice,null);
+direct.navigate('catalogo-pneus');
+direct.popTo(`/pneu/${nonPromo.slug}`);
+assert.equal(direct.state.selectedCatalogTire.slug,nonPromo.slug);
+const refresh=harness(`/pneu/${nonPromo.slug}`);
+await refresh.completeCatalog(fullCatalog);
+assert.equal(refresh.state.selectedCatalogTire.slug,nonPromo.slug);
+const missing=harness('/pneu/nao-existe-teste');
+await missing.completeCatalog(fullCatalog);
+assert.equal(missing.state.routeNotice,'missing');
+assert.equal(missing.location.pathname,'/pneu/nao-existe-teste');
+const failed=harness(`/pneu/${nonPromo.slug}`);
+await failed.completeCatalog(products);
+assert.equal(failed.state.routeNotice,'error');
+assert.equal(failed.location.pathname,`/pneu/${nonPromo.slug}`);
+failed.navigate('catalogo-pneus');
+assert.equal(failed.state.routeNotice,null);
+const raced=harness(`/pneu/${nonPromo.slug}`);
+raced.navigate('home');
+await raced.completeCatalog(fullCatalog);
+assert.equal(raced.state.currentView,'home');
+assert.equal(raced.location.pathname,'/');
+assert.equal(raced.state.selectedCatalogTire,null);
+console.log('PASS: non-promo deep-link loading, refresh, Back, unknown product, chunk failure fallback and stale navigation race.');
+
+for(const tire of fullCatalog) { direct.popTo(`/pneu/${tire.slug}`); assert.equal(direct.state.selectedCatalogTire?.slug,tire.slug,`Full catalog direct path: ${tire.slug}`); }
+console.log(`PASS: all ${fullCatalog.length} catalog product URLs resolve after full loading.`);

@@ -1,3 +1,4 @@
+import VerifiedStoreInfo, { VERIFIED_STORE_PAGES } from '../src/components/VerifiedStoreInfo';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import BydClusterPages, { BydClusterView } from '../src/components/BydClusterPages';
@@ -1232,6 +1233,13 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
     routes.push({ path: slug, title: guide.metaTitle, desc: guide.description, keywords: '', schema: { '@context': 'https://schema.org', '@type': 'WebPage', name: guide.title, url: `${DOMAIN}/${slug}` }, isIndexable: true, customBodyHtml: wrap(React.createElement(ElectricGuides, {kind})) });
   }
   for (const route of routes) {
+    if (VERIFIED_STORE_PAGES[route.path]) {
+      route.title = VERIFIED_STORE_PAGES[route.path].title;
+      route.desc = VERIFIED_STORE_PAGES[route.path].description;
+      route.keywords = '';
+      route.schema = {'@context':'https://schema.org','@type':'WebPage',name:route.title,description:route.desc,url:`${DOMAIN}/${route.path}`};
+      route.customBodyHtml = wrap(React.createElement(VerifiedStoreInfo,{slug:route.path}));
+    }
     if (route.path.startsWith('aro/')) {
       const aro = route.path.split('/')[1];
       route.title = `Pneus aro ${aro} em Curitiba | Carplus Portão`;

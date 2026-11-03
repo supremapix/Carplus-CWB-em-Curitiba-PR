@@ -66,8 +66,9 @@ export async function getFullCatalog(): Promise<CatalogTire[]> {
         return fullCatalogCache;
       } catch (err) {
         console.warn('Could not lazy-load full catalog JSON, using promo catalog fallback:', err);
-        fullCatalogCache = [...PROMO_CATALOG_TIRES];
-        return fullCatalogCache;
+        // A transient chunk/network failure must remain retryable.
+        catalogLoadingPromise = null;
+        return [...PROMO_CATALOG_TIRES];
       }
     })();
   }
