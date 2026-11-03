@@ -1,0 +1,349 @@
+{
+  "checked": "2026-11-03",
+  "base": "1d954c2465dd8a56e99f0a16c4b318057f0e1f08",
+  "note": "Conservative grouping of linha, not a count of sizes or vehicle variants. Legacy generic families (e.g. EfficientGrip, Wrangler, PremiumContact) can contain more than one model. They remain grouped, not expanded speculatively.",
+  "totalRecords": 1939,
+  "brands": [
+    {
+      "brand": "BRIDGESTONE",
+      "records": 286,
+      "registeredFamilyCount": 28,
+      "registeredFamilies": [
+        "Alenza",
+        "Alenza 001",
+        "B250",
+        "Dueler",
+        "Dueler AT 693",
+        "Dueler AT Revo2",
+        "Dueler HP Sport",
+        "Dueler HT 470",
+        "Dueler HT 684II",
+        "Dueler HT 684III",
+        "Dueler HT 684III Ecopia",
+        "Dueler HT 840",
+        "Dueler Revo AT",
+        "Duravis",
+        "Duravis R630",
+        "Duravis R660",
+        "Ecopia",
+        "Ecopia EP150",
+        "Potenza",
+        "Potenza RE050",
+        "Potenza RE050A",
+        "Potenza S001",
+        "Turanza",
+        "Turanza ER300",
+        "Turanza ER33",
+        "Turanza ER370",
+        "Turanza T001",
+        "Turanza T005"
+      ],
+      "additionalConsultationLines": []
+    },
+    {
+      "brand": "COMFORSER",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "CF510"
+      ],
+      "additionalConsultationLines": [
+        "CF1100"
+      ]
+    },
+    {
+      "brand": "CONTINENTAL",
+      "records": 622,
+      "registeredFamilyCount": 17,
+      "registeredFamilies": [
+        "Altimax One",
+        "ContiComfortContact",
+        "ContiEcoContact",
+        "ContiPowerContact",
+        "ContiSportContact",
+        "Continental",
+        "CrossContact",
+        "EcoContact",
+        "EuroVan",
+        "Grabber",
+        "PowerContact",
+        "PremiumContact",
+        "SportContact",
+        "UltraContact",
+        "VanContact",
+        "VancoContact",
+        "sContact"
+      ],
+      "additionalConsultationLines": []
+    },
+    {
+      "brand": "DELINTE",
+      "records": 30,
+      "registeredFamilyCount": 7,
+      "registeredFamilies": [
+        "AK01 APEX King",
+        "D1D1",
+        "DH2",
+        "DS2",
+        "DV2",
+        "DV2+",
+        "DX-10 A/T BANDIT"
+      ],
+      "additionalConsultationLines": []
+    },
+    {
+      "brand": "FIRESTONE",
+      "records": 92,
+      "registeredFamilyCount": 12,
+      "registeredFamilies": [
+        "CV5000",
+        "Destination A/T",
+        "Destination ATX",
+        "Destination H/T",
+        "Destination LE",
+        "Destination LE2",
+        "Destination LE3",
+        "Destination M/T",
+        "F-600",
+        "F-700",
+        "F-700+",
+        "Multihawk"
+      ],
+      "additionalConsultationLines": []
+    },
+    {
+      "brand": "GOODYEAR",
+      "records": 6,
+      "registeredFamilyCount": 4,
+      "registeredFamilies": [
+        "Direction Touring",
+        "EfficientGrip",
+        "Wrangler",
+        "Wrangler Territory"
+      ],
+      "additionalConsultationLines": [
+        "Eagle Sport 2",
+        "Assurance MaxLife",
+        "Assurance Fuel Max All Weather"
+      ]
+    },
+    {
+      "brand": "HIFLY",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "HF261"
+      ],
+      "additionalConsultationLines": [
+        "HF201",
+        "HF805"
+      ]
+    },
+    {
+      "brand": "JK TYRE",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Turbo"
+      ],
+      "additionalConsultationLines": [
+        "UX Royale"
+      ]
+    },
+    {
+      "brand": "LINGLONG",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Green-Max HP010"
+      ],
+      "additionalConsultationLines": [
+        "COMFORT MASTER",
+        "SPORT MASTER"
+      ]
+    },
+    {
+      "brand": "MAXTREK",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Maximus M2"
+      ],
+      "additionalConsultationLines": [
+        "MAXIMUS M9"
+      ]
+    },
+    {
+      "brand": "MICHELIN",
+      "records": 7,
+      "registeredFamilyCount": 5,
+      "registeredFamilies": [
+        "Energy XM2",
+        "Pilot Sport 4",
+        "Primacy 4",
+        "Primacy 4+",
+        "Primacy SUV"
+      ],
+      "additionalConsultationLines": [
+        "e.Primacy",
+        "Pilot Sport EV",
+        "Primacy 5"
+      ]
+    },
+    {
+      "brand": "PIRELLI",
+      "records": 574,
+      "registeredFamilyCount": 37,
+      "registeredFamilies": [
+        "AR58",
+        "Chrono",
+        "Cinturato P1",
+        "Cinturato P1 Plus",
+        "Cinturato P4",
+        "Cinturato P7",
+        "Cinturato P7 All Season",
+        "Dragon",
+        "Formula Energy",
+        "Formula Evo",
+        "Formula S/T",
+        "MT06",
+        "Nero GT",
+        "P Zero",
+        "P Zero Asimmetrico",
+        "P Zero Corsa",
+        "P Zero Nero",
+        "P Zero Nero GT",
+        "P Zero Rosso",
+        "P4 Four Seasons",
+        "P400 Evo",
+        "P7 Cinturato S-I",
+        "Powergy",
+        "SE58",
+        "SL93",
+        "Scorpion A/T",
+        "Scorpion ATR",
+        "Scorpion ATR Street",
+        "Scorpion HT",
+        "Scorpion MTR",
+        "Scorpion STR",
+        "Scorpion Verde",
+        "Scorpion Verde All Season",
+        "Scorpion Zero All Season",
+        "Standard",
+        "Tornado Alfa",
+        "W-Cita"
+      ],
+      "additionalConsultationLines": []
+    },
+    {
+      "brand": "PRINX",
+      "records": 214,
+      "registeredFamilyCount": 11,
+      "registeredFamilies": [
+        "HA1",
+        "HH1",
+        "HH2",
+        "HH3",
+        "HP1",
+        "HT1",
+        "HU1",
+        "HZ1",
+        "HZ2",
+        "XLAB COMFORT EV",
+        "XNEX SPORT EV"
+      ],
+      "additionalConsultationLines": []
+    },
+    {
+      "brand": "PROVATO",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Crosswind A/T"
+      ],
+      "additionalConsultationLines": [
+        "GREEN",
+        "SPORT GREEN"
+      ]
+    },
+    {
+      "brand": "ROADKING",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Radial109"
+      ],
+      "additionalConsultationLines": [
+        "ARGOS AX5",
+        "ARGOS UHP",
+        "ARGOS TOURING"
+      ]
+    },
+    {
+      "brand": "SPEEDMAX",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Energrip SPM022"
+      ],
+      "additionalConsultationLines": [
+        "Prime FRD16",
+        "MH01",
+        "HH301"
+      ]
+    },
+    {
+      "brand": "TORNEL",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Astral Neo"
+      ],
+      "additionalConsultationLines": [
+        "CLASSIC"
+      ]
+    },
+    {
+      "brand": "XBRI",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Fastway A5"
+      ],
+      "additionalConsultationLines": [
+        "SPORTLINE C2",
+        "ECOLOGY",
+        "BRUTUS II TA"
+      ]
+    },
+    {
+      "brand": "YOKOHAMA",
+      "records": 97,
+      "registeredFamilyCount": 6,
+      "registeredFamilies": [
+        "ADVAN Sport V103",
+        "ADVAN Sport V105",
+        "ADVAN dB V551",
+        "C.Drive 2",
+        "ES32",
+        "NEOVA AD09"
+      ],
+      "additionalConsultationLines": [
+        "ADVAN Sport V107",
+        "GEOLANDAR CV G058",
+        "GEOLANDAR H/T G056"
+      ]
+    },
+    {
+      "brand": "ZMAX",
+      "records": 1,
+      "registeredFamilyCount": 1,
+      "registeredFamilies": [
+        "Vanmejor"
+      ],
+      "additionalConsultationLines": [
+        "ZEALION"
+      ]
+    }
+  ]
+}

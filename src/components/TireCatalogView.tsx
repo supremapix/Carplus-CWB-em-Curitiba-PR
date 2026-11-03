@@ -8,6 +8,7 @@ import {
   CATALOG_VEHICLE_TYPES
 } from '../data/catalogo-pneus';
 import CatalogTireCard from './CatalogTireCard';
+import CatalogLineExplorer from './CatalogLineExplorer';
 import { Search, X, ChevronLeft, ChevronRight, ChevronDown, SlidersHorizontal, Sparkles, Check, Car, ShieldCheck, Loader2 } from 'lucide-react';
 
 export interface TireCatalogState {
@@ -321,6 +322,8 @@ export default function TireCatalogView({
             <button type="button" className="catalog-clear" onClick={handleResetFilters}>Limpar filtros</button>
           </div>}
         </section>
+
+        <CatalogLineExplorer brand={selectedBrand} search={searchTerm} />
 
         <section className="catalog-results" aria-labelledby="catalog-results-title" aria-busy={isLoadingCatalog}>
           <div className="catalog-results-toolbar" ref={resultsRef} tabIndex={-1}>

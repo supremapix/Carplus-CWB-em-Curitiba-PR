@@ -1,0 +1,37 @@
+{
+  "brands": {
+    "BRIDGESTONE": 286,
+    "COMFORSER": 1,
+    "CONTINENTAL": 622,
+    "DELINTE": 30,
+    "FIRESTONE": 92,
+    "GOODYEAR": 6,
+    "HIFLY": 1,
+    "JK TYRE": 1,
+    "LINGLONG": 1,
+    "MAXTREK": 1,
+    "MICHELIN": 7,
+    "PIRELLI": 574,
+    "PRINX": 214,
+    "PROVATO": 1,
+    "ROADKING": 1,
+    "SPEEDMAX": 1,
+    "TORNEL": 1,
+    "XBRI": 1,
+    "YOKOHAMA": 97,
+    "ZMAX": 1
+  },
+  "rims": {
+    "13": 15,
+    "14": 89,
+    "15": 256,
+    "16": 251,
+    "17": 319,
+    "18": 376,
+    "19": 253,
+    "20": 257,
+    "21": 86,
+    "22": 34,
+    "23": 3
+  }
+}

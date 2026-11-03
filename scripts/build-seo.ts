@@ -5,6 +5,7 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import BydClusterPages, { BydClusterView } from '../src/components/BydClusterPages';
 import ElectricGuides from '../src/components/ElectricGuides';
+import CatalogLineExplorer from '../src/components/CatalogLineExplorer';
 import { ELECTRIC_GUIDES, ELECTRIC_GUIDE_ROUTES } from '../src/data/electricGuides';
 import RimAuthoritySection from '../src/components/RimAuthoritySection';
 import LocalAreaGuide from '../src/components/LocalAreaGuide';
@@ -1258,7 +1259,7 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
       route.desc = `Está em ${name}? Consulte pneus, alinhamento e serviços na unidade Carplus do Portão, em Curitiba. Veja como organizar seu atendimento.`;
     }
   }
-  routes.push({ path: 'pneus', title: 'Catálogo de pneus em Curitiba | Carplus Portão', desc: 'Encontre pneus por medida, aro e marca. Compare especificações e consulte disponibilidade com a Carplus no Portão.', keywords: '', isIndexable: true, schema: {'@context':'https://schema.org','@type':'CollectionPage',name:'Catálogo de pneus Carplus',url:`${DOMAIN}/pneus`}, customBodyHtml: `<div id="root"><div id="carplus-root" class="carplus-inner-pages">${renderHeader()}<main style="padding:2rem;max-width:1200px;margin:auto"><h1>Catálogo de pneus em Curitiba</h1><p>Compare medida, carga, velocidade e aplicação. Consulte preço e disponibilidade com a Carplus no Portão.</p><nav aria-label="Pneus por aro">${AROS.map(a=>`<a href="/aro/${a}" style="display:inline-block;padding:12px">Aro ${a}</a>`).join('')}</nav><p><a href="/pneus-eletricos-curitiba">Pneus para elétricos</a> · <a href="/pneus-hibridos-curitiba">Pneus para híbridos</a></p><h2>Explore os pneus cadastrados</h2><ul>${getCatalogSync().map(t=>`<li><a href="/pneu/${t.slug}">${escapeHtml(t.nome)} — ${escapeHtml(t.medida)}</a></li>`).join('')}</ul></main>${renderFooter()}</div></div>` });
+  routes.push({ path: 'pneus', title: 'Catálogo de pneus em Curitiba | Carplus Portão', desc: 'Encontre pneus por medida, aro e marca. Compare especificações e consulte disponibilidade com a Carplus no Portão.', keywords: '', isIndexable: true, schema: {'@context':'https://schema.org','@type':'CollectionPage',name:'Catálogo de pneus Carplus',url:`${DOMAIN}/pneus`}, customBodyHtml: `<div id="root"><div id="carplus-root" class="carplus-inner-pages">${renderHeader()}<main style="padding:2rem;max-width:1200px;margin:auto"><h1>Catálogo de pneus em Curitiba</h1><p>Compare medida, carga, velocidade e aplicação. Consulte preço e disponibilidade com a Carplus no Portão.</p><nav aria-label="Pneus por aro">${AROS.map(a=>`<a href="/aro/${a}" style="display:inline-block;padding:12px">Aro ${a}</a>`).join('')}</nav><p><a href="/pneus-eletricos-curitiba">Pneus para elétricos</a> · <a href="/pneus-hibridos-curitiba">Pneus para híbridos</a></p>${renderToStaticMarkup(React.createElement(CatalogLineExplorer))}<h2>Explore os pneus cadastrados</h2><ul>${getCatalogSync().map(t=>`<li><a href="/pneu/${t.slug}">${escapeHtml(t.nome)} — ${escapeHtml(t.medida)}</a></li>`).join('')}</ul></main>${renderFooter()}</div></div>` });
   for (const tire of getCatalogSync()) {
     const slug = `pneu/${tire.slug}`;
     if (routes.some(r=>r.path===slug)) continue;

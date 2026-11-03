@@ -1,5 +1,6 @@
 import { CatalogTire } from '../types';
 import { PROMO_CATALOG_TIRES } from './promoTires';
+import catalogCounts from './catalogCounts.json';
 
 // Lightweight precalculated metadata for instant Home render without bundling 1.94MB JSON
 export const DEFAULT_BRANDS = [
@@ -23,17 +24,10 @@ export const DEFAULT_CATEGORIES = [
   'Passeio', 'SUV / Crossover', 'Alta Performance', 'Econômico', 'All-Terrain', 'Carga / Utilitário'
 ];
 
-export const PRESET_RIM_COUNTS: Record<number, number> = {
-  13: 48, 14: 172, 15: 384, 16: 498, 17: 356, 18: 242, 19: 112, 20: 86, 21: 24, 22: 12, 23: 5
-};
-
-export const PRESET_BRAND_COUNTS: Record<string, number> = {
-  BRIDGESTONE: 245, PIRELLI: 280, CONTINENTAL: 198, GOODYEAR: 210,
-  MICHELIN: 185, DELINTE: 160, XBRI: 175, FIRESTONE: 140,
-  YOKOHAMA: 85, LINGLONG: 78, PRINX: 62, COMFORSER: 45,
-  SPEEDMAX: 40, MAXTREK: 35, HIFLY: 25, PROVATO: 15,
-  ROADKING: 12, TORNEL: 10, ZMAX: 8, 'JK TYRE': 6
-};
+// Actual record counts, regenerated with scripts/inventory-catalog.ts.
+// These include size/vehicle variants and are not distinct-model counts.
+export const PRESET_RIM_COUNTS: Record<number, number> = catalogCounts.rims;
+export const PRESET_BRAND_COUNTS: Record<string, number> = catalogCounts.brands;
 
 // In-memory cache for full catalog
 let fullCatalogCache: CatalogTire[] | null = null;
