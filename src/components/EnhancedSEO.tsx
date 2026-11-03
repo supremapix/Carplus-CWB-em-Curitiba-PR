@@ -405,8 +405,8 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": -25.477815,
-      "longitude": -49.299557
+      "latitude": -25.4636458,
+      "longitude": -49.300298
     },
     "sameAs": [
       "https://maps.google.com/?q=Carplus+Pneus+Curitiba",

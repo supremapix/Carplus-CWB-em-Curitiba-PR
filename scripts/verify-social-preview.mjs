@@ -191,7 +191,16 @@ try {
       after.metas = after.metas.filter(([key]) => !mutableKeys.has(key));
     }
     if (fixture.label === 'home') {
-      assert.deepEqual(after, migrateDomain(before), 'Home SEO preserved except authorized own-domain correction');
+      // Authorized 2026-11-03: correct only the business pin verified on the store's Google Maps and Waze links.
+      for (const schema of before.schemas) for (const record of schema['@graph'] || [schema]) {
+        if (record.geo?.latitude === -25.477815 && record.geo?.longitude === -49.299557) {
+          record.geo.latitude = -25.4636458;
+          record.geo.longitude = -49.300298;
+        }
+      }
+      const business = after.schemas.flatMap(schema => schema['@graph'] || [schema]).find(record => record.geo);
+      assert.deepEqual(business?.geo, { '@type': 'GeoCoordinates', latitude: -25.4636458, longitude: -49.300298 }, 'Verified business destination pin');
+      assert.deepEqual(after, migrateDomain(before), 'Home SEO preserved except authorized own-domain and business-pin corrections');
     } else {
       if(fixture.props.seoTarget?.type === 'aro') assert.ok(!/OfferCatalog|InStock|priceValidUntil|pronta entrega/.test(JSON.stringify(after.schemas)), `No invented rim offers: ${fixture.label}`);
       for (const schema of after.schemas) {
