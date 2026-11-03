@@ -45,7 +45,7 @@
 #carplus-root #tire-catalog-page .catalog-sort select{width:208px;min-height:48px;font-size:15px;padding:10px}
 #tire-catalog-page .catalog-products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 #tire-catalog-page .carplus-product-card{border-radius:10px;box-shadow:none;min-width:0}
-#tire-catalog-page .carplus-product-media{height:170px}
+#tire-catalog-page .carplus-product-media{height:auto}
 #tire-catalog-page .carplus-product-card h3{overflow-wrap:anywhere}
 #tire-catalog-page .catalog-empty{border:1px dashed #555;border-radius:10px;text-align:center;display:flex;align-items:center;flex-direction:column;gap:15px;padding:48px 24px;background:#121212}
 #tire-catalog-page .catalog-empty>svg{color:#f59c00;width:28px;height:28px}

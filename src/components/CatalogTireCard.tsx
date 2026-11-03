@@ -33,7 +33,7 @@ export default function CatalogTireCard({ tire, onSelect }: CatalogTireCardProps
       </div>
 
       <div className="flex flex-1 flex-col px-5 pb-5">
-        <div className="carplus-product-media relative my-3 flex min-h-[200px] w-full items-center justify-center rounded-xl bg-white p-4">
+        <div className="carplus-product-media relative my-3 flex min-h-[200px] w-full items-center justify-center rounded-xl bg-white p-1">
           <span aria-hidden="true" className="absolute bottom-3 h-3 w-24 rounded-[50%] bg-black/5 blur-sm" />
           <VerifiedTireImage tire={tire} className="h-full w-full" compact />
         </div>

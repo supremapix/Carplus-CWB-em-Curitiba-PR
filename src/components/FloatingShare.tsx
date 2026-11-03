@@ -91,11 +91,11 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
 
           {/* Preview Card with Image & Text */}
           <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-3 mb-4 flex items-center gap-3">
-            <div className="w-14 h-14 shrink-0 rounded-xl bg-white border border-zinc-200 overflow-hidden flex items-center justify-center p-1 shadow-inner">
+            <div className="w-24 h-24 shrink-0 rounded-xl bg-white border border-zinc-200 overflow-hidden flex items-center justify-center p-1 shadow-inner">
               <img 
                 src={shareImage} 
                 alt="Preview" 
-                className="w-full h-full object-cover rounded-lg" 
+                className="w-full h-full object-contain rounded-lg"
                 onError={(e)=>{ (e.target as HTMLImageElement).src = 'https://www.carpluscwb.com.br/og-carplus.webp'; }}
               />
             </div>

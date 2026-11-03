@@ -86,8 +86,8 @@ export default function CatalogTireDetail({
         <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Left Column: Product Image & Highlights */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
-            <div className="carplus-white-surface relative bg-white rounded-2xl border border-gray-150 p-6 flex items-center justify-center min-h-[320px] shadow-2xs">
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
+            <div className="carplus-tire-detail-media carplus-white-surface relative bg-white rounded-2xl border border-gray-150 p-6 flex items-center justify-center min-h-[320px] shadow-2xs">
               <VerifiedTireImage tire={tire} className="h-[290px] w-full" />
               <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                 <span className="bg-gray-900 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">
@@ -119,7 +119,7 @@ export default function CatalogTireDetail({
           </div>
 
           {/* Right Column: Title, Specifications & WhatsApp Order */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
             <div className="space-y-3">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-mono font-bold uppercase bg-gray-100 text-gray-800 px-3 py-1 rounded-lg">

@@ -63,8 +63,8 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-white border border-gray-200 rounded-3xl p-6 sm:p-10 shadow-lg">
           
           {/* Left Block: Image & Certifications (5 Columns) */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="carplus-white-surface relative bg-white border border-gray-150 rounded-3xl p-6 flex items-center justify-center min-h-[300px] sm:min-h-[400px] shadow-sm overflow-hidden">
+          <div className="lg:col-span-6 space-y-6">
+            <div className="carplus-tire-detail-media carplus-white-surface relative bg-white border border-gray-150 rounded-3xl p-6 flex items-center justify-center min-h-[300px] sm:min-h-[400px] shadow-sm overflow-hidden">
               {tire.isOffer && (
                 <span className="absolute top-4 left-4 z-10 bg-black text-white text-xs font-black px-3 py-1.5 rounded-full uppercase shadow flex items-center gap-1 animate-pulse border border-black">
                   <Tag className="w-3.5 h-3.5 shrink-0" />
@@ -100,7 +100,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
           </div>
 
           {/* Right Block: Content, Prices and Tech Information (7 Columns) */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-6 space-y-6">
             
             {/* Header Product */}
             <div className="space-y-2 text-center sm:text-left">

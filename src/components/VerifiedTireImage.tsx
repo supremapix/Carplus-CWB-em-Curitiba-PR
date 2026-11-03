@@ -13,12 +13,12 @@ export function VerifiedTireImageView({ tire, className = '', compact = false, f
   const image = candidate && !failedSources.includes(candidate.src) ? candidate : undefined;
   const illustration = getTireIllustration(tire);
   const showIllustration = !image && !failedSources.includes(illustration) && failedSource !== illustration;
-  return <figure className={`flex min-h-0 flex-col items-center justify-center gap-2 text-center ${className}`} style={compact ? { height: 'auto' } : undefined} data-tire-image-status={image ? 'model-representative' : showIllustration ? 'ai-illustration' : 'pending'}>
+  return <figure className={`carplus-tire-figure flex min-h-0 flex-col items-center justify-center gap-2 text-center ${className}`} style={{ height: 'auto' }} data-tire-image-status={image ? 'model-representative' : showIllustration ? 'ai-illustration' : 'pending'}>
     {image ? <>
-      <img src={image.src} alt={`Foto representativa: ${image.brand} ${image.model}; não comprova medida ou versão`} loading="lazy" decoding="async" className={compact ? "h-32 w-full shrink-0 object-contain" : "min-h-0 max-h-full w-full flex-1 object-contain"} onError={() => onFailure(image.src)} />
+      <img src={image.src} alt={`Foto representativa: ${image.brand} ${image.model}; não comprova medida ou versão`} loading="lazy" decoding="async" className="aspect-square h-auto w-full shrink-0 object-contain" onError={() => onFailure(image.src)} />
       <figcaption className={compact ? 'shrink-0 text-[14px] leading-snug text-zinc-700' : 'shrink-0 text-[14px] leading-relaxed text-zinc-700'} title={TIRE_IMAGE_CAVEAT}>{compact ? 'Foto do modelo; medida e versão podem variar.' : TIRE_IMAGE_CAVEAT}</figcaption>
     </> : showIllustration ? <>
-      <img src={illustration} alt={TIRE_AI_CAPTION} loading="lazy" decoding="async" className={compact ? "h-32 w-full shrink-0 object-contain" : "min-h-0 max-h-full w-full flex-1 object-contain"} onError={() => onFailure(illustration)} />
+      <img src={illustration} alt={TIRE_AI_CAPTION} loading="lazy" decoding="async" className="aspect-square h-auto w-full shrink-0 object-contain" onError={() => onFailure(illustration)} />
       <figcaption className="shrink-0 text-[14px] font-medium leading-snug text-zinc-700">{TIRE_AI_CAPTION}</figcaption>
     </> : <figcaption className="flex min-h-[48px] items-center justify-center rounded-lg bg-zinc-100 p-2 text-[14px] font-medium leading-relaxed text-zinc-700">{TIRE_IMAGE_PENDING}</figcaption>}
   </figure>;

@@ -214,8 +214,8 @@ export default function CompanyPages({
                             className={`pt-4 first:pt-0 flex flex-col sm:flex-row items-center justify-between gap-4`}
                           >
                             {/* Product Thumbnail & Details */}
-                            <div className="flex items-center gap-4 w-full sm:w-auto">
-                              <div className="w-28 min-h-32 bg-gray-50 border border-gray-150 rounded-xl p-2 flex items-center justify-center shrink-0">
+                            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                              <div className="w-36 min-h-32 bg-gray-50 border border-gray-150 rounded-xl p-2 flex items-center justify-center shrink-0">
                                 <VerifiedTireImage tire={item.tire} className="h-full w-full" compact />
                               </div>
                               <div className="space-y-1">
@@ -2485,8 +2485,8 @@ export default function CompanyPages({
                 <h3 className="text-sm font-black uppercase font-mono text-gray-950 border-b border-gray-200 pb-2 text-left">Pneus Pirelli em Destaque no Estoque</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {pirelliTires.map((tire, idx) => (
-                    <div key={tire.id || idx} className="bg-white border border-gray-200 p-4 rounded-2xl flex gap-4 items-center shadow-sm hover:border-red-500/40 transition duration-300">
-                      <VerifiedTireImage tire={tire} className="h-28 w-24 shrink-0" compact />
+                    <div key={tire.id || idx} className="bg-white border border-gray-200 p-4 rounded-2xl flex flex-col sm:flex-row gap-4 items-center shadow-sm hover:border-red-500/40 transition duration-300">
+                      <VerifiedTireImage tire={tire} className="w-full sm:w-32 shrink-0" compact />
                       <div className="flex-1 space-y-0.5 text-left min-w-0">
                         <span className="bg-red-600 text-white font-mono font-bold text-[8px] uppercase px-1.5 py-0.5 rounded">
                           PIRELLI

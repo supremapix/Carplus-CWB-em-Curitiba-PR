@@ -131,7 +131,7 @@ export const HeroPromoTires: React.FC<HeroPromoTiresProps> = ({ onSelectTire }) 
 
                   <div 
                     onClick={() => onSelectTire(tire.slug)}
-                    className="relative w-full h-36 bg-white rounded-lg flex items-center justify-center p-2 mb-3 cursor-pointer"
+                    className="relative w-full aspect-square bg-white rounded-lg flex items-center justify-center p-2 mb-3 cursor-pointer"
                   >
                     <img
                       src={tire.imagem300 || tire.imagem600 || '/pneus/jk-tyre-300.webp'}
@@ -145,7 +145,7 @@ export const HeroPromoTires: React.FC<HeroPromoTiresProps> = ({ onSelectTire }) 
                         }
                       }}
                       alt={`Pneu ${tire.marca} ${tire.medida} ${tire.modelo}`}
-                      className="max-h-32 object-contain"
+                      className="h-full w-full object-contain"
                     />
                   </div>
 

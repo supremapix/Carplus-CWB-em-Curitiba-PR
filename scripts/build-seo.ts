@@ -375,8 +375,8 @@ function renderProductShell(tire: typeof TIRES_DATA[0], slug: string): string {
     <span style="color: #111827; font-weight: 600;">${escapeHtml(tire.brand)} ${escapeHtml(tire.model)}</span>
   </nav>`;
 
-  html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-bottom: 3rem; align-items: start;">
-    <div style="background: #ffffff; border: 2px solid #e5e7eb; border-radius: 1rem; padding: 2rem; text-align: center;">
+  html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 2.5rem; margin-bottom: 3rem; align-items: start;">
+    <div style="background: #ffffff; border: 2px solid #e5e7eb; border-radius: 1rem; padding: .5rem; text-align: center;">
       ${renderToStaticMarkup(React.createElement(VerifiedTireImage, { tire, className: "h-[290px] w-full" }))}
       <div style="margin-top: 1rem; display: inline-block; background: #ecfdf5; color: #065f46; font-size: 0.85rem; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 9999px;">
         ✓ Em Estoque à Pronta Entrega no Portão

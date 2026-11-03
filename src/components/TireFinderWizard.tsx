@@ -165,7 +165,7 @@ export default function TireFinderWizard({ onSearchMeasure, onAddToCart }: TireF
                   id={`matched-catalog-tire-${ct.id}`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-28 min-h-32 bg-white rounded-lg p-1 border border-gray-150 flex items-center justify-center shrink-0">
+                    <div className="w-36 min-h-32 bg-white rounded-lg p-1 border border-gray-150 flex items-center justify-center shrink-0">
                       <VerifiedTireImage tire={ct} className="h-full w-full" compact />
                     </div>
                     <div>

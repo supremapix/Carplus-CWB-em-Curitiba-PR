@@ -7,5 +7,5 @@ export function getVerifiedRimModelImage(tire: CatalogTire): string | undefined 
   return getVerifiedTireImage(tire)?.src;
 }
 export default function RimTireExampleImage({ tire }: { tire: CatalogTire }) {
-  return <VerifiedTireImage tire={tire} className="mb-4 h-[320px] w-full bg-white p-4" />;
+  return <VerifiedTireImage tire={tire} className="mb-4 w-full bg-white p-1" />;
 }

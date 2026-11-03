@@ -98,8 +98,8 @@ export default function GaragemDePneusSection({
         {filteredTires.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {filteredTires.map((tire, index) => (
-              <div key={tire.id || index} className="bg-white border border-gray-200 p-4 rounded-2xl flex gap-4 items-center shadow-sm relative hover:border-[#f49e1a]/50 transition duration-300">
-                <VerifiedTireImage tire={tire} className="h-28 w-24 shrink-0" compact />
+              <div key={tire.id || index} className="bg-white border border-gray-200 p-4 rounded-2xl flex flex-col sm:flex-row gap-4 items-center shadow-sm relative hover:border-[#f49e1a]/50 transition duration-300">
+                <VerifiedTireImage tire={tire} className="w-full sm:w-32 shrink-0" compact />
                 <div className="flex-1 space-y-1 text-left min-w-0">
                   <span className="bg-gray-900 text-white font-mono font-black text-[8px] uppercase px-1.5 py-0.5 rounded">
                     {tire.brand}

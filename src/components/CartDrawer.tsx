@@ -163,10 +163,10 @@ export default function CartDrawer({
                     id={`cart-drawer-item-${item.tire.id}`}
                   >
                     <div className="flex gap-3 items-center min-w-0 w-full sm:w-auto">
-                      {verifiedImages ? <VerifiedTireImage tire={item.tire} className="min-h-32 w-28 shrink-0" compact /> : (<img
+                      {verifiedImages ? <VerifiedTireImage tire={item.tire} className="min-h-32 w-36 shrink-0" compact /> : (<img
                         src={item.tire.image} 
                         alt={item.tire.name} 
-                        className="w-12 h-12 object-contain bg-white rounded border border-gray-250 p-1 shrink-0"
+                        className="w-24 h-24 object-contain bg-white rounded border border-gray-250 p-1 shrink-0"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.src = getBrandFallbackImage(item.tire.brand, item.tire.id);

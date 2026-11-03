@@ -79,3 +79,12 @@ body {
   }
 }
 
+
+/* Keep complete product frames and disclosures visible at every viewport. */
+.carplus-tire-figure { max-width: 100%; }
+.carplus-tire-figure > img { aspect-ratio: 1; width: 100%; height: auto; object-fit: contain; flex: none; }
+.carplus-tire-detail-media { padding: 4.5rem .5rem 3rem; }
+.carplus-tire-detail-media .carplus-tire-figure > img { min-height: 280px; }
+@media (min-width: 640px) {
+  .carplus-tire-detail-media .carplus-tire-figure > img { min-height: 380px; }
+}
