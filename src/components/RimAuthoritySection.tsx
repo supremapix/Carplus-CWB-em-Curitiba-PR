@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getCatalogSync, getFullCatalog } from '../data/catalogo-pneus';
 import { CatalogTire } from '../types';
-import RimTireExampleImage, { getVerifiedRimModelImage } from './RimTireExampleImage';
+import RimTireExampleImage from './RimTireExampleImage';
 
 export default function RimAuthoritySection({ aroName }: { aroName: string; onSelectAro?: (aro: string) => void }) {
   const aro = Number(aroName.replace(/\D/g, ''));
   const [catalog, setCatalog] = useState<CatalogTire[]>(getCatalogSync);
   useEffect(() => { let active = true; getFullCatalog().then(items => { if (active) setCatalog(items); }); return () => { active = false; }; }, []);
   const items = catalog.filter(t => t.aro === aro);
-  const preferredImage = aro <= 15 ? '/pneus/pirelli.webp' : aro <= 18 ? '/pneus/prinx.webp' : '/pneus/modelos/sportcontact-6.png';
-  const illustratedItems = items.filter(t => getVerifiedRimModelImage(t) === preferredImage);
+  // Select actual catalog examples independently of image availability or reuse permission.
+  const preferredBrand = aro <= 15 ? 'pirelli' : aro <= 18 ? 'prinx' : 'continental';
+  const preferredModel = aro <= 15 ? /\bp400\s+evo\b/i : aro <= 18 ? /\bhh2\b/i : /\bsportcontact\s+6\b/i;
+  const illustratedItems = items.filter(t => t.marca.toLowerCase() === preferredBrand && preferredModel.test(t.nome));
   const measures = [...new Set(items.map(t => String(t.medida)))].sort();
   const emphasis = aro <= 15 ? 'Uso urbano e comparação de medidas' : aro <= 18 ? 'Conforto, uso diário e especificação do veículo' : 'Perfis, carga e requisitos de rodas maiores';
   const whatsapp = `https://wa.me/554130827282?text=${encodeURIComponent(`Olá, Carplus! Quero conferir pneus aro ${aro}. Vou informar modelo, ano, versão e medida do veículo.`)}`;

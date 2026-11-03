@@ -215,7 +215,7 @@ export default function CompanyPages({
                           >
                             {/* Product Thumbnail & Details */}
                             <div className="flex items-center gap-4 w-full sm:w-auto">
-                              <div className="w-20 h-20 bg-gray-50 border border-gray-150 rounded-xl p-2 flex items-center justify-center shrink-0">
+                              <div className="w-28 min-h-32 bg-gray-50 border border-gray-150 rounded-xl p-2 flex items-center justify-center shrink-0">
                                 <VerifiedTireImage tire={item.tire} className="h-full w-full" compact />
                               </div>
                               <div className="space-y-1">

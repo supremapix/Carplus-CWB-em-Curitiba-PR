@@ -1,5 +1,15 @@
 /** Model-representative photographs. Never resolve from brand alone or infer a size/OE variant. */
-export interface ImageTireIdentity { marca?: string; brand?: string; nome?: string; name?: string; linha?: string; model?: string }
+export interface ImageTireIdentity { marca?: string; brand?: string; nome?: string; name?: string; linha?: string; model?: string; perfil?: number; aspectRatio?: number }
+export const TIRE_AI_IMAGE = '/pneus/illustrations/generic-passenger-tire-with-wheel-ai-illustration.webp';
+export const TIRE_AI_LOW_IMAGE = '/pneus/illustrations/generic-low-profile-tire-with-wheel-ai-illustration.webp';
+export const TIRE_AI_HIGH_IMAGE = '/pneus/illustrations/generic-high-sidewall-tire-with-wheel-ai-illustration.webp';
+// Only a reliable stored numeric aspect ratio guides generic proportions. Never infer model/tread.
+export function getTireIllustration(tire: ImageTireIdentity): string {
+  const ratio = tire.perfil ?? tire.aspectRatio;
+  if (typeof ratio !== 'number' || !Number.isFinite(ratio) || ratio <= 0 || ratio > 100) return TIRE_AI_IMAGE;
+  return ratio <= 45 ? TIRE_AI_LOW_IMAGE : ratio >= 70 ? TIRE_AI_HIGH_IMAGE : TIRE_AI_IMAGE;
+}
+export const TIRE_AI_CAPTION = 'Imagem ilustrativa gerada por IA. Não representa o modelo ou desenho exato. Roda ilustrativa; não acompanha o pneu.';
 export const TIRE_IMAGE_PENDING = 'Foto específica em atualização';
 export const TIRE_IMAGE_CAVEAT = 'Foto representativa do modelo. Medida, inscrições laterais e detalhes de versões podem variar; confira a ficha do produto.';
 export const VERIFIED_TIRE_IMAGES = [
@@ -8,7 +18,6 @@ export const VERIFIED_TIRE_IMAGES = [
   { brand: 'bridgestone', model: 'Ecopia EP150', pattern: /\b(?:ecopia\s+)?ep\s*150\b/i, src: '/pneus/bridgestone.webp', source: 'Repository asset: visible Bridgestone Ecopia EP150 sidewall; original photographer/license unverified', reference: 'https://tires.bridgestone.com.br/pt-br/pneus/automotivos/ecopia/ep150' },
   { brand: 'delinte', model: 'DH2', pattern: /\bdh2\b/i, src: '/pneus/delinte.webp', source: 'Repository asset: visible Delinte DH2 sidewall; original photographer/license unverified' },
   { brand: 'continental', model: 'ContiPowerContact', pattern: /\bcontipowercontact\b(?!\s*\d)/i, src: '/pneus/continental.webp', source: 'Repository asset: visible ContiPowerContact sidewall; not PowerContact 2 or SportContact; original photographer/license unverified' },
-  { brand: 'continental', model: 'SportContact 6', pattern: /\bsportcontact\s+6\b/i, src: '/pneus/modelos/sportcontact-6.png', source: 'https://continentaltire.com/sites/default/files/styles/modal/public/media/image/2024-12/ct_webpage_sportcontact6_l3qt_600x600_oe.png?itok=l_hDLHlN', reference: 'https://continentaltire.com/tires/sportcontact-6' },
   { brand: 'comforser', model: 'CF510', pattern: /\bcf510\b/i, src: '/pneus/comforser.webp', source: 'Repository asset: CF510 visible; pictured 195/60R15 is not proof of offered size; original photographer/license unverified' },
   { brand: 'tornel', model: 'Astral Neo', pattern: /\bastral\s+neo\b/i, src: '/pneus/tornel.webp', source: 'Repository asset: Astral Neo label visible, pictured 175/70R14 84T; original photographer/license unverified' },
 ] as const;

@@ -1,0 +1,42 @@
+{
+  "tool": "image_gen__imagegen built-in edit",
+  "type": "AI-generated generic illustrations",
+  "date": "2026-11-03",
+  "requiredUICaption": "Imagem ilustrativa gerada por IA. Não representa o modelo ou desenho exato. Roda ilustrativa; não acompanha o pneu.",
+  "usage": "Fallback only, not genuine product photos. Preserve authentic photos. Only approximate generic proportions based on known advertised aspect ratio; no actual model/tread or performance claims.",
+  "variants": [
+    {
+      "file": "generic-passenger-tire-with-wheel-ai-illustration.png",
+      "source": "generic-passenger-tire-ai-illustration.png",
+      "output": "../generated_images/exec-78f84703-d980-4edd-a3bd-10ce391d30e1.png",
+      "prompt": "Edit this existing generic tire illustration: mount one elegant unbranded alloy wheel into its empty center. Satin silver machined split-five-spoke alloy wheel with subtle graphite recesses, blank unmarked center cap. Preserve existing tire medium-profile dimensions, width, outer silhouette, rubber texture, generic tread, perspective, centered full-object framing, soft studio light and white background. Wheel fits realistically inside existing opening, correct perspective. No car/road, no logos, emblems, letters, numbers, brands, model/size markings or text. Clean refined studio product-style AI illustration, not any actual product photo. Change only the empty center by adding wheel; preserve the rest.",
+      "originalSha256": "0222a796a533395dbf7d6879e39504ac4ca3e436c3f343b96012e729fca5e116",
+      "deliveryFile": "public/pneus/illustrations/generic-passenger-tire-with-wheel-ai-illustration.webp",
+      "deliverySha256": "d42e4cbd0c6b44de90e2008650db8ab4f41b148d6119fb5482252023f7a3e137",
+      "deliveryBytes": 64986,
+      "deliveryEncoding": "WebP quality90,900px square; original retained separately"
+    },
+    {
+      "file": "generic-low-profile-tire-with-wheel-ai-illustration.png",
+      "source": "generic-low-profile-tire-ai-illustration.png",
+      "output": "../generated_images/exec-875e39f4-a202-4670-8a85-fe7972caabfc.png",
+      "prompt": "Edit this existing generic LOW-PROFILE tire illustration: mount one elegant unbranded alloy wheel into its empty center. Satin silver machined split-five-spoke alloy wheel with subtle graphite recesses, blank unmarked center cap. Preserve existing tire conspicuously short low-profile sidewall, wide tread dimensions, outer silhouette, rubber texture, generic tread, perspective, centered full-object framing, soft studio light and white background. Wheel fits realistically inside existing large opening, correct perspective. No car/road, no logos, emblems, letters, numbers, brands, model/size markings or text. Clean refined studio product-style AI illustration, not any actual product photo. Change only empty center by adding wheel; preserve rest.",
+      "originalSha256": "88ebf0247a16e877d884e41048a434f8a2fb23aeedb06de3d6211079d454960e",
+      "deliveryFile": "public/pneus/illustrations/generic-low-profile-tire-with-wheel-ai-illustration.webp",
+      "deliverySha256": "f9236960d288951ee5a35dd015d5f889ba270c8b3cbf3541a3d493ce242ed51a",
+      "deliveryBytes": 77186,
+      "deliveryEncoding": "WebP quality90,900px square; original retained separately"
+    },
+    {
+      "file": "generic-high-sidewall-tire-with-wheel-ai-illustration.png",
+      "source": "generic-high-sidewall-tire-ai-illustration.png",
+      "output": "../generated_images/exec-eb147d34-b27b-45a8-b1dc-514a3068e38d.png",
+      "prompt": "Edit this existing generic HIGH-SIDEWALL tire illustration: mount one elegant unbranded alloy wheel into its empty center. Satin silver machined split-five-spoke alloy wheel with subtle graphite recesses, blank unmarked center cap. Preserve existing tire conspicuously tall high-profile sidewall, narrower tread dimensions, SMALLER opening, outer silhouette, rubber texture, generic tread, perspective, centered full-object framing, soft studio light and white background. Wheel fits realistically inside existing smaller opening, correct perspective; do NOT enlarge wheel opening or reduce sidewall height. No car/road, no logos, emblems, letters, numbers, brands, model/size markings or text. Clean refined studio product-style AI illustration, not any actual product photo. Change only empty center by adding wheel; preserve rest.",
+      "originalSha256": "c8076b44b53f15ca5eb63efd87c33c0270a8a137201780861ebcad7f1b5da9f7",
+      "deliveryFile": "public/pneus/illustrations/generic-high-sidewall-tire-with-wheel-ai-illustration.webp",
+      "deliverySha256": "eccaeff846d80c20197e61bac57be8fe9154c989483a774a04ecd5f046e2bbc5",
+      "deliveryBytes": 57952,
+      "deliveryEncoding": "WebP quality90,900px square; original retained separately"
+    }
+  ]
+}

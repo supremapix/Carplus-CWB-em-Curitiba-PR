@@ -1,0 +1,19 @@
+{
+  "type": "AI-generated generic illustrative variants",
+  "tool": "image_gen__imagegen (built-in)",
+  "date": "2026-11-03",
+  "requiredUICaption": "Imagem ilustrativa gerada por IA. Não representa o modelo ou desenho exato.",
+  "usage": "Only unresolved original-photo models. Choose approximate proportions only from safely parsed existing advertised aspect ratio: <=45 low profile, >=70 high sidewall, otherwise standard. Never claim exact product, tread, performance or compatibility. Do not map unknown types falsely or add product labels.",
+  "variants": [
+    {
+      "file": "generic-low-profile-tire-ai-illustration.png",
+      "sourceFile": "../generated_images/exec-e81c28c6-41cd-4ca8-91d1-4fabd6ff2005.png",
+      "prompt": "Use case: product-mockup. Asset: generic ecommerce fallback illustration. One unbranded LOW-PROFILE passenger road car tire, upright three-quarter view, fully visible centered in square composition, bright white studio background with soft contact shadow. Wide tread width and conspicuously SHORT radial sidewall, large central opening, low-profile sporty proportions, no wheel rim. High-quality restrained 3D product illustration, realistic charcoal black rubber with soft studio highlights. Simple invented road tread; not a copy of any real brand or model. No letters, logos, numbers, model names, size markings, ratings, certification marks or text anywhere. Generic illustration only, no exact model, tread, compatibility or performance claims. Site will show disclosure outside image."
+    },
+    {
+      "file": "generic-high-sidewall-tire-ai-illustration.png",
+      "sourceFile": "../generated_images/exec-834512ac-3b5a-445f-bf1d-7d5eb3af089f.png",
+      "prompt": "Use case: product-mockup. Asset: generic ecommerce fallback illustration. One unbranded HIGH-SIDEWALL standard passenger road car tire, upright three-quarter view, fully visible centered in square composition, bright white studio background with soft contact shadow. Conspicuously TALL radial sidewall, SMALLER central opening, moderately narrow tread width, classic ordinary high-profile passenger tire proportions. No wheel rim. High-quality restrained 3D product illustration, realistic charcoal black rubber with soft studio highlights. Smooth sidewall, simple invented ordinary road tread, NOT offroad or rugged knobby tread; not a copy of any real brand or model. No letters, logos, numbers, model names, size markings, ratings, certification marks or text anywhere. Generic illustration only, no exact model, tread, compatibility or performance claims. Site will show disclosure outside image."
+    }
+  ]
+}

@@ -37,6 +37,7 @@ export default function TireCard({ tire, onSelectTire, verifiedImages = false }:
           type="button"
           onClick={() => onSelectTire && onSelectTire(tire)}
           aria-label={`Ver detalhes de ${tire.name}`}
+          style={verifiedImages ? { height: 'auto', minHeight: 200 } : undefined}
           className="carplus-product-media relative my-3 flex h-[200px] w-full cursor-pointer items-center justify-center rounded-xl bg-white p-4"
         >
           <span aria-hidden="true" className="absolute bottom-3 h-3 w-24 rounded-[50%] bg-black/5 blur-sm" />
