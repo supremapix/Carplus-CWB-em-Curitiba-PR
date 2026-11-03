@@ -1,0 +1,177 @@
+{
+  "baseTree": "c6593e6c00ae81d5fa63ba08b3b3171ed0238d16",
+  "provenance": "Existing first-party assets verified in docs/fotos-carplus.json; all 16 selected images inspected as actual pixels on 2026-11-03. No generated imagery or new third-party photos.",
+  "before": {
+    "articles": 21,
+    "distinctPhotos": 12,
+    "maxRepetitions": 7
+  },
+  "after": {
+    "articles": 21,
+    "distinctPhotos": 16,
+    "maxRepetitions": 2
+  },
+  "notes": [
+    "Photos illustrate the store, equipment and service context, not a specific electric or hybrid vehicle, tire recommendation, fault or customer diagnosis.",
+    "Article body, titles, URLs, metadata logic, Home design and image-loading behavior are unchanged.",
+    "Existing optimized WebP variants are used by BlogView; no new image bytes needed."
+  ],
+  "mapping": [
+    {
+      "slug": "desgaste-pneus-carros-eletricos",
+      "previousImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "featuredImage": "/images/galeria/pneus-auto-center.jpg",
+      "renderedImage": "/images/carplus-real/pneus-auto-center.webp",
+      "imageAlt": "Roda e pneu manuseados em equipamento na oficina Carplus."
+    },
+    {
+      "slug": "como-escolher-pneus-carros-hibridos",
+      "previousImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "featuredImage": "/images/galeria/show-row-pneus.webp",
+      "renderedImage": "/images/carplus-real/show-row-pneus.webp",
+      "imageAlt": "Pneus expostos e área de atendimento da Carplus."
+    },
+    {
+      "slug": "pneus-pressao-autonomia-carro-eletrico",
+      "previousImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "featuredImage": "/images/galeria/auto-center-de-pneus-em-curitiba.jpg",
+      "renderedImage": "/images/carplus-real/auto-center-de-pneus-em-curitiba.webp",
+      "imageAlt": "Pneus novos com etiquetas de eficiência na loja Carplus."
+    },
+    {
+      "slug": "ruido-vibracao-pneus-carro-eletrico",
+      "previousImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "featuredImage": "/images/galeria/auto-center-pneus-portao.jpg",
+      "renderedImage": "/images/carplus-real/auto-center-pneus-portao.webp",
+      "imageAlt": "Conjuntos de rodas e pneus junto aos equipamentos da Carplus."
+    },
+    {
+      "slug": "bolha-furo-desgaste-pneu-eletrico-hibrido",
+      "previousImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "featuredImage": "/images/galeria/troca-de-pneus.jpg",
+      "renderedImage": "/images/carplus-real/troca-de-pneus.webp",
+      "imageAlt": "Profissional ao lado de um pneu no equipamento da Carplus; foto de contexto, sem indicação de avaria."
+    },
+    {
+      "slug": "pneus-para-carro-eletrico-em-curitiba",
+      "previousImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "featuredImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "renderedImage": "/images/carplus-real/loja-de-pneus-em-curitiba.webp",
+      "imageAlt": "Fachada iluminada da Carplus no Portão, em Curitiba."
+    },
+    {
+      "slug": "carro-puxando-para-o-lado",
+      "previousImage": "/images/galeria/alinhamento.jpg",
+      "featuredImage": "/images/galeria/alinhamento.jpg",
+      "renderedImage": "/images/carplus-real/alinhamento.webp",
+      "imageAlt": "Roda com alvo de alinhamento instalado na oficina Carplus."
+    },
+    {
+      "slug": "barulho-suspensao-lombadas",
+      "previousImage": "/images/galeria/rampa-de-geometria.jpg",
+      "featuredImage": "/images/galeria/consultoria-avaliacao-estrutural.jpg",
+      "renderedImage": "/images/carplus-real/consultoria-avaliacao-estrutural.webp",
+      "imageAlt": "Inspeção da parte inferior de um veículo suspenso na Carplus."
+    },
+    {
+      "slug": "quando-fazer-alinhamento-balanceamento",
+      "previousImage": "/images/galeria/montagem-tecnica.jpg",
+      "featuredImage": "/images/galeria/rampa-de-geometria.jpg",
+      "renderedImage": "/images/carplus-real/rampa-de-geometria.webp",
+      "imageAlt": "Veículo sobre a rampa de geometria da oficina Carplus."
+    },
+    {
+      "slug": "pneu-desgastando-de-um-lado",
+      "previousImage": "/images/galeria/troca-de-pneus.jpg",
+      "featuredImage": "/images/galeria/montagem-tecnica.jpg",
+      "renderedImage": "/images/carplus-real/montagem-tecnica.webp",
+      "imageAlt": "Profissional manuseando um pneu na oficina Carplus; foto de contexto, sem indicação de desgaste irregular."
+    },
+    {
+      "slug": "revisao-carro-antes-de-viajar",
+      "previousImage": "/images/galeria/fachada-carplus.webp",
+      "featuredImage": "/images/galeria/tecnicos.jpg",
+      "renderedImage": "/images/carplus-real/tecnicos.webp",
+      "imageAlt": "Técnico trabalhando junto ao motor de um veículo na Carplus."
+    },
+    {
+      "slug": "sinais-problemas-suspensao",
+      "previousImage": "/images/galeria/tecnicos.jpg",
+      "featuredImage": "/images/galeria/caminhonete-suv.jpg",
+      "renderedImage": "/images/carplus-real/caminhonete-suv.webp",
+      "imageAlt": "Veículos suspensos e sem rodas no interior da oficina Carplus."
+    },
+    {
+      "slug": "volante-vibrando-causas",
+      "previousImage": "/images/galeria/auto-center-pneus-portao.jpg",
+      "featuredImage": "/images/galeria/auto-center-pneus-portao.jpg",
+      "renderedImage": "/images/carplus-real/auto-center-pneus-portao.webp",
+      "imageAlt": "Rodas e pneus junto aos equipamentos da oficina Carplus."
+    },
+    {
+      "slug": "freio-fazendo-barulho",
+      "previousImage": "/images/galeria/caminhonete-suv.jpg",
+      "featuredImage": "/images/galeria/caminhonete-suv.jpg",
+      "renderedImage": "/images/carplus-real/caminhonete-suv.webp",
+      "imageAlt": "Conjuntos de freio expostos em veículos suspensos na Carplus; foto de contexto, sem diagnóstico de defeito."
+    },
+    {
+      "slug": "quando-trocar-oleo-carro",
+      "previousImage": "/images/galeria/consultoria-avaliacao-estrutural.jpg",
+      "featuredImage": "/images/galeria/tecnicos.jpg",
+      "renderedImage": "/images/carplus-real/tecnicos.webp",
+      "imageAlt": "Técnico junto ao capô aberto de um veículo na Carplus; imagem de contexto de manutenção."
+    },
+    {
+      "slug": "como-escolher-rodas-carro",
+      "previousImage": "/images/galeria/rodas-de-liga-leve.webp",
+      "featuredImage": "/images/galeria/rodas-de-liga-leve.webp",
+      "renderedImage": "/images/carplus-real/rodas-de-liga-leve.webp",
+      "imageAlt": "Rodas de liga leve expostas na Carplus."
+    },
+    {
+      "slug": "pneus-para-carro-eletrico-o-que-muda-quanto-duram-como-escolher",
+      "previousImage": "/images/galeria/loja-de-pneus-em-curitiba.webp",
+      "featuredImage": "/images/galeria/mostruario-pneus-novos.webp",
+      "renderedImage": "/images/carplus-real/mostruario-pneus-novos.webp",
+      "imageAlt": "Pneus novos organizados em prateleiras na Carplus."
+    },
+    {
+      "slug": "posso-usar-pneu-comum-no-meu-carro-eletrico-ou-hibrido",
+      "previousImage": "/images/galeria/troca-de-pneus.jpg",
+      "featuredImage": "/images/galeria/recepcao.jpg",
+      "renderedImage": "/images/carplus-real/recepcao.webp",
+      "imageAlt": "Área de atendimento da Carplus com pneus em exposição."
+    },
+    {
+      "slug": "duvidas-sobre-pneus-quando-trocar-twi-validade-calibragem-rodizio",
+      "previousImage": "/images/galeria/mostruario-pneus-novos.webp",
+      "featuredImage": "/images/galeria/pneus-auto-center.jpg",
+      "renderedImage": "/images/carplus-real/pneus-auto-center.webp",
+      "imageAlt": "Detalhe da banda de rodagem de um pneu manuseado na Carplus."
+    },
+    {
+      "slug": "auto-center-em-curitiba-como-escolher-oficina-de-pneus-de-confianca",
+      "previousImage": "/images/galeria/fachada-carplus.webp",
+      "featuredImage": "/images/galeria/fachada-carplus.webp",
+      "renderedImage": "/images/carplus-real/fachada-carplus.webp",
+      "imageAlt": "Letreiro e entrada da Carplus Pneus no Portão, em Curitiba."
+    },
+    {
+      "slug": "pneus-em-curitiba-guia-completo-comprar-pneus-novos-com-instalacao",
+      "previousImage": "/images/galeria/mostruario-pneus-novos.webp",
+      "featuredImage": "/images/galeria/show-row-pneus.webp",
+      "renderedImage": "/images/carplus-real/show-row-pneus.webp",
+      "imageAlt": "Área de atendimento e exposição de pneus da Carplus em Curitiba."
+    }
+  ],
+  "validation": {
+    "typecheck": "PASS: npm run lint",
+    "productionBuild": "PASS: npm run build",
+    "articlePreservation": "PASS: all 21 objects identical after excluding featuredImage and imageAlt",
+    "assets": "PASS: all 16 optimized WebP assets and original fallback paths exist and decode",
+    "design": "BlogView, blog.css, Home, metadata logic, coordinates and release verification scripts unchanged",
+    "visualReview": "All 16 selected original photo subjects inspected in full-color contact sheets; no browser screenshot run yet",
+    "publication": "Not pushed or published"
+  }
+}
