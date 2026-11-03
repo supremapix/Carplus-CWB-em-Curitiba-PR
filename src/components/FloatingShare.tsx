@@ -1,3 +1,4 @@
+import { getVerifiedTireImage } from '../lib/tireImageManifest';
 import React, { useState, useEffect } from 'react';
 import { Share2, Check, X, MessageSquare, Facebook, Linkedin, Twitter, Copy, ExternalLink, Sparkles } from 'lucide-react';
 
@@ -30,7 +31,7 @@ export default function FloatingShare({ currentView, seoTarget, selectedTire }: 
     : 'Especialistas em pneus novos, importados, nacionais e mecânica full service no Portão, Curitiba.';
   
   // NEVER use logo as share preview image per user request ("a imagem do botao compartilhar nao pode ser a logo")
-  const shareImage = selectedTire?.image || selectedTire?.imagem || selectedTire?.imagemGrande || 'https://www.carpluscwb.com.br/images/galeria/pneus-auto-center.jpg';
+  const shareImage = (selectedTire ? getVerifiedTireImage(selectedTire)?.src : undefined) || 'https://www.carpluscwb.com.br/images/galeria/pneus-auto-center.jpg';
 
   const handleCopyLink = async () => {
     try {

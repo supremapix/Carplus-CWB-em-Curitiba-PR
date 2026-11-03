@@ -1,7 +1,7 @@
 import React from 'react';
 import { CatalogTire } from '../types';
 import { ArrowUpRight, MessageSquare, Eye, Wrench } from 'lucide-react';
-import { getBrandFallbackImage } from '../data';
+import VerifiedTireImage from './VerifiedTireImage';
 
 interface CatalogTireCardProps {
   key?: React.Key;
@@ -10,17 +10,6 @@ interface CatalogTireCardProps {
 }
 
 export default function CatalogTireCard({ tire, onSelect }: CatalogTireCardProps) {
-  const [imageLoaded, setImageLoaded] = React.useState(false);
-  const [fallbackStep, setFallbackStep] = React.useState(0);
-
-  const primaryImage = tire.imagemGrande || tire.imagem || getBrandFallbackImage(tire.marca);
-
-  const getImageSource = () => {
-    if (fallbackStep === 0) return primaryImage;
-    if (fallbackStep === 1) return getBrandFallbackImage(tire.marca);
-    return '/images/pneus/pneu-fallback.svg';
-  };
-
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     const message = `Olá Carplus! Gostaria de cotar o pneu ${tire.nome} (${tire.medida}) no Portão. Link: https://www.carpluscwb.com.br/pneu/${tire.slug}`;
@@ -46,24 +35,7 @@ export default function CatalogTireCard({ tire, onSelect }: CatalogTireCardProps
       <div className="flex flex-1 flex-col px-5 pb-5">
         <div className="carplus-product-media relative my-3 flex h-[200px] w-full items-center justify-center rounded-xl bg-white p-4">
           <span aria-hidden="true" className="absolute bottom-3 h-3 w-24 rounded-[50%] bg-black/5 blur-sm" />
-          {!imageLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center bg-white motion-safe:animate-pulse">
-              <span className="text-[12px] font-medium text-zinc-500">Carregando imagem...</span>
-            </div>
-          )}
-          <img
-            src={getImageSource()}
-            alt={`Pneu ${tire.nome} ${tire.medida} Aro ${tire.aro} em Curitiba`}
-            loading="lazy"
-            decoding="async"
-            onLoad={() => setImageLoaded(true)}
-            onError={() => {
-              setFallbackStep((prev) => Math.min(prev + 1, 2));
-              setImageLoaded(true);
-            }}
-            className="relative h-full max-h-[180px] w-full object-contain transition-transform duration-500 motion-safe:group-hover:scale-[1.04]"
-            referrerPolicy="no-referrer"
-          />
+          <VerifiedTireImage tire={tire} className="h-full w-full" compact />
         </div>
 
         <div className="mb-4 flex items-center justify-between gap-2 rounded-xl border border-zinc-200 bg-zinc-50 px-3.5 py-3">

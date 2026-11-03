@@ -1,5 +1,6 @@
+import VerifiedTireImage from './VerifiedTireImage';
 import React, { useState } from 'react';
-import { CAR_MODELS_DATA, TIRES_DATA, getBrandFallbackImage } from '../data';
+import { CAR_MODELS_DATA, TIRES_DATA } from '../data';
 import { getCatalogSync } from '../data/catalogo-pneus';
 import { CarModel, Tire, CatalogTire } from '../types';
 import { Car, Search, CheckCircle, ArrowRight, HelpCircle } from 'lucide-react';
@@ -165,15 +166,7 @@ export default function TireFinderWizard({ onSearchMeasure, onAddToCart }: TireF
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-14 h-14 bg-white rounded-lg p-1 border border-gray-150 flex items-center justify-center shrink-0">
-                      <img 
-                        src={ct.imagem || getBrandFallbackImage(ct.marca, String(ct.id))} 
-                        alt={ct.nome} 
-                        className="w-full h-full object-contain"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = getBrandFallbackImage(ct.marca, String(ct.id));
-                        }}
-                      />
+                      <VerifiedTireImage tire={ct} className="h-full w-full" compact />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">

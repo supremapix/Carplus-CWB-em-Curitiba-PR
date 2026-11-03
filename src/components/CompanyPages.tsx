@@ -1,3 +1,4 @@
+import VerifiedTireImage from './VerifiedTireImage';
 import LocalAreaGuide from './LocalAreaGuide';
 import React, { useState, useEffect } from 'react';
 import { 
@@ -18,7 +19,7 @@ import {
   getAllNeighborhoods, getAllCities, AROS as WAVE_AROS, CARS as WAVE_CARS
 } from '../utils/seoWaves';
 import ServiceHistory from './ServiceHistory';
-import { TIRES_DATA, CAR_MODELS_DATA, getBrandFallbackImage } from '../data';
+import { TIRES_DATA, CAR_MODELS_DATA } from '../data';
 import TireCard from './TireCard';
 import CarplusVideosSection from './CarplusVideosSection';
 import { motion, AnimatePresence } from 'motion/react';
@@ -215,12 +216,7 @@ export default function CompanyPages({
                             {/* Product Thumbnail & Details */}
                             <div className="flex items-center gap-4 w-full sm:w-auto">
                               <div className="w-20 h-20 bg-gray-50 border border-gray-150 rounded-xl p-2 flex items-center justify-center shrink-0">
-                                <img 
-                                  src={item.tire.image} 
-                                  alt={cleanedName} 
-                                  className="w-full h-full object-contain"
-                                  referrerPolicy="no-referrer"
-                                />
+                                <VerifiedTireImage tire={item.tire} className="h-full w-full" compact />
                               </div>
                               <div className="space-y-1">
                                 <span className="inline-block text-[9px] bg-gray-100 border border-gray-200 text-gray-700 font-mono font-bold px-2 py-0.5 rounded uppercase">
@@ -1892,16 +1888,7 @@ export default function CompanyPages({
                                   className="flex flex-col justify-between h-full pt-4"
                                 >
                                   <div className="flex justify-center flex-grow items-center bg-white rounded-2xl p-2 border border-gray-200">
-                                    <img 
-                                      src={t.image} 
-                                      alt={t.name} 
-                                      className="h-28 object-contain"
-                                      referrerPolicy="no-referrer"
-                                      onError={(e) => {
-                                        const target = e.target as HTMLImageElement;
-                                        target.src = getBrandFallbackImage(t.brand, t.id);
-                                      }}
-                                    />
+                                    <VerifiedTireImage tire={t} className="h-40 w-full" compact />
                                   </div>
                                   <div className="text-center mt-3 space-y-0.5">
                                     <span className="text-[10px] text-yellow-600 font-mono tracking-widest font-black uppercase">
@@ -2036,7 +2023,7 @@ export default function CompanyPages({
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="seo-page-tire-grid">
                       {targetTires.map((t) => (
                         <div key={t.id} className="h-full">
-                          <TireCard 
+                          <TireCard verifiedImages
                             tire={t}
                             onAddToCart={(tire, qty) => {
                               if (onAddToCart) {
@@ -2499,16 +2486,7 @@ export default function CompanyPages({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {pirelliTires.map((tire, idx) => (
                     <div key={tire.id || idx} className="bg-white border border-gray-200 p-4 rounded-2xl flex gap-4 items-center shadow-sm hover:border-red-500/40 transition duration-300">
-                      <img 
-                        src={tire.image || "/images/galeria/troca-pneu.webp"} 
-                        alt={tire.name} 
-                        className="w-20 h-20 object-contain p-1 shrink-0 bg-white rounded-xl"
-                        referrerPolicy="no-referrer"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = getBrandFallbackImage(tire.brand, tire.id);
-                        }}
-                      />
+                      <VerifiedTireImage tire={tire} className="h-28 w-24 shrink-0" compact />
                       <div className="flex-1 space-y-0.5 text-left min-w-0">
                         <span className="bg-red-600 text-white font-mono font-bold text-[8px] uppercase px-1.5 py-0.5 rounded">
                           PIRELLI

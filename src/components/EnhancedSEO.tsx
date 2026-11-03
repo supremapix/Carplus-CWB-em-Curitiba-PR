@@ -1,3 +1,4 @@
+import { getVerifiedTireImage } from '../lib/tireImageManifest';
 import { VERIFIED_STORE_PAGES } from './VerifiedStoreInfo';
 import { BYD_PAGES, BydClusterView } from './BydClusterPages';
 import { ELECTRIC_GUIDES } from '../data/electricGuides';
@@ -70,7 +71,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
     title = `Pneu ${selectedCatalogTire.marca} ${selectedCatalogTire.medida} ${selectedCatalogTire.linha || ''} em Curitiba | Carplus Pneus`;
     desc = `Pneu ${selectedCatalogTire.nome} (${selectedCatalogTire.medida} Aro ${selectedCatalogTire.aro}) na Carplus em Curitiba. Garantia de fábrica e pronta entrega no Portão.`;
     keywords = `pneu ${selectedCatalogTire.marca.toLowerCase()}, pneu ${selectedCatalogTire.medida.toLowerCase()}, pneu aro ${selectedCatalogTire.aro}, pneu curitiba, carplus pneus`;
-    ogImage = selectedCatalogTire.imagemGrande || selectedCatalogTire.imagem || ogImage;
+    ogImage = getVerifiedTireImage(selectedCatalogTire)?.src || ogImage;
   } else if (currentView === 'catalogo-pneus') {
     title = "Pneus e Auto Center em Curitiba – Portão | Catálogo Carplus";
     desc = "Onde comprar pneus em Curitiba? No auto center da Carplus no Portão. Catálogo completo de aros 13 a 23 com montagem técnica, alinhamento 3D e pronta entrega.";
@@ -600,7 +601,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       "@type": "Product",
       "@id": `${domain}/pneu/${getTireSlug(selectedTire)}#produto`,
       "name": `Pneu ${selectedTire.brand} ${selectedTire.model} ${selectedTire.width}/${selectedTire.aspectRatio} R${selectedTire.rim}`,
-      "image": selectedTire.image || `${domain}/og-carplus.webp`,
+      "image": getVerifiedTireImage(selectedTire)?.src,
       "description": `Pneu novo modelo ${selectedTire.model} marca ${selectedTire.brand}, medida ${selectedTire.width}/${selectedTire.aspectRatio} R${selectedTire.rim}. Pneu novo com garantia de fábrica e montagem computadorizada no Portão.`,
       "brand": {
         "@type": "Brand",

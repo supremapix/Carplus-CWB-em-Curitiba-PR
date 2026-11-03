@@ -1,4 +1,5 @@
 import React from 'react';
+import VerifiedTireImage from './VerifiedTireImage';
 import { Tire } from '../types';
 import { ArrowUpRight, MessageSquare, Eye, Wrench } from 'lucide-react';
 import { getBrandFallbackImage } from '../data';
@@ -7,11 +8,12 @@ import { formatWhatsApp } from '../utils/whatsapp';
 interface TireCardProps {
   key?: string;
   tire: Tire;
+  verifiedImages?: boolean;
   onAddToCart?: (tire: Tire, quantity: number) => void;
   onSelectTire?: (tire: Tire) => void;
 }
 
-export default function TireCard({ tire, onSelectTire }: TireCardProps) {
+export default function TireCard({ tire, onSelectTire, verifiedImages = false }: TireCardProps) {
   const whatsappUrl = formatWhatsApp(
     `Olá Carplus! Gostaria de consultar o preço e disponibilidade do Pneu ${tire.brand} ${tire.model} (${tire.width}/${tire.aspectRatio} R${tire.rim}) para instalação no Portão.`
   );
@@ -38,7 +40,7 @@ export default function TireCard({ tire, onSelectTire }: TireCardProps) {
           className="carplus-product-media relative my-3 flex h-[200px] w-full cursor-pointer items-center justify-center rounded-xl bg-white p-4"
         >
           <span aria-hidden="true" className="absolute bottom-3 h-3 w-24 rounded-[50%] bg-black/5 blur-sm" />
-          <img
+          {verifiedImages ? <VerifiedTireImage tire={tire} className="h-full w-full" compact /> : (<img
             src={tire.image}
             alt={tire.name}
             loading="lazy"
@@ -54,7 +56,7 @@ export default function TireCard({ tire, onSelectTire }: TireCardProps) {
                 target.src = '/images/pneus/pneu-fallback.svg';
               }
             }}
-          />
+          />)}
         </button>
 
         <div className="mb-4 flex items-center justify-between gap-2 rounded-xl border border-zinc-200 bg-zinc-50 px-3.5 py-3">

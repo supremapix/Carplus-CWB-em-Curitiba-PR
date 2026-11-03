@@ -196,3 +196,78 @@
   animation: none!important;
 }
 #carplus-root.carplus-inner-pages main :is(span,div.absolute):is(.bg-red-500,.bg-red-600,.bg-red-700) :is(span,strong,small,svg,p,div,b,em) { color: inherit!important; }
+
+/* Reading and layout refinements are restricted to internal-page content.
+   Size text elements, never SVGs, prices or a global root font-size. */
+#carplus-root.carplus-inner-pages main { font-size: 17px; }
+#carplus-root.carplus-inner-pages main :is(p,ul,ol):is(.text-sm,.text-base):not(:where(.carplus-product-card *,.carplus-blog *)) { font-size: 17px; line-height: 1.8; }
+#carplus-root.carplus-inner-pages main :is(p,ul,ol):is(.text-xs,.text-\[10px\],.text-\[11px\]):not(:where(.carplus-product-card *,.carplus-blog *)) { font-size: 16px; }
+#carplus-root.carplus-inner-pages main :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea) { font-size: 16px; min-height: 48px; max-width: 100%; }
+#carplus-root.carplus-inner-pages main :is(.carplus-action-primary,.carplus-action-secondary,.eg-button) { min-height: 48px; font-size: 16px; white-space: normal; }
+#carplus-root.carplus-inner-pages main :is(.grid,.flex) > :is(div,section,article,aside) { min-width: 0; }
+
+@media(max-width:639px) {
+  /* One outer gutter. Nested route shells no longer add another 16–32px. */
+  #carplus-root.carplus-inner-pages main > #company-pages-container:not(:has(.carplus-blog)),
+  #carplus-root.carplus-inner-pages main > :is(#tire-catalog-page,#catalog-tire-detail-view,#tire-detail-page,.electric-guide) { padding-inline: 14px; padding-top: 24px; }
+  #carplus-root.carplus-inner-pages #company-pages-container [id^="search-intent-"] { padding-inline: 0; padding-top: 0; }
+  #carplus-root.carplus-inner-pages #company-pages-container > .max-w-6xl > article.max-w-6xl { padding-inline: 0; }
+  #carplus-root.carplus-inner-pages .inner-page-nav-shell { padding-inline: 14px; }
+  #carplus-root.carplus-inner-pages .inner-page-nav a { font-size: 14px; }
+  /* Only padded content panels, not buttons, image frames or product cards. */
+  #carplus-root.carplus-inner-pages main :is(#company-pages-container,#catalog-tire-detail-view,#tire-detail-page) :is(div,section,article,aside):is(.p-6,.p-8,.p-10,.p-12):not(:where(.carplus-product-card,.carplus-product-card *,.carplus-white-surface,.carplus-white-surface *)) { padding: 18px 14px; }
+  #carplus-root.carplus-inner-pages main :is(#view-privacy-policy,#view-return-policy) { padding-inline: 0!important; border-inline: 0; border-radius: 0; }
+  #carplus-root.carplus-inner-pages #tire-catalog-page .catalog-search-panel,
+  #carplus-root.carplus-inner-pages .electric-guide .eg-card { padding: 18px 14px; }
+  #carplus-root.carplus-inner-pages main :is(#company-pages-container,#catalog-tire-detail-view,#tire-detail-page) :is(.gap-8,.gap-10,.gap-12) { gap: 24px; }
+  #carplus-root.carplus-inner-pages main :is(button,a.carplus-action-primary,a.carplus-action-secondary) { max-width: 100%; overflow-wrap: anywhere; }
+  #carplus-root.carplus-inner-pages #tire-catalog-page .catalog-breadcrumb { flex-wrap: wrap; }
+}
+
+/* White editorial layout: comfortable line lengths and a visible reading path. */
+#carplus-root.carplus-inner-pages .carplus-blog { padding: 0 32px 64px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-list-header { gap: 48px; padding-block: 36px 44px; }
+#carplus-root.carplus-inner-pages .carplus-blog :is(.blog-list-title,.blog-article-title) { font-family: var(--font-sans,sans-serif); font-size: clamp(32px,3.5vw,48px); line-height: 1.16; font-weight: 750; text-wrap: balance; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-list-intro { font-size: 19px; }
+#carplus-root.carplus-inner-pages .carplus-blog :is(.blog-header-photo,.blog-featured-photo,.blog-card) { border-radius: 14px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-card-photo { height: auto; aspect-ratio: 3 / 2; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-card-title { font-family: var(--font-sans,sans-serif); font-size: 23px; line-height: 1.35; font-weight: 700; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-card-summary { font-size: 17px; line-height: 1.75; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-card-copy { padding: 22px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-filter-panel { border-radius: 12px; padding: 24px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-topics { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-topics button { min-height: 46px; padding: 10px 15px; border: 1px solid; border-radius: 24px; font-size: 16px; line-height: 1.5; cursor: pointer; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-results-header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 38px 0 22px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-results-header h2 { margin: 0; font-size: 25px; font-weight: 700; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-results-count { margin: 0; flex-shrink: 0; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-article-shell { max-width: 960px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-article-header { padding-top: 20px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-article-title { max-width: 880px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-article-lead { font-size: 20px; line-height: 1.8; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-contents { margin: 28px auto 0; max-width: 790px; padding: 24px; background: #f8f9fb; border: 1px solid var(--inner-line); border-radius: 12px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-contents h2 { margin: 0 0 14px; font-size: 22px; font-weight: 700; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-contents ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 3px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-contents a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding-block: 9px; color: #343a44; font-size: 17px; line-height: 1.6; text-decoration: underline; text-decoration-color: #c4c8ce; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-contents a:hover { color: var(--inner-accent); }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-contents svg { width: 18px; height: 18px; flex-shrink: 0; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-section { scroll-margin-top: 130px; }
+#carplus-root.carplus-inner-pages .carplus-blog :is(.blog-paragraph,.blog-content-list li) { font-size: 19px; line-height: 1.85; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-section-heading { font-family: var(--font-sans,sans-serif); font-size: 29px; line-height: 1.3; font-weight: 700; }
+#carplus-root.carplus-inner-pages .carplus-blog h3.blog-section-heading { font-size: 25px; }
+#carplus-root.carplus-inner-pages .carplus-blog .blog-contact-panel { border-radius: 14px; border-top: 3px solid var(--inner-accent); }
+@media(max-width:1020px) and (min-width:761px) {
+  #carplus-root.carplus-inner-pages .carplus-blog .blog-post-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:760px) {
+  #carplus-root.carplus-inner-pages .carplus-blog { padding-inline: 14px; }
+  #carplus-root.carplus-inner-pages .carplus-blog .blog-list-header { gap: 26px; padding-block: 26px 32px; }
+  #carplus-root.carplus-inner-pages .carplus-blog .blog-results-header { align-items: flex-start; flex-direction: column; gap: 8px; }
+  #carplus-root.carplus-inner-pages .carplus-blog .blog-article-lead { font-size: 19px; padding-left: 14px; }
+  #carplus-root.carplus-inner-pages .carplus-blog :is(.blog-paragraph,.blog-content-list li) { font-size: 18px; }
+  #carplus-root.carplus-inner-pages .carplus-blog :is(.blog-filter-panel,.blog-contact-panel,.blog-contents,.blog-card-copy,.blog-related-grid .blog-card-copy) { padding: 18px 14px; }
+  #carplus-root.carplus-inner-pages .carplus-blog .blog-section-heading { font-size: 27px; }
+  #carplus-root.carplus-inner-pages .carplus-blog .blog-featured-photo figcaption { padding: 12px 14px; }
+  #carplus-root.carplus-inner-pages .carplus-blog .blog-contents { margin-top: 22px; }
+}
+
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-guide-content p { font-size: 17px!important; }

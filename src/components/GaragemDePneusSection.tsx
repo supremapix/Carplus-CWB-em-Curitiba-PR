@@ -1,6 +1,7 @@
+import VerifiedTireImage from './VerifiedTireImage';
 import React, { useState } from 'react';
 import { Flame } from 'lucide-react';
-import { TIRES_DATA, getBrandFallbackImage } from '../data';
+import { TIRES_DATA } from '../data';
 
 interface GaragemDePneusSectionProps {
   onNavigateToPage: (page: any, slug?: string) => void;
@@ -98,16 +99,7 @@ export default function GaragemDePneusSection({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {filteredTires.map((tire, index) => (
               <div key={tire.id || index} className="bg-white border border-gray-200 p-4 rounded-2xl flex gap-4 items-center shadow-sm relative hover:border-[#f49e1a]/50 transition duration-300">
-                <img 
-                  src={tire.image || "/images/galeria/troca-pneu.webp"} 
-                  alt={tire.name} 
-                  className="w-20 h-20 object-contain p-1 shrink-0 bg-white rounded-xl"
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = getBrandFallbackImage(tire.brand, tire.id);
-                  }}
-                />
+                <VerifiedTireImage tire={tire} className="h-28 w-24 shrink-0" compact />
                 <div className="flex-1 space-y-1 text-left min-w-0">
                   <span className="bg-gray-900 text-white font-mono font-black text-[8px] uppercase px-1.5 py-0.5 rounded">
                     {tire.brand}

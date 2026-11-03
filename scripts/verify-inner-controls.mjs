@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const css = fs.readFileSync('src/inner-pages.css','utf8');
-const controlCss=css.slice(css.indexOf('/* Paired control colors:'));
+const controlCss=css.slice(css.indexOf('/* Paired control colors:')).split('/* Reading and layout refinements')[0];
 assert(controlCss.length>1000,'Paired control contract exists');
 for(const selector of controlCss.matchAll(/([^{}]+)\{/g)) {
  const text=selector[1].replace(/\/\*[\s\S]*?\*\//g,'').trim();

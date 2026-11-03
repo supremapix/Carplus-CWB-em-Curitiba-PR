@@ -1,7 +1,8 @@
 import React from 'react';
 import { Tire } from '../types';
 import { getTireSlug } from '../utils/slugify';
-import { getBrandFallbackImage } from '../data';
+import VerifiedTireImage from './VerifiedTireImage';
+import { getVerifiedTireImage } from '../lib/tireImageManifest';
 import { 
   ArrowLeft, ShoppingCart, ShieldCheck, HelpCircle, 
   Tag, Clock, Phone, CheckCircle, Sparkles, MessageSquare,
@@ -71,22 +72,8 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
                 </span>
               )}
               
-              <img 
-                src={tire.image} 
-                alt={tire.name} 
-                className="max-h-72 sm:max-h-80 object-contain w-auto transform transition duration-500 hover:scale-105"
-                referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (!target.dataset.triedFallback) {
-                    target.dataset.triedFallback = 'true';
-                    target.src = getBrandFallbackImage(tire.brand, tire.id);
-                  } else {
-                    target.src = '/images/pneus/pneu-fallback.svg';
-                  }
-                }}
-              />
-              
+              <VerifiedTireImage tire={tire} className="h-[290px] w-full" />
+
               <div className="absolute bottom-4 right-4 bg-gray-900 text-white text-[10px] font-black px-3 py-1 rounded uppercase tracking-wider">
                 Pronta Entrega
               </div>
@@ -341,7 +328,7 @@ export default function TireDetail({ tire, onBack, onAddToCart }: TireDetailProp
 
                   {/* Pinterest */}
                   <a
-                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}&media=${encodeURIComponent(tire.image)}&description=${encodeURIComponent(`Pneu ${tire.brand} ${tire.model} com Montagem Especializada em Curitiba`)}`}
+                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}&media=${encodeURIComponent(getVerifiedTireImage(tire)?.src || '')}&description=${encodeURIComponent(`Pneu ${tire.brand} ${tire.model} com Montagem Especializada em Curitiba`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Compartilhar no Pinterest"

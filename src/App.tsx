@@ -1591,7 +1591,7 @@ export default function App() {
 
       {/* Cart side panel Drawer */}
       <Suspense fallback={null}>
-        <CartDrawer 
+        <CartDrawer verifiedImages={currentView !== 'home'}
           isOpen={isCartOpen}
           onClose={() => setIsCartOpen(false)}
           cartItems={cartItems}

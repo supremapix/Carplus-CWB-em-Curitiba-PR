@@ -6,7 +6,7 @@ import {
   ExternalLink, Info, AlertTriangle, SlidersHorizontal, Award
 } from 'lucide-react';
 import { getCatalogSync, getFullCatalog } from '../data/catalogo-pneus';
-import { getBrandFallbackImage } from '../data';
+import VerifiedTireImage from './VerifiedTireImage';
 import CatalogTireCard from './CatalogTireCard';
 
 interface CatalogTireDetailProps {
@@ -37,7 +37,6 @@ export default function CatalogTireDetail({
     }).catch(() => {});
   }, [tire.id, tire.slug]);
 
-  const displayImage = tire.imagemGrande || tire.imagem || '/images/pneus/pneu-pirelli-p400-evo-600x600.webp';
   const shareUrl = typeof window !== 'undefined' ? window.location.href : `https://www.carpluscwb.com.br/pneu/${tire.slug}`;
 
   const handleCopyLink = () => {
@@ -89,20 +88,7 @@ export default function CatalogTireDetail({
           {/* Left Column: Product Image & Highlights */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
             <div className="carplus-white-surface relative bg-white rounded-2xl border border-gray-150 p-6 flex items-center justify-center min-h-[320px] shadow-2xs">
-              <img
-                src={displayImage}
-                alt={`Pneu ${tire.nome} medida ${tire.medida} Aro ${tire.aro} Curitiba`}
-                className="max-h-72 w-auto object-contain mx-auto transition-transform hover:scale-105 duration-300"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (!target.dataset.triedFallback) {
-                    target.dataset.triedFallback = 'true';
-                    target.src = getBrandFallbackImage(tire.marca, String(tire.id));
-                  } else {
-                    target.src = '/images/pneus/pneu-fallback.svg';
-                  }
-                }}
-              />
+              <VerifiedTireImage tire={tire} className="h-[290px] w-full" />
               <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                 <span className="bg-gray-900 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">
                   {tire.marca}

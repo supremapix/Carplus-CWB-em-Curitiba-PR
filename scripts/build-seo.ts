@@ -1,3 +1,5 @@
+import VerifiedTireImage from '../src/components/VerifiedTireImage';
+import { getVerifiedTireImage } from '../src/lib/tireImageManifest';
 import VerifiedStoreInfo, { VERIFIED_STORE_PAGES } from '../src/components/VerifiedStoreInfo';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -374,7 +376,7 @@ function renderProductShell(tire: typeof TIRES_DATA[0], slug: string): string {
 
   html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-bottom: 3rem; align-items: start;">
     <div style="background: #ffffff; border: 2px solid #e5e7eb; border-radius: 1rem; padding: 2rem; text-align: center;">
-      <img src="${escapeHtml(tire.image)}" alt="Pneu ${escapeHtml(tire.brand)} ${escapeHtml(tire.model)} ${tire.width}/${tire.aspectRatio} R${tire.rim}" style="max-height: 340px; max-width: 100%; object-contain: contain; margin: 0 auto;" />
+      ${renderToStaticMarkup(React.createElement(VerifiedTireImage, { tire, className: "h-[290px] w-full" }))}
       <div style="margin-top: 1rem; display: inline-block; background: #ecfdf5; color: #065f46; font-size: 0.85rem; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 9999px;">
         ✓ Em Estoque à Pronta Entrega no Portão
       </div>
@@ -1183,7 +1185,7 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
             {
               "@type": "Product",
               "name": `Pneu ${t.brand} ${t.model} ${t.width}/${t.aspectRatio} R${t.rim}`,
-              "image": t.image,
+              "image": getVerifiedTireImage(t)?.src,
               "description": `Pneu novo modelo ${t.model} marca ${t.brand}, medida ${t.width}/${t.aspectRatio} R${t.rim}. Pneu novo com garantia de fábrica e montagem computadorizada no Portão.`,
               "brand": { "@type": "Brand", "name": t.brand },
               "offers": {
