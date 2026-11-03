@@ -10,9 +10,9 @@ import './inner-pages.css';
 // Crawlers receive static social tags; React owns them after the app starts.
 document.head.querySelectorAll('meta[data-carplus-social-fallback]').forEach(tag => tag.remove());
 
-// Adopt the crawler canonical into Helmet's managed set. Otherwise the static
-// link survives client navigation beside a second, conflicting canonical.
-document.head.querySelectorAll('link[rel="canonical"]').forEach(tag => tag.setAttribute('data-rh', 'true'));
+// React 19 hoists Helmet links natively and does not adopt static data-rh links.
+// Remove only the crawler canonical before React owns it during navigation.
+document.head.querySelectorAll('link[rel="canonical"]').forEach(tag => tag.remove());
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
