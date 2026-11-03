@@ -107,3 +107,64 @@
 #carplus-root.carplus-inner-pages main :is(button,a):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-900):not(:where(.carplus-product-card *)) { background: #272b32; color: #fff; border-color: #272b32; }
 #carplus-root.carplus-inner-pages main :is(button,a):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-900):not(:where(.carplus-product-card *)) :is(span,strong,svg) { color: inherit; }
 #carplus-root.carplus-inner-pages main :is(button,a):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-900):hover { background: #414752; }
+
+/* Paired control colors: legacy utility remapping must never recolor only text
+   or only the background. Explicit tokens apply together, including children. */
+#carplus-root.carplus-inner-pages main :is(button,[role="button"],summary,a[class*="bg-"],.carplus-action-primary,.carplus-action-secondary,.carplus-button,.eg-button,.catalog-filter-chip) {
+  --control-fill: #ffffff;
+  --control-ink: #202124;
+  --control-line: #767d88;
+  background: var(--control-fill)!important;
+  color: var(--control-ink)!important;
+  border-color: var(--control-line)!important;
+  opacity: 1;
+}
+#carplus-root.carplus-inner-pages main :is(button,[role="button"],summary,a[class*="bg-"],.carplus-action-primary,.carplus-action-secondary,.carplus-button,.eg-button,.catalog-filter-chip):hover {
+  --control-fill: #eef0f3;
+  --control-ink: #202124;
+  --control-line: #555b65;
+}
+#carplus-root.carplus-inner-pages main :is(button,[role="button"],a):is(.carplus-action-primary,.carplus-button-primary,.eg-button:not(.eg-button-secondary),[aria-pressed="true"],[aria-selected="true"],[class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"],[class~="bg-[#f59c00]"],[class~="bg-[#25D366]"],.bg-green-500,.bg-green-600,.bg-emerald-500,.bg-emerald-600,.bg-amber-400,.bg-amber-500,.bg-amber-600),
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-empty button {
+  --control-fill: #b4232c;
+  --control-ink: #ffffff;
+  --control-line: #b4232c;
+}
+#carplus-root.carplus-inner-pages main :is(button,[role="button"],a):is(.carplus-action-primary,.carplus-button-primary,.eg-button:not(.eg-button-secondary),[aria-pressed="true"],[aria-selected="true"],[class~="bg-[#F5A623]"],[class~="bg-[#f49e1a]"],[class~="bg-[#f59c00]"],[class~="bg-[#25D366]"],.bg-green-500,.bg-green-600,.bg-emerald-500,.bg-emerald-600,.bg-amber-400,.bg-amber-500,.bg-amber-600):hover,
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-empty button:hover {
+  --control-fill: #941c24;
+  --control-line: #941c24;
+}
+#carplus-root.carplus-inner-pages main :is(button,[role="button"],a):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-900,[class~="bg-[#202020]"],[class~="bg-[#080808]"]) {
+  --control-fill: #272b32;
+  --control-ink: #ffffff;
+  --control-line: #272b32;
+}
+#carplus-root.carplus-inner-pages main :is(button,[role="button"],a):is(.bg-black,.bg-gray-950,.bg-gray-900,.bg-gray-800,.bg-zinc-900,[class~="bg-[#202020]"],[class~="bg-[#080808]"]):hover {
+  --control-fill: #414752;
+  --control-line: #414752;
+}
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-filter-chip {
+  --control-fill: #fff4f5;
+  --control-ink: #8f1c24;
+  --control-line: #8f1c24;
+}
+#carplus-root.carplus-inner-pages #tire-catalog-page .catalog-filter-chip:hover { --control-fill: #ffe7e9; }
+#carplus-root.carplus-inner-pages main :is(button,[role="button"],summary,a[class*="bg-"],.carplus-action-primary,.carplus-action-secondary,.carplus-button,.eg-button,.catalog-filter-chip) :is(span,strong,small,svg) {
+  color: inherit!important;
+}
+#carplus-root.carplus-inner-pages main :is(button,[role="button"]):is(:disabled,[aria-disabled="true"]) {
+  --control-fill: #e7e9ed;
+  --control-ink: #555b65;
+  --control-line: #767d88;
+  background: #e7e9ed!important;
+  color: #555b65!important;
+  border-color: #767d88!important;
+  opacity: 1!important;
+  cursor: not-allowed;
+}
+#carplus-root.carplus-inner-pages main :is(a,button,input,select,textarea,summary):focus-visible {
+  outline: 3px solid #005fcc!important;
+  outline-offset: 3px!important;
+  box-shadow: 0 0 0 3px #ffffff!important;
+}
