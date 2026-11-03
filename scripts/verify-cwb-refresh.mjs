@@ -20,3 +20,10 @@ const catalog=JSON.parse(fs.readFileSync('catalogo-pneus.json','utf8'));assert.e
 for(const p of fs.readdirSync('dist').filter(p=>p.startsWith('sitemap')&&p.endsWith('.xml'))){const s=fs.readFileSync(path.join('dist',p),'utf8');assert(!s.includes('carpluspneuseoficina.com.br'),`own sitemap domain ${p}`);}
 assert(!fs.readFileSync('src/seo-data.ts','utf8').includes('4.5 km'),'no fake route fallback');
 console.log(JSON.stringify({result:'PASS',preservedRawProducts:1919,checkedSemanticRoutes:paths.length,homeJSX:'unchanged',catalogAndPriceData:'unchanged',domain:'www.carpluscwb.com.br',browserQA:'not covered by this script'},null,2));
+
+for (const file of ['RimAuthoritySection.tsx','BydClusterPages.tsx','ElectricGuides.tsx']) {
+ const code=fs.readFileSync(path.join('src/components',file),'utf8');
+ assert(!/\.(indiceCarga|indiceVelocidade)/.test(code), `New guide must not expose unverified catalog index fallback: ${file}`);
+ assert(code.includes('Índices de carga e velocidade a confirmar'), `Explicit index confirmation: ${file}`);
+}
+console.log('PASS: new hubs do not expose conflicting fallback load/speed labels; catalog data unchanged.');
