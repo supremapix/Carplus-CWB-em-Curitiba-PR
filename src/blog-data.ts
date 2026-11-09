@@ -69,6 +69,139 @@ export const BLOG_CATEGORIES = [
 
 export const BLOG_POSTS: BlogPost[] = [
 {
+  "id": "rodas-de-liga-leve-riscadas-na-troca-de-pneus",
+  "slug": "rodas-de-liga-leve-riscadas-na-troca-de-pneus",
+  "title": "Já riscaram suas rodas na troca dos pneus? Saiba o que observar",
+  "h1": "Rodas de liga leve riscadas na troca dos pneus: sua preocupação merece atenção",
+  "category": "Rodas",
+  "summary": "Já teve uma experiência ruim em um auto center? Veja o que conferir antes, durante e depois da troca e converse com a Carplus, no Portão, sobre o cuidado com suas rodas.",
+  "metaTitle": "Rodas riscadas na troca de pneus? | Carplus Curitiba",
+  "metaDescription": "Receio de riscar as rodas de liga leve na troca dos pneus? Veja cuidados, perguntas e fotos reais da Carplus no Portão, Curitiba. Converse com a equipe.",
+  "publishedDate": "9 de novembro de 2026",
+  "publishedIso": "2026-11-09",
+  "readingTime": "5 min de leitura",
+  "featuredImage": "/images/galeria/rodas-de-liga-leve.webp",
+  "imageAlt": "Rodas de liga leve fotografadas na Carplus. Imagem real do acervo da loja.",
+  "intro": "Você cuida do carro, escolhe os pneus e espera receber tudo em ordem. Encontrar um risco na roda depois do serviço gera frustração e deixa receio da próxima troca. Se isso já aconteceu com você, faz sentido querer entender como seu carro será tratado. Na Carplus Pneus, no Portão, essa preocupação tem lugar na conversa: conte sua experiência e tire as dúvidas sobre a montagem antes de autorizar o serviço.",
+  "sections": [
+    {
+      "title": "Suas rodas merecem o mesmo cuidado que seus pneus",
+      "paragraphs": [
+        "Rodas pintadas, diamantadas ou com acabamento especial fazem parte do cuidado que você tem com o carro. Um dano no acabamento incomoda mesmo quando parece pequeno. Escolher onde trocar os pneus envolve também avaliar a atenção dada às suas dúvidas e ao estado do conjunto.",
+        "A Carplus reúne venda de pneus e serviços de montagem, balanceamento e alinhamento 3D na unidade do Portão. Você pode conversar com a equipe sobre a aplicação do pneu e sobre suas rodas no mesmo atendimento. Confirme quais cuidados e serviços são indicados para o seu veículo."
+      ]
+    },
+    {
+      "title": "Antes da troca: mostre, pergunte e registre",
+      "paragraphs": [
+        "Uma conferência visual junto com a equipe ajuda a deixar claro o estado das rodas antes do serviço. Peça que marcas existentes sejam anotadas na ordem de serviço e, se desejar, faça fotos com boa iluminação."
+      ],
+      "listItems": [
+        "Mostre bordas, raios e áreas próximas aos parafusos, sem esquecer marcas que você já conhece.",
+        "Informe se a roda foi repintada, diamantada, reparada ou substituída.",
+        "Avise se o carro tem sensor de pressão TPMS, pneus run-flat ou outra particularidade.",
+        "Pergunte quais etapas estão incluídas no orçamento e quais dependem de avaliação."
+      ],
+      "callout": {
+        "type": "tip",
+        "title": "Você pode começar assim",
+        "text": "“Já tive uma roda riscada em outra troca e estou preocupado. Podemos conferir juntos o estado das rodas e conversar sobre os cuidados antes de começar?”"
+      }
+    },
+    {
+      "title": "Na montagem: o que vale perguntar sobre a proteção",
+      "paragraphs": [
+        "Pergunte como a oficina evita contato inadequado das ferramentas com o acabamento e quais proteções são compatíveis com suas rodas. O importante é entender o procedimento para o seu conjunto, não escolher somente pelo nome ou pela aparência da máquina.",
+        "Equipamento, acessórios, estado da roda e execução trabalham juntos. A expressão “anti-risco” não equivale a garantia de que nenhum dano possa ocorrer. Um atendimento transparente explica o que será feito e também eventuais limitações.",
+        "As orientações da Continental para montagem destacam a inspeção das rodas e os cuidados com TPMS conforme o fabricante. A Michelin também recomenda montagem profissional e verificação do estado do aro. Essas recomendações gerais ajudam você a formular perguntas para a equipe."
+      ],
+      "internalLinks": [
+        {
+          "text": "Orientações de montagem da Continental",
+          "url": "https://www.conti.com.br/tire-knowledge/fitting-tires/"
+        },
+        {
+          "text": "Como funciona a montagem de pneus, segundo a Michelin",
+          "url": "https://www.michelin.com.br/auto/conselhos/troca-de-pneus/montagem-de-pneus"
+        }
+      ]
+    },
+    {
+      "title": "Na entrega: confira com calma antes de sair",
+      "paragraphs": [
+        "Revise as rodas com a equipe, compare com os registros anteriores e pergunte sobre os serviços realizados. Se notar alguma diferença, mostre o ponto e peça que a situação seja registrada e esclarecida.",
+        "Se perceber uma marca somente depois, guarde fotos e a ordem de serviço e procure a oficina que realizou o atendimento. A aparência do risco, isoladamente, não comprova quando nem como ele surgiu."
+      ],
+      "listItems": [
+        "Observe o acabamento, as bordas e a região dos parafusos.",
+        "Confira as orientações sobre pressão e eventuais verificações posteriores.",
+        "Se houver vibração nova, perda de pressão ou alerta no painel, peça avaliação profissional."
+      ]
+    },
+    {
+      "title": "A roda já está riscada: trocar o pneu resolve?",
+      "paragraphs": [
+        "A troca de pneus não recupera pintura nem acabamento diamantado. Antes de contratar um reparo, é preciso diferenciar uma marca estética de uma possível avaria no conjunto. Fotos ajudam no primeiro contato, mas não substituem inspeção.",
+        "Se houver trinca aparente, deformação ou perda de pressão, evite continuar usando o conjunto e busque orientação profissional. Não tente lixar, pintar ou corrigir a roda por conta própria para esconder um dano."
+      ],
+      "callout": {
+        "type": "info",
+        "title": "Avaliação antes de uma promessa",
+        "text": "Antes de contratar um reparo, confirme a avaliação necessária, a viabilidade e a disponibilidade do serviço. A troca dos pneus não corrige o acabamento das rodas."
+      }
+    },
+    {
+      "title": "Converse com a Carplus antes da próxima troca",
+      "paragraphs": [
+        "Uma experiência ruim não precisa ser ignorada na próxima escolha. Conte à Carplus o que aconteceu, informe modelo e ano do carro e mostre suas rodas. Comece pelas perguntas que importam para você.",
+        "O atendimento é na Av. Presidente Arthur da Silva Bernardes, 1323, no Portão, em Curitiba. Pelo WhatsApp (41) 3082-7282, confirme disponibilidade, orçamento e horário para levar o veículo. As fotos deste conteúdo são do acervo real da Carplus."
+      ],
+      "internalLinks": [
+        {
+          "text": "Troca de pneus na Carplus, no Portão",
+          "url": "/troca-de-pneus-curitiba",
+          "description": "Conheça o atendimento e converse sobre o cuidado com suas rodas."
+        },
+        {
+          "text": "Endereço e contato da Carplus",
+          "url": "/contato"
+        },
+        {
+          "text": "Consultar pneus por medida e aro",
+          "url": "/pneus"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "É possível riscar a roda de liga leve ao trocar o pneu?",
+      "answer": "Pode haver dano quando ferramentas ou procedimentos são inadequados ao conjunto. Inspeção, proteções compatíveis e execução cuidadosa ajudam a reduzir esse risco. Pergunte como a montagem será feita e confira as rodas antes e depois."
+    },
+    {
+      "question": "Máquina anti-risco é garantia de risco zero?",
+      "answer": "Não. O nome do equipamento não substitui a avaliação da roda, a escolha dos acessórios e o cuidado na execução. Confirme o procedimento indicado para seu conjunto e as condições do serviço."
+    },
+    {
+      "question": "Posso conversar com a Carplus sobre uma experiência ruim em outra oficina?",
+      "answer": "Sim. Conte o que aconteceu pelo WhatsApp (41) 3082-7282 e explique sua preocupação com as rodas. Peça uma avaliação visual e esclareça os cuidados de montagem antes de autorizar a troca."
+    },
+    {
+      "question": "A troca de pneus remove riscos ou recupera rodas diamantadas?",
+      "answer": "Não. Montagem de pneus e recuperação do acabamento são serviços diferentes. A necessidade, viabilidade e disponibilidade de eventual reparo devem ser avaliadas e confirmadas separadamente."
+    }
+  ],
+  "ctaTitle": "Vamos conversar sobre o cuidado com suas rodas?",
+  "ctaText": "Conte sua experiência à Carplus. Informe o carro e tire suas dúvidas sobre a troca dos pneus antes de trazer o veículo à nossa unidade no Portão.",
+  "ctaButtonText": "Conversar sobre minhas rodas",
+  "whatsappMessage": "Olá, Carplus! Tenho preocupação com riscos nas minhas rodas de liga leve. Quero conversar sobre os cuidados na troca dos pneus e pedir um orçamento.",
+  "relatedSlugs": [
+    "como-escolher-rodas-carro",
+    "auto-center-em-curitiba-como-escolher-oficina-de-pneus-de-confianca",
+    "quando-fazer-alinhamento-balanceamento"
+  ]
+},
+{
   "id": "desgaste-pneus-carros-eletricos",
   "slug": "desgaste-pneus-carros-eletricos",
   "title": "Pneus de carros elétricos desgastam mais? O que observar antes de trocar",
@@ -1568,6 +1701,8 @@ export const BLOG_POSTS: BlogPost[] = [
     "metaDescription": "Descubra o que muda nos pneus para carro elétrico, quanto duram e como escolher medidas ideais com montagem técnica na Carplus Portão em Curitiba.",
     "publishedDate": "10 de Outubro de 2026",
     "publishedIso": "2026-10-10",
+    "updatedDate": "9 de novembro de 2026",
+    "updatedIso": "2026-11-09",
     "readingTime": "9 min de leitura",
     "featuredImage": "/images/galeria/mostruario-pneus-novos.webp",
     "imageAlt": "Pneus novos organizados em prateleiras na Carplus.",
@@ -1641,7 +1776,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "paragraphs": [
           "A durabilidade média de um pneu em um veículo elétrico varia fortemente de acordo com a condução, topografia e disciplina de manutenção preventiva. Em média, enquanto um pneu tradicional pode rodar entre 40.000 e 50.000 km em condições ideais, modelos em veículos elétricos frequentemente demandam substituição entre 30.000 e 40.000 km.",
           "Para evitar desgastes prematuros ou irregulares, três medidas operacionais são indispensáveis: realizar o rodízio de pneus em intervalos menores (a cada 7.000 a 8.000 km), checar a calibragem rigorosamente a frio uma vez por semana conforme os valores da montadora e efetuar a geometria com alinhamento 3D computadorizado sempre que o veículo sofrer impactos contra buracos ou desníveis severos de pista.",
-          "A montagem na Carplus é realizada com desmontadoras pneumáticas dotadas de braço auxiliar plástico anti-risco, garantindo total integridade de rodas de liga leve diamantadas e dos delicados sensores de pressão TPMS instalados nas válvulas."
+          "Antes da montagem na Carplus, converse com a equipe sobre o acabamento das rodas e a presença de sensores TPMS. Confirme os cuidados adequados ao seu conjunto; nenhuma descrição de equipamento representa garantia de risco zero."
         ],
         "internalLinks": [
           {
@@ -1981,6 +2116,8 @@ export const BLOG_POSTS: BlogPost[] = [
     "metaDescription": "Procurando auto center em Curitiba? Veja checklist de confiança: garantia, maquinário anti-risco, alinhamento 3D e nota fiscal na Carplus no bairro Portão.",
     "publishedDate": "10 de Outubro de 2026",
     "publishedIso": "2026-10-10",
+    "updatedDate": "9 de novembro de 2026",
+    "updatedIso": "2026-11-09",
     "readingTime": "9 min de leitura",
     "featuredImage": "/images/galeria/fachada-carplus.webp",
     "imageAlt": "Letreiro e entrada da Carplus Pneus no Portão, em Curitiba.",
@@ -2013,12 +2150,12 @@ export const BLOG_POSTS: BlogPost[] = [
         }
       },
       {
-        "title": "3. Maquinário Pneumático Anti-Risco: Proteção para Rodas e Sensores TPMS",
+        "title": "3. Cuidados na montagem: rodas e sensores TPMS",
         "level": "h2",
         "paragraphs": [
-          "Um dos maiores temores dos donos de veículos modernos ao trocar pneus é encontrar riscos e marcas de alavancas de ferro nas bordas das rodas de liga leve ou diamantadas. Desmontadoras manuais antigas utilizam espátulas metálicas brutas que raspam a pintura e amassam as bordas da roda.",
-          "Em um auto center de alto padrão, a montagem é feita por desmontadoras pneumáticas automatizadas dotadas de garras revestidas e braço auxiliar plástico anti-risco. O equipamento guia o talão do pneu suavemente sobre a roda sem que haja contato de metal contra metal.",
-          "Além disso, os operadores são treinados para preservar os delicados sensores de pressão de ar TPMS fixados nas válvulas internas de veículos nacionais e importados, evitando quebras acidentais de componentes caros."
+          "O receio de encontrar marcas nas rodas após a troca dos pneus é compreensível. Antes do serviço, confira o acabamento com a equipe e registre marcas já existentes.",
+          "Pergunte sobre ferramentas e proteções compatíveis com suas rodas. O estado do conjunto e a execução importam tanto quanto o equipamento; a expressão “anti-risco” não garante ausência de danos.",
+          "Se o veículo tiver sensores TPMS, informe a equipe e confirme os cuidados previstos pelo fabricante para a montagem e a avaliação das válvulas."
         ],
         "internalLinks": [
           {
@@ -2083,8 +2220,8 @@ export const BLOG_POSTS: BlogPost[] = [
         "answer": "Um auto center integra loja oficial de pneus novos com centro automotivo equipado com rampa de alinhamento 3D computadorizado, balanceamento dinâmico, maquinário pneumático anti-risco e garantia fiscal oficial, enquanto borracharias geralmente focam apenas em consertos pontuais."
       },
       {
-        "question": "Como ter certeza de que a oficina não vai riscar as rodas de liga leve do meu carro?",
-        "answer": "Certifique-se de que o estabelecimento utiliza desmontadoras pneumáticas modernas com braço auxiliar plástico anti-risco e garras revestidas, evitando o uso de espátulas de ferro manuais que entram em contato direto com a pintura da roda."
+        "question": "O que conferir para reduzir o risco de danos às rodas na troca dos pneus?",
+        "answer": "Confira o estado das rodas antes e depois, pergunte sobre as proteções e ferramentas compatíveis com o acabamento e esclareça os procedimentos com a equipe. Nenhum equipamento, isoladamente, oferece certeza de risco zero."
       },
       {
         "question": "Por que é importante exigir nota fiscal e garantia de 5 anos na compra de pneus?",
@@ -2100,7 +2237,7 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     "ctaTitle": "Procurando um auto center de confiança no Portão em Curitiba?",
-    "ctaText": "Venha para a Carplus na Av. Presidente Arthur Bernardes, 1323. Montagem rápida anti-risco, alinhamento 3D a laser e pneus novos com 5 anos de garantia.",
+    "ctaText": "Converse com a Carplus na Av. Presidente Arthur da Silva Bernardes, 1323, no Portão. Consulte pneus, montagem e alinhamento 3D e tire suas dúvidas sobre o cuidado com as rodas.",
     "ctaButtonText": "Falar com Atendimento no WhatsApp",
     "whatsappMessage": "Olá Carplus! Gostaria de agendar uma avaliação e conferir pneus e serviços no auto center do Portão.",
     "relatedSlugs": [
@@ -2121,6 +2258,8 @@ export const BLOG_POSTS: BlogPost[] = [
     "metaDescription": "Guia definitivo para comprar pneus novos em Curitiba: marcas homologadas, aros 13 a 18, montagem técnica, alinhamento 3D e facilidade no Portão. Confira!",
     "publishedDate": "10 de Outubro de 2026",
     "publishedIso": "2026-10-10",
+    "updatedDate": "9 de novembro de 2026",
+    "updatedIso": "2026-11-09",
     "readingTime": "10 min de leitura",
     "featuredImage": "/images/galeria/show-row-pneus.webp",
     "imageAlt": "Área de atendimento e exposição de pneus da Carplus em Curitiba.",
@@ -2213,7 +2352,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "title": "5. Montagem Técnica, Válvulas Novas e Alinhamento 3D Computadorizado",
         "level": "h2",
         "paragraphs": [
-          "Na Carplus, o serviço de instalação é tratado com rigor técnico automotivo. Nossos mecânicos utilizam desmontadoras pneumáticas automatizadas com proteção plástica anti-risco, preservando rodas de liga leve originais e diamantadas.",
+          "Na Carplus, você pode consultar a instalação dos pneus no mesmo local da compra. Informe o acabamento das rodas e pergunte sobre as ferramentas, proteções e cuidados indicados para o seu veículo antes de autorizar o serviço.",
           "Em cada troca, recomendamos a substituição das válvulas (bicos de ar), pois a borracha da válvula sofre o mesmo ressecamento que o pneu e pode causar vazamentos lentos e imperceptíveis ao longo dos meses.",
           "Após o balanceamento dinâmico com chumbos adesivos e de presilha calibrados grama a grama, o veículo sobe na rampa de alinhamento 3D a laser para medição milimétrica de cáster, cambagem e convergência, garantindo rodar suave e seguro pelas ruas paranaenses."
         ]

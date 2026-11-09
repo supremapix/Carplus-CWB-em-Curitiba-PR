@@ -1,3 +1,4 @@
+import SearchIntentPages from '../src/components/SearchIntentPages';
 import VerifiedTireImage from '../src/components/VerifiedTireImage';
 import { getVerifiedTireImage } from '../src/lib/tireImageManifest';
 import VerifiedStoreInfo, { VERIFIED_STORE_PAGES } from '../src/components/VerifiedStoreInfo';
@@ -297,6 +298,10 @@ function renderBlogArticleShell(post: BlogPost): string {
       <span>✍️ Autor: <strong>Equipe Técnica Carplus Pneus</strong></span>
     </div>
   </header>`;
+
+  if (post.slug === 'rodas-de-liga-leve-riscadas-na-troca-de-pneus') {
+    contentHtml += `<figure style="margin:0 0 2rem"><img src="/images/carplus-real/rodas-de-liga-leve.webp" alt="${escapeHtml(post.imageAlt)}" width="680" height="454" style="width:100%;height:auto;border-radius:1rem" /><figcaption style="font-size:.85rem;color:#4b5563;margin-top:.5rem">${escapeHtml(post.imageAlt)}</figcaption></figure>`;
+  }
 
   // Intro
   contentHtml += `<div style="font-size: 1.15rem; line-height: 1.7; color: #374151; font-weight: 500; margin-bottom: 2rem; background: #f9fafb; padding: 1.25rem; border-left: 4px solid #f49e1a; border-radius: 0 0.5rem 0.5rem 0;">
@@ -1236,6 +1241,12 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
     routes.push({ path: slug, title: guide.metaTitle, desc: guide.description, keywords: '', schema: { '@context': 'https://schema.org', '@type': 'WebPage', name: guide.title, url: `${DOMAIN}/${slug}` }, isIndexable: true, customBodyHtml: wrap(React.createElement(ElectricGuides, {kind})) });
   }
   for (const route of routes) {
+    if (route.path === 'troca-de-pneus-curitiba') {
+      route.title = 'Troca de Pneus em Curitiba | Montagem Técnica e Alinhamento 3D | Carplus';
+      route.desc = 'Onde trocar pneus em Curitiba? Na Carplus Pneus você compra e instala no mesmo local, com montagem técnica especializada, balanceamento e alinhamento 3D.';
+      route.schema = {'@context':'https://schema.org','@type':'WebPage',name:route.title,description:route.desc,url:`${DOMAIN}/${route.path}`};
+      route.customBodyHtml = wrap(React.createElement(SearchIntentPages, {view: 'troca-de-pneus-curitiba', onNavigateHome: () => {}}));
+    }
     if (VERIFIED_STORE_PAGES[route.path]) {
       route.title = VERIFIED_STORE_PAGES[route.path].title;
       route.desc = VERIFIED_STORE_PAGES[route.path].description;

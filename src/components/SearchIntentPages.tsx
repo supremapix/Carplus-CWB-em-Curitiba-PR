@@ -1,3 +1,4 @@
+import WheelCareSection from './WheelCareSection';
 import VerifiedStoreInfo, { VERIFIED_STORE_PAGES } from './VerifiedStoreInfo';
 import React, { useState } from 'react';
 import { 
@@ -854,32 +855,34 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     },
     'troca-de-pneus-curitiba': {
       title: "Troca de Pneus em Curitiba - Instalação e Auto Center",
-      subtitle: "Troca profissional com maquinário anti-risco para rodas de liga leve, válvulas de borracha novas, balanceamento computadorizado e alinhamento 3D.",
+      subtitle: "Montagem de pneus e atenção às suas rodas de liga leve. Consulte balanceamento, alinhamento 3D e os cuidados indicados para seu carro no Portão.",
       tag: "Troca de Pneus Curitiba",
       bgGradient: "from-zinc-900 to-gray-950",
       content: (
         <div className="space-y-6 text-left">
           <p className="text-sm text-gray-700 leading-relaxed font-semibold">
-            Precisa fazer a <strong className="text-gray-950 bg-[#f49e1a]/20 px-1 py-0.5 border border-[#f49e1a]/40">troca de pneus em Curitiba</strong>? Na Carplus Pneus, você adquire seus pneus novos e realiza a substituição no mesmo local com maquinário anti-risco, alinhamento 3D computadorizado e equipe especializada.
+            Precisa fazer a <strong className="text-gray-950 bg-[#f49e1a]/20 px-1 py-0.5 border border-[#f49e1a]/40">troca de pneus em Curitiba</strong>? Na Carplus Pneus, você pode comprar e instalar no mesmo local. Converse com a equipe sobre a medida, o acabamento das rodas e os serviços necessários para o seu veículo.
           </p>
+
+          <WheelCareSection />
 
           <div className="bg-neutral-50 border-2 border-black p-5 space-y-4">
             <h3 className="text-sm font-black text-black uppercase font-mono flex items-center gap-2">
               <span className="w-2 h-2 bg-[#f49e1a] border border-black" />
-              Etapas da Troca Técnica de Pneus na Carplus:
+              O que conversar com a equipe antes da troca:
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-gray-800">
               <div className="border border-gray-300 bg-white p-3.5">
-                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">01. DESMONTAGEM SEGURA</span>
-                <p className="text-gray-600">Equipamento pneumático moderno com garras emborrachadas que não arranham rodas de liga leve ou pintadas.</p>
+                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">01. ESTADO DAS RODAS</span>
+                <p className="text-gray-600">Mostre marcas já existentes e informe se as rodas foram pintadas, diamantadas ou reparadas. Confirme os cuidados adequados ao acabamento.</p>
               </div>
               <div className="border border-gray-300 bg-white p-3.5">
-                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">02. VÁLVULAS NOVAS</span>
-                <p className="text-gray-600">Substituição das válvulas de borracha antigas para prevenir vazamentos microscópicos de pressão e perda de calibração.</p>
+                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">02. VÁLVULAS E TPMS</span>
+                <p className="text-gray-600">Peça a avaliação das válvulas e informe se há sensor de pressão. A manutenção ou troca depende do tipo e das recomendações do fabricante.</p>
               </div>
               <div className="border border-gray-300 bg-white p-3.5">
-                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">03. BALANCEAMENTO 3D</span>
-                <p className="text-gray-600">Balanceamento dinâmico em rodas de ferro e liga com chumbos adesivos, eliminando vibrações ao rodar.</p>
+                <span className="font-mono font-black text-[#f49e1a] text-sm block mb-1">03. MONTAGEM E REVISÃO</span>
+                <p className="text-gray-600">Confirme montagem, balanceamento e pressão recomendada. O alinhamento é um serviço diferente, cuja necessidade deve ser avaliada.</p>
               </div>
             </div>
           </div>
@@ -887,7 +890,7 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
           <div className="bg-white border border-gray-200 p-4">
             <h4 className="font-black text-xs uppercase text-black mb-2">Quando é a hora de trocar seus pneus?</h4>
             <p className="text-xs text-gray-700 leading-relaxed">
-              O limite legal de segurança é o indicador TWI (1,6 mm de profundidade de sulco). Rodar abaixo dessa marca aumenta o risco de aquaplanagem e multas. Se notar desgaste desigual nos ombros do pneu ou vibrações na direção, venha até nossa oficina no Portão para uma inspeção preventiva visual de cortesia.
+              O limite legal de segurança é o indicador TWI (1,6 mm de profundidade de sulco). Rodar abaixo dessa marca aumenta o risco de aquaplanagem e multas. Se notar desgaste desigual nos ombros do pneu ou vibrações na direção, consulte nossa oficina no Portão para uma avaliação e confirme as condições do atendimento.
             </p>
           </div>
         </div>
@@ -895,8 +898,8 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
       whatsappText: "Olá Carplus! Gostaria de agendar a troca de pneus para o meu carro na loja de vocês no Portão.",
       faqs: [
         { q: "Onde trocar pneus em Curitiba?", a: "No auto center da Carplus Pneus, na Av. Presidente Arthur da Silva Bernardes, 1323, Portão. Oferecemos montagem técnica e troca de pneus novos com maquinário especializado." },
-        { q: "Quanto tempo dura a troca dos 4 pneus?", a: "Em média, a desmontagem, montagem dos 4 pneus novos e balanceamento leva entre 40 a 60 minutos." },
-        { q: "Quais cuidados a Carplus toma na montagem dos pneus?", a: "Utilizamos desmontadoras automáticas com proteção em polímero para não riscar rodas de liga leve e balanceadoras dinâmicas para rodagem suave." }
+        { q: "Quanto tempo dura a troca dos 4 pneus?", a: "O tempo depende do conjunto, dos serviços necessários e da agenda da oficina. Confirme a previsão com a equipe ao solicitar o orçamento." },
+        { q: "Quais cuidados a Carplus toma na montagem dos pneus?", a: "Converse com a equipe sobre o acabamento das rodas, marcas existentes e a presença de sensores TPMS. Peça explicações sobre as proteções e procedimentos adequados ao seu conjunto e confira o estado das rodas na entrega." }
       ]
     },
     'centro-automotivo-portao': {
