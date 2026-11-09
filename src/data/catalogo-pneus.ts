@@ -1,6 +1,36 @@
 import { CatalogTire } from '../types';
 import { PROMO_CATALOG_TIRES } from './promoTires';
 import catalogCounts from './catalogCounts.json';
+import canonicalAliases from './catalogCanonicalAliases.json';
+const aliases: Record<string, string> = canonicalAliases;
+// Preserve lookups by historic numeric catalog IDs.
+const legacyCatalogIds: Record<string, string> = {
+  "405": "pneu-pirelli-31x1050r15lt-scorpion-atr-109s-letras-brancas",
+  "1082": "pneu-continental-23560r17-fr-premiumcontact-6-vol-102v",
+  "1181": "pneu-continental-25555r18-fr-contisportcontact-5-n0-105w",
+  "1184": "pneu-continental-24545r18-xl-ecocontact-6-100y",
+  "1185": "pneu-continental-23545r18-fr-contisportcontact-5-contiseal-94w",
+  "1186": "pneu-continental-24550zr18-fr-contisportcontact-5-n0-100y",
+  "1187": "pneu-continental-27535r18-fr-contisportcontact-3-mo-95y",
+  "1188": "pneu-continental-27545zr18-fr-contisportcontact-5-n0-103y",
+  "1189": "pneu-continental-27540r18-xl-fr-contisportcontact-2-j-103w",
+  "1190": "pneu-continental-24545r18-xl-fr-contisportcontact-2-j-100w",
+  "1196": "pneu-continental-25555r18-fr-procontact-tx-n0-105v",
+  "1199": "pneu-continental-24535r18-fr-contisportcontact-5-ssr-88y",
+  "1288": "pneu-continental-27545r19-xl-fr-premiumcontact-6-nf0-108y",
+  "1291": "pneu-continental-22545r19-premiumcontact-6-ssr-92w",
+  "1294": "pneu-continental-27550zr19-xl-fr-contisportcontact-5-suv-n0-112y",
+  "1297": "pneu-continental-23550r19-fr-contisportcontact-5-suv-99v",
+  "1302": "pneu-continental-26555r19-fr-crosscontact-rx-109h",
+  "1366": "pneu-continental-29540zr20-xl-fr-sportcontact-6-mo1-110y",
+  "1369": "pneu-continental-25550r20-xl-fr-contisportcontact-5-j-lr-109w",
+  "1370": "pneu-continental-25540r20-xl-fr-sportcontact-6-ao-contisilent-101y",
+  "1371": "pneu-continental-27535zr20-xl-fr-contisportcontact-3-j-102y",
+  "1376": "pneu-continental-29540zr20-xl-fr-sportcontact-6-mo1-110y",
+  "1443": "pneu-continental-27545r21-xl-fr-contisportcontact-5-suv-lr-110y",
+  "1444": "pneu-continental-31540zr21-xl-fr-sportcontact-6-mo1-115y",
+  "1445": "pneu-continental-28545zr21-fr-contisportcontact-5p-mo-109y"
+};
 
 // Lightweight precalculated metadata for instant Home render without bundling 1.94MB JSON
 export const DEFAULT_BRANDS = [
@@ -56,7 +86,7 @@ export async function getFullCatalog(): Promise<CatalogTire[]> {
       try {
         const catalogModule = await import('../../catalogo-pneus.json');
         const rawList = (catalogModule.default || catalogModule) as CatalogTire[];
-        fullCatalogCache = [...PROMO_CATALOG_TIRES, ...rawList];
+        fullCatalogCache = [...PROMO_CATALOG_TIRES, ...rawList.filter(t => !aliases[t.slug])];
         return fullCatalogCache;
       } catch (err) {
         console.warn('Could not lazy-load full catalog JSON, using promo catalog fallback:', err);
@@ -81,7 +111,8 @@ export function getCatalogSync(): CatalogTire[] {
  */
 export function findCatalogTireBySlug(slug: string): CatalogTire | undefined {
   if (!slug) return undefined;
-  const cleanSlug = slug.toLowerCase().replace(/^\/pneu\//, '').replace(/\/$/, '');
+  const requestedSlug = slug.toLowerCase().replace(/^\/pneu\//, '').replace(/\/$/, '');
+  const cleanSlug = aliases[requestedSlug] || legacyCatalogIds[requestedSlug] || requestedSlug;
   
   // 1. Check in promo tires first (always in memory)
   const promoMatch = PROMO_CATALOG_TIRES.find(t => 
@@ -111,7 +142,8 @@ export async function findCatalogTireBySlugAsync(slug: string): Promise<CatalogT
   if (syncMatch) return syncMatch;
 
   const full = await getFullCatalog();
-  const cleanSlug = slug.toLowerCase().replace(/^\/pneu\//, '').replace(/\/$/, '');
+  const requestedSlug = slug.toLowerCase().replace(/^\/pneu\//, '').replace(/\/$/, '');
+  const cleanSlug = aliases[requestedSlug] || legacyCatalogIds[requestedSlug] || requestedSlug;
   return full.find(t => 
     t.slug.toLowerCase() === cleanSlug || 
     t.slug.toLowerCase() === `pneu-${cleanSlug}` ||

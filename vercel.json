@@ -1,6 +1,186 @@
 {
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/pneu/pneu-pirelli-31x1050r15lt-scorpion-atr-109s-letras-brancas-405/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-pirelli-31x1050r15lt-scorpion-atr-109s-letras-brancas"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-23560r17-fr-premiumcontact-6-vol-102v-1082/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-23560r17-fr-premiumcontact-6-vol-102v"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-25555r18-fr-contisportcontact-5-n0-105w-1181/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-25555r18-fr-contisportcontact-5-n0-105w"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-24545r18-xl-ecocontact-6-100y-1184/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-24545r18-xl-ecocontact-6-100y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-23545r18-fr-contisportcontact-5-contiseal-94w-1185/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-23545r18-fr-contisportcontact-5-contiseal-94w"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-24550zr18-fr-contisportcontact-5-n0-100y-1186/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-24550zr18-fr-contisportcontact-5-n0-100y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-27535r18-fr-contisportcontact-3-mo-95y-1187/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-27535r18-fr-contisportcontact-3-mo-95y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-27545zr18-fr-contisportcontact-5-n0-103y-1188/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-27545zr18-fr-contisportcontact-5-n0-103y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-27540r18-xl-fr-contisportcontact-2-j-103w-1189/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-27540r18-xl-fr-contisportcontact-2-j-103w"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-24545r18-xl-fr-contisportcontact-2-j-100w-1190/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-24545r18-xl-fr-contisportcontact-2-j-100w"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-25555r18-fr-procontact-tx-n0-105v-1196/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-25555r18-fr-procontact-tx-n0-105v"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-24535r18-fr-contisportcontact-5-ssr-88y-1199/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-24535r18-fr-contisportcontact-5-ssr-88y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-27545r19-xl-fr-premiumcontact-6-nf0-108y-1288/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-27545r19-xl-fr-premiumcontact-6-nf0-108y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-22545r19-premiumcontact-6-ssr-92w-1291/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-22545r19-premiumcontact-6-ssr-92w"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-27550zr19-xl-fr-contisportcontact-5-suv-n0-112y-1294/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-27550zr19-xl-fr-contisportcontact-5-suv-n0-112y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-23550r19-fr-contisportcontact-5-suv-99v-1297/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-23550r19-fr-contisportcontact-5-suv-99v"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-26555r19-fr-crosscontact-rx-109h-1302/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-26555r19-fr-crosscontact-rx-109h"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-29540zr20-xl-fr-sportcontact-6-mo1-110y-1366/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-29540zr20-xl-fr-sportcontact-6-mo1-110y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-25550r20-xl-fr-contisportcontact-5-j-lr-109w-1369/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-25550r20-xl-fr-contisportcontact-5-j-lr-109w"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-25540r20-xl-fr-sportcontact-6-ao-contisilent-101y-1370/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-25540r20-xl-fr-sportcontact-6-ao-contisilent-101y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-27535zr20-xl-fr-contisportcontact-3-j-102y-1371/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-27535zr20-xl-fr-contisportcontact-3-j-102y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-29540zr20-xl-fr-sportcontact-6-mo1-110y-1376/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-29540zr20-xl-fr-sportcontact-6-mo1-110y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-27545r21-xl-fr-contisportcontact-5-suv-lr-110y-1443/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-27545r21-xl-fr-contisportcontact-5-suv-lr-110y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-31540zr21-xl-fr-sportcontact-6-mo1-115y-1444/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-31540zr21-xl-fr-sportcontact-6-mo1-115y"
+      }
+    },
+    {
+      "src": "/pneu/pneu-continental-28545zr21-fr-contisportcontact-5p-mo-109y-1445/?",
+      "status": 308,
+      "headers": {
+        "Location": "/pneu/pneu-continental-28545zr21-fr-contisportcontact-5p-mo-109y"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }

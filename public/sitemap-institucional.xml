@@ -3986,11 +3986,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-pirelli-31x1050r15lt-scorpion-atr-109s-letras-brancas-405</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-pirelli-31x1050r15lt-scorpion-mtr-109q-letras-brancas</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -7371,11 +7366,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-23560r17-fr-premiumcontact-6-vol-102v-1082</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-23565r17-contipremiumcontact-5-104v</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -7866,52 +7856,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-25555r18-fr-contisportcontact-5-n0-105w-1181</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-23560r18-fr-contisportcontact-5-n0-103w</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-26565r18-fr-crosscontact-rx-114t</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-24545r18-xl-ecocontact-6-100y-1184</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-23545r18-fr-contisportcontact-5-contiseal-94w-1185</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-24550zr18-fr-contisportcontact-5-n0-100y-1186</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-27535r18-fr-contisportcontact-3-mo-95y-1187</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-27545zr18-fr-contisportcontact-5-n0-103y-1188</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-27540r18-xl-fr-contisportcontact-2-j-103w-1189</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-24545r18-xl-fr-contisportcontact-2-j-100w-1190</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -7941,22 +7891,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-25555r18-fr-procontact-tx-n0-105v-1196</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-22540r18-xl-fr-contisportcontact-5-mo-92y</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-21540r18-xl-fr-sportcontact-7-89y</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-24535r18-fr-contisportcontact-5-ssr-88y-1199</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -8401,22 +8341,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-27545r19-xl-fr-premiumcontact-6-nf0-108y-1288</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-25550r19-xl-contisportcontact-5-suv-ssr-107w</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-23555r19-xl-fr-premiumcontact-6-105v</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-22545r19-premiumcontact-6-ssr-92w-1291</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -8431,22 +8361,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-27550zr19-xl-fr-contisportcontact-5-suv-n0-112y-1294</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-23555r19-xl-fr-contisportcontact-5-suv-vol-105v</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-25545r19-fr-contisportcontact-5-suv-100v</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-23550r19-fr-contisportcontact-5-suv-99v-1297</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -8467,11 +8387,6 @@
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-26555r19-fr-crosscontact-rx-109h</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-26555r19-fr-crosscontact-rx-109h-1302</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -8791,32 +8706,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-29540zr20-xl-fr-sportcontact-6-mo1-110y-1366</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-24540r20-xl-fr-contisportcontact-5p-mo-99y</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-26530r20-xl-fr-contisportcontact-5p-ro1-contisilent-94y</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-25550r20-xl-fr-contisportcontact-5-j-lr-109w-1369</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-25540r20-xl-fr-sportcontact-6-ao-contisilent-101y-1370</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-27535zr20-xl-fr-contisportcontact-3-j-102y-1371</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -8837,11 +8732,6 @@
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-28540r20-xl-ecocontact-6-q-mo-108w</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-29540zr20-xl-fr-sportcontact-6-mo1-110y-1376</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -9172,21 +9062,6 @@
   </url>
   <url>
     <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-27540r21-xl-premiumcontact-6-vol-107v</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-27545r21-xl-fr-contisportcontact-5-suv-lr-110y-1443</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-31540zr21-xl-fr-sportcontact-6-mo1-115y-1444</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.carpluscwb.com.br/pneu/pneu-continental-28545zr21-fr-contisportcontact-5p-mo-109y-1445</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
