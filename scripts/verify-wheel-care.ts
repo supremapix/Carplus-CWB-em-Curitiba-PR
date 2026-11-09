@@ -17,6 +17,8 @@ for(const route of [`blog/${slug}`,'troca-de-pneus-curitiba']){
  assert(html.includes('/images/carplus-real/'));
  assert(html.includes('risco zero'));
  assert(!html.includes('garantindo total integridade'));
+ assert(!html.includes('5541999999999'));
+ assert(html.includes('554130827282'));
  assert(!html.includes('garras emborrachadas que não arranham'));
 }
 assert(fs.readFileSync('dist/sitemap-blog.xml','utf8').includes(`/blog/${slug}`));

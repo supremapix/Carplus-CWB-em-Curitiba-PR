@@ -1,4 +1,5 @@
 import WheelCareSection from './WheelCareSection';
+import { formatWhatsApp } from '../utils/whatsapp';
 import VerifiedStoreInfo, { VERIFIED_STORE_PAGES } from './VerifiedStoreInfo';
 import React, { useState } from 'react';
 import { 
@@ -65,11 +66,6 @@ export default function SearchIntentPages({ view, onNavigateHome, onNavigateToPa
     window.history.pushState(null, '', `/pneu/${tire.slug}`);
     window.dispatchEvent(new Event('popstate'));
     window.scrollTo({ top: 0, behavior: 'instant' });
-  };
-
-  // Helper inside WhatsApp formatting
-  const formatWhatsApp = (text: string) => {
-    return `https://wa.me/5541999999999?text=${encodeURIComponent(text)}`;
   };
 
   const handleInternalNav = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
