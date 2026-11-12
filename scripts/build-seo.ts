@@ -1275,7 +1275,7 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
     const slug = `pneu/${tire.slug}`;
     if (routes.some(r=>r.path===slug)) continue;
     routes.push({ path: slug, title: `${tire.nome} | Carplus Curitiba`, desc: `Consulte ${tire.nome}, medida ${tire.medida}. Confira aplicação, índices e disponibilidade com a Carplus no Portão.`, keywords: '', isIndexable: true,
-      schema: {'@context':'https://schema.org','@type':'Product',name:tire.nome,sku:String(tire.id),brand:{'@type':'Brand',name:tire.marca},url:`${DOMAIN}/${slug}`},
+      schema: {'@context':'https://schema.org','@type':'WebPage',name:tire.nome,description:`Consulte ${tire.nome}, medida ${tire.medida}. Confira aplicação, índices e disponibilidade com a Carplus no Portão.`,url:`${DOMAIN}/${slug}`},
       customBodyHtml: wrap(React.createElement(CatalogTireDetail, {tire,onBack:()=>{},onSelectTire:()=>{}})) });
   }
   return routes;

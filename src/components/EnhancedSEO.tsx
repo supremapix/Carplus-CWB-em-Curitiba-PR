@@ -431,18 +431,6 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       "itemListElement": [
         {
           "@type": "OfferCatalog",
-          "name": "Pneus Novos por Aro",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 13 Novos" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 14 Novos" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 15 Novos" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 16 Novos" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 17 Novos" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pneus Aro 18 Novos" } }
-          ]
-        },
-        {
-          "@type": "OfferCatalog",
           "name": "Serviços de Auto Center e Mecânica Expressa",
           "itemListElement": [
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Alinhamento 3D Computadorizado a Laser" } },
