@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { BLOG_POSTS } from '../src/blog-data';
+const post = BLOG_POSTS.find(p => p.slug === 'pneus-para-carro-eletrico-em-curitiba');
+assert.ok(post);
+assert.equal(post.publishedIso, '2026-08-16');
+assert.equal(post.updatedIso, '2026-11-12');
+assert.ok(post.sections.some(s => /comparar orçamentos/.test(s.title)));
+assert.ok(post.sections.some(s => s.internalLinks?.some(l => l.url === '/pneus-eletricos-curitiba#consultar-aplicacao')));
+assert.ok(post.faqs?.some(f => /não confirma estoque/.test(f.answer)));
+assert.ok(post.whatsappMessage.includes('quais serviços estão incluídos'));
+console.log('PASS: existing electric-tire guide keeps URL/date, adds quote checklist, application link and truthful availability FAQ.');

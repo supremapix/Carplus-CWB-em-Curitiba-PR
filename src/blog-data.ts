@@ -549,7 +549,7 @@ export const BLOG_POSTS: BlogPost[] = [
   "category": "Pneus",
   "summary": "Como conferir medida, carga, velocidade e exigências do fabricante ao escolher pneus para um elétrico ou híbrido. Orientações para consultar a Carplus no Portão.",
   "metaTitle": "Pneus para Carro Elétrico em Curitiba | Carplus",
-  "metaDescription": "Buscando pneus para seu BYD, GWM ou Volvo em Curitiba? Conheça a oficina especializada Carplus. Pneus Pirelli e Continental. Ligue (41) 3082-7282.",
+  "metaDescription": "Pneus para carro elétrico em Curitiba: confira medida, carga, aplicação e o que perguntar no orçamento. Consulte a Carplus no Portão: (41) 3082-7282.",
   "publishedDate": "16 de Agosto de 2026",
   "publishedIso": "2026-08-16",
   "readingTime": "7 min de leitura",
@@ -624,7 +624,23 @@ export const BLOG_POSTS: BlogPost[] = [
       ]
     },
     {
-      "title": "4. Atendimento Geolocalizado: Do Portão para Toda Curitiba e Região Metropolitana",
+      "title": "4. Como comparar orçamentos de pneus para seu elétrico",
+      "level": "h2",
+      "paragraphs": [
+        "Compare propostas para a mesma medida completa e os mesmos requisitos de aplicação, não apenas pelo aro ou pela marca. Peça o nome exato da linha, os índices de carga e velocidade e a quantidade de pneus incluída. A opção mais barata em uma busca pode ser outra especificação e não servir à sua versão.",
+        "Pergunte se o valor inclui montagem, balanceamento e válvulas, e quais outros serviços dependem de avaliação. Informe se há monitoramento de pressão dos pneus (TPMS) para confirmar os cuidados e o atendimento disponíveis. Não suponha que alinhamento ou qualquer serviço esteja automaticamente incluído no preço do pneu.",
+        "Antes de ir ao Portão, confirme disponibilidade da medida, valor total, forma de pagamento e agenda. Uma listagem no catálogo é uma referência para consulta, não uma reserva de estoque. Leve a identificação do veículo e as especificações do manual para a conferência final."
+      ],
+      "internalLinks": [
+        {
+          "text": "Preparar consulta por veículo ou medida",
+          "url": "/pneus-eletricos-curitiba#consultar-aplicacao",
+          "description": "Organize modelo, ano, versão e medida antes de conversar com a Carplus."
+        }
+      ]
+    },
+    {
+      "title": "5. Atendimento no Portão para Curitiba e Região Metropolitana",
       "level": "h2",
       "paragraphs": [
         "A unidade Carplus fica na Av. Presidente Arthur da Silva Bernardes, 1323, no Portão, Curitiba. Motoristas de Curitiba e Região Metropolitana podem consultar pneus e serviços nessa unidade.",
@@ -651,6 +667,10 @@ export const BLOG_POSTS: BlogPost[] = [
       "answer": "Não há uma quilometragem única. Vida útil depende do pneu, uso, carga, condução, pressão, geometria e condições das vias. Inspecione desgaste e danos, siga o manual e procure avaliação quando houver sinais de problema."
     },
     {
+      "question": "O pneu anunciado no catálogo está disponível para meu carro?",
+      "answer": "O cadastro não confirma estoque nem aplicação. Informe modelo, ano, versão e a medida exigida, e peça confirmação da opção específica, dos índices, do valor total e da disponibilidade antes de se deslocar ou fechar a compra."
+    },
+    {
       "question": "A oficina Carplus tem estrutura segura para levantar carros elétricos?",
       "answer": "Confirme previamente com a equipe os equipamentos, os procedimentos e a possibilidade de atender seu modelo. A elevação precisa respeitar os pontos de apoio e instruções do fabricante; não se deve prometer proteção absoluta ou atendimento universal."
     }
@@ -658,14 +678,14 @@ export const BLOG_POSTS: BlogPost[] = [
   "ctaTitle": "Vai trocar os pneus do seu Elétrico ou Híbrido em Curitiba?",
   "ctaText": "Fale direto com nossos consultores técnicos no WhatsApp. Informe o modelo do seu carro elétrico e consulte preços e disponibilidade com atendimento especializado!",
   "ctaButtonText": "Solicitar Orçamento no WhatsApp",
-  "whatsappMessage": "Olá Carplus! Vi a matéria no blog sobre pneus para carros elétricos e gostaria de um orçamento para o meu carro.",
+  "whatsappMessage": "Olá, Carplus! Li o guia de pneus para elétricos. Quero consultar aplicação, disponibilidade e orçamento completo. Vou informar modelo, ano, versão e medida; por favor, confirmem quais serviços estão incluídos.",
   "relatedSlugs": [
     "carro-puxando-para-o-lado",
     "quando-fazer-alinhamento-balanceamento",
     "pneu-desgastando-de-um-lado"
   ],
-  "updatedDate": "3 de Novembro de 2026",
-  "updatedIso": "2026-11-03"
+  "updatedDate": "12 de Novembro de 2026",
+  "updatedIso": "2026-11-12"
 },
   {
     id: '1',
