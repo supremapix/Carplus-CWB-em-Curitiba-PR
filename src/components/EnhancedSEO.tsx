@@ -582,38 +582,8 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
   // Compose dynamic graphs
   const graph: any[] = [breadcrumbList, baseLocalBusiness, webSiteSchema, webPageSchema];
 
-  // If viewing a tire, add a Product Schema with comprehensive details
-  if (selectedTire) {
-    const finalP = selectedTire.promoPrice || selectedTire.price;
-    const prodSchema = {
-      "@type": "Product",
-      "@id": `${domain}/pneu/${getTireSlug(selectedTire)}#produto`,
-      "name": `Pneu ${selectedTire.brand} ${selectedTire.model} ${selectedTire.width}/${selectedTire.aspectRatio} R${selectedTire.rim}`,
-      "image": getVerifiedTireImage(selectedTire)?.src,
-      "description": `Pneu novo modelo ${selectedTire.model} marca ${selectedTire.brand}, medida ${selectedTire.width}/${selectedTire.aspectRatio} R${selectedTire.rim}. Pneu novo com garantia de fábrica e montagem computadorizada no Portão.`,
-      "brand": {
-        "@type": "Brand",
-        "name": selectedTire.brand
-      },
-      "mpn": selectedTire.id,
-      "sku": `${selectedTire.width}${selectedTire.aspectRatio}${selectedTire.rim}`,
-      "offers": {
-        "@type": "Offer",
-        "url": `${domain}/pneu/${getTireSlug(selectedTire)}`,
-        "priceCurrency": "BRL",
-        "price": finalP,
-        "priceValidUntil": "2027-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "TireShop",
-          "name": "Carplus Pneus",
-          "url": domain
-        }
-      }
-    };
-    graph.push(prodSchema);
-  }
+  // Tire pages are for consultation/reservation. The WebPage and FAQ data
+  // stay available without declaring an unverified merchant offer.
 
   // Automatic FAQ Schema depending on Category & Product
   if (selectedTire) {

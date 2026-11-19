@@ -1,6 +1,5 @@
 import SearchIntentPages from '../src/components/SearchIntentPages';
 import VerifiedTireImage from '../src/components/VerifiedTireImage';
-import { getVerifiedTireImage } from '../src/lib/tireImageManifest';
 import VerifiedStoreInfo, { VERIFIED_STORE_PAGES } from '../src/components/VerifiedStoreInfo';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -1188,18 +1187,14 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
           "@context": "https://schema.org",
           "@graph": [
             makeLocalBusiness(),
+            // These are consultation/reservation pages. The photo manifest is
+            // model-level (not a confirmed variant), and there is no live offer feed.
             {
-              "@type": "Product",
+              "@type": "WebPage",
+              "@id": `${DOMAIN}/pneu/${slug}#webpage`,
+              "url": `${DOMAIN}/pneu/${slug}`,
               "name": `Pneu ${t.brand} ${t.model} ${t.width}/${t.aspectRatio} R${t.rim}`,
-              "image": getVerifiedTireImage(t)?.src,
-              "description": `Pneu novo modelo ${t.model} marca ${t.brand}, medida ${t.width}/${t.aspectRatio} R${t.rim}. Pneu novo com garantia de fábrica e montagem computadorizada no Portão.`,
-              "brand": { "@type": "Brand", "name": t.brand },
-              "offers": {
-                "@type": "Offer",
-                "price": t.promoPrice || t.price,
-                "priceCurrency": "BRL",
-                "availability": "https://schema.org/InStock"
-              }
+              "description": "Consulte as especificações e confirme preço e disponibilidade com a Carplus no Portão."
             }
           ]
         },
