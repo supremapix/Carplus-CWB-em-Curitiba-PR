@@ -45,7 +45,9 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
   }
 
   // 1b. Determine Robots Control (Indexable vs Technical/Admin/Cart/Filter parameters)
-  let robotsContent = "index, follow";
+  const articleImage = currentView === 'blog' && selectedBlogSlug ? getBlogPostBySlug(selectedBlogSlug) : undefined;
+  const articleImageSize = articleImage?.imageSize;
+  let robotsContent = articleImageSize ? "index, follow, max-image-preview:large" : "index, follow";
   const hasFilterOrSearchParam = typeof window !== 'undefined' && window.location.search && (
     window.location.search.includes('busca=') ||
     window.location.search.includes('marca=') ||
@@ -175,7 +177,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
         title = activePost.metaTitle;
         desc = activePost.metaDescription;
         keywords = `${activePost.category.toLowerCase()}, oficina mecanica curitiba, ${activePost.title.toLowerCase()}, carplus blog, manutencao automotiva curitiba, pneus curitiba`;
-        ogImage = activePost.featuredImage;
+        ogImage = activePost.imageSize ? new URL(activePost.featuredImage, domain).href : activePost.featuredImage;
       } else {
         title = "Blog Automotivo e Dicas Mecânicas em Curitiba | Carplus";
         desc = "Artigos técnicos, dicas de manutenção preventiva, cuidados com pneus, suspensão, freios e alinhamento em Curitiba pela Carplus Pneus.";
@@ -979,7 +981,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
           },
           "headline": activePost.h1 || activePost.title,
           "description": activePost.metaDescription || activePost.summary,
-          "image": [activePost.featuredImage],
+          "image": [activePost.imageSize ? new URL(activePost.featuredImage, domain).href : activePost.featuredImage],
           "datePublished": activePost.publishedIso,
           "dateModified": activePost.updatedIso || activePost.publishedIso,
           "inLanguage": "pt-BR",
@@ -1057,7 +1059,7 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
 
       {/* 5. Open Graph Meta Tags (Facebook & general social preview) */}
       <meta property="og:locale" content="pt_BR" />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={articleImageSize ? "article" : "website"} />
       <meta property="og:title" content={isHomeSocialPreview ? HOME_SOCIAL_TITLE : title} />
       <meta property="og:description" content={isHomeSocialPreview ? HOME_SOCIAL_DESCRIPTION : desc} />
       <meta property="og:url" content={canonicalUrl} />
@@ -1066,8 +1068,8 @@ export default function EnhancedSEO({ currentView, seoTarget, selectedTire, sele
       <meta property="og:image:secure_url" content={ogImage} />
       {isHomeSocialPreview && <meta property="og:image:type" content="image/png" />}
       <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={isHomeSocialPreview ? HOME_SOCIAL_IMAGE_ALT : 'Carplus Pneus Portão Curitiba'} />
+      <meta property="og:image:height" content={articleImageSize?.height ?? 630} />
+      <meta property="og:image:alt" content={isHomeSocialPreview ? HOME_SOCIAL_IMAGE_ALT : articleImageSize ? articleImage?.imageAlt : 'Carplus Pneus Portão Curitiba'} />
 
       {/* 6. Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />

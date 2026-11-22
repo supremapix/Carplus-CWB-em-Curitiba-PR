@@ -298,7 +298,9 @@ function renderBlogArticleShell(post: BlogPost): string {
     </div>
   </header>`;
 
-  if (post.slug === 'rodas-de-liga-leve-riscadas-na-troca-de-pneus') {
+  if (post.imageSize) {
+    contentHtml += `<figure style="margin:0 0 2rem"><img src="${escapeHtml(post.featuredImage)}" alt="${escapeHtml(post.imageAlt)}" width="${post.imageSize.width}" height="${post.imageSize.height}" style="display:block;width:100%;height:auto;border-radius:1rem" /><figcaption style="font-size:.85rem;color:#4b5563;margin-top:.5rem">${escapeHtml(post.imageCaption || post.imageAlt)}</figcaption></figure>`;
+  } else if (post.slug === 'rodas-de-liga-leve-riscadas-na-troca-de-pneus') {
     contentHtml += `<figure style="margin:0 0 2rem"><img src="/images/carplus-real/rodas-de-liga-leve.webp" alt="${escapeHtml(post.imageAlt)}" width="680" height="454" style="width:100%;height:auto;border-radius:1rem" /><figcaption style="font-size:.85rem;color:#4b5563;margin-top:.5rem">${escapeHtml(post.imageAlt)}</figcaption></figure>`;
   }
 
@@ -315,6 +317,13 @@ function renderBlogArticleShell(post: BlogPost): string {
     sec.paragraphs.forEach(p => {
       contentHtml += `<p style="font-size: 1.05rem; line-height: 1.75; color: #4b5563; margin-bottom: 1rem;">${escapeHtml(p)}</p>`;
     });
+    if (sec.milestones?.length) {
+      contentHtml += '<ol aria-label="Marcos históricos">';
+      for (const item of sec.milestones) {
+        contentHtml += `<li><h3>${escapeHtml(item.year)}: ${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)} <a href="#carplus-hist-fonte-${item.source}">Fonte ${item.source}</a></p></li>`;
+      }
+      contentHtml += '</ol>';
+    }
     if (sec.listItems && sec.listItems.length > 0) {
       contentHtml += `<ul style="margin: 1rem 0 1.5rem 1.5rem; font-size: 1.05rem; color: #4b5563; line-height: 1.7;">`;
       sec.listItems.forEach(item => {
@@ -341,6 +350,14 @@ function renderBlogArticleShell(post: BlogPost): string {
       contentHtml += `</div></div>`;
     }
   });
+
+  if (post.sources?.length) {
+    contentHtml += '<section><h2>Fontes consultadas</h2><ol>';
+    post.sources.forEach((source, index) => {
+      contentHtml += `<li id="carplus-hist-fonte-${index + 1}"><a href="${escapeHtml(source.url)}">${escapeHtml(source.text)}</a></li>`;
+    });
+    contentHtml += '</ol></section>';
+  }
 
   // FAQs
   if (post.faqs && post.faqs.length > 0) {
@@ -850,6 +867,7 @@ interface PrerenderRoute {
   schema: any;
   isIndexable: boolean;
   customBodyHtml?: string;
+  discoverImage?: { path: string; alt: string; width: number; height: number };
   isRedirect?: boolean;
   redirectTargetUrl?: string;
 }
@@ -960,6 +978,9 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
   });
 
   // Blog Hub Route
+  const edition = BLOG_POSTS.find(post => post.slug === 'historia-dos-pneus-do-pneumatico-ao-radial');
+  const blogHubSummary = 'Artigos técnicos e práticos para cuidar dos pneus, suspensão e alinhamento do seu carro.';
+  const editionLink = edition ? `<p><a href="/blog/${edition.slug}">${escapeHtml(edition.title)}</a></p>` : '';
   routes.push({
     path: 'blog',
     title: 'Blog da Carplus Pneus - Manual de Dicas e Mecânica de Pneus | Carplus',
@@ -967,7 +988,7 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
     keywords: 'blog carplus, manual do pneu, calibragem curitiba, indicador twi, dicas suspensão',
     schema: { "@context": "https://schema.org", "@graph": [makeLocalBusiness(), { "@type": "WebPage", "name": "Blog Automotivo", "url": `${DOMAIN}/blog` }] },
     isIndexable: true,
-    customBodyHtml: renderServiceShell('Blog da Carplus Pneus - Dicas Automotivas e Mecânica', 'Artigos técnicos e práticos para cuidar dos pneus, suspensão e alinhamento do seu carro.')
+    customBodyHtml: renderServiceShell('Blog da Carplus Pneus - Dicas Automotivas e Mecânica', blogHubSummary).replace('</main>', editionLink + '</main>')
   });
 
   // High-Intent Specific Search Pages
@@ -1086,7 +1107,8 @@ function getAllPrerenderRoutes(): PrerenderRoute[] {
       keywords: `${post.category}, pneus curitiba, dicas mecanica, ${post.title.toLowerCase().replace(/[^a-z0-9]/g, ' ')}`,
       schema: { "@context": "https://schema.org", "@graph": blogGraph },
       isIndexable: true,
-      customBodyHtml: renderBlogArticleShell(post)
+      customBodyHtml: renderBlogArticleShell(post),
+      ...(post.imageSize ? { discoverImage: { path: post.featuredImage, alt: post.imageAlt, ...post.imageSize } } : {})
     });
   });
 
@@ -1457,7 +1479,7 @@ function runPrerendering(routes: PrerenderRoute[]) {
     }
 
     const pageUrl = `${DOMAIN}/${r.path}`;
-    const robotsVal = r.isIndexable ? "index, follow" : "noindex, follow";
+    const robotsVal = r.isIndexable ? (r.discoverImage ? "index, follow, max-image-preview:large" : "index, follow") : "noindex, follow";
     const subpageShell = r.customBodyHtml || renderServiceShell(r.title, r.desc);
 
     // Replace header and body values cleanly
@@ -1472,6 +1494,20 @@ function runPrerendering(routes: PrerenderRoute[]) {
       .replace(/<\/head>/i, `    <script type="application/ld+json">\n${JSON.stringify(r.schema, null, 2)}\n    </script>\n  </head>`)
       .replace(/<div id="root"><\/div>/i, subpageShell);
 
+    if (r.discoverImage) {
+      const image = r.discoverImage;
+      const imageUrl = new URL(image.path, DOMAIN).href;
+      rewritten = rewritten
+        .replace(/(<meta\s+[^>]*property="og:type"\s+content=")[^"]*/i, '$1article')
+        .replace(/\s*<meta\s+[^>]*property="og:image(?::[^"]+)?"[^>]*>/gi, '')
+        .replace(/<\/head>/i, `<meta data-carplus-social-fallback="true" property="og:image" content="${escapeHtml(imageUrl)}" />
+    <meta data-carplus-social-fallback="true" property="og:image:width" content="${image.width}" />
+    <meta data-carplus-social-fallback="true" property="og:image:height" content="${image.height}" />
+    <meta data-carplus-social-fallback="true" property="og:image:alt" content="${escapeHtml(image.alt)}" />
+    <meta data-carplus-social-fallback="true" name="twitter:card" content="summary_large_image" />
+    <meta data-carplus-social-fallback="true" name="twitter:image" content="${escapeHtml(imageUrl)}" />
+    </head>`);
+    }
     fs.writeFileSync(path.join(targetDir, 'index.html'), rewritten);
   });
 

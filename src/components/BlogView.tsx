@@ -164,7 +164,7 @@ export const BlogView: React.FC<BlogViewProps> = ({ currentSlug, onNavigateBlog,
   const renderPostCard = (post: BlogPost) => (
     <article key={post.id} className="blog-card">
       <a href={`/blog/${post.slug}`} onClick={event => navigate(event, `/blog/${post.slug}`)} className="blog-card-link">
-        <div className="blog-card-photo"><img src={optimizedPhotoPath(post.featuredImage)} data-original-src={post.featuredImage} alt={post.imageAlt} width="1600" height="1068" loading="lazy" decoding="async" onError={realPhotoFallback} /></div>
+        <div className="blog-card-photo"><img src={optimizedPhotoPath(post.featuredImage)} data-original-src={post.featuredImage} alt={post.imageAlt} width={post.imageSize?.width ?? 1600} height={post.imageSize?.height ?? 1068} loading="lazy" decoding="async" onError={realPhotoFallback} /></div>
         <div className="blog-card-copy">
           <span className="blog-category">{post.category}</span>
           <div className="blog-card-meta"><span><Calendar aria-hidden="true" />{post.publishedDate}</span><span><Clock aria-hidden="true" />{post.readingTime}</span></div>
@@ -187,7 +187,8 @@ export const BlogView: React.FC<BlogViewProps> = ({ currentSlug, onNavigateBlog,
             <h1 className="blog-article-title">{currentPost.h1}</h1>
             <p className="blog-article-lead">{currentPost.summary}</p>
           </header>
-          <figure className="blog-featured-photo"><img src={optimizedPhotoPath(currentPost.featuredImage)} data-original-src={currentPost.featuredImage} alt={currentPost.imageAlt} width="1600" height="1068" loading="eager" fetchPriority="high" decoding="async" onError={realPhotoFallback} /><figcaption>{currentPost.imageAlt}</figcaption></figure>
+          <figure className="blog-featured-photo"><img src={optimizedPhotoPath(currentPost.featuredImage)} data-original-src={currentPost.featuredImage} alt={currentPost.imageAlt} width={currentPost.imageSize?.width ?? 1600} height={currentPost.imageSize?.height ?? 1068} loading="eager" fetchPriority="high" decoding="async" onError={realPhotoFallback} /><figcaption>{currentPost.imageCaption ?? currentPost.imageAlt}</figcaption></figure>
+          {currentPost.stickers && <ul className="blog-history-stickers" aria-label="Temas do guia">{currentPost.stickers.map(sticker => <li key={sticker}>{sticker}</li>)}</ul>}
           <nav className="blog-contents" aria-label="Neste artigo">
             <h2>Neste artigo</h2>
             <ol>{currentPost.sections.map((section, index) => section.title && <li key={index}><a href={`#artigo-secao-${index}`}>{section.title}<ArrowRight aria-hidden="true" /></a></li>)}</ol>
@@ -201,12 +202,14 @@ export const BlogView: React.FC<BlogViewProps> = ({ currentSlug, onNavigateBlog,
                 <section key={sectionIndex} id={`artigo-secao-${sectionIndex}`} className="blog-section">
                   {section.title && <Heading className="blog-section-heading">{section.title}</Heading>}
                   {section.paragraphs.map((paragraph, paragraphIndex) => <p key={paragraphIndex} className="blog-paragraph">{paragraph}</p>)}
+                  {section.milestones && <ol className="blog-history-timeline">{section.milestones.map(item => <li key={item.year}><span>{item.year}</span><h3>{item.title}</h3><p className="blog-paragraph">{item.text} <a href={`#carplus-hist-fonte-${item.source}`}>Fonte {item.source}</a></p></li>)}</ol>}
                   {section.listItems && section.listItems.length > 0 && <ul className="blog-content-list">{section.listItems.map((item, itemIndex) => <li key={itemIndex}><CheckCircle2 aria-hidden="true" /><span>{item}</span></li>)}</ul>}
                   {section.callout && <aside className={`blog-callout blog-callout-${section.callout.type}`}><CalloutIcon aria-hidden="true" /><div><h3 className="blog-callout-title">{section.callout.title}</h3><p className="blog-paragraph">{section.callout.text}</p></div></aside>}
                   {section.internalLinks && section.internalLinks.length > 0 && <div className="blog-internal-links">{section.internalLinks.map((link, linkIndex) => <a key={linkIndex} href={link.url} onClick={event => navigate(event, link.url)} className="blog-internal-link"><span className="blog-internal-title">{link.text}<ArrowRight aria-hidden="true" /></span>{link.description && <span className="blog-internal-description">{link.description}</span>}</a>)}</div>}
                 </section>
               );
             })}
+            {currentPost.sources && <section className="blog-section blog-history-sources" aria-labelledby="carplus-hist-fontes"><h2 className="blog-section-heading" id="carplus-hist-fontes">Fontes consultadas</h2><ol>{currentPost.sources.map((source, index) => <li key={source.url} id={`carplus-hist-fonte-${index + 1}`}><a href={source.url}>{source.text}</a></li>)}</ol></section>}
             {currentPost.faqs && currentPost.faqs.length > 0 && <section className="blog-faq"><h2 className="blog-section-heading">Perguntas Frequentes sobre {currentPost.category}</h2><div>{currentPost.faqs.map((faq, index) => <details key={index}><summary><span>{faq.question}</span><ChevronDown aria-hidden="true" /></summary><p className="blog-paragraph">{faq.answer}</p></details>)}</div></section>}
             <aside className="blog-editorial-notice"><Info aria-hidden="true" /><p>Conteúdo informativo. A avaliação do seu veículo depende de inspeção presencial por um profissional.</p></aside>
           </div>

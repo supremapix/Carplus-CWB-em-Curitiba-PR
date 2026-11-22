@@ -1,5 +1,6 @@
 export interface BlogSection {
   title?: string;
+  milestones?: Array<{ year: string; title: string; text: string; source: number }>;
   level?: 'h2' | 'h3';
   paragraphs: string[];
   listItems?: string[];
@@ -45,6 +46,10 @@ export interface BlogPost {
   readingTime: string;
   featuredImage: string;
   imageAlt: string;
+  imageCaption?: string;
+  imageSize?: { width: number; height: number };
+  stickers?: string[];
+  sources?: Array<{ text: string; url: string }>;
   intro: string;
   sections: BlogSection[];
   faqs: BlogFAQ[];
@@ -68,6 +73,152 @@ export const BLOG_CATEGORIES = [
 ] as const;
 
 export const BLOG_POSTS: BlogPost[] = [
+{
+  "id": "historia-dos-pneus-carplus-2026",
+  "slug": "historia-dos-pneus-do-pneumatico-ao-radial",
+  "title": "História dos pneus: do primeiro pneumático aos carros elétricos",
+  "h1": "História dos pneus: do primeiro pneumático aos carros elétricos",
+  "category": "Pneus",
+  "summary": "Por que o pneu ganhou ar, o que mudou com a carcaça radial e como comparar aderência, ruído e eficiência sem perder de vista a especificação do seu carro.",
+  "metaTitle": "História dos pneus: do pneumático ao radial | Carplus",
+  "metaDescription": "Uma linha do tempo dos pneus, da roda com ar ao radial e aos elétricos. Saiba ler a etiqueta e distinguir alinhamento 3D de balanceamento.",
+  "publishedDate": "22/11/2026",
+  "publishedIso": "2026-11-22",
+  "readingTime": "6 min de leitura",
+  "featuredImage": "/images/editorial/historia-pneus-carplus.webp",
+  "imageAlt": "Dois pneus com desenhos de banda distintos e um carro sobre uma rampa de alinhamento ao fundo",
+  "imageCaption": "Imagem ilustrativa gerada por IA. Não representa pneus em estoque nem a oficina da Carplus.",
+  "imageSize": {
+    "width": 1200,
+    "height": 675
+  },
+  "stickers": [
+    "Ar sob pressão",
+    "Construção radial",
+    "Etiqueta do Inmetro"
+  ],
+  "intro": "O R no meio da medida 205/55 R16 não significa raio nem aro: indica construção radial. O 16 é o diâmetro do aro em polegadas. Essa distinção é um atalho para entender a história do pneu e para não comprar por uma informação isolada.",
+  "sections": [
+    {
+      "title": "Linha do tempo: do ar à carcaça radial",
+      "paragraphs": [
+        "Pneumático e radial não são concorrentes equivalentes: pneumático descreve um pneu que trabalha com ar pressurizado; radial descreve a disposição dos cordonéis da carcaça. Um pneu moderno pode ser as duas coisas."
+      ],
+      "milestones": [
+        {
+          "year": "1845",
+          "title": "Thomson patenteia o conceito pneumático",
+          "text": "O inventor escocês Robert William Thomson patenteou uma roda com uma cobertura de borracha inflada. O registro precede o trabalho de John Boyd Dunlop em mais de quatro décadas.",
+          "source": 1
+        },
+        {
+          "year": "1888",
+          "title": "Dunlop testa uma solução para bicicletas",
+          "text": "John Boyd Dunlop desenvolveu uma versão prática. O protótipo de bicicleta que ele doou ao museu escocês combina tecido e borracha. O acervo conta que o teste começou após seu filho reclamar do desconforto do triciclo.",
+          "source": 1
+        },
+        {
+          "year": "1946",
+          "title": "Michelin registra sua patente do radial",
+          "text": "A carcaça radial usa cordonéis transversais à direção de rodagem; cintas reforçam a região sob a banda de rodagem. A data é um marco da solução da Michelin, não uma alegação de que ninguém antes pesquisou arranjos semelhantes.",
+          "source": 2
+        },
+        {
+          "year": "Hoje",
+          "title": "Eficiência e conforto entram na comparação",
+          "text": "Medidas de resistência ao rolamento, aderência no molhado e ruído externo permitem comparar características distintas. Uma nota boa em um critério não substitui a compatibilidade do pneu com o veículo.",
+          "source": 3
+        }
+      ]
+    },
+    {
+      "title": "O que muda para elétricos e híbridos?",
+      "paragraphs": [
+        "Em um elétrico ou híbrido, comece por medida, índices de carga e velocidade e pressão recomendada para a versão do carro. Uma indicação EV não substitui a especificação do fabricante. Evite escolher pelo aro, pelo nome do carro ou pela pressão máxima gravada na lateral do pneu.",
+        "Compare resistência ao rolamento e aderência em piso molhado na etiqueta do Inmetro. O ruído da etiqueta é externo: não equivale ao ruído dentro da cabine, que também depende do piso, do carro e das condições de uso. A etiqueta não permite prometer uma autonomia específica."
+      ],
+      "internalLinks": [
+        {
+          "text": "Guia de pneus para carros elétricos",
+          "url": "/blog/pneus-para-carro-eletrico-em-curitiba"
+        }
+      ]
+    },
+    {
+      "title": "Alinhamento 3D e balanceamento são serviços diferentes",
+      "paragraphs": [
+        "O equipamento de alinhamento 3D mede a geometria das rodas com recursos ópticos e ajuda a comparar os ângulos com a especificação do veículo. Medir ângulos não corrige folga, desgaste de suspensão ou roda danificada.",
+        "O balanceamento mede desequilíbrio do conjunto roda e pneu em rotação; quando indicado, usa contrapesos para corrigi-lo. Vibração e desgaste irregular são pistas, não diagnóstico: pneus, rodas e componentes mecânicos também merecem avaliação."
+      ],
+      "internalLinks": [
+        {
+          "text": "Quando avaliar alinhamento e balanceamento?",
+          "url": "/blog/quando-fazer-alinhamento-balanceamento"
+        },
+        {
+          "text": "Alinhamento 3D em Curitiba",
+          "url": "/alinhamento-3d-curitiba"
+        }
+      ]
+    },
+    {
+      "title": "Antes de comprar no Portão, confira estes dados",
+      "paragraphs": [
+        "Na Carplus do Portão, em Curitiba, a equipe pode conferir as opções de pneus e os serviços de montagem, balanceamento e alinhamento 3D. Leve a versão do carro, uma foto da etiqueta de pressão ou a especificação do manual e conte como usa o veículo."
+      ],
+      "listItems": [
+        "Confira medida e índices de carga e velocidade na especificação da versão, especialmente se os eixos usam medidas diferentes.",
+        "Use a etiqueta para comparar opções compatíveis e veja informações de montagem antes de decidir.",
+        "Informe se o carro apresenta vibração, desgaste desigual ou tende a puxar para um lado. Peça avaliação em vez de autorizar serviços por suposição."
+      ],
+      "internalLinks": [
+        {
+          "text": "Unidade e serviços da Carplus no Portão",
+          "url": "/auto-center-curitiba"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "text": "National Museums Scotland · Protótipo de Dunlop e antecedente de Thomson",
+      "url": "https://www.nms.ac.uk/discover-catalogue/dunlop-tyre-air-apparent"
+    },
+    {
+      "text": "Michelin Heritage · Registro da patente radial de 1946",
+      "url": "https://www.michelin.com/en/group/heritage"
+    },
+    {
+      "text": "Inmetro · Critérios da etiqueta de pneus novos",
+      "url": "https://www.gov.br/inmetro/pt-br/acesso-a-informacao/perguntas-frequentes/avaliacao-da-conformidade/pneus-novos/quais-sao-e-como-sao-avaliados-os-criterios-de-desempenho-presentes-na-etiqueta-de-pneus"
+    },
+    {
+      "text": "Inmetro · Marcações na lateral do pneu e índices",
+      "url": "https://www.gov.br/inmetro/pt-br/acesso-a-informacao/perguntas-frequentes/avaliacao-da-conformidade/pneus-novos/quais-sao-as-marcacoes-identificacoes-informacoes-obrigatorias-em-um-pneu"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "O R em 205/55 R16 indica o aro?",
+      "answer": "Não. O R informa que a construção é radial. O 16, logo depois, informa o diâmetro do aro em polegadas."
+    },
+    {
+      "question": "Todo elétrico exige pneu com a inscrição EV?",
+      "answer": "Comece pela especificação do fabricante para a versão do veículo e verifique medida e índices. A inscrição EV não substitui essas exigências."
+    },
+    {
+      "question": "Alinhamento e balanceamento corrigem a mesma coisa?",
+      "answer": "Não. O alinhamento avalia ângulos das rodas; o balanceamento trata a distribuição de massa do conjunto de roda e pneu. Uma inspeção ajuda a identificar o procedimento adequado."
+    }
+  ],
+  "ctaTitle": "Precisa conferir a aplicação do seu carro?",
+  "ctaText": "Envie modelo, ano, versão e, se tiver, uma foto da etiqueta de medidas. Consulte a equipe da Carplus no Portão.",
+  "ctaButtonText": "Conversar com a Carplus",
+  "relatedSlugs": [
+    "pneus-para-carro-eletrico-em-curitiba",
+    "quando-fazer-alinhamento-balanceamento"
+  ]
+},
 {
   "id": "rodas-de-liga-leve-riscadas-na-troca-de-pneus",
   "slug": "rodas-de-liga-leve-riscadas-na-troca-de-pneus",

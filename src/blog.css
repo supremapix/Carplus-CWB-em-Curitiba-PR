@@ -186,3 +186,17 @@
   #carplus-root .carplus-blog .blog-catalog-details > summary > svg { transition: none; }
   #carplus-root .carplus-blog .blog-card-link:hover .blog-card-photo img { transform: none; }
 }
+
+/* Artigos históricos: leitura acessível, sem movimento contínuo. */
+#carplus-root .carplus-blog .blog-history-stickers {display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 1.4rem;padding:0;list-style:none}
+#carplus-root .carplus-blog .blog-history-stickers li {border:1px solid #b77b1c;background:#44351d;color:#ffe5ab;border-radius:100rem;padding:.38rem .85rem;font-weight:700;transition:transform .2s ease}
+#carplus-root .carplus-blog .blog-history-timeline {display:grid;gap:.8rem;padding:0;margin:1.1rem 0;list-style:none}
+#carplus-root .carplus-blog .blog-history-timeline li {padding:1rem 1.15rem;border:1px solid #53432b;background:#211e19;border-radius:.8rem}
+#carplus-root .carplus-blog .blog-history-timeline span {display:inline-block;background:#f8bf59;color:#221606;padding:.16rem .45rem;border-radius:.35rem;font-weight:800}
+#carplus-root .carplus-blog .blog-history-timeline h3 {color:#fff;font-size:1.15rem;font-weight:750;margin:.4rem 0}
+#carplus-root .carplus-blog .blog-history-timeline a,
+#carplus-root .carplus-blog .blog-history-sources a {color:#ffcf7e;text-decoration:underline;text-underline-offset:.18em;overflow-wrap:anywhere}
+#carplus-root .carplus-blog .blog-history-sources li {scroll-margin-top:8rem;margin-bottom:.48rem}
+#carplus-root .carplus-blog .blog-history-sources ol {list-style:decimal;padding-inline-start:1.3rem}
+@media (hover:hover){#carplus-root .carplus-blog .blog-history-stickers li:hover{transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){#carplus-root .carplus-blog .blog-history-stickers li{transition:none}#carplus-root .carplus-blog .blog-history-stickers li:hover{transform:none}}
