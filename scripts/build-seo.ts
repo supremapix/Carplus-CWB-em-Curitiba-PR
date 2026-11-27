@@ -400,7 +400,7 @@ function renderProductShell(tire: typeof TIRES_DATA[0], slug: string): string {
     <div style="background: #ffffff; border: 2px solid #e5e7eb; border-radius: 1rem; padding: .5rem; text-align: center;">
       ${renderToStaticMarkup(React.createElement(VerifiedTireImage, { tire, className: "h-[290px] w-full" }))}
       <div style="margin-top: 1rem; display: inline-block; background: #ecfdf5; color: #065f46; font-size: 0.85rem; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 9999px;">
-        ✓ Em Estoque à Pronta Entrega no Portão
+        Disponibilidade: consulte a loja do Portão
       </div>
     </div>
     <div>
