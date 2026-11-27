@@ -171,7 +171,7 @@ export default function CatalogTireDetail({
                 <div className="text-sm font-bold text-white">Consulte preço e disponibilidade com nossa equipe</div>
               </div>
               <span className="text-[11px] font-bold bg-[#f59c00]/20 text-[#f59c00] px-3 py-1 rounded-full border border-[#f59c00]/40 shrink-0">
-                Pronta Entrega no Portão
+                Disponibilidade sob consulta
               </span>
             </div>
 
@@ -313,7 +313,7 @@ export default function CatalogTireDetail({
                 </div>
                 <div className="bg-gray-50 p-3.5 rounded-xl border border-gray-200">
                   <span className="text-gray-500 block text-[11px]">Disponibilidade</span>
-                  <span className="font-black text-[#f59c00] text-sm">Pronta Entrega CWB</span>
+                  <span className="font-black text-[#f59c00] text-sm">Consulte a loja do Portão</span>
                 </div>
               </div>
             </div>
