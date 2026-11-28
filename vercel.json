@@ -176,6 +176,13 @@
       }
     },
     {
+      "src": "/aro-19/?",
+      "status": 308,
+      "headers": {
+        "Location": "/aro/19"
+      }
+    },
+    {
       "handle": "filesystem"
     },
     {
